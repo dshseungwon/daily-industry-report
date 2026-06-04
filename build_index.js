@@ -130,7 +130,7 @@ const html=`<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Daily Industry Strategy · 데일리 산업 전략</title>
+<title>The Industry Brief · 데일리 GICS 산업 분석</title>
 <style>
   :root{--navy:#0e2a47;--blue:#117aca;--gold:#ffb81c;--ink:#13314f;--mute:#5b6b8c;
     --line:#e6ebf4;--bg:#eef2f7;--card:#fff;--accent:#117aca;--krred:#c8102e;--krblue:#0047a0;
@@ -218,7 +218,7 @@ ${upHtml}
   </div>
 
   <footer><div class="wrap">
-    Daily Industry Strategy · <span class="en">auto-generated landing page.</span><span class="ko">자동 생성 랜딩 페이지.</span>
+    The Industry Brief · <span class="en">auto-generated landing page.</span><span class="ko">자동 생성 랜딩 페이지.</span>
     <div class="disclaim"><span class="en">Informational only, not investment advice. Generated ${esc(lastUpdEn)}.</span><span class="ko">정보 제공용이며 투자 자문이 아닙니다. ${esc(lastUpdKo)} 생성.</span></div>
   </div></footer>
 
