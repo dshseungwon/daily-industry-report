@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -122,7 +122,7 @@
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.bar-fill{transition:none;}}
 </style>
 </head>
-<body class="lang-ko">
+<body class="lang-en">
 
 <div class="topbar">
   <div class="row">
@@ -335,8 +335,7 @@
   document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
   var KEY='dis-lang';
   function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
-  var saved='ko';try{saved=localStorage.getItem(KEY)||'ko';}catch(e){}
-  setLang(saved);
+  setLang('en'); // default English on every visit
   var btn=document.getElementById('lang');
   if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
   function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}

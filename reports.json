@@ -1,5 +1,14 @@
 [
   {
+    "date": "2026-06-04", "gics": "352030", "sector": "Health Care", "set_index": 1,
+    "industry_en": "Life Sciences Tools & Services", "industry_ko": "생명과학 도구·서비스",
+    "global_company": "Thermo Fisher Scientific", "korea_company": "Seegene",
+    "file": "industry-report_2026-06-04_352030_life-sciences-tools.html",
+    "headline_en": "After a two-year destock, life-science tools regain momentum on a restored NIH budget and BIOSECURE reshoring.",
+    "headline_ko": "2년 재고조정을 지나 생명과학 도구가 NIH 예산 복원과 BIOSECURE 리쇼어링으로 다시 탄력.",
+    "accent": "#6a4ca0"
+  },
+  {
     "date": "2026-06-04", "gics": "401010", "sector": "Financials", "set_index": 2,
     "industry_en": "Banks", "industry_ko": "은행",
     "global_company": "JPMorgan Chase", "korea_company": "KB Financial Group",
@@ -7,5 +16,50 @@
     "headline_en": "A concentrated oligopoly; capital rules easing and profit shifting to capital-light fees.",
     "headline_ko": "진입장벽 높은 과점 구조. 자본규제는 완화되고 수익은 비이자수익으로 이동.",
     "accent": "#117aca"
+  },
+  {
+    "date": "2026-06-04", "gics": "402010", "sector": "Financials", "set_index": 3,
+    "industry_en": "Financial Services", "industry_ko": "금융 서비스",
+    "global_company": "Visa", "korea_company": "KakaoPay",
+    "file": "industry-report_2026-06-04_402010_financial-services.html",
+    "headline_en": "Payments run on toll-road network economics: a global duopoly above, fee and new-rail pressure below.",
+    "headline_ko": "결제는 통행료형 네트워크 경제: 위는 글로벌 복점, 아래는 수수료·새 레일 압박.",
+    "accent": "#1a1f71"
+  },
+  {
+    "date": "2026-06-04", "gics": "402020", "sector": "Financials", "set_index": 4,
+    "industry_en": "Consumer Finance", "industry_ko": "소비자 금융",
+    "global_company": "American Express", "korea_company": "Samsung Card",
+    "file": "industry-report_2026-06-04_402020_consumer-finance.html",
+    "headline_en": "A large, repricing market — consolidating in the US, squeezed by fee caps in Korea.",
+    "headline_ko": "크고 재가격 중인 시장 — 미국은 통합, 한국은 수수료 인하로 압박.",
+    "accent": "#2671b9"
+  },
+  {
+    "date": "2026-06-04", "gics": "402030", "sector": "Financials", "set_index": 5,
+    "industry_en": "Capital Markets", "industry_ko": "자본시장",
+    "global_company": "BlackRock", "korea_company": "Korea Investment & Securities",
+    "file": "industry-report_2026-06-04_402030_capital-markets.html",
+    "headline_en": "Fees over credit risk as private markets, AI and a record Korean rally reshape the industry.",
+    "headline_ko": "사모시장·AI·사상 최대 한국 랠리 속에 신용위험보다 수수료가 핵심.",
+    "accent": "#2e5cb8"
+  },
+  {
+    "date": "2026-06-04", "gics": "402040", "sector": "Financials", "set_index": 6,
+    "industry_en": "Mortgage REITs", "industry_ko": "모기지 리츠",
+    "global_company": "Annaly Capital Management", "korea_company": "KHFC (proxy)",
+    "file": "industry-report_2026-06-04_402040_mortgage-reits.html",
+    "headline_en": "A levered MBS-spread business caught between a slow-cutting Fed and uncertain GSE privatization.",
+    "headline_ko": "느린 인하의 연준과 불확실한 GSE 민영화 사이에 낀 레버리지 MBS 스프레드 사업.",
+    "accent": "#3b6ea5"
+  },
+  {
+    "date": "2026-06-04", "gics": "403010", "sector": "Financials", "set_index": 7,
+    "industry_en": "Insurance", "industry_ko": "보험",
+    "global_company": "UnitedHealth Group", "korea_company": "Samsung Life Insurance",
+    "file": "industry-report_2026-06-04_403010_insurance.html",
+    "headline_en": "An $8.3T premium pool: the P&C cycle turns soft while IFRS 17 and K-ICS reset capital.",
+    "headline_ko": "8.3조 달러 보험료 시장 — 손보 사이클은 연성으로, IFRS 17·K-ICS가 자본을 재설정.",
+    "accent": "#1f7a5a"
   }
 ]

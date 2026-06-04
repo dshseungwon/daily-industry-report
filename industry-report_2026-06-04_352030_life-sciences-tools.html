@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Life Sciences Tools &amp; Services · 생명과학 도구·서비스 — Industry Analysis</title>
+<style>
+  :root{--navy:#2c1b4d;--blue:#6a4ca0;--sky:#9b7fd4;--gold:#19b5a7;--ink:#241a3a;
+    --mute:#6a6080;--line:#ece7f4;--bg:#f1eef7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(44,27,77,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(44,27,77,.97);backdrop-filter:blur(8px);border-bottom:1px solid #43326b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#e1d7f3;background:#3d2c63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#3a2566,#2c1b4d 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(36px,10vw,60px);margin:0 0 4px;font-weight:800;letter-spacing:-1px;line-height:1;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#ddd1f3;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(221,209,243,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#f0eafb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f6f2fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* bars */
+  .bar-row{display:flex;align-items:center;gap:10px;margin:8px 0;}
+  .bar-lab{width:120px;font-size:13px;text-align:right;color:var(--ink);flex:none;}
+  .bar-track{flex:1;background:#e2d9f1;border-radius:7px;height:22px;overflow:hidden;}
+  .bar-fill{height:100%;background:var(--blue);border-radius:7px;width:0;transition:width 1s cubic-bezier(.2,.7,.2,1);}
+  .bar-row.lead .bar-fill{background:var(--navy);}
+  .bar-row.kr .bar-fill{background:var(--krblue);}
+  .bar-val{width:66px;flex:none;font-size:13px;font-weight:700;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f6f2fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-num{color:var(--gold);font-weight:800;font-size:19px;width:28px;flex:none;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider for players (secondary) */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#3a2566,#6a4ca0);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(20px,5.6vw,25px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  .pillar{background:#2f1f54;color:#fff;border:1px solid #463470;border-radius:13px;overflow:hidden;}
+  .kr .pillar{background:#103a73;border-color:#1d4f95;}
+  .pillar .ac-title{color:#fff;}
+  .pillar .ptag{flex:none;background:var(--blue);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 9px;border-radius:8px;}
+  .kr .pillar .ptag{background:#c8102e;}
+  .pillar .chev{color:#ddd1f3;}.pillar .ac-body p{color:#ece4fb;font-size:13.3px;}
+  .moves{font-size:12.5px;color:#ddd1f3;font-style:italic;margin-top:8px !important;}
+  .moves b{color:var(--gold);font-style:normal;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#bcaede;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#ddd1f3;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#8c7eae;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){.stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}.ksf{grid-template-columns:1fr 1fr;}.bar-lab{width:150px;}.two{display:grid;grid-template-columns:1fr 1fr;gap:13px;}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.bar-fill{transition:none;}}
+</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">Life Sci Tools<span class="g">·</span><span class="en">Industry</span><span class="ko">산업분석</span></div>
+    <div class="chips">
+      <button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button>
+      <button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button>
+      <button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button>
+      <button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button>
+      <button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button>
+      <button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button>
+      <button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button>
+    </div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">Daily Industry Analysis · GICS day-set 1 of 7</span><span class="ko">데일리 산업분석 · 오늘의 7개 중 1번째</span></p>
+    <h1><span class="en">Life Sciences Tools &amp; Services</span><span class="ko">생명과학 도구·서비스</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Health Care · 352030</span>
+      <span class="pill">2026-06-04</span>
+      <span class="pill"><span class="en">Players covered later</span><span class="ko">플레이어 분석은 뒤에서</span>: Thermo Fisher · Seegene</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p>
+        <span class="en">Life Sciences Tools &amp; Services supplies the "picks and shovels" of biology — instruments, the consumables and reagents that run on them, and the CRO/CDMO services that develop and make drugs. The economics are razor-and-blade: instruments seed an installed base, then recurring consumables compound the margin. After a two-year destock and funding squeeze, the sector enters 2026 with renewed momentum: a roughly $165–175B market (2026) growing high-single-digit, bioprocessing demand recovering, and a U.S. NIH budget that Congress restored to ~$48.7B in February 2026. Three forces dominate the outlook — the reshoring of supply chains under the BIOSECURE Act (signed Dec 18, 2025), AI moving into discovery and lab automation, and tightening diagnostics rules (EU IVDR). The industry is consolidated: a handful of scaled platforms (Thermo Fisher, Danaher, Agilent, Roche, Illumina) hold the high ground. The global #1 (Thermo Fisher Scientific, by revenue and market cap) and Korea #1 (Seegene, by molecular-diagnostics revenue) are analyzed separately at the end.</span>
+        <span class="ko">생명과학 도구·서비스는 바이오 연구의 '곡괭이와 삽'을 공급한다. 장비, 그 위에서 돌아가는 소모품·시약, 그리고 신약을 개발·생산하는 CRO/CDMO 서비스가 핵심이다. 수익 구조는 면도기-면도날 모델이다. 장비로 설치 기반을 깔면 반복 구매되는 소모품이 마진을 복리로 쌓는다. 2년에 걸친 재고 조정과 자금 경색을 지나 2026년 산업은 다시 탄력을 받고 있다. 시장 규모는 약 1,650~1,750억 달러(2026년), 성장률은 한 자릿수 후반대이며, 바이오공정 수요가 회복되고 미국 NIH 예산도 2026년 2월 의회가 약 487억 달러로 복원했다. 전망을 좌우하는 세 가지 힘은 BIOSECURE법(2025년 12월 18일 서명)에 따른 공급망 재편, 신약 발굴·실험실 자동화로 파고든 AI, 그리고 강화되는 진단 규제(EU IVDR)다. 산업은 소수 대형 플랫폼(Thermo Fisher, Danaher, Agilent, Roche, Illumina)으로 집중돼 있다. 글로벌 1위 Thermo Fisher Scientific(매출·시총 기준)과 한국 1위 Seegene(분자진단 매출 기준)은 맨 뒤에서 따로 다룬다.</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">Picks, shovels — and the blades that follow</span><span class="ko">곡괭이와 삽, 그리고 뒤따르는 면도날</span></h2>
+      <p class="lead">
+        <span class="en">The industry (GICS 352030) does not make drugs; it makes the tools and runs the services that let everyone else discover and manufacture them. The profit centre is not the box but the recurring consumables and services that flow through it for years.</span>
+        <span class="ko">이 산업(GICS 352030)은 신약을 직접 만들지 않는다. 다른 모두가 신약을 발굴·생산하도록 돕는 도구를 만들고 서비스를 제공한다. 진짜 이익은 장비 자체가 아니라, 그 장비를 통해 수년간 반복적으로 흘러가는 소모품과 서비스에서 나온다.</span>
+      </p>
+      <div class="chain">
+        <div class="vc"><b><span class="en">Instruments</span><span class="ko">장비</span></b><span class="d"><span class="en">Sequencers, mass spec, cytometers — the installed base.</span><span class="ko">시퀀서·질량분석기·유세포분석기. 설치 기반.</span></span></div>
+        <div class="vc"><b><span class="en">Consumables &amp; reagents</span><span class="ko">소모품·시약</span></b><span class="d"><span class="en">The recurring "blades" — high-margin, sticky revenue.</span><span class="ko">반복 구매되는 '면도날'. 고마진·고착성 매출.</span></span></div>
+        <div class="vc"><b><span class="en">Bioproduction</span><span class="ko">바이오공정</span></b><span class="d"><span class="en">Cell culture media, single-use, purification for biologics.</span><span class="ko">세포배양 배지·일회용·정제. 바이오의약품용.</span></span></div>
+        <div class="vc"><b><span class="en">CRO services</span><span class="ko">CRO 서비스</span></b><span class="d"><span class="en">Outsourced research &amp; clinical trials.</span><span class="ko">위탁 연구·임상시험.</span></span></div>
+        <div class="vc"><b><span class="en">CDMO services</span><span class="ko">CDMO 서비스</span></b><span class="d"><span class="en">Contract development &amp; manufacturing of drugs.</span><span class="ko">의약품 위탁개발·생산.</span></span></div>
+      </div>
+      <p class="cap"><span class="en">Consumables and services typically make up the majority of revenue at scaled players, which is why an installed base of instruments is so valuable.</span><span class="ko">대형 기업에서는 소모품·서비스가 매출의 다수를 차지한다. 장비 설치 기반이 그토록 값진 이유다.</span></p>
+    </div>
+  </section>
+
+  <section id="market">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A ~$170B market back on a growth track</span><span class="ko">약 1,700억 달러 시장, 다시 성장 궤도로</span></h2>
+      <div class="subh"><span class="en">Global life-science-tools market (US$ bn)</span><span class="ko">글로벌 생명과학 도구 시장 (10억 달러)</span></div>
+      <div class="bars">
+        <div class="bar-row"><div class="bar-lab">2025</div><div class="bar-track"><div class="bar-fill" data-w="88"></div></div><div class="bar-val">~$152B</div></div>
+        <div class="bar-row lead"><div class="bar-lab">2026</div><div class="bar-track"><div class="bar-fill" data-w="100"></div></div><div class="bar-val">~$170B</div></div>
+        <div class="bar-row"><div class="bar-lab">2031</div><div class="bar-track"><div class="bar-fill" data-w="135"></div></div><div class="bar-val">~$230B</div></div>
+      </div>
+      <p class="cap"><span class="en">Estimates vary by source: Mordor pegs 2026 at ~$164B growing ~6.9% to 2031; broader definitions reach ~$170–175B in 2026 with double-digit CAGRs to 2035. Within the mix, services grow fastest (~11% CAGR) while instruments still hold ~44% share (2025). Thermo Fisher cites a "$500B+" total served market.</span><span class="ko">자료마다 추정치가 다르다. Mordor는 2026년 약 1,640억 달러에서 2031년까지 연 6.9% 성장으로 본다. 더 넓은 정의로는 2026년 약 1,700~1,750억 달러, 2035년까지 두 자릿수 CAGR을 제시한다. 구성으로 보면 서비스가 가장 빠르게(약 11% CAGR) 자라고 장비는 여전히 약 44% 비중(2025년)을 지킨다. Thermo Fisher는 자사 가용 시장을 '5,000억 달러 이상'으로 본다.</span></p>
+    </div>
+  </section>
+
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">A consolidated global field; a niche Korean cluster</span><span class="ko">집중된 글로벌 판, 틈새의 한국 진영</span></h2>
+      <div class="subh"><span class="en">Global — leading platforms (by life-science-tools revenue)</span><span class="ko">글로벌 — 선도 플랫폼 (도구 매출 기준)</span></div>
+      <div class="bars">
+        <div class="bar-row lead"><div class="bar-lab">Thermo Fisher</div><div class="bar-track"><div class="bar-fill" data-w="100"></div></div><div class="bar-val">#1</div></div>
+        <div class="bar-row"><div class="bar-lab">Danaher</div><div class="bar-track"><div class="bar-fill" data-w="64"></div></div><div class="bar-val">#2</div></div>
+        <div class="bar-row"><div class="bar-lab">Roche Dx</div><div class="bar-track"><div class="bar-fill" data-w="55"></div></div><div class="bar-val">#3</div></div>
+        <div class="bar-row"><div class="bar-lab">Agilent</div><div class="bar-track"><div class="bar-fill" data-w="40"></div></div><div class="bar-val">#4</div></div>
+        <div class="bar-row"><div class="bar-lab">Illumina / others</div><div class="bar-track"><div class="bar-fill" data-w="30"></div></div><div class="bar-val">~</div></div>
+      </div>
+      <div class="subh"><span class="en">Korea — life-science-tools / molecular-diagnostics firms (by 2025 revenue)</span><span class="ko">한국 — 도구·분자진단 기업 (2025년 매출 기준)</span></div>
+      <div class="bars">
+        <div class="bar-row kr"><div class="bar-lab">Seegene</div><div class="bar-track"><div class="bar-fill" data-w="100"></div></div><div class="bar-val">₩474B</div></div>
+        <div class="bar-row kr"><div class="bar-lab">Bioneer</div><div class="bar-track"><div class="bar-fill" data-w="68"></div></div><div class="bar-val">~₩320B</div></div>
+        <div class="bar-row kr"><div class="bar-lab">Macrogen</div><div class="bar-track"><div class="bar-fill" data-w="40"></div></div><div class="bar-val">~₩190B</div></div>
+      </div>
+      <p class="cap"><span class="en">Global figures are ordinal (rank), not exact share — no single firm dominates, but Thermo Fisher is the clear #1 by revenue (~$45B FY25) and market cap. Korea's cluster is small and diagnostics-tilted; Seegene led 2025 with ₩474.2B in sales.</span><span class="ko">글로벌 수치는 정확한 점유율이 아니라 순위다. 압도적 1위는 없지만 매출(2025 회계연도 약 450억 달러)과 시총 기준 Thermo Fisher가 분명한 1위다. 한국 진영은 규모가 작고 진단 쪽에 치우쳐 있으며, Seegene이 2025년 매출 4,742억 원으로 선두였다.</span></p>
+    </div>
+  </section>
+
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal">
+      <div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">A few scaled platforms compete on technology and breadth, but each owns sticky installed bases that soften price wars.</span><span class="ko">소수 대형 플랫폼이 기술과 라인업으로 경쟁하지만, 각자 고착된 설치 기반을 쥐고 있어 가격 전쟁은 완화된다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Deep R&amp;D, IP, regulatory clearance and global service networks make entry at scale extremely hard.</span><span class="ko">깊은 R&amp;D, 특허, 규제 인증, 글로벌 서비스망이 대규모 진입을 매우 어렵게 한다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Specialised components and rare reagents matter, but scale buyers and reshoring are rebalancing the supply base.</span><span class="ko">특수 부품과 희귀 시약이 변수지만, 대형 구매력과 리쇼어링이 공급망 균형을 다시 맞추고 있다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Pharma and labs negotiate hard, yet validated workflows and switching costs lock them in once a platform is chosen.</span><span class="ko">제약사·연구실은 강하게 협상하지만, 검증된 워크플로와 전환 비용 탓에 일단 플랫폼을 택하면 묶인다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">There is no real substitute for measuring biology; new methods tend to be sold by the same incumbents.</span><span class="ko">바이오를 측정하는 일에는 마땅한 대체재가 없고, 새 방식도 결국 같은 기존 기업이 판다.</span></p></div>
+    </div>
+    <p class="cap"><span class="en">Net: a structurally attractive industry — high barriers, recurring revenue and weak substitutes — though cyclical end-market funding swings the near-term ride.</span><span class="ko">종합하면 구조적으로 매력적인 산업이다. 높은 장벽, 반복 매출, 약한 대체재. 다만 전방 시장의 자금 사이클이 단기 흐름을 흔든다.</span></p>
+  </section>
+
+  <section id="reg">
+    <p class="kicker"><span class="en">PESTEL &amp; regulation</span><span class="ko">PESTEL과 규제</span></p>
+    <h2><span class="en">Macro forces &amp; the latest rules</span><span class="ko">거시 환경과 최신 규제</span></h2>
+    <p class="mute"><span class="en">In the PESTEL frame, Political and Legal forces now dominate: government research funding sets demand, biosecurity and trade policy redraw supply chains, and diagnostics regulation gates market access. Technology (AI, automation) resets productivity, while Environmental rules push single-use and reagent sustainability. The fastest-moving lever is regulation, below.</span><span class="ko">PESTEL 관점에서 지금은 정치·법률 요인이 지배적이다. 정부 연구비가 수요를 정하고, 바이오안보·무역 정책이 공급망을 다시 그리며, 진단 규제가 시장 진입을 통제한다. 기술(AI·자동화)은 생산성을 다시 짜고, 환경 규제는 일회용·시약의 지속가능성을 압박한다. 가장 빠르게 움직이는 변수는 아래 규제다.</span></p>
+    <p class="hint"><span class="en">Latest legislation &amp; regulatory issues — tap to expand.</span><span class="ko">최신 법안·규제 이슈 — 눌러서 펼치기.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025-12-18</span><span class="ac-title"><span class="en">BIOSECURE Act becomes law</span><span class="ko">BIOSECURE법 발효</span></span></div><div class="ac-body"><p class="why"><span class="en">Signed into law via the FY2026 NDAA, it bars federal agencies from contracting with — or funding — entities that use equipment or services from named "biotechnology companies of concern" (largely China-linked CROs/CDMOs). OMB must publish the list by Dec 18, 2026. <b>Why it matters:</b> it reshapes the global CRO/CDMO map and steers demand toward non-Chinese tools and service providers.</span><span class="ko">2026 회계연도 국방수권법(NDAA)을 통해 법제화됐다. 연방기관이 지정된 '우려 바이오 기업'(주로 중국계 CRO/CDMO)의 장비·서비스를 쓰는 곳과 계약하거나 자금을 대는 것을 금지한다. OMB는 2026년 12월 18일까지 명단을 공개해야 한다. <b>의미:</b> 글로벌 CRO/CDMO 지형을 재편하고 수요를 비중국계 도구·서비스 공급자로 돌린다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-02</span><span class="ac-title"><span class="en">US Congress restores NIH funding</span><span class="ko">미국 의회, NIH 예산 복원</span></span></div><div class="ac-body"><p class="why"><span class="en">After 2025 proposals to slash the budget and cap indirect costs at 15%, Congress restored NIH funding to ~$48.7B in Feb 2026 — flat in real terms but a signal of stability. <b>Why it matters:</b> NIH grants drive academic demand for instruments and consumables; restored funding underpins the 2026 recovery.</span><span class="ko">2025년 예산 삭감과 간접비 15% 상한 추진을 거쳐, 의회는 2026년 2월 NIH 예산을 약 487억 달러로 복원했다. 실질로는 제자리지만 안정의 신호다. <b>의미:</b> NIH 연구비는 학계의 장비·소모품 수요를 견인한다. 예산 복원이 2026년 회복을 떠받친다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">EU IVDR transition deadlines bite</span><span class="ko">EU IVDR 전환 기한 도래</span></span></div><div class="ac-body"><p class="why"><span class="en">The EU In Vitro Diagnostic Regulation's phased transition periods are progressively expiring through 2026–2027, forcing recertification of diagnostic assays under stricter evidence rules. <b>Why it matters:</b> compliance is costly but rewards scaled players with notified-body capacity and squeezes smaller diagnostics vendors.</span><span class="ko">EU 체외진단기기규정(IVDR)의 단계적 전환 기간이 2026~2027년에 걸쳐 순차 만료되며, 더 엄격한 근거 기준에 따라 진단 시약의 재인증을 강제한다. <b>의미:</b> 인증 비용은 크지만 인증기관 역량을 갖춘 대형사에 유리하고, 소규모 진단 업체를 압박한다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">Tariffs &amp; export controls on bio-tools</span><span class="ko">바이오 도구 관세·수출통제</span></span></div><div class="ac-body"><p class="why"><span class="en">Renewed US-China trade tension and proposed pharma/equipment tariffs threaten cross-border flows of instruments, reagents and components. <b>Why it matters:</b> it accelerates reshoring and regional manufacturing, raising costs but favouring suppliers with local capacity.</span><span class="ko">미·중 무역 갈등 재점화와 제약·장비 관세 추진이 장비·시약·부품의 국경 간 이동을 위협한다. <b>의미:</b> 리쇼어링과 지역 생산을 가속해 비용은 오르지만, 현지 생산능력을 갖춘 공급자에게 유리하다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">Korea: K-Bio policy &amp; data rules</span><span class="ko">한국: K-바이오 정책·데이터 규제</span></span></div><div class="ac-body"><p class="why"><span class="en">Korea continues to designate bio as a national strategic technology, with tax credits, the K-Bio cluster build-out and MFDS approval reforms, alongside tightening genomic-data and IVD oversight. <b>Why it matters:</b> it supports domestic tool/diagnostics makers like Seegene while raising the compliance bar for exports.</span><span class="ko">한국은 바이오를 국가전략기술로 계속 지정하며 세액공제, K-바이오 클러스터 조성, 식약처 허가 제도 개선을 추진하고, 동시에 유전체 데이터·체외진단 규제를 강화하고 있다. <b>의미:</b> Seegene 같은 국내 도구·진단 기업을 지원하면서 수출 규제 문턱은 높인다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win in tools &amp; services</span><span class="ko">도구·서비스에서 이기는 조건</span></h2>
+    <div class="ksf reveal">
+      <div class="kc"><span class="kn">1</span><div><b><span class="en">Large installed base</span><span class="ko">넓은 설치 기반</span></b><p><span class="en">Each placed instrument pulls years of high-margin consumables and service.</span><span class="ko">설치된 장비 하나가 수년간의 고마진 소모품·서비스를 끌어온다.</span></p></div></div>
+      <div class="kc"><span class="kn">2</span><div><b><span class="en">Recurring consumables mix</span><span class="ko">반복 소모품 비중</span></b><p><span class="en">The higher the consumables/services share, the more resilient the revenue.</span><span class="ko">소모품·서비스 비중이 높을수록 매출이 견고해진다.</span></p></div></div>
+      <div class="kc"><span class="kn">3</span><div><b><span class="en">R&amp;D &amp; IP depth</span><span class="ko">R&amp;D·특허 역량</span></b><p><span class="en">Sustained innovation in sequencing, mass spec and bioprocessing sets the moat.</span><span class="ko">시퀀싱·질량분석·바이오공정의 지속 혁신이 해자를 만든다.</span></p></div></div>
+      <div class="kc"><span class="kn">4</span><div><b><span class="en">Regulatory &amp; quality systems</span><span class="ko">규제·품질 체계</span></b><p><span class="en">IVDR/FDA clearances and GMP quality gate access to clinical markets.</span><span class="ko">IVDR·FDA 인증과 GMP 품질이 임상 시장 진입을 좌우한다.</span></p></div></div>
+      <div class="kc"><span class="kn">5</span><div><b><span class="en">Global service &amp; supply chain</span><span class="ko">글로벌 서비스·공급망</span></b><p><span class="en">Local service, fast logistics and reshored capacity win share post-BIOSECURE.</span><span class="ko">현지 서비스·빠른 물류·리쇼어링 생산능력이 BIOSECURE 이후 점유율을 가른다.</span></p></div></div>
+      <div class="kc"><span class="kn">6</span><div><b><span class="en">Software, data &amp; automation</span><span class="ko">소프트웨어·데이터·자동화</span></b><p><span class="en">AI-enabled workflows and connected data turn hardware into a platform.</span><span class="ko">AI 워크플로와 연결된 데이터가 하드웨어를 플랫폼으로 바꾼다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="news">
+    <p class="kicker"><span class="en">Recent issues &amp; news</span><span class="ko">최근 이슈 &amp; 뉴스</span></p>
+    <h2><span class="en">What's moving the sector now</span><span class="ko">지금 이 산업을 움직이는 것</span></h2>
+    <p class="hint"><span class="en">Tap for why it matters.</span><span class="ko">눌러서 의미를 확인하세요.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-04-23</span><span class="ac-title"><span class="en">Thermo Fisher beats, raises 2026 guide</span><span class="ko">Thermo Fisher, 호실적·2026 가이던스 상향</span></span></div><div class="ac-body"><p class="why"><span class="en">Q1 2026 revenue of ~$11.0B (+6%) and EPS of $5.44 beat estimates; full-year guidance was raised to $47.3–48.1B, led by bioproduction. <b>Why it matters:</b> the bellwether's beat signals the demand recovery is real, not just destock unwinding.</span><span class="ko">2026년 1분기 매출 약 110억 달러(+6%), 주당순이익 5.44달러로 추정치를 웃돌았고, 바이오공정을 앞세워 연간 가이던스를 473억~481억 달러로 상향했다. <b>의미:</b> 업계 풍향계의 호실적은 단순한 재고 정상화가 아니라 실제 수요 회복을 시사한다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-02</span><span class="ac-title"><span class="en">NIH budget restored; biotech winter thaws</span><span class="ko">NIH 예산 복원, 바이오 겨울 해빙</span></span></div><div class="ac-body"><p class="why"><span class="en">Congress reversed proposed cuts, restoring NIH to ~$48.7B, while the XBI biotech ETF rose ~33% in 2025 and pharma dealmaking returned. <b>Why it matters:</b> academic and biotech demand — the tools sector's two engines — are both turning back up.</span><span class="ko">의회가 삭감안을 뒤집어 NIH 예산을 약 487억 달러로 복원했고, XBI 바이오 ETF는 2025년 약 33% 올랐으며 제약 거래도 되살아났다. <b>의미:</b> 도구 산업의 두 엔진인 학계·바이오텍 수요가 동시에 반등하고 있다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-04-20</span><span class="ac-title"><span class="en">Seegene unveils CURECA &amp; STAgora</span><span class="ko">Seegene, CURECA·STAgora 공개</span></span></div><div class="ac-body"><p class="why"><span class="en">At ESCMID Global 2026 (Munich), Seegene showed CURECA, a fully automated "unmanned" PCR system, and STAgora, a global PCR-data analytics platform. <b>Why it matters:</b> it pivots a former COVID-test maker toward an automation-and-data platform less tied to respiratory cycles.</span><span class="ko">ESCMID Global 2026(뮌헨)에서 Seegene이 완전 자동 '무인' PCR 시스템 CURECA와 글로벌 PCR 데이터 분석 플랫폼 STAgora를 선보였다. <b>의미:</b> 코로나 검사 기업에서 호흡기 사이클 의존이 덜한 자동화·데이터 플랫폼으로 전환하는 행보다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025-12-18</span><span class="ac-title"><span class="en">BIOSECURE reshapes CRO/CDMO sourcing</span><span class="ko">BIOSECURE, CRO/CDMO 소싱 재편</span></span></div><div class="ac-body"><p class="why"><span class="en">With BIOSECURE now law, sponsors are pre-emptively diversifying away from China-linked CDMOs ahead of the 2026 list. <b>Why it matters:</b> it is a multi-year demand shift toward Western and Korean/Indian tools and services providers.</span><span class="ko">BIOSECURE가 법제화되면서, 제약사들은 2026년 명단 공개에 앞서 중국계 CDMO 의존을 선제적으로 분산하고 있다. <b>의미:</b> 서구·한국·인도 도구·서비스 공급자로 향하는 다년간의 수요 이동이다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-05</span><span class="ac-title"><span class="en">Seegene Q1 operating profit jumps 59%</span><span class="ko">Seegene 1분기 영업이익 59% 급증</span></span></div><div class="ac-body"><p class="why"><span class="en">Seegene returned to profitability in 2025 (₩474.2B sales) and posted a 59% Q1 jump in operating profit on non-respiratory test growth. <b>Why it matters:</b> the diversification away from COVID is starting to show in the numbers.</span><span class="ko">Seegene은 2025년 흑자 전환(매출 4,742억 원)에 이어, 비호흡기 검사 성장에 힘입어 1분기 영업이익이 59% 뛰었다. <b>의미:</b> 코로나 의존 탈피의 다각화가 실적으로 나타나기 시작했다.</span></p></div></div>
+    </div>
+  </section>
+
+  <!-- ===== PLAYERS (secondary analysis) ===== -->
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · additional analysis</span><span class="ko">플레이어 · 추가 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, briefly</span><span class="ko">두 리더, 간단히</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act; here are the global and Korean leaders as a secondary read.</span><span class="ko">위의 산업 분석이 본론이고, 여기서는 글로벌·한국 리더를 보조적으로 살펴본다.</span></p>
+
+    <div class="gl">
+      <div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>Thermo Fisher Scientific</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">The clear #1 in the industry by revenue (~$45B FY2025) and market cap — a diversified platform across Life Sciences Solutions, Analytical Instruments, Specialty Diagnostics and Lab Products &amp; Biopharma Services, with a deep recurring-consumables base.</span><span class="ko">매출(2025 회계연도 약 450억 달러)과 시총 기준 산업 내 분명한 1위. 생명과학 솔루션, 분석장비, 특수진단, 실험실 제품·바이오파마 서비스에 걸친 다각화 플랫폼으로, 두터운 반복 소모품 기반을 갖췄다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">$11.0B</div><div class="l"><span class="en">Q1'26 revenue (+6%)</span><span class="ko">1분기 매출 (+6%)</span></div></div>
+          <div class="stat"><div class="n">$47.3–48.1B</div><div class="l"><span class="en">2026 revenue guide</span><span class="ko">2026 매출 가이던스</span></div></div>
+          <div class="stat"><div class="n">$5.44</div><div class="l"><span class="en">Q1'26 adj. EPS</span><span class="ko">1분기 조정 EPS</span></div></div>
+          <div class="stat"><div class="n">#1</div><div class="l"><span class="en">Industry by revenue</span><span class="ko">매출 기준 업계 1위</span></div></div>
+        </div>
+        <div class="subh"><span class="en">Strategy</span><span class="ko">전략</span></div>
+        <div class="acc" data-accordion>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 1</span><span class="ac-title"><span class="en">Compound the razor-and-blade base</span><span class="ko">면도기-면도날 기반 복리화</span></span></div><div class="ac-body"><p><span class="en">Place instruments, then grow the recurring consumables, reagents and service that ride on the installed base — the most resilient revenue in the sector.</span><span class="ko">장비를 깔고, 그 설치 기반 위에서 반복되는 소모품·시약·서비스를 키운다. 산업에서 가장 견고한 매출이다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">grow bioproduction · expand reagents · service contracts</span><span class="ko">바이오공정 확대 · 시약 확대 · 서비스 계약</span></p></div></div>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 2</span><span class="ac-title"><span class="en">Reshore capacity for BIOSECURE</span><span class="ko">BIOSECURE 대비 생산능력 리쇼어링</span></span></div><div class="ac-body"><p><span class="en">Build out US/EU manufacturing and CDMO capacity so customers shifting away from China-linked suppliers land inside Thermo's network.</span><span class="ko">미국·유럽 생산과 CDMO 능력을 확충해, 중국계 공급자에서 이탈하는 고객이 Thermo 네트워크 안으로 들어오게 한다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">US/EU plants · CDMO expansion · local service</span><span class="ko">미국·유럽 공장 · CDMO 확장 · 현지 서비스</span></p></div></div>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 3</span><span class="ac-title"><span class="en">Embed AI &amp; data into the workflow</span><span class="ko">AI·데이터를 워크플로에 내장</span></span></div><div class="ac-body"><p><span class="en">Layer software, AI and connected data on instruments to lift switching costs and turn hardware into a sticky platform.</span><span class="ko">장비에 소프트웨어·AI·연결 데이터를 얹어 전환 비용을 높이고 하드웨어를 고착형 플랫폼으로 바꾼다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">lab software · AI-assisted analysis · digital connectivity</span><span class="ko">실험실 소프트웨어 · AI 분석 · 디지털 연결</span></p></div></div>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 4</span><span class="ac-title"><span class="en">Acquire to extend the platform</span><span class="ko">M&amp;A로 플랫폼 확장</span></span></div><div class="ac-body"><p><span class="en">Use scale and cash flow for disciplined M&amp;A that adds technologies and broadens the served market toward "$500B+".</span><span class="ko">규모와 현금흐름을 절제된 M&amp;A에 써서 기술을 더하고 가용 시장을 '5,000억 달러 이상'으로 넓힌다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">bolt-on acquisitions · new-tech tuck-ins</span><span class="ko">볼트온 인수 · 신기술 합류</span></p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kr" style="margin-top:14px">
+      <div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>Seegene</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">Korea's largest molecular-diagnostics / life-science-tools company by revenue — a closest-fit proxy for the GICS industry, since Korea's cluster is diagnostics-tilted rather than instrument-and-reagent platforms. A syndromic PCR specialist pivoting toward automation and data.</span><span class="ko">매출 기준 한국 최대 분자진단·생명과학 도구 기업. 한국 진영이 장비·시약 플랫폼보다 진단에 치우쳐 있어, GICS 산업에 가장 근접한 대표 기업이다. 다중 PCR 전문 기업으로 자동화·데이터로 전환 중이다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">₩474.2B</div><div class="l"><span class="en">2025 sales (return to profit)</span><span class="ko">2025 매출 (흑자 전환)</span></div></div>
+          <div class="stat"><div class="n">+59%</div><div class="l"><span class="en">Q1'26 operating profit</span><span class="ko">1분기 영업이익</span></div></div>
+          <div class="stat"><div class="n">61</div><div class="l"><span class="en">Countries with distributors</span><span class="ko">유통망 보유 국가</span></div></div>
+          <div class="stat"><div class="n">#1</div><div class="l"><span class="en">Korea molecular Dx</span><span class="ko">국내 분자진단 1위</span></div></div>
+        </div>
+        <div class="subh"><span class="en">Strategy</span><span class="ko">전략</span></div>
+        <div class="acc" data-accordion>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 1</span><span class="ac-title"><span class="en">Automate the lab with CURECA</span><span class="ko">CURECA로 실험실 자동화</span></span></div><div class="ac-body"><p><span class="en">Sell a fully automated, "unmanned" end-to-end PCR system that lowers labour cost and locks labs into Seegene's reagent consumables.</span><span class="ko">완전 자동 '무인' PCR 시스템을 팔아 인건비를 낮추고, 실험실을 Seegene 시약 소모품에 묶는다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">roll out CURECA · grow reagent attach</span><span class="ko">CURECA 출시 · 시약 부착매출 확대</span></p></div></div>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 2</span><span class="ac-title"><span class="en">Monetise data via STAgora</span><span class="ko">STAgora로 데이터 수익화</span></span></div><div class="ac-body"><p><span class="en">Connect worldwide PCR results into a real-time analytics platform, turning a test maker into a "from numbers to insights" data business.</span><span class="ko">전 세계 PCR 결과를 실시간 분석 플랫폼으로 연결해, 검사 기업을 '숫자에서 인사이트로'의 데이터 사업으로 바꾼다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">scale STAgora · partner labs · global data network</span><span class="ko">STAgora 확장 · 실험실 제휴 · 글로벌 데이터망</span></p></div></div>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 3</span><span class="ac-title"><span class="en">Diversify beyond respiratory</span><span class="ko">호흡기 너머로 다각화</span></span></div><div class="ac-body"><p><span class="en">Push non-respiratory assays — STI, GI, HPV, drug resistance — to cut dependence on COVID-era seasonality.</span><span class="ko">성매개·소화기·HPV·약제내성 등 비호흡기 시약을 밀어 코로나 시절의 계절성 의존을 줄인다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">expand assay menu · grow non-respiratory mix</span><span class="ko">시약 메뉴 확대 · 비호흡기 비중 확대</span></p></div></div>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 4</span><span class="ac-title"><span class="en">Win Western markets under IVDR</span><span class="ko">IVDR 아래 서구 시장 공략</span></span></div><div class="ac-body"><p><span class="en">Use 8 overseas subsidiaries and IVDR compliance to expand in Europe and the US as BIOSECURE steers demand to non-Chinese providers.</span><span class="ko">8개 해외 법인과 IVDR 인증을 발판으로, BIOSECURE가 비중국계 공급자로 수요를 돌리는 가운데 유럽·미국에서 확장한다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">IVDR certifications · EU/US sales push</span><span class="ko">IVDR 인증 · 유럽·미국 영업 확대</span></p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가나</span></h2>
+      <ul class="tight">
+        <li><span class="en">The recovery is real but cyclical: tools demand still rides academic funding, biotech capital and pharma capex.</span><span class="ko">회복은 실재하지만 사이클을 탄다. 도구 수요는 여전히 학계 자금, 바이오텍 자본, 제약 설비투자에 좌우된다.</span></li>
+        <li><span class="en">BIOSECURE and tariffs are a multi-year tailwind for non-Chinese suppliers — but raise input costs across the board.</span><span class="ko">BIOSECURE와 관세는 비중국계 공급자에게 다년간 순풍이지만, 전반적으로 투입 비용을 끌어올린다.</span></li>
+        <li><span class="en">AI and lab automation are the next efficiency frontier; software and data increasingly decide platform stickiness.</span><span class="ko">AI와 실험실 자동화가 다음 효율 전장이다. 소프트웨어·데이터가 플랫폼 고착성을 점점 더 좌우한다.</span></li>
+        <li><span class="en">For Korea, diagnostics specialists like Seegene must convert one-off automation wins into recurring reagent and data revenue to rerate.</span><span class="ko">한국의 경우, Seegene 같은 진단 전문 기업은 일회성 자동화 수주를 반복적인 시약·데이터 매출로 바꿔야 재평가를 받는다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://www.mordorintelligence.com/industry-reports/life-science-tools-market">Mordor Intelligence — Life Science Tools Market size &amp; growth</a></li>
+      <li><a href="https://www.fool.com/earnings/call-transcripts/2026/04/23/thermo-fisher-tmo-q1-2026-earnings-transcript/">The Motley Fool — Thermo Fisher (TMO) Q1 2026 earnings transcript</a></li>
+      <li><a href="https://www.akingump.com/en/insights/alerts/biosecure-act-becomes-law">Akin — BIOSECURE Act becomes law (Dec 2025)</a></li>
+      <li><a href="https://www.bpm.com/insights/life-sciences-industry-outlook-2026/">BPM — Life Sciences Industry Outlook 2026 (NIH funding restored)</a></li>
+      <li><a href="https://www.koreabiomed.com/news/articleView.html?idxno=30746">Korea Biomedical Review — Seegene returns to profitability in 2025</a></li>
+      <li><a href="https://en.sedaily.com/finance/2026/04/20/seegene-unveils-automation-data-driven-diagnostic-strategy">Seoul Economic Daily — Seegene CURECA &amp; STAgora at ESCMID Global 2026</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">Daily Industry Analysis · Life Sciences Tools &amp; Services (GICS 352030) · Generated June 4, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">데일리 산업분석 · 생명과학 도구·서비스(GICS 352030) · 2026년 6월 4일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.bar-fill').forEach(function(b){b.style.width=(b.getAttribute('data-w')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.bars').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>

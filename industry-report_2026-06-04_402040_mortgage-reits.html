@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mortgage REITs · 모기지 리츠 — Industry Analysis</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#3b6ea5;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(36px,10vw,60px);margin:0 0 4px;font-weight:800;letter-spacing:-1px;line-height:1;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* bars */
+  .bar-row{display:flex;align-items:center;gap:10px;margin:8px 0;}
+  .bar-lab{width:120px;font-size:13px;text-align:right;color:var(--ink);flex:none;}
+  .bar-track{flex:1;background:#dde6f1;border-radius:7px;height:22px;overflow:hidden;}
+  .bar-fill{height:100%;background:var(--blue);border-radius:7px;width:0;transition:width 1s cubic-bezier(.2,.7,.2,1);}
+  .bar-row.lead .bar-fill{background:var(--navy);}
+  .bar-row.kr .bar-fill{background:var(--krblue);}
+  .bar-val{width:66px;flex:none;font-size:13px;font-weight:700;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-num{color:var(--gold);font-weight:800;font-size:19px;width:28px;flex:none;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider for players (secondary) */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#3b6ea5);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(20px,5.6vw,25px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  .pillar{background:#13355a;color:#fff;border:1px solid #20446e;border-radius:13px;overflow:hidden;}
+  .kr .pillar{background:#103a73;border-color:#1d4f95;}
+  .pillar .ac-title{color:#fff;}
+  .pillar .ptag{flex:none;background:var(--blue);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 9px;border-radius:8px;}
+  .kr .pillar .ptag{background:#c8102e;}
+  .pillar .chev{color:#cfe2f5;}.pillar .ac-body p{color:#e7effb;font-size:13.3px;}
+  .moves{font-size:12.5px;color:#cfe2f5;font-style:italic;margin-top:8px !important;}
+  .moves b{color:var(--gold);font-style:normal;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){.stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}.ksf{grid-template-columns:1fr 1fr;}.bar-lab{width:150px;}.two{display:grid;grid-template-columns:1fr 1fr;gap:13px;}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.bar-fill{transition:none;}}
+</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">Mortgage REITs<span class="g">·</span><span class="en">Industry</span><span class="ko">산업분석</span></div>
+    <div class="chips">
+      <button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button>
+      <button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button>
+      <button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button>
+      <button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button>
+      <button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button>
+      <button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button>
+      <button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button>
+    </div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">Daily Industry Analysis · GICS day-set 6 of 7</span><span class="ko">데일리 산업분석 · 오늘의 7개 중 6번째</span></p>
+    <h1><span class="en">Mortgage REITs</span><span class="ko">모기지 리츠</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Financials · 402040</span>
+      <span class="pill">2026-06-04</span>
+      <span class="pill"><span class="en">Players covered later</span><span class="ko">플레이어 분석은 뒤에서</span>: Annaly · KHFC</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p>
+        <span class="en">A mortgage REIT (GICS 402040) is a levered bond fund in a REIT wrapper: it borrows short via repo, buys mortgages and mortgage-backed securities (MBS), hedges interest-rate risk, and pays out almost all of its income as dividends. Profit is the net interest spread times leverage — which is why book value and dividends swing hard with rates and MBS spreads. In 2026 three forces dominate: a Fed that is cutting only slowly while shrinking its MBS holdings (keeping agency spreads wide and "new-money" returns in the mid-teens), the on-again, off-again privatization of Fannie Mae and Freddie Mac, and a flat-to-steepening curve. The space is concentrated — Annaly (~$107B portfolio) and AGNC (~$95B) dominate residential agency, while Starwood and Rithm lead in credit. Korea has no listed mortgage-REIT peer; the closest proxy is the state-owned Korea Housing Finance Corporation (KHFC), a securitizer, not a levered-spread investor. Annaly (global #1) and KHFC (Korea proxy) are analyzed at the end.</span>
+        <span class="ko">모기지 리츠(GICS 402040)는 리츠 껍데기를 쓴 레버리지 채권 펀드다. 레포로 단기 차입해 모기지와 모기지담보부증권(MBS)을 사고, 금리 위험을 헤지한 뒤, 벌어들인 거의 전부를 배당으로 내보낸다. 이익은 순이자 스프레드에 레버리지를 곱한 값이라, 순자산가치(BV)와 배당이 금리와 MBS 스프레드에 따라 크게 출렁인다. 2026년의 판은 세 가지가 좌우한다. 천천히만 금리를 내리면서 MBS 보유는 줄이는 연준(에이전시 스프레드를 넓게 유지해 신규 투자 수익률을 10%대 중반에 묶어둠), 켜졌다 꺼졌다 하는 패니메이·프레디맥 민영화, 그리고 평탄~가팔라지는 수익률 곡선이다. 시장은 소수 집중이다. 애널리(약 1,070억 달러 포트폴리오)와 AGNC(약 950억 달러)가 주거용 에이전시를, 스타우드와 리덤이 크레딧을 이끈다. 한국에는 상장 모기지 리츠 동종 업체가 없다. 가장 가까운 대용은 국책기관 한국주택금융공사(KHFC)인데, 이는 레버리지 스프레드 투자자가 아니라 증권화 기관이다. 글로벌 1위 애널리와 한국 대용 KHFC는 맨 뒤에서 다룬다.</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">How a mortgage REIT actually makes money</span><span class="ko">모기지 리츠는 실제로 어떻게 돈을 버나</span></h2>
+      <p class="lead">
+        <span class="en">Unlike equity REITs that own buildings, a mortgage REIT owns the debt. It earns a levered spread: yield on MBS minus the cost of repo funding, after hedging. Economic return ≈ (asset yield − funding cost) × leverage ± book-value change from rate &amp; spread moves.</span>
+        <span class="ko">건물을 보유하는 에쿼티 리츠와 달리, 모기지 리츠는 그 빚(채권)을 보유한다. 레버리지 스프레드를 번다. 즉 MBS 수익률에서 레포 조달비용을 뺀 차이를, 헤지 후에 챙긴다. 경제적 수익 ≈ (자산수익률 − 조달비용) × 레버리지 ± 금리·스프레드 변동에 따른 순자산가치 변화.</span>
+      </p>
+      <div class="chain">
+        <div class="vc"><b><span class="en">Short-term funding</span><span class="ko">단기 조달</span></b><span class="d"><span class="en">Borrow via repo against MBS collateral — cheap but rolls constantly.</span><span class="ko">MBS를 담보로 레포 차입. 싸지만 끊임없이 만기 연장.</span></span></div>
+        <div class="vc"><b><span class="en">Buy MBS / mortgages</span><span class="ko">MBS·모기지 매입</span></b><span class="d"><span class="en">Agency MBS, MSR, or residential/commercial credit.</span><span class="ko">에이전시 MBS, MSR, 또는 주거·상업 크레딧.</span></span></div>
+        <div class="vc"><b><span class="en">Leverage</span><span class="ko">레버리지</span></b><span class="d"><span class="en">Run 6–8x to turn a thin spread into double-digit returns.</span><span class="ko">6~8배로 운용해 얇은 스프레드를 두 자릿수 수익으로.</span></span></div>
+        <div class="vc"><b><span class="en">Hedge rates</span><span class="ko">금리 헤지</span></b><span class="d"><span class="en">Swaps, swaptions, Treasury futures cap rate &amp; duration risk.</span><span class="ko">스왑·스왑션·국채선물로 금리·듀레이션 위험 차단.</span></span></div>
+        <div class="vc"><b><span class="en">Distribute income</span><span class="ko">소득 분배</span></b><span class="d"><span class="en">Pay out ≥90% of taxable income as dividends to keep REIT status.</span><span class="ko">리츠 지위 유지를 위해 과세소득의 90% 이상 배당.</span></span></div>
+      </div>
+      <p class="cap"><span class="en">As of Q1 2026, agency mortgage REITs run ~7x leverage; Annaly reported 5.7:1 economic leverage and a $19.82 book value.</span><span class="ko">2026년 1분기 기준 에이전시 모기지 리츠의 레버리지는 약 7배. 애널리는 경제적 레버리지 5.7:1, 순자산가치 19.82달러를 보고했다.</span></p>
+    </div>
+  </section>
+
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A ~$1 trillion financing engine</span><span class="ko">약 1조 달러 규모의 금융 엔진</span></h2>
+      <p class="mute"><span class="en">Per Nareit, US mortgage REITs provide roughly $1 trillion of financing for real estate; 30+ are listed on the FTSE Nareit indexes. Growth is cyclical, not secular — it tracks MBS spreads, the curve and equity issuance, not GDP.</span><span class="ko">Nareit에 따르면 미국 모기지 리츠는 부동산에 약 1조 달러의 금융을 공급하며, FTSE Nareit 지수에 30개 이상이 상장돼 있다. 성장은 구조적이라기보다 경기순환적이다. GDP가 아니라 MBS 스프레드·수익률 곡선·증자에 좌우된다.</span></p>
+      <div class="subh"><span class="en">Largest mortgage REITs — portfolio / asset size (2026)</span><span class="ko">최대 모기지 리츠 — 포트폴리오·자산 규모 (2026)</span></div>
+      <div class="bars">
+        <div class="bar-row lead"><div class="bar-lab">Annaly (NLY)</div><div class="bar-track"><div class="bar-fill" data-w="100"></div></div><div class="bar-val">~$107B</div></div>
+        <div class="bar-row"><div class="bar-lab">AGNC (AGNC)</div><div class="bar-track"><div class="bar-fill" data-w="89"></div></div><div class="bar-val">~$95B</div></div>
+        <div class="bar-row"><div class="bar-lab">Starwood (STWD)</div><div class="bar-track"><div class="bar-fill" data-w="29"></div></div><div class="bar-val">~$31B</div></div>
+        <div class="bar-row"><div class="bar-lab">Rithm / others</div><div class="bar-track"><div class="bar-fill" data-w="38"></div></div><div class="bar-val">var.</div></div>
+      </div>
+      <p class="cap"><span class="en">Annaly total portfolio $106.7B and AGNC $94.7B as of Q1 2026; Starwood ~$30.7B (mid-2026), commercial-focused. Spreads near multi-year wides keep new-money agency returns in the mid-teens.</span><span class="ko">2026년 1분기 기준 애널리 총 포트폴리오 1,067억 달러, AGNC 947억 달러. 스타우드는 약 307억 달러(2026년 중반)로 상업용 중심. 스프레드가 다년 최고 수준에 가까워 에이전시 신규 투자 수익률이 10%대 중반을 유지한다.</span></p>
+    </div>
+  </section>
+
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">A US-centric, top-heavy field</span><span class="ko">미국 중심의 상위 집중 구조</span></h2>
+      <div class="subh"><span class="en">Global — by market capitalization (2026)</span><span class="ko">글로벌 — 시가총액 기준 (2026)</span></div>
+      <div class="bars">
+        <div class="bar-row lead"><div class="bar-lab">Annaly (NLY)</div><div class="bar-track"><div class="bar-fill" data-w="100"></div></div><div class="bar-val">~$15.8B</div></div>
+        <div class="bar-row"><div class="bar-lab">AGNC (AGNC)</div><div class="bar-track"><div class="bar-fill" data-w="62"></div></div><div class="bar-val">#2</div></div>
+        <div class="bar-row"><div class="bar-lab">Starwood (STWD)</div><div class="bar-track"><div class="bar-fill" data-w="45"></div></div><div class="bar-val">#3</div></div>
+        <div class="bar-row"><div class="bar-lab">Rithm (RITM)</div><div class="bar-track"><div class="bar-fill" data-w="42"></div></div><div class="bar-val">#4</div></div>
+      </div>
+      <div class="subh"><span class="en">Korea — no direct mortgage-REIT peer</span><span class="ko">한국 — 직접 동종 모기지 리츠 없음</span></div>
+      <p class="mute" style="font-size:13.5px"><span class="en">Korea has no listed agency-style mortgage REIT earning a levered repo-MBS spread. Securitization is dominated by the state-owned Korea Housing Finance Corporation (KHFC), which guarantees and issues MBS rather than levering up to trade it. We treat KHFC as the closest proxy, not a true equivalent.</span><span class="ko">한국에는 레포-MBS 레버리지 스프레드를 버는 에이전시형 상장 모기지 리츠가 없다. 증권화는 국책기관 한국주택금융공사(KHFC)가 주도하는데, KHFC는 MBS를 레버리지로 거래하기보다 보증·발행한다. 본 보고서는 KHFC를 진정한 동종이 아닌 가장 가까운 대용으로 본다.</span></p>
+      <p class="cap"><span class="en">Annaly is the world's most valuable mortgage REIT at ~$15.8B market cap (May 2026), ahead of AGNC and Starwood. 30+ US-listed names exist but the top two hold the bulk of residential-agency assets.</span><span class="ko">애널리는 시가총액 약 158억 달러(2026년 5월)로 세계에서 가장 가치 있는 모기지 리츠이며 AGNC·스타우드를 앞선다. 미국 상장사는 30개가 넘지만 주거용 에이전시 자산의 대부분을 상위 2곳이 쥐고 있다.</span></p>
+    </div>
+  </section>
+
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal">
+      <div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Few large players buy the same agency MBS, so they compete on cost of capital and book-value defense, not product.</span><span class="ko">소수 대형사가 같은 에이전시 MBS를 사들이므로 상품이 아니라 자본조달 비용과 순자산가치 방어로 경쟁한다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Launching needs scale, repo lines, hedging desks and equity at/above book — a high bar in a sector that often trades below NAV.</span><span class="ko">출범하려면 규모·레포 라인·헤지 데스크와 순자산 이상 가격의 자본이 필요하다. 순자산 이하로 거래되곤 하는 업종에서 높은 문턱.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Supplier power (funding)</span><span class="ko">공급자 교섭력(자금)</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Repo lenders and the rate market set funding costs daily; a liquidity squeeze can force margin calls and fire-sales.</span><span class="ko">레포 대주와 금리 시장이 매일 조달비용을 정한다. 유동성 경색은 마진콜과 투매를 부를 수 있다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Buyer power (investors)</span><span class="ko">구매자 교섭력(투자자)</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Yield-seeking shareholders demand a covered dividend; miss it and the stock sinks below book, raising the cost of new equity.</span><span class="ko">수익을 좇는 주주는 배당 커버를 요구한다. 이를 놓치면 주가가 순자산 밑으로 내려가 신규 증자 비용이 뛴다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Investors can buy MBS ETFs, BDCs, bank preferreds or Treasuries directly — many at lower fees and less leverage risk.</span><span class="ko">투자자는 MBS ETF·BDC·은행 우선주·국채를 직접 살 수 있다. 다수가 더 낮은 수수료와 레버리지 위험으로.</span></p></div>
+    </div>
+    <p class="cap"><span class="en">Net: low entry threat but a structurally tough business — returns are dictated by funding markets and rate volatility the REIT cannot control.</span><span class="ko">종합하면 진입 위협은 낮지만 구조적으로 까다로운 사업이다. 수익은 리츠가 통제할 수 없는 조달 시장과 금리 변동성에 좌우된다.</span></p>
+  </section>
+
+  <section id="reg">
+    <p class="kicker"><span class="en">PESTEL &amp; regulation</span><span class="ko">PESTEL과 규제</span></p>
+    <h2><span class="en">Macro forces &amp; the latest rules</span><span class="ko">거시 환경과 최신 규제</span></h2>
+    <p class="mute"><span class="en">For mortgage REITs the PESTEL picture is almost entirely Economic and Political: the Fed sets funding cost, MBS spreads set asset yield, and policy on the GSEs sets the very supply of the assets. REIT tax rules (the 90% payout) and the rate environment, below, move the needle most.</span><span class="ko">모기지 리츠의 PESTEL은 사실상 경제·정치가 전부다. 연준이 조달비용을, MBS 스프레드가 자산수익률을, GSE 정책이 자산 공급 그 자체를 정한다. 아래의 리츠 세제(90% 배당 의무)와 금리 환경이 가장 크게 움직인다.</span></p>
+    <p class="hint"><span class="en">Latest policy &amp; rate issues — tap to expand.</span><span class="ko">최신 정책·금리 이슈 — 눌러서 펼치기.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-03</span><span class="ac-title"><span class="en">Fed cuts slowly while still shrinking MBS</span><span class="ko">연준, 느린 인하 속 MBS 축소 지속</span></span></div><div class="ac-body"><p class="why"><span class="en">As of March 2026 the FOMC signals at most one or two more cuts this year, and the Fed is no longer buying MBS, so agency spreads stay wide. <b>Why it matters:</b> wide spreads lift new-money returns (mid-teens) but a steep curve and QT keep book value volatile.</span><span class="ko">2026년 3월 기준 FOMC는 올해 길어야 한두 차례 추가 인하를 시사하고, 연준은 더 이상 MBS를 사지 않아 에이전시 스프레드가 넓게 유지된다. <b>의미:</b> 넓은 스프레드는 신규 투자 수익률(10%대 중반)을 끌어올리지만, 가파른 곡선과 양적긴축이 순자산가치를 불안정하게 한다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026 Q2</span><span class="ac-title"><span class="en">Fannie/Freddie privatization in limbo</span><span class="ko">패니·프레디 민영화 표류</span></span></div><div class="ac-body"><p class="why"><span class="en">The administration floated a record ~$30B GSE IPO for 2026, but the window appears to be narrowing as focus shifts. Treasury still holds $354.9B in senior preferred and warrants for 79.9% of equity. <b>Why it matters:</b> any exit from conservatorship could reprice the explicit/implicit guarantee behind agency MBS — the core asset of every agency REIT.</span><span class="ko">행정부는 2026년 사상 최대 약 300억 달러의 GSE 기업공개를 제기했지만, 초점이 옮겨가며 그 기회의 창이 좁아지는 듯하다. 재무부는 여전히 3,549억 달러의 선순위 우선주와 지분 79.9%에 대한 워런트를 보유한다. <b>의미:</b> 법정관리 종료는 모든 에이전시 리츠의 핵심 자산인 에이전시 MBS의 명시·암묵적 보증을 재평가시킬 수 있다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">REIT tax structure: the 90% payout rule</span><span class="ko">리츠 세제: 90% 배당 의무</span></span></div><div class="ac-body"><p class="why"><span class="en">To keep pass-through tax status, a mortgage REIT must distribute ≥90% of taxable income, so it retains little capital and must raise equity to grow. <b>Why it matters:</b> growth depends on issuing stock at or above book; trading below NAV stalls expansion and can dilute holders.</span><span class="ko">패스스루 세제 지위를 유지하려면 모기지 리츠는 과세소득의 90% 이상을 배당해야 한다. 그래서 자본을 거의 쌓지 못하고 성장하려면 증자가 필요하다. <b>의미:</b> 성장은 순자산 이상 가격의 증자에 달려 있다. 순자산 이하 거래는 확장을 막고 주주를 희석할 수 있다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025-06</span><span class="ac-title"><span class="en">US studies Korea's MBS model</span><span class="ko">미국, 한국 MBS 모델 연구</span></span></div><div class="ac-body"><p class="why"><span class="en">In June 2025 the US administration looked to South Korea's housing-finance system (KHFC) for ideas to lower mortgage rates, and HUD later signed an MOU with Korea's housing agency. <b>Why it matters:</b> it underscores how differently the two markets are built — a state securitizer in Korea vs. private levered REITs in the US.</span><span class="ko">2025년 6월 미국 행정부는 모기지 금리를 낮출 아이디어를 한국 주택금융 시스템(KHFC)에서 찾았고, 이후 HUD가 한국 주택금융기관과 양해각서를 체결했다. <b>의미:</b> 두 시장의 설계가 얼마나 다른지 보여준다. 한국은 국책 증권화 기관, 미국은 민간 레버리지 리츠다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win in mortgage REITs</span><span class="ko">모기지 리츠에서 이기는 조건</span></h2>
+    <div class="ksf reveal">
+      <div class="kc"><span class="kn">1</span><div><b><span class="en">Book-value protection</span><span class="ko">순자산가치 방어</span></b><p><span class="en">The job is to compound the dividend without bleeding NAV; disciplined hedging is everything.</span><span class="ko">핵심은 순자산을 깎아먹지 않고 배당을 복리화하는 것. 절도 있는 헤지가 전부다.</span></p></div></div>
+      <div class="kc"><span class="kn">2</span><div><b><span class="en">Cheap, stable funding</span><span class="ko">싸고 안정적인 조달</span></b><p><span class="en">Deep repo lines and term funding survive liquidity squeezes that wipe out weaker peers.</span><span class="ko">두터운 레포 라인과 기간 조달이 약한 경쟁사를 쓸어버리는 유동성 경색을 견딘다.</span></p></div></div>
+      <div class="kc"><span class="kn">3</span><div><b><span class="en">Rate &amp; prepayment hedging</span><span class="ko">금리·중도상환 헤지</span></b><p><span class="en">Managing duration and convexity through swaps and swaptions caps the downside in volatile rates.</span><span class="ko">스왑·스왑션으로 듀레이션과 컨벡시티를 다스려 변동성 국면의 손실을 막는다.</span></p></div></div>
+      <div class="kc"><span class="kn">4</span><div><b><span class="en">Trading at/above book</span><span class="ko">순자산 이상 주가</span></b><p><span class="en">A premium-to-book share price lets the REIT issue accretive equity and grow the franchise.</span><span class="ko">순자산 대비 프리미엄 주가는 증자를 통해 가치를 더하며 사업을 키우게 한다.</span></p></div></div>
+      <div class="kc"><span class="kn">5</span><div><b><span class="en">Diversified asset platform</span><span class="ko">자산 플랫폼 다변화</span></b><p><span class="en">Agency MBS, MSR and residential/commercial credit smooth returns across the rate cycle.</span><span class="ko">에이전시 MBS·MSR·주거·상업 크레딧이 금리 사이클 전반의 수익을 매끄럽게 한다.</span></p></div></div>
+      <div class="kc"><span class="kn">6</span><div><b><span class="en">Scale &amp; cost of capital</span><span class="ko">규모와 자본조달 비용</span></b><p><span class="en">Size lowers funding spreads and fixed costs, the durable edge Annaly and AGNC press.</span><span class="ko">규모가 조달 스프레드와 고정비를 낮춘다. 애널리·AGNC가 밀어붙이는 지속적 우위다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="news">
+    <p class="kicker"><span class="en">Recent issues &amp; news</span><span class="ko">최근 이슈 &amp; 뉴스</span></p>
+    <h2><span class="en">What's moving mortgage REITs now</span><span class="ko">지금 모기지 리츠를 움직이는 것</span></h2>
+    <p class="hint"><span class="en">Tap for why it matters.</span><span class="ko">눌러서 의미를 확인하세요.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-04-20</span><span class="ac-title"><span class="en">Annaly covers its dividend; book value holds</span><span class="ko">애널리, 배당 커버·순자산 방어</span></span></div><div class="ac-body"><p class="why"><span class="en">Q1 2026 EAD was $0.76 vs a $0.70 dividend, with book value at $19.82 and a +1.5% economic return. <b>Why it matters:</b> earnings comfortably covering the payout is the single clearest signal of a healthy agency REIT.</span><span class="ko">2026년 1분기 분배가능이익(EAD)은 0.76달러로 배당 0.70달러를 웃돌았고, 순자산가치 19.82달러에 경제적 수익 +1.5%였다. <b>의미:</b> 이익이 배당을 여유 있게 커버하는 것이 건강한 에이전시 리츠의 가장 명확한 신호다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-04-20</span><span class="ac-title"><span class="en">AGNC posts a negative quarter</span><span class="ko">AGNC, 마이너스 분기 기록</span></span></div><div class="ac-body"><p class="why"><span class="en">AGNC reported a $(0.18) comprehensive loss and a 5.6% drop in tangible book value to $8.38, a -1.6% economic return. <b>Why it matters:</b> shows how spread and rate moves can erode NAV even when the dividend ($0.36) is maintained.</span><span class="ko">AGNC는 포괄손실 0.18달러와 유형순자산가치 5.6% 하락(8.38달러), 경제적 수익 -1.6%를 보고했다. <b>의미:</b> 배당(0.36달러)을 유지해도 스프레드·금리 변동이 순자산을 깎을 수 있음을 보여준다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-Q1</span><span class="ac-title"><span class="en">Annaly scales credit &amp; MSR platforms</span><span class="ko">애널리, 크레딧·MSR 플랫폼 확대</span></span></div><div class="ac-body"><p class="why"><span class="en">Residential Credit rose 30% to $10.3B and MSR 9% to $4.2B as Annaly drives toward a 50/30/20 Agency/Credit/MSR mix. <b>Why it matters:</b> diversification beyond pure agency is the leading playbook to steady returns.</span><span class="ko">주거 크레딧은 30% 늘어 103억 달러, MSR은 9% 늘어 42억 달러가 됐고, 애널리는 에이전시·크레딧·MSR 50/30/20 구성을 향한다. <b>의미:</b> 순수 에이전시를 넘는 다변화가 수익을 안정시키는 대표 전략이다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-05</span><span class="ac-title"><span class="en">Double-digit yields draw scrutiny</span><span class="ko">두 자릿수 배당수익률에 경계론</span></span></div><div class="ac-body"><p class="why"><span class="en">Annaly and AGNC yield ~12.9% and ~13.9%, but analysts warn high yields can mask NAV erosion (the "yield trap"). <b>Why it matters:</b> total return, not headline yield, is what compounds wealth in this sector.</span><span class="ko">애널리와 AGNC의 배당수익률은 약 12.9%, 13.9%지만, 애널리스트들은 높은 수익률이 순자산 잠식을 가릴 수 있다고('일드 트랩') 경고한다. <b>의미:</b> 이 업종에서 부를 불리는 건 표면 수익률이 아니라 총수익이다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-04</span><span class="ac-title"><span class="en">KHFC issues first green-bond MBS</span><span class="ko">KHFC, 첫 그린본드 MBS 발행</span></span></div><div class="ac-body"><p class="why"><span class="en">In April 2026 Korea Housing Finance Corp issued ₩560.5B of Green-Bond-certified MBS backed by its Green Bogeumjari Loan. <b>Why it matters:</b> shows Korea's MBS engine is a policy-driven state securitizer, not a levered investor like a US mortgage REIT.</span><span class="ko">2026년 4월 한국주택금융공사는 그린본드 인증 MBS 5,605억 원을 그린 보금자리론을 기초자산으로 발행했다. <b>의미:</b> 한국의 MBS 엔진이 미국 모기지 리츠 같은 레버리지 투자자가 아니라 정책 주도형 국책 증권화 기관임을 보여준다.</span></p></div></div>
+    </div>
+  </section>
+
+  <!-- ===== PLAYERS (secondary analysis) ===== -->
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · additional analysis</span><span class="ko">플레이어 · 추가 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The global leader and Korea's closest proxy</span><span class="ko">글로벌 리더와 한국의 가장 가까운 대용</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act; here are the global #1 and Korea's nearest analog as a secondary read.</span><span class="ko">위의 산업 분석이 본론이고, 여기서는 글로벌 1위와 한국의 가장 가까운 유사 기관을 보조적으로 살펴본다.</span></p>
+
+    <div class="gl">
+      <div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>Annaly Capital Management</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">The world's largest and most valuable mortgage REIT by market cap (~$15.8B), running a diversified Agency MBS, residential credit and MSR platform.</span><span class="ko">시가총액 기준(약 158억 달러) 세계 최대·최고 가치의 모기지 리츠. 에이전시 MBS·주거 크레딧·MSR로 다변화된 플랫폼을 운영한다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">$106.7B</div><div class="l"><span class="en">Q1'26 total portfolio</span><span class="ko">1분기 총 포트폴리오</span></div></div>
+          <div class="stat"><div class="n">$19.82</div><div class="l"><span class="en">Book value / share</span><span class="ko">주당 순자산가치</span></div></div>
+          <div class="stat"><div class="n">5.7:1</div><div class="l"><span class="en">Economic leverage</span><span class="ko">경제적 레버리지</span></div></div>
+          <div class="stat"><div class="n">~12.9%</div><div class="l"><span class="en">Dividend yield</span><span class="ko">배당수익률</span></div></div>
+        </div>
+        <div class="subh"><span class="en">Strategy</span><span class="ko">전략</span></div>
+        <div class="acc" data-accordion>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 1</span><span class="ac-title"><span class="en">Diversify to a 50/30/20 mix</span><span class="ko">50/30/20 구성으로 다변화</span></span></div><div class="ac-body"><p><span class="en">Grow residential credit and MSR toward a 50% Agency / 30% Credit / 20% MSR target so returns no longer hinge on pure agency spreads.</span><span class="ko">주거 크레딧과 MSR을 키워 에이전시 50% / 크레딧 30% / MSR 20% 목표로 가, 수익이 순수 에이전시 스프레드에만 매이지 않게 한다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">Onslow Bay correspondent · bulk/flow MSR buys</span><span class="ko">온슬로베이 통신판매 채널 · MSR 대량·플로우 매입</span></p></div></div>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 2</span><span class="ac-title"><span class="en">Defend book value through hedging</span><span class="ko">헤지로 순자산가치 방어</span></span></div><div class="ac-body"><p><span class="en">Run a disciplined hedge book against rate and convexity risk so the dividend stays covered without bleeding NAV.</span><span class="ko">금리·컨벡시티 위험에 맞서 절도 있는 헤지북을 운용해, 순자산을 깎지 않고 배당 커버를 유지한다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">swaps/swaptions · intermediate-coupon MBS · Agency CMBS</span><span class="ko">스왑·스왑션 · 중간 쿠폰 MBS · 에이전시 CMBS</span></p></div></div>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 3</span><span class="ac-title"><span class="en">Exploit wide spreads at scale</span><span class="ko">넓은 스프레드를 규모로 활용</span></span></div><div class="ac-body"><p><span class="en">Use the lowest cost of capital in the sector to deploy paydowns into mid-teens new-money agency returns while spreads stay wide.</span><span class="ko">업계 최저 자본조달 비용을 활용해 상환 자금을 스프레드가 넓을 때 10%대 중반의 에이전시 신규 투자에 배치한다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">accretive equity raises · deep repo lines</span><span class="ko">가치 부가형 증자 · 두터운 레포 라인</span></p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kr" style="margin-top:14px">
+      <div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea — closest proxy (not a true peer)</span><span class="ko">한국 — 가장 가까운 대용 (진정한 동종 아님)</span></div><h3>Korea Housing Finance Corp. (KHFC)</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">Korea has no listed agency-style mortgage REIT. KHFC is the state-owned securitizer that buys mortgages from banks and issues guaranteed MBS — the structural opposite of a levered-spread REIT, offered here only as the nearest analog.</span><span class="ko">한국에는 에이전시형 상장 모기지 리츠가 없다. KHFC는 은행에서 모기지를 사들여 보증 MBS를 발행하는 국책 증권화 기관으로, 레버리지 스프레드 리츠와 구조적으로 정반대다. 여기서는 가장 가까운 유사 기관으로만 제시한다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">State</div><div class="l"><span class="en">Government-owned</span><span class="ko">국가 소유</span></div></div>
+          <div class="stat"><div class="n">MBS/MBB</div><div class="l"><span class="en">Issuer, not investor</span><span class="ko">발행기관(투자자 아님)</span></div></div>
+          <div class="stat"><div class="n">₩560.5B</div><div class="l"><span class="en">Apr'26 green MBS</span><span class="ko">2026년 4월 그린 MBS</span></div></div>
+          <div class="stat"><div class="n">4.29%</div><div class="l"><span class="en">Apr'26 MBS issue rate</span><span class="ko">2026년 4월 MBS 발행금리</span></div></div>
+        </div>
+        <div class="subh"><span class="en">Closest-analog strategy</span><span class="ko">가장 가까운 유사 전략</span></div>
+        <div class="acc" data-accordion>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Analog 1</span><span class="ac-title"><span class="en">Securitize, not leverage</span><span class="ko">레버리지가 아닌 증권화</span></span></div><div class="ac-body"><p><span class="en">KHFC buys conforming mortgages (Bogeumjari Loans) from lenders and turns them into guaranteed MBS for investors — providing liquidity rather than earning a levered repo spread.</span><span class="ko">KHFC는 금융기관에서 적격 모기지(보금자리론)를 사들여 투자자용 보증 MBS로 바꾼다. 레포 레버리지 스프레드를 버는 게 아니라 유동성을 공급하는 역할이다.</span></p><p class="moves"><b><span class="en">Contrast:</span><span class="ko">차이:</span></b> <span class="en">guarantee &amp; pass-through vs US levered ownership</span><span class="ko">보증·패스스루 vs 미국식 레버리지 보유</span></p></div></div>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Analog 2</span><span class="ac-title"><span class="en">Serve housing policy</span><span class="ko">주택정책 수행</span></span></div><div class="ac-body"><p><span class="en">As a public body it advances affordability and stability — green MBS, reverse mortgages (Home Pension) and rate decisions tied to BOK policy, not shareholder dividends.</span><span class="ko">공공기관으로서 주거 안정·서민 지원을 추구한다. 그린 MBS, 주택연금(역모기지), 한국은행 정책과 연동된 금리 결정이 주주 배당이 아닌 정책 목표를 따른다.</span></p><p class="moves"><b><span class="en">Contrast:</span><span class="ko">차이:</span></b> <span class="en">policy mandate vs profit-maximizing REIT</span><span class="ko">정책 명령 vs 이익 극대화 리츠</span></p></div></div>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Analog 3</span><span class="ac-title"><span class="en">Fund globally, model abroad</span><span class="ko">글로벌 조달·해외 벤치마크</span></span></div><div class="ac-body"><p><span class="en">KHFC taps global investors (e.g. a US$15B global program) and its model drew US interest in 2025 as a template for lowering mortgage rates.</span><span class="ko">KHFC는 글로벌 투자자(예: 150억 달러 글로벌 프로그램)를 활용하며, 그 모델은 2025년 미국이 모기지 금리 인하 본보기로 주목할 만큼 관심을 끌었다.</span></p><p class="moves"><b><span class="en">Contrast:</span><span class="ko">차이:</span></b> <span class="en">sovereign-backed issuer vs market-funded REIT</span><span class="ko">국가 신용 발행기관 vs 시장 조달 리츠</span></p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가나</span></h2>
+      <ul class="tight">
+        <li><span class="en">Wide agency spreads and mid-teens new-money returns favor disciplined REITs, but a steep curve and QT keep book value volatile.</span><span class="ko">넓은 에이전시 스프레드와 10%대 중반의 신규 투자 수익은 절도 있는 리츠에 유리하지만, 가파른 곡선과 양적긴축이 순자산가치를 흔든다.</span></li>
+        <li><span class="en">GSE privatization is the biggest wild card — any change to the agency guarantee would reprice the entire asset base.</span><span class="ko">GSE 민영화가 최대 변수다. 에이전시 보증에 변화가 생기면 자산 기반 전체가 재평가된다.</span></li>
+        <li><span class="en">Funding fragility remains: a repo or liquidity squeeze can force margin calls, as past stress episodes showed.</span><span class="ko">조달 취약성은 그대로다. 레포·유동성 경색은 과거 스트레스 국면처럼 마진콜을 부를 수 있다.</span></li>
+        <li><span class="en">Diversification into credit and MSR is the leading way to steady returns; pure-agency names stay most rate-sensitive.</span><span class="ko">크레딧·MSR로의 다변화가 수익 안정의 대표 경로다. 순수 에이전시 종목은 금리 민감도가 가장 높게 남는다.</span></li>
+        <li><span class="en">For Korea, expect no domestic mortgage-REIT peer to emerge soon; KHFC's state-securitizer model stays the structural answer.</span><span class="ko">한국에서는 당분간 국내 모기지 리츠 동종이 등장하기 어렵다. KHFC의 국책 증권화 모델이 구조적 해답으로 남는다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://www.businesswire.com/news/home/20260420447431/en/Annaly-Capital-Management-Inc.-Reports-1st-Quarter-2026-Results">Annaly Capital — Q1 2026 results (Apr 2026)</a></li>
+      <li><a href="https://www.sec.gov/Archives/edgar/data/0001423689/000142368926000095/agnc8kexhibit99133126.htm">AGNC Investment — Q1 2026 8-K (SEC)</a></li>
+      <li><a href="https://www.financecharts.com/sectors/financials/mortgage_reits">FinanceCharts — Biggest mortgage REITs (May 2026)</a></li>
+      <li><a href="https://www.reit.com/what-reit/reit-sectors/mortgage">Nareit — Mortgage REIT sector overview</a></li>
+      <li><a href="https://markets.financialcontent.com/stocks/article/marketminute-2026-2-11-the-great-divergence-mortgage-spreads-widen-as-the-warsh-fed-pivots">FinancialContent — MBS spreads &amp; Fed pivot (Feb 2026)</a></li>
+      <li><a href="https://commercialobserver.com/2026/01/fannie-mae-freddie-mac-privatization-rules-2026/">Commercial Observer — Fannie/Freddie privatization (Jan 2026)</a></li>
+      <li><a href="https://www.hf.go.kr/en/index.do">Korea Housing Finance Corporation (KHFC)</a></li>
+      <li><a href="https://www.inman.com/2025/06/13/trump-looks-to-south-korea-to-bring-down-mortgage-rates/">Inman — US looks to Korea's MBS model (Jun 2025)</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">Daily Industry Analysis · Mortgage REITs (GICS 402040) · Generated June 4, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">데일리 산업분석 · 모기지 리츠(GICS 402040) · 2026년 6월 4일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.bar-fill').forEach(function(b){b.style.width=(b.getAttribute('data-w')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.bars').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>

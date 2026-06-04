@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consumer Finance · 소비자금융 — Industry Analysis</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(36px,10vw,60px);margin:0 0 4px;font-weight:800;letter-spacing:-1px;line-height:1;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* bars */
+  .bar-row{display:flex;align-items:center;gap:10px;margin:8px 0;}
+  .bar-lab{width:120px;font-size:13px;text-align:right;color:var(--ink);flex:none;}
+  .bar-track{flex:1;background:#dde6f1;border-radius:7px;height:22px;overflow:hidden;}
+  .bar-fill{height:100%;background:var(--blue);border-radius:7px;width:0;transition:width 1s cubic-bezier(.2,.7,.2,1);}
+  .bar-row.lead .bar-fill{background:var(--navy);}
+  .bar-row.kr .bar-fill{background:var(--krblue);}
+  .bar-val{width:66px;flex:none;font-size:13px;font-weight:700;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-num{color:var(--gold);font-weight:800;font-size:19px;width:28px;flex:none;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider for players (secondary) */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(20px,5.6vw,25px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  .pillar{background:#13355a;color:#fff;border:1px solid #20446e;border-radius:13px;overflow:hidden;}
+  .kr .pillar{background:#103a73;border-color:#1d4f95;}
+  .pillar .ac-title{color:#fff;}
+  .pillar .ptag{flex:none;background:var(--blue);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 9px;border-radius:8px;}
+  .kr .pillar .ptag{background:#c8102e;}
+  .pillar .chev{color:#cfe2f5;}.pillar .ac-body p{color:#e7effb;font-size:13.3px;}
+  .moves{font-size:12.5px;color:#cfe2f5;font-style:italic;margin-top:8px !important;}
+  .moves b{color:var(--gold);font-style:normal;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){.stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}.ksf{grid-template-columns:1fr 1fr;}.bar-lab{width:150px;}.two{display:grid;grid-template-columns:1fr 1fr;gap:13px;}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.bar-fill{transition:none;}}
+</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">Consumer Finance<span class="g">·</span><span class="en">Industry</span><span class="ko">산업분석</span></div>
+    <div class="chips">
+      <button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button>
+      <button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button>
+      <button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button>
+      <button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button>
+      <button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button>
+      <button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button>
+      <button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button>
+    </div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">Daily Industry Analysis · GICS day-set 4 of 7</span><span class="ko">데일리 산업분석 · 오늘의 7개 중 4번째</span></p>
+    <h1><span class="en">Consumer Finance</span><span class="ko">소비자금융</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Financials · 402020</span>
+      <span class="pill">2026-06-04</span>
+      <span class="pill"><span class="en">Players covered later</span><span class="ko">플레이어 분석은 뒤에서</span>: American Express · Samsung Card</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p>
+        <span class="en">Consumer finance — credit cards, personal and installment lending, BNPL and captive auto finance — earns from interest spread, interchange and fees, minus funding costs and credit losses. The global pool is large and steady: consumer-finance revenue is near US$1.5T (2025) growing ~6.8% a year, while card transaction value tops US$14.8T. Three forces dominate now: a stabilizing-but-elevated US loss cycle (charge-offs easing toward ~3.7%), a regulatory whipsaw (the CFPB's $8 late-fee cap and BNPL rule were both vacated/withdrawn in 2025), and the rise of BNPL and fintech distribution. The US issuer market is concentrating fast (Capital One closed its $35B Discover deal in Feb 2025); Korea's seven card firms are in a fourth straight year of profit decline under fee caps and DSR tightening. Winning turns on cheap funding, underwriting discipline, premium spend and scale. The global #1 (American Express) and Korea #1 (Samsung Card) are analyzed at the end.</span>
+        <span class="ko">소비자금융 — 신용카드, 개인·할부 대출, BNPL, 캡티브 자동차금융 — 은 이자마진과 가맹점수수료(인터체인지), 각종 수수료에서 수익을 내고, 조달비용과 대손을 뺀다. 시장은 크고 꾸준하다. 소비자금융 매출은 2025년 약 1조 5천억 달러로 연 6.8%가량 성장하고, 카드 거래액은 14조 8천억 달러를 넘는다. 지금은 세 가지가 판을 주도한다. 안정세로 돌아섰지만 여전히 높은 미국 대손 사이클(상각률이 약 3.7%로 진정), 규제의 급반전(CFPB의 8달러 연체료 상한과 BNPL 규정이 2025년 모두 무효화·철회), 그리고 BNPL과 핀테크 채널의 부상이다. 미국 카드사 시장은 빠르게 집중되고 있고(2025년 2월 캐피털원이 350억 달러 규모 디스커버 인수 완료), 한국 7개 카드사는 수수료 인하와 DSR 강화 속에 4년 연속 순익 감소 중이다. 승부는 값싼 조달, 심사 규율, 프리미엄 소비, 규모에서 갈린다. 글로벌 1위 American Express와 한국 1위 삼성카드는 맨 뒤에서 따로 다룬다.</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">How consumer finance makes money</span><span class="ko">소비자금융은 어떻게 돈을 버나</span></h2>
+      <p class="lead">
+        <span class="en">A consumer-finance firm (GICS 402020) lends to households and runs payments, earning spread, interchange and fees. Profit ≈ net interest income + interchange + fees − credit losses − funding cost − opex.</span>
+        <span class="ko">소비자금융사(GICS 402020)는 가계에 대출하고 결제를 운영하며, 이자마진·가맹점수수료·각종 수수료를 번다. 이익 ≈ 순이자이익 + 인터체인지 + 수수료 − 대손 − 조달비용 − 운영비용.</span>
+      </p>
+      <div class="chain">
+        <div class="vc"><b><span class="en">Funding</span><span class="ko">자금 조달</span></b><span class="d"><span class="en">Deposits, ABS &amp; wholesale debt — cost sets the loan margin.</span><span class="ko">예금·ABS·도매 차입. 조달원가가 대출마진을 정한다.</span></span></div>
+        <div class="vc"><b><span class="en">Underwriting</span><span class="ko">심사·여신</span></b><span class="d"><span class="en">Pricing credit risk by score &amp; data; the core skill.</span><span class="ko">신용점수·데이터로 위험 가격 책정. 핵심 역량.</span></span></div>
+        <div class="vc"><b><span class="en">Lending &amp; cards</span><span class="ko">대출·카드</span></b><span class="d"><span class="en">Cards, personal/installment loans, BNPL, auto finance.</span><span class="ko">카드·개인/할부 대출·BNPL·자동차금융.</span></span></div>
+        <div class="vc"><b><span class="en">Payments rails</span><span class="ko">결제 인프라</span></b><span class="d"><span class="en">Interchange &amp; network economics on every swipe.</span><span class="ko">결제마다 발생하는 인터체인지·네트워크 경제.</span></span></div>
+        <div class="vc"><b><span class="en">Servicing &amp; rewards</span><span class="ko">고객·리워드</span></b><span class="d"><span class="en">Collections, fraud, rewards &amp; annual-fee value.</span><span class="ko">채권관리·사기방지·리워드·연회비 가치.</span></span></div>
+      </div>
+      <p class="cap"><span class="en">Economics in 2025–26: card APRs ran ~21–22% gross, charge-offs ~3.7%, funding repriced higher — so spread, not volume, drives returns.</span><span class="ko">2025~26년 경제구조: 카드 명목금리는 약 21~22%, 상각률은 약 3.7%, 조달은 더 비싸졌다. 즉 거래량이 아니라 마진이 수익을 가른다.</span></p>
+    </div>
+  </section>
+
+  <section id="market">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">Large, steady, repricing</span><span class="ko">크고 꾸준하며 재가격 중</span></h2>
+      <div class="subh"><span class="en">Global indicators (latest)</span><span class="ko">글로벌 지표 (최신)</span></div>
+      <div class="bars">
+        <div class="bar-row lead"><div class="bar-lab"><span class="en">Card txn value</span><span class="ko">카드 거래액</span></div><div class="bar-track"><div class="bar-fill" data-w="100"></div></div><div class="bar-val">$14.8T</div></div>
+        <div class="bar-row"><div class="bar-lab"><span class="en">Consumer lending</span><span class="ko">소비자 대출</span></div><div class="bar-track"><div class="bar-fill" data-w="42"></div></div><div class="bar-val">$1.31T</div></div>
+        <div class="bar-row"><div class="bar-lab"><span class="en">Consumer finance</span><span class="ko">소비자금융</span></div><div class="bar-track"><div class="bar-fill" data-w="48"></div></div><div class="bar-val">$1.50T</div></div>
+        <div class="bar-row"><div class="bar-lab">CAGR <span class="en">to 2035</span><span class="ko">~2035</span></div><div class="bar-track"><div class="bar-fill" data-w="32"></div></div><div class="bar-val">~6.8%</div></div>
+      </div>
+      <p class="cap"><span class="en">2025–26: credit-card transaction value ~US$14.8T (CAGR ~3.8%); global consumer-lending revenue ~US$1.31T (CAGR ~5.7%); broad consumer-finance ~US$1.50T (2025) compounding ~6.8% to 2035. North America is ~46% of card volume; Asia-Pacific grows fastest.</span><span class="ko">2025~26년: 신용카드 거래액 약 14조 8천억 달러(CAGR 약 3.8%), 글로벌 소비자대출 매출 약 1조 3,100억 달러(CAGR 약 5.7%), 광의의 소비자금융 약 1조 5천억 달러(2025)로 2035년까지 연 6.8% 성장. 카드 거래액의 약 46%가 북미, 성장은 아시아·태평양이 가장 빠르다.</span></p>
+    </div>
+  </section>
+
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">Consolidating in the US, squeezed in Korea</span><span class="ko">미국은 통합, 한국은 압박</span></h2>
+      <div class="subh"><span class="en">US issuers — 2025 purchase volume</span><span class="ko">미국 카드사 — 2025 결제액</span></div>
+      <div class="bars">
+        <div class="bar-row lead"><div class="bar-lab">Chase</div><div class="bar-track"><div class="bar-fill" data-w="100"></div></div><div class="bar-val">$1,344B</div></div>
+        <div class="bar-row"><div class="bar-lab">American Express</div><div class="bar-track"><div class="bar-fill" data-w="87"></div></div><div class="bar-val">$1,168B</div></div>
+        <div class="bar-row"><div class="bar-lab">Citi</div><div class="bar-track"><div class="bar-fill" data-w="46"></div></div><div class="bar-val">$616B</div></div>
+        <div class="bar-row"><div class="bar-lab">Capital One+Discover</div><div class="bar-track"><div class="bar-fill" data-w="45"></div></div><div class="bar-val">$610B+</div></div>
+      </div>
+      <div class="subh"><span class="en">Korea — card firms by net profit (2025)</span><span class="ko">한국 — 카드사 순이익 (2025)</span></div>
+      <div class="bars">
+        <div class="bar-row kr"><div class="bar-lab">Samsung Card</div><div class="bar-track"><div class="bar-fill" data-w="100"></div></div><div class="bar-val">#1</div></div>
+        <div class="bar-row kr"><div class="bar-lab">Shinhan Card</div><div class="bar-track"><div class="bar-fill" data-w="90"></div></div><div class="bar-val">#2</div></div>
+        <div class="bar-row kr"><div class="bar-lab">Hyundai Card</div><div class="bar-track"><div class="bar-fill" data-w="63"></div></div><div class="bar-val">#3</div></div>
+        <div class="bar-row kr"><div class="bar-lab">KB Kookmin Card</div><div class="bar-track"><div class="bar-fill" data-w="60"></div></div><div class="bar-val">#4</div></div>
+      </div>
+      <p class="cap"><span class="en">US: Chase leads purchase volume, Amex #2; Capital One's Feb-2025 Discover takeover ($35.3B) creates a vertically-integrated #4 with its own network. Korea: Samsung Card overtook Shinhan on net profit for a second straight year (2024–25); Hyundai Card jumped to #3 past KB Kookmin in 2025. The seven Korean firms' combined 2025 net profit was ₩2.25T, down 8.4% — a fourth straight annual decline.</span><span class="ko">미국: 결제액은 체이스가 선두, Amex가 2위. 캐피털원의 2025년 2월 디스커버 인수(353억 달러)로 자체 네트워크를 가진 수직통합 4위가 탄생했다. 한국: 삼성카드가 2년 연속 순이익에서 신한카드를 앞섰고(2024~25), 현대카드가 2025년 KB국민카드를 제치고 3위로 올라섰다. 7개 카드사의 2025년 합산 순이익은 2조 2,500억 원으로 8.4% 줄어 4년 연속 감소했다.</span></p>
+    </div>
+  </section>
+
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal">
+      <div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Issuers fight on rewards, APR and acquisition spend; rich rewards erode net margins as customers chase the best card.</span><span class="ko">카드사들이 리워드·금리·모집비로 다툰다. 고객이 더 좋은 카드를 좇으면서 후한 리워드가 순마진을 갉아먹는다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Med–High</span><span class="ko">중간~높음</span></span></div><p><span class="en">Licensing and funding are barriers, but BNPL fintechs and big-tech wallets enter at the point of sale without them.</span><span class="ko">인가·조달이 장벽이지만, BNPL 핀테크와 빅테크 지갑은 결제 시점에서 장벽 없이 진입한다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Supplier power (funding)</span><span class="ko">공급자 교섭력(조달)</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Higher-for-longer rates and ABS pricing lift funding cost; deposit-rich issuers have a clear edge.</span><span class="ko">고금리 장기화와 ABS 금리가 조달비를 끌어올린다. 예금이 풍부한 곳이 확실히 유리하다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Buyer power (borrowers)</span><span class="ko">구매자 교섭력(차주)</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Comparison sites and easy switching pressure pricing, but rewards lock-in and revolving balances temper it.</span><span class="ko">비교 사이트와 손쉬운 전환이 가격을 압박하지만, 리워드 락인과 리볼빙 잔액이 이를 완화한다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">BNPL, debit, account-to-account and fintech credit all divert spend and interest income from cards.</span><span class="ko">BNPL·체크카드·계좌간 송금·핀테크 신용이 카드의 소비와 이자수익을 빼간다.</span></p></div>
+    </div>
+    <p class="cap"><span class="en">Net: profitable but contested. Premium, high-spend franchises stay defensible; commodity revolving lending faces margin pressure from substitutes.</span><span class="ko">종합: 수익성은 있으나 경쟁이 치열하다. 프리미엄·고소비 고객 기반은 방어력이 있지만, 범용 리볼빙 대출은 대체재로 인한 마진 압박에 노출된다.</span></p>
+  </section>
+
+  <section id="reg">
+    <p class="kicker"><span class="en">PESTEL &amp; regulation</span><span class="ko">PESTEL과 규제</span></p>
+    <h2><span class="en">Macro forces &amp; the latest rules</span><span class="ko">거시 환경과 최신 규제</span></h2>
+    <p class="mute"><span class="en">PESTEL is led by Economic (rates, jobs, household debt), Legal (fee &amp; BNPL rules) and Technological (data underwriting, embedded BNPL) factors; Social (revolving habits) and Political (consumer-protection swings) follow. Regulation, below, is the fastest-moving lever.</span><span class="ko">PESTEL은 경제(금리·고용·가계부채), 법률(수수료·BNPL 규정), 기술(데이터 심사·임베디드 BNPL)이 주도하고, 사회(리볼빙 습관)와 정치(소비자보호 기조 변동)가 뒤따른다. 그중 가장 빠르게 움직이는 변수는 아래 규제다.</span></p>
+    <p class="hint"><span class="en">Latest legislation &amp; regulatory issues — tap to expand.</span><span class="ko">최신 법안·규제 이슈 — 눌러서 펼치기.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025-04-15</span><span class="ac-title"><span class="en">US: $8 credit-card late-fee cap vacated</span><span class="ko">미국: 8달러 연체료 상한 무효화</span></span></div><div class="ac-body"><p class="why"><span class="en">A Texas federal court vacated the CFPB's rule that had cut the late-fee safe harbor from $30/$41 to $8; the CFPB conceded it violated the CARD Act. <b>Why it matters:</b> issuers keep a multi-billion-dollar fee stream that the 2024 rule had threatened.</span><span class="ko">텍사스 연방법원이 연체료 안전기준을 30/41달러에서 8달러로 낮춘 CFPB 규정을 무효화했고, CFPB도 CARD법 위반을 인정했다. <b>의미:</b> 2024년 규정이 위협했던 수십억 달러 규모 수수료원을 카드사가 지킨다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025-04</span><span class="ac-title"><span class="en">US: CFPB withdraws BNPL interpretive rule</span><span class="ko">미국: CFPB, BNPL 해석규정 철회</span></span></div><div class="ac-body"><p class="why"><span class="en">New CFPB leadership withdrew the 2024 rule treating BNPL as a credit card subject to dispute/refund rights. <b>Why it matters:</b> a lighter-touch stance removes near-term compliance cost and fuels BNPL's expansion against revolving cards.</span><span class="ko">새 CFPB 지도부가 BNPL을 분쟁·환불 권리가 적용되는 신용카드로 본 2024년 규정을 철회했다. <b>의미:</b> 완화된 기조로 단기 컴플라이언스 비용이 사라지고, 리볼빙 카드에 맞선 BNPL 확장이 더 빨라진다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2024-12-24</span><span class="ac-title"><span class="en">Korea: lower merchant-fee caps for SMEs</span><span class="ko">한국: 영세가맹점 수수료 상한 인하</span></span></div><div class="ac-body"><p class="why"><span class="en">The FSC proposed cutting preferential merchant fees for small/medium merchants from 0.5–1.5% to 0.4–1.45%. <b>Why it matters:</b> fee income — the card firms' core revenue — is structurally squeezed, driving the four-year profit slide and a push into non-card businesses.</span><span class="ko">금융위가 중소·영세 가맹점 우대 수수료를 0.5~1.5%에서 0.4~1.45%로 낮추는 방안을 제시했다. <b>의미:</b> 카드사 핵심 수익인 가맹점수수료가 구조적으로 압박받아 4년째 순익 감소와 비(非)카드 사업 확장을 부추긴다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025-07-01</span><span class="ac-title"><span class="en">Korea: stage-3 stressed DSR takes effect</span><span class="ko">한국: 3단계 스트레스 DSR 시행</span></span></div><div class="ac-body"><p class="why"><span class="en">The FSC's third-stage stressed-DSR rule applies a +1.5pp metro stress rate to all household loans from July 1, 2025. <b>Why it matters:</b> tighter borrowing capacity caps consumer-credit growth and reshapes card-loan and installment demand.</span><span class="ko">금융위의 3단계 스트레스 DSR이 2025년 7월 1일부터 모든 가계대출에 수도권 +1.5%p 스트레스 금리를 적용한다. <b>의미:</b> 차입 여력이 줄어 소비자신용 성장이 제한되고 카드론·할부 수요 구조가 바뀐다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025-12</span><span class="ac-title"><span class="en">US: CFPB issues BNPL market report</span><span class="ko">미국: CFPB, BNPL 시장 보고서 발표</span></span></div><div class="ac-body"><p class="why"><span class="en">A December 2025 CFPB report tracked BNPL's rapid growth and credit-stacking risks even as formal rules eased. <b>Why it matters:</b> scrutiny persists, so BNPL providers and partner banks still face reputational and future-rule risk.</span><span class="ko">2025년 12월 CFPB 보고서는 공식 규정이 완화됐음에도 BNPL의 급성장과 중복차입 위험을 추적했다. <b>의미:</b> 감독 관심은 지속되므로 BNPL 사업자와 제휴 은행은 평판·향후 규제 위험을 여전히 안는다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win in consumer finance</span><span class="ko">소비자금융에서 이기는 조건</span></h2>
+    <div class="ksf reveal">
+      <div class="kc"><span class="kn">1</span><div><b><span class="en">Underwriting &amp; risk data</span><span class="ko">심사·리스크 데이터</span></b><p><span class="en">Through-cycle loss management is the difference between profit and blow-up.</span><span class="ko">사이클 전반의 대손 관리가 흑자와 붕괴를 가른다.</span></p></div></div>
+      <div class="kc"><span class="kn">2</span><div><b><span class="en">Low-cost, stable funding</span><span class="ko">값싸고 안정적인 조달</span></b><p><span class="en">Deposits or cheap ABS set the floor on lending margin in a high-rate world.</span><span class="ko">고금리 환경에서 예금이나 값싼 ABS가 대출마진의 바닥을 정한다.</span></p></div></div>
+      <div class="kc"><span class="kn">3</span><div><b><span class="en">Premium, high-spend customers</span><span class="ko">프리미엄·고소비 고객</span></b><p><span class="en">Affluent, fee-paying spenders deliver interchange and resilience over the cycle.</span><span class="ko">연회비를 내는 고소득 소비자가 인터체인지와 사이클 회복력을 가져온다.</span></p></div></div>
+      <div class="kc"><span class="kn">4</span><div><b><span class="en">Rewards &amp; partner network</span><span class="ko">리워드·제휴 네트워크</span></b><p><span class="en">Compelling rewards and merchant deals drive engagement without torching margins.</span><span class="ko">매력적인 리워드와 가맹점 제휴가 마진을 태우지 않고 활성도를 높인다.</span></p></div></div>
+      <div class="kc"><span class="kn">5</span><div><b><span class="en">Scale &amp; digital efficiency</span><span class="ko">규모와 디지털 효율</span></b><p><span class="en">Automated servicing, fraud and collections lower cost-to-lend at volume.</span><span class="ko">자동화된 고객관리·사기방지·채권관리가 대규모 대출원가를 낮춘다.</span></p></div></div>
+      <div class="kc"><span class="kn">6</span><div><b><span class="en">Regulatory &amp; fee agility</span><span class="ko">규제·수수료 대응력</span></b><p><span class="en">Navigating fee caps, late-fee and BNPL rules protects the revenue model.</span><span class="ko">수수료 상한·연체료·BNPL 규정에 능란히 대응해 수익 모델을 지킨다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="news">
+    <p class="kicker"><span class="en">Recent issues &amp; news</span><span class="ko">최근 이슈 &amp; 뉴스</span></p>
+    <h2><span class="en">What's moving consumer finance now</span><span class="ko">지금 소비자금융을 움직이는 것</span></h2>
+    <p class="hint"><span class="en">Tap for why it matters.</span><span class="ko">눌러서 의미를 확인하세요.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025-02</span><span class="ac-title"><span class="en">Capital One closes $35.3B Discover deal</span><span class="ko">캐피털원, 353억 달러 디스커버 인수 완료</span></span></div><div class="ac-body"><p class="why"><span class="en">Capital One completed its acquisition of Discover, gaining its own card network for the first time. <b>Why it matters:</b> a vertically-integrated issuer can capture network fees and challenge the Visa/Mastercard duopoly.</span><span class="ko">캐피털원이 디스커버 인수를 마무리하며 처음으로 자체 카드 네트워크를 확보했다. <b>의미:</b> 수직통합 카드사가 네트워크 수수료까지 가져가며 비자·마스터카드 복점에 도전할 수 있다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Q1 2026</span><span class="ac-title"><span class="en">US card charge-offs ease to ~3.7%</span><span class="ko">미국 카드 상각률 약 3.7%로 진정</span></span></div><div class="ac-body"><p class="why"><span class="en">Credit-card charge-offs fell from ~4.0% to ~3.67% and delinquencies edged down to ~2.80% in Q1 2026. <b>Why it matters:</b> a stabilizing loss cycle frees reserves and earnings after two years of rising consumer stress.</span><span class="ko">2026년 1분기 카드 상각률이 약 4.0%에서 3.67%로, 연체율은 약 2.80%로 내렸다. <b>의미:</b> 대손 사이클이 안정되면 2년간 이어진 소비자 압박 끝에 충당금과 이익에 숨통이 트인다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-03</span><span class="ac-title"><span class="en">Samsung Card tops Korean spending</span><span class="ko">삼성카드, 한국 소비액 1위 등극</span></span></div><div class="ac-body"><p class="why"><span class="en">Samsung Card overtook Shinhan in personal credit-card spending for the first time, extending its net-profit lead. <b>Why it matters:</b> the ranking reshuffle shows scale and premium spend winning as the fee-squeezed market consolidates.</span><span class="ko">삼성카드가 개인 신용카드 소비액에서 처음으로 신한카드를 앞서며 순이익 우위를 이어갔다. <b>의미:</b> 수수료 압박 속 시장이 재편되며 규모와 프리미엄 소비가 이기고 있음을 보여준다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-03-13</span><span class="ac-title"><span class="en">Korean card firms pivot to business clients</span><span class="ko">한국 카드사, 법인 고객으로 전환</span></span></div><div class="ac-body"><p class="why"><span class="en">With the consumer market saturated and fees capped, Korean issuers are targeting corporate/business cards for growth. <b>Why it matters:</b> a fourth straight year of falling profit (₩2.25T, −8.4%) is pushing firms beyond the squeezed retail card pool.</span><span class="ko">소비자 시장이 포화되고 수수료가 묶이자 한국 카드사들이 법인·기업 카드로 성장을 모색한다. <b>의미:</b> 4년 연속 순익 감소(2조 2,500억 원, −8.4%)가 압박받는 개인 카드 시장 밖으로 카드사를 내몰고 있다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-04-23</span><span class="ac-title"><span class="en">Amex Q1'26 billings hit $428B</span><span class="ko">Amex 1분기 결제액 4,280억 달러</span></span></div><div class="ac-body"><p class="why"><span class="en">American Express grew billed business 10% to $428B and revenue 11% to $18.9B — its fastest spend growth in three years. <b>Why it matters:</b> affluent spend is resilient, validating the premium fee-led model over commodity lending.</span><span class="ko">American Express의 결제액이 10% 늘어 4,280억 달러, 매출은 11% 늘어 189억 달러로 3년 만에 가장 빠른 소비 성장을 보였다. <b>의미:</b> 고소득층 소비가 견조해 범용 대출보다 프리미엄·수수료 중심 모델이 옳음을 입증한다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025-12</span><span class="ac-title"><span class="en">BNPL keeps spreading at checkout</span><span class="ko">BNPL, 결제창에서 계속 확산</span></span></div><div class="ac-body"><p class="why"><span class="en">A CFPB report and TransUnion data show BNPL widening at retailers while card balances grow just ~2.3% in 2026. <b>Why it matters:</b> interest-free installments divert spend from revolving cards, pressuring issuers' core interest income.</span><span class="ko">CFPB 보고서와 트랜스유니온 데이터는 카드 잔액이 2026년 약 2.3%만 느는 사이 BNPL이 유통 현장에서 확산됨을 보여준다. <b>의미:</b> 무이자 할부가 리볼빙 카드에서 소비를 빼가 카드사 핵심 이자수익을 압박한다.</span></p></div></div>
+    </div>
+  </section>
+
+  <!-- ===== PLAYERS (secondary analysis) ===== -->
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · additional analysis</span><span class="ko">플레이어 · 추가 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, briefly</span><span class="ko">두 리더, 간단히</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act; here are the global and Korean leaders as a secondary read.</span><span class="ko">위의 산업 분석이 본론이고, 여기서는 글로벌·한국 리더를 보조적으로 살펴본다.</span></p>
+
+    <div class="gl">
+      <div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>American Express</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">The largest pure-play consumer-finance leader by market cap (~$215B), Amex runs a closed-loop, premium, fee-led model — issuer, network and acquirer in one — anchored by affluent, high-spend cardmembers.</span><span class="ko">시가총액 기준(약 2,150억 달러) 최대 순수 소비자금융 리더. Amex는 발급사·네트워크·매입사를 하나로 묶은 폐쇄형(closed-loop) 프리미엄·수수료 중심 모델을 고소득 고소비 회원 기반 위에 운영한다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">$18.9B</div><div class="l"><span class="en">Q1'26 revenue (+11%)</span><span class="ko">1분기 매출 (+11%)</span></div></div>
+          <div class="stat"><div class="n">$428B</div><div class="l"><span class="en">Q1'26 billed business</span><span class="ko">1분기 결제액</span></div></div>
+          <div class="stat"><div class="n">$2.97B</div><div class="l"><span class="en">Q1'26 net income (+15%)</span><span class="ko">1분기 순이익 (+15%)</span></div></div>
+          <div class="stat"><div class="n">~$215B</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div>
+        </div>
+        <div class="subh"><span class="en">Strategy</span><span class="ko">전략</span></div>
+        <div class="acc" data-accordion>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 1</span><span class="ac-title"><span class="en">Own the premium spender</span><span class="ko">프리미엄 소비자 장악</span></span></div><div class="ac-body"><p><span class="en">Refresh high-annual-fee Platinum/Gold cards and lean into affluent, resilient billings that hold up through downturns.</span><span class="ko">높은 연회비의 플래티넘·골드 카드를 리뉴얼하고, 경기 둔화에도 견조한 고소득 결제액에 집중한다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">card refreshes · raise annual fees · perks</span><span class="ko">카드 리뉴얼 · 연회비 인상 · 혜택 강화</span></p></div></div>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 2</span><span class="ac-title"><span class="en">Monetize the closed loop</span><span class="ko">폐쇄형 루프 수익화</span></span></div><div class="ac-body"><p><span class="en">Use issuer-plus-network economics to capture spend-based fees and grow merchant and travel-services revenue.</span><span class="ko">발급사+네트워크 경제로 결제 기반 수수료를 가져가고, 가맹점·여행 서비스 매출을 키운다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">merchant deals · travel/dining · B2B spend</span><span class="ko">가맹점 제휴 · 여행/다이닝 · B2B 결제</span></p></div></div>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 3</span><span class="ac-title"><span class="en">Win Millennials &amp; Gen Z</span><span class="ko">밀레니얼·Z세대 확보</span></span></div><div class="ac-body"><p><span class="en">Acquire younger high-earners with experiential perks so the premium franchise compounds for a decade.</span><span class="ko">경험형 혜택으로 젊은 고소득층을 유치해 프리미엄 기반이 10년간 복리로 성장하게 한다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">lifestyle perks · digital onboarding · partnerships</span><span class="ko">라이프스타일 혜택 · 디지털 가입 · 제휴</span></p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kr" style="margin-top:14px">
+      <div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>Samsung Card</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">Korea's leader by net profit and personal card spending (overtaking runner-up Shinhan Card for a second year), affiliated with the Samsung group and known for premium and data-driven marketing.</span><span class="ko">순이익과 개인 카드 소비액 기준 한국 1위(2년 연속 2위 신한카드를 추월). 삼성 그룹 계열로 프리미엄·데이터 기반 마케팅에 강하다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">₩666B</div><div class="l"><span class="en">2024 net profit</span><span class="ko">2024 순이익</span></div></div>
+          <div class="stat"><div class="n">₩184B</div><div class="l"><span class="en">Q1 net profit</span><span class="ko">1분기 순이익</span></div></div>
+          <div class="stat"><div class="n">#1</div><div class="l"><span class="en">Korea net profit / spend</span><span class="ko">국내 순익·소비 1위</span></div></div>
+          <div class="stat"><div class="n">~$2.0B</div><div class="l"><span class="en">TTM revenue</span><span class="ko">최근 12개월 매출</span></div></div>
+        </div>
+        <div class="subh"><span class="en">Strategy</span><span class="ko">전략</span></div>
+        <div class="acc" data-accordion>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 1</span><span class="ac-title"><span class="en">Defend premium &amp; high-spend share</span><span class="ko">프리미엄·고소비 점유 방어</span></span></div><div class="ac-body"><p><span class="en">Lean on affluent members and curated benefits to grow personal-card spend even as merchant fees fall.</span><span class="ko">가맹점 수수료가 내려가도 고소득 회원과 선별 혜택으로 개인 카드 소비액을 키운다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">premium cards · curated benefits · loyalty</span><span class="ko">프리미엄 카드 · 큐레이션 혜택 · 로열티</span></p></div></div>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 2</span><span class="ac-title"><span class="en">Offset fee caps with data &amp; cost</span><span class="ko">데이터·원가로 수수료 인하 상쇄</span></span></div><div class="ac-body"><p><span class="en">Use marketing data, risk analytics and tight cost control to protect margin under fee and DSR pressure.</span><span class="ko">마케팅 데이터·리스크 분석·비용 통제로 수수료·DSR 압박 속 마진을 지킨다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">data analytics · cost discipline · risk pricing</span><span class="ko">데이터 분석 · 비용 절감 · 리스크 가격</span></p></div></div>
+          <div class="ac pillar"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ptag">Pillar 3</span><span class="ac-title"><span class="en">Diversify beyond card fees</span><span class="ko">카드 수수료 너머로 다변화</span></span></div><div class="ac-body"><p><span class="en">Grow card loans, installment finance and business-client volume as consumer card profit shrinks.</span><span class="ko">개인 카드 수익이 줄자 카드론·할부금융·법인 거래로 영역을 넓힌다.</span></p><p class="moves"><b><span class="en">Moves:</span><span class="ko">실행:</span></b> <span class="en">card loans · installment finance · corporate cards</span><span class="ko">카드론 · 할부금융 · 법인 카드</span></p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가나</span></h2>
+      <ul class="tight">
+        <li><span class="en">US losses are stabilizing near ~3.7%, but household debt is at records — a soft-landing bet, not a sure thing.</span><span class="ko">미국 대손은 약 3.7% 부근에서 안정되고 있지만 가계부채는 사상 최대다. 연착륙에 건 베팅일 뿐 확정은 아니다.</span></li>
+        <li><span class="en">BNPL and fintech keep diverting spend; premium, fee-led franchises defend best against substitution.</span><span class="ko">BNPL·핀테크가 계속 소비를 빼간다. 프리미엄·수수료 중심 기반이 대체 위협을 가장 잘 방어한다.</span></li>
+        <li><span class="en">US deregulation (late-fee, BNPL) helps issuers near-term, but the political pendulum can swing back.</span><span class="ko">미국의 규제 완화(연체료·BNPL)는 단기적으로 카드사에 유리하나, 정치적 추는 다시 돌아올 수 있다.</span></li>
+        <li><span class="en">Korea's fee caps and DSR keep squeezing card profit, pushing firms into card loans, corporate cards and platforms.</span><span class="ko">한국의 수수료 상한과 DSR이 카드 수익을 계속 압박해 카드사를 카드론·법인 카드·플랫폼으로 민다.</span></li>
+        <li><span class="en">Consolidation (Capital One–Discover) and AI underwriting widen the gap between scale leaders and the rest.</span><span class="ko">통합(캐피털원–디스커버)과 AI 심사가 규모 선두와 나머지의 격차를 벌린다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://s26.q4cdn.com/747928648/files/doc_earnings/2026/q1/earnings-result/Q1-2026-Earnings-Press-Release.pdf">American Express — Q1 2026 earnings press release</a></li>
+      <li><a href="https://wallethub.com/edu/cc/market-share-by-credit-card-issuer/25530">WalletHub — US credit-card market share by issuer (2026)</a></li>
+      <li><a href="https://wallethub.com/edu/cc/credit-card-charge-off-delinquency-statistics/25536">WalletHub — credit-card delinquency &amp; charge-off statistics (2026)</a></li>
+      <li><a href="https://www.consumerfinancemonitor.com/2025/04/16/federal-judge-voids-cfpb-credit-card-late-fee-rule/">Consumer Finance Monitor — court voids CFPB late-fee rule (Apr 2025)</a></li>
+      <li><a href="https://files.consumerfinance.gov/f/documents/cfpb_bnpl-market-report_2025-12.pdf">CFPB — BNPL market report (Dec 2025)</a></li>
+      <li><a href="https://www.fsc.go.kr/eng/pr010101/81345">FSC Korea — stressed-DSR &amp; household-debt measures</a></li>
+      <li><a href="https://www.kedglobal.com/banking-finance/newsView/ked202603260004">KED Global — Samsung Card tops Korea card spending</a></li>
+      <li><a href="https://www.koreaherald.com/article/10675718">Korea Herald — Hyundai Card rises to the big three</a></li>
+      <li><a href="https://www.marketresearchfuture.com/reports/consumer-finance-market-24293">Market Research Future — consumer finance market size</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">Daily Industry Analysis · Consumer Finance (GICS 402020) · Generated June 4, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">데일리 산업분석 · 소비자금융(GICS 402020) · 2026년 6월 4일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.bar-fill').forEach(function(b){b.style.width=(b.getAttribute('data-w')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.bars').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>
