@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Water Utilities · 수도·물 유틸리티 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Water Utilities</span><span class="ko">수도·물 유틸리티</span></div>
+    <div class="chips">
+      <button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button>
+      <button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button>
+      <button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button>
+      <button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button>
+      <button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button>
+      <button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button>
+      <button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button>
+    </div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 7 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 7번째</span></p>
+    <h1><span class="en">Water Utilities</span><span class="ko">수도·물 유틸리티</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Utilities · 551040</span>
+      <span class="pill">2026-06-04</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: American Water Works · K-water</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p>
+        <span class="en">Regulated water and wastewater utilities are classic monopolies: each one serves a captive territory, and a public commission sets the prices. Earnings do not come from competing for customers but from investing in pipes and plants — the "rate base" — on which regulators allow a fixed return (a regulated ROE, typically ~9–10%). Growth therefore equals capital investment, and the swing factors of 2026 are heavy capex needs (PFAS treatment, lead-pipe replacement, aging mains) and the rate cases that decide whether those costs are recovered. The global #1, American Water Works, is the largest listed water utility and a textbook rate-base compounder. Korea has no large listed private water utility: water is run mainly by the state-owned K-water and municipal systems, so we use K-water as a state-owned proxy. Both are detailed at the end.</span>
+        <span class="ko">규제 대상 수도·하수 유틸리티는 전형적인 독점 사업입니다. 각 사업자는 정해진 공급 구역을 단독으로 담당하고, 가격은 공공 규제기관이 정합니다. 이익은 고객 유치 경쟁이 아니라 관로와 정수장에 대한 투자, 즉 '요금기저(rate base)'에서 나오며, 규제기관은 그 자산에 정해진 수익률(통상 약 9~10%의 허용 ROE)을 인정해 드립니다. 따라서 성장은 곧 자본 투자와 같으며, 2026년의 핵심 변수는 막대한 투자 수요(PFAS 처리, 납관 교체, 노후 관로)와 그 비용의 회수를 좌우하는 요금 심의입니다. 글로벌 1위 American Water Works는 세계 최대 상장 수도 유틸리티이자 요금기저를 꾸준히 키워 가는 전형적 사례입니다. 한국에는 대형 상장 민간 수도 기업이 없으며, 물은 주로 국영 K-water와 지방 상수도 체계가 운영하므로, 본 보고서는 K-water를 국영 대용 사례로 활용해 드립니다. 두 주체는 뒤에서 자세히 다룹니다.</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From source to tap to rate base</span><span class="ko">취수에서 수도꼭지, 그리고 요금기저로</span></h2>
+      <p class="lead">
+        <span class="en">This GICS industry (551040) covers regulated drinking-water and wastewater utilities. Allowed earnings ≈ rate base (capital invested in assets) × allowed ROE, recovered through rates a regulator approves — so investing in infrastructure is the growth engine.</span>
+        <span class="ko">이 GICS 산업(551040)은 규제 대상 상수도·하수도 유틸리티를 포괄합니다. 허용 이익 ≈ 요금기저(자산에 투입된 자본) × 허용 ROE이며, 규제기관이 승인한 요금을 통해 회수됩니다. 따라서 인프라 투자가 곧 성장의 동력입니다.</span>
+      </p>
+      <div class="chain">
+        <div class="vc"><b><span class="en">Source &amp; supply</span><span class="ko">수원·취수</span></b><span class="d"><span class="en">Reservoirs, rivers and wells — secured against drought.</span><span class="ko">저수지·하천·지하수. 가뭄에 대비해 확보합니다.</span></span></div>
+        <div class="vc"><b><span class="en">Treatment</span><span class="ko">정수 처리</span></b><span class="d"><span class="en">Purification to safe standards; PFAS removal is the new cost.</span><span class="ko">안전 기준까지 정수하며, PFAS 제거가 새로운 원가입니다.</span></span></div>
+        <div class="vc"><b><span class="en">Distribution</span><span class="ko">급수·배관</span></b><span class="d"><span class="en">Mains and meters; water loss is the efficiency lever.</span><span class="ko">관로와 계량기로, 누수가 효율의 관건입니다.</span></span></div>
+        <div class="vc"><b><span class="en">Wastewater</span><span class="ko">하수 처리</span></b><span class="d"><span class="en">Collection and treatment back to the environment.</span><span class="ko">하수를 모아 처리해 다시 환경으로 돌려보냅니다.</span></span></div>
+        <div class="vc"><b><span class="en">Rate base &amp; recovery</span><span class="ko">요금기저·회수</span></b><span class="d"><span class="en">Capital earns a regulated return via approved rates.</span><span class="ko">투입 자본이 승인 요금을 통해 규제 수익을 거둡니다.</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A large, steadily growing utility market</span><span class="ko">크고 꾸준히 자라는 유틸리티 시장</span></h2>
+      <div class="colchart">
+        <div class="col"><div class="col-val">$712B</div><div class="col-bar" data-h="79"></div><div class="col-lab">2024</div></div>
+        <div class="col"><div class="col-val">$760B</div><div class="col-bar" data-h="84"></div><div class="col-lab">2025</div></div>
+        <div class="col"><div class="col-val">$808B</div><div class="col-bar" data-h="89"></div><div class="col-lab">2026E</div></div>
+        <div class="col"><div class="col-val">$862B</div><div class="col-bar" data-h="95"></div><div class="col-lab">2027E</div></div>
+        <div class="col"><div class="col-val">$918B</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div>
+      </div>
+      <p class="cap"><span class="en">Global water &amp; sewage market, US$ billions, indicative (~6.4% CAGR per The Business Research Company, 2026). Demand is non-discretionary; growth is driven by infrastructure capex, not consumption.</span><span class="ko">글로벌 수도·하수 시장, 단위 십억 달러, 추정치(The Business Research Company 2026 기준 연평균 약 6.4%)입니다. 수요는 필수재라 비탄력적이며, 성장은 소비가 아니라 인프라 투자에서 나옵니다.</span></p>
+    </div>
+  </section>
+
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">Fragmented globally; state-run in Korea</span><span class="ko">글로벌은 분산, 한국은 국가 운영</span></h2>
+      <div class="pies">
+        <div class="pieblock">
+          <div class="pie-title"><span class="en">Major listed water utilities — by scale, indicative</span><span class="ko">주요 상장 수도 유틸리티 — 규모 기준, 추정</span></div>
+          <div class="pie" style="background:conic-gradient(#0e2a47 0 30%,#117aca 30% 52%,#ffb81c 52% 68%,#5aa9e6 68% 80%,#c9d4e3 80% 100%)"></div>
+          <div class="legend">
+            <div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>American Water<b>~30%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Veolia (Water)<b>~22%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Severn Trent<b>~16%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>United Utilities<b>~12%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>~20%</b></div>
+          </div>
+        </div>
+        <div class="pieblock">
+          <div class="pie-title"><span class="en">Korea water supply — by operator type</span><span class="ko">한국 물 공급 — 운영 주체별</span></div>
+          <div class="pie" style="background:conic-gradient(#0047a0 0 48%,#117aca 48% 92%,#c9d4e3 92% 100%)"></div>
+          <div class="legend">
+            <div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>K-water<b>~48%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#117aca"></span><span class="en">Municipal</span><span class="ko">지방 상수도</span><b>~44%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Other/private</span><span class="ko">기타·민간</span><b>~8%</b></div>
+          </div>
+        </div>
+      </div>
+      <p class="cap"><span class="en">Globally the listed pool is fragmented across the US (American Water ~$26B market cap), France (Veolia) and the UK (Severn Trent, United Utilities). Korea has no large listed private water utility — supply is split between state-owned K-water (bulk and many local systems) and municipal waterworks.</span><span class="ko">글로벌 상장 시장은 미국(American Water 시총 약 260억 달러), 프랑스(Veolia), 영국(Severn Trent·United Utilities)으로 분산되어 있습니다. 한국에는 대형 상장 민간 수도 기업이 없으며, 공급은 국영 K-water(광역 및 다수 지방 시스템)와 지방 상수도가 나누어 맡습니다.</span></p>
+    </div>
+  </section>
+
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal">
+      <div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Each utility is a territorial monopoly; competition is for acquisitions, not customers.</span><span class="ko">각 사업자는 구역 독점이며, 경쟁은 고객이 아니라 인수 대상을 두고 벌어집니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Sunk pipe networks, franchises and regulation make entry nearly impossible.</span><span class="ko">매몰된 관로망·인가·규제로 인해 진입이 사실상 불가능합니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Energy, chemicals and EPC contractors matter, but most costs pass through in rates.</span><span class="ko">에너지·약품·EPC 업체가 영향을 주나, 대부분의 원가는 요금으로 전가됩니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Customers cannot switch supplier; affordability is policed by regulators, not markets.</span><span class="ko">소비자는 공급자를 바꿀 수 없으며, 요금 부담은 시장이 아니라 규제기관이 관리합니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Piped water has no practical substitute; reuse and bottled water are marginal.</span><span class="ko">상수도에는 사실상 대체재가 없으며, 재이용·생수는 미미합니다.</span></p></div>
+    </div>
+    <p class="cap"><span class="en">Net: water utilities are quasi-monopolies — very high barriers and low rivalry make them stable, but returns are capped by the regulator, not the market.</span><span class="ko">종합하면 수도 유틸리티는 준독점입니다. 매우 높은 진입장벽과 낮은 경쟁으로 안정적이지만, 수익은 시장이 아니라 규제기관이 정한 상한에 묶여 있습니다.</span></p>
+  </section>
+
+  <section id="reg">
+    <p class="kicker"><span class="en">PESTEL &amp; regulation</span><span class="ko">PESTEL과 규제</span></p>
+    <h2><span class="en">Macro forces &amp; the latest rules</span><span class="ko">거시 환경과 최신 규제</span></h2>
+    <p class="mute"><span class="en">Environmental and political forces dominate: climate-driven drought stresses supply, while every dollar of investment and price increase must clear a regulator. The fastest-moving lever is regulation — rate cases and water-quality rules — below.</span><span class="ko">환경과 정치가 핵심입니다. 기후로 인한 가뭄이 공급을 압박하고, 모든 투자와 요금 인상은 규제기관의 승인을 거쳐야 합니다. 가장 빠르게 움직이는 변수는 아래의 규제, 즉 요금 심의와 수질 규정입니다.</span></p>
+    <p class="hint"><span class="en">Latest legislation &amp; regulatory issues — tap to expand.</span><span class="ko">최신 법안·규제 이슈 — 눌러서 펼치십시오.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">US EPA keeps PFOA/PFOS limits, extends deadline to 2031</span><span class="ko">미국 EPA, PFOA/PFOS 기준 유지하되 시한 2031년 연장</span></span></div><div class="ac-body"><p class="why"><span class="en">In May 2026 the EPA proposed rescinding limits on four other PFAS but kept PFOA/PFOS and pushed compliance to 2031. <b>Why it matters:</b> billions in treatment capex are still required, but utilities gain more time to recover the cost in rates.</span><span class="ko">2026년 5월 EPA는 다른 4종 PFAS 기준은 폐지하되 PFOA/PFOS는 유지하고 준수 시한을 2031년으로 연장했습니다. <b>의미:</b> 수십억 달러의 처리 투자는 여전히 필요하나, 유틸리티는 요금으로 회수할 시간을 더 확보합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">Elevated US state rate-case activity</span><span class="ko">미국 주(州) 요금 심의 활발</span></span></div><div class="ac-body"><p class="why"><span class="en">Investor-owned water capex is set to rise ~16% to ~$6.9B in 2026, driving heavy rate-case filings to recover costs. <b>Why it matters:</b> timely cost recovery vs. customer affordability is the make-or-break for returns.</span><span class="ko">투자자 소유 수도 투자는 2026년 약 16% 늘어 약 69억 달러에 이를 전망이며, 비용 회수를 위한 요금 심의가 잇따릅니다. <b>의미:</b> 적시 비용 회수와 요금 부담의 균형이 수익을 좌우합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">EU revised Urban Wastewater Treatment Directive in force</span><span class="ko">개정 EU 도시폐수처리지침 발효</span></span></div><div class="ac-body"><p class="why"><span class="en">Directive (EU) 2024/3019 took effect 1 Jan 2025: PFAS/microplastic monitoring, tertiary treatment by 2045, and an EPR scheme making pharma/cosmetics fund ≥80% of micropollutant removal. <b>Why it matters:</b> it raises European utility capex while shifting some cost onto polluters.</span><span class="ko">지침 (EU) 2024/3019이 2025년 1월 1일 발효되었습니다. PFAS·미세플라스틱 모니터링, 2045년까지 3차 처리, 그리고 제약·화장품 업계가 미량오염물질 제거비의 80% 이상을 부담하는 EPR 제도를 담았습니다. <b>의미:</b> 유럽 유틸리티의 투자를 늘리되 일부 비용을 오염 유발자에게 이전합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">Korea water-management &amp; tariff policy</span><span class="ko">한국 물관리·요금 정책</span></span></div><div class="ac-body"><p class="why"><span class="en">Korea's integrated water management under the Ministry of Environment and K-water emphasizes smart water, drought resilience and gradual tariff normalization toward cost recovery. <b>Why it matters:</b> as a state utility, K-water balances public-service pricing with the funding it needs to invest.</span><span class="ko">환경부와 K-water 중심의 통합 물관리는 스마트 물관리, 가뭄 대응, 원가 회수를 향한 점진적 요금 현실화를 강조합니다. <b>의미:</b> 국영 유틸리티인 K-water는 공공 서비스 요금과 투자 재원 확보 사이에서 균형을 잡아야 합니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal">
+      <div class="kc"><span class="kn">1</span><div><b><span class="en">Rate-case execution</span><span class="ko">요금 심의 수행력</span></b><p><span class="en">Securing timely, full cost recovery is the core of earnings.</span><span class="ko">적시·전액 비용 회수가 이익의 핵심입니다.</span></p></div></div>
+      <div class="kc"><span class="kn">2</span><div><b><span class="en">Capex discipline</span><span class="ko">투자 규율</span></b><p><span class="en">Growing rate base efficiently lifts allowed returns.</span><span class="ko">요금기저를 효율적으로 키워야 허용 수익이 늘어납니다.</span></p></div></div>
+      <div class="kc"><span class="kn">3</span><div><b><span class="en">Regulatory relations</span><span class="ko">규제기관 관계</span></b><p><span class="en">Constructive commissions set the allowed ROE and recovery.</span><span class="ko">우호적 규제기관이 허용 ROE와 회수 수준을 정합니다.</span></p></div></div>
+      <div class="kc"><span class="kn">4</span><div><b><span class="en">Water-loss reduction</span><span class="ko">누수 저감</span></b><p><span class="en">Cutting non-revenue water raises efficiency and margin.</span><span class="ko">무수수율을 줄이면 효율과 마진이 올라갑니다.</span></p></div></div>
+      <div class="kc"><span class="kn">5</span><div><b><span class="en">Water quality &amp; compliance</span><span class="ko">수질·규제 준수</span></b><p><span class="en">Meeting PFAS and lead rules protects the license to operate.</span><span class="ko">PFAS·납 기준 준수가 사업 인가를 지킵니다.</span></p></div></div>
+      <div class="kc"><span class="kn">6</span><div><b><span class="en">ESG &amp; resilience</span><span class="ko">ESG·회복력</span></b><p><span class="en">Drought planning and clean operations underpin trust and access to capital.</span><span class="ko">가뭄 대비와 친환경 운영이 신뢰와 자금 조달의 토대입니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="news">
+    <p class="kicker"><span class="en">Recent issues &amp; news</span><span class="ko">최근 이슈 &amp; 뉴스</span></p>
+    <h2><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></h2>
+    <p class="hint"><span class="en">Tap for why it matters.</span><span class="ko">눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">PFAS settlement cash starts funding treatment</span><span class="ko">PFAS 합의금, 처리 투자 재원으로 유입</span></span></div><div class="ac-body"><p class="why"><span class="en">3M and DuPont settlement proceeds began reaching water systems from summer 2025, helping fund PFAS treatment in 2026. <b>Why it matters:</b> it eases the capex burden that would otherwise fall on customer bills.</span><span class="ko">3M·DuPont 합의금이 2025년 여름부터 상수도에 유입되기 시작해 2026년 PFAS 처리 재원에 보탬이 됩니다. <b>의미:</b> 요금에 전가될 투자 부담을 일부 덜어 줍니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">Data-center water demand draws new rules</span><span class="ko">데이터센터 물 수요, 새 규제 촉발</span></span></div><div class="ac-body"><p class="why"><span class="en">US data centers used ~17–20B gallons in 2024–25 and could quadruple by 2030; at least nine states now require water-use disclosure. <b>Why it matters:</b> a new load class and water-rights pressure reshape long-run supply planning.</span><span class="ko">미국 데이터센터는 2024~25년 약 170~200억 갤런을 사용했고 2030년까지 4배로 늘 수 있어, 최소 9개 주가 물 사용 공시를 의무화했습니다. <b>의미:</b> 새로운 수요층과 수리권 압박이 장기 공급 계획을 다시 짭니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">American Water invests ~$3.2B, plans 8–9% rate-base growth</span><span class="ko">American Water 약 32억 달러 투자, 요금기저 8~9% 성장 계획</span></span></div><div class="ac-body"><p class="why"><span class="en">The #1 listed utility deployed ~$3.2B in 2025 on pipes, PFAS, lead lines and smart meters, targeting 8–9% rate-base growth. <b>Why it matters:</b> in this model, capex is the growth engine — more rate base means more earnings.</span><span class="ko">상장 1위 사업자는 2025년 관로·PFAS·납관·스마트미터에 약 32억 달러를 투자하며 요금기저 8~9% 성장을 목표합니다. <b>의미:</b> 이 모델에서 투자는 성장 동력이며, 요금기저가 커질수록 이익도 늘어납니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">K-water showcases AI water tech at MWC 2026</span><span class="ko">K-water, MWC 2026서 AI 물 기술 선보여</span></span></div><div class="ac-body"><p class="why"><span class="en">K-water presented AI water-purification plants, the Digital Garam+ dam digital twin and leak-cutting smart networks. <b>Why it matters:</b> smart water is K-water's path to efficiency at home and exportable projects abroad.</span><span class="ko">K-water는 AI 정수장, 댐 디지털트윈 'Digital Garam+', 누수 저감 스마트 네트워크를 선보였습니다. <b>의미:</b> 스마트 물관리는 국내 효율화와 해외 수출 사업으로 이어지는 K-water의 길입니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <!-- ===== PLAYERS (secondary analysis) ===== -->
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, with a strategy read</span><span class="ko">두 리더, 전략 관점으로</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader gets a short consulting-style read: diagnosis → two-track strategy → action plans.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 컨설팅식으로 짧게 진단합니다: 진단 → Two-Track 전략 → 액션 플랜 순서입니다.</span></p>
+
+    <div class="gl">
+      <div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>American Water Works</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">The largest listed US water utility — a textbook rate-base compounder serving ~4.7M connections.</span><span class="ko">미국 최대 상장 수도 유틸리티로, 약 470만 가구를 공급하며 요금기저를 꾸준히 키우는 전형적 사례입니다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">~$26B</div><div class="l"><span class="en">Market cap (Dec 2025)</span><span class="ko">시가총액 (2025.12)</span></div></div>
+          <div class="stat"><div class="n">~$29B</div><div class="l"><span class="en">Water/wastewater rate base</span><span class="ko">수도·하수 요금기저</span></div></div>
+          <div class="stat"><div class="n">8–9%</div><div class="l"><span class="en">Target rate-base growth</span><span class="ko">목표 요금기저 성장</span></div></div>
+          <div class="stat"><div class="n">~$3.2B</div><div class="l"><span class="en">2025 capex</span><span class="ko">2025년 투자</span></div></div>
+        </div>
+        <div class="diag">
+          <div class="dh"><span class="en">Diagnosis — earnings grow only as fast as the rate base</span><span class="ko">진단 — 이익은 요금기저가 자라는 만큼만 성장합니다</span></div>
+          <div class="formula">Allowed Earnings = Rate Base × Allowed ROE</div>
+          <ul>
+            <li><span class="en">Growth equals capital deployed and recovered — capex is the engine.</span><span class="ko">성장은 곧 투입·회수된 자본이며, 투자가 동력입니다.</span></li>
+            <li><span class="en">PFAS, lead lines and aging mains demand heavy, sustained spend.</span><span class="ko">PFAS·납관·노후 관로가 막대하고 지속적인 지출을 요구합니다.</span></li>
+            <li><span class="en">Key lever: pair disciplined capex with constructive rate cases and tuck-in acquisitions.</span><span class="ko">핵심 레버는 규율 있는 투자에 우호적 요금 심의와 소규모 인수를 결합하는 것입니다.</span></li>
+          </ul>
+        </div>
+        <div class="track-grid">
+          <div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Protect recovery &amp; affordability</span><span class="ko">비용 회수와 요금 부담 방어</span></div><p><span class="en">Win timely rate cases, keep bills under ~1% of income, and defend the allowed ROE with regulators.</span><span class="ko">요금 심의를 적시에 통과시키고, 요금을 소득의 약 1% 이내로 유지하며, 규제기관과 허용 ROE를 지켜냅니다.</span></p></div>
+          <div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Compound the rate base</span><span class="ko">요금기저 복리 성장</span></div><p><span class="en">Grow 8–9% via pipe replacement, PFAS treatment and acquiring small municipal systems.</span><span class="ko">관로 교체·PFAS 처리·소규모 지방 시스템 인수로 연 8~9% 성장합니다.</span></p></div>
+        </div>
+        <div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div>
+        <div class="ap-grid">
+          <div class="ap"><div class="apt"><span class="en">Capital recovery</span><span class="ko">비용 회수</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Rate-case lag</span><span class="ko">요금 심의 지연</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Timely recovery</span><span class="ko">적시 회수</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Grow the base</span><span class="ko">요금기저 확대</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Aging mains</span><span class="ko">노후 관로</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Modern, compliant assets</span><span class="ko">현대화·적합 자산</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Consolidate</span><span class="ko">통합</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Many small systems</span><span class="ko">다수 소규모 시스템</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Acquired &amp; scaled</span><span class="ko">인수·규모화</span></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kr" style="margin-top:14px">
+      <div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1 · state-owned proxy</span><span class="ko">한국 1위 · 국영 대용</span></div><h3>K-water</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">Korea has no large listed private water utility; K-water (한국수자원공사) is the state-owned operator used here as the closest proxy — not a listed peer.</span><span class="ko">한국에는 대형 상장 민간 수도 기업이 없습니다. K-water(한국수자원공사)는 국영 운영 주체로, 상장 동종 기업이 아니라 가장 가까운 대용 사례로 다룹니다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">100%</div><div class="l"><span class="en">State-owned</span><span class="ko">정부 소유</span></div></div>
+          <div class="stat"><div class="n">~48%</div><div class="l"><span class="en">Share of national supply</span><span class="ko">전국 공급 비중</span></div></div>
+          <div class="stat"><div class="n">37+</div><div class="l"><span class="en">Multi-purpose dams operated</span><span class="ko">운영 다목적댐</span></div></div>
+          <div class="stat"><div class="n">10+</div><div class="l"><span class="en">Overseas project countries</span><span class="ko">해외 사업 진출국</span></div></div>
+        </div>
+        <div class="diag">
+          <div class="dh"><span class="en">Diagnosis — a public mandate, not a profit mandate</span><span class="ko">진단 — 이익이 아니라 공공 책무가 우선입니다</span></div>
+          <div class="formula">Value = Service Reliability + Efficiency − Public Tariff Constraint</div>
+          <ul>
+            <li><span class="en">Tariffs are kept below full cost recovery for affordability, limiting internal funding.</span><span class="ko">요금이 부담 완화를 위해 원가 이하로 유지되어 자체 재원이 제한됩니다.</span></li>
+            <li><span class="en">Aging infrastructure and water loss pressure efficiency and reliability.</span><span class="ko">노후 인프라와 누수가 효율과 안정성을 압박합니다.</span></li>
+            <li><span class="en">Key lever: smart-water efficiency at home plus exportable engineering abroad.</span><span class="ko">핵심 레버는 국내 스마트 물관리 효율화와 해외 수출형 엔지니어링입니다.</span></li>
+          </ul>
+        </div>
+        <div class="track-grid">
+          <div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Efficiency &amp; drought resilience</span><span class="ko">효율화·가뭄 대응</span></div><p><span class="en">Cut non-revenue water with smart networks, secure supply against drought, and normalize tariffs gradually.</span><span class="ko">스마트 네트워크로 무수수율을 낮추고, 가뭄에 대비해 공급을 확보하며, 요금을 점진적으로 현실화합니다.</span></p></div>
+          <div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Smart water &amp; overseas projects</span><span class="ko">스마트 물·해외 사업</span></div><p><span class="en">Scale AI water tech (Digital Garam+) and export hydropower and water systems via BOT projects abroad.</span><span class="ko">AI 물 기술(Digital Garam+)을 키우고, BOT 방식으로 수력·물 시스템을 해외에 수출합니다.</span></p></div>
+        </div>
+        <div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div>
+        <div class="ap-grid">
+          <div class="ap"><div class="apt"><span class="en">Smart water</span><span class="ko">스마트 물관리</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Manual operations</span><span class="ko">수동 운영</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">AI &amp; digital twin</span><span class="ko">AI·디지털트윈</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Reduce loss</span><span class="ko">누수 저감</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">High water loss</span><span class="ko">높은 누수율</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Leak-cutting networks</span><span class="ko">누수 저감 네트워크</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Go global</span><span class="ko">해외 진출</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Domestic operator</span><span class="ko">국내 운영</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Overseas BOT projects</span><span class="ko">해외 BOT 사업</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight">
+        <li><span class="en">Capex stays high — PFAS, lead lines and aging mains keep rate bases and bills rising.</span><span class="ko">투자는 높은 수준을 유지합니다. PFAS·납관·노후 관로가 요금기저와 요금을 계속 끌어올립니다.</span></li>
+        <li><span class="en">Rate-case outcomes and the allowed ROE, not the market, decide returns.</span><span class="ko">수익은 시장이 아니라 요금 심의 결과와 허용 ROE가 정합니다.</span></li>
+        <li><span class="en">Climate-driven drought and new data-center demand reshape long-run supply planning.</span><span class="ko">기후로 인한 가뭄과 데이터센터의 새 수요가 장기 공급 계획을 다시 짭니다.</span></li>
+        <li><span class="en">In Korea, K-water's path runs through smart-water efficiency, tariff normalization and overseas exports.</span><span class="ko">한국에서 K-water의 길은 스마트 물관리 효율화, 요금 현실화, 해외 수출을 통과합니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://www.thebusinessresearchcompany.com/report/water-and-sewage-global-market-report">The Business Research Company — Water &amp; Sewage Global Market Report 2026</a></li>
+      <li><a href="https://www.macrotrends.net/stocks/charts/AWK/american-water-works/market-cap">MacroTrends — American Water Works market cap (2025)</a></li>
+      <li><a href="https://www.epa.gov/sdwa/proposed-pfoa-and-pfos-compliance-extension-rule">US EPA — Proposed PFOA/PFOS compliance extension rule (2026)</a></li>
+      <li><a href="https://www.europarl.europa.eu/news/en/press-room/20240408IPR20307/new-eu-rules-to-improve-urban-wastewater-treatment-and-reuse">European Parliament — Revised Urban Wastewater Treatment Directive</a></li>
+      <li><a href="https://www.koreaherald.com/article/10685840">The Korea Herald — K-water AI water tech at MWC 2026</a></li>
+      <li><a href="https://www.kwater.or.kr/eng/main.do">K-water — Korea Water Resources Corporation</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Water Utilities (GICS 551040) · Generated June 4, 2026. Public sources, rounded; informational only, not investment advice. K-water is shown as a state-owned proxy, not a listed peer.</span><span class="ko">디 인더스트리 브리프 · 수도·물 유틸리티(GICS 551040) · 2026년 6월 4일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다. K-water는 상장 동종 기업이 아니라 국영 대용 사례로 제시합니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>

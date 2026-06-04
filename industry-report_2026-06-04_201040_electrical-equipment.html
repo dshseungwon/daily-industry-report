@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Electrical Equipment · 전기설비 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#0e7c86;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#0e7c86);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Electrical Equipment</span><span class="ko">전기설비</span></div>
+    <div class="chips">
+      <button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button>
+      <button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button>
+      <button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button>
+      <button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button>
+      <button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button>
+      <button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button>
+      <button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button>
+    </div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 2 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 2번째</span></p>
+    <h1><span class="en">Electrical Equipment</span><span class="ko">전기설비</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Industrials · 201040</span>
+      <span class="pill">2026-06-04</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: Schneider Electric · Hyosung Heavy Industries</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p>
+        <span class="en">Electrical equipment makes the gear that moves and controls power — transformers, switchgear, motors and grid systems. After decades of steady, utility-paced demand, the industry has entered a supercycle: AI data centers, electrification and aging-grid replacement are colliding with a hard supply ceiling, and lead times on high-voltage transformers now stretch to four to five years. Scarcity, not demand, sets the pace, handing pricing power to anyone who can build. The global #1 by revenue, Schneider Electric (~$47B in 2025), spans the whole electrical stack from grid to data center; Korea's #1 by sales, Hyosung Heavy Industries, is one of fewer than five firms worldwide that can build ultra-high-voltage transformers and is riding record US orders. Both are detailed at the end.</span>
+        <span class="ko">전기설비 산업은 전력을 보내고 제어하는 장비, 즉 변압기·개폐기·전동기·전력망 시스템을 만듭니다. 수십 년간 유틸리티 수요에 맞춰 완만히 성장하던 이 산업은 이제 슈퍼사이클에 들어섰습니다. AI 데이터센터·전기화·노후 전력망 교체 수요가 한꺼번에 몰리는데 공급은 한계에 막혀, 고압 변압기의 납기가 4~5년까지 늘어났습니다. 이제는 수요가 아니라 공급 부족이 속도를 정하며, 만들 수 있는 기업이 가격 결정력을 쥡니다. 매출 기준 글로벌 1위 Schneider Electric(2025년 약 470억 달러)은 전력망부터 데이터센터까지 전 영역을 아우르고, 매출 기준 한국 1위 효성중공업은 초고압 변압기를 만들 수 있는 전 세계 5개 미만 기업 중 하나로 미국발 사상 최대 수주를 누리고 있습니다. 두 기업은 뒤에서 자세히 다룹니다.</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From copper to grid to the data hall</span><span class="ko">구리에서 전력망, 그리고 데이터센터로</span></h2>
+      <p class="lead">
+        <span class="en">This GICS industry (201040) covers makers of transformers, switchgear, motors and grid systems. Profit ≈ (units × ASP) + long-cycle service − copper, steel, plant and labor cost, with backlog and lead time now the decisive variables.</span>
+        <span class="ko">이 GICS 산업(201040)은 변압기·개폐기·전동기·전력망 시스템 제조사를 포괄합니다. 이익 ≈ (대수 × 판매가) + 장기 유지보수 − 구리·강판·설비·인건비로 볼 수 있으며, 이제는 수주잔고와 납기가 결정적 변수입니다.</span>
+      </p>
+      <div class="chain">
+        <div class="vc"><b><span class="en">Raw materials</span><span class="ko">원자재</span></b><span class="d"><span class="en">Copper, electrical steel, oil — cost and supply driver.</span><span class="ko">구리·전기강판·절연유. 원가와 공급의 변수입니다.</span></span></div>
+        <div class="vc"><b><span class="en">Components</span><span class="ko">부품</span></b><span class="d"><span class="en">Windings, bushings, breakers — the bottleneck parts.</span><span class="ko">권선·부싱·차단기. 병목이 되는 부품입니다.</span></span></div>
+        <div class="vc"><b><span class="en">Core equipment</span><span class="ko">핵심 장비</span></b><span class="d"><span class="en">Transformers, switchgear, motors — the differentiation core.</span><span class="ko">변압기·개폐기·전동기. 차별화의 핵심입니다.</span></span></div>
+        <div class="vc"><b><span class="en">Systems &amp; integration</span><span class="ko">시스템·통합</span></b><span class="d"><span class="en">Substations, HVDC, data-center power packaged together.</span><span class="ko">변전소·HVDC·데이터센터 전력을 묶어 공급합니다.</span></span></div>
+        <div class="vc"><b><span class="en">Service &amp; software</span><span class="ko">유지보수·SW</span></b><span class="d"><span class="en">Monitoring, retrofits — recurring, high-margin.</span><span class="ko">모니터링·개보수 등 반복적 고마진 수익입니다.</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A supercycle in grid &amp; power gear</span><span class="ko">전력망·전력설비의 슈퍼사이클</span></h2>
+      <div class="colchart">
+        <div class="col"><div class="col-val">$259B</div><div class="col-bar" data-h="78"></div><div class="col-lab">2025</div></div>
+        <div class="col"><div class="col-val">$275B</div><div class="col-bar" data-h="83"></div><div class="col-lab">2026E</div></div>
+        <div class="col"><div class="col-val">$293B</div><div class="col-bar" data-h="88"></div><div class="col-lab">2027E</div></div>
+        <div class="col"><div class="col-val">$311B</div><div class="col-bar" data-h="94"></div><div class="col-lab">2028E</div></div>
+        <div class="col"><div class="col-val">$331B</div><div class="col-bar" data-h="100"></div><div class="col-lab">2029E</div></div>
+      </div>
+      <p class="cap"><span class="en">Global transmission &amp; distribution equipment revenue, US$ billions, indicative. The market is ~$275B in 2026 and growing at a ~6.4% CAGR; switchgear and data-center substations grow even faster at 7%+.</span><span class="ko">글로벌 송배전 설비 매출, 단위 십억 달러, 추정치입니다. 시장은 2026년 약 2,750억 달러로 연 약 6.4% 성장하며, 개폐기와 데이터센터 변전 설비는 7% 이상으로 더 빠르게 성장합니다.</span></p>
+    </div>
+  </section>
+
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">A fragmented global field; Korea's big three lead at home</span><span class="ko">글로벌은 분산, 한국은 빅3 주도</span></h2>
+      <div class="pies">
+        <div class="pieblock">
+          <div class="pie-title"><span class="en">Global T&amp;D equipment — indicative 2025</span><span class="ko">글로벌 송배전 설비 — 2025년 추정</span></div>
+          <div class="pie" style="background:conic-gradient(#0e2a47 0 14%,#0e7c86 14% 26%,#ffb81c 26% 36%,#5aa9e6 36% 44%,#c9d4e3 44% 100%)"></div>
+          <div class="legend">
+            <div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>Schneider Electric<b>~14%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#0e7c86"></span>ABB / Hitachi Energy<b>~12%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Siemens Energy<b>~10%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Eaton<b>~8%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>~56%</b></div>
+          </div>
+        </div>
+        <div class="pieblock">
+          <div class="pie-title"><span class="en">Korea power-equipment sales — indicative</span><span class="ko">한국 전력설비 매출 — 추정</span></div>
+          <div class="pie" style="background:conic-gradient(#0047a0 0 38%,#0e7c86 38% 70%,#ffb81c 70% 92%,#c9d4e3 92% 100%)"></div>
+          <div class="legend">
+            <div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>Hyosung Heavy<b>~38%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#0e7c86"></span>HD Hyundai Electric<b>~32%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>LS ELECTRIC<b>~22%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>~8%</b></div>
+          </div>
+        </div>
+      </div>
+      <p class="cap"><span class="en">Global is fragmented — no player tops ~15%. In Korea, the big three (Hyosung Heavy, HD Hyundai Electric, LS ELECTRIC) posted a combined ~₩17.9T (~$12.3B) of 2025 sales, with Hyosung Heavy the leader by revenue.</span><span class="ko">글로벌은 분산되어 어느 기업도 약 15%를 넘지 못합니다. 한국에서는 빅3(효성중공업·HD현대일렉트릭·LS일렉트릭)가 2025년 합산 매출 약 17.9조 원(약 123억 달러)을 기록했으며, 매출 기준 선두는 효성중공업입니다.</span></p>
+    </div>
+  </section>
+
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal">
+      <div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">A few global majors and capable Korean firms, but demand outruns capacity.</span><span class="ko">소수의 글로벌 강자와 한국 기업이 경쟁하나, 수요가 생산능력을 앞지릅니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">High-voltage know-how, capital and certification make entry very hard.</span><span class="ko">고압 기술·자본·인증 탓에 진입이 매우 어렵습니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Copper and electrical-steel prices and scarcity pressure input costs.</span><span class="ko">구리·전기강판 가격과 부족이 원가를 압박합니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Utilities and hyperscalers must wait years, with little pricing leverage.</span><span class="ko">유틸리티·하이퍼스케일러가 수년을 기다려야 해 교섭력이 약합니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">No substitute for physical grid gear; electrification only deepens need.</span><span class="ko">물리적 전력 설비는 대체재가 없고, 전기화가 수요를 더욱 키웁니다.</span></p></div>
+    </div>
+    <p class="cap"><span class="en">Net: a rare moment of seller's market — high barriers and weak buyer power let makers capture the cycle.</span><span class="ko">종합하면 보기 드문 판매자 우위 국면으로, 높은 진입장벽과 약한 구매자 교섭력 덕에 제조사가 사이클을 누립니다.</span></p>
+  </section>
+
+  <section id="reg">
+    <p class="kicker"><span class="en">PESTEL &amp; regulation</span><span class="ko">PESTEL과 규제</span></p>
+    <h2><span class="en">Macro forces &amp; the latest rules</span><span class="ko">거시 환경과 최신 규제</span></h2>
+    <p class="mute"><span class="en">Technology and politics dominate: the AI build-out drives demand while grid-modernization mandates, industrial incentives and efficiency rules reshape what gets built. The fastest-moving lever is regulation, below.</span><span class="ko">기술과 정치가 핵심입니다. AI 투자가 수요를 이끄는 가운데, 전력망 현대화 의무·산업 인센티브·효율 규제가 무엇을 만들지를 바꿉니다. 가장 빠르게 움직이는 변수는 아래의 규제입니다.</span></p>
+    <p class="hint"><span class="en">Latest legislation &amp; regulatory issues — tap to expand.</span><span class="ko">최신 법안·규제 이슈 — 눌러서 펼치십시오.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2022–26</span><span class="ac-title"><span class="en">US IRA &amp; infrastructure incentives reshore gear</span><span class="ko">미국 IRA·인프라 인센티브, 설비 현지화 유도</span></span></div><div class="ac-body"><p class="why"><span class="en">The IRA, CHIPS Act and IIJA channel over $2T into electrification and grids, with incentives for US-made equipment. <b>Why it matters:</b> makers are building US plants to capture localized demand.</span><span class="ko">IRA·CHIPS법·IIJA가 전기화와 전력망에 2조 달러 이상을 투입하며 미국산 설비에 인센티브를 줍니다. <b>의미:</b> 제조사들이 현지 수요를 잡기 위해 미국에 공장을 짓고 있습니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">Data-center interconnection rules tighten</span><span class="ko">데이터센터 계통 연계 규제 강화</span></span></div><div class="ac-body"><p class="why"><span class="en">US regulators and utilities are rewriting interconnection and large-load rules as data centers strain the grid. <b>Why it matters:</b> approval timing now gates equipment orders as much as supply does.</span><span class="ko">데이터센터가 전력망을 압박하면서 미국 규제당국과 유틸리티가 계통 연계·대용량 부하 규정을 고치고 있습니다. <b>의미:</b> 이제 승인 시점이 공급만큼 설비 발주를 좌우합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">Efficiency &amp; SF6-free switchgear standards advance</span><span class="ko">효율·SF6 무사용 개폐기 기준 강화</span></span></div><div class="ac-body"><p class="why"><span class="en">Tighter transformer-efficiency and SF6-phase-out rules push redesigns toward greener gear. <b>Why it matters:</b> compliance favors makers with advanced, low-emission product lines.</span><span class="ko">변압기 효율 강화와 SF6 단계적 퇴출 규정이 친환경 설비로의 재설계를 압박합니다. <b>의미:</b> 저배출 첨단 제품군을 갖춘 제조사가 유리합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">Korea grid &amp; transmission build-out plan</span><span class="ko">한국 전력망·송전 확충 계획</span></span></div><div class="ac-body"><p class="why"><span class="en">Korea's long-term power plan and a special transmission act accelerate HVDC and grid build-out for renewables and data centers. <b>Why it matters:</b> it secures a strong domestic order base for the big three.</span><span class="ko">한국의 장기 전력계획과 송전망 특별법이 재생에너지·데이터센터를 위한 HVDC·전력망 확충을 가속합니다. <b>의미:</b> 빅3에 탄탄한 국내 수주 기반을 마련해 줍니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal">
+      <div class="kc"><span class="kn">1</span><div><b><span class="en">High-voltage technology</span><span class="ko">고압 기술력</span></b><p><span class="en">Few firms can build 765kV+ transformers and HVDC systems.</span><span class="ko">765kV급 변압기·HVDC를 만들 수 있는 기업은 소수입니다.</span></p></div></div>
+      <div class="kc"><span class="kn">2</span><div><b><span class="en">Capacity &amp; lead time</span><span class="ko">생산능력·납기</span></b><p><span class="en">Whoever can ship soonest wins the order in a four-year wait.</span><span class="ko">4년 대기 시장에서는 가장 빨리 납품하는 쪽이 수주합니다.</span></p></div></div>
+      <div class="kc"><span class="kn">3</span><div><b><span class="en">Local manufacturing</span><span class="ko">현지 생산</span></b><p><span class="en">US and EU plants capture incentives and beat tariffs.</span><span class="ko">미국·유럽 공장이 인센티브를 잡고 관세를 피합니다.</span></p></div></div>
+      <div class="kc"><span class="kn">4</span><div><b><span class="en">Input-cost control</span><span class="ko">원가 관리</span></b><p><span class="en">Securing copper and electrical steel protects margin.</span><span class="ko">구리·전기강판 확보가 마진을 지킵니다.</span></p></div></div>
+      <div class="kc"><span class="kn">5</span><div><b><span class="en">Data-center solutions</span><span class="ko">데이터센터 솔루션</span></b><p><span class="en">Packaged power for AI halls is the fastest-growing pool.</span><span class="ko">AI 데이터센터용 전력 패키지가 가장 빠르게 성장합니다.</span></p></div></div>
+      <div class="kc"><span class="kn">6</span><div><b><span class="en">Service &amp; software</span><span class="ko">유지보수·SW</span></b><p><span class="en">Monitoring and retrofits add recurring, high-margin revenue.</span><span class="ko">모니터링·개보수가 반복적 고마진 수익을 더합니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="news">
+    <p class="kicker"><span class="en">Recent issues &amp; news</span><span class="ko">최근 이슈 &amp; 뉴스</span></p>
+    <h2><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></h2>
+    <p class="hint"><span class="en">Tap for why it matters.</span><span class="ko">눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-05</span><span class="ac-title"><span class="en">Transformer lead times stretch to four years</span><span class="ko">변압기 납기, 4년까지 확대</span></span></div><div class="ac-body"><p class="why"><span class="en">High-power transformer lead times have ballooned from ~2 years to as long as four to five, with backlogs across the sector. <b>Why it matters:</b> scarcity, not demand, now sets the pace and the price.</span><span class="ko">고압 변압기 납기가 약 2년에서 4~5년까지 늘었고 업계 전반에 수주잔고가 쌓였습니다. <b>의미:</b> 이제 수요가 아니라 공급 부족이 속도와 가격을 정합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-04</span><span class="ac-title"><span class="en">Half of US data-center builds delayed on power gear</span><span class="ko">미국 데이터센터 건설 절반, 전력설비로 지연</span></span></div><div class="ac-body"><p class="why"><span class="en">Of ~140 large US data-center projects (~12 GW) due in 2026, only about a third are under construction, gated by transformers and switchgear. <b>Why it matters:</b> electrical gear is under 10% of cost but 100% of the bottleneck.</span><span class="ko">2026년 가동 예정인 약 140개(약 12GW) 미국 대형 데이터센터 중 착공한 곳은 약 3분의 1에 불과하며, 변압기·개폐기가 발목을 잡습니다. <b>의미:</b> 전력 설비는 원가의 10% 미만이지만 병목의 100%입니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026-05</span><span class="ac-title"><span class="en">Korean makers clinch record US orders on AI boom</span><span class="ko">한국 제조사, AI 붐 타고 미국 사상 최대 수주</span></span></div><div class="ac-body"><p class="why"><span class="en">Hyosung Heavy, HD Hyundai Electric and LS ELECTRIC posted record backlogs as US grid and AI demand surged; transformer exports hit fresh highs. <b>Why it matters:</b> Korea's big three are prime beneficiaries of the global shortage.</span><span class="ko">효성중공업·HD현대일렉트릭·LS일렉트릭이 미국 전력망·AI 수요 급증으로 사상 최대 수주잔고를 기록했고, 변압기 수출도 신기록을 세웠습니다. <b>의미:</b> 한국 빅3가 글로벌 공급 부족의 최대 수혜자입니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">Makers race to add US transformer capacity</span><span class="ko">제조사들, 미국 변압기 증설 경쟁</span></span></div><div class="ac-body"><p class="why"><span class="en">Hyosung, HD Hyundai Electric and Schneider are expanding US plants to localize supply and capture incentives. <b>Why it matters:</b> the supercycle is now widely seen as a structural boom running through 2035.</span><span class="ko">효성·HD현대일렉트릭·슈나이더가 공급 현지화와 인센티브 확보를 위해 미국 공장을 증설하고 있습니다. <b>의미:</b> 이번 슈퍼사이클은 2035년까지 이어질 구조적 호황으로 널리 평가됩니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <!-- ===== PLAYERS (secondary analysis) ===== -->
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, with a strategy read</span><span class="ko">두 리더, 전략 관점으로</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader gets a short consulting-style read: diagnosis → two-track strategy → action plans.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 컨설팅식으로 짧게 진단합니다: 진단 → Two-Track 전략 → 액션 플랜 순서입니다.</span></p>
+
+    <div class="gl">
+      <div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1 · by revenue</span><span class="ko">글로벌 1위 · 매출 기준</span></div><h3>Schneider Electric</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">The world's largest electrical-equipment company by revenue (~$47B in 2025), spanning grid, building, industrial and data-center power. ABB leads on market cap (~$194B).</span><span class="ko">매출 기준 세계 최대 전기설비 기업(2025년 약 470억 달러)으로, 전력망·빌딩·산업·데이터센터 전력을 아우릅니다. 시가총액 1위는 ABB(약 1,940억 달러)입니다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">~$47B</div><div class="l"><span class="en">2025 revenue</span><span class="ko">2025년 매출</span></div></div>
+          <div class="stat"><div class="n">~14%</div><div class="l"><span class="en">Global T&amp;D share</span><span class="ko">글로벌 송배전 점유율</span></div></div>
+          <div class="stat"><div class="n">$300M</div><div class="l"><span class="en">2025 US capacity invest</span><span class="ko">2025 미국 증설 투자</span></div></div>
+          <div class="stat"><div class="n">100+</div><div class="l"><span class="en">Countries served</span><span class="ko">진출 국가</span></div></div>
+        </div>
+        <div class="diag">
+          <div class="dh"><span class="en">Diagnosis — broad portfolio, but capacity gates the upside</span><span class="ko">진단 — 넓은 포트폴리오, 그러나 생산능력이 상승을 제약합니다</span></div>
+          <div class="formula">Revenue = (Capacity × Utilization × ASP) + Recurring Service &amp; Software</div>
+          <ul>
+            <li><span class="en">Demand is overflowing; the binding constraint is plant capacity and lead time.</span><span class="ko">수요는 넘치고, 진짜 제약은 공장 생산능력과 납기입니다.</span></li>
+            <li><span class="en">Data-center power and grid software are the fastest, highest-margin pools.</span><span class="ko">데이터센터 전력과 전력망 소프트웨어가 가장 빠르고 고마진인 영역입니다.</span></li>
+            <li><span class="en">Key lever: add localized capacity and grow software/service share, not just volume.</span><span class="ko">핵심 레버는 단순 물량이 아니라 현지 생산능력 확충과 소프트웨어·서비스 비중 확대입니다.</span></li>
+          </ul>
+        </div>
+        <div class="track-grid">
+          <div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Defend the broad installed base</span><span class="ko">광범위한 설치 기반 방어</span></div><p><span class="en">Hold the #1 revenue position, lock long-cycle service contracts, and meet efficiency and SF6-free standards across the line.</span><span class="ko">매출 1위 지위를 지키고, 장기 유지보수 계약을 확보하며, 전 제품에서 효율·SF6 무사용 기준을 충족합니다.</span></p></div>
+          <div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Scale data-center power &amp; grid software</span><span class="ko">데이터센터 전력·전력망 SW 확대</span></div><p><span class="en">Build US/EU capacity, win AI data-center power packages, and grow the One Digital Grid software platform.</span><span class="ko">미국·유럽 생산능력을 늘리고, AI 데이터센터 전력 패키지를 수주하며, One Digital Grid 소프트웨어 플랫폼을 키웁니다.</span></p></div>
+        </div>
+        <div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div>
+        <div class="ap-grid">
+          <div class="ap"><div class="apt"><span class="en">Add capacity</span><span class="ko">생산능력 확충</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Lead-time limited</span><span class="ko">납기 제약</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Localized plants</span><span class="ko">현지 공장 확충</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Move up stack</span><span class="ko">상위 전환</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Hardware sales</span><span class="ko">하드웨어 판매</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Grid software</span><span class="ko">전력망 소프트웨어</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Target AI demand</span><span class="ko">AI 수요 공략</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Broad markets</span><span class="ko">범용 시장</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Data-center power</span><span class="ko">데이터센터 전력</span></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kr" style="margin-top:14px">
+      <div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1 · by sales</span><span class="ko">한국 1위 · 매출 기준</span></div><h3>Hyosung Heavy Industries</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">Korea's largest power-equipment maker by sales and one of fewer than five firms worldwide that can build ultra-high-voltage transformers. HD Hyundai Electric is the close runner-up.</span><span class="ko">매출 기준 한국 최대 전력설비 기업으로, 초고압 변압기를 만들 수 있는 전 세계 5개 미만 기업 중 하나입니다. HD현대일렉트릭이 근소한 2위입니다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">+46.5%</div><div class="l"><span class="en">2025 op-profit growth</span><span class="ko">2025 영업이익 증가율</span></div></div>
+          <div class="stat"><div class="n">250+</div><div class="l"><span class="en">Memphis units by 2027</span><span class="ko">멤피스 생산 목표(2027)</span></div></div>
+          <div class="stat"><div class="n">&lt;5</div><div class="l"><span class="en">Firms making 765kV+</span><span class="ko">765kV급 제조 기업 수</span></div></div>
+          <div class="stat"><div class="n">~₩17.9T</div><div class="l"><span class="en">Big-3 2025 sales</span><span class="ko">빅3 2025 매출</span></div></div>
+        </div>
+        <div class="diag">
+          <div class="dh"><span class="en">Diagnosis — record cycle, but concentrated in transformers</span><span class="ko">진단 — 사상 최대 호황, 그러나 변압기에 집중되어 있습니다</span></div>
+          <div class="formula">Profit ≈ UHV Transformers (US boom↑) ≫ Other power gear</div>
+          <ul>
+            <li><span class="en">US grid and AI demand drive record orders and rising margins.</span><span class="ko">미국 전력망·AI 수요가 사상 최대 수주와 마진 개선을 이끕니다.</span></li>
+            <li><span class="en">Earnings lean heavily on the transformer cycle and US exposure.</span><span class="ko">실적이 변압기 사이클과 미국 익스포저에 크게 기댑니다.</span></li>
+            <li><span class="en">Key lever: convert the order boom into durable capacity and broader product depth.</span><span class="ko">핵심 레버는 수주 호황을 지속 가능한 생산능력과 제품 다변화로 전환하는 것입니다.</span></li>
+          </ul>
+        </div>
+        <div class="track-grid">
+          <div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Maximize the transformer supercycle</span><span class="ko">변압기 슈퍼사이클 극대화</span></div><p><span class="en">Run plants near full, prioritize high-margin UHV orders, and defend the 765kV technology lead.</span><span class="ko">공장을 풀가동에 가깝게 돌리고, 고마진 초고압 수주를 우선하며, 765kV 기술 우위를 지킵니다.</span></p></div>
+          <div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Localize in the US &amp; widen the range</span><span class="ko">미국 현지화·제품군 확대</span></div><p><span class="en">Ramp the Memphis plant, lock multi-year US contracts, and extend into HVDC and grid systems.</span><span class="ko">멤피스 공장을 증설하고, 다년 미국 계약을 확보하며, HVDC·전력망 시스템으로 확장합니다.</span></p></div>
+        </div>
+        <div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div>
+        <div class="ap-grid">
+          <div class="ap"><div class="apt"><span class="en">Expand capacity</span><span class="ko">생산능력 확대</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Korea-centric</span><span class="ko">한국 중심 생산</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">US localization</span><span class="ko">미국 현지화</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Lock backlog</span><span class="ko">수주잔고 확보</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Spot orders</span><span class="ko">단발 수주</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Multi-year deals</span><span class="ko">다년 장기 계약</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Broaden</span><span class="ko">제품 다변화</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Transformers</span><span class="ko">변압기 집중</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">HVDC &amp; systems</span><span class="ko">HVDC·시스템</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight">
+        <li><span class="en">The supercycle looks structural, widely seen as running through 2035 on AI, electrification and grid replacement.</span><span class="ko">이번 슈퍼사이클은 구조적으로 보이며, AI·전기화·전력망 교체에 힘입어 2035년까지 이어질 것으로 널리 전망됩니다.</span></li>
+        <li><span class="en">Capacity and lead time, not demand, are the binding constraint — and the main reason to localize plants.</span><span class="ko">제약은 수요가 아니라 생산능력과 납기이며, 이것이 공장 현지화의 가장 큰 이유입니다.</span></li>
+        <li><span class="en">Input costs (copper, electrical steel) and tariffs can squeeze margin even amid strong demand.</span><span class="ko">원자재(구리·전기강판)와 관세가 강한 수요 속에서도 마진을 압박할 수 있습니다.</span></li>
+        <li><span class="en">A cyclical risk remains: orders concentrated in transformers and US demand could reverse if the AI build-out stalls.</span><span class="ko">변압기와 미국 수요에 집중된 수주는 AI 투자가 둔화하면 되돌아갈 수 있는 사이클 리스크가 남아 있습니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://www.researchnester.com/reports/electric-power-transmission-and-distribution-equipment-market/6633">Research Nester — T&amp;D equipment market size &amp; CAGR (2026)</a></li>
+      <li><a href="https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/">pv magazine USA — Transformer lead times stretch to four years (2026)</a></li>
+      <li><a href="https://en.sedaily.com/news/2026/05/01/korean-power-equipment-makers-clinch-record-orders-on-us">Seoul Economic Daily — Korean makers clinch record US orders (2026)</a></li>
+      <li><a href="https://www.koreatimes.co.kr/business/companies/20260507/hyosung-hd-hyundai-ls-benefit-from-ai-supercycle">Korea Times — Hyosung, HD Hyundai, LS benefit from AI supercycle (2026)</a></li>
+      <li><a href="https://companiesmarketcap.com/schneider-electric/revenue/">CompaniesMarketCap — Schneider Electric revenue</a></li>
+      <li><a href="https://datacentremagazine.com/data-centres/schneider-electric-700m-supply-chain-investment">Data Centre Magazine — Schneider US supply-chain investment</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Electrical Equipment (GICS 201040) · Generated June 4, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 전기설비(GICS 201040) · 2026년 6월 4일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>

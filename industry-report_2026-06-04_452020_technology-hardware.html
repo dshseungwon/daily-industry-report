@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technology Hardware, Storage & Peripherals · 기술 하드웨어 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Tech Hardware</span><span class="ko">기술 하드웨어</span></div>
+    <div class="chips">
+      <button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button>
+      <button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button>
+      <button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button>
+      <button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button>
+      <button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button>
+      <button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button>
+      <button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button>
+    </div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 6 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 6번째</span></p>
+    <h1><span class="en">Technology Hardware, Storage &amp; Peripherals</span><span class="ko">기술 하드웨어·스토리지·주변기기</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Information Technology · 452020</span>
+      <span class="pill">2026-06-04</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: Apple · Samsung Electronics</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p>
+        <span class="en">Technology hardware turns silicon and design into devices — phones, PCs and peripherals. Growth is mature and unit volumes are flat, so value now comes from premium ASP, services attached to a large installed base, and AI features that make devices feel new. An AI-driven memory shortage is the swing factor of 2026: it has squeezed device makers' costs while making memory itself the profit center. The global #1, Apple, monetizes the world's most valuable installed base through services; Korea's #1, Samsung Electronics, leads in devices but now earns most of its profit from memory chips. Both are detailed at the end.</span>
+        <span class="ko">기술 하드웨어 산업은 반도체와 설계를 기기(스마트폰·PC·주변기기)로 바꿉니다. 성장은 성숙기에 접어들었고 판매 대수는 정체되어, 가치는 이제 프리미엄 판매가(ASP), 대규모 설치 기반에 붙는 서비스, 그리고 기기를 새롭게 느끼게 하는 AI 기능에서 나옵니다. 2026년의 핵심 변수는 AI발 메모리 공급 부족입니다. 이는 기기 제조사의 원가를 압박하는 동시에 메모리 자체를 수익의 중심으로 끌어올렸습니다. 글로벌 1위 Apple은 세계에서 가장 가치 있는 설치 기반을 서비스로 수익화하고, 한국 1위 삼성전자는 기기에서 앞서지만 이익의 대부분을 메모리에서 거둡니다. 두 기업은 뒤에서 자세히 다룹니다.</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From silicon to device to services</span><span class="ko">반도체에서 기기, 그리고 서비스로</span></h2>
+      <p class="lead">
+        <span class="en">This GICS industry (452020) covers makers of phones, PCs, storage and peripherals. Profit ≈ (units × ASP) + services on the installed base − component, manufacturing and distribution cost.</span>
+        <span class="ko">이 GICS 산업(452020)은 스마트폰·PC·스토리지·주변기기 제조사를 포괄합니다. 이익 ≈ (판매 대수 × ASP) + 설치 기반에 붙는 서비스 − 부품·제조·유통 비용으로 볼 수 있습니다.</span>
+      </p>
+      <div class="chain">
+        <div class="vc"><b><span class="en">Components</span><span class="ko">부품</span></b><span class="d"><span class="en">Chips, memory, displays — the cost and scarcity driver.</span><span class="ko">반도체·메모리·디스플레이. 원가와 공급의 변수입니다.</span></span></div>
+        <div class="vc"><b><span class="en">Design &amp; IP</span><span class="ko">설계·IP</span></b><span class="d"><span class="en">Silicon and product design; the differentiation core.</span><span class="ko">자체 칩과 제품 설계. 차별화의 핵심입니다.</span></span></div>
+        <div class="vc"><b><span class="en">Manufacturing</span><span class="ko">제조</span></b><span class="d"><span class="en">In-house or outsourced assembly at scale.</span><span class="ko">자체 또는 위탁 대량 조립입니다.</span></span></div>
+        <div class="vc"><b><span class="en">Devices &amp; ASP</span><span class="ko">기기·ASP</span></b><span class="d"><span class="en">Premium mix lifts average selling price.</span><span class="ko">프리미엄 비중이 평균 판매가를 끌어올립니다.</span></span></div>
+        <div class="vc"><b><span class="en">Services &amp; ecosystem</span><span class="ko">서비스·생태계</span></b><span class="d"><span class="en">App stores, subscriptions — recurring, high-margin.</span><span class="ko">앱스토어·구독 등 반복적 고마진 수익입니다.</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A large, slow-growing devices market</span><span class="ko">크지만 더디게 자라는 기기 시장</span></h2>
+      <div class="colchart">
+        <div class="col"><div class="col-val">$1.05T</div><div class="col-bar" data-h="84"></div><div class="col-lab">2024</div></div>
+        <div class="col"><div class="col-val">$1.10T</div><div class="col-bar" data-h="88"></div><div class="col-lab">2025</div></div>
+        <div class="col"><div class="col-val">$1.14T</div><div class="col-bar" data-h="91"></div><div class="col-lab">2026E</div></div>
+        <div class="col"><div class="col-val">$1.19T</div><div class="col-bar" data-h="95"></div><div class="col-lab">2027E</div></div>
+        <div class="col"><div class="col-val">$1.25T</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div>
+      </div>
+      <p class="cap"><span class="en">Global devices revenue (smartphones + PCs + tablets), US$ trillions, indicative. Low-single-digit growth; smartphone shipments actually fell ~6% in Q1 2026 on the AI memory shortage.</span><span class="ko">글로벌 기기 매출(스마트폰+PC+태블릿), 단위 조 달러, 추정치입니다. 성장은 한 자릿수 초반에 그치며, 2026년 1분기 스마트폰 출하량은 AI 메모리 부족으로 약 6% 감소했습니다.</span></p>
+    </div>
+  </section>
+
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">A tight global race; Samsung dominates at home</span><span class="ko">글로벌은 초접전, 안방은 삼성 우위</span></h2>
+      <div class="pies">
+        <div class="pieblock">
+          <div class="pie-title"><span class="en">Global smartphone share — Q1 2026</span><span class="ko">글로벌 스마트폰 점유율 — 2026년 1분기</span></div>
+          <div class="pie" style="background:conic-gradient(#0e2a47 0 21.2%,#117aca 21.2% 42.2%,#ffb81c 42.2% 55.9%,#c9d4e3 55.9% 100%)"></div>
+          <div class="legend">
+            <div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>Samsung<b>21.2%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Apple<b>21.0%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Xiaomi<b>13.7%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>44.1%</b></div>
+          </div>
+        </div>
+        <div class="pieblock">
+          <div class="pie-title"><span class="en">Korea smartphone share — indicative</span><span class="ko">한국 스마트폰 점유율 — 추정</span></div>
+          <div class="pie" style="background:conic-gradient(#0047a0 0 72%,#117aca 72% 97%,#c9d4e3 97% 100%)"></div>
+          <div class="legend">
+            <div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>Samsung<b>~72%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Apple<b>~25%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>~3%</b></div>
+          </div>
+        </div>
+      </div>
+      <p class="cap"><span class="en">Samsung (21.2%) edged Apple (21.0%) on Q1 2026 units, but Apple led on revenue (+22% YoY). In Korea, Samsung holds a commanding ~70%+ share.</span><span class="ko">2026년 1분기 대수 기준으로 삼성(21.2%)이 애플(21.0%)을 근소하게 앞섰으나, 매출은 애플이 전년比 +22%로 우위였습니다. 한국에서는 삼성이 약 70% 이상으로 압도적입니다.</span></p>
+    </div>
+  </section>
+
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal">
+      <div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Apple, Samsung and Chinese brands fight on a near-flat market.</span><span class="ko">애플·삼성·중국 브랜드가 정체된 시장에서 치열하게 경쟁합니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Scale, silicon and ecosystems make entry very hard.</span><span class="ko">규모·자체 칩·생태계 탓에 진입이 매우 어렵습니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">The AI memory shortage hands chip suppliers pricing power.</span><span class="ko">AI 메모리 부족으로 반도체 공급자가 가격 결정력을 쥐고 있습니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Ecosystem lock-in offsets price-sensitive, informed buyers.</span><span class="ko">생태계 잠금효과가 가격에 민감한 소비자를 일부 상쇄합니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Longer replacement cycles and cloud/AI shift usage off-device.</span><span class="ko">교체 주기가 길어지고 클라우드·AI가 사용을 기기 밖으로 옮깁니다.</span></p></div>
+    </div>
+    <p class="cap"><span class="en">Net: high barriers protect incumbents, but suppliers and a flat market cap the upside.</span><span class="ko">종합하면 높은 진입장벽이 기존 강자를 보호하지만, 공급자와 정체된 시장이 상승 여력을 제한합니다.</span></p>
+  </section>
+
+  <section id="reg">
+    <p class="kicker"><span class="en">PESTEL &amp; regulation</span><span class="ko">PESTEL과 규제</span></p>
+    <h2><span class="en">Macro forces &amp; the latest rules</span><span class="ko">거시 환경과 최신 규제</span></h2>
+    <p class="mute"><span class="en">Technology and politics dominate: the AI cycle drives demand and the component squeeze, while trade policy and platform regulation reshape economics. The fastest-moving lever is regulation, below.</span><span class="ko">기술과 정치가 핵심입니다. AI 사이클이 수요와 부품 부족을 동시에 이끌고, 무역 정책과 플랫폼 규제가 수익 구조를 바꿉니다. 가장 빠르게 움직이는 변수는 아래의 규제입니다.</span></p>
+    <p class="hint"><span class="en">Latest legislation &amp; regulatory issues — tap to expand.</span><span class="ko">최신 법안·규제 이슈 — 눌러서 펼치십시오.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2024–26</span><span class="ac-title"><span class="en">EU Digital Markets Act forces App Store opening</span><span class="ko">EU 디지털시장법(DMA), 앱스토어 개방 강제</span></span></div><div class="ac-body"><p class="why"><span class="en">The DMA requires sideloading and alternative payments, pressuring Apple's services economics. <b>Why it matters:</b> the highest-margin profit pool faces structural rules.</span><span class="ko">DMA는 사이드로딩과 대체 결제를 의무화하여 Apple의 서비스 수익 구조를 압박합니다. <b>의미:</b> 가장 고마진인 수익원이 구조적 규제에 직면합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">US tariffs &amp; supply-chain reshoring</span><span class="ko">미국 관세와 공급망 재편</span></span></div><div class="ac-body"><p class="why"><span class="en">Tariffs and export controls push device assembly out of China and raise costs. <b>Why it matters:</b> sourcing and pricing strategy become a board-level issue.</span><span class="ko">관세와 수출 통제가 기기 조립을 중국 밖으로 밀어내고 원가를 높입니다. <b>의미:</b> 조달과 가격 전략이 이사회 차원의 과제가 됩니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">AI &amp; on-device privacy rules tighten</span><span class="ko">AI·온디바이스 개인정보 규제 강화</span></span></div><div class="ac-body"><p class="why"><span class="en">AI Act-style rules and privacy regimes shape how on-device AI can use data. <b>Why it matters:</b> AI features must be built privacy-first to ship globally.</span><span class="ko">AI법류 규정과 개인정보 체계가 온디바이스 AI의 데이터 활용 방식을 규정합니다. <b>의미:</b> AI 기능은 글로벌 출시를 위해 개인정보 보호를 우선해 설계해야 합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">Right-to-repair &amp; eco rules spread</span><span class="ko">수리할 권리·친환경 규제 확산</span></span></div><div class="ac-body"><p class="why"><span class="en">Repairability, USB-C and recycling mandates affect design and margins. <b>Why it matters:</b> hardware design choices are increasingly set by regulators.</span><span class="ko">수리 용이성·USB-C·재활용 의무가 설계와 마진에 영향을 줍니다. <b>의미:</b> 하드웨어 설계 선택을 규제당국이 점점 더 좌우합니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal">
+      <div class="kc"><span class="kn">1</span><div><b><span class="en">In-house silicon</span><span class="ko">자체 반도체</span></b><p><span class="en">Custom chips set performance, cost and differentiation.</span><span class="ko">자체 칩이 성능·원가·차별화를 좌우합니다.</span></p></div></div>
+      <div class="kc"><span class="kn">2</span><div><b><span class="en">Component security</span><span class="ko">부품 확보력</span></b><p><span class="en">Locking memory and display supply is decisive in a shortage.</span><span class="ko">메모리·디스플레이 물량 확보가 공급 부족기에 결정적입니다.</span></p></div></div>
+      <div class="kc"><span class="kn">3</span><div><b><span class="en">Ecosystem &amp; services</span><span class="ko">생태계·서비스</span></b><p><span class="en">Recurring services lift margin and retention.</span><span class="ko">반복 서비스가 마진과 고객 유지를 끌어올립니다.</span></p></div></div>
+      <div class="kc"><span class="kn">4</span><div><b><span class="en">Premium brand &amp; ASP</span><span class="ko">프리미엄 브랜드·ASP</span></b><p><span class="en">Brand power sustains price in a flat market.</span><span class="ko">브랜드 파워가 정체된 시장에서 가격을 지탱합니다.</span></p></div></div>
+      <div class="kc"><span class="kn">5</span><div><b><span class="en">On-device AI experience</span><span class="ko">온디바이스 AI 경험</span></b><p><span class="en">Useful AI features are the new upgrade reason.</span><span class="ko">쓸모 있는 AI 기능이 새로운 교체 이유가 됩니다.</span></p></div></div>
+      <div class="kc"><span class="kn">6</span><div><b><span class="en">Scale manufacturing</span><span class="ko">대량 제조 역량</span></b><p><span class="en">Cost and quality at volume protect margin.</span><span class="ko">대량 생산의 원가·품질이 마진을 지킵니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="news">
+    <p class="kicker"><span class="en">Recent issues &amp; news</span><span class="ko">최근 이슈 &amp; 뉴스</span></p>
+    <h2><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></h2>
+    <p class="hint"><span class="en">Tap for why it matters.</span><span class="ko">눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Q1 2026</span><span class="ac-title"><span class="en">AI memory shortage cuts smartphone shipments ~6%</span><span class="ko">AI 메모리 부족으로 스마트폰 출하 약 6% 감소</span></span></div><div class="ac-body"><p class="why"><span class="en">HBM demand from AI servers starved consumer devices of memory. <b>Why it matters:</b> components, not demand, now set the ceiling on volumes.</span><span class="ko">AI 서버용 HBM 수요가 소비자 기기용 메모리를 잠식했습니다. <b>의미:</b> 이제 수요가 아니라 부품이 판매 대수의 상한을 정합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Q1 2026</span><span class="ac-title"><span class="en">Samsung's profit goes ~94% semiconductors</span><span class="ko">삼성 이익의 약 94%가 반도체</span></span></div><div class="ac-body"><p class="why"><span class="en">Semiconductor operating profit grew dramatically as memory boomed; revenue hit a record ₩133.9T. <b>Why it matters:</b> Samsung is now a memory company that also makes devices.</span><span class="ko">메모리 호황으로 반도체 영업이익이 급증했고 매출은 사상 최대 ₩133.9조를 기록했습니다. <b>의미:</b> 삼성은 이제 기기도 만드는 '메모리 회사'에 가깝습니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Q1 2026</span><span class="ac-title"><span class="en">Apple takes a first-ever Q1 shipment crown</span><span class="ko">애플, 사상 첫 1분기 출하 1위</span></span></div><div class="ac-body"><p class="why"><span class="en">Apple's revenue rose 22% and it led Q1 shipments for the first time. <b>Why it matters:</b> premium demand and services proved most resilient to the squeeze.</span><span class="ko">애플 매출이 22% 늘며 처음으로 1분기 출하 1위에 올랐습니다. <b>의미:</b> 프리미엄 수요와 서비스가 공급난에 가장 잘 버텼습니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">On-device AI becomes the upgrade pitch</span><span class="ko">온디바이스 AI가 교체의 명분으로</span></span></div><div class="ac-body"><p class="why"><span class="en">Galaxy AI and Apple Intelligence push AI as the reason to upgrade. <b>Why it matters:</b> software experience, not specs, now drives replacement.</span><span class="ko">갤럭시 AI와 애플 인텔리전스가 AI를 교체 이유로 내세웁니다. <b>의미:</b> 이제 스펙이 아니라 소프트웨어 경험이 교체를 이끕니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <!-- ===== PLAYERS (secondary analysis) ===== -->
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, with a strategy read</span><span class="ko">두 리더, 전략 관점으로</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader gets a short consulting-style read: diagnosis → two-track strategy → action plans.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 컨설팅식으로 짧게 진단합니다: 진단 → Two-Track 전략 → 액션 플랜 순서입니다.</span></p>
+
+    <div class="gl">
+      <div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>Apple</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">The world's most valuable hardware company, monetizing ~2.3B active devices through services.</span><span class="ko">세계에서 가장 가치 있는 하드웨어 기업으로, 약 23억 대의 활성 기기를 서비스로 수익화합니다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">$111B</div><div class="l"><span class="en">Q2 FY26 revenue (+17%)</span><span class="ko">분기 매출 (+17%)</span></div></div>
+          <div class="stat"><div class="n">+22%</div><div class="l"><span class="en">iPhone revenue YoY</span><span class="ko">아이폰 매출 전년比</span></div></div>
+          <div class="stat"><div class="n">~21%</div><div class="l"><span class="en">Global phone share</span><span class="ko">글로벌 폰 점유율</span></div></div>
+          <div class="stat"><div class="n">~2.3B</div><div class="l"><span class="en">Active devices</span><span class="ko">활성 기기</span></div></div>
+        </div>
+        <div class="diag">
+          <div class="dh"><span class="en">Diagnosis — growth leans on a mature iPhone + Services</span><span class="ko">진단 — 성장이 성숙한 아이폰과 서비스에 기대고 있습니다</span></div>
+          <div class="formula">Revenue = (Units × ASP) + Services ARPU × Installed Base</div>
+          <ul>
+            <li><span class="en">Units are flat; growth comes from ASP and Services on the installed base.</span><span class="ko">판매 대수는 정체되어, 성장은 ASP와 설치 기반 서비스에서 나옵니다.</span></li>
+            <li><span class="en">AI perception lags rivals; memory costs pressure hardware margin.</span><span class="ko">AI 인식은 경쟁사에 뒤처지고, 메모리 원가가 하드웨어 마진을 누릅니다.</span></li>
+            <li><span class="en">Key lever: lift experiential value (AI) and Services ARPU, not unit count.</span><span class="ko">핵심 레버는 판매 대수가 아니라 경험적 가치(AI)와 서비스 ARPU를 높이는 것입니다.</span></li>
+          </ul>
+        </div>
+        <div class="track-grid">
+          <div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Defend the premium &amp; Services flywheel</span><span class="ko">프리미엄과 서비스 플라이휠 방어</span></div><p><span class="en">Hold ASP, deepen Services ARPU, and lock the installed base despite App Store regulation.</span><span class="ko">ASP를 지키고 서비스 ARPU를 키우며, 앱스토어 규제 속에서도 설치 기반을 단단히 유지합니다.</span></p></div>
+          <div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Win on-device AI &amp; new categories</span><span class="ko">온디바이스 AI와 신규 카테고리 선점</span></div><p><span class="en">Make Apple Intelligence the reason to upgrade and grow wearables, health and spatial computing.</span><span class="ko">애플 인텔리전스를 교체의 이유로 만들고, 웨어러블·헬스·공간 컴퓨팅을 키웁니다.</span></p></div>
+        </div>
+        <div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div>
+        <div class="ap-grid">
+          <div class="ap"><div class="apt"><span class="en">Monetize the base</span><span class="ko">설치 기반 수익화</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Device sales</span><span class="ko">기기 판매 의존</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Services revenue</span><span class="ko">설치기반 서비스 수익</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Differentiate</span><span class="ko">차별화</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Spec race</span><span class="ko">기능·스펙 경쟁</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">AI experience</span><span class="ko">AI 경험 차별화</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Expand</span><span class="ko">확장</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">One form factor</span><span class="ko">단일 폼팩터</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">New categories</span><span class="ko">신규 카테고리</span></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kr" style="margin-top:14px">
+      <div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>Samsung Electronics</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">Korea's largest company — a devices leader whose profit now comes overwhelmingly from memory chips.</span><span class="ko">한국 최대 기업으로, 기기 시장의 선두이지만 이익의 대부분을 이제 메모리 반도체에서 거둡니다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">₩133.9T</div><div class="l"><span class="en">Q1'26 revenue (record)</span><span class="ko">1분기 매출 (사상 최대)</span></div></div>
+          <div class="stat"><div class="n">~94%</div><div class="l"><span class="en">Profit from chips</span><span class="ko">이익 중 반도체 비중</span></div></div>
+          <div class="stat"><div class="n">21.2%</div><div class="l"><span class="en">Global phone share</span><span class="ko">글로벌 폰 점유율</span></div></div>
+          <div class="stat"><div class="n">₩333.6T</div><div class="l"><span class="en">2025 revenue</span><span class="ko">2025년 매출</span></div></div>
+        </div>
+        <div class="diag">
+          <div class="dh"><span class="en">Diagnosis — profit is concentrated in the memory cycle</span><span class="ko">진단 — 이익이 메모리 사이클에 집중되어 있습니다</span></div>
+          <div class="formula">Profit ≈ Memory (HBM↑) ≫ Devices (thin margin)</div>
+          <ul>
+            <li><span class="en">Memory and HBM drive ~94% of profit — powerful but cyclical.</span><span class="ko">메모리와 HBM이 이익의 약 94%를 만들어 강력하지만 경기 변동에 취약합니다.</span></li>
+            <li><span class="en">Device margins are thin and AI experience trails Apple's perception.</span><span class="ko">기기 마진은 얇고, AI 경험은 인식 측면에서 애플에 뒤처집니다.</span></li>
+            <li><span class="en">Key lever: ride AI-memory leadership while rebuilding device value.</span><span class="ko">핵심 레버는 AI 메모리 리더십을 활용하면서 기기의 가치를 다시 세우는 것입니다.</span></li>
+          </ul>
+        </div>
+        <div class="track-grid">
+          <div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Cement HBM &amp; premium devices</span><span class="ko">HBM·프리미엄 기기 굳히기</span></div><p><span class="en">Defend memory leadership, win HBM4 qualification, and hold premium foldables and Galaxy share.</span><span class="ko">메모리 리더십을 지키고 HBM4 공급 자격을 확보하며, 프리미엄 폴더블과 갤럭시 점유율을 방어합니다.</span></p></div>
+          <div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">De-risk the cycle: foundry &amp; ecosystem</span><span class="ko">사이클 완화: 파운드리·생태계</span></div><p><span class="en">Grow AI-memory and foundry structurally and build a Galaxy AI/software ecosystem to smooth cyclicality.</span><span class="ko">AI 메모리와 파운드리를 구조적으로 키우고, 갤럭시 AI·소프트웨어 생태계로 경기 변동을 완화합니다.</span></p></div>
+        </div>
+        <div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div>
+        <div class="ap-grid">
+          <div class="ap"><div class="apt"><span class="en">Structural growth</span><span class="ko">구조적 성장</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Memory cycle</span><span class="ko">메모리 사이클 의존</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">AI-demand growth</span><span class="ko">AI 수요 기반 성장</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Device value</span><span class="ko">기기 가치</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Spec race</span><span class="ko">스펙 경쟁</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Galaxy AI experience</span><span class="ko">갤럭시 AI 경험</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Ecosystem</span><span class="ko">생태계</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Standalone devices</span><span class="ko">디바이스 단품</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Connected ecosystem</span><span class="ko">연결 생태계</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight">
+        <li><span class="en">The AI memory shortage will keep setting the ceiling on device volumes and costs.</span><span class="ko">AI 메모리 부족이 당분간 기기 물량과 원가의 상한을 계속 정할 것입니다.</span></li>
+        <li><span class="en">Value keeps migrating from hardware to services, AI features and ecosystems.</span><span class="ko">가치는 계속 하드웨어에서 서비스·AI 기능·생태계로 옮겨갈 것입니다.</span></li>
+        <li><span class="en">Platform regulation (DMA) and tariffs reshape the highest-margin economics.</span><span class="ko">플랫폼 규제(DMA)와 관세가 가장 고마진인 수익 구조를 다시 짤 것입니다.</span></li>
+        <li><span class="en">Samsung's fortunes ride the memory cycle; Apple's ride Services and AI adoption.</span><span class="ko">삼성의 실적은 메모리 사이클에, 애플의 실적은 서비스와 AI 도입에 달려 있습니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://counterpointresearch.com/en/insights/global-smartphone-share">Counterpoint — Global smartphone share</a></li>
+      <li><a href="https://www.idc.com/promo/smartphone-market-share/market-share/">IDC — Smartphone market share</a></li>
+      <li><a href="https://www.datacenterdynamics.com/en/news/samsung-electronics-hits-1tn-market-cap-following-record-quarterly-profits/">Samsung Electronics — record quarterly profits (2026)</a></li>
+      <li><a href="https://www.businessworld.in/article/memory-crisis-apple-q1-2026-smartphone-market-counterpoint-601824">Apple Q1 2026 smartphone crown amid memory crisis</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Technology Hardware (GICS 452020) · Generated June 4, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 기술 하드웨어(GICS 452020) · 2026년 6월 4일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>

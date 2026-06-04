@@ -1,65 +1,65 @@
 [
   {
-    "date": "2026-06-04", "gics": "352030", "sector": "Health Care", "set_index": 1,
-    "industry_en": "Life Sciences Tools & Services", "industry_ko": "생명과학 도구·서비스",
-    "global_company": "Thermo Fisher Scientific", "korea_company": "Seegene",
-    "file": "industry-report_2026-06-04_352030_life-sciences-tools.html",
-    "headline_en": "After a two-year destock, life-science tools regain momentum on a restored NIH budget and BIOSECURE reshoring.",
-    "headline_ko": "2년 재고조정을 지나 생명과학 도구가 NIH 예산 복원과 BIOSECURE 리쇼어링으로 다시 탄력.",
-    "accent": "#6a4ca0"
+    "date": "2026-06-04", "gics": "151030", "sector": "Materials", "set_index": 1,
+    "industry_en": "Containers & Packaging", "industry_ko": "포장재(컨테이너·패키징)",
+    "global_company": "Smurfit WestRock", "korea_company": "Lotte Aluminium (롯데알미늄)",
+    "file": "industry-report_2026-06-04_151030_containers-packaging.html",
+    "headline_en": "A vast, fragmented, low-growth industry where sustainability rules and input-cost cycles decide the winners.",
+    "headline_ko": "거대하지만 분산된 저성장 산업으로, 친환경 규제와 원가 사이클이 승부를 가릅니다.",
+    "accent": "#5c7a3a"
   },
   {
-    "date": "2026-06-04", "gics": "401010", "sector": "Financials", "set_index": 2,
-    "industry_en": "Banks", "industry_ko": "은행",
-    "global_company": "JPMorgan Chase", "korea_company": "KB Financial Group",
-    "file": "industry-report_2026-06-04_401010_banks.html",
-    "headline_en": "A concentrated oligopoly; capital rules easing and profit shifting to capital-light fees.",
-    "headline_ko": "진입장벽 높은 과점 구조. 자본규제는 완화되고 수익은 비이자수익으로 이동.",
-    "accent": "#117aca"
+    "date": "2026-06-04", "gics": "201040", "sector": "Industrials", "set_index": 2,
+    "industry_en": "Electrical Equipment", "industry_ko": "전기장비",
+    "global_company": "Schneider Electric", "korea_company": "Hyosung Heavy Industries (효성중공업)",
+    "file": "industry-report_2026-06-04_201040_electrical-equipment.html",
+    "headline_en": "A supercycle where four-year lead times, not demand, set the pace — whoever can build, wins.",
+    "headline_ko": "수요가 아니라 4년 납기와 공급 부족이 속도를 정하는 슈퍼사이클입니다.",
+    "accent": "#0e7c86"
   },
   {
-    "date": "2026-06-04", "gics": "402010", "sector": "Financials", "set_index": 3,
-    "industry_en": "Financial Services", "industry_ko": "금융 서비스",
-    "global_company": "Visa", "korea_company": "KakaoPay",
-    "file": "industry-report_2026-06-04_402010_financial-services.html",
-    "headline_en": "Payments run on toll-road network economics: a global duopoly above, fee and new-rail pressure below.",
-    "headline_ko": "결제는 통행료형 네트워크 경제: 위는 글로벌 복점, 아래는 수수료·새 레일 압박.",
-    "accent": "#1a1f71"
+    "date": "2026-06-04", "gics": "252030", "sector": "Consumer Discretionary", "set_index": 3,
+    "industry_en": "Textiles, Apparel & Luxury Goods", "industry_ko": "섬유·의류·명품",
+    "global_company": "LVMH", "korea_company": "Youngone (영원무역)",
+    "file": "industry-report_2026-06-04_252030_textiles-apparel-luxury.html",
+    "headline_en": "Luxury recalibrates as scarcity beats scale; Korea pivots from OEM to brand.",
+    "headline_ko": "럭셔리는 재조정 국면, 희소성이 규모를 이기고 한국은 OEM에서 브랜드로 전환합니다.",
+    "accent": "#7a3b5e"
   },
   {
-    "date": "2026-06-04", "gics": "402020", "sector": "Financials", "set_index": 4,
-    "industry_en": "Consumer Finance", "industry_ko": "소비자 금융",
-    "global_company": "American Express", "korea_company": "Samsung Card",
-    "file": "industry-report_2026-06-04_402020_consumer-finance.html",
-    "headline_en": "A large, repricing market — consolidating in the US, squeezed by fee caps in Korea.",
-    "headline_ko": "크고 재가격 중인 시장 — 미국은 통합, 한국은 수수료 인하로 압박.",
-    "accent": "#2671b9"
+    "date": "2026-06-04", "gics": "301010", "sector": "Consumer Staples", "set_index": 4,
+    "industry_en": "Consumer Staples Distribution & Retail", "industry_ko": "필수소비재 유통·소매",
+    "global_company": "Walmart", "korea_company": "E-mart (이마트)",
+    "file": "industry-report_2026-06-04_301010_consumer-staples-retail.html",
+    "headline_en": "The world's largest, thinnest-margin retail industry — value now flows to private label, retail media and fulfillment.",
+    "headline_ko": "세계 최대이자 가장 얇은 마진의 소매 산업 — 가치는 자체 브랜드·리테일 미디어·풀필먼트로 흐릅니다.",
+    "accent": "#2f8f5b"
   },
   {
     "date": "2026-06-04", "gics": "402030", "sector": "Financials", "set_index": 5,
     "industry_en": "Capital Markets", "industry_ko": "자본시장",
-    "global_company": "BlackRock", "korea_company": "Korea Investment & Securities",
+    "global_company": "BlackRock", "korea_company": "Mirae Asset Securities (미래에셋증권)",
     "file": "industry-report_2026-06-04_402030_capital-markets.html",
-    "headline_en": "Fees over credit risk as private markets, AI and a record Korean rally reshape the industry.",
-    "headline_ko": "사모시장·AI·사상 최대 한국 랠리 속에 신용위험보다 수수료가 핵심.",
+    "headline_en": "Fee compression meets scale: index giants and private markets reshape who wins.",
+    "headline_ko": "보수 압박과 규모의 충돌 — 인덱스 강자와 사모시장이 승자를 다시 정합니다.",
     "accent": "#2e5cb8"
   },
   {
-    "date": "2026-06-04", "gics": "402040", "sector": "Financials", "set_index": 6,
-    "industry_en": "Mortgage REITs", "industry_ko": "모기지 리츠",
-    "global_company": "Annaly Capital Management", "korea_company": "KHFC (proxy)",
-    "file": "industry-report_2026-06-04_402040_mortgage-reits.html",
-    "headline_en": "A levered MBS-spread business caught between a slow-cutting Fed and uncertain GSE privatization.",
-    "headline_ko": "느린 인하의 연준과 불확실한 GSE 민영화 사이에 낀 레버리지 MBS 스프레드 사업.",
-    "accent": "#3b6ea5"
+    "date": "2026-06-04", "gics": "452020", "sector": "Information Technology", "set_index": 6,
+    "industry_en": "Technology Hardware, Storage & Peripherals", "industry_ko": "기술 하드웨어",
+    "global_company": "Apple", "korea_company": "Samsung Electronics (삼성전자)",
+    "file": "industry-report_2026-06-04_452020_technology-hardware.html",
+    "headline_en": "A mature devices market where an AI memory shortage, services and on-device AI decide the winners.",
+    "headline_ko": "성숙한 기기 시장 — AI 메모리 부족·서비스·온디바이스 AI가 승부를 가릅니다.",
+    "accent": "#117aca"
   },
   {
-    "date": "2026-06-04", "gics": "403010", "sector": "Financials", "set_index": 7,
-    "industry_en": "Insurance", "industry_ko": "보험",
-    "global_company": "UnitedHealth Group", "korea_company": "Samsung Life Insurance",
-    "file": "industry-report_2026-06-04_403010_insurance.html",
-    "headline_en": "An $8.3T premium pool: the P&C cycle turns soft while IFRS 17 and K-ICS reset capital.",
-    "headline_ko": "8.3조 달러 보험료 시장 — 손보 사이클은 연성으로, IFRS 17·K-ICS가 자본을 재설정.",
-    "accent": "#1f7a5a"
+    "date": "2026-06-04", "gics": "551040", "sector": "Utilities", "set_index": 7,
+    "industry_en": "Water Utilities", "industry_ko": "수도 유틸리티",
+    "global_company": "American Water Works", "korea_company": "K-water (proxy)",
+    "file": "industry-report_2026-06-04_551040_water-utilities.html",
+    "headline_en": "Regulated water monopolies grow only as fast as their rate base.",
+    "headline_ko": "규제 수도 독점은 요금기저가 자라는 만큼만 성장합니다.",
+    "accent": "#1f86c7"
   }
 ]

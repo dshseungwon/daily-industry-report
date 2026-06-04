@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consumer Staples Distribution &amp; Retail · 필수소비재 유통·소매 — The Industry Brief</title>
+<style>
+  :root{--navy:#163d2a;--blue:#2f8f5b;--sky:#6cc28e;--gold:#e0a93b;--ink:#143626;
+    --mute:#5b6b62;--line:#e3ece6;--bg:#eef3ef;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(22,61,42,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(22,61,42,.97);backdrop-filter:blur(8px);border-bottom:1px solid #265441;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe9da;background:#1f4a35;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#1d4e36,#163d2a 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe9da;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,233,218,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eafbf2;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f1f7f3;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f1f7f3;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#1d4e36,#2f8f5b);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f1f7f3;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#e7f3ec;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#1f5a3c;}.track.t2{background:#163d2a;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7f5ec;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f0f3f1;color:var(--mute);}
+  .ap-to{background:#e7f3ec;color:var(--ink);border:1px solid #cfe9da;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fc2ad;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe9da;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#71886f;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Staples Retail</span><span class="ko">필수소비재 유통</span></div>
+    <div class="chips">
+      <button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button>
+      <button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button>
+      <button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button>
+      <button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button>
+      <button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button>
+      <button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button>
+      <button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button>
+    </div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 4 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 4번째</span></p>
+    <h1><span class="en">Consumer Staples Distribution &amp; Retail</span><span class="ko">필수소비재 유통·소매</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Consumer Staples · 301010</span>
+      <span class="pill">2026-06-04</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: Walmart · E-mart</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p>
+        <span class="en">Consumer staples retail — drug retail, food distribution and retail, hypermarkets, supermarkets and mass merchandisers — is the world's largest consumer industry by sales (roughly US$12–13 trillion) yet one of the thinnest on margin. Net margins of 1–3% mean the business is won on scale, sourcing and operating discipline, not price tags. In 2025–26 the value is shifting underneath the shelves: private label (margins up to ~35%), retail media (a near-100% gross-margin ad business heading toward ~US$100B), and e-commerce/fulfillment are the new profit engines. The global #1, Walmart, turned a thin-margin retailer into a profit machine via advertising and marketplace; Korea's clearest offline staples leader, E-mart, is rebuilding profit through its core business even as Coupang now tops total Korean retail revenue online. Both are detailed at the end.</span>
+        <span class="ko">필수소비재 소매(드러그스토어, 식품 유통·소매, 하이퍼마켓, 슈퍼마켓, 대형 종합소매)는 매출 기준 세계 최대 소비 산업(약 12~13조 달러)이지만 마진은 가장 얇은 산업 중 하나입니다. 순이익률 1~3%는 이 사업이 가격표가 아니라 규모·소싱·운영 규율로 좌우됨을 뜻합니다. 2025~26년 가치는 매대 아래에서 이동하고 있습니다. 자체 브랜드(마진 최대 약 35%), 리테일 미디어(거의 100% 매출총이익의 광고 사업으로 약 1,000억 달러 규모로 향함), 그리고 이커머스·풀필먼트가 새로운 수익 엔진입니다. 글로벌 1위 Walmart는 광고와 마켓플레이스로 얇은 마진의 소매업을 수익 기계로 바꿨고, 한국의 가장 뚜렷한 오프라인 필수소비재 선두인 이마트는 본업 중심으로 이익을 다시 쌓고 있으며, 쿠팡은 온라인에서 한국 전체 유통 매출 1위에 올라 있습니다. 두 기업은 뒤에서 자세히 다룹니다.</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From sourcing to shelf to retail media</span><span class="ko">소싱에서 매대, 그리고 리테일 미디어로</span></h2>
+      <p class="lead">
+        <span class="en">This GICS industry (301010) covers food/staples distributors and retailers. Profit ≈ (sales × thin gross margin) + private label + retail media + services − sourcing, store, logistics and labor cost. Volume is huge; margin is razor-thin, so every point of mix and efficiency matters.</span>
+        <span class="ko">이 GICS 산업(301010)은 식품·필수소비재 유통업체와 소매업체를 포괄합니다. 이익 ≈ (매출 × 얇은 매출총이익률) + 자체 브랜드 + 리테일 미디어 + 서비스 − 소싱·점포·물류·인건비로 볼 수 있습니다. 물량은 거대하지만 마진은 면도날처럼 얇아, 믹스와 효율의 1%포인트가 모두 중요합니다.</span>
+      </p>
+      <div class="chain">
+        <div class="vc"><b><span class="en">Sourcing &amp; supply</span><span class="ko">소싱·조달</span></b><span class="d"><span class="en">Buying scale and supplier terms set the cost base.</span><span class="ko">구매 규모와 공급사 조건이 원가 기반을 정합니다.</span></span></div>
+        <div class="vc"><b><span class="en">Distribution &amp; logistics</span><span class="ko">유통·물류</span></b><span class="d"><span class="en">DCs and cold chain move volume at low cost.</span><span class="ko">물류센터와 콜드체인이 대량 물량을 저비용으로 옮깁니다.</span></span></div>
+        <div class="vc"><b><span class="en">Store &amp; e-commerce</span><span class="ko">점포·이커머스</span></b><span class="d"><span class="en">Omnichannel selling: stores plus pickup and delivery.</span><span class="ko">옴니채널 판매: 점포에 픽업·배송을 더합니다.</span></span></div>
+        <div class="vc"><b><span class="en">Private label</span><span class="ko">자체 브랜드(PB)</span></b><span class="d"><span class="en">Store brands lift margin and build loyalty.</span><span class="ko">자체 브랜드가 마진을 높이고 충성도를 만듭니다.</span></span></div>
+        <div class="vc"><b><span class="en">Retail media &amp; data</span><span class="ko">리테일 미디어·데이터</span></b><span class="d"><span class="en">Selling ads on first-party data — high-margin growth.</span><span class="ko">자사 데이터로 광고를 판매하는 고마진 성장원입니다.</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">The world's biggest, slow-and-steady market</span><span class="ko">세계 최대, 느리지만 꾸준한 시장</span></h2>
+      <div class="colchart">
+        <div class="col"><div class="col-val">$12.0T</div><div class="col-bar" data-h="80"></div><div class="col-lab">2024</div></div>
+        <div class="col"><div class="col-val">$12.5T</div><div class="col-bar" data-h="83"></div><div class="col-lab">2025</div></div>
+        <div class="col"><div class="col-val">$12.9T</div><div class="col-bar" data-h="86"></div><div class="col-lab">2026E</div></div>
+        <div class="col"><div class="col-val">$13.4T</div><div class="col-bar" data-h="90"></div><div class="col-lab">2027E</div></div>
+        <div class="col"><div class="col-val">$14.4T</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div>
+      </div>
+      <p class="cap"><span class="en">Global food &amp; grocery retail revenue, US$ trillions, indicative; ~3–4% CAGR. The headline market grows with population and inflation, but the high-margin layers — private label, retail media (~US$52B in 2024, ~17% CAGR) and online grocery (~10% CAGR) — grow far faster.</span><span class="ko">글로벌 식품·식료품 소매 매출, 단위 조 달러, 추정치이며 연평균 약 3~4% 성장입니다. 전체 시장은 인구와 물가를 따라 성장하지만, 고마진 영역인 자체 브랜드·리테일 미디어(2024년 약 520억 달러, 연 약 17% 성장)·온라인 식료품(연 약 10% 성장)은 훨씬 빠르게 자랍니다.</span></p>
+    </div>
+  </section>
+
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">Walmart leads globally; Coupang reshapes Korea</span><span class="ko">글로벌은 월마트, 한국은 쿠팡이 재편</span></h2>
+      <div class="pies">
+        <div class="pieblock">
+          <div class="pie-title"><span class="en">US grocery share — 2025, indicative</span><span class="ko">미국 식료품 점유율 — 2025, 추정</span></div>
+          <div class="pie" style="background:conic-gradient(#163d2a 0 21%,#2f8f5b 21% 30%,#e0a93b 30% 39%,#c9d9cf 39% 100%)"></div>
+          <div class="legend">
+            <div class="lg-item"><span class="lg-dot" style="background:#163d2a"></span>Walmart<b>~21%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#2f8f5b"></span>Kroger<b>~9%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#e0a93b"></span>Costco<b>~9%</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#c9d9cf"></span><span class="en">Others</span><span class="ko">기타</span><b>~61%</b></div>
+          </div>
+        </div>
+        <div class="pieblock">
+          <div class="pie-title"><span class="en">Korea retail revenue — 2024, indicative</span><span class="ko">한국 유통 매출 — 2024, 추정</span></div>
+          <div class="pie" style="background:conic-gradient(#0047a0 0 48%,#2f8f5b 48% 82%,#c8102e 82% 98%,#c9d9cf 98% 100%)"></div>
+          <div class="legend">
+            <div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span><span class="en">Coupang (online)</span><span class="ko">쿠팡(온라인)</span><b>₩41T</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#2f8f5b"></span><span class="en">E-mart (offline)</span><span class="ko">이마트(오프라인)</span><b>₩29T</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#c8102e"></span><span class="en">Lotte Shopping</span><span class="ko">롯데쇼핑</span><b>₩14T</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#c9d9cf"></span><span class="en">Others</span><span class="ko">기타</span><b>—</b></div>
+          </div>
+        </div>
+      </div>
+      <p class="cap"><span class="en">In the US, Walmart's ~21% grocery share dwarfs Kroger and Costco (~9% each). In Korea, Coupang's ~₩41T (2024) made it #1 in total retail revenue (online), while E-mart (~₩29T) remains the clearest offline staples-retail leader, ahead of Lotte Shopping.</span><span class="ko">미국에서는 월마트의 약 21% 식료품 점유율이 크로거·코스트코(각 약 9%)를 압도합니다. 한국에서는 쿠팡이 약 41조 원(2024년)으로 온라인 기준 전체 유통 매출 1위에 올랐고, 이마트(약 29조 원)는 롯데쇼핑을 앞선 가장 뚜렷한 오프라인 필수소비재 선두입니다.</span></p>
+    </div>
+  </section>
+
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal">
+      <div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Hypermarkets, discounters and e-commerce fight on price in a thin-margin market.</span><span class="ko">하이퍼마켓·할인점·이커머스가 얇은 마진 시장에서 가격으로 경쟁합니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Scale and logistics deter most, but e-commerce platforms can enter fast.</span><span class="ko">규모·물류가 대부분을 막지만, 이커머스 플랫폼은 빠르게 진입할 수 있습니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Giant buyers and private label hand bargaining power to retailers.</span><span class="ko">거대 구매력과 자체 브랜드가 소매업체에 교섭력을 줍니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Shoppers are price-sensitive and switch easily across channels.</span><span class="ko">소비자는 가격에 민감하고 채널을 쉽게 갈아탑니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Discounters, delivery apps and meal services pull share at the edges.</span><span class="ko">할인점·배달앱·식사 서비스가 주변부에서 점유율을 가져갑니다.</span></p></div>
+    </div>
+    <p class="cap"><span class="en">Net: scale gives retailers cost and supplier advantage, but price-sensitive buyers and fierce rivalry keep margins thin — value comes from mix, not markup.</span><span class="ko">종합하면 규모는 소매업체에 원가·공급자 우위를 주지만, 가격에 민감한 소비자와 치열한 경쟁이 마진을 얇게 유지합니다. 가치는 가격 인상이 아니라 믹스에서 나옵니다.</span></p>
+  </section>
+
+  <section id="reg">
+    <p class="kicker"><span class="en">PESTEL &amp; regulation</span><span class="ko">PESTEL과 규제</span></p>
+    <h2><span class="en">Macro forces &amp; the latest rules</span><span class="ko">거시 환경과 최신 규제</span></h2>
+    <p class="mute"><span class="en">Economics and politics dominate: inflation drives value-seeking and private label, while labor, pricing scrutiny and store regulation reshape costs. The fastest-moving lever is regulation, below.</span><span class="ko">경제와 정치가 핵심입니다. 물가는 가성비 소비와 자체 브랜드를 부추기고, 인건비·가격 감시·점포 규제가 비용 구조를 바꿉니다. 가장 빠르게 움직이는 변수는 아래의 규제입니다.</span></p>
+    <p class="hint"><span class="en">Latest legislation &amp; regulatory issues — tap to expand.</span><span class="ko">최신 법안·규제 이슈 — 눌러서 펼치십시오.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">Korea large-retail rules &amp; the dawn-delivery push</span><span class="ko">한국 대형마트 규제와 새벽배송 허용 추진</span></span></div><div class="ac-body"><p class="why"><span class="en">Bills to revise the Distribution Industry Development Act would ease the twice-monthly mandatory closure (의무휴업) and allow online delivery during restricted hours; ~76 localities have already shifted closures to weekdays. <b>Why it matters:</b> it could unlock dawn delivery for hypermarkets and reset the offline-vs-online balance.</span><span class="ko">유통산업발전법 개정안은 월 2회 의무휴업을 완화하고 영업 제한 시간의 온라인 배송을 허용하는 내용을 담고 있으며, 약 76개 지자체가 이미 의무휴업일을 평일로 전환했습니다. <b>의미:</b> 대형마트의 새벽배송을 열어 오프라인·온라인 균형을 다시 짤 수 있습니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Dec 2024–25</span><span class="ac-title"><span class="en">US blocks Kroger–Albertsons; pricing scrutiny rises</span><span class="ko">미국, 크로거–앨버트슨 합병 차단·가격 감시 강화</span></span></div><div class="ac-body"><p class="why"><span class="en">Courts upheld the FTC's block of the largest-ever US supermarket merger, citing higher grocery prices and weaker labor competition. <b>Why it matters:</b> consolidation is harder, and pricing and wages stay under the regulator's eye.</span><span class="ko">법원은 사상 최대 미국 슈퍼마켓 합병에 대한 FTC의 금지를 인용하며, 식료품 가격 상승과 노동 경쟁 약화를 근거로 들었습니다. <b>의미:</b> 통합은 더 어려워지고, 가격과 임금은 계속 규제당국의 감시 아래 놓입니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">Retail-media &amp; data-privacy rules tighten</span><span class="ko">리테일 미디어·데이터 개인정보 규제 강화</span></span></div><div class="ac-body"><p class="why"><span class="en">As retailers monetize first-party shopper data, privacy and ad-transparency rules shape how retail media can be sold. <b>Why it matters:</b> the highest-margin new profit pool must be built privacy-first.</span><span class="ko">소매업체가 자사 쇼퍼 데이터를 수익화하면서, 개인정보·광고 투명성 규정이 리테일 미디어 판매 방식을 규정합니다. <b>의미:</b> 가장 고마진인 신규 수익원은 개인정보 보호를 우선해 설계해야 합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">Labor &amp; minimum-wage cost pressure</span><span class="ko">인건비·최저임금 비용 압박</span></span></div><div class="ac-body"><p class="why"><span class="en">Rising minimum wages and union pressure lift store-labor costs in a 1–3% margin business. <b>Why it matters:</b> automation and self-checkout become survival tools, not just efficiency plays.</span><span class="ko">최저임금 인상과 노조 압박이 1~3% 마진 사업의 점포 인건비를 끌어올립니다. <b>의미:</b> 자동화와 셀프계산대가 단순 효율이 아니라 생존 수단이 됩니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal">
+      <div class="kc"><span class="kn">1</span><div><b><span class="en">Sourcing &amp; buying scale</span><span class="ko">소싱·구매 규모</span></b><p><span class="en">Scale lowers cost of goods — the foundation of thin-margin retail.</span><span class="ko">규모가 매입원가를 낮춥니다 — 얇은 마진 소매의 토대입니다.</span></p></div></div>
+      <div class="kc"><span class="kn">2</span><div><b><span class="en">Private label depth</span><span class="ko">자체 브랜드 역량</span></b><p><span class="en">Store brands (margins up to ~35%) lift profit and loyalty.</span><span class="ko">자체 브랜드(마진 최대 약 35%)가 이익과 충성도를 높입니다.</span></p></div></div>
+      <div class="kc"><span class="kn">3</span><div><b><span class="en">Retail media &amp; data</span><span class="ko">리테일 미디어·데이터</span></b><p><span class="en">Selling ads on shopper data is near-pure profit.</span><span class="ko">쇼퍼 데이터 기반 광고 판매는 거의 순수익입니다.</span></p></div></div>
+      <div class="kc"><span class="kn">4</span><div><b><span class="en">Omnichannel fulfillment</span><span class="ko">옴니채널 풀필먼트</span></b><p><span class="en">Profitable pickup and delivery beats pure-play online.</span><span class="ko">수익성 있는 픽업·배송이 순수 온라인을 이깁니다.</span></p></div></div>
+      <div class="kc"><span class="kn">5</span><div><b><span class="en">Supply chain &amp; logistics</span><span class="ko">공급망·물류</span></b><p><span class="en">Efficient DCs and cold chain protect margin and freshness.</span><span class="ko">효율적 물류센터와 콜드체인이 마진과 신선도를 지킵니다.</span></p></div></div>
+      <div class="kc"><span class="kn">6</span><div><b><span class="en">Cost &amp; labor discipline</span><span class="ko">비용·인건비 규율</span></b><p><span class="en">Automation and tight ops defend razor-thin margins.</span><span class="ko">자동화와 빈틈없는 운영이 면도날 마진을 방어합니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="news">
+    <p class="kicker"><span class="en">Recent issues &amp; news</span><span class="ko">최근 이슈 &amp; 뉴스</span></p>
+    <h2><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></h2>
+    <p class="hint"><span class="en">Tap for why it matters.</span><span class="ko">눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">FY2025</span><span class="ac-title"><span class="en">Walmart hits $681B revenue; ads grow 27%</span><span class="ko">월마트 매출 6,810억 달러·광고 27% 성장</span></span></div><div class="ac-body"><p class="why"><span class="en">Walmart's global advertising reached $4.4B and helped push US e-commerce into the black. <b>Why it matters:</b> retail media, not groceries, is now the profit-margin story.</span><span class="ko">월마트의 글로벌 광고 매출이 44억 달러에 이르며 미국 이커머스를 흑자로 돌렸습니다. <b>의미:</b> 이제 마진의 핵심은 식료품이 아니라 리테일 미디어입니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">FY2025</span><span class="ac-title"><span class="en">E-mart operating profit jumps +585%</span><span class="ko">이마트 영업이익 +585% 급증</span></span></div><div class="ac-body"><p class="why"><span class="en">E-mart's 2025 consolidated operating profit rose to ₩322.5B (+584.8%) on a core-business turnaround; Traders warehouse sales grew 8.5%. <b>Why it matters:</b> the offline leader proved discipline can restore profit even with flat sales.</span><span class="ko">이마트의 2025년 연결 영업이익은 본업 회복에 힘입어 3,225억 원(+584.8%)으로 늘었고, 트레이더스 매출은 8.5% 증가했습니다. <b>의미:</b> 오프라인 선두가 매출 정체 속에서도 규율로 이익을 되살릴 수 있음을 증명했습니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2024–25</span><span class="ac-title"><span class="en">Coupang tops Korean retail revenue</span><span class="ko">쿠팡, 한국 유통 매출 1위 등극</span></span></div><div class="ac-body"><p class="why"><span class="en">Coupang's 2024 revenue (~₩41T) overtook E-mart, making it #1 in total Korean retail and a global top-60 retailer. <b>Why it matters:</b> online fulfillment, not store count, now sets the pace.</span><span class="ko">쿠팡의 2024년 매출(약 41조 원)이 이마트를 넘어서며 한국 전체 유통 1위이자 글로벌 60위권 소매업체가 되었습니다. <b>의미:</b> 이제 점포 수가 아니라 온라인 풀필먼트가 속도를 정합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Private label &amp; value-seeking surge</span><span class="ko">자체 브랜드·가성비 소비 급증</span></span></div><div class="ac-body"><p class="why"><span class="en">~87% of shoppers changed habits to save money, lifting private label demand (PB CAGR ~6.6%, double the market). <b>Why it matters:</b> the value shift is a margin opportunity, not just a defensive move.</span><span class="ko">소비자의 약 87%가 돈을 아끼려 습관을 바꾸며 자체 브랜드 수요가 늘었습니다(PB 성장률 약 6.6%로 시장의 두 배). <b>의미:</b> 가성비로의 이동은 방어가 아니라 마진 기회입니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <!-- ===== PLAYERS (secondary analysis) ===== -->
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, with a strategy read</span><span class="ko">두 리더, 전략 관점으로</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader gets a short consulting-style read: diagnosis → two-track strategy → action plans.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 컨설팅식으로 짧게 진단합니다: 진단 → Two-Track 전략 → 액션 플랜 순서입니다.</span></p>
+
+    <div class="gl">
+      <div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>Walmart</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">The world's largest retailer by revenue (FY2025 $681B), turning a thin-margin grocer into a profit engine via advertising and marketplace.</span><span class="ko">매출 기준 세계 최대 소매업체(FY2025 6,810억 달러)로, 광고와 마켓플레이스를 통해 얇은 마진의 식료품 사업을 수익 엔진으로 바꾸고 있습니다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">$681B</div><div class="l"><span class="en">FY2025 revenue (+5.1%)</span><span class="ko">FY2025 매출 (+5.1%)</span></div></div>
+          <div class="stat"><div class="n">$4.4B</div><div class="l"><span class="en">Global ad sales (+27%)</span><span class="ko">글로벌 광고 매출 (+27%)</span></div></div>
+          <div class="stat"><div class="n">+20%</div><div class="l"><span class="en">E-commerce growth</span><span class="ko">이커머스 성장</span></div></div>
+          <div class="stat"><div class="n">~21%</div><div class="l"><span class="en">US grocery share</span><span class="ko">미국 식료품 점유율</span></div></div>
+        </div>
+        <div class="diag">
+          <div class="dh"><span class="en">Diagnosis — scale leader chasing margin beyond the shelf</span><span class="ko">진단 — 규모 1위가 매대 너머에서 마진을 찾고 있습니다</span></div>
+          <div class="formula">Profit = (Sales × Thin Margin) + Retail Media + Marketplace</div>
+          <ul>
+            <li><span class="en">Core retail margin is thin; advertising and marketplace add high-margin profit.</span><span class="ko">핵심 소매 마진은 얇고, 광고와 마켓플레이스가 고마진 이익을 더합니다.</span></li>
+            <li><span class="en">E-commerce only recently turned profitable, lifted by ads and fulfillment.</span><span class="ko">이커머스는 광고와 풀필먼트에 힘입어 최근에야 흑자로 전환했습니다.</span></li>
+            <li><span class="en">Key lever: grow the high-margin layers faster than the low-margin base.</span><span class="ko">핵심 레버는 저마진 본업보다 고마진 영역을 더 빠르게 키우는 것입니다.</span></li>
+          </ul>
+        </div>
+        <div class="track-grid">
+          <div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Defend price leadership &amp; scale</span><span class="ko">가격 리더십·규모 방어</span></div><p><span class="en">Hold everyday-low-price trust, defend grocery share, and squeeze cost through supply chain and automation.</span><span class="ko">상시 최저가 신뢰를 지키고 식료품 점유율을 방어하며, 공급망·자동화로 원가를 짜냅니다.</span></p></div>
+          <div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Scale retail media &amp; marketplace</span><span class="ko">리테일 미디어·마켓플레이스 확장</span></div><p><span class="en">Grow Walmart Connect ads, marketplace and memberships into the durable, high-margin profit core.</span><span class="ko">월마트 커넥트 광고·마켓플레이스·멤버십을 지속 가능한 고마진 수익의 중심으로 키웁니다.</span></p></div>
+        </div>
+        <div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div>
+        <div class="ap-grid">
+          <div class="ap"><div class="apt"><span class="en">Monetize data</span><span class="ko">데이터 수익화</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Product margin</span><span class="ko">상품 마진 의존</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Retail media profit</span><span class="ko">리테일 미디어 수익</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Fulfillment</span><span class="ko">풀필먼트</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Store-only</span><span class="ko">점포 중심</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Profitable omnichannel</span><span class="ko">수익형 옴니채널</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Membership</span><span class="ko">멤버십</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Transactions</span><span class="ko">단건 거래</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Recurring members</span><span class="ko">반복 멤버십</span></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kr" style="margin-top:14px">
+      <div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1 (offline staples)</span><span class="ko">한국 1위 (오프라인 필수소비재)</span></div><h3>E-mart (이마트)</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">Korea's clearest offline staples-retail leader (~₩29T), rebuilding profit through its core business; Coupang now leads total Korean retail revenue online.</span><span class="ko">한국의 가장 뚜렷한 오프라인 필수소비재 선두(약 29조 원)로 본업 중심으로 이익을 다시 쌓고 있으며, 쿠팡이 온라인에서 한국 전체 유통 매출을 이끕니다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">₩29.0T</div><div class="l"><span class="en">2025 revenue</span><span class="ko">2025년 매출</span></div></div>
+          <div class="stat"><div class="n">₩322.5B</div><div class="l"><span class="en">2025 op. profit (+585%)</span><span class="ko">2025 영업이익 (+585%)</span></div></div>
+          <div class="stat"><div class="n">+8.5%</div><div class="l"><span class="en">Traders sales growth</span><span class="ko">트레이더스 매출 성장</span></div></div>
+          <div class="stat"><div class="n">#1</div><div class="l"><span class="en">Offline staples retail</span><span class="ko">오프라인 필수소비재</span></div></div>
+        </div>
+        <div class="diag">
+          <div class="dh"><span class="en">Diagnosis — offline strength under online pressure</span><span class="ko">진단 — 온라인 압박 속의 오프라인 강점</span></div>
+          <div class="formula">Profit ≈ Core stores (recovering) − Online gap (Coupang↑)</div>
+          <ul>
+            <li><span class="en">Core-business discipline restored profit (+585%), but sales are flat (-0.2%).</span><span class="ko">본업 규율로 이익을 회복했으나(+585%), 매출은 정체(-0.2%)입니다.</span></li>
+            <li><span class="en">Coupang's online fulfillment now leads total Korean retail revenue.</span><span class="ko">쿠팡의 온라인 풀필먼트가 이제 한국 전체 유통 매출을 이끕니다.</span></li>
+            <li><span class="en">Key lever: convert offline scale into profitable online and warehouse club growth.</span><span class="ko">핵심 레버는 오프라인 규모를 수익성 있는 온라인·창고형 성장으로 전환하는 것입니다.</span></li>
+          </ul>
+        </div>
+        <div class="track-grid">
+          <div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Cement core profit &amp; Traders</span><span class="ko">본업 이익·트레이더스 굳히기</span></div><p><span class="en">Hold the profit turnaround, grow the Traders warehouse club, and deepen private label and fresh strength.</span><span class="ko">이익 회복을 굳히고 창고형 트레이더스를 키우며, 자체 브랜드와 신선식품 강점을 심화합니다.</span></p></div>
+          <div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Win omnichannel &amp; dawn delivery</span><span class="ko">옴니채널·새벽배송 선점</span></div><p><span class="en">Use regulatory easing to scale dawn delivery, integrate online, and build retail media on shopper data.</span><span class="ko">규제 완화를 활용해 새벽배송을 확대하고 온라인을 통합하며, 쇼퍼 데이터로 리테일 미디어를 구축합니다.</span></p></div>
+        </div>
+        <div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div>
+        <div class="ap-grid">
+          <div class="ap"><div class="apt"><span class="en">Online integration</span><span class="ko">온라인 통합</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Store-led</span><span class="ko">점포 중심</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Omnichannel + delivery</span><span class="ko">옴니채널+배송</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Margin mix</span><span class="ko">마진 믹스</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Thin retail margin</span><span class="ko">얇은 소매 마진</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">PB + retail media</span><span class="ko">PB+리테일 미디어</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Format</span><span class="ko">포맷</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Hypermarket</span><span class="ko">하이퍼마켓</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Warehouse club (Traders)</span><span class="ko">창고형(트레이더스)</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight">
+        <li><span class="en">Margins stay razor-thin; profit growth depends on private label, retail media and fulfillment, not headline sales.</span><span class="ko">마진은 면도날처럼 얇게 유지되며, 이익 성장은 매출이 아니라 자체 브랜드·리테일 미디어·풀필먼트에 달려 있습니다.</span></li>
+        <li><span class="en">Online fulfillment keeps reshaping share — Coupang in Korea, marketplace and ads in the US.</span><span class="ko">온라인 풀필먼트가 점유율을 계속 재편합니다 — 한국은 쿠팡, 미국은 마켓플레이스·광고입니다.</span></li>
+        <li><span class="en">Regulation cuts both ways: Korea may ease store rules and unlock delivery; the US tightens on mergers, pricing and labor.</span><span class="ko">규제는 양면적입니다. 한국은 점포 규제를 완화해 배송을 열 수 있고, 미국은 합병·가격·노동을 강화합니다.</span></li>
+        <li><span class="en">Labor and energy costs and value-seeking shoppers keep pressure on the base business.</span><span class="ko">인건비·에너지 비용과 가성비 소비가 본업에 계속 압박을 가합니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://www.sec.gov/Archives/edgar/data/0000104169/000010416925000010/earningsreleasefy25q4.htm">Walmart — FY2025 Q4 earnings release ($681B revenue, ads +27%)</a></li>
+      <li><a href="https://www.shinsegaegroupnewsroom.com/emart-2025-annual-earnings-report/">Shinsegae Group Newsroom — E-mart 2025 annual earnings (+584.8%)</a></li>
+      <li><a href="https://zdnet.co.kr/view/?no=20250226155648">ZDNet Korea — Coupang tops Korean retail revenue vs E-mart/Lotte</a></li>
+      <li><a href="https://www.ftc.gov/news-events/news/press-releases/2024/12/statement-ftc-victory-securing-halt-kroger-albertsons-grocery-merger">FTC — Halt to Kroger–Albertsons grocery merger</a></li>
+      <li><a href="https://www.thebusinessresearchcompany.com/report/food-and-grocery-retail-global-market-report">The Business Research Company — Food &amp; grocery retail market size</a></li>
+      <li><a href="https://www.fnnews.com/news/202605310716033322">Financial News — Korea large-retail rules &amp; dawn-delivery easing (2026)</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Consumer Staples Distribution &amp; Retail (GICS 301010) · Generated June 4, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 필수소비재 유통·소매(GICS 301010) · 2026년 6월 4일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>

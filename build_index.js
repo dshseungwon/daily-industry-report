@@ -104,9 +104,13 @@ ${cards}
 let upHtml="";
 if(dates.length){
   const nextDay=new Date(new Date(dates[0]+"T00:00:00Z").getTime()+86400000).toISOString().slice(0,10);
-  const start=((daysSinceEpoch(nextDay)*PER_DAY)%N+N)%N;
-  const items=[];
-  for(let k=0;k<PER_DAY;k++){items.push(INDUSTRIES[(start+k)%N]);}
+  // Lane rotation: split the 74 industries into 7 contiguous lanes and pick one
+  // from each lane per day, so every day spans 7 different sectors.
+  const dy=daysSinceEpoch(nextDay), items=[];
+  for(let l=0;l<PER_DAY;l++){
+    const s=Math.floor(l*N/PER_DAY), e=Math.floor((l+1)*N/PER_DAY), len=e-s;
+    items.push(INDUSTRIES[s+(((dy%len)+len)%len)]);
+  }
   upHtml=`
     <section class="day">
       <div class="day-head">
@@ -190,14 +194,14 @@ const html=`<!DOCTYPE html>
 </head>
 <body class="lang-en">
   <div class="topbar"><div class="row">
-    <div class="brand">Daily Industry Strategy <span class="g">·</span> <span class="en">Reports</span><span class="ko">리포트</span></div>
+    <div class="brand">The Industry Brief</div>
     <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
   </div></div>
 
   <div class="hero"><div class="wrap">
-    <p class="eyebrow"><span class="en">Daily Industry Strategy</span><span class="ko">데일리 산업 전략</span></p>
-    <h1><span class="en">7 GICS industries a day. Global #1 + Korea #1. Bilingual.</span><span class="ko">하루 7개 GICS 산업. 글로벌 1위 + 한국 1위. 한·영 동시.</span></h1>
-    <p class="sub"><span class="en">Every morning: the day's industries, each with its global and Korean leader and a strategy for both.</span><span class="ko">매일 아침: 그날의 산업들과 각 산업의 글로벌·한국 1위, 그리고 두 기업의 전략.</span></p>
+    <p class="eyebrow"><span class="en">Daily GICS industry analysis</span><span class="ko">데일리 GICS 산업 분석</span></p>
+    <h1>The Industry Brief</h1>
+    <p class="sub"><span class="en">A daily GICS industry, decoded with strategy frameworks — its structure, forces and regulation, plus the global and Korean leaders and a strategy for each.</span><span class="ko">매일 GICS 산업 하나를 전략 프레임워크로 분석해 드립니다. 산업 구조·경쟁요인·규제와 함께, 글로벌·한국 1위 기업의 전략까지 정리해 드립니다.</span></p>
     <div class="meta">
       <span class="mpill"><b>${totalReports}</b> <span class="en">reports</span><span class="ko">개 리포트</span></span>
       <span class="mpill"><b>${totalDays}</b> <span class="en">day(s)</span><span class="ko">일치</span></span>

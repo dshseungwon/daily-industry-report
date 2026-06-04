@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Containers &amp; Packaging · 용기·포장 — The Industry Brief</title>
+<style>
+  :root{--navy:#2f3a24;--blue:#5c7a3a;--sky:#8aac5e;--gold:#c9a227;--ink:#26321c;
+    --mute:#6a7560;--line:#e6ebdf;--bg:#f1f3ec;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(47,58,36,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(47,58,36,.97);backdrop-filter:blur(8px);border-bottom:1px solid #46553a;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#dfe9cf;background:#3f4e30;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#3c4a2c,#2f3a24 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#dfe9cf;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(223,233,207,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eef4e4;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f4f7ee;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f4f7ee;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#3c4a2c,#5c7a3a);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f4f7ee;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eef4e4;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#46552f;}.track.t2{background:#2f3a24;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#eaf0df;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3ec;color:var(--mute);}
+  .ap-to{background:#eef4e4;color:var(--ink);border:1px solid #cfe0b5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#b9c7a6;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#dfe9cf;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#93a37e;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Containers &amp; Packaging</span><span class="ko">용기·포장</span></div>
+    <div class="chips">
+      <button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button>
+      <button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button>
+      <button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button>
+      <button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button>
+      <button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button>
+      <button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button>
+      <button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button>
+    </div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 1 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 1번째</span></p>
+    <h1><span class="en">Containers &amp; Packaging</span><span class="ko">용기·포장</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Materials · 151030</span>
+      <span class="pill">2026-06-04</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: Smurfit WestRock · Lotte Aluminium</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p>
+        <span class="en">Containers &amp; packaging turns paper, plastic, metal and glass into the boxes, films, cans and bottles that move every other product. It is a large, mature, capital-intensive industry where margins are made or lost on input costs, scale and regulation — not glamour. Two forces define 2026: sustainability rules (the EU's PPWR, plastic taxes, recycled-content mandates, Korea's EPR) that are rewriting product specs, and a fragile demand recovery after the post-pandemic destocking. Value is migrating from cheap virgin plastic toward fiber, recyclate and lightweighting. The global #1, Smurfit WestRock, is the world's largest packaging firm by revenue, a paper-based pure play born from the 2024 Smurfit Kappa–WestRock merger; Korea's #1, Lotte Aluminium, leads at home in foil, flexible film and beverage cans while pivoting hard into EV-battery aluminium foil. Both are detailed at the end.</span>
+        <span class="ko">용기·포장 산업은 종이·플라스틱·금속·유리를 모든 제품을 담고 옮기는 박스·필름·캔·병으로 바꾸는 산업입니다. 규모가 크고 성숙했으며 자본집약적이어서, 마진은 화려함이 아니라 원재료 가격·규모·규제에서 갈립니다. 2026년을 규정하는 힘은 두 가지입니다. 첫째, 제품 사양 자체를 다시 쓰고 있는 친환경 규제(EU PPWR, 플라스틱세, 재생원료 의무사용, 한국 EPR)이며, 둘째, 코로나 이후 재고 조정을 지나 회복 중인 취약한 수요입니다. 가치는 값싼 신재 플라스틱에서 종이·재생원료·경량화 쪽으로 이동하고 있습니다. 글로벌 1위 Smurfit WestRock은 매출 기준 세계 최대 포장기업으로, 2024년 Smurfit Kappa와 WestRock의 합병으로 탄생한 종이 기반 전문기업입니다. 한국 1위 롯데알미늄은 호일·연포장 필름·음료 캔에서 국내를 선도하면서 EV 배터리용 알루미늄박으로 무게중심을 옮기고 있습니다. 두 기업은 뒤에서 자세히 다룹니다.</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From raw material to package to recycling</span><span class="ko">원재료에서 포장재, 그리고 재활용으로</span></h2>
+      <p class="lead">
+        <span class="en">This GICS industry (151030) covers makers of paper, plastic, metal and glass containers and packaging. Profit ≈ (volume × price) − raw-material, energy and conversion cost − recycling/EPR fees. Input cost swings and regulation dominate the economics.</span>
+        <span class="ko">이 GICS 산업(151030)은 종이·플라스틱·금속·유리 용기와 포장재 제조사를 포괄합니다. 이익 ≈ (물량 × 가격) − 원재료·에너지·가공 비용 − 재활용·EPR 부담금으로 볼 수 있습니다. 원가 변동과 규제가 수익 구조를 좌우합니다.</span>
+      </p>
+      <div class="chain">
+        <div class="vc"><b><span class="en">Raw materials</span><span class="ko">원재료</span></b><span class="d"><span class="en">Pulp, resin, aluminium, glass cullet — the cost driver.</span><span class="ko">펄프·수지·알루미늄·유리 원료. 원가의 핵심 변수입니다.</span></span></div>
+        <div class="vc"><b><span class="en">Substrate making</span><span class="ko">소재 생산</span></b><span class="d"><span class="en">Paper mills, film extrusion, smelting — scale-intensive.</span><span class="ko">제지·필름 압출·제련 등 규모집약 공정입니다.</span></span></div>
+        <div class="vc"><b><span class="en">Conversion</span><span class="ko">가공·성형</span></b><span class="d"><span class="en">Printing, forming, laminating into the final pack.</span><span class="ko">인쇄·성형·합지로 최종 포장재를 만듭니다.</span></span></div>
+        <div class="vc"><b><span class="en">Brand &amp; retail</span><span class="ko">브랜드·유통</span></b><span class="d"><span class="en">FMCG and e-commerce buyers set specs and volumes.</span><span class="ko">소비재·이커머스 고객이 사양과 물량을 정합니다.</span></span></div>
+        <div class="vc"><b><span class="en">Recycling &amp; EPR</span><span class="ko">재활용·EPR</span></b><span class="d"><span class="en">Collection, recyclate, producer fees close the loop.</span><span class="ko">수거·재생원료·생산자 부담금이 순환을 완성합니다.</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A vast market growing in the low single digits</span><span class="ko">거대하지만 한 자릿수 초반으로 자라는 시장</span></h2>
+      <div class="colchart">
+        <div class="col"><div class="col-val">$1.24T</div><div class="col-bar" data-h="83"></div><div class="col-lab">2024</div></div>
+        <div class="col"><div class="col-val">$1.28T</div><div class="col-bar" data-h="86"></div><div class="col-lab">2025</div></div>
+        <div class="col"><div class="col-val">$1.32T</div><div class="col-bar" data-h="89"></div><div class="col-lab">2026E</div></div>
+        <div class="col"><div class="col-val">$1.37T</div><div class="col-bar" data-h="92"></div><div class="col-lab">2027E</div></div>
+        <div class="col"><div class="col-val">$1.49T</div><div class="col-bar" data-h="100"></div><div class="col-lab">2029E</div></div>
+      </div>
+      <p class="cap"><span class="en">Global packaging revenue, US$ trillions, indicative (sources ~$1.28T in 2025 → ~$1.32T in 2026 at ~3–4% CAGR). Volumes are recovering after 2023–24 destocking; fiber is gaining share from plastic.</span><span class="ko">글로벌 포장 매출, 단위 조 달러, 추정치입니다(자료 기준 2025년 약 1.28조 → 2026년 약 1.32조, 연평균 3~4% 성장). 2023~24년 재고 조정 이후 물량이 회복 중이며, 종이가 플라스틱의 점유율을 잠식하고 있습니다.</span></p>
+    </div>
+  </section>
+
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">A fragmented global field; one clear Korean leader</span><span class="ko">글로벌은 분산, 한국은 뚜렷한 선두</span></h2>
+      <div class="pies">
+        <div class="pieblock">
+          <div class="pie-title"><span class="en">Global packaging leaders — by 2025 revenue</span><span class="ko">글로벌 포장 선두 — 2025년 매출 기준</span></div>
+          <div class="pie" style="background:conic-gradient(#2f3a24 0 31%,#5c7a3a 31% 54%,#8aac5e 54% 68%,#c9a227 68% 82%,#cdd6c0 82% 100%)"></div>
+          <div class="legend">
+            <div class="lg-item"><span class="lg-dot" style="background:#2f3a24"></span>Smurfit WestRock<b>$31.2B</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#5c7a3a"></span>International Paper<b>$23.6B</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#8aac5e"></span>Amcor<b>~$14B</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#c9a227"></span>Ball / Crown<b>~$14B</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#cdd6c0"></span><span class="en">Others</span><span class="ko">기타</span><b>fragmented</b></div>
+          </div>
+        </div>
+        <div class="pieblock">
+          <div class="pie-title"><span class="en">Korea packaging materials — indicative revenue</span><span class="ko">한국 포장재 — 매출 기준 추정</span></div>
+          <div class="pie" style="background:conic-gradient(#0047a0 0 45%,#5c7a3a 45% 72%,#8aac5e 72% 90%,#cdd6c0 90% 100%)"></div>
+          <div class="legend">
+            <div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>Lotte Aluminium<b>₩0.80T</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#5c7a3a"></span>Yulchon Chem.<b>₩0.49T</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#8aac5e"></span>SGC / Hankuk Paper<b>mid-tier</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#cdd6c0"></span><span class="en">Others</span><span class="ko">기타</span><b>fragmented</b></div>
+          </div>
+        </div>
+      </div>
+      <p class="cap"><span class="en">No firm holds even a tenth of the ~$1.3T global market — packaging is structurally fragmented and regional. In Korea, Lotte Aluminium (~₩0.80T, 2024) leads packaging materials ahead of Yulchon Chemical (~₩0.49T, 2025).</span><span class="ko">약 1.3조 달러 글로벌 시장에서 단일 기업이 10분의 1도 차지하지 못할 만큼, 포장 산업은 구조적으로 분산되고 지역화되어 있습니다. 한국에서는 롯데알미늄(약 0.80조 원, 2024)이 율촌화학(약 0.49조 원, 2025)을 앞서 포장재 부문을 선도합니다.</span></p>
+    </div>
+  </section>
+
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal">
+      <div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Many players, commodity products and price competition on volume.</span><span class="ko">다수 기업이 범용 제품을 두고 물량 기반 가격 경쟁을 벌입니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Heavy capital, mills and integrated supply make entry costly.</span><span class="ko">막대한 설비·제지소·수직계열화로 진입 비용이 큽니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Pulp, resin and aluminium prices swing margins sharply.</span><span class="ko">펄프·수지·알루미늄 가격이 마진을 크게 흔듭니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Large FMCG and retail buyers squeeze price and demand specs.</span><span class="ko">대형 소비재·유통 고객이 가격을 압박하고 사양을 요구합니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Material switching (paper↔plastic) and refill/reuse cut demand.</span><span class="ko">소재 전환(종이↔플라스틱)과 리필·재사용이 수요를 줄입니다.</span></p></div>
+    </div>
+    <p class="cap"><span class="en">Net: high barriers protect scale incumbents, but powerful buyers and commodity rivalry cap pricing power.</span><span class="ko">종합하면 높은 진입장벽이 규모를 갖춘 기존 강자를 보호하지만, 강한 구매자와 범용 경쟁이 가격 결정력을 제한합니다.</span></p>
+  </section>
+
+  <section id="reg">
+    <p class="kicker"><span class="en">PESTEL &amp; regulation</span><span class="ko">PESTEL과 규제</span></p>
+    <h2><span class="en">Macro forces &amp; the latest rules</span><span class="ko">거시 환경과 최신 규제</span></h2>
+    <p class="mute"><span class="en">Environmental and legal forces dominate this industry: sustainability rules now set product design, recycled-content levels and cost. Economic input-price cycles do the rest. The fastest-moving lever is regulation, below.</span><span class="ko">이 산업은 환경·법규가 핵심입니다. 친환경 규제가 이제 제품 설계, 재생원료 비율, 원가를 결정합니다. 나머지는 원재료 가격 사이클이 좌우합니다. 가장 빠르게 움직이는 변수는 아래의 규제입니다.</span></p>
+    <p class="hint"><span class="en">Latest legislation &amp; regulatory issues — tap to expand.</span><span class="ko">최신 법안·규제 이슈 — 눌러서 펼치십시오.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">EU PPWR enters force; applies from Aug 2026</span><span class="ko">EU PPWR 발효, 2026년 8월부터 적용</span></span></div><div class="ac-body"><p class="why"><span class="en">The Packaging &amp; Packaging Waste Regulation (2025/40) took effect Feb 2025 and applies from 12 Aug 2026, with recycled-content and recyclability grade rules phasing in to 2030–38. <b>Why it matters:</b> every pack sold in the EU must be redesigned for recyclability and recyclate.</span><span class="ko">포장·포장폐기물 규정(2025/40)은 2025년 2월 발효되어 2026년 8월 12일부터 적용되며, 재생원료·재활용 등급 규정이 2030~38년에 걸쳐 단계 시행됩니다. <b>의미:</b> EU에서 판매되는 모든 포장재를 재활용성과 재생원료에 맞춰 다시 설계해야 합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">Plastic taxes &amp; EPR fees expand globally</span><span class="ko">플라스틱세·EPR 부담금의 글로벌 확산</span></span></div><div class="ac-body"><p class="why"><span class="en">Plastic-packaging taxes and extended-producer-responsibility fees keep spreading across the EU, UK and beyond, pricing in virgin plastic's externalities. <b>Why it matters:</b> the cost gap between virgin plastic and fiber/recyclate narrows further.</span><span class="ko">플라스틱 포장세와 생산자책임재활용(EPR) 부담금이 EU·영국 등으로 계속 확산되며 신재 플라스틱의 외부비용을 가격에 반영합니다. <b>의미:</b> 신재 플라스틱과 종이·재생원료의 원가 격차가 더 좁혀집니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Korea EPR tightens; exemptions expire end-2025</span><span class="ko">한국 EPR 강화, 면제 기준 2025년 말 종료</span></span></div><div class="ac-body"><p class="why"><span class="en">Korea's K-EPR covers paper, metal cans, glass bottles and synthetic-resin packaging; temporary exemption standards for 15 resin categories apply only until 31 Dec 2025. <b>Why it matters:</b> more Korean packaging falls under mandatory recycling obligations and fees.</span><span class="ko">한국의 K-EPR은 종이·금속캔·유리병·합성수지 포장재를 대상으로 하며, 15개 수지 품목의 한시적 면제 기준은 2025년 12월 31일까지만 적용됩니다. <b>의미:</b> 더 많은 국내 포장재가 의무 재활용과 부담금 대상에 편입됩니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">Global plastics treaty &amp; single-use limits advance</span><span class="ko">글로벌 플라스틱 협약·일회용 규제 진전</span></span></div><div class="ac-body"><p class="why"><span class="en">UN plastics-treaty talks and national single-use bans push reduction, reuse and design-for-recycling onto every producer's agenda. <b>Why it matters:</b> long-term demand for virgin single-use plastic packaging faces a structural ceiling.</span><span class="ko">UN 플라스틱 협약 협상과 각국의 일회용 금지 조치가 감축·재사용·재활용 설계를 모든 생산자의 과제로 끌어올립니다. <b>의미:</b> 신재 일회용 플라스틱 포장재의 장기 수요에 구조적 상한이 생깁니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal">
+      <div class="kc"><span class="kn">1</span><div><b><span class="en">Scale &amp; integration</span><span class="ko">규모·수직계열화</span></b><p><span class="en">Owning mills and conversion controls cost and supply.</span><span class="ko">제지소·가공을 직접 보유해 원가와 공급을 통제합니다.</span></p></div></div>
+      <div class="kc"><span class="kn">2</span><div><b><span class="en">Input-cost management</span><span class="ko">원가 관리</span></b><p><span class="en">Hedging pulp, resin and energy protects thin margins.</span><span class="ko">펄프·수지·에너지 헤지가 얇은 마진을 지킵니다.</span></p></div></div>
+      <div class="kc"><span class="kn">3</span><div><b><span class="en">Sustainable portfolio</span><span class="ko">친환경 포트폴리오</span></b><p><span class="en">Recyclable, fiber and recyclate products win regulated demand.</span><span class="ko">재활용 가능·종이·재생원료 제품이 규제 수요를 잡습니다.</span></p></div></div>
+      <div class="kc"><span class="kn">4</span><div><b><span class="en">Customer proximity</span><span class="ko">고객 밀착</span></b><p><span class="en">Local plants and design service lock in FMCG accounts.</span><span class="ko">현지 공장과 설계 서비스가 소비재 고객을 묶어둡니다.</span></p></div></div>
+      <div class="kc"><span class="kn">5</span><div><b><span class="en">Innovation &amp; lightweighting</span><span class="ko">혁신·경량화</span></b><p><span class="en">Less material per pack cuts cost and meets eco rules.</span><span class="ko">포장당 소재 절감이 원가를 낮추고 규제를 충족합니다.</span></p></div></div>
+      <div class="kc"><span class="kn">6</span><div><b><span class="en">Capital discipline</span><span class="ko">자본 규율</span></b><p><span class="en">In a capital-heavy business, returns hinge on smart capex.</span><span class="ko">자본집약 사업에서 수익은 현명한 설비투자에 달려 있습니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="news">
+    <p class="kicker"><span class="en">Recent issues &amp; news</span><span class="ko">최근 이슈 &amp; 뉴스</span></p>
+    <h2><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></h2>
+    <p class="hint"><span class="en">Tap for why it matters.</span><span class="ko">눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">FY2025</span><span class="ac-title"><span class="en">Smurfit WestRock posts $31.2B in first full year</span><span class="ko">Smurfit WestRock, 합병 첫 회계연도 매출 312억 달러</span></span></div><div class="ac-body"><p class="why"><span class="en">The merged group reported $31.2B net sales and beat its $400M synergy target, targeting ~$7B EBITDA by 2030. <b>Why it matters:</b> the world's largest packaging firm is consolidating scale and pricing power.</span><span class="ko">합병 그룹은 매출 312억 달러를 기록하고 4억 달러 시너지 목표를 초과 달성했으며, 2030년 약 70억 달러 EBITDA를 목표로 합니다. <b>의미:</b> 세계 최대 포장기업이 규모와 가격 결정력을 결집하고 있습니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">International Paper becomes a packaging pure play</span><span class="ko">International Paper, 포장 전문기업으로 전환</span></span></div><div class="ac-body"><p class="why"><span class="en">IP closed its DS Smith acquisition and sold Global Cellulose Fibers for $1.5B, refocusing fully on packaging. <b>Why it matters:</b> the #2 player is doubling down on corrugated as fiber gains share.</span><span class="ko">IP는 DS Smith 인수를 마무리하고 글로벌 셀룰로오스 섬유 사업을 15억 달러에 매각해 포장에 집중했습니다. <b>의미:</b> 2위 기업이 종이가 점유율을 키우는 가운데 골판지에 역량을 집중합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">"Paperization" accelerates from plastic to fiber</span><span class="ko">'종이화', 플라스틱에서 종이로 가속</span></span></div><div class="ac-body"><p class="why"><span class="en">Retailers and foodservice keep switching from plastic to paper; paperboard recycles at ~72% versus 14–18% for plastic. <b>Why it matters:</b> demand structurally tilts toward fiber-based packaging.</span><span class="ko">유통·외식업계가 플라스틱에서 종이로 전환을 이어가며, 판지 재활용률은 약 72%로 플라스틱(14~18%)을 크게 앞섭니다. <b>의미:</b> 수요가 구조적으로 종이 기반 포장으로 기웁니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Lotte Aluminium scales EV-battery foil capacity</span><span class="ko">롯데알미늄, EV 배터리 양극박 증설</span></span></div><div class="ac-body"><p class="why"><span class="en">Lotte completed a Hungary cathode-foil plant and a Kentucky (US) plant, lifting capacity toward ~84,000 tons/yr. <b>Why it matters:</b> Korea's packaging leader is diversifying into high-growth battery materials.</span><span class="ko">롯데는 헝가리 양극박 공장과 미국 켄터키 공장을 완공해 생산능력을 연 약 8만4천 톤으로 끌어올렸습니다. <b>의미:</b> 한국 포장 선두 기업이 고성장 배터리 소재로 사업을 다각화합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2024–25</span><span class="ac-title"><span class="en">Destocking ends; volumes recover unevenly</span><span class="ko">재고 조정 종료, 물량은 고르지 않게 회복</span></span></div><div class="ac-body"><p class="why"><span class="en">After the post-pandemic cardboard hangover and ~1.7M tons of mill closures, packaging volumes are recovering but unevenly by region and end-market. <b>Why it matters:</b> pricing discipline and capacity cuts now matter more than demand alone.</span><span class="ko">팬데믹 이후 골판지 수요 침체와 약 170만 톤의 제지소 폐쇄를 거쳐, 포장 물량이 지역·전방시장별로 고르지 않게 회복되고 있습니다. <b>의미:</b> 이제 수요보다 가격 규율과 설비 감축이 더 중요합니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <!-- ===== PLAYERS (secondary analysis) ===== -->
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, with a strategy read</span><span class="ko">두 리더, 전략 관점으로</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader gets a short consulting-style read: diagnosis → two-track strategy → action plans.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 컨설팅식으로 짧게 진단합니다: 진단 → Two-Track 전략 → 액션 플랜 순서입니다.</span></p>
+
+    <div class="gl">
+      <div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>Smurfit WestRock</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">The world's largest packaging company by revenue — a paper-based pure play formed by the 2024 Smurfit Kappa–WestRock merger.</span><span class="ko">매출 기준 세계 최대 포장기업으로, 2024년 Smurfit Kappa와 WestRock 합병으로 탄생한 종이 기반 전문기업입니다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">$31.2B</div><div class="l"><span class="en">FY2025 net sales</span><span class="ko">2025 매출</span></div></div>
+          <div class="stat"><div class="n">$4.94B</div><div class="l"><span class="en">Adj. EBITDA</span><span class="ko">조정 EBITDA</span></div></div>
+          <div class="stat"><div class="n">&gt;$400M</div><div class="l"><span class="en">Synergies (beat target)</span><span class="ko">시너지 (목표 초과)</span></div></div>
+          <div class="stat"><div class="n">~$7B</div><div class="l"><span class="en">EBITDA target 2030</span><span class="ko">2030 EBITDA 목표</span></div></div>
+        </div>
+        <div class="diag">
+          <div class="dh"><span class="en">Diagnosis — value depends on integration synergies in a commodity market</span><span class="ko">진단 — 가치가 범용 시장에서의 합병 시너지에 달려 있습니다</span></div>
+          <div class="formula">EBITDA = (Volume × Spread) + Synergies − Integration cost</div>
+          <ul>
+            <li><span class="en">A newly merged giant: profit hinges on extracting synergies, not on price growth.</span><span class="ko">갓 합병한 거대 기업으로, 이익은 가격 상승이 아니라 시너지 실현에 달려 있습니다.</span></li>
+            <li><span class="en">Corrugated is cyclical and input-cost driven; demand is recovering unevenly.</span><span class="ko">골판지는 경기와 원가에 민감하고 수요 회복은 고르지 않습니다.</span></li>
+            <li><span class="en">Key lever: finish the integration and ride the regulatory shift to fiber.</span><span class="ko">핵심 레버는 합병 통합을 완수하고 종이로의 규제 전환을 올라타는 것입니다.</span></li>
+          </ul>
+        </div>
+        <div class="track-grid">
+          <div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Deliver synergies &amp; pricing discipline</span><span class="ko">시너지 실현·가격 규율</span></div><p><span class="en">Capture the full merger synergies, optimize the mill network, and hold pricing through the cycle.</span><span class="ko">합병 시너지를 온전히 확보하고 제지소 네트워크를 최적화하며, 사이클 내내 가격을 지킵니다.</span></p></div>
+          <div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Lead the fiber &amp; sustainable shift</span><span class="ko">종이·친환경 전환 선도</span></div><p><span class="en">Convert plastic-to-paper demand and sell design-led sustainable packaging into regulated markets.</span><span class="ko">플라스틱→종이 수요를 전환하고, 규제 시장에 설계 중심의 친환경 포장을 판매합니다.</span></p></div>
+        </div>
+        <div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div>
+        <div class="ap-grid">
+          <div class="ap"><div class="apt"><span class="en">Integrate</span><span class="ko">통합</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Two legacy firms</span><span class="ko">합병 전 두 회사</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">One synergy machine</span><span class="ko">단일 시너지 체계</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Differentiate</span><span class="ko">차별화</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Commodity board</span><span class="ko">범용 판지</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Design-led packaging</span><span class="ko">설계 중심 포장</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Decarbonize</span><span class="ko">탈탄소</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Virgin/plastic</span><span class="ko">신재·플라스틱</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Recyclable fiber</span><span class="ko">재활용 종이</span></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kr" style="margin-top:14px">
+      <div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>Lotte Aluminium</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">Korea's largest packaging-materials maker — foil, flexible film and beverage cans — pivoting into EV-battery aluminium foil. Runner-up at home: Yulchon Chemical.</span><span class="ko">한국 최대 포장재 기업으로 호일·연포장 필름·음료 캔을 만들며 EV 배터리용 알루미늄박으로 전환 중입니다. 국내 2위는 율촌화학입니다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">₩0.80T</div><div class="l"><span class="en">2024 revenue</span><span class="ko">2024 매출</span></div></div>
+          <div class="stat"><div class="n">~84k t</div><div class="l"><span class="en">Cathode-foil capacity/yr</span><span class="ko">양극박 연 생산능력</span></div></div>
+          <div class="stat"><div class="n">3</div><div class="l"><span class="en">Foil hubs: KR·HU·US</span><span class="ko">생산 거점: 한·헝·미</span></div></div>
+          <div class="stat"><div class="n">1966</div><div class="l"><span class="en">Founded</span><span class="ko">설립 연도</span></div></div>
+        </div>
+        <div class="diag">
+          <div class="dh"><span class="en">Diagnosis — a mature packaging base funding a battery-materials bet</span><span class="ko">진단 — 성숙한 포장 사업이 배터리 소재 베팅을 떠받칩니다</span></div>
+          <div class="formula">Profit ≈ Packaging (steady) + Battery foil (growth, capex-heavy)</div>
+          <ul>
+            <li><span class="en">Foil, film and cans give a stable but low-growth domestic cash base.</span><span class="ko">호일·필름·캔이 안정적이지만 저성장인 국내 현금 기반을 제공합니다.</span></li>
+            <li><span class="en">EV cathode foil is the growth engine — but capital-heavy and cycle-exposed.</span><span class="ko">EV 양극박은 성장 엔진이지만 자본집약적이고 경기 변동에 노출됩니다.</span></li>
+            <li><span class="en">Key lever: defend packaging margins while scaling battery foil profitably.</span><span class="ko">핵심 레버는 포장 마진을 지키면서 배터리박을 수익성 있게 키우는 것입니다.</span></li>
+          </ul>
+        </div>
+        <div class="track-grid">
+          <div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Defend the packaging core</span><span class="ko">포장 본업 방어</span></div><p><span class="en">Hold leadership in foil, flexible film and cans, and meet K-EPR with recyclable, lighter designs.</span><span class="ko">호일·연포장 필름·캔의 선두를 지키고, 재활용 가능·경량 설계로 K-EPR에 대응합니다.</span></p></div>
+          <div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Scale EV-battery foil globally</span><span class="ko">EV 배터리박 글로벌 확장</span></div><p><span class="en">Ramp Hungary and US cathode-foil plants and lock long-term supply contracts with cell makers.</span><span class="ko">헝가리·미국 양극박 공장을 가동하고 배터리 셀 제조사와 장기 공급계약을 체결합니다.</span></p></div>
+        </div>
+        <div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div>
+        <div class="ap-grid">
+          <div class="ap"><div class="apt"><span class="en">Diversify</span><span class="ko">다각화</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Packaging only</span><span class="ko">포장 단일 사업</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Battery materials</span><span class="ko">배터리 소재</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Globalize</span><span class="ko">글로벌화</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Korea base</span><span class="ko">국내 중심</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">KR·HU·US hubs</span><span class="ko">한·헝·미 거점</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Greenify</span><span class="ko">친환경화</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Standard packaging</span><span class="ko">기존 포장재</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">EPR-ready eco packs</span><span class="ko">EPR 대응 친환경 포장</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight">
+        <li><span class="en">Sustainability regulation (PPWR, plastic taxes, EPR) will keep rewriting product specs and cost.</span><span class="ko">친환경 규제(PPWR·플라스틱세·EPR)가 제품 사양과 원가를 계속 다시 쓸 것입니다.</span></li>
+        <li><span class="en">Value keeps shifting from virgin plastic toward fiber, recyclate and lightweighting.</span><span class="ko">가치는 계속 신재 플라스틱에서 종이·재생원료·경량화로 옮겨갈 것입니다.</span></li>
+        <li><span class="en">Input-price cycles (pulp, resin, aluminium, energy) will drive margin volatility.</span><span class="ko">원재료 가격 사이클(펄프·수지·알루미늄·에너지)이 마진 변동을 이끌 것입니다.</span></li>
+        <li><span class="en">Smurfit WestRock's path rides merger synergies; Lotte Aluminium's rides EV-battery foil.</span><span class="ko">Smurfit WestRock의 향방은 합병 시너지에, 롯데알미늄의 향방은 EV 배터리박에 달려 있습니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://www.smurfitwestrock.com/newsroom/press-releases/2026/smurfit-westrock-reports-fourth-quarter-and-full-year-2025-results">Smurfit WestRock — FY2025 results</a></li>
+      <li><a href="https://environment.ec.europa.eu/topics/waste-and-recycling/packaging-waste/packaging-packaging-waste-regulation_en">European Commission — Packaging &amp; Packaging Waste Regulation (PPWR)</a></li>
+      <li><a href="https://www.iepr.or.kr/main/main.do">Korea EPR (생산자책임재활용제도)</a></li>
+      <li><a href="https://www.mckinsey.com/industries/packaging-and-paper/our-insights/sustainability-in-packaging-2025-inside-the-minds-of-global-consumers">McKinsey — Sustainability in packaging 2025</a></li>
+      <li><a href="https://kisrating.com/fileDown.do?menuCd=R8&gubun=2&fileName=rs20250626-23.pdf">KIS — Lotte Aluminium credit opinion (2025)</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Containers &amp; Packaging (GICS 151030) · Generated June 4, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 용기·포장(GICS 151030) · 2026년 6월 4일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>

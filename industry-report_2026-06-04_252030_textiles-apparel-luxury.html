@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Textiles, Apparel &amp; Luxury Goods · 섬유·의류·럭셔리 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#5a2845,#7a3b5e);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:#7a3b5e;}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Apparel &amp; Luxury</span><span class="ko">의류·럭셔리</span></div>
+    <div class="chips">
+      <button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button>
+      <button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button>
+      <button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button>
+      <button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button>
+      <button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button>
+      <button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button>
+      <button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button>
+    </div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 3 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 3번째</span></p>
+    <h1><span class="en">Textiles, Apparel &amp; Luxury Goods</span><span class="ko">섬유·의류·럭셔리 굿즈</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Consumer Discretionary · 252030</span>
+      <span class="pill">2026-06-04</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: LVMH · <span class="en">Youngone</span><span class="ko">영원무역</span></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p>
+        <span class="en">This industry spans the full apparel pyramid — from scarcity-driven luxury maisons to fast fashion and the sportswear and outdoor brands behind them. After two turbulent years, 2025 was a year of recalibration: global luxury was roughly flat as China contracted 3–5% and aspirational middle-class shoppers pulled back, bruised by years of aggressive price hikes. Value has split sharply between winners who own scarcity and pricing discipline (Hermès grew ~9% to over €16B) and conglomerates that stalled (LVMH sales −5% to €80.8B; Kering −13%). The global #1 by revenue, LVMH, anchors the multi-brand luxury model; Korea's #1, Youngone (영원무역), is the country's largest apparel exporter — a global OEM/ODM powerhouse for North Face, Lululemon and Patagonia. Both are detailed at the end.</span>
+        <span class="ko">이 산업은 희소성을 무기로 하는 럭셔리 메종부터 패스트패션, 그리고 그 뒤를 받치는 스포츠·아웃도어 브랜드까지 의류 피라미드 전체를 아우릅니다. 격동의 2년을 지나 2025년은 재조정의 해였습니다. 중국이 3~5% 역성장하고 수년간의 공격적 가격 인상에 지친 중산층 소비자가 발길을 돌리면서 글로벌 럭셔리는 대체로 보합에 머물렀습니다. 가치는 희소성과 가격 규율을 쥔 승자(에르메스는 약 9% 성장해 160억 유로를 넘김)와 정체된 복합기업(LVMH 매출 −5%로 808억 유로, 케링 −13%)으로 뚜렷이 갈렸습니다. 매출 기준 글로벌 1위 LVMH는 멀티브랜드 럭셔리 모델의 중심이고, 한국 1위 영원무역은 국내 최대 의류 수출기업으로 노스페이스·룰루레몬·파타고니아를 만드는 글로벌 OEM/ODM 강자입니다. 두 기업은 뒤에서 자세히 다룹니다.</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From design to brand to the customer</span><span class="ko">디자인에서 브랜드, 그리고 고객까지</span></h2>
+      <p class="lead">
+        <span class="en">This GICS industry (252030) covers apparel, footwear, textiles and luxury accessories. Profit ≈ (units × price) × brand premium − material, manufacturing and distribution cost. The deepest margins sit at the brand and DTC ends; the OEM/ODM middle competes on cost, capacity and speed.</span>
+        <span class="ko">이 GICS 산업(252030)은 의류·신발·섬유·럭셔리 액세서리를 포괄합니다. 이익 ≈ (판매 수량 × 가격) × 브랜드 프리미엄 − 원자재·제조·유통 비용으로 볼 수 있습니다. 가장 두꺼운 마진은 브랜드와 DTC 영역에 있고, OEM/ODM 중간 단계는 원가·생산능력·속도로 경쟁합니다.</span>
+      </p>
+      <div class="chain">
+        <div class="vc"><b><span class="en">Design &amp; IP</span><span class="ko">디자인·IP</span></b><span class="d"><span class="en">Creative direction and the maison's heritage — the value core.</span><span class="ko">크리에이티브 디렉션과 메종의 헤리티지. 가치의 핵심입니다.</span></span></div>
+        <div class="vc"><b><span class="en">Materials &amp; textiles</span><span class="ko">원자재·섬유</span></b><span class="d"><span class="en">Leather, cotton and technical fabrics — cost and sustainability driver.</span><span class="ko">가죽·면·기능성 원단. 원가와 지속가능성의 변수입니다.</span></span></div>
+        <div class="vc"><b><span class="en">OEM/ODM manufacturing</span><span class="ko">OEM/ODM 제조</span></b><span class="d"><span class="en">Outsourced production at scale in Asia — the Korea stronghold.</span><span class="ko">아시아 기반의 대량 위탁 생산. 한국이 강한 영역입니다.</span></span></div>
+        <div class="vc"><b><span class="en">Brand &amp; marketing</span><span class="ko">브랜드·마케팅</span></b><span class="d"><span class="en">Desirability and pricing power lift the premium.</span><span class="ko">선망과 가격 결정력이 프리미엄을 끌어올립니다.</span></span></div>
+        <div class="vc"><b><span class="en">DTC &amp; retail</span><span class="ko">DTC·리테일</span></b><span class="d"><span class="en">Boutiques, e-commerce and platforms — margin and data control.</span><span class="ko">부티크·이커머스·플랫폼. 마진과 데이터를 쥡니다.</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A large market growing at low single digits</span><span class="ko">크지만 한 자릿수로 자라는 시장</span></h2>
+      <div class="colchart">
+        <div class="col"><div class="col-val">$455B</div><div class="col-bar" data-h="83"></div><div class="col-lab">2024</div></div>
+        <div class="col"><div class="col-val">$464B</div><div class="col-bar" data-h="85"></div><div class="col-lab">2025</div></div>
+        <div class="col"><div class="col-val">$484B</div><div class="col-bar" data-h="88"></div><div class="col-lab">2026E</div></div>
+        <div class="col"><div class="col-val">$505B</div><div class="col-bar" data-h="92"></div><div class="col-lab">2027E</div></div>
+        <div class="col"><div class="col-val">$530B</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div>
+      </div>
+      <p class="cap"><span class="en">Global personal luxury goods, US$ billions, indicative. ~4–5% CAGR through 2031 (Bain/Mordor). Luxury apparel alone is ~$70B; clothing is ~37% of luxury spend. Mass and fast fashion add hundreds of billions on top.</span><span class="ko">글로벌 개인 럭셔리 굿즈, 단위 십억 달러, 추정치입니다. 2031년까지 연평균 약 4~5% 성장(Bain/Mordor)이 예상됩니다. 럭셔리 의류만 약 700억 달러이며, 의류는 럭셔리 소비의 약 37%를 차지합니다. 매스·패스트패션이 여기에 수천억 달러를 더합니다.</span></p>
+    </div>
+  </section>
+
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">A fragmented field; conglomerates lead, Hermès wins quality</span><span class="ko">분산된 시장, 복합기업 선두에 에르메스가 질로 승부</span></h2>
+      <div class="pies">
+        <div class="pieblock">
+          <div class="pie-title"><span class="en">Global luxury revenue — leaders, 2025</span><span class="ko">글로벌 럭셔리 매출 — 주요 기업, 2025</span></div>
+          <div class="pie" style="background:conic-gradient(#7a3b5e 0 36%,#a85d80 36% 50%,#c8102e 50% 60%,#ffb81c 60% 73%,#c9d4e3 73% 100%)"></div>
+          <div class="legend">
+            <div class="lg-item"><span class="lg-dot" style="background:#7a3b5e"></span>LVMH<b>€80.8B</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#a85d80"></span>Hermès<b>€16B+</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#c8102e"></span>Kering<b>~€13B</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Inditex<b>€38B</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>—</b></div>
+          </div>
+        </div>
+        <div class="pieblock">
+          <div class="pie-title"><span class="en">Korea apparel exporters — by revenue, 2025</span><span class="ko">한국 의류 수출기업 — 매출 기준, 2025</span></div>
+          <div class="pie" style="background:conic-gradient(#0047a0 0 40%,#117aca 40% 70%,#7a3b5e 70% 90%,#c9d4e3 90% 100%)"></div>
+          <div class="legend">
+            <div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span><span class="en">Youngone</span><span class="ko">영원무역</span><b>~₩4.0T</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#117aca"></span><span class="en">Hansae</span><span class="ko">한세실업</span><b>~₩2.5T</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#7a3b5e"></span>F&amp;F<b>~₩2.0T</b></div>
+            <div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>—</b></div>
+          </div>
+        </div>
+      </div>
+      <p class="cap"><span class="en">LVMH leads luxury by revenue (€80.8B, −5% in 2025), but Hermès overtook it on market cap as scarcity won. In Korea, Youngone holds the top OEM/ODM position by revenue, ahead of arch-rival Hansae; F&amp;F leads the branded segment. Figures are indicative.</span><span class="ko">LVMH가 매출 기준 럭셔리 1위(808억 유로, 2025년 −5%)이지만, 희소성이 승리하며 시가총액에서는 에르메스가 LVMH를 앞질렀습니다. 한국에서는 영원무역이 매출 기준 OEM/ODM 1위로 숙적 한세실업을 앞서고, F&amp;F가 브랜드 부문을 선도합니다. 수치는 추정치입니다.</span></p>
+    </div>
+  </section>
+
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal">
+      <div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Maisons, fast fashion and sportswear fight for share of a flat wallet.</span><span class="ko">메종·패스트패션·스포츠웨어가 정체된 지갑을 두고 다툽니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">DTC and social make launch easy, but heritage and scale are hard to copy.</span><span class="ko">DTC와 소셜로 출시는 쉬워졌으나 헤리티지와 규모는 모방이 어렵습니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Premium leather and capacity are scarce; large OEMs gain leverage.</span><span class="ko">고급 가죽·생산능력이 희소하고, 대형 OEM이 교섭력을 키웁니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Brand desire offsets price-sensitive, informed and selective shoppers.</span><span class="ko">브랜드 선망이 가격에 민감하고 까다로운 소비자를 일부 상쇄합니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Resale, rental and experiences compete for discretionary spend.</span><span class="ko">중고·렌털·경험 소비가 여가성 지출을 두고 경쟁합니다.</span></p></div>
+    </div>
+    <p class="cap"><span class="en">Net: brand heritage and scale protect the top, but a flat market and selective buyers cap the upside.</span><span class="ko">종합하면 브랜드 헤리티지와 규모가 상위 기업을 보호하지만, 정체된 시장과 까다로운 소비자가 상승 여력을 제한합니다.</span></p>
+  </section>
+
+  <section id="reg">
+    <p class="kicker"><span class="en">PESTEL &amp; regulation</span><span class="ko">PESTEL과 규제</span></p>
+    <h2><span class="en">Macro forces &amp; the latest rules</span><span class="ko">거시 환경과 최신 규제</span></h2>
+    <p class="mute"><span class="en">Economics and environment dominate: China's slowdown and cautious aspirational shoppers set demand, while sustainability rules reshape how clothes are made and tracked. The fastest-moving lever is regulation, below.</span><span class="ko">경제와 환경이 핵심입니다. 중국의 둔화와 신중해진 소비자가 수요를 정하고, 지속가능성 규제가 옷을 만들고 추적하는 방식을 바꿉니다. 가장 빠르게 움직이는 변수는 아래의 규제입니다.</span></p>
+    <p class="hint"><span class="en">Latest legislation &amp; regulatory issues — tap to expand.</span><span class="ko">최신 법안·규제 이슈 — 눌러서 펼치십시오.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2024–28</span><span class="ac-title"><span class="en">EU ESPR &amp; Digital Product Passport for textiles</span><span class="ko">EU 에코디자인(ESPR)·디지털제품여권(DPP)</span></span></div><div class="ac-body"><p class="why"><span class="en">ESPR (adopted 2024) names textiles a priority; the textile delegated act is expected in Q2 2027, with mandatory DPPs realistically from ~2028 carrying QR-accessible data on materials and recyclability. <b>Why it matters:</b> traceability and ecodesign become a condition of selling in Europe.</span><span class="ko">2024년 채택된 ESPR은 섬유를 우선 품목으로 지정했고, 섬유 위임법은 2027년 2분기에, 의무 DPP는 사실상 2028년경부터 소재·재활용성 정보를 QR로 제공하게 됩니다. <b>의미:</b> 추적성과 에코디자인이 유럽 판매의 조건이 됩니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">EU CSDDD supply-chain due diligence (simplified)</span><span class="ko">EU 공급망 실사지침(CSDDD) — 완화</span></span></div><div class="ac-body"><p class="why"><span class="en">The 2025 Omnibus simplified CSDDD — brands no longer need a climate transition plan — but human-rights and environmental due diligence across suppliers remains. <b>Why it matters:</b> the burden of proof for ethical sourcing now sits with brands.</span><span class="ko">2025년 옴니버스로 CSDDD가 완화되어 기후전환계획 의무는 빠졌으나, 협력사 전반의 인권·환경 실사 의무는 남았습니다. <b>의미:</b> 윤리적 조달의 입증 책임이 이제 브랜드에 있습니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">Tariffs &amp; sourcing shift out of China</span><span class="ko">관세와 중국 이탈 소싱</span></span></div><div class="ac-body"><p class="why"><span class="en">US tariffs and trade friction push apparel sourcing toward Vietnam, Bangladesh and India and lift landed costs. <b>Why it matters:</b> diversified OEM footprints become a competitive advantage.</span><span class="ko">미국 관세와 무역 마찰이 의류 소싱을 베트남·방글라데시·인도로 밀어내고 도착 원가를 높입니다. <b>의미:</b> 분산된 OEM 생산기지가 경쟁우위가 됩니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">Korea K-textile &amp; eco/recycling rules tighten</span><span class="ko">한국 K-섬유·친환경·재활용 규제 강화</span></span></div><div class="ac-body"><p class="why"><span class="en">Korea is expanding EPR recycling obligations and eco-labeling and backing K-fashion exports as global demand for Korean brands rises. <b>Why it matters:</b> compliance and brand-export support move together for Korean players.</span><span class="ko">한국은 생산자책임재활용(EPR) 의무와 친환경 표시를 확대하고, 한국 브랜드 수요 증가에 맞춰 K-패션 수출을 지원합니다. <b>의미:</b> 한국 기업에게는 규제 대응과 브랜드 수출 지원이 함께 갑니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal">
+      <div class="kc"><span class="kn">1</span><div><b><span class="en">Brand desirability</span><span class="ko">브랜드 선망성</span></b><p><span class="en">Heritage and pricing discipline sustain the premium.</span><span class="ko">헤리티지와 가격 규율이 프리미엄을 지탱합니다.</span></p></div></div>
+      <div class="kc"><span class="kn">2</span><div><b><span class="en">Scarcity &amp; pricing power</span><span class="ko">희소성·가격 결정력</span></b><p><span class="en">Controlled supply protects margin even in a downturn.</span><span class="ko">공급 통제가 침체기에도 마진을 지킵니다.</span></p></div></div>
+      <div class="kc"><span class="kn">3</span><div><b><span class="en">Supply-chain agility</span><span class="ko">공급망 민첩성</span></b><p><span class="en">Diversified, fast sourcing absorbs tariffs and demand swings.</span><span class="ko">분산된 빠른 소싱이 관세와 수요 변동을 흡수합니다.</span></p></div></div>
+      <div class="kc"><span class="kn">4</span><div><b><span class="en">DTC &amp; data</span><span class="ko">DTC·데이터</span></b><p><span class="en">Owning the customer lifts margin and informs design.</span><span class="ko">고객을 직접 쥐면 마진이 오르고 디자인에 반영됩니다.</span></p></div></div>
+      <div class="kc"><span class="kn">5</span><div><b><span class="en">Sustainability &amp; traceability</span><span class="ko">지속가능성·추적성</span></b><p><span class="en">ESPR-ready supply chains become a license to sell.</span><span class="ko">ESPR 대응 공급망이 판매의 자격이 됩니다.</span></p></div></div>
+      <div class="kc"><span class="kn">6</span><div><b><span class="en">Global brand reach</span><span class="ko">글로벌 브랜드 확장</span></b><p><span class="en">Multi-market presence smooths any single region's slump.</span><span class="ko">다지역 진출이 특정 지역의 부진을 완화합니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="news">
+    <p class="kicker"><span class="en">Recent issues &amp; news</span><span class="ko">최근 이슈 &amp; 뉴스</span></p>
+    <h2><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></h2>
+    <p class="hint"><span class="en">Tap for why it matters.</span><span class="ko">눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Luxury recalibrates; LVMH −5%, Kering −13%</span><span class="ko">럭셔리 재조정, LVMH −5%·케링 −13%</span></span></div><div class="ac-body"><p class="why"><span class="en">2025 sales fell at the big conglomerates as aspirational demand softened. <b>Why it matters:</b> scale no longer guarantees growth — execution and brand heat decide.</span><span class="ko">2025년 대형 복합기업의 매출이 소비 둔화로 감소했습니다. <b>의미:</b> 이제 규모가 성장을 보장하지 않으며, 실행력과 브랜드 열기가 승부를 가릅니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Apr 2025</span><span class="ac-title"><span class="en">Hermès overtakes LVMH as most valuable luxury firm</span><span class="ko">에르메스, LVMH 제치고 시총 1위 럭셔리 기업</span></span></div><div class="ac-body"><p class="why"><span class="en">Hermès grew ~9% to over €16B at a 41% operating margin and passed LVMH on market cap. <b>Why it matters:</b> scarcity and vertical integration are now valued above scale.</span><span class="ko">에르메스는 약 9% 성장해 160억 유로를 넘기고 41% 영업이익률로 시총에서 LVMH를 앞섰습니다. <b>의미:</b> 이제 희소성과 수직계열화가 규모보다 높게 평가됩니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026E</span><span class="ac-title"><span class="en">China luxury set to rebound modestly in 2026</span><span class="ko">중국 럭셔리, 2026년 완만한 반등 전망</span></span></div><div class="ac-body"><p class="why"><span class="en">After contracting 3–5% in 2025, Bain expects modest China growth in 2026 on improving confidence. <b>Why it matters:</b> the swing region for the whole sector is stabilizing.</span><span class="ko">2025년 3~5% 역성장 후, Bain은 신뢰 회복으로 2026년 중국의 완만한 성장을 전망합니다. <b>의미:</b> 산업 전체의 변수 지역이 안정되고 있습니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jan 2026</span><span class="ac-title"><span class="en">K-fashion exports surge — Musinsa, brand boom</span><span class="ko">K-패션 수출 급증 — 무신사·브랜드 호황</span></span></div><div class="ac-body"><p class="why"><span class="en">Musinsa's global business and K-brands grew fast in Japan (+145%), China and Southeast Asia in 2025. <b>Why it matters:</b> Korean apparel is shifting from pure OEM to branded global exports.</span><span class="ko">무신사 글로벌 사업과 K-브랜드가 2025년 일본(+145%)·중국·동남아에서 빠르게 성장했습니다. <b>의미:</b> 한국 의류가 순수 OEM에서 브랜드 글로벌 수출로 옮겨가고 있습니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <!-- ===== PLAYERS (secondary analysis) ===== -->
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, with a strategy read</span><span class="ko">두 리더, 전략 관점으로</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader gets a short consulting-style read: diagnosis → two-track strategy → action plans.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 컨설팅식으로 짧게 진단합니다: 진단 → Two-Track 전략 → 액션 플랜 순서입니다.</span></p>
+
+    <div class="gl">
+      <div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>LVMH</h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">The world's largest luxury group by revenue — ~75 maisons spanning fashion, leather, wines, jewelry and beauty.</span><span class="ko">매출 기준 세계 최대 럭셔리 그룹으로, 패션·가죽·와인·주얼리·뷰티를 아우르는 약 75개 메종을 보유합니다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">€80.8B</div><div class="l"><span class="en">2025 revenue (−5%)</span><span class="ko">2025년 매출 (−5%)</span></div></div>
+          <div class="stat"><div class="n">€17.8B</div><div class="l"><span class="en">Recurring op. profit</span><span class="ko">경상 영업이익</span></div></div>
+          <div class="stat"><div class="n">~22%</div><div class="l"><span class="en">Operating margin</span><span class="ko">영업이익률</span></div></div>
+          <div class="stat"><div class="n">~75</div><div class="l"><span class="en">Maisons in portfolio</span><span class="ko">보유 메종 수</span></div></div>
+        </div>
+        <div class="diag">
+          <div class="dh"><span class="en">Diagnosis — scale stalled while scarcity-led rivals grew</span><span class="ko">진단 — 규모는 정체되고 희소성 중심 경쟁사는 성장했습니다</span></div>
+          <div class="formula">Revenue = Σ(Maison reach × Brand heat) − Aspirational pullback</div>
+          <ul>
+            <li><span class="en">2025 sales fell 5% as China and aspirational shoppers pulled back.</span><span class="ko">중국과 신규 소비자가 발길을 돌리며 2025년 매출이 5% 감소했습니다.</span></li>
+            <li><span class="en">Years of price hikes left mid-tier buyers feeling "betrayed"; Hermès passed it on market cap.</span><span class="ko">수년간의 가격 인상으로 중간층 소비자가 등을 돌렸고, 시총에서 에르메스에 추월당했습니다.</span></li>
+            <li><span class="en">Key lever: restore desirability and pricing discipline, not just add volume.</span><span class="ko">핵심 레버는 물량 확대가 아니라 선망성과 가격 규율을 회복하는 것입니다.</span></li>
+          </ul>
+        </div>
+        <div class="track-grid">
+          <div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Restore desirability &amp; pricing discipline</span><span class="ko">선망성과 가격 규율 회복</span></div><p><span class="en">Re-energize flagship maisons (Louis Vuitton, Dior), tighten pricing and elevate the client experience to rebuild trust.</span><span class="ko">핵심 메종(루이비통·디올)을 재점화하고 가격을 정비하며 고객 경험을 높여 신뢰를 다시 쌓습니다.</span></p></div>
+          <div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Diversify regions &amp; deepen VIC ties</span><span class="ko">지역 다변화·VIC 관계 심화</span></div><p><span class="en">Grow beyond China — US, Japan, India, Middle East — and deepen Very-Important-Client relationships and experiences.</span><span class="ko">중국을 넘어 미국·일본·인도·중동으로 성장하고, 핵심 고객(VIC)과의 관계·경험을 심화합니다.</span></p></div>
+        </div>
+        <div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div>
+        <div class="ap-grid">
+          <div class="ap"><div class="apt"><span class="en">Pricing</span><span class="ko">가격 전략</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Aggressive hikes</span><span class="ko">공격적 인상</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Value-justified pricing</span><span class="ko">가치 기반 가격</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Portfolio</span><span class="ko">포트폴리오</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Broad volume push</span><span class="ko">전방위 물량 확대</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Hero-brand focus</span><span class="ko">핵심 브랜드 집중</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Geography</span><span class="ko">지역 전략</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">China reliance</span><span class="ko">중국 의존</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Diversified demand</span><span class="ko">수요 다변화</span></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kr" style="margin-top:14px">
+      <div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3><span class="en">Youngone (영원무역)</span><span class="ko">영원무역</span></h3></div></div>
+      <div class="leader-wrap reveal">
+        <p class="mute" style="margin-top:0"><span class="en">Korea's largest apparel exporter — a global OEM/ODM manufacturer for North Face, Lululemon and Patagonia, ahead of arch-rival Hansae.</span><span class="ko">한국 최대 의류 수출기업으로, 노스페이스·룰루레몬·파타고니아를 만드는 글로벌 OEM/ODM 제조사이며 숙적 한세실업을 앞섭니다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">~₩4.0T</div><div class="l"><span class="en">2025 revenue (+15.5%)</span><span class="ko">2025년 매출 (+15.5%)</span></div></div>
+          <div class="stat"><div class="n">$3B</div><div class="l"><span class="en">Group annual sales</span><span class="ko">그룹 연매출</span></div></div>
+          <div class="stat"><div class="n">#1</div><div class="l"><span class="en">Korea OEM/ODM rank</span><span class="ko">국내 OEM/ODM 순위</span></div></div>
+          <div class="stat"><div class="n">~4×</div><div class="l"><span class="en">Forward P/E (value)</span><span class="ko">선행 PER (저평가)</span></div></div>
+        </div>
+        <div class="diag">
+          <div class="dh"><span class="en">Diagnosis — a low-margin OEM exposed to brand demand cycles</span><span class="ko">진단 — 브랜드 수요 사이클에 노출된 저마진 OEM</span></div>
+          <div class="formula">Profit ≈ Orders × (Price − Labor − Material) × FX</div>
+          <ul>
+            <li><span class="en">Revenue rides outdoor/sportswear demand (North Face, Lululemon, Patagonia) — strong but client-dependent.</span><span class="ko">매출이 아웃도어·스포츠웨어 수요(노스페이스·룰루레몬·파타고니아)에 좌우되어 강하지만 고객사 의존적입니다.</span></li>
+            <li><span class="en">OEM margins are thin; value sits with the brand owner, not the maker.</span><span class="ko">OEM 마진은 얇고, 가치는 제조사가 아니라 브랜드 소유주에게 있습니다.</span></li>
+            <li><span class="en">Key lever: climb the value chain with automation, ODM design and sustainability.</span><span class="ko">핵심 레버는 자동화·ODM 설계·지속가능성으로 가치사슬을 올라가는 것입니다.</span></li>
+          </ul>
+        </div>
+        <div class="track-grid">
+          <div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Defend OEM scale &amp; key accounts</span><span class="ko">OEM 규모·핵심 고객 방어</span></div><p><span class="en">Lock in marquee clients, expand AI-driven automation for cost leadership, and hold the #1 capacity position.</span><span class="ko">대형 고객사를 묶어두고 AI 기반 자동화로 원가 우위를 확대하며 생산능력 1위를 지킵니다.</span></p></div>
+          <div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Climb to ODM &amp; sustainable materials</span><span class="ko">ODM·친환경 소재로 상향</span></div><p><span class="en">Move from make-to-spec toward ODM design, traceable sustainable fabrics and a diversified manufacturing footprint.</span><span class="ko">지시 생산에서 ODM 설계·추적 가능한 친환경 원단으로 이동하고 생산기지를 다변화합니다.</span></p></div>
+        </div>
+        <div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div>
+        <div class="ap-grid">
+          <div class="ap"><div class="apt"><span class="en">Value capture</span><span class="ko">가치 확보</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">OEM make-to-spec</span><span class="ko">OEM 지시 생산</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">ODM design-led</span><span class="ko">ODM 설계 주도</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Cost</span><span class="ko">원가</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Manual labor</span><span class="ko">노동 집약 공정</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">AI automation</span><span class="ko">AI 자동화</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Sustainability</span><span class="ko">지속가능성</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Standard fabrics</span><span class="ko">일반 원단</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Traceable eco-materials</span><span class="ko">추적 가능 친환경 소재</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight">
+        <li><span class="en">Luxury should grow modestly in 2026 as China stabilizes, but aspirational demand stays fragile.</span><span class="ko">중국이 안정되며 럭셔리는 2026년 완만히 성장하겠으나, 신규 소비 수요는 여전히 취약합니다.</span></li>
+        <li><span class="en">Scarcity, vertical integration and pricing discipline keep winning over pure scale.</span><span class="ko">희소성·수직계열화·가격 규율이 단순 규모를 계속 이깁니다.</span></li>
+        <li><span class="en">EU sustainability rules (ESPR, DPP, CSDDD) raise the cost and importance of a traceable supply chain.</span><span class="ko">EU 지속가능성 규제(ESPR·DPP·CSDDD)가 추적 가능한 공급망의 비용과 중요성을 높입니다.</span></li>
+        <li><span class="en">Korea shifts from OEM to brand: Youngone scales manufacturing while K-fashion exports boom abroad.</span><span class="ko">한국은 OEM에서 브랜드로 이동합니다. 영원무역이 제조를 키우는 한편 K-패션 수출이 해외에서 호황을 누립니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://www.cnn.com/2025/04/15/style/hermes-worlds-most-valuable-luxury-company/index.html">CNN — Hermès overtakes LVMH as most valuable luxury company</a></li>
+      <li><a href="https://www.bain.com/about/media-center/press-releases/2026/chinas-personal-luxury-market-contracts-35-in-2025-but-shows-signs-of-recovery/">Bain &amp; Company — China luxury market 2025 / 2026 outlook</a></li>
+      <li><a href="https://www.mordorintelligence.com/industry-reports/luxury-goods-market">Mordor Intelligence — Luxury goods market size &amp; CAGR</a></li>
+      <li><a href="https://www.g-enews.com/article/Global-Biz/2025/12/202512040657397088fbbec65dfb_1">Global Economic — Youngone (영원무역) revenue &amp; AI automation</a></li>
+      <li><a href="https://www.carbonfact.com/blog/policy/eu-regulations-for-textile-brands">Carbonfact — EU textile strategy: ESPR, DPP, CSDDD</a></li>
+      <li><a href="https://newsroom.musinsa.com/newsroom-menu/2026-0130">Musinsa Newsroom — K-fashion global export growth 2025</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Textiles, Apparel &amp; Luxury Goods (GICS 252030) · Generated June 4, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 섬유·의류·럭셔리 굿즈(GICS 252030) · 2026년 6월 4일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>
