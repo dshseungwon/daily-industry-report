@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Textiles, Apparel &amp; Luxury Goods · 섬유·의류·럭셔리 — The Industry Brief</title>
+<title>Textiles, Apparel & Luxury Goods · 섬유·의류·명품 — The Industry Brief</title>
 <style>
   :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
     --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
@@ -104,12 +104,12 @@
   .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
   .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
   .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
-  .gl .leader-band{background:linear-gradient(120deg,#5a2845,#7a3b5e);}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
   .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
   .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
   .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
   .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
-  .gl .stat{background:#7a3b5e;}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
   .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
   .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
   /* LG-style company strategy block */
@@ -145,21 +145,114 @@
   }
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
 </style>
+
+<style>
+  .cagr-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+  .cagr-badge{display:inline-flex;align-items:baseline;gap:5px;background:#eaf2fb;color:var(--blue);
+    border:1px solid #cfe2f5;border-radius:999px;padding:6px 13px;font-weight:800;font-size:13px;}
+  .cagr-badge .n{font-size:16px;}
+  .cagr-badge.alt{background:#fff6e6;color:#b07400;border-color:#ffe2a6;}
+  /* SCQA diagnosis (Situation · Complication · Question · Answer) */
+  .scqa{margin:12px 0 2px;}
+  .scqa-row{display:flex;gap:12px;position:relative;padding-bottom:14px;}
+  .scqa-row:last-child{padding-bottom:0;}
+  .scqa-row::before{content:"";position:absolute;left:14px;top:30px;bottom:-2px;width:2px;background:var(--line);}
+  .scqa-row:last-child::before{display:none;}
+  .scqa-k{flex:none;width:30px;height:30px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 2px 6px rgba(14,42,71,.18);}
+  .scqa-row.s .scqa-k{background:#5b6b8c;}
+  .scqa-row.c .scqa-k{background:var(--hi);}
+  .scqa-row.q .scqa-k{background:var(--blue);}
+  .scqa-row.a .scqa-k{background:var(--lo);}
+  .scqa-bd{flex:1;padding-top:1px;}
+  .scqa-lab{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;}
+  .scqa-row.a .scqa-lab{color:var(--lo);}
+  .scqa-bd p{margin:0;font-size:13.3px;color:var(--ink);line-height:1.55;}
+  .scqa-row.q .scqa-bd p{font-style:italic;color:#16406a;}
+  .scqa-row.a .scqa-bd p{font-weight:600;}
+  .scqa .formula{margin-top:8px;}
+  .scqa-cap{font-size:11.5px;color:var(--mute);font-style:italic;margin:10px 0 0;}
+  /* MECE issue tree (rendered together with SCQA) */
+  .tree{margin:9px 0 2px;}
+  .tree .root{background:linear-gradient(120deg,#16406a,#0e2a47);color:#fff;border-radius:11px;
+    padding:11px 14px;font-size:13.4px;font-weight:700;border-left:4px solid var(--gold);}
+  .tree .branches{display:grid;gap:9px;margin-top:10px;}
+  .tree .branch{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;padding:10px 13px;background:#f7fafd;}
+  .tree .branch>b{font-size:13.1px;display:block;margin-bottom:5px;color:var(--ink);}
+  .tree .leaf{font-size:12.6px;color:var(--mute);padding-left:15px;position:relative;margin:4px 0;line-height:1.5;}
+  .tree .leaf::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .tree .leaf.lever{color:var(--ink);font-weight:600;}
+  .tree .leaf.lever::before{background:var(--gold);width:8px;height:8px;left:1px;top:7px;}
+  .tree .lever-tag{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#b07400;background:#fff6e6;border-radius:5px;padding:1px 5px;margin-right:5px;}
+  .tree-cap{display:none;}
+  @media(min-width:680px){.tree .branches{grid-template-columns:1fr 1fr 1fr;}}
+  /* value chain — connected flow diagram */
+  .vchain{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:6px 0 4px;}
+  .vc-step{position:relative;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:11px;padding:11px 13px 11px 40px;flex:1;}
+  .vc-step .vc-n{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;
+    background:var(--blue);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .vc-step:last-of-type{border-left-color:var(--gold);}
+  .vc-step:last-of-type .vc-n{background:var(--gold);color:var(--navy);}
+  .vc-step b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc-step .d{font-size:12.3px;color:var(--mute);}
+  .vc-arrow{align-self:center;color:var(--gold);font-weight:900;font-size:16px;line-height:1;
+    transform:rotate(90deg);padding:5px 0;}
+  @media(min-width:720px){
+    .vchain{flex-direction:row;align-items:stretch;flex-wrap:nowrap;}
+    .vc-step{padding:11px 11px 11px 12px;min-width:0;}
+    .vc-step .vc-n{position:static;margin-bottom:6px;}
+    .vc-arrow{transform:none;padding:0 3px;display:flex;align-items:center;}
+  }
+  /* variable 1-3 strategy tracks */
+  .track.t3{background:#10355a;border:1px solid rgba(255,184,28,.45);}
+  .track-grid.n1{grid-template-columns:1fr;}
+  @media(min-width:680px){
+    .track-grid.n2{grid-template-columns:1fr 1fr;}
+    .track-grid.n3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  /* profit pool */
+  .pool{display:flex;flex-direction:column;gap:8px;margin:6px 0 2px;}
+  .pool-row{display:flex;align-items:center;gap:10px;}
+  .pool-row .pn{flex:1.1;font-size:12.6px;color:var(--ink);min-width:0;}
+  .pool-row .ptrack{flex:1.5;height:9px;border-radius:5px;background:#eef2f7;overflow:hidden;}
+  .pool-row .pfill{height:100%;border-radius:5px;}
+  .pool-row .pfill.hi{width:92%;background:var(--gold);}
+  .pool-row .pfill.med{width:55%;background:var(--blue);}
+  .pool-row .pfill.lo{width:22%;background:#c9d4e3;}
+  .pool-row .pv{flex:none;width:58px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .pool-row .pv.hi{color:#b07400;}.pool-row .pv.med{color:var(--blue);}.pool-row .pv.lo{color:var(--mute);}
+  /* KPI watchlist */
+  .kpis{display:grid;grid-template-columns:1fr;gap:11px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);padding:13px 15px;border-left:4px solid var(--blue);}
+  .kpi .kt{font-size:12.5px;font-weight:800;color:var(--ink);}
+  .kpi .kv{font-size:clamp(17px,4.6vw,21px);font-weight:800;color:var(--blue);margin:3px 0 4px;line-height:1.1;}
+  .kpi .kw{font-size:12.3px;color:var(--mute);}
+  /* scenarios */
+  .scen{display:grid;grid-template-columns:1fr;gap:11px;}
+  .sc{border-radius:13px;padding:14px 16px;color:#fff;box-shadow:var(--shadow);}
+  .sc.bull{background:linear-gradient(125deg,#1f9d6b,#14633f);}
+  .sc.base{background:linear-gradient(125deg,#16406a,#0e2a47);}
+  .sc.bear{background:linear-gradient(125deg,#b1402f,#7d2418);}
+  .sc .sh{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .sc .sd{font-size:13.6px;font-weight:800;margin:4px 0 6px;}
+  .sc p{margin:0;font-size:12.8px;color:#eef4fb;}
+  /* positioning 2x2 */
+  .posmap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;}
+  .posmap svg{width:100%;height:auto;display:block;overflow:visible;}
+  .pos-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 2px;font-size:12px;color:var(--ink);}
+  .pos-legend .pl-i{display:flex;align-items:center;gap:6px;}
+  .pos-legend .pl-d{width:11px;height:11px;border-radius:50%;}
+  @media(min-width:680px){.kpis{grid-template-columns:1fr 1fr;}.scen{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
 </head>
 <body class="lang-en">
 
 <div class="topbar">
   <div class="row">
-    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Apparel &amp; Luxury</span><span class="ko">의류·럭셔리</span></div>
-    <div class="chips">
-      <button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button>
-      <button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button>
-      <button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button>
-      <button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button>
-      <button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button>
-      <button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button>
-      <button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button>
-    </div>
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Apparel &amp; Luxury</span><span class="ko">의류·명품</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="positioning"><span class="en">Positioning</span><span class="ko">포지셔닝</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button><button class="chip" data-go="scenarios"><span class="en">Scenarios</span><span class="ko">시나리오</span></button></div>
     <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
   </div>
 </div>
@@ -167,12 +260,12 @@
 <div class="hero">
   <div class="wrap">
     <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 3 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 3번째</span></p>
-    <h1><span class="en">Textiles, Apparel &amp; Luxury Goods</span><span class="ko">섬유·의류·럭셔리 굿즈</span></h1>
+    <h1><span class="en">Textiles, Apparel &amp; Luxury Goods</span><span class="ko">섬유·의류·명품</span></h1>
     <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
     <div class="pill-row">
       <span class="pill">GICS · Consumer Discretionary · 252030</span>
       <span class="pill">2026-06-04</span>
-      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: LVMH · <span class="en">Youngone</span><span class="ko">영원무역</span></span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: LVMH · Youngone</span>
     </div>
   </div>
 </div>
@@ -182,197 +275,95 @@
   <section id="overview">
     <div class="card summary reveal">
       <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
-      <p>
-        <span class="en">This industry spans the full apparel pyramid — from scarcity-driven luxury maisons to fast fashion and the sportswear and outdoor brands behind them. After two turbulent years, 2025 was a year of recalibration: global luxury was roughly flat as China contracted 3–5% and aspirational middle-class shoppers pulled back, bruised by years of aggressive price hikes. Value has split sharply between winners who own scarcity and pricing discipline (Hermès grew ~9% to over €16B) and conglomerates that stalled (LVMH sales −5% to €80.8B; Kering −13%). The global #1 by revenue, LVMH, anchors the multi-brand luxury model; Korea's #1, Youngone (영원무역), is the country's largest apparel exporter — a global OEM/ODM powerhouse for North Face, Lululemon and Patagonia. Both are detailed at the end.</span>
-        <span class="ko">이 산업은 희소성을 무기로 하는 럭셔리 메종부터 패스트패션, 그리고 그 뒤를 받치는 스포츠·아웃도어 브랜드까지 의류 피라미드 전체를 아우릅니다. 격동의 2년을 지나 2025년은 재조정의 해였습니다. 중국이 3~5% 역성장하고 수년간의 공격적 가격 인상에 지친 중산층 소비자가 발길을 돌리면서 글로벌 럭셔리는 대체로 보합에 머물렀습니다. 가치는 희소성과 가격 규율을 쥔 승자(에르메스는 약 9% 성장해 160억 유로를 넘김)와 정체된 복합기업(LVMH 매출 −5%로 808억 유로, 케링 −13%)으로 뚜렷이 갈렸습니다. 매출 기준 글로벌 1위 LVMH는 멀티브랜드 럭셔리 모델의 중심이고, 한국 1위 영원무역은 국내 최대 의류 수출기업으로 노스페이스·룰루레몬·파타고니아를 만드는 글로벌 OEM/ODM 강자입니다. 두 기업은 뒤에서 자세히 다룹니다.</span>
-      </p>
+      <p><span class="en">Textiles, apparel &amp; luxury goods (GICS 252030) spans luxury houses, brands and OEM makers — a ~US$1.84T apparel market growing ~4% a year, with personal luxury (~€358B) now flat-to-down. After years of price-led growth, 2025–26 marks the end of the luxury supercycle: aspirational shoppers retreated, China softened, and US reciprocal tariffs (20%+ on Bangladesh/Vietnam) hit OEM exporters. The global #1, LVMH, is the world's largest luxury group; Korea's #1 by revenue, Youngone, is a vertically integrated OEM/ODM exporter (with F&amp;F the leading domestic brand). Both are detailed at the end.</span><span class="ko">섬유·의류·명품(GICS 252030)은 명품 하우스·브랜드·OEM 제조를 아우르며, 의류 시장은 약 1.84조 달러로 연 약 4% 성장하나 개인 명품(약 3,580억 유로)은 정체·감소로 돌아섰습니다. 수년간의 가격 주도 성장 끝에 2025~26년은 명품 슈퍼사이클의 종료를 알립니다. 욕망형 소비자가 물러서고 중국이 약해졌으며, 미국 상호관세(방글라데시·베트남 20% 이상)가 OEM 수출사를 때렸습니다. 글로벌 1위 LVMH는 세계 최대 명품 그룹이고, 매출 기준 한국 1위 영원무역은 수직계열화된 OEM·ODM 수출사입니다(국내 대표 브랜드는 F&amp;F). 두 기업은 뒤에서 자세히 다룹니다.</span></p>
     </div>
   </section>
 
   <section id="chain">
     <div class="card reveal">
       <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
-      <h2><span class="en">From design to brand to the customer</span><span class="ko">디자인에서 브랜드, 그리고 고객까지</span></h2>
-      <p class="lead">
-        <span class="en">This GICS industry (252030) covers apparel, footwear, textiles and luxury accessories. Profit ≈ (units × price) × brand premium − material, manufacturing and distribution cost. The deepest margins sit at the brand and DTC ends; the OEM/ODM middle competes on cost, capacity and speed.</span>
-        <span class="ko">이 GICS 산업(252030)은 의류·신발·섬유·럭셔리 액세서리를 포괄합니다. 이익 ≈ (판매 수량 × 가격) × 브랜드 프리미엄 − 원자재·제조·유통 비용으로 볼 수 있습니다. 가장 두꺼운 마진은 브랜드와 DTC 영역에 있고, OEM/ODM 중간 단계는 원가·생산능력·속도로 경쟁합니다.</span>
-      </p>
-      <div class="chain">
-        <div class="vc"><b><span class="en">Design &amp; IP</span><span class="ko">디자인·IP</span></b><span class="d"><span class="en">Creative direction and the maison's heritage — the value core.</span><span class="ko">크리에이티브 디렉션과 메종의 헤리티지. 가치의 핵심입니다.</span></span></div>
-        <div class="vc"><b><span class="en">Materials &amp; textiles</span><span class="ko">원자재·섬유</span></b><span class="d"><span class="en">Leather, cotton and technical fabrics — cost and sustainability driver.</span><span class="ko">가죽·면·기능성 원단. 원가와 지속가능성의 변수입니다.</span></span></div>
-        <div class="vc"><b><span class="en">OEM/ODM manufacturing</span><span class="ko">OEM/ODM 제조</span></b><span class="d"><span class="en">Outsourced production at scale in Asia — the Korea stronghold.</span><span class="ko">아시아 기반의 대량 위탁 생산. 한국이 강한 영역입니다.</span></span></div>
-        <div class="vc"><b><span class="en">Brand &amp; marketing</span><span class="ko">브랜드·마케팅</span></b><span class="d"><span class="en">Desirability and pricing power lift the premium.</span><span class="ko">선망과 가격 결정력이 프리미엄을 끌어올립니다.</span></span></div>
-        <div class="vc"><b><span class="en">DTC &amp; retail</span><span class="ko">DTC·리테일</span></b><span class="d"><span class="en">Boutiques, e-commerce and platforms — margin and data control.</span><span class="ko">부티크·이커머스·플랫폼. 마진과 데이터를 쥡니다.</span></span></div>
-      </div>
+      <h2><span class="en">From fiber to brand to consumer</span><span class="ko">원사에서 브랜드, 그리고 소비자까지</span></h2>
+      <p class="lead"><span class="en">Value sits in brand desire and design, not stitching. Revenue ≈ volume × ASP × brand mix; OEM margin depends on factory utilization and input cost.</span><span class="ko">가치는 봉제가 아니라 브랜드 욕망과 디자인에 있습니다. 매출 ≈ 물량 × 판매단가 × 브랜드 믹스이며, OEM 마진은 공장 가동률과 투입원가가 좌우합니다.</span></p>
+      <div class="vchain"><div class="vc-step"><span class="vc-n">1</span><b><span class="en">Fiber &amp; fabric</span><span class="ko">원사·원단</span></b><span class="d"><span class="en">Cotton, polyester and specialty fabrics are the base input.</span><span class="ko">면·폴리에스터·기능성 원단이 기본 투입재입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">2</span><b><span class="en">OEM/ODM manufacturing</span><span class="ko">OEM·ODM 제조</span></b><span class="d"><span class="en">Low-margin contract production concentrated in Asia.</span><span class="ko">저마진 위탁 생산이 아시아에 집중돼 있습니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">3</span><b><span class="en">Brand &amp; design</span><span class="ko">브랜드·디자인</span></b><span class="d"><span class="en">Creative direction and heritage drive pricing power.</span><span class="ko">크리에이티브와 헤리티지가 가격결정력을 만듭니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">4</span><b><span class="en">Distribution (DTC/wholesale)</span><span class="ko">유통(DTC·도매)</span></b><span class="d"><span class="en">Owned digital channels lift margin and customer data.</span><span class="ko">자사 디지털 채널이 마진과 고객 데이터를 높입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">5</span><b><span class="en">Resale &amp; circularity</span><span class="ko">리세일·순환</span></b><span class="d"><span class="en">Secondhand and EPR rules reshape end-of-life value.</span><span class="ko">중고와 EPR 규제가 수명말 가치를 바꿉니다.</span></span></div></div>
+      <div class="subh" style="margin-top:16px"><span class="en">Profit pool — where margin concentrates</span><span class="ko">수익풀 — 마진이 집중되는 곳</span></div><div class="pool"><div class="pool-row"><span class="pn"><span class="en">Fiber &amp; fabric</span><span class="ko">원사·원단</span></span><span class="ptrack"><span class="pfill lo"></span></span><span class="pv lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><div class="pool-row"><span class="pn"><span class="en">OEM/ODM manufacturing</span><span class="ko">OEM·ODM 제조</span></span><span class="ptrack"><span class="pfill lo"></span></span><span class="pv lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Brand &amp; design</span><span class="ko">브랜드·디자인</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Distribution (DTC/wholesale)</span><span class="ko">유통(DTC·도매)</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Resale &amp; circularity</span><span class="ko">리세일·순환</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div></div><p class="cap"><span class="en">Margin concentrates in brand desire/design and owned DTC; fiber and OEM stitching are thin, and resale is an emerging value pool.</span><span class="ko">마진은 브랜드 욕망·디자인과 자사 DTC에 집중됩니다. 원사와 OEM 봉제는 얇고, 리세일이 떠오르는 가치원입니다.</span></p>
     </div>
   </section>
 
   <section id="size">
     <div class="card reveal">
       <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
-      <h2><span class="en">A large market growing at low single digits</span><span class="ko">크지만 한 자릿수로 자라는 시장</span></h2>
-      <div class="colchart">
-        <div class="col"><div class="col-val">$455B</div><div class="col-bar" data-h="83"></div><div class="col-lab">2024</div></div>
-        <div class="col"><div class="col-val">$464B</div><div class="col-bar" data-h="85"></div><div class="col-lab">2025</div></div>
-        <div class="col"><div class="col-val">$484B</div><div class="col-bar" data-h="88"></div><div class="col-lab">2026E</div></div>
-        <div class="col"><div class="col-val">$505B</div><div class="col-bar" data-h="92"></div><div class="col-lab">2027E</div></div>
-        <div class="col"><div class="col-val">$530B</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div>
-      </div>
-      <p class="cap"><span class="en">Global personal luxury goods, US$ billions, indicative. ~4–5% CAGR through 2031 (Bain/Mordor). Luxury apparel alone is ~$70B; clothing is ~37% of luxury spend. Mass and fast fashion add hundreds of billions on top.</span><span class="ko">글로벌 개인 럭셔리 굿즈, 단위 십억 달러, 추정치입니다. 2031년까지 연평균 약 4~5% 성장(Bain/Mordor)이 예상됩니다. 럭셔리 의류만 약 700억 달러이며, 의류는 럭셔리 소비의 약 37%를 차지합니다. 매스·패스트패션이 여기에 수천억 달러를 더합니다.</span></p>
+      <h2><span class="en">A large apparel market; luxury has cooled</span><span class="ko">큰 의류 시장, 식어버린 명품</span></h2>
+      <div class="cagr-wrap"><span class="cagr-badge"><span class="en">CAGR</span><span class="ko">연평균 성장</span><span class="n">≈4.1%</span></span><span class="mute" style="font-size:12.5px"><span class="en">2026→2033 · global apparel market</span><span class="ko">2026→2033 · 글로벌 의류 시장</span></span></div>
+      <div class="colchart"><div class="col"><div class="col-val">$1.77T</div><div class="col-bar" data-h="44"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">$1.84T</div><div class="col-bar" data-h="57"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">$1.91T</div><div class="col-bar" data-h="69"></div><div class="col-lab">2026E</div></div><div class="col"><div class="col-val">$1.99T</div><div class="col-bar" data-h="84"></div><div class="col-lab">2027E</div></div><div class="col"><div class="col-val">$2.08T</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div></div>
+      <p class="cap"><span class="en">Global apparel market, US$ trillions, indicative (Grand View Research, 2025; ~4.1% CAGR). Bars use a zoomed baseline. Personal luxury goods (~€358B in 2025) fell ~2% as the supercycle ended.</span><span class="ko">글로벌 의류 시장, 단위 조 달러, 추정치입니다(Grand View Research, 2025년, 연평균 약 4.1% 성장). 막대는 확대 기준선을 씁니다. 개인 명품(2025년 약 3,580억 유로)은 슈퍼사이클 종료로 약 2% 감소했습니다.</span></p>
     </div>
   </section>
 
   <section id="share">
     <div class="card reveal">
       <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
-      <h2><span class="en">A fragmented field; conglomerates lead, Hermès wins quality</span><span class="ko">분산된 시장, 복합기업 선두에 에르메스가 질로 승부</span></h2>
+      <h2><span class="en">Conglomerates lead globally; OEM scale leads in Korea</span><span class="ko">글로벌은 대기업, 한국은 OEM 규모가 선도</span></h2>
       <div class="pies">
-        <div class="pieblock">
-          <div class="pie-title"><span class="en">Global luxury revenue — leaders, 2025</span><span class="ko">글로벌 럭셔리 매출 — 주요 기업, 2025</span></div>
-          <div class="pie" style="background:conic-gradient(#7a3b5e 0 36%,#a85d80 36% 50%,#c8102e 50% 60%,#ffb81c 60% 73%,#c9d4e3 73% 100%)"></div>
-          <div class="legend">
-            <div class="lg-item"><span class="lg-dot" style="background:#7a3b5e"></span>LVMH<b>€80.8B</b></div>
-            <div class="lg-item"><span class="lg-dot" style="background:#a85d80"></span>Hermès<b>€16B+</b></div>
-            <div class="lg-item"><span class="lg-dot" style="background:#c8102e"></span>Kering<b>~€13B</b></div>
-            <div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Inditex<b>€38B</b></div>
-            <div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>—</b></div>
-          </div>
-        </div>
-        <div class="pieblock">
-          <div class="pie-title"><span class="en">Korea apparel exporters — by revenue, 2025</span><span class="ko">한국 의류 수출기업 — 매출 기준, 2025</span></div>
-          <div class="pie" style="background:conic-gradient(#0047a0 0 40%,#117aca 40% 70%,#7a3b5e 70% 90%,#c9d4e3 90% 100%)"></div>
-          <div class="legend">
-            <div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span><span class="en">Youngone</span><span class="ko">영원무역</span><b>~₩4.0T</b></div>
-            <div class="lg-item"><span class="lg-dot" style="background:#117aca"></span><span class="en">Hansae</span><span class="ko">한세실업</span><b>~₩2.5T</b></div>
-            <div class="lg-item"><span class="lg-dot" style="background:#7a3b5e"></span>F&amp;F<b>~₩2.0T</b></div>
-            <div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>—</b></div>
-          </div>
-        </div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Top fashion groups by revenue — indicative</span><span class="ko">주요 패션 그룹 매출 기준 — 추정</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0 15%,#117aca 15% 23%,#ffb81c 23% 30%,#5aa9e6 30% 34%,#c9d4e3 34% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>LVMH<b>~15%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Nike<b>~8%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Inditex<b>~7%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>H&amp;M<b>~4%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>~66%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea fashion market — indicative</span><span class="ko">한국 패션 시장 — 추정</span></div><div class="pie" style="background:conic-gradient(#0047a0 0 4%,#117aca 4% 8%,#ffb81c 8% 11%,#c9d4e3 11% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>Samsung C&amp;T Fashion<b>~4%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>F&amp;F<b>~4%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Shinsegae Int'l<b>~3%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>~89%</b></div></div></div>
       </div>
-      <p class="cap"><span class="en">LVMH leads luxury by revenue (€80.8B, −5% in 2025), but Hermès overtook it on market cap as scarcity won. In Korea, Youngone holds the top OEM/ODM position by revenue, ahead of arch-rival Hansae; F&amp;F leads the branded segment. Figures are indicative.</span><span class="ko">LVMH가 매출 기준 럭셔리 1위(808억 유로, 2025년 −5%)이지만, 희소성이 승리하며 시가총액에서는 에르메스가 LVMH를 앞질렀습니다. 한국에서는 영원무역이 매출 기준 OEM/ODM 1위로 숙적 한세실업을 앞서고, F&amp;F가 브랜드 부문을 선도합니다. 수치는 추정치입니다.</span></p>
+      <p class="cap"><span class="en">Shares are of the top-75 listed pool / domestic market, indicative. Youngone (US$2.9B TTM revenue) is Korea's largest by revenue as an export OEM, not domestic retail.</span><span class="ko">점유율은 상위 75개 상장 풀·내수 시장 기준 추정치입니다. 영원무역(최근 12개월 매출 29억 달러)은 내수 소매가 아닌 수출 OEM으로 매출 기준 한국 1위입니다.</span></p>
     </div>
+  </section>
+
+  <section id="positioning">
+    <p class="kicker"><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></p>
+    <h2><span class="en">Where the leaders sit — a 2×2 map</span><span class="ko">리더들의 위치 — 2×2 맵</span></h2>
+    <div class="posmap reveal"><svg viewBox="0 0 340 290" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="60" y="18" width="262" height="214" fill="#f7fafd" stroke="#e6ebf4" stroke-width="1.5" rx="8"/><line x1="60" y1="125" x2="322" y2="125" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><line x1="191" y1="18" x2="191" y2="232" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><circle cx="301" cy="29" r="7" fill="var(--navy)"/><text x="301" y="20" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">LVMH</text><circle cx="160" cy="206" r="7" fill="var(--krred)"/><text x="160" y="197" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Youngone</text><circle cx="256" cy="78" r="5.5" fill="#9fb1c9"/><text x="256" y="69" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Nike</text><circle cx="118" cy="129" r="5.5" fill="#9fb1c9"/><text x="118" y="120" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">F&F</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="en">Revenue scale &#8594;</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="ko">매출 규모 &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="en">Brand equity / pricing power &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="ko">브랜드 자산·가격결정력 &#8594;</text></svg><div class="pos-legend"><span class="pl-i"><span class="pl-d" style="background:var(--navy)"></span><span class="en">Global #1</span><span class="ko">글로벌 1위</span></span><span class="pl-i"><span class="pl-d" style="background:var(--krred)"></span><span class="en">Korea #1</span><span class="ko">한국 1위</span></span><span class="pl-i"><span class="pl-d" style="background:#9fb1c9"></span><span class="en">Peers</span><span class="ko">경쟁사</span></span></div><p class="cap"><span class="en">LVMH tops both axes; Youngone has scale but low brand equity as a pure OEM; F&amp;F has strong Asian brand equity at smaller scale.</span><span class="ko">LVMH가 양 축에서 앞서고, 영원무역은 순수 OEM으로 규모는 크나 브랜드 자산이 낮으며, F&amp;F는 작은 규모에 강한 아시아 브랜드 자산을 가집니다.</span></p></div>
   </section>
 
   <section id="forces">
     <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
     <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
-    <div class="forces reveal">
-      <div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Maisons, fast fashion and sportswear fight for share of a flat wallet.</span><span class="ko">메종·패스트패션·스포츠웨어가 정체된 지갑을 두고 다툽니다.</span></p></div>
-      <div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">DTC and social make launch easy, but heritage and scale are hard to copy.</span><span class="ko">DTC와 소셜로 출시는 쉬워졌으나 헤리티지와 규모는 모방이 어렵습니다.</span></p></div>
-      <div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Premium leather and capacity are scarce; large OEMs gain leverage.</span><span class="ko">고급 가죽·생산능력이 희소하고, 대형 OEM이 교섭력을 키웁니다.</span></p></div>
-      <div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Brand desire offsets price-sensitive, informed and selective shoppers.</span><span class="ko">브랜드 선망이 가격에 민감하고 까다로운 소비자를 일부 상쇄합니다.</span></p></div>
-      <div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Resale, rental and experiences compete for discretionary spend.</span><span class="ko">중고·렌털·경험 소비가 여가성 지출을 두고 경쟁합니다.</span></p></div>
-    </div>
-    <p class="cap"><span class="en">Net: brand heritage and scale protect the top, but a flat market and selective buyers cap the upside.</span><span class="ko">종합하면 브랜드 헤리티지와 규모가 상위 기업을 보호하지만, 정체된 시장과 까다로운 소비자가 상승 여력을 제한합니다.</span></p>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Luxury, fast-fashion and OEM tiers each fight on multiple fronts.</span><span class="ko">명품·패스트패션·OEM 각 층이 여러 전선에서 싸웁니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Ultra-fast-fashion (Shein, Temu) lowered mass-market barriers.</span><span class="ko">초패스트패션(쉬인·테무)이 대중시장 진입장벽을 낮췄습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">OEM suppliers are fragmented; specialty fabrics carry power.</span><span class="ko">OEM 공급자는 분산돼 있으나 특수 원단은 교섭력이 있습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Price-transparent consumers are trading down from luxury.</span><span class="ko">가격 투명성을 가진 소비자가 명품에서 하향 구매 중입니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Resale, rental and experiences divert apparel spend.</span><span class="ko">리세일·렌털·경험 소비가 의류 지출을 분산시킵니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: a high-rivalry, buyer-powered industry where brand desire and sourcing agility are the moat.</span><span class="ko">종합하면 경쟁과 구매자 교섭력이 높은 산업으로, 브랜드 욕망과 소싱 민첩성이 해자입니다.</span></p>
   </section>
 
   <section id="reg">
-    <p class="kicker"><span class="en">PESTEL &amp; regulation</span><span class="ko">PESTEL과 규제</span></p>
-    <h2><span class="en">Macro forces &amp; the latest rules</span><span class="ko">거시 환경과 최신 규제</span></h2>
-    <p class="mute"><span class="en">Economics and environment dominate: China's slowdown and cautious aspirational shoppers set demand, while sustainability rules reshape how clothes are made and tracked. The fastest-moving lever is regulation, below.</span><span class="ko">경제와 환경이 핵심입니다. 중국의 둔화와 신중해진 소비자가 수요를 정하고, 지속가능성 규제가 옷을 만들고 추적하는 방식을 바꿉니다. 가장 빠르게 움직이는 변수는 아래의 규제입니다.</span></p>
-    <p class="hint"><span class="en">Latest legislation &amp; regulatory issues — tap to expand.</span><span class="ko">최신 법안·규제 이슈 — 눌러서 펼치십시오.</span></p>
-    <div class="acc" data-accordion>
-      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2024–28</span><span class="ac-title"><span class="en">EU ESPR &amp; Digital Product Passport for textiles</span><span class="ko">EU 에코디자인(ESPR)·디지털제품여권(DPP)</span></span></div><div class="ac-body"><p class="why"><span class="en">ESPR (adopted 2024) names textiles a priority; the textile delegated act is expected in Q2 2027, with mandatory DPPs realistically from ~2028 carrying QR-accessible data on materials and recyclability. <b>Why it matters:</b> traceability and ecodesign become a condition of selling in Europe.</span><span class="ko">2024년 채택된 ESPR은 섬유를 우선 품목으로 지정했고, 섬유 위임법은 2027년 2분기에, 의무 DPP는 사실상 2028년경부터 소재·재활용성 정보를 QR로 제공하게 됩니다. <b>의미:</b> 추적성과 에코디자인이 유럽 판매의 조건이 됩니다.</span></p></div></div>
-      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">EU CSDDD supply-chain due diligence (simplified)</span><span class="ko">EU 공급망 실사지침(CSDDD) — 완화</span></span></div><div class="ac-body"><p class="why"><span class="en">The 2025 Omnibus simplified CSDDD — brands no longer need a climate transition plan — but human-rights and environmental due diligence across suppliers remains. <b>Why it matters:</b> the burden of proof for ethical sourcing now sits with brands.</span><span class="ko">2025년 옴니버스로 CSDDD가 완화되어 기후전환계획 의무는 빠졌으나, 협력사 전반의 인권·환경 실사 의무는 남았습니다. <b>의미:</b> 윤리적 조달의 입증 책임이 이제 브랜드에 있습니다.</span></p></div></div>
-      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">Tariffs &amp; sourcing shift out of China</span><span class="ko">관세와 중국 이탈 소싱</span></span></div><div class="ac-body"><p class="why"><span class="en">US tariffs and trade friction push apparel sourcing toward Vietnam, Bangladesh and India and lift landed costs. <b>Why it matters:</b> diversified OEM footprints become a competitive advantage.</span><span class="ko">미국 관세와 무역 마찰이 의류 소싱을 베트남·방글라데시·인도로 밀어내고 도착 원가를 높입니다. <b>의미:</b> 분산된 OEM 생산기지가 경쟁우위가 됩니다.</span></p></div></div>
-      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">Korea K-textile &amp; eco/recycling rules tighten</span><span class="ko">한국 K-섬유·친환경·재활용 규제 강화</span></span></div><div class="ac-body"><p class="why"><span class="en">Korea is expanding EPR recycling obligations and eco-labeling and backing K-fashion exports as global demand for Korean brands rises. <b>Why it matters:</b> compliance and brand-export support move together for Korean players.</span><span class="ko">한국은 생산자책임재활용(EPR) 의무와 친환경 표시를 확대하고, 한국 브랜드 수요 증가에 맞춰 K-패션 수출을 지원합니다. <b>의미:</b> 한국 기업에게는 규제 대응과 브랜드 수출 지원이 함께 갑니다.</span></p></div></div>
-    </div>
+    <p class="kicker"><span class="en">Macro forces &amp; the latest RULES</span><span class="ko">거시 환경과 최신 규칙</span></p>
+    <h2><span class="en">The rulebook: policy &amp; regulation</span><span class="ko">규칙: 정책과 규제</span></h2>
+    <p class="mute"><span class="en">Circularity rules and tariffs now reshape sourcing and product design.</span><span class="ko">이제 순환경제 규제와 관세가 소싱과 제품 설계를 재편합니다.</span></p>
+    <p class="hint"><span class="en">This section = laws, bills and rules only (dated). Market events are in &#8220;Recent issues&#8221; below.</span><span class="ko">이 섹션은 법·법안·규칙만(시행일 표기)입니다. 시장 이벤트는 아래 &#8216;최근 이슈&#8217;에 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jul 2026</span><span class="ac-title"><span class="en">EU Digital Product Passport for textiles</span><span class="ko">EU 섬유 디지털 제품여권</span></span></div><div class="ac-body"><p class="why"><span class="en">An EU registry goes live Jul 2026, requiring QR-linked traceability for textiles. Why it matters: it raises compliance cost for all brands selling in the EU.</span><span class="ko">EU 등록제가 2026년 7월 가동되어 섬유에 QR 기반 추적성을 요구합니다. 의미: EU에 판매하는 모든 브랜드의 준수 비용을 높입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jun 2027</span><span class="ac-title"><span class="en">EU textile EPR (Waste Framework)</span><span class="ko">EU 섬유 EPR(폐기물 기본지침)</span></span></div><div class="ac-body"><p class="why"><span class="en">Member states must set up textile EPR with eco-modulated fees by Jun 2027. Why it matters: it effectively taxes non-circular product design.</span><span class="ko">회원국은 2027년 6월까지 친환경 차등 부담금의 섬유 EPR을 설치해야 합니다. 의미: 비순환적 제품 설계에 사실상 과세합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Aug 2025</span><span class="ac-title"><span class="en">US reciprocal tariffs on apparel</span><span class="ko">미국 의류 상호관세</span></span></div><div class="ac-body"><p class="why"><span class="en">From Aug 2025, ~20% reciprocal tariffs lifted effective rates on Bangladesh/Vietnam to ~35%. Why it matters: it forces sourcing diversification and hits OEM margin.</span><span class="ko">2025년 8월부터 약 20% 상호관세로 방글라데시·베트남 실효세율이 약 35%로 올랐습니다. 의미: 소싱 다변화를 강제하고 OEM 마진을 때립니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2027–29</span><span class="ac-title"><span class="en">EU supply-chain due diligence (CSDDD)</span><span class="ko">EU 공급망 실사(CSDDD)</span></span></div><div class="ac-body"><p class="why"><span class="en">Large brands must audit human-rights and environmental impacts through supply chains from 2029. Why it matters: it adds binding supply-chain risk duties.</span><span class="ko">대형 브랜드는 2029년부터 공급망 전반의 인권·환경 영향을 점검해야 합니다. 의미: 구속력 있는 공급망 위험 의무를 더합니다.</span></p></div></div></div>
   </section>
 
   <section id="ksf">
     <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
     <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
-    <div class="ksf reveal">
-      <div class="kc"><span class="kn">1</span><div><b><span class="en">Brand desirability</span><span class="ko">브랜드 선망성</span></b><p><span class="en">Heritage and pricing discipline sustain the premium.</span><span class="ko">헤리티지와 가격 규율이 프리미엄을 지탱합니다.</span></p></div></div>
-      <div class="kc"><span class="kn">2</span><div><b><span class="en">Scarcity &amp; pricing power</span><span class="ko">희소성·가격 결정력</span></b><p><span class="en">Controlled supply protects margin even in a downturn.</span><span class="ko">공급 통제가 침체기에도 마진을 지킵니다.</span></p></div></div>
-      <div class="kc"><span class="kn">3</span><div><b><span class="en">Supply-chain agility</span><span class="ko">공급망 민첩성</span></b><p><span class="en">Diversified, fast sourcing absorbs tariffs and demand swings.</span><span class="ko">분산된 빠른 소싱이 관세와 수요 변동을 흡수합니다.</span></p></div></div>
-      <div class="kc"><span class="kn">4</span><div><b><span class="en">DTC &amp; data</span><span class="ko">DTC·데이터</span></b><p><span class="en">Owning the customer lifts margin and informs design.</span><span class="ko">고객을 직접 쥐면 마진이 오르고 디자인에 반영됩니다.</span></p></div></div>
-      <div class="kc"><span class="kn">5</span><div><b><span class="en">Sustainability &amp; traceability</span><span class="ko">지속가능성·추적성</span></b><p><span class="en">ESPR-ready supply chains become a license to sell.</span><span class="ko">ESPR 대응 공급망이 판매의 자격이 됩니다.</span></p></div></div>
-      <div class="kc"><span class="kn">6</span><div><b><span class="en">Global brand reach</span><span class="ko">글로벌 브랜드 확장</span></b><p><span class="en">Multi-market presence smooths any single region's slump.</span><span class="ko">다지역 진출이 특정 지역의 부진을 완화합니다.</span></p></div></div>
-    </div>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Brand desirability</span><span class="ko">브랜드 욕망</span></b><p><span class="en">Heritage and creative direction set luxury pricing power.</span><span class="ko">헤리티지와 크리에이티브가 명품 가격결정력을 정합니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">Vertical integration</span><span class="ko">수직 계열화</span></b><p><span class="en">Owning the chain shortens lead times and protects margin.</span><span class="ko">가치사슬 보유가 납기를 줄이고 마진을 지킵니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">DTC &amp; digital</span><span class="ko">DTC·디지털</span></b><p><span class="en">Owned channels lift margin and first-party data.</span><span class="ko">자사 채널이 마진과 자사 데이터를 높입니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">Sourcing agility</span><span class="ko">소싱 민첩성</span></b><p><span class="en">Multi-country production hedges tariffs and buyer demand.</span><span class="ko">다국가 생산이 관세와 구매자 수요를 헤지합니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">Geographic diversity</span><span class="ko">지역 다변화</span></b><p><span class="en">Exposure beyond China buffers the luxury slowdown.</span><span class="ko">중국 외 노출이 명품 둔화를 완충합니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Circularity readiness</span><span class="ko">순환경제 대응</span></b><p><span class="en">Early DPP/EPR compliance lowers cost and wins credibility.</span><span class="ko">선제적 DPP·EPR 준수가 비용을 낮추고 신뢰를 얻습니다.</span></p></div></div></div>
   </section>
 
   <section id="news">
-    <p class="kicker"><span class="en">Recent issues &amp; news</span><span class="ko">최근 이슈 &amp; 뉴스</span></p>
-    <h2><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></h2>
-    <p class="hint"><span class="en">Tap for why it matters.</span><span class="ko">눌러서 의미를 확인하십시오.</span></p>
-    <div class="acc" data-accordion>
-      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Luxury recalibrates; LVMH −5%, Kering −13%</span><span class="ko">럭셔리 재조정, LVMH −5%·케링 −13%</span></span></div><div class="ac-body"><p class="why"><span class="en">2025 sales fell at the big conglomerates as aspirational demand softened. <b>Why it matters:</b> scale no longer guarantees growth — execution and brand heat decide.</span><span class="ko">2025년 대형 복합기업의 매출이 소비 둔화로 감소했습니다. <b>의미:</b> 이제 규모가 성장을 보장하지 않으며, 실행력과 브랜드 열기가 승부를 가릅니다.</span></p></div></div>
-      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Apr 2025</span><span class="ac-title"><span class="en">Hermès overtakes LVMH as most valuable luxury firm</span><span class="ko">에르메스, LVMH 제치고 시총 1위 럭셔리 기업</span></span></div><div class="ac-body"><p class="why"><span class="en">Hermès grew ~9% to over €16B at a 41% operating margin and passed LVMH on market cap. <b>Why it matters:</b> scarcity and vertical integration are now valued above scale.</span><span class="ko">에르메스는 약 9% 성장해 160억 유로를 넘기고 41% 영업이익률로 시총에서 LVMH를 앞섰습니다. <b>의미:</b> 이제 희소성과 수직계열화가 규모보다 높게 평가됩니다.</span></p></div></div>
-      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026E</span><span class="ac-title"><span class="en">China luxury set to rebound modestly in 2026</span><span class="ko">중국 럭셔리, 2026년 완만한 반등 전망</span></span></div><div class="ac-body"><p class="why"><span class="en">After contracting 3–5% in 2025, Bain expects modest China growth in 2026 on improving confidence. <b>Why it matters:</b> the swing region for the whole sector is stabilizing.</span><span class="ko">2025년 3~5% 역성장 후, Bain은 신뢰 회복으로 2026년 중국의 완만한 성장을 전망합니다. <b>의미:</b> 산업 전체의 변수 지역이 안정되고 있습니다.</span></p></div></div>
-      <div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jan 2026</span><span class="ac-title"><span class="en">K-fashion exports surge — Musinsa, brand boom</span><span class="ko">K-패션 수출 급증 — 무신사·브랜드 호황</span></span></div><div class="ac-body"><p class="why"><span class="en">Musinsa's global business and K-brands grew fast in Japan (+145%), China and Southeast Asia in 2025. <b>Why it matters:</b> Korean apparel is shifting from pure OEM to branded global exports.</span><span class="ko">무신사 글로벌 사업과 K-브랜드가 2025년 일본(+145%)·중국·동남아에서 빠르게 성장했습니다. <b>의미:</b> 한국 의류가 순수 OEM에서 브랜드 글로벌 수출로 옮겨가고 있습니다.</span></p></div></div>
-    </div>
+    <p class="kicker"><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></p>
+    <h2><span class="en">The newsflow: market &amp; competitive events</span><span class="ko">뉴스: 시장·경쟁 이벤트</span></h2>
+    <p class="hint"><span class="en">This section = business/market events (earnings, deals, demand, prices) — not policy. Tap for why it matters.</span><span class="ko">이 섹션은 실적·거래·수요·가격 등 시장 이벤트입니다(정책 아님). 눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Luxury supercycle ends</span><span class="ko">명품 슈퍼사이클 종료</span></span></div><div class="ac-body"><p class="why"><span class="en">Personal luxury fell ~2% to €358B in 2025, losing ~20M shoppers; LVMH revenue fell ~5%. Why it matters: brands must compete on value, not price escalation.</span><span class="ko">개인 명품이 2025년 약 2% 줄어 3,580억 유로가 되고 약 2천만 명의 소비자를 잃었으며 LVMH 매출은 약 5% 감소했습니다. 의미: 가격 인상이 아니라 가치로 경쟁해야 합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">China luxury demand softens</span><span class="ko">중국 명품 수요 둔화</span></span></div><div class="ac-body"><p class="why"><span class="en">Chinese luxury spending fell 3–5% in 2025, hitting LVMH and Korea's F&amp;F MLB China business. Why it matters: China is the segment's biggest swing factor.</span><span class="ko">중국 명품 지출이 2025년 3~5% 줄어 LVMH와 한국 F&amp;F의 MLB 중국 사업을 때렸습니다. 의미: 중국이 부문 최대 변수입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Aug 2025</span><span class="ac-title"><span class="en">Tariff shock hits Korean OEM exporters</span><span class="ko">관세 충격이 한국 OEM 수출사 타격</span></span></div><div class="ac-body"><p class="why"><span class="en">20%+ reciprocal tariffs on Bangladesh/Vietnam pressured Youngone and Hansae as US buyers demanded price offsets. Why it matters: sourcing geography became a margin issue.</span><span class="ko">방글라데시·베트남 20% 이상 상호관세가 영원무역·한세를 압박하고 미국 바이어가 단가 인하를 요구했습니다. 의미: 소싱 지역이 마진 문제가 됐습니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">Athleisure grows as heritage luxury tires</span><span class="ko">애슬레저 성장, 헤리티지 명품 피로</span></span></div><div class="ac-body"><p class="why"><span class="en">Performance/athleisure and jewelry led volume growth as classic luxury apparel slowed. Why it matters: demand is shifting to wellness-driven lifestyle wear.</span><span class="ko">고전 명품 의류가 둔화하는 가운데 퍼포먼스·애슬레저와 주얼리가 물량 성장을 이끌었습니다. 의미: 수요가 웰니스 중심 라이프스타일 의류로 옮겨갑니다.</span></p></div></div></div>
   </section>
 
-  <!-- ===== PLAYERS (secondary analysis) ===== -->
   <section id="players">
     <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
-    <h2><span class="en">The two leaders, with a strategy read</span><span class="ko">두 리더, 전략 관점으로</span></h2>
-    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader gets a short consulting-style read: diagnosis → two-track strategy → action plans.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 컨설팅식으로 짧게 진단합니다: 진단 → Two-Track 전략 → 액션 플랜 순서입니다.</span></p>
+    <h2><span class="en">The two leaders, each with its OWN strategy</span><span class="ko">두 리더, 각자 다른 전략</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader is diagnosed on its own terms: a MECE issue tree → strategy thrusts chosen for THAT company → action plans. The NUMBER of thrusts varies by situation (one for a single-mandate player, up to three where the diagnosis demands it) — it is not a fixed two-track template.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 그 회사에 맞게 진단합니다: MECE 이슈트리 → 그 기업에 맞춰 고른 전략 축 → 액션 플랜. 전략 축의 '개수'는 상황에 따라 다릅니다(단일 사명 기업은 1개, 진단이 요구하면 최대 3개). 고정된 2트랙 틀이 아닙니다.</span></p>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>LVMH</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The world's largest luxury group, controlling 75+ Maisons across fashion, wines &amp; spirits, beauty, jewelry and selective retail.</span><span class="ko">세계 최대 명품 그룹으로, 패션·주류·뷰티·주얼리·셀렉티브 리테일에 걸쳐 75개 이상의 메종을 보유합니다.</span></p><div class="stats"><div class="stat"><div class="n">€80.8B</div><div class="l"><span class="en">2025 revenue (−5%)</span><span class="ko">2025년 매출(−5%)</span></div></div><div class="stat"><div class="n">22%</div><div class="l"><span class="en">Operating margin</span><span class="ko">영업이익률</span></div></div><div class="stat"><div class="n">€10.9B</div><div class="l"><span class="en">Net profit</span><span class="ko">순이익</span></div></div><div class="stat"><div class="n">75+</div><div class="l"><span class="en">Maisons</span><span class="ko">메종 수</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — growth leaned on price hikes that have run out</span><span class="ko">진단 — 성장이 한계에 다다른 가격 인상에 기댔습니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Post-supercycle, revenue fell as aspirational demand retreated.</span><span class="ko">슈퍼사이클 이후 욕망형 수요가 물러나며 매출이 줄었습니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">Years of double-digit price hikes hit elasticity limits and China slowed structurally.</span><span class="ko">수년간의 두 자릿수 가격 인상이 탄력성 한계에 부딪히고 중국이 구조적으로 둔화했습니다.</span></p><div class="formula">Revenue = Volume × ASP × brand mix; the ASP lever is largely exhausted</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">Can creative resets reignite volume without discounting the brand?</span><span class="ko">브랜드를 할인하지 않고 크리에이티브 쇄신으로 물량을 되살릴 수 있는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">Yes: convert new creative-director halo into desire, deepen DTC and diversify beyond China (the tracks below).</span><span class="ko">가능합니다. 새 크리에이티브 디렉터 효과를 욕망으로 바꾸고 DTC를 강화하며 중국 밖으로 다변화합니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why did revenue fall after years of growth?</span><span class="ko">수년간의 성장 끝에 매출이 줄어든 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">Demand &amp; price (external)</span><span class="ko">수요·가격(외생)</span></b><div class="leaf"><span class="en">Aspirational shoppers retreated and the ASP lever is exhausted.</span><span class="ko">욕망형 소비자가 물러섰고 판매단가 레버가 소진됐습니다.</span></div></div><div class="branch"><b><span class="en">China (external)</span><span class="ko">중국(외생)</span></b><div class="leaf"><span class="en">Chinese luxury demand slowed structurally.</span><span class="ko">중국 명품 수요가 구조적으로 둔화했습니다.</span></div></div><div class="branch"><b><span class="en">Creative (lever)</span><span class="ko">크리에이티브(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Convert new creative-director halo into desire-led volume.</span><span class="ko">새 크리에이티브 디렉터 효과를 욕망 기반 물량으로 바꿉니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Desire reset</span><span class="ko">Track 1 · 욕망 재점화</span></div><div class="tn"><span class="en">Convert creative halo to volume</span><span class="ko">크리에이티브 효과를 물량으로</span></div><p><span class="en">Use late-2025 creative-director debuts to rebuild desirability without promotional discounting.</span><span class="ko">2025년 말 크리에이티브 디렉터 데뷔를 활용해 할인 없이 욕망을 재건합니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · DTC &amp; experience</span><span class="ko">Track 2 · DTC·경험</span></div><div class="tn"><span class="en">Deepen direct and experiential luxury</span><span class="ko">직접·경험형 명품 강화</span></div><p><span class="en">Grow clienteling, hospitality and DTC to rebuild the aspirational pipeline at higher margin.</span><span class="ko">클라이언텔링·호스피탈리티·DTC를 키워 욕망형 고객 파이프라인을 고마진으로 재건합니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Geographic mix</span><span class="ko">Track 3 · 지역 믹스</span></div><div class="tn"><span class="en">Rebalance beyond China</span><span class="ko">중국 밖으로 재균형</span></div><p><span class="en">Accelerate into Japan, India and the Middle East to offset China's contraction.</span><span class="ko">일본·인도·중동으로 가속해 중국 위축을 상쇄합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Growth</span><span class="ko">성장</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Price-led</span><span class="ko">가격 주도</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Volume/mix-led</span><span class="ko">물량·믹스 주도</span></div></div></div><div class="ap"><div class="apt"><span class="en">Asia</span><span class="ko">아시아</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">China-centric</span><span class="ko">중국 중심</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Multi-market Asia</span><span class="ko">다시장 아시아</span></div></div></div><div class="ap"><div class="apt"><span class="en">Channel</span><span class="ko">채널</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Wholesale/travel retail</span><span class="ko">도매·여행소매</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Controlled DTC</span><span class="ko">통제된 DTC</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>Youngone</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">South Korea's largest apparel company by revenue, a vertically integrated OEM/ODM maker for The North Face, Nike and Adidas.</span><span class="ko">매출 기준 한국 최대 의류기업으로, 노스페이스·나이키·아디다스를 위한 수직계열 OEM·ODM 제조사입니다.</span></p><div class="stats"><div class="stat"><div class="n">$2.9B</div><div class="l"><span class="en">TTM revenue</span><span class="ko">최근 12개월 매출</span></div></div><div class="stat"><div class="n">~67%</div><div class="l"><span class="en">OEM share</span><span class="ko">OEM 비중</span></div></div><div class="stat"><div class="n">~33%</div><div class="l"><span class="en">Brand/distribution</span><span class="ko">브랜드·유통</span></div></div><div class="stat"><div class="n">+14%</div><div class="l"><span class="en">FY25 sales growth</span><span class="ko">FY25 매출 성장</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — concentrated customer and geography risk</span><span class="ko">진단 — 고객·지역이 집중된 위험입니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">US tariffs threaten Youngone's OEM order volumes and margin.</span><span class="ko">미국 관세가 영원무역의 OEM 물량과 마진을 위협합니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">Production is concentrated in tariff-hit Bangladesh/Vietnam, and US-based brand customers demand price offsets.</span><span class="ko">생산이 관세 타격을 받은 방글라데시·베트남에 집중돼 있고, 미국 브랜드 고객이 단가 인하를 요구합니다.</span></p><div class="formula">Revenue = OEM volume × ASP × retention; margin on factory utilization</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">Can it diversify geography and grow its own brands?</span><span class="ko">지역을 다변화하고 자체 브랜드를 키울 수 있는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">Yes: diversify production, grow the brand division and add non-US buyers (the tracks below).</span><span class="ko">가능합니다. 생산을 다변화하고 브랜드 부문을 키우며 비미국 바이어를 더합니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why is a strong OEM exposed?</span><span class="ko">견조한 OEM이 위험에 노출된 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">Tariff (external)</span><span class="ko">관세(외생)</span></b><div class="leaf"><span class="en">Production sits in tariff-hit Bangladesh and Vietnam.</span><span class="ko">생산이 관세 타격을 받은 방글라데시·베트남에 있습니다.</span></div></div><div class="branch"><b><span class="en">Customer (external)</span><span class="ko">고객(외생)</span></b><div class="leaf"><span class="en">US brand buyers demand aggressive price offsets.</span><span class="ko">미국 브랜드 바이어가 공격적 단가 인하를 요구합니다.</span></div></div><div class="branch"><b><span class="en">Diversification (lever)</span><span class="ko">다각화(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Diversify production geography and grow own brands.</span><span class="ko">생산 지역을 다변화하고 자체 브랜드를 키웁니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n2"><div class="track t1"><div class="tt"><span class="en">Track 1 · Sourcing hedge</span><span class="ko">Track 1 · 소싱 헤지</span></div><div class="tn"><span class="en">Diversify production geography</span><span class="ko">생산 지역 다변화</span></div><p><span class="en">Add tariff-advantaged sites (Ethiopia, India) and scale Bangladesh efficiency to offset tariffs.</span><span class="ko">관세 우대 거점(에티오피아·인도)을 더하고 방글라데시 효율을 키워 관세를 상쇄합니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Brand growth</span><span class="ko">Track 2 · 브랜드 성장</span></div><div class="tn"><span class="en">Grow brand/distribution to 40%+</span><span class="ko">브랜드·유통을 40% 이상으로</span></div><p><span class="en">Expand Discovery Expedition and The North Face Korea to improve margin and cut OEM cyclicality.</span><span class="ko">디스커버리 익스페디션·노스페이스 코리아를 키워 마진을 개선하고 OEM 변동성을 줄입니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Geography</span><span class="ko">지역</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">US-centric OEM</span><span class="ko">미국 중심 OEM</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Multi-geography, multi-buyer</span><span class="ko">다지역·다바이어</span></div></div></div><div class="ap"><div class="apt"><span class="en">Identity</span><span class="ko">정체성</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Manufacturer-only</span><span class="ko">제조 단일</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Manufacturer + brand</span><span class="ko">제조+브랜드</span></div></div></div><div class="ap"><div class="apt"><span class="en">Product</span><span class="ko">제품</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Commodity production</span><span class="ko">범용 생산</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Technical/performance wear</span><span class="ko">기능성·퍼포먼스 의류</span></div></div></div></div></div></div>
+  </section>
 
-    <div class="gl">
-      <div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>LVMH</h3></div></div>
-      <div class="leader-wrap reveal">
-        <p class="mute" style="margin-top:0"><span class="en">The world's largest luxury group by revenue — ~75 maisons spanning fashion, leather, wines, jewelry and beauty.</span><span class="ko">매출 기준 세계 최대 럭셔리 그룹으로, 패션·가죽·와인·주얼리·뷰티를 아우르는 약 75개 메종을 보유합니다.</span></p>
-        <div class="stats">
-          <div class="stat"><div class="n">€80.8B</div><div class="l"><span class="en">2025 revenue (−5%)</span><span class="ko">2025년 매출 (−5%)</span></div></div>
-          <div class="stat"><div class="n">€17.8B</div><div class="l"><span class="en">Recurring op. profit</span><span class="ko">경상 영업이익</span></div></div>
-          <div class="stat"><div class="n">~22%</div><div class="l"><span class="en">Operating margin</span><span class="ko">영업이익률</span></div></div>
-          <div class="stat"><div class="n">~75</div><div class="l"><span class="en">Maisons in portfolio</span><span class="ko">보유 메종 수</span></div></div>
-        </div>
-        <div class="diag">
-          <div class="dh"><span class="en">Diagnosis — scale stalled while scarcity-led rivals grew</span><span class="ko">진단 — 규모는 정체되고 희소성 중심 경쟁사는 성장했습니다</span></div>
-          <div class="formula">Revenue = Σ(Maison reach × Brand heat) − Aspirational pullback</div>
-          <ul>
-            <li><span class="en">2025 sales fell 5% as China and aspirational shoppers pulled back.</span><span class="ko">중국과 신규 소비자가 발길을 돌리며 2025년 매출이 5% 감소했습니다.</span></li>
-            <li><span class="en">Years of price hikes left mid-tier buyers feeling "betrayed"; Hermès passed it on market cap.</span><span class="ko">수년간의 가격 인상으로 중간층 소비자가 등을 돌렸고, 시총에서 에르메스에 추월당했습니다.</span></li>
-            <li><span class="en">Key lever: restore desirability and pricing discipline, not just add volume.</span><span class="ko">핵심 레버는 물량 확대가 아니라 선망성과 가격 규율을 회복하는 것입니다.</span></li>
-          </ul>
-        </div>
-        <div class="track-grid">
-          <div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Restore desirability &amp; pricing discipline</span><span class="ko">선망성과 가격 규율 회복</span></div><p><span class="en">Re-energize flagship maisons (Louis Vuitton, Dior), tighten pricing and elevate the client experience to rebuild trust.</span><span class="ko">핵심 메종(루이비통·디올)을 재점화하고 가격을 정비하며 고객 경험을 높여 신뢰를 다시 쌓습니다.</span></p></div>
-          <div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Diversify regions &amp; deepen VIC ties</span><span class="ko">지역 다변화·VIC 관계 심화</span></div><p><span class="en">Grow beyond China — US, Japan, India, Middle East — and deepen Very-Important-Client relationships and experiences.</span><span class="ko">중국을 넘어 미국·일본·인도·중동으로 성장하고, 핵심 고객(VIC)과의 관계·경험을 심화합니다.</span></p></div>
-        </div>
-        <div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div>
-        <div class="ap-grid">
-          <div class="ap"><div class="apt"><span class="en">Pricing</span><span class="ko">가격 전략</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Aggressive hikes</span><span class="ko">공격적 인상</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Value-justified pricing</span><span class="ko">가치 기반 가격</span></div></div></div>
-          <div class="ap"><div class="apt"><span class="en">Portfolio</span><span class="ko">포트폴리오</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Broad volume push</span><span class="ko">전방위 물량 확대</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Hero-brand focus</span><span class="ko">핵심 브랜드 집중</span></div></div></div>
-          <div class="ap"><div class="apt"><span class="en">Geography</span><span class="ko">지역 전략</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">China reliance</span><span class="ko">중국 의존</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Diversified demand</span><span class="ko">수요 다변화</span></div></div></div>
-        </div>
-      </div>
-    </div>
+  <section id="kpi">
+    <p class="kicker"><span class="en">KPIs to watch</span><span class="ko">주목할 지표</span></p>
+    <h2><span class="en">The dials that move this industry</span><span class="ko">이 산업을 움직이는 계기판</span></h2>
+    <p class="hint"><span class="en">Leading indicators with the latest reading — track these to see the thesis play out.</span><span class="ko">최신 수치가 담긴 선행지표입니다. 이 흐름을 추적하면 전망을 검증할 수 있습니다.</span></p>
+    <div class="kpis reveal"><div class="kpi"><div class="kt"><span class="en">Personal luxury market</span><span class="ko">개인 명품 시장</span></div><div class="kv"><span class="en">€358B (−2%, 2025)</span><span class="ko">3,580억 유로(−2%, 2025)</span></div><div class="kw"><span class="en">A 2026 return to €364B+ signals demand recovery.</span><span class="ko">2026년 3,640억 유로 회복은 수요 반등 신호입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">LVMH organic growth</span><span class="ko">LVMH 유기적 성장</span></div><div class="kv"><span class="en">−1% FY25; +1% H2</span><span class="ko">FY25 −1%, 하반기 +1%</span></div><div class="kw"><span class="en">Q1 2026 print is the canary for luxury recovery.</span><span class="ko">2026년 1분기 수치가 명품 회복의 가늠자입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">US apparel imports (BD/VN)</span><span class="ko">미국 의류 수입(방·베)</span></div><div class="kv"><span class="en">+21% (5M 2025)</span><span class="ko">2025년 5개월 +21%</span></div><div class="kw"><span class="en">Whether tariffs destroy demand or just shift sourcing.</span><span class="ko">관세가 수요를 줄이는지 소싱만 옮기는지 확인합니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Fashion exec sentiment</span><span class="ko">패션 경영진 심리</span></div><div class="kv"><span class="en">46% expect worse 2026</span><span class="ko">46%가 2026년 악화 전망</span></div><div class="kw"><span class="en">Sentiment leads capex, inventory and hiring.</span><span class="ko">심리가 설비투자·재고·채용을 선행합니다.</span></div></div></div>
+  </section>
 
-    <div class="kr" style="margin-top:14px">
-      <div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3><span class="en">Youngone (영원무역)</span><span class="ko">영원무역</span></h3></div></div>
-      <div class="leader-wrap reveal">
-        <p class="mute" style="margin-top:0"><span class="en">Korea's largest apparel exporter — a global OEM/ODM manufacturer for North Face, Lululemon and Patagonia, ahead of arch-rival Hansae.</span><span class="ko">한국 최대 의류 수출기업으로, 노스페이스·룰루레몬·파타고니아를 만드는 글로벌 OEM/ODM 제조사이며 숙적 한세실업을 앞섭니다.</span></p>
-        <div class="stats">
-          <div class="stat"><div class="n">~₩4.0T</div><div class="l"><span class="en">2025 revenue (+15.5%)</span><span class="ko">2025년 매출 (+15.5%)</span></div></div>
-          <div class="stat"><div class="n">$3B</div><div class="l"><span class="en">Group annual sales</span><span class="ko">그룹 연매출</span></div></div>
-          <div class="stat"><div class="n">#1</div><div class="l"><span class="en">Korea OEM/ODM rank</span><span class="ko">국내 OEM/ODM 순위</span></div></div>
-          <div class="stat"><div class="n">~4×</div><div class="l"><span class="en">Forward P/E (value)</span><span class="ko">선행 PER (저평가)</span></div></div>
-        </div>
-        <div class="diag">
-          <div class="dh"><span class="en">Diagnosis — a low-margin OEM exposed to brand demand cycles</span><span class="ko">진단 — 브랜드 수요 사이클에 노출된 저마진 OEM</span></div>
-          <div class="formula">Profit ≈ Orders × (Price − Labor − Material) × FX</div>
-          <ul>
-            <li><span class="en">Revenue rides outdoor/sportswear demand (North Face, Lululemon, Patagonia) — strong but client-dependent.</span><span class="ko">매출이 아웃도어·스포츠웨어 수요(노스페이스·룰루레몬·파타고니아)에 좌우되어 강하지만 고객사 의존적입니다.</span></li>
-            <li><span class="en">OEM margins are thin; value sits with the brand owner, not the maker.</span><span class="ko">OEM 마진은 얇고, 가치는 제조사가 아니라 브랜드 소유주에게 있습니다.</span></li>
-            <li><span class="en">Key lever: climb the value chain with automation, ODM design and sustainability.</span><span class="ko">핵심 레버는 자동화·ODM 설계·지속가능성으로 가치사슬을 올라가는 것입니다.</span></li>
-          </ul>
-        </div>
-        <div class="track-grid">
-          <div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Defend OEM scale &amp; key accounts</span><span class="ko">OEM 규모·핵심 고객 방어</span></div><p><span class="en">Lock in marquee clients, expand AI-driven automation for cost leadership, and hold the #1 capacity position.</span><span class="ko">대형 고객사를 묶어두고 AI 기반 자동화로 원가 우위를 확대하며 생산능력 1위를 지킵니다.</span></p></div>
-          <div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Climb to ODM &amp; sustainable materials</span><span class="ko">ODM·친환경 소재로 상향</span></div><p><span class="en">Move from make-to-spec toward ODM design, traceable sustainable fabrics and a diversified manufacturing footprint.</span><span class="ko">지시 생산에서 ODM 설계·추적 가능한 친환경 원단으로 이동하고 생산기지를 다변화합니다.</span></p></div>
-        </div>
-        <div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div>
-        <div class="ap-grid">
-          <div class="ap"><div class="apt"><span class="en">Value capture</span><span class="ko">가치 확보</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">OEM make-to-spec</span><span class="ko">OEM 지시 생산</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">ODM design-led</span><span class="ko">ODM 설계 주도</span></div></div></div>
-          <div class="ap"><div class="apt"><span class="en">Cost</span><span class="ko">원가</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Manual labor</span><span class="ko">노동 집약 공정</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">AI automation</span><span class="ko">AI 자동화</span></div></div></div>
-          <div class="ap"><div class="apt"><span class="en">Sustainability</span><span class="ko">지속가능성</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Standard fabrics</span><span class="ko">일반 원단</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Traceable eco-materials</span><span class="ko">추적 가능 친환경 소재</span></div></div></div>
-        </div>
-      </div>
-    </div>
+  <section id="scenarios">
+    <p class="kicker"><span class="en">Scenarios — bull · base · bear</span><span class="ko">시나리오 — 낙관·기본·비관</span></p>
+    <h2><span class="en">Three ways the next few years could break</span><span class="ko">향후 몇 년이 갈릴 세 갈래</span></h2>
+    <div class="scen reveal"><div class="sc bull"><div class="sh"><span class="en">Bull · upside</span><span class="ko">낙관</span></div><div class="sd"><span class="en">China recovers + creative resets land + tariff relief</span><span class="ko">중국 회복 + 크리에이티브 성공 + 관세 완화</span></div><p><span class="en">Luxury rebounds toward €375–380B; LVMH returns to growth; OEM books recover.</span><span class="ko">명품이 3,750~3,800억 유로로 반등하고 LVMH가 성장으로 돌아오며 OEM 수주가 회복됩니다.</span></p></div><div class="sc base"><div class="sh"><span class="en">Base · central</span><span class="ko">기본</span></div><div class="sd"><span class="en">China flat; tariffs persist; mild volume recovery</span><span class="ko">중국 정체 + 관세 지속 + 완만한 회복</span></div><p><span class="en">Luxury flat to +2%; LVMH low-single-digit organic; apparel grows ~4%.</span><span class="ko">명품이 정체~+2%, LVMH는 한 자릿수 초반, 의류는 약 4% 성장합니다.</span></p></div><div class="sc bear"><div class="sh"><span class="en">Bear · downside</span><span class="ko">비관</span></div><div class="sd"><span class="en">US recession + China worsens + tariffs escalate</span><span class="ko">미국 침체 + 중국 악화 + 관세 격화</span></div><p><span class="en">Luxury contracts further; LVMH −3 to −5%; OEM orders are cancelled.</span><span class="ko">명품이 추가 위축되고 LVMH는 −3~−5%, OEM 수주가 취소됩니다.</span></p></div></div>
   </section>
 
   <section id="risks">
@@ -380,10 +371,7 @@
       <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
       <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
       <ul class="tight">
-        <li><span class="en">Luxury should grow modestly in 2026 as China stabilizes, but aspirational demand stays fragile.</span><span class="ko">중국이 안정되며 럭셔리는 2026년 완만히 성장하겠으나, 신규 소비 수요는 여전히 취약합니다.</span></li>
-        <li><span class="en">Scarcity, vertical integration and pricing discipline keep winning over pure scale.</span><span class="ko">희소성·수직계열화·가격 규율이 단순 규모를 계속 이깁니다.</span></li>
-        <li><span class="en">EU sustainability rules (ESPR, DPP, CSDDD) raise the cost and importance of a traceable supply chain.</span><span class="ko">EU 지속가능성 규제(ESPR·DPP·CSDDD)가 추적 가능한 공급망의 비용과 중요성을 높입니다.</span></li>
-        <li><span class="en">Korea shifts from OEM to brand: Youngone scales manufacturing while K-fashion exports boom abroad.</span><span class="ko">한국은 OEM에서 브랜드로 이동합니다. 영원무역이 제조를 키우는 한편 K-패션 수출이 해외에서 호황을 누립니다.</span></li>
+        <li><span class="en">China demand is the single biggest swing factor for luxury.</span><span class="ko">중국 수요가 명품 최대 변수입니다.</span></li><li><span class="en">US tariffs keep reshaping apparel sourcing and OEM margins.</span><span class="ko">미국 관세가 의류 소싱과 OEM 마진을 계속 바꿉니다.</span></li><li><span class="en">Value migrates to brand desire, DTC and resale, not stitching.</span><span class="ko">가치는 봉제가 아니라 브랜드 욕망·DTC·리세일로 옮겨갑니다.</span></li><li><span class="en">LVMH rides a desire reset; Youngone rides sourcing diversification.</span><span class="ko">LVMH는 욕망 재점화에, 영원무역은 소싱 다변화에 달려 있습니다.</span></li>
       </ul>
     </div>
   </section>
@@ -394,14 +382,9 @@
   <div class="wrap">
     <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
     <ul style="list-style:none;padding:0;margin:0;">
-      <li><a href="https://www.cnn.com/2025/04/15/style/hermes-worlds-most-valuable-luxury-company/index.html">CNN — Hermès overtakes LVMH as most valuable luxury company</a></li>
-      <li><a href="https://www.bain.com/about/media-center/press-releases/2026/chinas-personal-luxury-market-contracts-35-in-2025-but-shows-signs-of-recovery/">Bain &amp; Company — China luxury market 2025 / 2026 outlook</a></li>
-      <li><a href="https://www.mordorintelligence.com/industry-reports/luxury-goods-market">Mordor Intelligence — Luxury goods market size &amp; CAGR</a></li>
-      <li><a href="https://www.g-enews.com/article/Global-Biz/2025/12/202512040657397088fbbec65dfb_1">Global Economic — Youngone (영원무역) revenue &amp; AI automation</a></li>
-      <li><a href="https://www.carbonfact.com/blog/policy/eu-regulations-for-textile-brands">Carbonfact — EU textile strategy: ESPR, DPP, CSDDD</a></li>
-      <li><a href="https://newsroom.musinsa.com/newsroom-menu/2026-0130">Musinsa Newsroom — K-fashion global export growth 2025</a></li>
+      <li><a href="https://www.lvmh.com/en/publications">LVMH — 2025 full-year results</a></li><li><a href="https://www.bain.com/about/media-center/press-releases/20252/">Bain/Altagamma — Luxury study 2025</a></li><li><a href="https://www.mckinsey.com/industries/retail/our-insights/state-of-fashion">McKinsey — State of Fashion 2026</a></li><li><a href="https://shenglufashion.com/2025/07/08/average-tariff-rates-for-u-s-apparel-imports-under-trumps-reciprocal-tariff-policy-updated-june-2025/">FASH455 — US apparel tariffs 2025</a></li>
     </ul>
-    <p class="disclaim"><span class="en">The Industry Brief · Textiles, Apparel &amp; Luxury Goods (GICS 252030) · Generated June 4, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 섬유·의류·럭셔리 굿즈(GICS 252030) · 2026년 6월 4일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+    <p class="disclaim"><span class="en">The Industry Brief · Textiles, Apparel & Luxury Goods (GICS 252030) · Generated June 5, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 섬유·의류·명품(GICS 252030) · 2026년 6월 5일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
   </div>
 </footer>
 
