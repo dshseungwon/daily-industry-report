@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Electronic Equipment, Instruments & Components · 전자장비·계측·부품 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Electronic Components</span><span class="ko">전자부품</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 6 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 6번째</span></p>
+    <h1><span class="en">Electronic Equipment, Instruments &amp; Components</span><span class="ko">전자장비·계측·부품</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Information Technology · 452030</span>
+      <span class="pill">2026-06-05</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: Foxconn · LG Innotek</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">Electronic equipment, instruments &amp; components (GICS 452030) makes the connectors, capacitors, sensors, camera modules and contract-assembled systems that everything electronic depends on. The biggest cluster, electronic manufacturing services (EMS), is a ~US$670B market growing ~6.3% a year. The defining force of 2026 is the AI datacenter supercycle: hyperscalers are set to spend US$600B+ in 2026, AI server boards use 10–15x more capacitors than standard servers, and rack-scale assembly worth US$2–3M each is reshaping who profits. Concentration cuts both ways — Apple is ~87% of Korea's LG Innotek revenue, and Foxconn earns thin EMS margins despite record sales. The global #1 by revenue, Hon Hai (Foxconn), is pivoting from iPhone assembler to AI-infrastructure integrator; Korea's #1, LG Innotek, is the world's top camera-module maker racing to diversify. Both are detailed at the end.</span><span class="ko">전자장비·계측·부품(GICS 452030)은 모든 전자제품이 의존하는 커넥터·콘덴서·센서·카메라모듈과 위탁조립 시스템을 만듭니다. 가장 큰 군집인 전자제조서비스(EMS)는 약 6,700억 달러 시장으로 연 약 6.3% 성장합니다. 2026년을 규정하는 힘은 AI 데이터센터 슈퍼사이클입니다. 하이퍼스케일러가 2026년 6,000억 달러 이상을 투자할 전망이고, AI 서버 보드는 일반 서버보다 콘덴서를 10~15배 더 쓰며, 대당 200~300만 달러의 랙 단위 조립이 수익 구조를 바꾸고 있습니다. 집중도는 양날의 칼입니다. 애플이 한국 LG이노텍 매출의 약 87%이고, 폭스콘은 사상 최대 매출에도 얇은 EMS 마진을 거둡니다. 매출 기준 글로벌 1위 훙하이(폭스콘)는 아이폰 조립사에서 AI 인프라 통합사로 전환 중이며, 한국 1위 LG이노텍은 세계 1위 카메라모듈 기업으로 다각화에 속도를 냅니다. 두 기업은 뒤에서 자세히 다룹니다.</span></p>
+    </div>
+  </section>
+
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From components to modules to assembled systems</span><span class="ko">부품에서 모듈, 그리고 조립 시스템으로</span></h2>
+      <p class="lead"><span class="en">This industry sits between chips and finished devices. Value ≈ component content × volume + assembly fees − material and capacity cost; AI shifts the content up sharply.</span><span class="ko">이 산업은 반도체와 완성 기기 사이에 있습니다. 가치 ≈ 부품 함량 × 물량 + 조립수수료 − 소재·설비 비용이며, AI가 부품 함량을 급격히 끌어올립니다.</span></p>
+      <div class="chain"><div class="vc"><b><span class="en">Materials</span><span class="ko">소재</span></b><span class="d"><span class="en">Rare earths, barium titanate and ABF substrates are concentrated.</span><span class="ko">희토류·티탄산바륨·ABF 기판이 집중돼 있습니다.</span></span></div><div class="vc"><b><span class="en">Passive components</span><span class="ko">수동부품</span></b><span class="d"><span class="en">MLCCs and connectors; AI servers multiply the content.</span><span class="ko">콘덴서·커넥터로, AI 서버가 함량을 배가합니다.</span></span></div><div class="vc"><b><span class="en">Modules &amp; instruments</span><span class="ko">모듈·계측</span></b><span class="d"><span class="en">Camera modules, sensors and vision systems differentiate.</span><span class="ko">카메라모듈·센서·비전 시스템이 차별화 요소입니다.</span></span></div><div class="vc"><b><span class="en">EMS assembly</span><span class="ko">EMS 조립</span></b><span class="d"><span class="en">Contract assembly of devices and AI server racks at scale.</span><span class="ko">기기·AI 서버 랙을 대규모로 위탁 조립합니다.</span></span></div><div class="vc"><b><span class="en">Key customers</span><span class="ko">핵심 고객</span></b><span class="d"><span class="en">Apple and hyperscalers concentrate demand and power.</span><span class="ko">애플·하이퍼스케일러가 수요와 교섭력을 집중시킵니다.</span></span></div></div>
+    </div>
+  </section>
+
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A growing market lifted by AI infrastructure</span><span class="ko">AI 인프라가 띄우는 성장 시장</span></h2>
+      <div class="colchart"><div class="col"><div class="col-val">$628B</div><div class="col-bar" data-h="79"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">$667B</div><div class="col-bar" data-h="84"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">$708B</div><div class="col-bar" data-h="89"></div><div class="col-lab">2026E</div></div><div class="col"><div class="col-val">$751B</div><div class="col-bar" data-h="94"></div><div class="col-lab">2027E</div></div><div class="col"><div class="col-val">$797B</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div></div>
+      <p class="cap"><span class="en">Global electronic manufacturing services (EMS) market, US$ billions, indicative (Precedence Research, 2025; ~6.3% CAGR). AI-grade MLCC and connector content is the fastest-growing layer.</span><span class="ko">글로벌 전자제조서비스(EMS) 시장, 단위 십억 달러, 추정치입니다(Precedence Research, 2025년 기준, 연평균 약 6.3% 성장). AI급 콘덴서·커넥터 함량이 가장 빠르게 성장하는 층입니다.</span></p>
+    </div>
+  </section>
+
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">Foxconn dominates EMS; two Korean giants lead at home</span><span class="ko">폭스콘이 EMS 장악, 한국은 두 거인이 선도</span></h2>
+      <div class="pies">
+        <div class="pieblock"><div class="pie-title"><span class="en">Global EMS by revenue — 2025</span><span class="ko">글로벌 EMS 매출 기준 — 2025년</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0 39%,#117aca 39% 47%,#ffb81c 47% 53%,#5aa9e6 53% 58%,#c9d4e3 58% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>Foxconn<b>~39%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Quanta<b>~8%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Pegatron<b>~6%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Jabil<b>~5%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>~42%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea components leaders — indicative</span><span class="ko">한국 부품 선도기업 — 추정</span></div><div class="pie" style="background:conic-gradient(#0047a0 0 60%,#117aca 60% 90%,#ffb81c 90% 97%,#c9d4e3 97% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>LG Innotek<b>~60%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Samsung Electro-Mech.<b>~30%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span><span class="en">Others KR</span><span class="ko">기타 국내</span><b>~7%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Misc.</span><span class="ko">기타</span><b>~3%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">Global share is EMS revenue, indicative. Korea figures compare the two dominant component makers by revenue; LG Innotek (₩21.9T) is larger, Samsung Electro-Mechanics more margin-rich.</span><span class="ko">글로벌 점유율은 EMS 매출 기준 추정치입니다. 한국 수치는 매출 기준 두 지배적 부품기업 비교로, LG이노텍(21.9조 원)이 더 크고 삼성전기가 마진이 높습니다.</span></p>
+    </div>
+  </section>
+
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">EMS and component makers bid hard as Chinese rivals scale fast.</span><span class="ko">중국 경쟁사의 빠른 확장 속 EMS·부품사가 치열히 입찰합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Capital intensity blocks entry, but state-backed Chinese firms scale.</span><span class="ko">자본 집약이 진입을 막으나 국가 지원 중국 기업이 확장합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Rare earths and ABF substrates are highly concentrated.</span><span class="ko">희토류·ABF 기판이 매우 집중돼 있습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Apple and hyperscalers dictate specs, volumes and price.</span><span class="ko">애플·하이퍼스케일러가 사양·물량·가격을 좌우합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">No near-term substitute for MLCCs, connectors or rack assembly.</span><span class="ko">콘덴서·커넥터·랙 조립의 단기 대체재가 없습니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: high barriers in components, but buyer concentration and supplier scarcity squeeze margins.</span><span class="ko">종합하면 부품의 진입장벽은 높으나, 구매자 집중과 공급자 희소성이 마진을 압박합니다.</span></p>
+  </section>
+
+  <section id="reg">
+    <p class="kicker"><span class="en">PESTEL &amp; regulation</span><span class="ko">PESTEL과 규제</span></p>
+    <h2><span class="en">Macro forces &amp; the latest rules</span><span class="ko">거시 환경과 최신 규제</span></h2>
+    <p class="mute"><span class="en">Trade and supply-chain policy now route production: export controls, raw-material rules and AI/EV demand decide where components are made.</span><span class="ko">이제 무역·공급망 정책이 생산을 배치합니다. 수출 통제, 원자재 규제, AI·전기차 수요가 부품 생산지를 결정합니다.</span></p>
+    <p class="hint"><span class="en">Latest legislation &amp; regulatory issues — tap to expand.</span><span class="ko">최신 법안·규제 이슈 — 눌러서 펼치십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jan 2026</span><span class="ac-title"><span class="en">US-China export controls &amp; tariffs</span><span class="ko">미·중 수출 통제·관세</span></span></div><div class="ac-body"><p class="why"><span class="en">A 25% semiconductor tariff and GPU export licensing bifurcate the AI supply chain. Why it matters: it forces EMS/component dual-sourcing and re-routing.</span><span class="ko">반도체 25% 관세와 GPU 수출 허가가 AI 공급망을 양분합니다. 의미: EMS·부품의 이중 조달과 경로 재편을 강제합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Dec 2025</span><span class="ac-title"><span class="en">EU Critical Raw Materials / RESourceEU</span><span class="ko">EU 핵심원자재·RESourceEU</span></span></div><div class="ac-body"><p class="why"><span class="en">A Dec 2025 amendment mandates EU sourcing targets for tantalum, cobalt and rare earths used in components. Why it matters: suppliers must audit and diversify supply.</span><span class="ko">2025년 12월 개정이 부품용 탄탈럼·코발트·희토류의 역내 조달 목표를 의무화합니다. 의미: 공급자는 공급망을 점검·다변화해야 합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">AI datacenter capex supercycle</span><span class="ko">AI 데이터센터 설비 슈퍼사이클</span></span></div><div class="ac-body"><p class="why"><span class="en">Top hyperscalers plan US$600B+ of 2026 infrastructure spend, ~75% AI. Why it matters: it drives record demand for AI-grade MLCCs and connectors.</span><span class="ko">상위 하이퍼스케일러가 2026년 6,000억 달러 이상(약 75% AI)을 투자할 계획입니다. 의미: AI급 콘덴서·커넥터의 사상 최대 수요를 견인합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">Auto electrification rules</span><span class="ko">자동차 전동화 규제</span></span></div><div class="ac-body"><p class="why"><span class="en">EU CO₂ fleet targets and China's NEV mandate lift connector and sensor content 3–5x per vehicle. Why it matters: it structurally grows automotive components.</span><span class="ko">EU CO₂ 규제와 중국 친환경차 의무가 차량당 커넥터·센서 함량을 3~5배 높입니다. 의미: 자동차 부품을 구조적으로 키웁니다.</span></p></div></div></div>
+  </section>
+
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Miniaturization</span><span class="ko">소형화</span></b><p><span class="en">Shrinking form factors while holding performance is the core moat.</span><span class="ko">성능을 유지하며 소형화하는 것이 핵심 해자입니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">Key-customer ties</span><span class="ko">핵심 고객 관계</span></b><p><span class="en">Design wins with Apple and Nvidia lock in multi-year revenue.</span><span class="ko">애플·엔비디아와의 설계 채택이 다년 매출을 확보합니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">AI/datacenter exposure</span><span class="ko">AI·데이터센터 노출</span></b><p><span class="en">Pivoting fastest to AI-grade product captures above-market growth.</span><span class="ko">AI급 제품으로 빠르게 전환해 시장 이상 성장을 잡습니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">Scale &amp; cost</span><span class="ko">규모·원가</span></b><p><span class="en">Volume economics protect margin in commoditizing segments.</span><span class="ko">대량 경제성이 범용화 부문의 마진을 지킵니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">Automation</span><span class="ko">자동화</span></b><p><span class="en">Smart factories cut defect rates and labor cost.</span><span class="ko">스마트 팩토리가 불량률과 인건비를 낮춥니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Supply-chain resilience</span><span class="ko">공급망 회복력</span></b><p><span class="en">Multi-geography production qualifies for friend-shoring demand.</span><span class="ko">다지역 생산이 프렌드쇼어링 수요 자격을 갖춥니다.</span></p></div></div></div>
+  </section>
+
+  <section id="news">
+    <p class="kicker"><span class="en">Recent issues &amp; news</span><span class="ko">최근 이슈 &amp; 뉴스</span></p>
+    <h2><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></h2>
+    <p class="hint"><span class="en">Tap for why it matters.</span><span class="ko">눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">AI server demand strains MLCC supply</span><span class="ko">AI 서버 수요가 콘덴서 공급 압박</span></span></div><div class="ac-body"><p class="why"><span class="en">AI boards use 10–15x more MLCCs; utilization topped 90% at Murata and Samsung Electro-Mechanics, lifting AI-grade prices ~20%. Why it matters: components, not chips alone, gate AI build-outs.</span><span class="ko">AI 보드는 콘덴서를 10~15배 쓰며 무라타·삼성전기 가동률이 90%를 넘어 AI급 가격이 약 20% 올랐습니다. 의미: 반도체뿐 아니라 부품이 AI 구축을 좌우합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Q2 2025</span><span class="ac-title"><span class="en">Foxconn AI servers top iPhone assembly</span><span class="ko">폭스콘 AI 서버가 아이폰 조립 추월</span></span></div><div class="ac-body"><p class="why"><span class="en">Cloud and networking revenue exceeded consumer electronics for the first time, reaching 41% of quarterly revenue. Why it matters: a structural business-model shift.</span><span class="ko">클라우드·네트워킹 매출이 처음으로 소비자 전자를 넘어 분기 매출의 41%에 이르렀습니다. 의미: 구조적 사업모델 전환입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">FY2025</span><span class="ac-title"><span class="en">Amphenol's AI connector surge</span><span class="ko">앰페놀 AI 커넥터 급증</span></span></div><div class="ac-body"><p class="why"><span class="en">Amphenol posted record FY25 revenue of US$23.1B (+52%) on AI/datacenter connectors and M&amp;A. Why it matters: AI is restructuring the connector landscape.</span><span class="ko">앰페놀이 AI·데이터센터 커넥터와 인수로 FY25 사상 최대 매출 231억 달러(+52%)를 기록했습니다. 의미: AI가 커넥터 판도를 재편합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Q4 2025</span><span class="ac-title"><span class="en">LG Innotek rides the iPhone 17 ramp</span><span class="ko">LG이노텍, 아이폰 17 양산 수혜</span></span></div><div class="ac-body"><p class="why"><span class="en">Q4 revenue hit a record ₩7.61T (+14.8%) on iPhone 17 camera modules, but full-year profit still fell on a weak first half. Why it matters: single-customer dependence drives extreme volatility.</span><span class="ko">아이폰 17 카메라모듈로 4분기 매출이 사상 최대 7.61조 원(+14.8%)을 기록했으나 부진한 상반기로 연간 이익은 감소했습니다. 의미: 단일 고객 의존이 극심한 변동성을 낳습니다.</span></p></div></div></div>
+  </section>
+
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, with a strategy read</span><span class="ko">두 리더, 전략 관점으로</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader gets a short consulting-style read: diagnosis → two-track strategy → action plans.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 컨설팅식으로 짧게 진단합니다: 진단 → Two-Track 전략 → 액션 플랜 순서입니다.</span></p>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>Hon Hai (Foxconn)</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The world's largest contract electronics maker by revenue, pivoting fastest from iPhone assembly to AI-infrastructure integration.</span><span class="ko">매출 기준 세계 최대 위탁 전자제조사로, 아이폰 조립에서 AI 인프라 통합으로 가장 빠르게 전환하고 있습니다.</span></p><div class="stats"><div class="stat"><div class="n">$257B</div><div class="l"><span class="en">FY25 revenue (+18%)</span><span class="ko">FY25 매출(+18%)</span></div></div><div class="stat"><div class="n">>NT$1T</div><div class="l"><span class="en">FY25 AI server revenue</span><span class="ko">FY25 AI 서버 매출</span></div></div><div class="stat"><div class="n">3.2%</div><div class="l"><span class="en">Operating margin</span><span class="ko">영업이익률</span></div></div><div class="stat"><div class="n">1,000+/wk</div><div class="l"><span class="en">AI server racks built</span><span class="ko">AI 서버 랙 주간 생산</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — record revenue, but trapped at ~3% assembly margins</span><span class="ko">진단 — 사상 최대 매출이나 약 3% 조립 마진에 갇혀 있습니다</span></div><div class="formula">Profit = Revenue × thin EMS margin; value accrues to chip/cloud owners</div><ul><li><span class="en">AI racks sell for US$2–3M each but earn EMS-level margin.</span><span class="ko">AI 랙은 대당 200~300만 달러이나 EMS 수준 마진에 그칩니다.</span></li><li><span class="en">Apple is ~35% of revenue, a counterweight to the AI story.</span><span class="ko">애플이 매출의 약 35%로 AI 서사의 반대 추입니다.</span></li><li><span class="en">Key lever: move up into AI software/services and integration.</span><span class="ko">핵심 레버는 AI 소프트웨어·서비스와 통합으로 올라서는 것입니다.</span></li></ul></div><div class="track-grid"><div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Defend assembly leadership</span><span class="ko">조립 리더십 방어</span></div><p><span class="en">Hold iPhone share and scale GB200/GB300 rack throughput toward 2,000/week by end-2026.</span><span class="ko">아이폰 점유율을 지키고 GB200/GB300 랙 생산을 2026년 말 주 2,000대로 확대합니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Move up the value chain</span><span class="ko">가치사슬 상향</span></div><p><span class="en">Build AI-factory services, EV platforms and component integration to earn above pure assembly.</span><span class="ko">AI 팩토리 서비스·전기차 플랫폼·부품 통합을 구축해 단순 조립을 넘는 수익을 거둡니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Business model</span><span class="ko">사업 모델</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Pure EMS assembler</span><span class="ko">순 EMS 조립</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">AI infrastructure partner</span><span class="ko">AI 인프라 파트너</span></div></div></div><div class="ap"><div class="apt"><span class="en">Footprint</span><span class="ko">생산 거점</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">China-concentrated</span><span class="ko">중국 집중</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Geo-diversified (MX/IN)</span><span class="ko">지역 다변화(멕시코·인도)</span></div></div></div><div class="ap"><div class="apt"><span class="en">Offering</span><span class="ko">제공 가치</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Assembly only</span><span class="ko">조립 단일</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Integrated solutions</span><span class="ko">통합 솔루션</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>LG Innotek</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The world's top premium camera-module maker and Korea's largest component company, racing to diversify beyond Apple.</span><span class="ko">세계 1위 프리미엄 카메라모듈 기업이자 한국 최대 부품기업으로, 애플 의존을 넘어선 다각화에 속도를 냅니다.</span></p><div class="stats"><div class="stat"><div class="n">₩21.9T</div><div class="l"><span class="en">FY25 revenue (+3.3%)</span><span class="ko">FY25 매출(+3.3%)</span></div></div><div class="stat"><div class="n">₩665B</div><div class="l"><span class="en">FY25 operating profit</span><span class="ko">FY25 영업이익</span></div></div><div class="stat"><div class="n">~87%</div><div class="l"><span class="en">Q4 from optical (camera)</span><span class="ko">4분기 광학 비중</span></div></div><div class="stat"><div class="n">₩5T</div><div class="l"><span class="en">2029 auto revenue target</span><span class="ko">2029년 전장 매출 목표</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — best-in-class, but >80% of revenue rides one customer</span><span class="ko">진단 — 세계 최고 수준이나 매출의 80% 이상이 한 고객에 달려 있습니다</span></div><div class="formula">Profit = Camera mix × Apple volume × iPhone cycle timing</div><ul><li><span class="en">An extreme H1/H2 split makes planning and margins volatile.</span><span class="ko">극심한 상반기·하반기 편차가 계획과 마진을 흔듭니다.</span></li><li><span class="en">Chinese module makers are closing the mid-tier technology gap.</span><span class="ko">중국 모듈사가 중급 기술 격차를 좁히고 있습니다.</span></li><li><span class="en">Key lever: scale FC-BGA substrates and automotive electronics.</span><span class="ko">핵심 레버는 FC-BGA 기판과 전장 전자를 키우는 것입니다.</span></li></ul></div><div class="track-grid"><div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Defend the camera moat</span><span class="ko">카메라 해자 방어</span></div><p><span class="en">Keep Apple design-win leadership for future iPhones through proprietary optics technology.</span><span class="ko">독자 광학 기술로 차세대 아이폰의 애플 설계 채택 우위를 지킵니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Diversify into substrates &amp; auto</span><span class="ko">기판·전장으로 다각화</span></div><p><span class="en">Scale FC-BGA for AI servers and grow automotive sensing toward ₩5T revenue by 2029.</span><span class="ko">AI 서버용 FC-BGA를 키우고 전장 센싱을 2029년 매출 5조 원으로 성장시킵니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Substrates</span><span class="ko">기판</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Apple-only substrate</span><span class="ko">애플 전용 기판</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Multi-customer FC-BGA</span><span class="ko">복수 고객 FC-BGA</span></div></div></div><div class="ap"><div class="apt"><span class="en">Automotive</span><span class="ko">전장</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Smartphone camera</span><span class="ko">스마트폰 카메라</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Auto vision platform</span><span class="ko">자동차 비전 플랫폼</span></div></div></div><div class="ap"><div class="apt"><span class="en">Mix</span><span class="ko">매출 구성</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Apple ~80%+</span><span class="ko">애플 80% 이상</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Non-Apple ~40%</span><span class="ko">비애플 약 40%</span></div></div></div></div></div></div>
+  </section>
+
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight">
+        <li><span class="en">The AI capex cycle drives demand but concentrates it in a few buyers.</span><span class="ko">AI 설비 사이클이 수요를 견인하나 소수 구매자에게 집중시킵니다.</span></li><li><span class="en">Value migrates to AI-grade content and integration, away from bare assembly.</span><span class="ko">가치가 단순 조립에서 AI급 함량과 통합으로 옮겨갑니다.</span></li><li><span class="en">Export controls and raw-material rules keep re-routing production.</span><span class="ko">수출 통제와 원자재 규제가 생산 경로를 계속 재편합니다.</span></li><li><span class="en">Foxconn rides AI integration; LG Innotek rides diversification beyond Apple.</span><span class="ko">폭스콘은 AI 통합에, LG이노텍은 애플 너머 다각화에 달려 있습니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://www.honhai.com/en-us/press-center/press-releases/latest-news/1978">Hon Hai — FY2025 results</a></li><li><a href="https://www.koreaherald.com/article/10663095">Korea Herald — LG Innotek Q4 2025</a></li><li><a href="https://m.samsungsem.com/global/newsroom/news/view.do?id=10042">Samsung Electro-Mechanics — 2025 results</a></li><li><a href="https://www.precedenceresearch.com/electronic-manufacturing-services-market">Precedence Research — EMS market</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Electronic Equipment, Instruments & Components (GICS 452030) · Generated June 5, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 전자장비·계측·부품(GICS 452030) · 2026년 6월 5일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>

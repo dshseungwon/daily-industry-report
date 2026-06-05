@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beverages · 음료 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Beverages</span><span class="ko">음료</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 4 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 4번째</span></p>
+    <h1><span class="en">Beverages</span><span class="ko">음료</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Consumer Staples · 302010</span>
+      <span class="pill">2026-06-05</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: Coca-Cola · Lotte Chilsung</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">Beverages (GICS 302010) covers soft drinks, brewers and distillers — a ~US$1.65T market growing only ~1.7% by volume, so growth comes from price, mix and premiumization rather than cases sold. Coca-Cola's concentrate model earns royalty-like margins while bottlers carry the capital. Three forces define 2026: persistent volume softness in alcohol and soda, a structural health shift to no-sugar and low-alcohol, and GLP-1 drugs that suppress both appetite and drinking. Regulation is tightening fast — 116+ countries now levy sugar taxes and Korea is debating its own, while a 2026 recycled-PET mandate raises packaging cost. The global #1, Coca-Cola, is the largest beverage company by market cap; Korea's #1, Lotte Chilsung, is the largest Korean beverage company spanning soft drinks and soju. Both are detailed at the end.</span><span class="ko">음료(GICS 302010)는 청량음료·맥주·증류주를 아우르는 약 1.65조 달러 시장으로 물량 기준 성장률은 약 1.7%에 그칩니다. 따라서 성장은 판매량이 아니라 가격·믹스·프리미엄화에서 나옵니다. 코카콜라의 원액(concentrate) 모델은 로열티에 가까운 마진을 거두고 보틀러가 자본을 부담합니다. 2026년은 세 가지 힘이 좌우합니다. 주류·탄산의 지속적 물량 부진, 무설탕·저알코올로의 구조적 건강 전환, 그리고 식욕과 음주를 동시에 억제하는 GLP-1 약물입니다. 규제도 빠르게 강화돼 116개국 이상이 설탕세를 부과하고 한국도 도입을 논의 중이며, 2026년 재생 PET 의무화가 포장 원가를 높입니다. 글로벌 1위 코카콜라는 시가총액 기준 최대 음료기업이고, 한국 1위 롯데칠성음료는 청량음료와 소주를 아우르는 최대 한국 음료기업입니다. 두 기업은 뒤에서 자세히 다룹니다.</span></p>
+    </div>
+  </section>
+
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From concentrate to bottle to shelf</span><span class="ko">원액에서 병, 그리고 매대까지</span></h2>
+      <p class="lead"><span class="en">Beverage value sits in brand and recipe, not bottling. Revenue ≈ volume × price/mix; profit is driven by concentrate margin and revenue-growth management.</span><span class="ko">음료의 가치는 보틀링이 아니라 브랜드와 제법에 있습니다. 매출 ≈ 물량 × 가격·믹스이며, 이익은 원액 마진과 매출성장관리(RGM)가 좌우합니다.</span></p>
+      <div class="chain"><div class="vc"><b><span class="en">Brand &amp; recipe</span><span class="ko">브랜드·제법</span></b><span class="d"><span class="en">Trademark and formula are the high-margin core.</span><span class="ko">상표와 제법이 고마진의 핵심입니다.</span></span></div><div class="vc"><b><span class="en">Concentrate</span><span class="ko">원액</span></b><span class="d"><span class="en">Concentrate sales carry royalty-like economics.</span><span class="ko">원액 판매가 로열티에 가까운 경제성을 갖습니다.</span></span></div><div class="vc"><b><span class="en">Bottling &amp; packaging</span><span class="ko">보틀링·포장</span></b><span class="d"><span class="en">Capital-heavy step; rPET rules raise input cost.</span><span class="ko">자본집약 단계로, 재생 PET 규제가 투입원가를 높입니다.</span></span></div><div class="vc"><b><span class="en">Distribution</span><span class="ko">유통</span></b><span class="d"><span class="en">Cold-chain reach into retail is the practical moat.</span><span class="ko">소매로의 콜드체인 도달이 실질적 해자입니다.</span></span></div><div class="vc"><b><span class="en">Marketing &amp; RGM</span><span class="ko">마케팅·매출관리</span></b><span class="d"><span class="en">Price/pack architecture sustains margin in flat volumes.</span><span class="ko">가격·용량 설계가 정체된 물량 속 마진을 지킵니다.</span></span></div></div>
+    </div>
+  </section>
+
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A huge market growing mainly on price</span><span class="ko">주로 가격으로 자라는 거대 시장</span></h2>
+      <div class="colchart"><div class="col"><div class="col-val">$1.63T</div><div class="col-bar" data-h="93"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">$1.66T</div><div class="col-bar" data-h="95"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">$1.69T</div><div class="col-bar" data-h="97"></div><div class="col-lab">2026E</div></div><div class="col"><div class="col-val">$1.72T</div><div class="col-bar" data-h="98"></div><div class="col-lab">2027E</div></div><div class="col"><div class="col-val">$1.75T</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div></div>
+      <p class="cap"><span class="en">Global beverages market (alcoholic + non-alcoholic), US$ trillions, indicative (Cognitive/SkyQuest, 2025; ~1.7% volume CAGR). The soft-drinks sub-segment grows faster (~4.2%).</span><span class="ko">글로벌 음료 시장(주류+비주류), 단위 조 달러, 추정치입니다(Cognitive/SkyQuest, 2025년 기준, 물량 연평균 약 1.7% 성장). 청량음료 부문은 더 빠르게(약 4.2%) 성장합니다.</span></p>
+    </div>
+  </section>
+
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">Category giants globally; HiteJinro &amp; Lotte lead Korea</span><span class="ko">글로벌은 카테고리 거인, 한국은 하이트진로·롯데가 선도</span></h2>
+      <div class="pies">
+        <div class="pieblock"><div class="pie-title"><span class="en">Global beverage leaders — indicative</span><span class="ko">글로벌 음료 선도기업 — 추정</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0 33%,#117aca 33% 56%,#ffb81c 56% 73%,#5aa9e6 73% 80%,#c9d4e3 80% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>Coca-Cola<b>~33%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>PepsiCo<b>~23%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>AB InBev<b>~17%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Diageo<b>~7%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>~20%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea beverages — indicative</span><span class="ko">한국 음료 — 추정</span></div><div class="pie" style="background:conic-gradient(#0047a0 0 33%,#117aca 33% 56%,#ffb81c 56% 73%,#c9d4e3 73% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>HiteJinro<b>~33%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Oriental Brewery<b>~23%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Lotte Chilsung<b>~17%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>~27%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">Shares span soft drinks, beer and spirits and cannot be summed on one metric; all indicative. Coca-Cola holds ~40% global non-alcoholic ready-to-drink volume share.</span><span class="ko">점유율은 청량·맥주·증류주에 걸쳐 하나의 지표로 합산할 수 없으며 모두 추정치입니다. 코카콜라는 글로벌 비주류 RTD 물량의 약 40%를 보유합니다.</span></p>
+    </div>
+  </section>
+
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">A few giants compete hard across overlapping categories.</span><span class="ko">소수 거인이 겹치는 카테고리에서 치열하게 경쟁합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Scale and distribution deter, but craft/functional entry is easy.</span><span class="ko">규모·유통이 막으나 크래프트·기능성 진입은 쉽습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Inputs are abundant, but droughts cause episodic spikes.</span><span class="ko">투입재는 풍부하나 가뭄이 간헐적 급등을 부릅니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Retail consolidation and private label pressure shelf terms.</span><span class="ko">유통 집중과 자체브랜드가 매대 조건을 압박합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Water, energy, plant milk and GLP-1 all cut traditional demand.</span><span class="ko">물·에너지·식물성 음료·GLP-1이 전통 수요를 줄입니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: brand and distribution protect incumbents, but health substitution caps volume growth.</span><span class="ko">종합하면 브랜드·유통이 기존 강자를 보호하나, 건강 대체 수요가 물량 성장을 제한합니다.</span></p>
+  </section>
+
+  <section id="reg">
+    <p class="kicker"><span class="en">PESTEL &amp; regulation</span><span class="ko">PESTEL과 규제</span></p>
+    <h2><span class="en">Macro forces &amp; the latest rules</span><span class="ko">거시 환경과 최신 규제</span></h2>
+    <p class="mute"><span class="en">Health and packaging rules now shape the recipe: sugar taxes, labeling and recycled-content mandates raise cost and force reformulation.</span><span class="ko">이제 건강·포장 규제가 제법을 좌우합니다. 설탕세·표시제·재생원료 의무가 원가를 높이고 제품 재설계를 강제합니다.</span></p>
+    <p class="hint"><span class="en">Latest legislation &amp; regulatory issues — tap to expand.</span><span class="ko">최신 법안·규제 이슈 — 눌러서 펼치십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jan 2026</span><span class="ac-title"><span class="en">WHO sugar-tax push; Korea debates one</span><span class="ko">WHO 설탕세 확대·한국 도입 논의</span></span></div><div class="ac-body"><p class="why"><span class="en">116+ countries levy SSB taxes (WHO, Jan 2026) and Korea's president floated one with ~80% support. Why it matters: it raises cost and suppresses soda volume.</span><span class="ko">116개국 이상이 가당음료세를 부과하며(WHO, 2026년 1월) 한국 대통령도 약 80% 지지 속 도입을 거론했습니다. 의미: 원가를 높이고 탄산 물량을 억제합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">Korea recycled-PET mandate</span><span class="ko">한국 재생 PET 의무화</span></span></div><div class="ac-body"><p class="why"><span class="en">From 2026, bottlers must use ≥10% recycled PET, rising to 30% by 2030. Why it matters: it raises packaging cost and forces R&amp;D.</span><span class="ko">2026년부터 음료 병에 재생 PET 10% 이상을 써야 하며 2030년 30%로 상향됩니다. 의미: 포장 원가를 높이고 연구개발을 강제합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jan 2026</span><span class="ac-title"><span class="en">Korea sweetener-labeling rules</span><span class="ko">한국 감미료 표시 규제</span></span></div><div class="ac-body"><p class="why"><span class="en">From Jan 2026, larger firms must declare sweetener type and content, hitting zero-sugar soju and diet drinks. Why it matters: it adds transparency and reformulation pressure.</span><span class="ko">2026년 1월부터 일정 규모 기업은 감미료 종류·함량을 표시해야 하며 무설탕 소주·다이어트 음료에 영향을 줍니다. 의미: 투명성과 재설계 압력을 더합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">GLP-1 demand headwind</span><span class="ko">GLP-1 수요 역풍</span></span></div><div class="ac-body"><p class="why"><span class="en">Studies show GLP-1 users cut soda and alcohol sharply (AMA/AlixPartners). Why it matters: a low-probability, high-impact tail risk on volume.</span><span class="ko">연구에 따르면 GLP-1 사용자가 탄산·주류를 크게 줄였습니다(AMA·AlixPartners). 의미: 발생 확률은 낮으나 물량에 큰 충격을 줄 꼬리 위험입니다.</span></p></div></div></div>
+  </section>
+
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Brand portfolio depth</span><span class="ko">브랜드 포트폴리오 깊이</span></b><p><span class="en">Multi-tier brands enable premiumization as volume stalls.</span><span class="ko">다층 브랜드가 물량 정체기에 프리미엄화를 가능하게 합니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">Distribution &amp; cold chain</span><span class="ko">유통·콜드체인</span></b><p><span class="en">Shelf reach is the moat that blocks digital-native brands.</span><span class="ko">매대 도달이 디지털 신생 브랜드를 막는 해자입니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">Health innovation</span><span class="ko">건강 혁신</span></b><p><span class="en">No-sugar and low-alcohol launches are the main growth lever.</span><span class="ko">무설탕·저알코올 출시가 핵심 성장 레버입니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">Pricing power (RGM)</span><span class="ko">가격결정력(RGM)</span></b><p><span class="en">Price/mix sustains margin without relying on volume.</span><span class="ko">가격·믹스가 물량에 기대지 않고 마진을 지탱합니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">Regulatory speed</span><span class="ko">규제 대응 속도</span></b><p><span class="en">Early rPET and reformulation avoids penalties and wins shelves.</span><span class="ko">선제적 재생 PET·재설계가 제재를 피하고 매대를 확보합니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Consumer data</span><span class="ko">소비자 데이터</span></b><p><span class="en">DTC and loyalty enable real-time demand sensing.</span><span class="ko">DTC·로열티가 실시간 수요 감지를 가능하게 합니다.</span></p></div></div></div>
+  </section>
+
+  <section id="news">
+    <p class="kicker"><span class="en">Recent issues &amp; news</span><span class="ko">최근 이슈 &amp; 뉴스</span></p>
+    <h2><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></h2>
+    <p class="hint"><span class="en">Tap for why it matters.</span><span class="ko">눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Beverage alcohol stays soft</span><span class="ko">주류 음료 부진 지속</span></span></div><div class="ac-body"><p class="why"><span class="en">NielsenIQ confirmed 2025 dollar declines in beer, wine and spirits; Korea's alcohol volume is down ~23% since 2015. Why it matters: a structural, not cyclical, contraction.</span><span class="ko">NielsenIQ는 2025년 맥주·와인·증류주의 금액 감소를 확인했고 한국 주류 물량은 2015년 대비 약 23% 줄었습니다. 의미: 경기가 아닌 구조적 위축입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Zero-sugar soju goes mainstream</span><span class="ko">무설탕 소주 대중화</span></span></div><div class="ac-body"><p class="why"><span class="en">~90% of Koreans know zero-sugar soju and ~49% have tried it; Lotte's Saero and HiteJinro lines lead. Why it matters: it cannibalizes legacy products under new labeling.</span><span class="ko">한국인 약 90%가 무설탕 소주를 알고 약 49%가 마셔봤으며 롯데 '새로'와 하이트진로가 선도합니다. 의미: 새 표시제 아래 기존 제품을 잠식합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">Coca-Cola grows on price, not volume</span><span class="ko">코카콜라 가격으로 성장</span></span></div><div class="ac-body"><p class="why"><span class="en">FY25 revenue rose to US$47.9B (+5% organic) with flat unit case volume. Why it matters: growth is entirely price/mix-driven, a vulnerability.</span><span class="ko">FY25 매출이 479억 달러(유기적 +5%)로 늘었으나 케이스 물량은 정체였습니다. 의미: 성장이 전적으로 가격·믹스에 의존해 취약점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Korea on-premise prices edge up</span><span class="ko">한국 외식 주류 가격 상승</span></span></div><div class="ac-body"><p class="why"><span class="en">Restaurant soju and beer prices rose after months of decline as input costs bit. Why it matters: it squeezes brewers between costs and price resistance.</span><span class="ko">원가 부담으로 외식 소주·맥주 가격이 수개월 하락 후 상승했습니다. 의미: 원가와 가격 저항 사이에서 주류사를 압박합니다.</span></p></div></div></div>
+  </section>
+
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, with a strategy read</span><span class="ko">두 리더, 전략 관점으로</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader gets a short consulting-style read: diagnosis → two-track strategy → action plans.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 컨설팅식으로 짧게 진단합니다: 진단 → Two-Track 전략 → 액션 플랜 순서입니다.</span></p>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>Coca-Cola</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The world's largest beverage company by market cap, running a capital-light concentrate model across a global bottling network.</span><span class="ko">시가총액 기준 세계 최대 음료기업으로, 글로벌 보틀링 네트워크 위에서 자본경량 원액 모델을 운영합니다.</span></p><div class="stats"><div class="stat"><div class="n">$47.9B</div><div class="l"><span class="en">FY25 revenue (+5% org.)</span><span class="ko">FY25 매출(유기적 +5%)</span></div></div><div class="stat"><div class="n">~$339B</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div><div class="stat"><div class="n">~40%</div><div class="l"><span class="en">Global NARTD share</span><span class="ko">글로벌 비주류 RTD 점유율</span></div></div><div class="stat"><div class="n">0%</div><div class="l"><span class="en">FY25 unit volume</span><span class="ko">FY25 물량 증가</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — growth leans entirely on price, with flat volume</span><span class="ko">진단 — 물량이 정체된 채 성장이 전적으로 가격에 기댑니다</span></div><div class="formula">Revenue = Volume × Price/mix; profit driven by concentrate margin</div><ul><li><span class="en">Unit case volume was flat in FY25; growth was price/mix only.</span><span class="ko">FY25 케이스 물량은 정체였고 성장은 가격·믹스뿐이었습니다.</span></li><li><span class="en">A BODYARMOR impairment showed adjacency plays are hard.</span><span class="ko">바디아머 손상차손은 인접 사업의 어려움을 보여줬습니다.</span></li><li><span class="en">Key lever: reignite volume via health and functional portfolio.</span><span class="ko">핵심 레버는 건강·기능성 포트폴리오로 물량을 되살리는 것입니다.</span></li></ul></div><div class="track-grid"><div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Defend the core</span><span class="ko">핵심 사업 방어</span></div><p><span class="en">Hold CSD share through reformulation, rPET packaging and emerging-market deepening.</span><span class="ko">제품 재설계·재생 PET 포장·신흥시장 강화로 탄산 점유율을 지킵니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Grow health &amp; functional</span><span class="ko">건강·기능성 성장</span></div><p><span class="en">Accelerate Fairlife, energy, hydration and RTD alcohol to meet the health shift.</span><span class="ko">페어라이프·에너지·수분보충·RTD 주류를 키워 건강 전환에 대응합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Portfolio</span><span class="ko">포트폴리오</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Volume-flat CSD</span><span class="ko">물량 정체 탄산</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Functional mix ~40%</span><span class="ko">기능성 비중 약 40%</span></div></div></div><div class="ap"><div class="apt"><span class="en">Pricing</span><span class="ko">가격</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Reactive pricing</span><span class="ko">수동적 가격</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">RGM price/pack</span><span class="ko">RGM 가격·용량</span></div></div></div><div class="ap"><div class="apt"><span class="en">Data</span><span class="ko">데이터</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Analog bottler ties</span><span class="ko">아날로그 보틀러 연계</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">AI demand sensing</span><span class="ko">AI 수요 감지</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>Lotte Chilsung</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">Korea's largest beverage company, spanning soft drinks and soju, with overseas expansion as the growth axis.</span><span class="ko">청량음료와 소주를 아우르는 한국 최대 음료기업으로, 해외 확장을 성장축으로 삼습니다.</span></p><div class="stats"><div class="stat"><div class="n">₩3.2T+</div><div class="l"><span class="en">FY24 revenue</span><span class="ko">FY24 매출</span></div></div><div class="stat"><div class="n">~$2.8B</div><div class="l"><span class="en">TTM revenue</span><span class="ko">최근 12개월 매출</span></div></div><div class="stat"><div class="n">>30%</div><div class="l"><span class="en">Overseas sales target</span><span class="ko">해외 매출 목표</span></div></div><div class="stat"><div class="n">Saero</div><div class="l"><span class="en">Zero-sugar soju</span><span class="ko">무설탕 소주</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — a shrinking home market squeezes volume and margin</span><span class="ko">진단 — 위축되는 내수가 물량과 마진을 동시에 압박합니다</span></div><div class="formula">Revenue = Domestic volume × price/mix + Overseas; margin on soju leverage</div><ul><li><span class="en">Korean alcohol volume fell ~23% since 2015 as habits shift.</span><span class="ko">음주 습관 변화로 한국 주류 물량이 2015년 대비 약 23% 줄었습니다.</span></li><li><span class="en">2026 rPET and labeling rules raise near-term compliance cost.</span><span class="ko">2026년 재생 PET·표시 규제가 단기 준수 비용을 높입니다.</span></li><li><span class="en">Key lever: grow overseas and premium imports to offset decline.</span><span class="ko">핵심 레버는 해외와 프리미엄 수입으로 내수 감소를 상쇄하는 것입니다.</span></li></ul></div><div class="track-grid"><div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Defend domestic leadership</span><span class="ko">내수 선도 방어</span></div><p><span class="en">Lead on zero-sugar soju and diet drinks while meeting 2026 rPET and labeling rules ahead of peers.</span><span class="ko">무설탕 소주·다이어트 음료를 선도하고 2026년 재생 PET·표시 규제를 경쟁사보다 앞서 충족합니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Expand overseas &amp; premium</span><span class="ko">해외·프리미엄 확장</span></div><p><span class="en">Grow Southeast Asia and diaspora markets and deepen premium wine/spirits distribution.</span><span class="ko">동남아·동포 시장을 키우고 프리미엄 와인·증류주 유통을 강화합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Geography</span><span class="ko">지역</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Domestic-reliant</span><span class="ko">내수 의존</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Overseas 40%+</span><span class="ko">해외 40% 이상</span></div></div></div><div class="ap"><div class="apt"><span class="en">Product</span><span class="ko">제품</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Legacy soju</span><span class="ko">기존 소주</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Health-positioned mix</span><span class="ko">건강 지향 믹스</span></div></div></div><div class="ap"><div class="apt"><span class="en">ESG</span><span class="ko">ESG</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Reactive compliance</span><span class="ko">수동적 준수</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">rPET leadership</span><span class="ko">재생 PET 선도</span></div></div></div></div></div></div>
+  </section>
+
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight">
+        <li><span class="en">Volume stays flat; price, mix and premiumization carry growth.</span><span class="ko">물량은 정체되고 가격·믹스·프리미엄화가 성장을 견인합니다.</span></li><li><span class="en">Sugar taxes, labeling and rPET rules raise cost and reshape recipes.</span><span class="ko">설탕세·표시제·재생 PET 규제가 원가를 높이고 제법을 바꿉니다.</span></li><li><span class="en">GLP-1 adoption is a slow-building risk to both soda and alcohol.</span><span class="ko">GLP-1 확산은 탄산·주류 모두에 서서히 커지는 위험입니다.</span></li><li><span class="en">Coca-Cola rides functional growth; Lotte Chilsung rides overseas expansion.</span><span class="ko">코카콜라는 기능성 성장에, 롯데칠성은 해외 확장에 달려 있습니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://investors.coca-colacompany.com/news-events/press-releases/detail/1151/coca-cola-reports-fourth-quarter-and-full-year-2025-results">Coca-Cola — FY2025 results</a></li><li><a href="https://www.who.int/publications/i/item/9789240118942">WHO — Global SSB Tax Report 2025</a></li><li><a href="https://www.beveragedaily.com/Article/2025/12/19/five-ways-glp-1-drugs-are-affecting-the-beverage-industry/">BeverageDaily — GLP-1 and beverages</a></li><li><a href="https://nielseniq.com/global/en/insights/analysis/2026/2025-beverage-alcohol-year-in-review/">NielsenIQ — 2025 Beverage Alcohol Review</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Beverages (GICS 302010) · Generated June 5, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 음료(GICS 302010) · 2026년 6월 5일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>

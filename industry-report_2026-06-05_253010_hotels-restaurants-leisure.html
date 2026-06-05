@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotels, Restaurants & Leisure · 호텔·레스토랑·레저 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Hotels &amp; Leisure</span><span class="ko">호텔·레저</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 3 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 3번째</span></p>
+    <h1><span class="en">Hotels, Restaurants &amp; Leisure</span><span class="ko">호텔·레스토랑·레저</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Consumer Discretionary · 253010</span>
+      <span class="pill">2026-06-05</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: McDonald's · Kangwon Land</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">Hotels, restaurants &amp; leisure (GICS 253010) spans quick-service chains, hotels, cruise lines, casinos and online travel — a ~US$5.5T global market growing ~5.5% a year. Value has migrated to asset-light franchise and loyalty models: McDonald's earns ~46% operating margins on royalties and rent while franchisees carry food and labor. Two forces define 2026: a record travel and inbound-tourism recovery (Korea drew a record ~18.9M visitors in 2025), and a structural demand headwind as GLP-1 weight-loss drugs cut restaurant visits — J.P. Morgan projects US$30–55B of lost F&amp;B revenue by 2030–34. The global #1, McDonald's, is the largest by market cap and systemwide sales; Korea's #1, Kangwon Land, is the country's only casino open to nationals and its largest pure-play leisure operator. Both are detailed at the end.</span><span class="ko">호텔·레스토랑·레저(GICS 253010)는 퀵서비스 외식·호텔·크루즈·카지노·온라인 여행을 아우르는 약 5.5조 달러 규모의 글로벌 시장으로 연 약 5.5% 성장합니다. 가치는 자산경량 프랜차이즈·로열티 모델로 옮겨갔습니다. 맥도날드는 로열티와 임대료로 약 46%의 영업이익률을 거두고 식자재·인건비는 가맹점이 부담합니다. 2026년은 두 가지 힘이 좌우합니다. 사상 최대 여행·인바운드 회복(한국은 2025년 약 1,890만 명의 역대 최다 방문객을 유치)과, GLP-1 비만치료제가 외식 빈도를 줄이는 구조적 역풍입니다. JP모건은 2030~34년 외식 매출 300~550억 달러 감소를 전망합니다. 글로벌 1위 맥도날드는 시가총액·시스템 매출 기준 최대 기업이며, 한국 1위 강원랜드는 내국인이 출입 가능한 유일한 카지노이자 최대 순수 레저 기업입니다. 두 기업은 뒤에서 자세히 다룹니다.</span></p>
+    </div>
+  </section>
+
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From real estate to brand to loyalty</span><span class="ko">부동산에서 브랜드, 그리고 로열티로</span></h2>
+      <p class="lead"><span class="en">The industry monetizes location and brand. Profit ≈ (outlets × average unit volume) + royalties/rent + loyalty data − food, labor and channel cost.</span><span class="ko">이 산업은 입지와 브랜드를 수익화합니다. 이익 ≈ (점포 수 × 점포당 매출) + 로열티·임대료 + 로열티 데이터 − 식자재·인건비·채널 비용으로 볼 수 있습니다.</span></p>
+      <div class="chain"><div class="vc"><b><span class="en">Real estate &amp; location</span><span class="ko">부동산·입지</span></b><span class="d"><span class="en">High-traffic sites drive average unit volume.</span><span class="ko">유동인구가 많은 입지가 점포당 매출을 좌우합니다.</span></span></div><div class="vc"><b><span class="en">Brand &amp; franchise</span><span class="ko">브랜드·프랜차이즈</span></b><span class="d"><span class="en">Asset-light royalties scale capital-efficiently.</span><span class="ko">자산경량 로열티가 자본효율적으로 확장됩니다.</span></span></div><div class="vc"><b><span class="en">Supply chain</span><span class="ko">공급망</span></b><span class="d"><span class="en">Food and input cost is 60–70% of restaurant cost.</span><span class="ko">식자재·투입원가가 외식 비용의 60~70%입니다.</span></span></div><div class="vc"><b><span class="en">Digital &amp; loyalty</span><span class="ko">디지털·로열티</span></b><span class="d"><span class="en">First-party data lifts frequency and personalization.</span><span class="ko">자사 데이터가 방문 빈도와 개인화를 높입니다.</span></span></div><div class="vc"><b><span class="en">Distribution channels</span><span class="ko">유통 채널</span></b><span class="d"><span class="en">Delivery and OTAs add reach but take a commission.</span><span class="ko">배달·온라인여행사가 도달을 넓히나 수수료를 가져갑니다.</span></span></div></div>
+    </div>
+  </section>
+
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A large market in steady recovery</span><span class="ko">꾸준히 회복하는 거대 시장</span></h2>
+      <div class="colchart"><div class="col"><div class="col-val">$5.38T</div><div class="col-bar" data-h="83"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">$5.52T</div><div class="col-bar" data-h="85"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">$5.83T</div><div class="col-bar" data-h="90"></div><div class="col-lab">2026E</div></div><div class="col"><div class="col-val">$6.15T</div><div class="col-bar" data-h="95"></div><div class="col-lab">2027E</div></div><div class="col"><div class="col-val">$6.49T</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div></div>
+      <p class="cap"><span class="en">Global hospitality market (lodging + foodservice + leisure), US$ trillions, indicative (The Business Research Company, 2025; ~5.5% CAGR). Hotels-only ≈ US$2.1T; foodservice ≈ US$4T.</span><span class="ko">글로벌 호스피탈리티 시장(숙박+외식+레저), 단위 조 달러, 추정치입니다(The Business Research Company, 2025년 기준, 연평균 약 5.5% 성장). 호텔만 약 2.1조 달러, 외식 약 4조 달러입니다.</span></p>
+    </div>
+  </section>
+
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">Fragmented globally; one casino leads Korean leisure</span><span class="ko">글로벌은 분산, 한국 레저는 단일 카지노가 선도</span></h2>
+      <div class="pies">
+        <div class="pieblock"><div class="pie-title"><span class="en">Global scale leaders (by market cap) — indicative</span><span class="ko">글로벌 대형주(시가총액 기준) — 추정</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0 30%,#117aca 30% 52%,#ffb81c 52% 68%,#5aa9e6 68% 80%,#c9d4e3 80% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>McDonald's<b>~30%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Booking<b>~22%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Marriott<b>~16%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Starbucks<b>~12%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>~20%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea leisure/hospitality — indicative</span><span class="ko">한국 레저·호스피탈리티 — 추정</span></div><div class="pie" style="background:conic-gradient(#0047a0 0 37%,#117aca 37% 50%,#ffb81c 50% 63%,#c9d4e3 63% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>Hotel Shilla<b>~37%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Kangwon Land<b>~13%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Hotel Lotte<b>~13%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">Others</span><span class="ko">기타</span><b>~37%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">Shares are indicative across sub-sectors that cannot be summed on one metric. Hotel Shilla's revenue is dominated by duty-free; Kangwon Land is the leading pure-play leisure operator.</span><span class="ko">점유율은 하나의 지표로 합산할 수 없는 하위 부문에 걸친 추정치입니다. 호텔신라 매출은 면세점이 대부분이며, 강원랜드가 대표적 순수 레저 기업입니다.</span></p>
+    </div>
+  </section>
+
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Global chains fight for the same wallet as RevPAR growth flattens.</span><span class="ko">객실수익 성장 둔화 속 글로벌 체인이 같은 지갑을 두고 경쟁합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Asset-light platforms and ghost kitchens lower entry barriers.</span><span class="ko">자산경량 플랫폼·고스트키친이 진입장벽을 낮춥니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Labor is structurally tight; food suppliers are fragmented.</span><span class="ko">인건비는 구조적으로 빠듯하나 식자재 공급자는 분산돼 있습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Meta-search and apps give consumers instant price transparency.</span><span class="ko">메타서치·앱이 소비자에게 즉각적 가격 투명성을 줍니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Airbnb, meal kits and GLP-1 appetite suppression all substitute.</span><span class="ko">에어비앤비·밀키트·GLP-1 식욕억제가 모두 대체재입니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: a high-rivalry, high-substitution industry where brand, loyalty and asset-light economics are the moat.</span><span class="ko">종합하면 경쟁과 대체 위협이 모두 높은 산업으로, 브랜드·로열티·자산경량 구조가 해자입니다.</span></p>
+  </section>
+
+  <section id="reg">
+    <p class="kicker"><span class="en">PESTEL &amp; regulation</span><span class="ko">PESTEL과 규제</span></p>
+    <h2><span class="en">Macro forces &amp; the latest rules</span><span class="ko">거시 환경과 최신 규제</span></h2>
+    <p class="mute"><span class="en">Labor, tourism and platform rules move unit economics: wage floors, short-term-rental crackdowns and franchise oversight are the live levers.</span><span class="ko">인건비·관광·플랫폼 규제가 점포 경제성을 좌우합니다. 최저임금, 단기임대 단속, 가맹사업 감독이 핵심 변수입니다.</span></p>
+    <p class="hint"><span class="en">Latest legislation &amp; regulatory issues — tap to expand.</span><span class="ko">최신 법안·규제 이슈 — 눌러서 펼치십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–28</span><span class="ac-title"><span class="en">LA hotel worker wage to US$30/hr</span><span class="ko">LA 호텔 근로자 시급 30달러</span></span></div><div class="ac-body"><p class="why"><span class="en">In force May 2025, LA raises hotel wages to US$30 by 2028; staffing already fell ~6%. Why it matters: it accelerates automation and restructuring.</span><span class="ko">2025년 5월 발효되어 LA 호텔 시급을 2028년까지 30달러로 올립니다. 인력은 이미 약 6% 줄었습니다. 의미: 자동화·구조조정을 앞당깁니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Oct 2025</span><span class="ac-title"><span class="en">Korea short-term-rental licensing</span><span class="ko">한국 단기임대 등록 의무화</span></span></div><div class="ac-body"><p class="why"><span class="en">From Oct 2025 all Airbnb listings need a license and studios/officetels are banned, removing ~80% of illegal inventory. Why it matters: demand shifts back to licensed hotels.</span><span class="ko">2025년 10월부터 모든 에어비앤비가 등록증을 갖춰야 하고 원룸·오피스텔은 금지되어 불법 매물 약 80%가 사라졌습니다. 의미: 수요가 등록 호텔로 되돌아옵니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">EU CSRD for hospitality</span><span class="ko">EU CSRD의 호스피탈리티 적용</span></span></div><div class="ac-body"><p class="why"><span class="en">Large operators must report sustainability data; hotels face a 66% carbon-cut target by 2030. Why it matters: ESG becomes a cost of doing business in Europe.</span><span class="ko">대형 사업자는 지속가능성 데이터를 보고해야 하며 호텔은 2030년까지 탄소 66% 감축 목표에 직면합니다. 의미: 유럽 영업의 비용 요건이 됩니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Korea KFTC franchise enforcement</span><span class="ko">한국 공정위 가맹사업 규제</span></span></div><div class="ac-body"><p class="why"><span class="en">The KFTC restricted minimum sales targets and product tying on franchisors. Why it matters: it caps the margin domestic chains extract from franchisees.</span><span class="ko">공정위가 가맹본부의 최소 매출 강제와 끼워팔기를 제한했습니다. 의미: 국내 체인이 가맹점에서 취하는 마진을 제약합니다.</span></p></div></div></div>
+  </section>
+
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Brand &amp; loyalty</span><span class="ko">브랜드·로열티</span></b><p><span class="en">Mega loyalty programs lock in frequency and first-party data.</span><span class="ko">대형 로열티 프로그램이 방문 빈도와 자사 데이터를 확보합니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">Asset-light model</span><span class="ko">자산경량 모델</span></b><p><span class="en">Franchise royalties yield high margin with little capital.</span><span class="ko">프랜차이즈 로열티가 적은 자본으로 고마진을 냅니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">Digital &amp; AI</span><span class="ko">디지털·AI</span></b><p><span class="en">Dynamic pricing and personalization are now table stakes.</span><span class="ko">동적 가격·개인화가 이제 기본 요건입니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">Location density</span><span class="ko">입지 밀도</span></b><p><span class="en">High-traffic networks drive average unit volume.</span><span class="ko">유동인구가 많은 네트워크가 점포당 매출을 높입니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">Cost management</span><span class="ko">원가 관리</span></b><p><span class="en">Hedging and automation protect margin from input inflation.</span><span class="ko">헤지와 자동화가 투입 인플레이션으로부터 마진을 지킵니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Compliance</span><span class="ko">규제 대응</span></b><p><span class="en">Meeting wage, ESG and franchise rules protects access and capital.</span><span class="ko">임금·ESG·가맹 규제 준수가 시장 접근과 자본을 지킵니다.</span></p></div></div></div>
+  </section>
+
+  <section id="news">
+    <p class="kicker"><span class="en">Recent issues &amp; news</span><span class="ko">최근 이슈 &amp; 뉴스</span></p>
+    <h2><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></h2>
+    <p class="hint"><span class="en">Tap for why it matters.</span><span class="ko">눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Korea inbound tourism hits record</span><span class="ko">한국 인바운드 관광 사상 최대</span></span></div><div class="ac-body"><p class="why"><span class="en">Korea drew ~18.9M foreign visitors in 2025, topping the 2019 peak, led by Chinese group tours. Why it matters: a windfall for hotels and duty-free, with concentration risk.</span><span class="ko">2025년 한국이 약 1,890만 명의 외국인을 유치해 2019년 정점을 넘었고 중국 단체관광이 견인했습니다. 의미: 호텔·면세점에 호재이나 편중 위험이 있습니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">GLP-1 drugs reshape dining demand</span><span class="ko">GLP-1 약물이 외식 수요 재편</span></span></div><div class="ac-body"><p class="why"><span class="en">GLP-1 users cut restaurant visits sharply; J.P. Morgan sees US$30–55B of lost F&amp;B revenue by 2030–34. Why it matters: a structural, not cyclical, headwind.</span><span class="ko">GLP-1 사용자가 외식 빈도를 크게 줄였고 JP모건은 2030~34년 외식 매출 300~550억 달러 감소를 전망합니다. 의미: 경기가 아닌 구조적 역풍입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">McDonald's loyalty flywheel accelerates</span><span class="ko">맥도날드 로열티 플라이휠 가속</span></span></div><div class="ac-body"><p class="why"><span class="en">Systemwide sales reached US$139.4B (+7%) with loyalty sales up 20% to ~US$37B and 210M active users. Why it matters: it validates the asset-light thesis.</span><span class="ko">시스템 매출이 1,394억 달러(+7%)에 이르고 로열티 매출이 20% 늘어 약 370억 달러, 활성 사용자 2.1억 명을 기록했습니다. 의미: 자산경량 모델을 입증합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Airbnb rules tighten worldwide</span><span class="ko">에어비앤비 규제 세계적 강화</span></span></div><div class="ac-body"><p class="why"><span class="en">Korea, Spain, Italy and others curbed short-term rentals in 2025. Why it matters: it hands a near-term occupancy tailwind to licensed hotels.</span><span class="ko">2025년 한국·스페인·이탈리아 등이 단기임대를 규제했습니다. 의미: 등록 호텔에 단기 객실가동률 호재를 줍니다.</span></p></div></div></div>
+  </section>
+
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, with a strategy read</span><span class="ko">두 리더, 전략 관점으로</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader gets a short consulting-style read: diagnosis → two-track strategy → action plans.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 컨설팅식으로 짧게 진단합니다: 진단 → Two-Track 전략 → 액션 플랜 순서입니다.</span></p>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>McDonald's</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The world's largest quick-service franchise, monetizing 45,000+ locations through royalties, rent and a 210M-member loyalty base.</span><span class="ko">세계 최대 퀵서비스 프랜차이즈로, 4만 5천여 점포를 로열티·임대료와 2.1억 명 로열티 기반으로 수익화합니다.</span></p><div class="stats"><div class="stat"><div class="n">$139.4B</div><div class="l"><span class="en">FY25 systemwide sales</span><span class="ko">FY25 시스템 매출</span></div></div><div class="stat"><div class="n">45,356</div><div class="l"><span class="en">Locations (~95% franchised)</span><span class="ko">점포(약 95% 가맹)</span></div></div><div class="stat"><div class="n">210M</div><div class="l"><span class="en">Loyalty active users</span><span class="ko">로열티 활성 사용자</span></div></div><div class="stat"><div class="n">46.1%</div><div class="l"><span class="en">Operating margin</span><span class="ko">영업이익률</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — value-seeking traffic is stalling as loyalty spend grows</span><span class="ko">진단 — 로열티 지출은 늘지만 가성비 추구 트래픽이 정체됩니다</span></div><div class="formula">Sales = Outlets × AUV; Profit = Royalties + Rent − G&amp;A</div><ul><li><span class="en">Low-income traffic is soft while loyalty members spend more.</span><span class="ko">저소득층 방문은 약하고 로열티 회원 지출은 늘고 있습니다.</span></li><li><span class="en">GLP-1 drugs and price fatigue pressure visit frequency.</span><span class="ko">GLP-1 약물과 가격 피로가 방문 빈도를 압박합니다.</span></li><li><span class="en">Key lever: convert digital users into enrolled loyalty members.</span><span class="ko">핵심 레버는 디지털 사용자를 가입 로열티 회원으로 전환하는 것입니다.</span></li></ul></div><div class="track-grid"><div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Defend franchise economics</span><span class="ko">프랜차이즈 경제성 방어</span></div><p><span class="en">Hold the royalty structure, grow the digital loyalty flywheel and keep G&amp;A below ~10% of revenue.</span><span class="ko">로열티 구조를 유지하고 디지털 로열티 플라이휠을 키우며 판관비를 매출의 약 10% 이하로 관리합니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Expand units &amp; premium mix</span><span class="ko">점포·프리미엄 확대</span></div><p><span class="en">Open ~2,100 net new restaurants a year in high-density markets and lift AUV through premium menu.</span><span class="ko">고밀도 시장에서 연 약 2,100개 순증 점포를 열고 프리미엄 메뉴로 점포당 매출을 높입니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Loyalty</span><span class="ko">로열티</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Regional apps</span><span class="ko">지역별 앱</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Unified global platform</span><span class="ko">통합 글로벌 플랫폼</span></div></div></div><div class="ap"><div class="apt"><span class="en">Demand</span><span class="ko">수요</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Value-menu reliance</span><span class="ko">가성비 메뉴 의존</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Daypart segmentation</span><span class="ko">시간대별 세분화</span></div></div></div><div class="ap"><div class="apt"><span class="en">Growth</span><span class="ko">성장</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">US-centric menu</span><span class="ko">미국 중심 메뉴</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Emerging-market localization</span><span class="ko">신흥시장 현지화</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>Kangwon Land</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">Korea's only casino open to nationals and its largest pure-play leisure operator, with a regulated growth ceiling.</span><span class="ko">내국인이 출입 가능한 한국 유일의 카지노이자 최대 순수 레저 기업으로, 규제된 성장 상한을 안고 있습니다.</span></p><div class="stats"><div class="stat"><div class="n">₩1.48T</div><div class="l"><span class="en">FY25 revenue</span><span class="ko">FY25 매출</span></div></div><div class="stat"><div class="n">₩235B</div><div class="l"><span class="en">FY25 operating profit</span><span class="ko">FY25 영업이익</span></div></div><div class="stat"><div class="n">~$2.4B</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div><div class="stat"><div class="n">₩2.5T</div><div class="l"><span class="en">Resort expansion plan</span><span class="ko">리조트 확장 계획</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — demand is capped by regulation, not by the market</span><span class="ko">진단 — 수요는 시장이 아니라 규제가 제한합니다</span></div><div class="formula">GGR = Visitors × Hold% × Avg bet; growth capped by entry limits</div><ul><li><span class="en">Visitor volume is limited by daily entry caps, not demand.</span><span class="ko">방문객 수는 수요가 아니라 일일 입장 제한에 묶여 있습니다.</span></li><li><span class="en">A ₩2.5T expansion lifts capacity but compresses near-term profit.</span><span class="ko">2.5조 원 확장이 수용력을 키우나 단기 이익을 압박합니다.</span></li><li><span class="en">Key lever: lift non-gaming revenue per visitor while awaiting floor expansion.</span><span class="ko">핵심 레버는 영업장 확장 전까지 방문객당 비게이밍 매출을 높이는 것입니다.</span></li></ul></div><div class="track-grid"><div class="track t1"><div class="tt"><span class="en">Track 1 · Sustain</span><span class="ko">Track 1 · 방어</span></div><div class="tn"><span class="en">Optimize the regulated core</span><span class="ko">규제 핵심 사업 최적화</span></div><p><span class="en">Run GGR discipline and a higher-hold table mix while defending the domestic-only license.</span><span class="ko">총게임수익을 관리하고 고수익 테이블 비중을 높이며 내국인 전용 면허를 방어합니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Growth</span><span class="ko">Track 2 · 성장</span></div><div class="tn"><span class="en">Become an integrated resort</span><span class="ko">복합리조트로 전환</span></div><p><span class="en">Complete the ₩2.5T transformation by 2028, growing non-gaming revenue from ~10% to 25%+.</span><span class="ko">2.5조 원 전환을 2028년까지 마쳐 비게이밍 매출을 약 10%에서 25% 이상으로 키웁니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Revenue mix</span><span class="ko">매출 구성</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Gaming-dependent</span><span class="ko">게이밍 의존</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Diversified resort</span><span class="ko">다각화된 리조트</span></div></div></div><div class="ap"><div class="apt"><span class="en">Yield</span><span class="ko">수익성</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Static visitor cap</span><span class="ko">고정 방문 상한</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Higher spend per visitor</span><span class="ko">방문객당 지출 확대</span></div></div></div><div class="ap"><div class="apt"><span class="en">Customers</span><span class="ko">고객</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Domestic-only</span><span class="ko">내국인 중심</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Inbound tourism appeal</span><span class="ko">인바운드 관광 유치</span></div></div></div></div></div></div>
+  </section>
+
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight">
+        <li><span class="en">GLP-1 drug adoption is a slow but structural drag on dining demand.</span><span class="ko">GLP-1 약물 확산은 외식 수요에 더디지만 구조적인 부담입니다.</span></li><li><span class="en">Value sits with asset-light brand, loyalty and digital, not real estate.</span><span class="ko">가치는 부동산이 아니라 자산경량 브랜드·로열티·디지털에 있습니다.</span></li><li><span class="en">Labor cost and tourism policy swing unit economics sharply.</span><span class="ko">인건비와 관광 정책이 점포 경제성을 크게 흔듭니다.</span></li><li><span class="en">McDonald's rides loyalty conversion; Kangwon Land rides its expansion build.</span><span class="ko">맥도날드는 로열티 전환에, 강원랜드는 확장 공사에 달려 있습니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://www.prnewswire.com/news-releases/mcdonalds-reports-fourth-quarter-and-full-year-2025-results-302685288.html">McDonald's — FY2025 results</a></li><li><a href="https://www.ggrasia.com/kangwon-2024-net-income-up-37pct-but-modest-sales-gain">GGRAsia — Kangwon Land results</a></li><li><a href="https://www.thebusinessresearchcompany.com/report/hospitality-global-market-report">TBRC — Global Hospitality Market 2026</a></li><li><a href="https://www.foodbusinessnews.net/articles/29532-glp-1-users-cut-food-spending-by-53">Food Business News — GLP-1 impact</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Hotels, Restaurants & Leisure (GICS 253010) · Generated June 5, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 호텔·레스토랑·레저(GICS 253010) · 2026년 6월 5일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>
