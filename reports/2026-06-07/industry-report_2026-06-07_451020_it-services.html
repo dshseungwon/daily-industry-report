@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IT Services · IT 서비스 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+
+<style>
+  .cagr-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+  .cagr-badge{display:inline-flex;align-items:baseline;gap:5px;background:#eaf2fb;color:var(--blue);
+    border:1px solid #cfe2f5;border-radius:999px;padding:6px 13px;font-weight:800;font-size:13px;}
+  .cagr-badge .n{font-size:16px;}
+  .cagr-badge.alt{background:#fff6e6;color:#b07400;border-color:#ffe2a6;}
+  /* SCQA diagnosis (Situation · Complication · Question · Answer) */
+  .scqa{margin:12px 0 2px;}
+  .scqa-row{display:flex;gap:12px;position:relative;padding-bottom:14px;}
+  .scqa-row:last-child{padding-bottom:0;}
+  .scqa-row::before{content:"";position:absolute;left:14px;top:30px;bottom:-2px;width:2px;background:var(--line);}
+  .scqa-row:last-child::before{display:none;}
+  .scqa-k{flex:none;width:30px;height:30px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 2px 6px rgba(14,42,71,.18);}
+  .scqa-row.s .scqa-k{background:#5b6b8c;}
+  .scqa-row.c .scqa-k{background:var(--hi);}
+  .scqa-row.q .scqa-k{background:var(--blue);}
+  .scqa-row.a .scqa-k{background:var(--lo);}
+  .scqa-bd{flex:1;padding-top:1px;}
+  .scqa-lab{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;}
+  .scqa-row.a .scqa-lab{color:var(--lo);}
+  .scqa-bd p{margin:0;font-size:13.3px;color:var(--ink);line-height:1.55;}
+  .scqa-row.q .scqa-bd p{font-style:italic;color:#16406a;}
+  .scqa-row.a .scqa-bd p{font-weight:600;}
+  .scqa .formula{margin-top:8px;}
+  .scqa-cap{font-size:11.5px;color:var(--mute);font-style:italic;margin:10px 0 0;}
+  /* MECE issue tree (rendered together with SCQA) */
+  .tree{margin:9px 0 2px;}
+  .tree .root{background:linear-gradient(120deg,#16406a,#0e2a47);color:#fff;border-radius:11px;
+    padding:11px 14px;font-size:13.4px;font-weight:700;border-left:4px solid var(--gold);}
+  .tree .branches{display:grid;gap:9px;margin-top:10px;}
+  .tree .branch{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;padding:10px 13px;background:#f7fafd;}
+  .tree .branch>b{font-size:13.1px;display:block;margin-bottom:5px;color:var(--ink);}
+  .tree .leaf{font-size:12.6px;color:var(--mute);padding-left:15px;position:relative;margin:4px 0;line-height:1.5;}
+  .tree .leaf::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .tree .leaf.lever{color:var(--ink);font-weight:600;}
+  .tree .leaf.lever::before{background:var(--gold);width:8px;height:8px;left:1px;top:7px;}
+  .tree .lever-tag{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#b07400;background:#fff6e6;border-radius:5px;padding:1px 5px;margin-right:5px;}
+  .tree-cap{display:none;}
+  @media(min-width:680px){.tree .branches{grid-template-columns:1fr 1fr 1fr;}}
+  /* value chain — connected flow diagram */
+  .vchain{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:6px 0 4px;}
+  .vc-step{position:relative;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:11px;padding:11px 13px 11px 40px;flex:1;}
+  .vc-step .vc-n{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;
+    background:var(--blue);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .vc-step:last-of-type{border-left-color:var(--gold);}
+  .vc-step:last-of-type .vc-n{background:var(--gold);color:var(--navy);}
+  .vc-step b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc-step .d{font-size:12.3px;color:var(--mute);}
+  .vc-arrow{align-self:center;color:var(--gold);font-weight:900;font-size:16px;line-height:1;
+    transform:rotate(90deg);padding:5px 0;}
+  @media(min-width:720px){
+    .vchain{flex-direction:row;align-items:stretch;flex-wrap:nowrap;}
+    .vc-step{padding:11px 11px 11px 12px;min-width:0;}
+    .vc-step .vc-n{position:static;margin-bottom:6px;}
+    .vc-arrow{transform:none;padding:0 3px;display:flex;align-items:center;}
+  }
+  /* variable 1-3 strategy tracks */
+  .track.t3{background:#10355a;border:1px solid rgba(255,184,28,.45);}
+  .track-grid.n1{grid-template-columns:1fr;}
+  @media(min-width:680px){
+    .track-grid.n2{grid-template-columns:1fr 1fr;}
+    .track-grid.n3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  /* profit pool */
+  .pool{display:flex;flex-direction:column;gap:8px;margin:6px 0 2px;}
+  .pool-row{display:flex;align-items:center;gap:10px;}
+  .pool-row .pn{flex:1.1;font-size:12.6px;color:var(--ink);min-width:0;}
+  .pool-row .ptrack{flex:1.5;height:9px;border-radius:5px;background:#eef2f7;overflow:hidden;}
+  .pool-row .pfill{height:100%;border-radius:5px;}
+  .pool-row .pfill.hi{width:92%;background:var(--gold);}
+  .pool-row .pfill.med{width:55%;background:var(--blue);}
+  .pool-row .pfill.lo{width:22%;background:#c9d4e3;}
+  .pool-row .pv{flex:none;width:58px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .pool-row .pv.hi{color:#b07400;}.pool-row .pv.med{color:var(--blue);}.pool-row .pv.lo{color:var(--mute);}
+  /* KPI watchlist */
+  .kpis{display:grid;grid-template-columns:1fr;gap:11px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);padding:13px 15px;border-left:4px solid var(--blue);}
+  .kpi .kt{font-size:12.5px;font-weight:800;color:var(--ink);}
+  .kpi .kv{font-size:clamp(17px,4.6vw,21px);font-weight:800;color:var(--blue);margin:3px 0 4px;line-height:1.1;}
+  .kpi .kw{font-size:12.3px;color:var(--mute);}
+  /* scenarios */
+  .scen{display:grid;grid-template-columns:1fr;gap:11px;}
+  .sc{border-radius:13px;padding:14px 16px;color:#fff;box-shadow:var(--shadow);}
+  .sc.bull{background:linear-gradient(125deg,#1f9d6b,#14633f);}
+  .sc.base{background:linear-gradient(125deg,#16406a,#0e2a47);}
+  .sc.bear{background:linear-gradient(125deg,#b1402f,#7d2418);}
+  .sc .sh{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .sc .sd{font-size:13.6px;font-weight:800;margin:4px 0 6px;}
+  .sc p{margin:0;font-size:12.8px;color:#eef4fb;}
+  /* positioning 2x2 */
+  .posmap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;}
+  .posmap svg{width:100%;height:auto;display:block;overflow:visible;}
+  .pos-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 2px;font-size:12px;color:var(--ink);}
+  .pos-legend .pl-i{display:flex;align-items:center;gap:6px;}
+  .pos-legend .pl-d{width:11px;height:11px;border-radius:50%;}
+  @media(min-width:680px){.kpis{grid-template-columns:1fr 1fr;}.scen{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">IT Services</span><span class="ko">IT 서비스</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="positioning"><span class="en">Positioning</span><span class="ko">포지셔닝</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button><button class="chip" data-go="scenarios"><span class="en">Scenarios</span><span class="ko">시나리오</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 5 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 5번째</span></p>
+    <h1><span class="en">IT Services</span><span class="ko">IT 서비스</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Information Technology · 451020</span>
+      <span class="pill">2026-06-07</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: Accenture · Samsung SDS</span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">IT Services (GICS 451020) provides consulting, systems integration, application development, outsourcing and managed cloud to help organizations build and run their technology. The market is roughly US$2.0T in 2025, growing about 7–9% a year depending on definition. The defining force of 2026 is generative AI, which is simultaneously the biggest growth engine and the biggest disruptor: Accenture booked US$5.9B of GenAI work in FY2025, yet AI productivity lets clients do more with the same budget, compressing labor-based revenue. New AI and data laws — the EU AI Act, Korea's AI Framework Act and an overhauled PIPA — are reshaping how every engagement is delivered. The market is highly fragmented; even the leader holds only low-single-digit global share. The global #1 by IT-services revenue, Accenture, is racing to lead in agentic AI; Korea's #1, Samsung SDS, is building an AI full-stack while diversifying beyond captive work. Both are detailed at the end.</span><span class="ko">IT 서비스(GICS 451020)는 컨설팅·시스템 통합·애플리케이션 개발·아웃소싱·관리형 클라우드를 제공해 조직이 기술을 구축·운영하도록 돕습니다. 시장은 2025년 약 2.0조 달러로 정의에 따라 연 약 7~9% 성장합니다. 2026년을 규정하는 힘은 생성형 AI로, 최대 성장 엔진이자 최대 파괴 요인입니다. 액센추어는 FY2025에 59억 달러의 생성형 AI 수주를 거뒀으나, AI 생산성이 고객으로 하여금 같은 예산으로 더 많이 하게 해 인력 기반 매출을 압박합니다. 새로운 AI·데이터 법(EU AI법, 한국 AI기본법, 전면 개정된 개인정보보호법)이 모든 프로젝트의 수행 방식을 바꾸고 있습니다. 시장은 매우 분산돼 선두조차 한 자릿수 초반의 글로벌 점유율만 가집니다. IT 서비스 매출 기준 글로벌 1위 액센추어는 에이전틱 AI 선도에 속도를 내고, 한국 1위 삼성SDS는 종속 사업을 넘어 다각화하며 AI 풀스택을 구축 중입니다. 두 기업은 뒤에서 자세히 다룹니다.</span></p>
+    </div>
+  </section>
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From strategy to integration to managed services</span><span class="ko">전략에서 통합, 그리고 관리형 서비스로</span></h2>
+      <p class="lead"><span class="en">The industry runs from advisory to build to run. Value ≈ billable expertise × utilization × rate + IP/platform leverage − talent cost; GenAI shifts value toward advisory and IP.</span><span class="ko">이 산업은 자문에서 구축, 그리고 운영으로 이어집니다. 가치 ≈ 청구 가능 전문성 × 가동률 × 단가 + 지식재산·플랫폼 레버리지 − 인건비이며, 생성형 AI가 가치를 자문·지식재산으로 옮깁니다.</span></p>
+      <div class="vchain"><div class="vc-step"><span class="vc-n">1</span><b><span class="en">Strategy &amp; consulting</span><span class="ko">전략·컨설팅</span></b><span class="d"><span class="en">Advise on digital and AI roadmaps.</span><span class="ko">디지털·AI 로드맵을 자문합니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">2</span><b><span class="en">Design &amp; integration</span><span class="ko">설계·통합</span></b><span class="d"><span class="en">Solution design and ERP/cloud implementation.</span><span class="ko">솔루션 설계와 ERP·클라우드 구축입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">3</span><b><span class="en">App development</span><span class="ko">앱 개발</span></b><span class="d"><span class="en">Software build, testing and modernization.</span><span class="ko">소프트웨어 구축·테스트·현대화입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">4</span><b><span class="en">Outsourcing / managed</span><span class="ko">아웃소싱·관리형</span></b><span class="d"><span class="en">Run apps, infrastructure and processes.</span><span class="ko">앱·인프라·프로세스를 운영합니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">5</span><b><span class="en">Data &amp; managed cloud</span><span class="ko">데이터·관리형 클라우드</span></b><span class="d"><span class="en">Data-center ops and managed cloud layer.</span><span class="ko">데이터센터 운영과 관리형 클라우드 층입니다.</span></span></div></div>
+      <div class="subh" style="margin-top:16px"><span class="en">Profit pool — where margin concentrates</span><span class="ko">수익풀 — 마진이 집중되는 곳</span></div><div class="pool"><div class="pool-row"><span class="pn"><span class="en">Strategy &amp; consulting</span><span class="ko">전략·컨설팅</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Design &amp; integration</span><span class="ko">설계·통합</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">App development</span><span class="ko">앱 개발</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div><div class="pool-row"><span class="pn"><span class="en">Outsourcing / managed</span><span class="ko">아웃소싱·관리형</span></span><span class="ptrack"><span class="pfill lo"></span></span><span class="pv lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Data &amp; managed cloud</span><span class="ko">데이터·관리형 클라우드</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div></div><p class="cap"><span class="en">Margin concentrates in strategy/consulting and high-value integration (and reusable IP); commoditizing 'run' outsourcing is the thinnest layer and the most exposed to AI productivity.</span><span class="ko">마진은 전략·컨설팅과 고부가 통합(및 재사용 지식재산)에 집중됩니다. 범용화되는 '운영' 아웃소싱이 가장 얇은 층이며 AI 생산성에 가장 노출됩니다.</span></p>
+    </div>
+  </section>
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A large market reshaped by AI</span><span class="ko">AI가 재편하는 거대 시장</span></h2>
+      <div class="cagr-wrap"><span class="cagr-badge"><span class="en">CAGR</span><span class="ko">연평균 성장</span><span class="n">≈8%</span></span><span class="mute" style="font-size:12.5px"><span class="en">global IT services market (SkyQuest / Precedence)</span><span class="ko">글로벌 IT 서비스 시장(SkyQuest / Precedence)</span></span></div>
+      <div class="colchart"><div class="col"><div class="col-val">$1.85T</div><div class="col-bar" data-h="44"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">$2.0T</div><div class="col-bar" data-h="57"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">$2.15T</div><div class="col-bar" data-h="71"></div><div class="col-lab">2026E</div></div><div class="col"><div class="col-val">$2.3T</div><div class="col-bar" data-h="85"></div><div class="col-lab">2027E</div></div><div class="col"><div class="col-val">$2.5T</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div></div>
+      <p class="cap"><span class="en">Global IT services market, US$, indicative (SkyQuest / Precedence Research, 2025; ~7–9% CAGR by definition). 2026–28 extrapolated. Bars use a zoomed baseline. Gartner's narrower IT-services segment is ~US$1.6–1.87T.</span><span class="ko">글로벌 IT 서비스 시장, 단위 달러, 추정치입니다(SkyQuest / Precedence Research, 2025년, 정의에 따라 연평균 약 7~9% 성장). 2026~28년은 외삽치입니다. 막대는 확대 기준선을 씁니다. 가트너의 협의 IT 서비스 부문은 약 1.6~1.87조 달러입니다.</span></p>
+    </div>
+  </section>
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">Fragmented globally; the big three lead Korea</span><span class="ko">글로벌은 분산, 한국은 빅3가 선도</span></h2>
+      <div class="pies">
+        <div class="pieblock"><div class="pie-title"><span class="en">Global IT services — indicative</span><span class="ko">글로벌 IT 서비스 — 추정</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0% 4%,#117aca 4% 6%,#ffb81c 6% 8%,#5aa9e6 8% 9%,#c9d4e3 9% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>Accenture<b>~4%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>TCS<b>~2%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>IBM Consulting<b>~2%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Capgemini<b>~1%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span>Others<b>~91%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea IT services — big three</span><span class="ko">한국 IT 서비스 — 빅3</span></div><div class="pie" style="background:conic-gradient(#0047a0 0% 52%,#117aca 52% 84%,#ffb81c 84% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>Samsung SDS<b>~52%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>LG CNS<b>~32%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>SK AX<b>~16%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">Global IT services is highly fragmented; even Accenture holds only ~3.5–4% (indicative; shown rounded). Korea figures compare the three domestic leaders by IT-services revenue; Samsung SDS leads.</span><span class="ko">글로벌 IT 서비스는 매우 분산돼 액센추어조차 약 3.5~4%만 차지합니다(추정, 반올림 표시). 한국 수치는 세 국내 선두를 IT 서비스 매출로 비교한 것으로, 삼성SDS가 선두입니다.</span></p>
+    </div>
+  </section>
+  <section id="positioning">
+    <p class="kicker"><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></p>
+    <h2><span class="en">Where the leaders sit — a 2×2 map</span><span class="ko">리더들의 위치 — 2×2 맵</span></h2>
+    <div class="posmap reveal"><svg viewBox="0 0 340 290" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="60" y="18" width="262" height="214" fill="#f7fafd" stroke="#e6ebf4" stroke-width="1.5" rx="8"/><line x1="60" y1="125" x2="322" y2="125" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><line x1="191" y1="18" x2="191" y2="232" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><circle cx="245" cy="75" r="7" fill="var(--navy)"/><text x="245" y="66" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Accenture</text><circle cx="195" cy="115" r="7" fill="var(--krred)"/><text x="195" y="106" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Samsung SDS</text><circle cx="215" cy="95" r="5.5" fill="#9fb1c9"/><text x="215" y="86" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">TCS</text><circle cx="265" cy="130" r="5.5" fill="#9fb1c9"/><text x="265" y="121" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">IBM</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="en">Scale / global delivery &#8594;</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="ko">규모·글로벌 딜리버리 &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="en">AI / consulting value &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="ko">AI·컨설팅 가치 &#8594;</text></svg><div class="pos-legend"><span class="pl-i"><span class="pl-d" style="background:var(--navy)"></span><span class="en">Global #1</span><span class="ko">글로벌 1위</span></span><span class="pl-i"><span class="pl-d" style="background:var(--krred)"></span><span class="en">Korea #1</span><span class="ko">한국 1위</span></span><span class="pl-i"><span class="pl-d" style="background:#9fb1c9"></span><span class="en">Peers</span><span class="ko">경쟁사</span></span></div><p class="cap"><span class="en">Accenture pairs the largest scale with leading AI/consulting value; Samsung SDS is mid-scale with a growing AI full-stack but a captive-heavy base. TCS scales on delivery; IBM leans on consulting/IP.</span><span class="ko">액센추어는 최대 규모와 선도적 AI·컨설팅 가치를 함께 갖췄고, 삼성SDS는 AI 풀스택을 키우는 중규모이나 종속 비중이 큽니다. TCS는 딜리버리로, IBM은 컨설팅·지식재산으로 승부합니다.</span></p></div>
+  </section>
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Global, Indian, Big-4 and hyperscalers compete on price and AI.</span><span class="ko">글로벌·인도·빅4·하이퍼스케일러가 가격·AI로 경쟁합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Low capital, but scale, talent and trust are barriers; GenAI lowers some.</span><span class="ko">자본은 적으나 규모·인재·신뢰가 장벽이며 생성형 AI가 일부를 낮춥니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Scarce AI talent and powerful cloud platforms (AWS/Azure/GCP).</span><span class="ko">희소한 AI 인재와 강력한 클라우드 플랫폼(AWS·Azure·GCP)입니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Enterprises demand AI-productivity savings and multi-vendor flexibility.</span><span class="ko">기업이 AI 생산성 절감과 멀티벤더 유연성을 요구합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">GenAI/agentic automation and SaaS replace labor-heavy services.</span><span class="ko">생성형·에이전틱 자동화와 SaaS가 인력 집약 서비스를 대체합니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: scale and talent protect leaders, but buyer power and AI substitution pressure the labor-based model; AI capability is the new moat.</span><span class="ko">종합하면 규모·인재가 선두를 보호하나, 구매자 교섭력과 AI 대체가 인력 기반 모델을 압박합니다. AI 역량이 새로운 해자입니다.</span></p>
+  </section>
+  <section id="reg">
+    <p class="kicker"><span class="en">Macro forces &amp; the latest RULES</span><span class="ko">거시 환경과 최신 규칙</span></p>
+    <h2><span class="en">The rulebook: policy &amp; regulation</span><span class="ko">규칙: 정책과 규제</span></h2>
+    <p class="mute"><span class="en">AI and data laws now decide how engagements are delivered, documented and priced — and who is liable.</span><span class="ko">AI·데이터 법이 이제 프로젝트의 수행·문서화·가격 책정 방식과 책임 소재를 결정합니다.</span></p>
+    <p class="hint"><span class="en">This section = laws, bills and rules only (dated). Market events are in &#8220;Recent issues&#8221; below.</span><span class="ko">이 섹션은 법·법안·규칙만(시행일 표기)입니다. 시장 이벤트는 아래 &#8216;최근 이슈&#8217;에 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Aug 2025</span><span class="ac-title"><span class="en">EU AI Act — GPAI obligations effective</span><span class="ko">EU AI법 — 범용 AI 의무 시행</span></span></div><div class="ac-body"><p class="why"><span class="en">Transparency and high-risk rules phase in to 2026–27. Why it matters: firms face conformity, documentation and fines, driving compliance-services demand.</span><span class="ko">투명성·고위험 규정이 2026~27년까지 단계 적용됩니다. 의미: 적합성·문서화·과징금 부담이 준법 서비스 수요를 키웁니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jan 2026</span><span class="ac-title"><span class="en">Korea AI Framework (Basic) Act in force</span><span class="ko">한국 AI기본법 시행</span></span></div><div class="ac-body"><p class="why"><span class="en">First comprehensive APAC AI law; impact assessments and GenAI labeling. Why it matters: directly shapes Korean SI/AI delivery.</span><span class="ko">아시아 최초의 포괄적 AI법으로 영향평가·생성형 AI 표시를 담습니다. 의미: 한국 SI·AI 수행을 직접 규정합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Feb 2026</span><span class="ac-title"><span class="en">Korea PIPA major amendment passed</span><span class="ko">한국 개인정보보호법 대개정 통과</span></span></div><div class="ac-body"><p class="why"><span class="en">Penalty ceiling up to 10% of turnover plus CEO liability (passed Feb 2026). Why it matters: raises data-handling stakes for outsourcing contracts.</span><span class="ko">과징금 상한이 매출 10%까지 오르고 CEO 책임이 더해집니다(2026년 2월 통과). 의미: 아웃소싱 계약의 데이터 처리 부담을 높입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Aug 2025</span><span class="ac-title"><span class="en">Korea PIPC generative-AI data guidelines</span><span class="ko">한국 개인정보위 생성형 AI 데이터 지침</span></span></div><div class="ac-body"><p class="why"><span class="en">Sets rules for using personal data to train/deploy GenAI. Why it matters: affects every in-country AI engagement.</span><span class="ko">개인정보를 활용한 생성형 AI 학습·배포 규칙을 정합니다. 의미: 국내 모든 AI 프로젝트에 영향을 줍니다.</span></p></div></div></div>
+  </section>
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">AI delivery capability</span><span class="ko">AI 딜리버리 역량</span></b><p><span class="en">Agentic AI at scale with a reskilled workforce.</span><span class="ko">재교육된 인력으로 에이전틱 AI를 대규모 구현합니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">Platform partnerships</span><span class="ko">플랫폼 파트너십</span></b><p><span class="en">Deep AWS/Azure/GCP and SAP alliances.</span><span class="ko">AWS·Azure·GCP·SAP와의 깊은 제휴입니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">Large-deal origination</span><span class="ko">대형 딜 창출</span></b><p><span class="en">Transformation TCV pipeline.</span><span class="ko">전환 총계약가치 파이프라인입니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">Talent &amp; utilization</span><span class="ko">인재·가동률</span></b><p><span class="en">Pyramid economics and reskilling.</span><span class="ko">피라미드 경제성과 재교육입니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">Outcome pricing</span><span class="ko">성과 기반 가격</span></b><p><span class="en">Productivity-based models protect margin.</span><span class="ko">생산성 기반 모델이 마진을 지킵니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Global delivery scale</span><span class="ko">글로벌 딜리버리 규모</span></b><p><span class="en">Offshore/nearshore cost arbitrage.</span><span class="ko">오프쇼어·니어쇼어 원가 차익입니다.</span></p></div></div></div>
+  </section>
+  <section id="news">
+    <p class="kicker"><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></p>
+    <h2><span class="en">The newsflow: market &amp; competitive events</span><span class="ko">뉴스: 시장·경쟁 이벤트</span></h2>
+    <p class="hint"><span class="en">This section = business/market events (earnings, deals, demand, prices) — not policy. Tap for why it matters.</span><span class="ko">이 섹션은 실적·거래·수요·가격 등 시장 이벤트입니다(정책 아님). 눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Sep 2025</span><span class="ac-title"><span class="en">Accenture FY25 GenAI bookings hit $5.9B</span><span class="ko">액센추어 FY25 생성형 AI 수주 59억 달러</span></span></div><div class="ac-body"><p class="why"><span class="en">GenAI revenue tripled to $2.7B; FY25 revenue $69.7B (+7%). Why it matters: AI is now a material booking driver — but cannibalizes legacy work.</span><span class="ko">생성형 AI 매출이 27억 달러로 3배, FY25 매출 697억 달러(+7%)입니다. 의미: AI가 주요 수주 동인이나 기존 업무를 잠식합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">Third year of industry growth slowdown</span><span class="ko">산업 성장 둔화 3년째</span></span></div><div class="ac-body"><p class="why"><span class="en">TCS cited delayed decisions; Wipro flagged a paused transformational deal. Why it matters: discretionary spend is weak as clients self-fund via AI savings.</span><span class="ko">TCS는 의사결정 지연을, 위프로는 전환 딜 중단을 언급했습니다. 의미: 고객이 AI 절감으로 자체 조달하며 재량 지출이 약합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Dec 2025</span><span class="ac-title"><span class="en">Accenture Q1 FY26 bookings +12%</span><span class="ko">액센추어 FY26 1분기 수주 +12%</span></span></div><div class="ac-body"><p class="why"><span class="en">Revenue $18.7B (+5% LC); AI bookings ~doubled to $2.2B. Why it matters: demand is stabilizing, led by AI.</span><span class="ko">매출 187억 달러(+5%, 고정환율), AI 수주가 약 두 배인 22억 달러입니다. 의미: AI 주도로 수요가 안정되고 있습니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">Outcome-pricing pressure on managed services</span><span class="ko">관리형 서비스 성과 가격 압박</span></span></div><div class="ac-body"><p class="why"><span class="en">Clients demand AI-productivity savings on the 'run' book. Why it matters: structural margin risk to the largest revenue pool.</span><span class="ko">고객이 '운영' 계약에서 AI 생산성 절감을 요구합니다. 의미: 최대 매출 풀에 구조적 마진 위험입니다.</span></p></div></div></div>
+  </section>
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, each with its OWN strategy</span><span class="ko">두 리더, 각자 다른 전략</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader is diagnosed on its own terms: a MECE issue tree → strategy thrusts chosen for THAT company → action plans. The NUMBER of thrusts varies by situation (one for a single-mandate player, up to three where the diagnosis demands it) — it is not a fixed two-track template.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 그 회사에 맞게 진단합니다: MECE 이슈트리 → 그 기업에 맞춰 고른 전략 축 → 액션 플랜. 전략 축의 '개수'는 상황에 따라 다릅니다(단일 사명 기업은 1개, 진단이 요구하면 최대 3개). 고정된 2트랙 틀이 아닙니다.</span></p>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>Accenture</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The largest IT-services firm by revenue, racing to lead in agentic AI as it disrupts its own model.</span><span class="ko">매출 기준 최대 IT 서비스 기업으로, 자사 모델을 파괴하는 에이전틱 AI에서 선도를 노립니다.</span></p><div class="stats"><div class="stat"><div class="n">$69.7B</div><div class="l"><span class="en">FY25 revenue (+7%)</span><span class="ko">FY25 매출(+7%)</span></div></div><div class="stat"><div class="n">15.6%</div><div class="l"><span class="en">Adj. operating margin</span><span class="ko">조정 영업이익률</span></div></div><div class="stat"><div class="n">~$120B</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div><div class="stat"><div class="n">$5.9B</div><div class="l"><span class="en">FY25 GenAI bookings</span><span class="ko">FY25 생성형 AI 수주</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — AI booking leader, but AI cannibalizes labor revenue</span><span class="ko">진단 — AI 수주 선두이나 AI가 인력 매출을 잠식합니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Soft discretionary demand and AI cannibalization of labor-based revenue.</span><span class="ko">약한 재량 지출과 인력 기반 매출에 대한 AI의 잠식입니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">AI productivity lets clients do more with the same or less budget.</span><span class="ko">AI 생산성이 고객으로 하여금 같거나 적은 예산으로 더 많이 하게 합니다.</span></p><div class="formula">Revenue = Headcount × utilization × rate; AI productivity compresses the headcount-linked part</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">Can it capture AI value faster than AI erodes its labor model?</span><span class="ko">AI가 인력 모델을 잠식하는 속도보다 빠르게 AI 가치를 가져올 수 있는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">Yes: lead agentic-AI reinvention, reskill the workforce, and shift to outcome pricing (the tracks below).</span><span class="ko">가능합니다. 에이전틱 AI 재창조를 선도하고 인력을 재교육하며 성과 기반 가격으로 전환합니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why does the AI leader face revenue pressure?</span><span class="ko">AI 선두기업이 매출 압박을 받는 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">AI substitution (structural)</span><span class="ko">AI 대체(구조적)</span></b><div class="leaf"><span class="en">Automation erodes labor-based revenue.</span><span class="ko">자동화가 인력 기반 매출을 잠식합니다.</span></div></div><div class="branch"><b><span class="en">Weak discretionary spend (external)</span><span class="ko">약한 재량 지출(외생)</span></b><div class="leaf"><span class="en">Clients self-fund via AI savings.</span><span class="ko">고객이 AI 절감으로 자체 조달합니다.</span></div></div><div class="branch"><b><span class="en">AI &amp; outcome model (lever)</span><span class="ko">AI·성과 모델(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Lead agentic AI and shift to outcome pricing.</span><span class="ko">에이전틱 AI를 선도하고 성과 가격으로 전환합니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Agentic AI</span><span class="ko">Track 1 · 에이전틱 AI</span></div><div class="tn"><span class="en">Lead AI reinvention deals</span><span class="ko">AI 재창조 딜 선도</span></div><p><span class="en">Win GenAI 'reinvention' work to capture new bookings.</span><span class="ko">생성형 AI '재창조' 업무를 수주해 새 수주를 확보합니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Talent</span><span class="ko">Track 2 · 인재</span></div><div class="tn"><span class="en">Reskill toward AI/data</span><span class="ko">AI·데이터로 재교육</span></div><p><span class="en">Train the 700K+ workforce in agentic AI and grow AI specialists.</span><span class="ko">70만 명 이상을 에이전틱 AI로 교육하고 AI 전문가를 늘립니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Pricing</span><span class="ko">Track 3 · 가격</span></div><div class="tn"><span class="en">Shift to outcome pricing</span><span class="ko">성과 가격 전환</span></div><p><span class="en">Move to outcome/forward-priced higher-value consulting.</span><span class="ko">성과·선행 가격의 고부가 컨설팅으로 이동합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Offering</span><span class="ko">제공 가치</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Labor-based</span><span class="ko">인력 기반</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Agentic AI-led</span><span class="ko">에이전틱 AI 중심</span></div></div></div><div class="ap"><div class="apt"><span class="en">Workforce</span><span class="ko">인력</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Generalist</span><span class="ko">범용</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">AI/data specialists</span><span class="ko">AI·데이터 전문가</span></div></div></div><div class="ap"><div class="apt"><span class="en">Pricing</span><span class="ko">가격</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Time &amp; materials</span><span class="ko">투입 기준</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Outcome-based</span><span class="ko">성과 기반</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>Samsung SDS</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">Korea's largest IT-services firm, building an AI full-stack while diversifying beyond captive Samsung work.</span><span class="ko">한국 최대 IT 서비스 기업으로, 삼성 종속 사업을 넘어 다각화하며 AI 풀스택을 구축합니다.</span></p><div class="stats"><div class="stat"><div class="n">₩13.93T</div><div class="l"><span class="en">FY25 revenue</span><span class="ko">FY25 매출</span></div></div><div class="stat"><div class="n">₩957B</div><div class="l"><span class="en">FY25 operating profit</span><span class="ko">FY25 영업이익</span></div></div><div class="stat"><div class="n">~$8.1B</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div><div class="stat"><div class="n">+15.4%</div><div class="l"><span class="en">FY25 cloud growth</span><span class="ko">FY25 클라우드 성장</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — stable but captive-heavy with flat top-line growth</span><span class="ko">진단 — 안정적이나 종속 비중이 크고 외형 성장이 정체입니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Top-line growth is flat and external/global demand is thin.</span><span class="ko">외형 성장이 정체이고 외부·글로벌 수요가 얇습니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">A historic captive-SI model leaves weak non-captive demand.</span><span class="ko">전통적 종속 SI 모델로 비종속 수요가 약합니다.</span></p><div class="formula">Revenue = Captive IT (stable) + external SI + cloud + logistics; external/cloud mix drives growth</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">How to grow beyond the captive Samsung base?</span><span class="ko">삼성 종속 기반을 넘어 어떻게 성장하는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">Expand external/overseas clients and scale the AI full-stack and cloud (the tracks below).</span><span class="ko">외부·해외 고객을 확대하고 AI 풀스택·클라우드를 키웁니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why is a stable leader stuck at flat growth?</span><span class="ko">안정적 선두가 성장 정체에 머무는 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">Captive dependence (structural)</span><span class="ko">종속 의존(구조적)</span></b><div class="leaf"><span class="en">Much revenue comes from the Samsung Group.</span><span class="ko">상당 매출이 삼성 그룹에서 나옵니다.</span></div></div><div class="branch"><b><span class="en">Weak external demand (external)</span><span class="ko">약한 외부 수요(외생)</span></b><div class="leaf"><span class="en">Non-captive and global footprint is thin.</span><span class="ko">비종속·글로벌 입지가 얇습니다.</span></div></div><div class="branch"><b><span class="en">AI &amp; cloud (lever)</span><span class="ko">AI·클라우드(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Scale the AI full-stack and cloud to grow.</span><span class="ko">AI 풀스택·클라우드를 키워 성장합니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · AI full-stack</span><span class="ko">Track 1 · AI 풀스택</span></div><div class="tn"><span class="en">Scale AI infra-to-solutions</span><span class="ko">AI 인프라~솔루션 확대</span></div><p><span class="en">Build the AI full-stack (infra, platform, solutions) as the growth engine.</span><span class="ko">AI 풀스택(인프라·플랫폼·솔루션)을 성장 엔진으로 구축합니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · External growth</span><span class="ko">Track 2 · 외부 성장</span></div><div class="tn"><span class="en">Win non-captive &amp; overseas</span><span class="ko">비종속·해외 수주</span></div><p><span class="en">Expand external and overseas clients to diversify the base.</span><span class="ko">외부·해외 고객을 확대해 기반을 다각화합니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Logistics stability</span><span class="ko">Track 3 · 물류 안정</span></div><div class="tn"><span class="en">Manage freight volatility</span><span class="ko">운임 변동 관리</span></div><p><span class="en">Stabilize the logistics segment against freight-rate swings.</span><span class="ko">운임 변동에 맞서 물류 부문을 안정화합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Client mix</span><span class="ko">고객 구성</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Captive-heavy</span><span class="ko">종속 편중</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">External + global</span><span class="ko">외부+글로벌</span></div></div></div><div class="ap"><div class="apt"><span class="en">Growth engine</span><span class="ko">성장 엔진</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Legacy SI</span><span class="ko">전통 SI</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">AI + cloud</span><span class="ko">AI+클라우드</span></div></div></div><div class="ap"><div class="apt"><span class="en">Cloud</span><span class="ko">클라우드</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Sub-scale</span><span class="ko">규모 미달</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Full-stack scale</span><span class="ko">풀스택 규모</span></div></div></div></div></div></div>
+  </section>
+  <section id="kpi">
+    <p class="kicker"><span class="en">KPIs to watch</span><span class="ko">주목할 지표</span></p>
+    <h2><span class="en">The dials that move this industry</span><span class="ko">이 산업을 움직이는 계기판</span></h2>
+    <p class="hint"><span class="en">Leading indicators with the latest reading — track these to see the thesis play out.</span><span class="ko">최신 수치가 담긴 선행지표입니다. 이 흐름을 추적하면 전망을 검증할 수 있습니다.</span></p>
+    <div class="kpis reveal"><div class="kpi"><div class="kt"><span class="en">Accenture GenAI bookings</span><span class="ko">액센추어 생성형 AI 수주</span></div><div class="kv"><span class="en">$5.9B (FY25)</span><span class="ko">59억 달러(FY25)</span></div><div class="kw"><span class="en">AI demand momentum.</span><span class="ko">AI 수요 모멘텀입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Industry growth rate</span><span class="ko">산업 성장률</span></div><div class="kv"><span class="en">~7–9%</span><span class="ko">약 7~9%</span></div><div class="kw"><span class="en">Demand vs. AI disruption.</span><span class="ko">수요 대비 AI 파괴 효과입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Samsung SDS cloud growth</span><span class="ko">삼성SDS 클라우드 성장</span></div><div class="kv"><span class="en">+15.4% (FY25)</span><span class="ko">+15.4%(FY25)</span></div><div class="kw"><span class="en">Diversification engine.</span><span class="ko">다각화 엔진입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Worldwide IT spending</span><span class="ko">전세계 IT 지출</span></div><div class="kv"><span class="en">$6.31T (2026E)</span><span class="ko">6.31조 달러(2026E)</span></div><div class="kw"><span class="en">The total demand pool.</span><span class="ko">전체 수요 풀입니다.</span></div></div></div>
+  </section>
+  <section id="scenarios">
+    <p class="kicker"><span class="en">Scenarios — bull · base · bear</span><span class="ko">시나리오 — 낙관·기본·비관</span></p>
+    <h2><span class="en">Three ways the next few years could break</span><span class="ko">향후 몇 년이 갈릴 세 갈래</span></h2>
+    <div class="scen reveal"><div class="sc bull"><div class="sh"><span class="en">Bull · upside</span><span class="ko">낙관</span></div><div class="sd"><span class="en">AI demand accelerates + pricing holds</span><span class="ko">AI 수요 가속 + 가격 유지</span></div><p><span class="en">AI bookings compound faster than cannibalization.</span><span class="ko">AI 수주가 잠식보다 빠르게 복리로 늡니다.</span></p></div><div class="sc base"><div class="sh"><span class="en">Base · central</span><span class="ko">기본</span></div><div class="sd"><span class="en">Steady recovery led by AI</span><span class="ko">AI 주도 완만한 회복</span></div><p><span class="en">Mid-single-digit growth; margins firm.</span><span class="ko">한 자릿수 중반 성장. 마진이 견조합니다.</span></p></div><div class="sc bear"><div class="sh"><span class="en">Bear · downside</span><span class="ko">비관</span></div><div class="sd"><span class="en">Discretionary freeze + AI deflation</span><span class="ko">재량 지출 동결 + AI 디플레이션</span></div><p><span class="en">Clients self-fund via AI; labor revenue and margins compress.</span><span class="ko">고객이 AI로 자체 조달해 인력 매출·마진이 압박됩니다.</span></p></div></div>
+  </section>
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight">
+        <li><span class="en">GenAI is both the growth engine and the disruptor of labor-based revenue.</span><span class="ko">생성형 AI는 성장 엔진이자 인력 기반 매출의 파괴 요인입니다.</span></li><li><span class="en">Value migrates to advisory, AI capability and reusable IP, away from 'run' outsourcing.</span><span class="ko">가치가 '운영' 아웃소싱에서 자문·AI 역량·재사용 지식재산으로 옮겨갑니다.</span></li><li><span class="en">AI and data laws raise compliance cost and reshape delivery.</span><span class="ko">AI·데이터 법이 준법 비용을 올리고 수행 방식을 재편합니다.</span></li><li><span class="en">Accenture rides agentic-AI leadership; Samsung SDS rides external and cloud growth.</span><span class="ko">액센추어는 에이전틱 AI 선도에, 삼성SDS는 외부·클라우드 성장에 달려 있습니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://www.gartner.com/en/newsroom/press-releases/2026-04-22-gartner-forecasts-worldwide-it-spending-to-grow-13-point-5-percent-in-2026-totaling-6-point-31-trillion-dollars">Gartner — worldwide IT spending</a></li><li><a href="https://www.precedenceresearch.com/it-services-market">Precedence Research — IT services market</a></li><li><a href="https://www.sec.gov/Archives/edgar/data/0001467373/000146737325000221/q1fy26earnings8-kexhibit.htm">Accenture — Q1 FY26 results (SEC)</a></li><li><a href="https://www.samsungsds.com/en/news/financial-260126.html">Samsung SDS — FY2025 results</a></li><li><a href="https://artificialintelligenceact.eu/">EU AI Act — timeline</a></li><li><a href="https://iapp.org/news/a/south-korea-overhauls-pipa-and-ties-fines-to-ceo-accountability">IAPP — Korea PIPA overhaul</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">The Industry Brief · IT Services (GICS 451020) · Generated June 7, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · IT 서비스(GICS 451020) · 2026년 6월 7일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>

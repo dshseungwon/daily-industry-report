@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tobacco · 담배 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+
+<style>
+  .cagr-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+  .cagr-badge{display:inline-flex;align-items:baseline;gap:5px;background:#eaf2fb;color:var(--blue);
+    border:1px solid #cfe2f5;border-radius:999px;padding:6px 13px;font-weight:800;font-size:13px;}
+  .cagr-badge .n{font-size:16px;}
+  .cagr-badge.alt{background:#fff6e6;color:#b07400;border-color:#ffe2a6;}
+  /* SCQA diagnosis (Situation · Complication · Question · Answer) */
+  .scqa{margin:12px 0 2px;}
+  .scqa-row{display:flex;gap:12px;position:relative;padding-bottom:14px;}
+  .scqa-row:last-child{padding-bottom:0;}
+  .scqa-row::before{content:"";position:absolute;left:14px;top:30px;bottom:-2px;width:2px;background:var(--line);}
+  .scqa-row:last-child::before{display:none;}
+  .scqa-k{flex:none;width:30px;height:30px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 2px 6px rgba(14,42,71,.18);}
+  .scqa-row.s .scqa-k{background:#5b6b8c;}
+  .scqa-row.c .scqa-k{background:var(--hi);}
+  .scqa-row.q .scqa-k{background:var(--blue);}
+  .scqa-row.a .scqa-k{background:var(--lo);}
+  .scqa-bd{flex:1;padding-top:1px;}
+  .scqa-lab{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;}
+  .scqa-row.a .scqa-lab{color:var(--lo);}
+  .scqa-bd p{margin:0;font-size:13.3px;color:var(--ink);line-height:1.55;}
+  .scqa-row.q .scqa-bd p{font-style:italic;color:#16406a;}
+  .scqa-row.a .scqa-bd p{font-weight:600;}
+  .scqa .formula{margin-top:8px;}
+  .scqa-cap{font-size:11.5px;color:var(--mute);font-style:italic;margin:10px 0 0;}
+  /* MECE issue tree (rendered together with SCQA) */
+  .tree{margin:9px 0 2px;}
+  .tree .root{background:linear-gradient(120deg,#16406a,#0e2a47);color:#fff;border-radius:11px;
+    padding:11px 14px;font-size:13.4px;font-weight:700;border-left:4px solid var(--gold);}
+  .tree .branches{display:grid;gap:9px;margin-top:10px;}
+  .tree .branch{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;padding:10px 13px;background:#f7fafd;}
+  .tree .branch>b{font-size:13.1px;display:block;margin-bottom:5px;color:var(--ink);}
+  .tree .leaf{font-size:12.6px;color:var(--mute);padding-left:15px;position:relative;margin:4px 0;line-height:1.5;}
+  .tree .leaf::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .tree .leaf.lever{color:var(--ink);font-weight:600;}
+  .tree .leaf.lever::before{background:var(--gold);width:8px;height:8px;left:1px;top:7px;}
+  .tree .lever-tag{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#b07400;background:#fff6e6;border-radius:5px;padding:1px 5px;margin-right:5px;}
+  .tree-cap{display:none;}
+  @media(min-width:680px){.tree .branches{grid-template-columns:1fr 1fr 1fr;}}
+  /* value chain — connected flow diagram */
+  .vchain{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:6px 0 4px;}
+  .vc-step{position:relative;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:11px;padding:11px 13px 11px 40px;flex:1;}
+  .vc-step .vc-n{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;
+    background:var(--blue);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .vc-step:last-of-type{border-left-color:var(--gold);}
+  .vc-step:last-of-type .vc-n{background:var(--gold);color:var(--navy);}
+  .vc-step b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc-step .d{font-size:12.3px;color:var(--mute);}
+  .vc-arrow{align-self:center;color:var(--gold);font-weight:900;font-size:16px;line-height:1;
+    transform:rotate(90deg);padding:5px 0;}
+  @media(min-width:720px){
+    .vchain{flex-direction:row;align-items:stretch;flex-wrap:nowrap;}
+    .vc-step{padding:11px 11px 11px 12px;min-width:0;}
+    .vc-step .vc-n{position:static;margin-bottom:6px;}
+    .vc-arrow{transform:none;padding:0 3px;display:flex;align-items:center;}
+  }
+  /* variable 1-3 strategy tracks */
+  .track.t3{background:#10355a;border:1px solid rgba(255,184,28,.45);}
+  .track-grid.n1{grid-template-columns:1fr;}
+  @media(min-width:680px){
+    .track-grid.n2{grid-template-columns:1fr 1fr;}
+    .track-grid.n3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  /* profit pool */
+  .pool{display:flex;flex-direction:column;gap:8px;margin:6px 0 2px;}
+  .pool-row{display:flex;align-items:center;gap:10px;}
+  .pool-row .pn{flex:1.1;font-size:12.6px;color:var(--ink);min-width:0;}
+  .pool-row .ptrack{flex:1.5;height:9px;border-radius:5px;background:#eef2f7;overflow:hidden;}
+  .pool-row .pfill{height:100%;border-radius:5px;}
+  .pool-row .pfill.hi{width:92%;background:var(--gold);}
+  .pool-row .pfill.med{width:55%;background:var(--blue);}
+  .pool-row .pfill.lo{width:22%;background:#c9d4e3;}
+  .pool-row .pv{flex:none;width:58px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .pool-row .pv.hi{color:#b07400;}.pool-row .pv.med{color:var(--blue);}.pool-row .pv.lo{color:var(--mute);}
+  /* KPI watchlist */
+  .kpis{display:grid;grid-template-columns:1fr;gap:11px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);padding:13px 15px;border-left:4px solid var(--blue);}
+  .kpi .kt{font-size:12.5px;font-weight:800;color:var(--ink);}
+  .kpi .kv{font-size:clamp(17px,4.6vw,21px);font-weight:800;color:var(--blue);margin:3px 0 4px;line-height:1.1;}
+  .kpi .kw{font-size:12.3px;color:var(--mute);}
+  /* scenarios */
+  .scen{display:grid;grid-template-columns:1fr;gap:11px;}
+  .sc{border-radius:13px;padding:14px 16px;color:#fff;box-shadow:var(--shadow);}
+  .sc.bull{background:linear-gradient(125deg,#1f9d6b,#14633f);}
+  .sc.base{background:linear-gradient(125deg,#16406a,#0e2a47);}
+  .sc.bear{background:linear-gradient(125deg,#b1402f,#7d2418);}
+  .sc .sh{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .sc .sd{font-size:13.6px;font-weight:800;margin:4px 0 6px;}
+  .sc p{margin:0;font-size:12.8px;color:#eef4fb;}
+  /* positioning 2x2 */
+  .posmap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;}
+  .posmap svg{width:100%;height:auto;display:block;overflow:visible;}
+  .pos-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 2px;font-size:12px;color:var(--ink);}
+  .pos-legend .pl-i{display:flex;align-items:center;gap:6px;}
+  .pos-legend .pl-d{width:11px;height:11px;border-radius:50%;}
+  @media(min-width:680px){.kpis{grid-template-columns:1fr 1fr;}.scen{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Tobacco</span><span class="ko">담배</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="positioning"><span class="en">Positioning</span><span class="ko">포지셔닝</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button><button class="chip" data-go="scenarios"><span class="en">Scenarios</span><span class="ko">시나리오</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 4 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 4번째</span></p>
+    <h1><span class="en">Tobacco</span><span class="ko">담배</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Consumer Staples · 302030</span>
+      <span class="pill">2026-06-07</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: Philip Morris Intl · KT&amp;G</span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">Tobacco (GICS 302030) grows, manufactures and sells cigarettes plus fast-growing next-generation products — heated tobacco, vaping and nicotine pouches. The broad tobacco market is roughly US$935B in 2025, growing only about 2.6% a year, with all the growth in smoke-free. The defining shift of 2026 is that smoke-free is now margin-accretive: at Philip Morris International, smoke-free reached 41.5% of revenue and now earns higher margins than cigarettes. Regulation is the swing force — the UK's generational sale ban received Royal Assent in April 2026, the EU is adding minimum excise on next-gen products, and Korea reclassified synthetic-nicotine vapes as tobacco. China National Tobacco remains the largest by volume (~44%) but is state-owned and unlisted. The global #1 listed player, Philip Morris International, is accelerating its smoke-free pivot; Korea's #1, KT&amp;G, just crossed ₩6T revenue and is expanding overseas and into pouches. Both are detailed at the end.</span><span class="ko">담배(GICS 302030)는 궐련과 빠르게 성장하는 차세대 제품(가열담배·전자담배·니코틴 파우치)을 재배·제조·판매합니다. 광의의 담배 시장은 2025년 약 9,350억 달러로 연 약 2.6%만 성장하며, 성장은 모두 비연소 제품에서 나옵니다. 2026년을 규정하는 변화는 비연소 제품이 이제 마진에 기여한다는 점입니다. 필립모리스인터내셔널에서 비연소 비중이 매출의 41.5%에 이르렀고 이제 궐련보다 높은 마진을 거둡니다. 규제가 변수입니다. 영국의 세대별 판매 금지가 2026년 4월 국왕 재가를 받았고, EU는 차세대 제품에 최저 소비세를 추가하며, 한국은 합성 니코틴 전자담배를 담배로 재분류했습니다. 중국연초총공사는 물량 기준 최대(약 44%)이나 국영·비상장입니다. 글로벌 상장 1위 필립모리스인터내셔널은 비연소 전환에 속도를 내고, 한국 1위 KT&amp;G는 매출 6조 원을 넘기며 해외·파우치로 확장 중입니다. 두 기업은 뒤에서 자세히 다룹니다.</span></p>
+    </div>
+  </section>
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From leaf to brands to a smoke-free portfolio</span><span class="ko">잎담배에서 브랜드, 그리고 비연소 포트폴리오로</span></h2>
+      <p class="lead"><span class="en">The industry runs from contract-grown leaf to powerful brands and devices. Value ≈ pricing power × volume + next-gen mix − excise and compliance cost; next-gen lifts the mix up.</span><span class="ko">이 산업은 계약 재배 잎담배에서 강력한 브랜드와 디바이스로 이어집니다. 가치 ≈ 가격결정력 × 물량 + 차세대 구성 − 소비세·준법 비용이며, 차세대가 구성을 끌어올립니다.</span></p>
+      <div class="vchain"><div class="vc-step"><span class="vc-n">1</span><b><span class="en">Leaf growing &amp; curing</span><span class="ko">잎담배 재배·건조</span></b><span class="d"><span class="en">Contract-grown raw tobacco leaf.</span><span class="ko">계약 재배한 원료 잎담배입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">2</span><b><span class="en">Processing &amp; primary</span><span class="ko">가공·1차 제조</span></b><span class="d"><span class="en">Threshing, blending and reconstituted leaf.</span><span class="ko">절단·배합·재구성 잎 가공입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">3</span><b><span class="en">Product manufacturing</span><span class="ko">제품 제조</span></b><span class="d"><span class="en">Cigarettes plus HTP sticks, pouches and vapes.</span><span class="ko">궐련과 가열담배 스틱·파우치·전자담배 제조입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">4</span><b><span class="en">Brand, marketing &amp; IP</span><span class="ko">브랜드·마케팅·지식재산</span></b><span class="d"><span class="en">Marlboro, IQOS, ZYN; R&amp;D and substantiation.</span><span class="ko">말보로·아이코스·진과 연구개발·입증입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">5</span><b><span class="en">Distribution &amp; retail</span><span class="ko">유통·소매</span></b><span class="d"><span class="en">Wholesale, c-stores, duty-free and e-commerce.</span><span class="ko">도매·편의점·면세점·전자상거래입니다.</span></span></div></div>
+      <div class="subh" style="margin-top:16px"><span class="en">Profit pool — where margin concentrates</span><span class="ko">수익풀 — 마진이 집중되는 곳</span></div><div class="pool"><div class="pool-row"><span class="pn"><span class="en">Leaf growing &amp; curing</span><span class="ko">잎담배 재배·건조</span></span><span class="ptrack"><span class="pfill lo"></span></span><span class="pv lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Processing &amp; primary</span><span class="ko">가공·1차 제조</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div><div class="pool-row"><span class="pn"><span class="en">Product manufacturing</span><span class="ko">제품 제조</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Brand, marketing &amp; IP</span><span class="ko">브랜드·마케팅·지식재산</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Distribution &amp; retail</span><span class="ko">유통·소매</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div></div><p class="cap"><span class="en">Margin concentrates in product manufacturing and brand/IP, where smoke-free margins now exceed combustibles; leaf and processing are low-margin, and distribution is mid.</span><span class="ko">마진은 제품 제조와 브랜드·지식재산에 집중되며, 비연소 마진이 이제 궐련을 넘습니다. 잎담배·가공은 저마진, 유통은 중간입니다.</span></p>
+    </div>
+  </section>
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A slow-growing market led by next-gen</span><span class="ko">차세대가 이끄는 저성장 시장</span></h2>
+      <div class="cagr-wrap"><span class="cagr-badge"><span class="en">CAGR</span><span class="ko">연평균 성장</span><span class="n">≈2.6%</span></span><span class="mute" style="font-size:12.5px"><span class="en">global broad tobacco market (Grand View / Fortune)</span><span class="ko">글로벌 광의 담배 시장(Grand View / Fortune)</span></span></div>
+      <div class="colchart"><div class="col"><div class="col-val">$915B</div><div class="col-bar" data-h="44"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">$935B</div><div class="col-bar" data-h="55"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">$960B</div><div class="col-bar" data-h="70"></div><div class="col-lab">2026E</div></div><div class="col"><div class="col-val">$985B</div><div class="col-bar" data-h="85"></div><div class="col-lab">2027E</div></div><div class="col"><div class="col-val">$1.01T</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div></div>
+      <p class="cap"><span class="en">Global broad tobacco market, US$, indicative (Grand View Research / Fortune Business Insights, 2025; ~2.6% CAGR). 2027–28 extrapolated. Bars use a zoomed baseline. Cigarettes-only is far smaller and grows slower; next-gen drives the growth.</span><span class="ko">글로벌 광의 담배 시장, 단위 달러, 추정치입니다(Grand View Research / Fortune Business Insights, 2025년, 연평균 약 2.6% 성장). 2027~28년은 외삽치입니다. 막대는 확대 기준선을 씁니다. 궐련만 보면 훨씬 작고 느리며, 성장은 차세대가 견인합니다.</span></p>
+    </div>
+  </section>
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">China leads by volume; PMI leads listed; KT&amp;G leads Korea</span><span class="ko">중국이 물량 1위, PMI가 상장 1위, KT&amp;G가 한국 1위</span></h2>
+      <div class="pies">
+        <div class="pieblock"><div class="pie-title"><span class="en">Global cigarette volume — incl. unlisted CNTC</span><span class="ko">글로벌 궐련 물량 — 비상장 CNTC 포함</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0% 44%,#117aca 44% 58%,#ffb81c 58% 67%,#5aa9e6 67% 75%,#c9d4e3 75% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>China National Tobacco<b>~44%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Philip Morris Intl<b>~14%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>BAT<b>~9%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Japan Tobacco<b>~8%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span>Others<b>~25%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea combined cigarette + HTP — 9M 2025</span><span class="ko">한국 궐련+가열담배 합산 — 2025년 9개월</span></div><div class="pie" style="background:conic-gradient(#0047a0 0% 64%,#117aca 64% 90%,#ffb81c 90% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>KT&amp;G<b>~64%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Philip Morris Korea<b>~26%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>BAT Rothmans<b>~10%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">Global figures are cigarette volume (indicative): China National Tobacco is #1 by volume but state-owned and unlisted; PMI is the largest listed player by market cap and revenue. Korea figures are combined cigarette + HTP share (9M 2025); KT&amp;G dominates.</span><span class="ko">글로벌 수치는 궐련 물량 기준 추정치입니다. 중국연초총공사가 물량 1위이나 국영·비상장이며, PMI가 시가총액·매출 기준 최대 상장기업입니다. 한국 수치는 궐련+가열담배 합산 점유율(2025년 9개월)로, KT&amp;G가 지배적입니다.</span></p>
+    </div>
+  </section>
+  <section id="positioning">
+    <p class="kicker"><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></p>
+    <h2><span class="en">Where the leaders sit — a 2×2 map</span><span class="ko">리더들의 위치 — 2×2 맵</span></h2>
+    <div class="posmap reveal"><svg viewBox="0 0 340 290" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="60" y="18" width="262" height="214" fill="#f7fafd" stroke="#e6ebf4" stroke-width="1.5" rx="8"/><line x1="60" y1="125" x2="322" y2="125" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><line x1="191" y1="18" x2="191" y2="232" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><circle cx="230" cy="75" r="7" fill="var(--navy)"/><text x="230" y="66" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">PMI</text><circle cx="200" cy="110" r="7" fill="var(--krred)"/><text x="200" y="101" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">KT&amp;G</text><circle cx="270" cy="130" r="5.5" fill="#9fb1c9"/><text x="270" y="121" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">BAT</text><circle cx="255" cy="160" r="5.5" fill="#9fb1c9"/><text x="255" y="151" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Japan Tobacco</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="en">Scale / global reach &#8594;</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="ko">규모·글로벌 도달 &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="en">Smoke-free transition &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="ko">비연소 전환도 &#8594;</text></svg><div class="pos-legend"><span class="pl-i"><span class="pl-d" style="background:var(--navy)"></span><span class="en">Global #1</span><span class="ko">글로벌 1위</span></span><span class="pl-i"><span class="pl-d" style="background:var(--krred)"></span><span class="en">Korea #1</span><span class="ko">한국 1위</span></span><span class="pl-i"><span class="pl-d" style="background:#9fb1c9"></span><span class="en">Peers</span><span class="ko">경쟁사</span></span></div><p class="cap"><span class="en">PMI leads on both scale and smoke-free transition (IQOS, ZYN); KT&amp;G is mid-scale but well advanced in HTP. BAT and Japan Tobacco trail PMI on the smoke-free pivot.</span><span class="ko">PMI는 규모와 비연소 전환(아이코스·진) 모두에서 앞서고, KT&amp;G는 규모는 중간이나 가열담배에서 상당히 앞섭니다. BAT와 재팬타바코는 비연소 전환에서 PMI에 뒤집니다.</span></p></div>
+  </section>
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Declining cigarette volumes drive aggressive pricing and a next-gen land-grab.</span><span class="ko">줄어드는 궐련 물량이 공격적 가격과 차세대 선점 경쟁을 부릅니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Extreme regulation, excise, brand moats and substantiation cost block entry.</span><span class="ko">극심한 규제·소비세·브랜드 해자·입증 비용이 진입을 막습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Fragmented contract leaf farmers; device suppliers more concentrated.</span><span class="ko">계약 잎담배 농가는 분산, 디바이스 공급자는 다소 집중돼 있습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Loyal, addicted consumers make demand inelastic.</span><span class="ko">충성도 높은 소비자가 수요를 비탄력적으로 만듭니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Within nicotine, vaping/pouches/HTP cannibalize cigarettes; cessation and illicit trade add.</span><span class="ko">니코틴 내에서 전자담배·파우치·가열담배가 궐련을 잠식하고, 금연·불법거래가 더합니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: inelastic demand and high barriers protect incumbents, but substitution within nicotine and tightening regulation reshape the profit pool.</span><span class="ko">종합하면 비탄력적 수요와 높은 장벽이 기존 기업을 보호하나, 니코틴 내 대체와 규제 강화가 수익풀을 재편합니다.</span></p>
+  </section>
+  <section id="reg">
+    <p class="kicker"><span class="en">Macro forces &amp; the latest RULES</span><span class="ko">거시 환경과 최신 규칙</span></p>
+    <h2><span class="en">The rulebook: policy &amp; regulation</span><span class="ko">규칙: 정책과 규제</span></h2>
+    <p class="mute"><span class="en">Generational bans, next-gen excise and vape reclassification now decide which nicotine products survive and where.</span><span class="ko">세대별 금지·차세대 소비세·전자담배 재분류가 이제 어떤 니코틴 제품이 어디서 살아남을지를 결정합니다.</span></p>
+    <p class="hint"><span class="en">This section = laws, bills and rules only (dated). Market events are in &#8220;Recent issues&#8221; below.</span><span class="ko">이 섹션은 법·법안·규칙만(시행일 표기)입니다. 시장 이벤트는 아래 &#8216;최근 이슈&#8217;에 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Apr 2026</span><span class="ac-title"><span class="en">UK Tobacco and Vapes Act (Royal Assent)</span><span class="ko">영국 담배·전자담배법(국왕 재가)</span></span></div><div class="ac-body"><p class="why"><span class="en">Generational sale ban (anyone born on/after 1 Jan 2009) plus vape powers. Why it matters: long-run extinction of the UK combustible market; a model others may copy.</span><span class="ko">2009년 1월 1일 이후 출생자 판매 금지와 전자담배 규제 권한입니다. 의미: 영국 궐련 시장의 장기 소멸이며 다른 나라가 모방할 수 있습니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jul 2025</span><span class="ac-title"><span class="en">EU Tobacco Taxation Directive recast (proposal)</span><span class="ko">EU 담배세 지침 개정(제안)</span></span></div><div class="ac-body"><p class="why"><span class="en">First EU minimum excise on e-cigarettes, heated tobacco and pouches, from 2028. Why it matters: removes the tax advantage that fueled next-gen margins.</span><span class="ko">전자담배·가열담배·파우치에 대한 첫 EU 최저 소비세로 2028년부터 적용됩니다. 의미: 차세대 마진을 키운 세제 이점을 제거합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Apr 2026</span><span class="ac-title"><span class="en">Korea Tobacco Business Act amendment</span><span class="ko">한국 담배사업법 개정</span></span></div><div class="ac-body"><p class="why"><span class="en">Reclassifies synthetic-nicotine e-liquids as 'tobacco', adding tax and rules. Why it matters: closes Korea's vape loophole and levels the field for KT&amp;G.</span><span class="ko">합성 니코틴 액상을 '담배'로 재분류해 과세·규제를 더합니다. 의미: 한국의 전자담배 사각지대를 닫고 KT&amp;G에 공정한 장을 만듭니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jul 2025</span><span class="ac-title"><span class="en">US FDA Marketing Granted Orders to JUUL</span><span class="ko">미국 FDA, 쥴에 판매 허가</span></span></div><div class="ac-body"><p class="why"><span class="en">FDA authorized JUUL device and tobacco/menthol pods (PMTA). Why it matters: signals a more permissive FDA, reshaping legal US vape competition.</span><span class="ko">FDA가 쥴 디바이스와 담배·멘솔 팟을 허가했습니다(PMTA). 의미: 더 허용적인 FDA를 시사하며 미국 합법 전자담배 경쟁을 재편합니다.</span></p></div></div></div>
+  </section>
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Pricing power</span><span class="ko">가격결정력</span></b><p><span class="en">Offsets structural volume decline.</span><span class="ko">구조적 물량 감소를 상쇄합니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">Smoke-free pivot</span><span class="ko">비연소 전환</span></b><p><span class="en">Shift to higher-margin HTP, pouches, vapes.</span><span class="ko">고마진 가열담배·파우치·전자담배로 전환합니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">R&amp;D &amp; substantiation</span><span class="ko">연구개발·입증</span></b><p><span class="en">PMTA/MRTP scientific capability.</span><span class="ko">PMTA·MRTP 과학적 역량입니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">Global brands</span><span class="ko">글로벌 브랜드</span></b><p><span class="en">Marlboro, IQOS and ZYN equity.</span><span class="ko">말보로·아이코스·진 브랜드 자산입니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">Geographic spread</span><span class="ko">지역 다변화</span></b><p><span class="en">Emerging-market growth diversifies risk.</span><span class="ko">신흥시장 성장이 위험을 분산합니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Regulatory navigation</span><span class="ko">규제 대응</span></b><p><span class="en">Managing excise, bans and litigation.</span><span class="ko">소비세·금지·소송을 관리합니다.</span></p></div></div></div>
+  </section>
+  <section id="news">
+    <p class="kicker"><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></p>
+    <h2><span class="en">The newsflow: market &amp; competitive events</span><span class="ko">뉴스: 시장·경쟁 이벤트</span></h2>
+    <p class="hint"><span class="en">This section = business/market events (earnings, deals, demand, prices) — not policy. Tap for why it matters.</span><span class="ko">이 섹션은 실적·거래·수요·가격 등 시장 이벤트입니다(정책 아님). 눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Feb 2026</span><span class="ac-title"><span class="en">PMI FY2025: smoke-free now margin-accretive</span><span class="ko">PMI FY25: 비연소가 마진 기여로</span></span></div><div class="ac-body"><p class="why"><span class="en">Net revenue topped US$40B; smoke-free 41.5% of revenue; ZYN 794M cans (+36.6%). Why it matters: confirms the transition is accretive, not dilutive.</span><span class="ko">순매출이 400억 달러를 넘고 비연소가 매출의 41.5%, 진 7억 9,400만 캔(+36.6%)입니다. 의미: 전환이 희석이 아닌 기여임을 확인합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Nicotine-pouch competition intensifies</span><span class="ko">니코틴 파우치 경쟁 격화</span></span></div><div class="ac-body"><p class="why"><span class="en">PMI ZYN ~66% US value share; Altria's on! reached 8.2% US oral share. Why it matters: pouches are the key competitive battleground.</span><span class="ko">PMI 진이 미국 가치 점유율 약 66%, 알트리아 온!이 미국 구강 8.2%에 이릅니다. 의미: 파우치가 핵심 경쟁 전장입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Altria–KT&amp;G global collaboration MoU</span><span class="ko">알트리아–KT&amp;G 글로벌 협력 양해각서</span></span></div><div class="ac-body"><p class="why"><span class="en">Non-binding deal on international modern-oral and US products. Why it matters: gives KT&amp;G a US/global pouch route and Altria fresh supply.</span><span class="ko">국제 구강·미국 제품에 관한 비구속 양해각서입니다. 의미: KT&amp;G에 미국·글로벌 파우치 경로를, 알트리아에 새 공급을 줍니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Horizon (Altria–JT) files for US heated tobacco</span><span class="ko">호라이즌(알트리아–JT), 미국 가열담배 신청</span></span></div><div class="ac-body"><p class="why"><span class="en">Filed PMTA/MRTP for Ploom and Marlboro HTP sticks. Why it matters: opens a US HTP front, the last major untapped IQOS market.</span><span class="ko">플룸·말보로 가열담배 스틱에 PMTA·MRTP를 신청했습니다. 의미: 마지막 미개척 아이코스 시장인 미국 가열담배 전선을 엽니다.</span></p></div></div></div>
+  </section>
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, each with its OWN strategy</span><span class="ko">두 리더, 각자 다른 전략</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader is diagnosed on its own terms: a MECE issue tree → strategy thrusts chosen for THAT company → action plans. The NUMBER of thrusts varies by situation (one for a single-mandate player, up to three where the diagnosis demands it) — it is not a fixed two-track template.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 그 회사에 맞게 진단합니다: MECE 이슈트리 → 그 기업에 맞춰 고른 전략 축 → 액션 플랜. 전략 축의 '개수'는 상황에 따라 다릅니다(단일 사명 기업은 1개, 진단이 요구하면 최대 3개). 고정된 2트랙 틀이 아닙니다.</span></p>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>Philip Morris International</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The largest listed tobacco company by market cap and revenue, accelerating its smoke-free transition.</span><span class="ko">시가총액·매출 기준 최대 상장 담배기업으로, 비연소 전환에 속도를 냅니다.</span></p><div class="stats"><div class="stat"><div class="n">>$40B</div><div class="l"><span class="en">FY25 net revenue</span><span class="ko">FY25 순매출</span></div></div><div class="stat"><div class="n">40.4%</div><div class="l"><span class="en">Adj. operating margin</span><span class="ko">조정 영업이익률</span></div></div><div class="stat"><div class="n">~$272B</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div><div class="stat"><div class="n">41.5%</div><div class="l"><span class="en">Smoke-free revenue</span><span class="ko">비연소 매출 비중</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — best-in-class transition, but combustibles still decline</span><span class="ko">진단 — 최고 수준의 전환이나 궐련은 여전히 감소합니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Cigarette volumes keep declining (PMI expects ~3% in 2026).</span><span class="ko">궐련 물량은 계속 감소합니다(PMI는 2026년 약 3% 전망).</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">A secular shift away from smoking, now met by rising excise on next-gen too.</span><span class="ko">흡연 이탈의 구조적 추세에 더해 차세대에도 소비세가 붙고 있습니다.</span></p><div class="formula">Revenue = Cigarettes (declining) + smoke-free (growing, higher-margin); mix shift drives profit</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">Can smoke-free outgrow the combustible decline profitably?</span><span class="ko">비연소가 궐련 감소를 수익성 있게 앞지를 수 있는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">Yes: push smoke-free past 50% of revenue, scale ZYN/IQOS in the US, and defend pricing (the tracks below).</span><span class="ko">가능합니다. 비연소를 매출 50% 이상으로 끌어올리고 미국에서 진·아이코스를 키우며 가격을 방어합니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why is a transition leader still exposed?</span><span class="ko">전환 선두기업이 여전히 노출된 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">Combustible decline (structural)</span><span class="ko">궐련 감소(구조적)</span></b><div class="leaf"><span class="en">Cigarette volumes fall ~3% a year.</span><span class="ko">궐련 물량이 연 약 3% 감소합니다.</span></div></div><div class="branch"><b><span class="en">Next-gen regulation (external)</span><span class="ko">차세대 규제(외생)</span></b><div class="leaf"><span class="en">EU excise and UK bans tighten the smoke-free runway.</span><span class="ko">EU 소비세·영국 금지가 비연소 활주로를 좁힙니다.</span></div></div><div class="branch"><b><span class="en">Smoke-free mix (lever)</span><span class="ko">비연소 구성(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Push smoke-free past 50% to outgrow the decline.</span><span class="ko">비연소를 50% 이상으로 끌어올려 감소를 앞지릅니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Smoke-free scale</span><span class="ko">Track 1 · 비연소 확대</span></div><div class="tn"><span class="en">Push smoke-free past 50%</span><span class="ko">비연소 50% 돌파</span></div><p><span class="en">Grow IQOS and pouches to make smoke-free the majority of revenue.</span><span class="ko">아이코스·파우치를 키워 비연소를 매출의 과반으로 만듭니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · US growth</span><span class="ko">Track 2 · 미국 성장</span></div><div class="tn"><span class="en">Scale ZYN &amp; IQOS in the US</span><span class="ko">미국 진·아이코스 확대</span></div><p><span class="en">Build out the previously untapped US smoke-free market.</span><span class="ko">그동안 미개척이던 미국 비연소 시장을 구축합니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Pricing</span><span class="ko">Track 3 · 가격</span></div><div class="tn"><span class="en">Defend combustible margins</span><span class="ko">궐련 마진 방어</span></div><p><span class="en">Use premiumization and pricing to fund the transition.</span><span class="ko">프리미엄화·가격으로 전환을 뒷받침합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Revenue mix</span><span class="ko">매출 구성</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Cigarette-led</span><span class="ko">궐련 중심</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Smoke-free majority</span><span class="ko">비연소 과반</span></div></div></div><div class="ap"><div class="apt"><span class="en">Geography</span><span class="ko">지역</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Ex-US smoke-free</span><span class="ko">미국 외 비연소</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">US scale-up</span><span class="ko">미국 확대</span></div></div></div><div class="ap"><div class="apt"><span class="en">Margins</span><span class="ko">마진</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Combustible-funded</span><span class="ko">궐련 의존</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Smoke-free accretive</span><span class="ko">비연소 기여</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>KT&amp;G</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">Korea's largest tobacco company, crossing ₩6T revenue and pushing overseas and into pouches.</span><span class="ko">한국 최대 담배기업으로, 매출 6조 원을 넘기며 해외·파우치로 확장합니다.</span></p><div class="stats"><div class="stat"><div class="n">₩6.58T</div><div class="l"><span class="en">FY25 revenue (+11.4%)</span><span class="ko">FY25 매출(+11.4%)</span></div></div><div class="stat"><div class="n">₩1.35T</div><div class="l"><span class="en">FY25 operating profit</span><span class="ko">FY25 영업이익</span></div></div><div class="stat"><div class="n">~$13.5B</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div><div class="stat"><div class="n">54.1%</div><div class="l"><span class="en">Overseas revenue share</span><span class="ko">해외 매출 비중</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — record revenue, but home market is saturated</span><span class="ko">진단 — 사상 최대 매출이나 내수가 포화 상태입니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Growth rests on a saturated, declining domestic combustible market.</span><span class="ko">성장이 포화·감소하는 내수 궐련 시장에 기대고 있습니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">A small home market and under-scaled pouches versus global majors.</span><span class="ko">작은 내수와, 글로벌 대기업 대비 규모가 작은 파우치 사업입니다.</span></p><div class="formula">Revenue = Domestic (saturated) + overseas cigarettes + NGP + pouches; overseas mix drives growth</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">Where does durable growth come from?</span><span class="ko">지속 가능한 성장은 어디서 오는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">From overseas cigarettes/NGP and a built-out pouch portfolio (the tracks below).</span><span class="ko">해외 궐련·차세대와 구축된 파우치 포트폴리오에서 옵니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why is a record-revenue leader still constrained?</span><span class="ko">사상 최대 매출 선두가 여전히 제약받는 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">Home saturation (structural)</span><span class="ko">내수 포화(구조적)</span></b><div class="leaf"><span class="en">A small, declining domestic market caps volume.</span><span class="ko">작고 감소하는 내수가 물량을 제한합니다.</span></div></div><div class="branch"><b><span class="en">HTP competition (competitive)</span><span class="ko">가열담배 경쟁(경쟁)</span></b><div class="leaf"><span class="en">Philip Morris Korea presses KT&amp;G in HTP.</span><span class="ko">필립모리스코리아가 가열담배에서 KT&amp;G를 압박합니다.</span></div></div><div class="branch"><b><span class="en">Overseas &amp; pouches (lever)</span><span class="ko">해외·파우치(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Scale exports and modern-oral to grow.</span><span class="ko">수출과 구강 제품을 키워 성장합니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Overseas push</span><span class="ko">Track 1 · 해외 확대</span></div><div class="tn"><span class="en">Grow exports toward 50%</span><span class="ko">수출 50%로 확대</span></div><p><span class="en">Use the new Indonesia factory to push overseas cigarettes/NGP.</span><span class="ko">신규 인도네시아 공장으로 해외 궐련·차세대를 확대합니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Pouches</span><span class="ko">Track 2 · 파우치</span></div><div class="tn"><span class="en">Build the pouch portfolio</span><span class="ko">파우치 포트폴리오 구축</span></div><p><span class="en">Use the ASF acquisition and Altria MoU for global modern-oral.</span><span class="ko">ASF 인수와 알트리아 양해각서로 글로벌 구강 제품을 키웁니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Shareholder returns</span><span class="ko">Track 3 · 주주환원</span></div><div class="tn"><span class="en">Sustain returns</span><span class="ko">환원 지속</span></div><p><span class="en">Maintain dividends and buybacks to defend valuation.</span><span class="ko">배당·자사주로 밸류에이션을 방어합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Revenue mix</span><span class="ko">매출 구성</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Domestic-led</span><span class="ko">내수 중심</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Overseas ~50%</span><span class="ko">해외 약 50%</span></div></div></div><div class="ap"><div class="apt"><span class="en">Next-gen</span><span class="ko">차세대</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">HTP-focused</span><span class="ko">가열담배 집중</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Add pouches</span><span class="ko">파우치 추가</span></div></div></div><div class="ap"><div class="apt"><span class="en">Returns</span><span class="ko">환원</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Steady</span><span class="ko">꾸준</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Enhanced returns</span><span class="ko">환원 강화</span></div></div></div></div></div></div>
+  </section>
+  <section id="kpi">
+    <p class="kicker"><span class="en">KPIs to watch</span><span class="ko">주목할 지표</span></p>
+    <h2><span class="en">The dials that move this industry</span><span class="ko">이 산업을 움직이는 계기판</span></h2>
+    <p class="hint"><span class="en">Leading indicators with the latest reading — track these to see the thesis play out.</span><span class="ko">최신 수치가 담긴 선행지표입니다. 이 흐름을 추적하면 전망을 검증할 수 있습니다.</span></p>
+    <div class="kpis reveal"><div class="kpi"><div class="kt"><span class="en">Smoke-free share of revenue (PMI)</span><span class="ko">비연소 매출 비중(PMI)</span></div><div class="kv"><span class="en">41.5% (2025)</span><span class="ko">41.5%(2025)</span></div><div class="kw"><span class="en">The transition gauge.</span><span class="ko">전환의 척도입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">ZYN US value share</span><span class="ko">진 미국 가치 점유율</span></div><div class="kv"><span class="en">~66% (2025)</span><span class="ko">약 66%(2025)</span></div><div class="kw"><span class="en">Pouch competitive lead.</span><span class="ko">파우치 경쟁 우위입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">KT&amp;G overseas revenue share</span><span class="ko">KT&amp;G 해외 매출 비중</span></div><div class="kv"><span class="en">54.1% (2025)</span><span class="ko">54.1%(2025)</span></div><div class="kw"><span class="en">Diversification beyond Korea.</span><span class="ko">한국 너머 다각화입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Cigarette volume trend</span><span class="ko">궐련 물량 추세</span></div><div class="kv"><span class="en">~−3%/yr</span><span class="ko">연 약 −3%</span></div><div class="kw"><span class="en">Structural decline pace.</span><span class="ko">구조적 감소 속도입니다.</span></div></div></div>
+  </section>
+  <section id="scenarios">
+    <p class="kicker"><span class="en">Scenarios — bull · base · bear</span><span class="ko">시나리오 — 낙관·기본·비관</span></p>
+    <h2><span class="en">Three ways the next few years could break</span><span class="ko">향후 몇 년이 갈릴 세 갈래</span></h2>
+    <div class="scen reveal"><div class="sc bull"><div class="sh"><span class="en">Bull · upside</span><span class="ko">낙관</span></div><div class="sd"><span class="en">Next-gen scales + pricing holds</span><span class="ko">차세대 확대 + 가격 유지</span></div><p><span class="en">Smoke-free outgrows decline; margins expand.</span><span class="ko">비연소가 감소를 앞지르고 마진이 확대됩니다.</span></p></div><div class="sc base"><div class="sh"><span class="en">Base · central</span><span class="ko">기본</span></div><div class="sd"><span class="en">Steady decline offset by next-gen</span><span class="ko">꾸준한 감소 + 차세대 상쇄</span></div><p><span class="en">Low-single-digit growth; margins firm.</span><span class="ko">한 자릿수 초반 성장. 마진이 견조합니다.</span></p></div><div class="sc bear"><div class="sh"><span class="en">Bear · downside</span><span class="ko">비관</span></div><div class="sd"><span class="en">Bans + excise + illicit trade</span><span class="ko">금지 + 소비세 + 불법거래</span></div><p><span class="en">Volumes fall faster; next-gen taxed; margins pressured.</span><span class="ko">물량이 더 빨리 줄고 차세대가 과세돼 마진이 압박됩니다.</span></p></div></div>
+  </section>
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight">
+        <li><span class="en">Cigarette volumes decline structurally; growth depends on next-gen scaling.</span><span class="ko">궐련 물량은 구조적으로 감소하며, 성장은 차세대 확대에 달려 있습니다.</span></li><li><span class="en">Regulation increasingly taxes and bans next-gen, not just cigarettes.</span><span class="ko">규제가 궐련뿐 아니라 차세대까지 점점 과세·금지합니다.</span></li><li><span class="en">Within nicotine, pouches and HTP are the key competitive battleground.</span><span class="ko">니코틴 내에서 파우치·가열담배가 핵심 경쟁 전장입니다.</span></li><li><span class="en">PMI rides the smoke-free pivot; KT&amp;G rides overseas growth and pouches.</span><span class="ko">PMI는 비연소 전환에, KT&amp;G는 해외 성장·파우치에 달려 있습니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://www.grandviewresearch.com/industry-analysis/tobacco-market">Grand View Research — tobacco market</a></li><li><a href="https://www.pmi.com/media-center/press-releases/press-details/?newsId=29566">PMI — FY2025 results</a></li><li><a href="https://www.prnewswire.com/news-releases/ktg-enters-era-of-krw-6-trillion-annual-revenue-in-2025--operating-profit-break-krw-1-3-trillion-mark-302679955.html">KT&amp;G — 2025 results (PR Newswire)</a></li><li><a href="https://en.wikipedia.org/wiki/Tobacco_and_Vapes_Bill">UK Tobacco and Vapes Act</a></li><li><a href="https://taxation-customs.ec.europa.eu/news/european-commission-modernises-tobacco-taxation-directive-2025-07-16_en">EU — Tobacco Taxation Directive recast</a></li><li><a href="https://www.2firsts.com/news/south-korea-to-classify-synthetic-nicotine-e-cigarettes-as-tobacco-from-april-2026">Korea — synthetic-nicotine reclassification</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Tobacco (GICS 302030) · Generated June 7, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 담배(GICS 302030) · 2026년 6월 7일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>
