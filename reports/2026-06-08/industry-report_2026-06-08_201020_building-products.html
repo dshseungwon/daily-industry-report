@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building Products · 건축자재 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+
+<style>
+  .cagr-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+  .cagr-badge{display:inline-flex;align-items:baseline;gap:5px;background:#eaf2fb;color:var(--blue);
+    border:1px solid #cfe2f5;border-radius:999px;padding:6px 13px;font-weight:800;font-size:13px;}
+  .cagr-badge .n{font-size:16px;}
+  .cagr-badge.alt{background:#fff6e6;color:#b07400;border-color:#ffe2a6;}
+  /* SCQA diagnosis (Situation · Complication · Question · Answer) */
+  .scqa{margin:12px 0 2px;}
+  .scqa-row{display:flex;gap:12px;position:relative;padding-bottom:14px;}
+  .scqa-row:last-child{padding-bottom:0;}
+  .scqa-row::before{content:"";position:absolute;left:14px;top:30px;bottom:-2px;width:2px;background:var(--line);}
+  .scqa-row:last-child::before{display:none;}
+  .scqa-k{flex:none;width:30px;height:30px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 2px 6px rgba(14,42,71,.18);}
+  .scqa-row.s .scqa-k{background:#5b6b8c;}
+  .scqa-row.c .scqa-k{background:var(--hi);}
+  .scqa-row.q .scqa-k{background:var(--blue);}
+  .scqa-row.a .scqa-k{background:var(--lo);}
+  .scqa-bd{flex:1;padding-top:1px;}
+  .scqa-lab{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;}
+  .scqa-row.a .scqa-lab{color:var(--lo);}
+  .scqa-bd p{margin:0;font-size:13.3px;color:var(--ink);line-height:1.55;}
+  .scqa-row.q .scqa-bd p{font-style:italic;color:#16406a;}
+  .scqa-row.a .scqa-bd p{font-weight:600;}
+  .scqa .formula{margin-top:8px;}
+  .scqa-cap{font-size:11.5px;color:var(--mute);font-style:italic;margin:10px 0 0;}
+  /* MECE issue tree (rendered together with SCQA) */
+  .tree{margin:9px 0 2px;}
+  .tree .root{background:linear-gradient(120deg,#16406a,#0e2a47);color:#fff;border-radius:11px;
+    padding:11px 14px;font-size:13.4px;font-weight:700;border-left:4px solid var(--gold);}
+  .tree .branches{display:grid;gap:9px;margin-top:10px;}
+  .tree .branch{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;padding:10px 13px;background:#f7fafd;}
+  .tree .branch>b{font-size:13.1px;display:block;margin-bottom:5px;color:var(--ink);}
+  .tree .leaf{font-size:12.6px;color:var(--mute);padding-left:15px;position:relative;margin:4px 0;line-height:1.5;}
+  .tree .leaf::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .tree .leaf.lever{color:var(--ink);font-weight:600;}
+  .tree .leaf.lever::before{background:var(--gold);width:8px;height:8px;left:1px;top:7px;}
+  .tree .lever-tag{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#b07400;background:#fff6e6;border-radius:5px;padding:1px 5px;margin-right:5px;}
+  .tree-cap{display:none;}
+  @media(min-width:680px){.tree .branches{grid-template-columns:1fr 1fr 1fr;}}
+  /* value chain — connected flow diagram */
+  .vchain{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:6px 0 4px;}
+  .vc-step{position:relative;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:11px;padding:11px 13px 11px 40px;flex:1;}
+  .vc-step .vc-n{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;
+    background:var(--blue);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .vc-step:last-of-type{border-left-color:var(--gold);}
+  .vc-step:last-of-type .vc-n{background:var(--gold);color:var(--navy);}
+  .vc-step b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc-step .d{font-size:12.3px;color:var(--mute);}
+  .vc-arrow{align-self:center;color:var(--gold);font-weight:900;font-size:16px;line-height:1;
+    transform:rotate(90deg);padding:5px 0;}
+  @media(min-width:720px){
+    .vchain{flex-direction:row;align-items:stretch;flex-wrap:nowrap;}
+    .vc-step{padding:11px 11px 11px 12px;min-width:0;}
+    .vc-step .vc-n{position:static;margin-bottom:6px;}
+    .vc-arrow{transform:none;padding:0 3px;display:flex;align-items:center;}
+  }
+  /* variable 1-3 strategy tracks */
+  .track.t3{background:#10355a;border:1px solid rgba(255,184,28,.45);}
+  .track-grid.n1{grid-template-columns:1fr;}
+  @media(min-width:680px){
+    .track-grid.n2{grid-template-columns:1fr 1fr;}
+    .track-grid.n3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  /* profit pool */
+  .pool{display:flex;flex-direction:column;gap:8px;margin:6px 0 2px;}
+  .pool-row{display:flex;align-items:center;gap:10px;}
+  .pool-row .pn{flex:1.1;font-size:12.6px;color:var(--ink);min-width:0;}
+  .pool-row .ptrack{flex:1.5;height:9px;border-radius:5px;background:#eef2f7;overflow:hidden;}
+  .pool-row .pfill{height:100%;border-radius:5px;}
+  .pool-row .pfill.hi{width:92%;background:var(--gold);}
+  .pool-row .pfill.med{width:55%;background:var(--blue);}
+  .pool-row .pfill.lo{width:22%;background:#c9d4e3;}
+  .pool-row .pv{flex:none;width:58px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .pool-row .pv.hi{color:#b07400;}.pool-row .pv.med{color:var(--blue);}.pool-row .pv.lo{color:var(--mute);}
+  /* KPI watchlist */
+  .kpis{display:grid;grid-template-columns:1fr;gap:11px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);padding:13px 15px;border-left:4px solid var(--blue);}
+  .kpi .kt{font-size:12.5px;font-weight:800;color:var(--ink);}
+  .kpi .kv{font-size:clamp(17px,4.6vw,21px);font-weight:800;color:var(--blue);margin:3px 0 4px;line-height:1.1;}
+  .kpi .kw{font-size:12.3px;color:var(--mute);}
+  /* scenarios */
+  .scen{display:grid;grid-template-columns:1fr;gap:11px;}
+  .sc{border-radius:13px;padding:14px 16px;color:#fff;box-shadow:var(--shadow);}
+  .sc.bull{background:linear-gradient(125deg,#1f9d6b,#14633f);}
+  .sc.base{background:linear-gradient(125deg,#16406a,#0e2a47);}
+  .sc.bear{background:linear-gradient(125deg,#b1402f,#7d2418);}
+  .sc .sh{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .sc .sd{font-size:13.6px;font-weight:800;margin:4px 0 6px;}
+  .sc p{margin:0;font-size:12.8px;color:#eef4fb;}
+  /* positioning 2x2 */
+  .posmap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;}
+  .posmap svg{width:100%;height:auto;display:block;overflow:visible;}
+  .pos-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 2px;font-size:12px;color:var(--ink);}
+  .pos-legend .pl-i{display:flex;align-items:center;gap:6px;}
+  .pos-legend .pl-d{width:11px;height:11px;border-radius:50%;}
+  @media(min-width:680px){.kpis{grid-template-columns:1fr 1fr;}.scen{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Building Products</span><span class="ko">건축자재</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="positioning"><span class="en">Positioning</span><span class="ko">포지셔닝</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button><button class="chip" data-go="scenarios"><span class="en">Scenarios</span><span class="ko">시나리오</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 1 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 1번째</span></p>
+    <h1><span class="en">Building Products</span><span class="ko">건축자재</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · <span class="en">Industrials</span><span class="ko">산업재</span> · 201020</span>
+      <span class="pill">2026-06-08</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: Saint-Gobain · KCC</span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">Building products (GICS 201020) covers manufacturers of insulation, glass, gypsum/wallboard, roofing, windows and coatings sold for new-build and renovation. The global construction-materials market is roughly US$1.42T in 2025, growing about 3.9% a year — a large but cyclical and highly fragmented market where no single player holds more than ~5% share. The defining force of 2026 is cost inflation from tariffs (US duties of 25% on gypsum wallboard, 50% on steel/aluminum, 10% on softwood lumber) colliding with weak, rate-pressured construction demand. Regulation is pulling the other way: the EU's EPBD recast and CBAM, plus tightening US energy codes, reward low-carbon, high-efficiency products and raise the cost of carbon-intensive imports. The global #1 by revenue, Saint-Gobain, is shifting toward 'light and sustainable construction'; Korea's leader, KCC, is leaning on high-value silicone and advanced materials while defending its domestic paint and glass franchise. Both are detailed at the end.</span><span class="ko">건축자재(GICS 201020)는 신축·리모델링용 단열재, 유리, 석고보드, 지붕재, 창호, 도료를 만드는 제조업을 아우릅니다. 글로벌 건설자재 시장은 2025년 약 1조 4,200억 달러로 연 약 3.9% 성장하나, 크면서도 경기에 민감하고 매우 분절돼 단일 기업의 시장점유율이 약 5%를 넘지 못합니다. 2026년을 규정하는 힘은 관세발 원가 상승(미국의 석고보드 25%, 철강·알루미늄 50%, 침엽수 목재 10% 관세)과 금리 압박을 받는 약한 건설 수요의 충돌입니다. 규제는 반대 방향으로 작용합니다. EU의 EPBD 개정과 CBAM, 강화되는 미국 에너지 코드가 저탄소·고효율 제품에 보상을 주고 탄소집약 수입품의 비용을 높입니다. 매출 기준 글로벌 1위 생고뱅은 '경량·지속가능 건축'으로 전환 중이고, 한국 선두 KCC는 국내 도료·유리 사업을 지키면서 고부가 실리콘·첨단소재에 무게를 둡니다. 두 기업은 뒤에서 자세히 다룹니다.</span></p>
+    </div>
+  </section>
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From raw materials to branded high-spec products</span><span class="ko">원재료에서 브랜드 고사양 제품까지</span></h2>
+      <p class="lead"><span class="en">The industry converts energy-intensive raw materials into branded products sold through merchants to contractors. Value ≈ volume × price × mix + renovation demand − energy/input costs; brand, spec and decarbonization lift the high end.</span><span class="ko">이 산업은 에너지집약 원재료를 브랜드 제품으로 가공해 유통망을 거쳐 시공사에 판매합니다. 가치 ≈ 물량 × 가격 × 믹스 + 리모델링 수요 − 에너지·원가이며, 브랜드·사양·탈탄소가 고부가 영역을 끌어올립니다.</span></p>
+      <div class="vchain"><div class="vc-step"><span class="vc-n">1</span><b><span class="en">Raw materials</span><span class="ko">원재료</span></b><span class="d"><span class="en">Sand, gypsum, limestone, polymers, glass; energy-intensive.</span><span class="ko">모래·석고·석회석·폴리머·유리로 에너지집약적입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">2</span><b><span class="en">Manufacturing</span><span class="ko">제조</span></b><span class="d"><span class="en">Capital-intensive plants; scale and energy efficiency.</span><span class="ko">자본집약 공장으로 규모와 에너지 효율이 핵심입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">3</span><b><span class="en">Distribution</span><span class="ko">유통</span></b><span class="d"><span class="en">Builders' merchants and big-box retail networks.</span><span class="ko">건자재 도매상과 대형 유통 채널입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">4</span><b><span class="en">Installation/contractors</span><span class="ko">시공·설치</span></b><span class="d"><span class="en">Fragmented installers; labor-driven last mile.</span><span class="ko">분절된 설치업체로 인력 중심의 라스트마일입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">5</span><b><span class="en">End markets / aftermarket</span><span class="ko">최종 시장·애프터마켓</span></b><span class="d"><span class="en">New-build + renovation; branded high-spec products.</span><span class="ko">신축·리모델링 수요와 브랜드 고사양 제품입니다.</span></span></div></div>
+      <div class="subh" style="margin-top:16px"><span class="en">Profit pool — where margin concentrates</span><span class="ko">수익풀 — 마진이 집중되는 곳</span></div>
+      <div class="pool"><div class="pool-row"><span class="pn"><span class="en">Raw materials</span><span class="ko">원재료</span></span><span class="ptrack"><span class="pfill lo"></span></span><span class="pv lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Manufacturing</span><span class="ko">제조</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div><div class="pool-row"><span class="pn"><span class="en">Distribution</span><span class="ko">유통</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div><div class="pool-row"><span class="pn"><span class="en">Installation/contractors</span><span class="ko">시공·설치</span></span><span class="ptrack"><span class="pfill lo"></span></span><span class="pv lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><div class="pool-row"><span class="pn"><span class="en">End markets / aftermarket</span><span class="ko">최종 시장·애프터마켓</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div></div>
+      <p class="cap"><span class="en">Margin concentrates in branded high-spec products and renovation (aftermarket); raw materials and fragmented installation capture the least. Manufacturing scale and distribution access sit in the middle.</span><span class="ko">마진은 브랜드 고사양 제품과 리모델링(애프터마켓)에 집중되고, 원재료와 분절된 시공이 가장 적게 가져갑니다. 제조 규모와 유통 접근성은 중간입니다.</span></p>
+    </div>
+  </section>
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A large, cyclical market growing in the low single digits</span><span class="ko">낮은 한 자릿수로 성장하는 거대 경기민감 시장</span></h2>
+      <div class="cagr-wrap"><span class="cagr-badge"><span class="en">CAGR</span><span class="ko">연평균 성장</span><span class="n">≈3.9%</span></span><span class="mute" style="font-size:12.5px"><span class="en">global construction materials (indicative)</span><span class="ko">글로벌 건설자재(추정)</span></span></div>
+      <div class="colchart"><div class="col"><div class="col-val">$1.37T</div><div class="col-bar" data-h="44"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">$1.42T</div><div class="col-bar" data-h="56"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">$1.48T</div><div class="col-bar" data-h="71"></div><div class="col-lab">2026E</div></div><div class="col"><div class="col-val">$1.54T</div><div class="col-bar" data-h="85"></div><div class="col-lab">2027E</div></div><div class="col"><div class="col-val">$1.60T</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div></div>
+      <p class="cap"><span class="en">Global construction-materials market, US$, indicative (Fortune Business Insights / Precedence Research, 2025; ~3.9% CAGR). 2026–28 extrapolated. Bars use a zoomed baseline. Definitions vary widely (estimates range US$0.93T–1.69T for 2025).</span><span class="ko">글로벌 건설자재 시장, 단위 달러, 추정치입니다(Fortune Business Insights / Precedence Research, 2025년, 연평균 약 3.9% 성장). 2026~28년은 외삽치입니다. 막대는 확대 기준선을 씁니다. 정의별 편차가 크며 2025년 추정치는 0.93조~1.69조 달러에 분포합니다.</span></p>
+    </div>
+  </section>
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">A fragmented global market; KCC leads in Korea</span><span class="ko">분절된 글로벌 시장, 한국은 KCC가 선두</span></h2>
+      <div class="pies">
+        <div class="pieblock"><div class="pie-title"><span class="en">Global building products by revenue scale — indicative</span><span class="ko">글로벌 건축자재 매출 규모 — 추정</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0% 5%,#117aca 5% 9%,#ffb81c 9% 12%,#5aa9e6 12% 14%,#c9d4e3 14% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>Saint-Gobain<b>~5%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>CRH<b>~4%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Holcim<b>~3%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Cemex<b>~2%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span>Others<b>~86%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea building materials — indicative</span><span class="ko">한국 건축자재 — 추정</span></div><div class="pie" style="background:conic-gradient(#0047a0 0% 35%,#117aca 35% 60%,#ffb81c 60% 73%,#5aa9e6 73% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>KCC<b>~35%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>LX Hausys<b>~25%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>KCC Glass<b>~13%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Others<b>~27%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">Global shares are indicative of total-market revenue; the industry is highly fragmented with no player above ~5%. Korea shares are indicative; KCC has the broadest portfolio (paint, glass, board, silicone) and leads architectural paint at ~50% domestically.</span><span class="ko">글로벌 점유율은 전체 시장 매출 기준 추정치이며, 업계는 매우 분절돼 5%를 넘는 기업이 없습니다. 한국 점유율은 추정치로, KCC가 도료·유리·보드·실리콘으로 가장 넓은 포트폴리오를 갖고 국내 건축용 도료에서 약 50%로 선두입니다.</span></p>
+    </div>
+  </section>
+  <section id="positioning">
+    <p class="kicker"><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></p>
+    <h2><span class="en">Where the leaders sit — a 2×2 map</span><span class="ko">리더들의 위치 — 2×2 맵</span></h2>
+    <div class="posmap reveal"><svg viewBox="0 0 340 290" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="60" y="18" width="262" height="214" fill="#f7fafd" stroke="#e6ebf4" stroke-width="1.5" rx="8"/><line x1="60" y1="125" x2="322" y2="125" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><line x1="191" y1="18" x2="191" y2="232" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><circle cx="262" cy="70" r="7" fill="var(--navy)"/><text x="262" y="61" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Saint-Gobain</text><circle cx="150" cy="150" r="7" fill="var(--krred)"/><text x="150" y="141" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">KCC</text><circle cx="235" cy="110" r="5.5" fill="#9fb1c9"/><text x="235" y="101" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">CRH</text><circle cx="205" cy="135" r="5.5" fill="#9fb1c9"/><text x="205" y="126" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Holcim</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="en">Scale / revenue &#8594;</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="ko">규모·매출 &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="en">High-spec &amp;amp; sustainable mix &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="ko">고사양·지속가능 믹스 &#8594;</text></svg><div class="pos-legend"><span class="pl-i"><span class="pl-d" style="background:var(--navy)"></span><span class="en">Global #1</span><span class="ko">글로벌 1위</span></span><span class="pl-i"><span class="pl-d" style="background:var(--krred)"></span><span class="en">Korea #1</span><span class="ko">한국 1위</span></span><span class="pl-i"><span class="pl-d" style="background:#9fb1c9"></span><span class="en">Peers</span><span class="ko">경쟁사</span></span></div><p class="cap"><span class="en">Saint-Gobain pairs scale with the deepest light-and-sustainable solutions mix; KCC is mid-scale but diversified into high-value silicone. CRH and Holcim are large but heavier-material, more commoditized players.</span><span class="ko">생고뱅은 규모와 가장 깊은 경량·지속가능 솔루션 믹스를 함께 갖췄고, KCC는 중간 규모이나 고부가 실리콘으로 다각화돼 있습니다. CRH와 홀심은 크지만 중량물 중심의 더 범용화된 사업자입니다.</span></p></div>
+  </section>
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Many regional players and commoditized heavy materials drive price competition.</span><span class="ko">다수의 지역 사업자와 범용 중량물이 가격 경쟁을 부릅니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">High capex, energy and permitting barriers, but private capital can enter.</span><span class="ko">높은 자본·에너지·인허가 장벽이 있으나 사모자본은 진입할 수 있습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Energy and raw-material (steel, gypsum, polymer) price volatility gives leverage.</span><span class="ko">에너지·원재료(철강·석고·폴리머) 가격 변동성이 교섭력을 줍니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Large distributors and contractors negotiate hard, but specs and brands give pricing power.</span><span class="ko">대형 유통·시공사가 강하게 협상하나 사양·브랜드가 가격 결정력을 줍니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Material switching (timber vs steel vs concrete) exists, but codes favor high-performance products.</span><span class="ko">목재·철강·콘크리트 간 전환이 있으나 규정이 고성능 제품에 유리합니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: fragmentation and commoditized heavy materials cap returns, but brand, high-spec mix and decarbonization-driven demand protect the leaders.</span><span class="ko">종합하면 분절화와 범용 중량물이 수익을 제한하나, 브랜드·고사양 믹스·탈탄소 수요가 선두 기업을 보호합니다.</span></p>
+  </section>
+  <section id="reg">
+    <p class="kicker"><span class="en">Macro forces &amp; the latest RULES</span><span class="ko">거시 환경과 최신 규칙</span></p>
+    <h2><span class="en">The rulebook: policy &amp; regulation</span><span class="ko">규칙: 정책과 규제</span></h2>
+    <p class="mute"><span class="en">Energy codes, embodied-carbon rules and tariffs now decide which products win and how much imported inputs cost.</span><span class="ko">에너지 코드, 내재탄소 규정, 관세가 이제 어떤 제품이 이기고 수입 원자재 비용이 얼마인지를 결정합니다.</span></p>
+    <p class="hint"><span class="en">This section = laws, bills and rules only (dated). Market events are in &#8220;Recent issues&#8221; below.</span><span class="ko">이 섹션은 법·법안·규칙만(시행일 표기)입니다. 시장 이벤트는 아래 &#8216;최근 이슈&#8217;에 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">May 2024</span><span class="ac-title"><span class="en">EU EPBD recast in force</span><span class="ko">EU 건물에너지성능지침(EPBD) 개정 발효</span></span></div><div class="ac-body"><p class="why"><span class="en">Directive (EU) 2024/1275; embodied-carbon disclosure for large new buildings from 2028. Why it matters: drives demand for low-carbon, high-efficiency products.</span><span class="ko">지침 (EU) 2024/1275로 2028년부터 대형 신축의 내재탄소 공시가 시작됩니다. 의미: 저탄소·고효율 제품 수요를 촉진합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jan 2026</span><span class="ac-title"><span class="en">EU CBAM definitive regime starts</span><span class="ko">EU 탄소국경조정제도(CBAM) 본격 시행</span></span></div><div class="ac-body"><p class="why"><span class="en">Carbon pricing on imported cement, steel and aluminum begins. Why it matters: raises the cost of carbon-intensive imported building inputs.</span><span class="ko">수입 시멘트·철강·알루미늄에 탄소 가격이 부과됩니다. 의미: 탄소집약 수입 건자재 원가를 높입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">US tariffs on building materials</span><span class="ko">미국 건축자재 관세</span></span></div><div class="ac-body"><p class="why"><span class="en">25% on gypsum wallboard, 50% on steel/aluminum, 10% on softwood lumber. Why it matters: lifts material costs and dampens housing starts.</span><span class="ko">석고보드 25%, 철강·알루미늄 50%, 침엽수 목재 10%입니다. 의미: 자재비를 올리고 주택 착공을 위축시킵니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2024-25</span><span class="ac-title"><span class="en">US energy codes tightened (IECC)</span><span class="ko">미국 에너지 코드 강화(IECC)</span></span></div><div class="ac-body"><p class="why"><span class="en">State adoptions tighten insulation and building-envelope requirements. Why it matters: shifts demand toward high-spec, high-performance products.</span><span class="ko">주 단위 채택이 단열·외피 요건을 강화합니다. 의미: 고사양·고성능 제품으로 수요를 이동시킵니다.</span></p></div></div></div>
+  </section>
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Scale &amp; low-cost manufacturing</span><span class="ko">규모·저원가 제조</span></b><p><span class="en">Energy-efficient plants that absorb input volatility.</span><span class="ko">원가 변동을 흡수하는 에너지 효율 공장입니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">Distribution access</span><span class="ko">유통 접근성</span></b><p><span class="en">Strong builders'-merchant and retail networks.</span><span class="ko">견고한 건자재 도매·유통 네트워크입니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">Brand &amp; high-spec mix</span><span class="ko">브랜드·고사양 믹스</span></b><p><span class="en">Premium, specified products that defend margin.</span><span class="ko">마진을 지키는 프리미엄·지정 사양 제품입니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">Decarbonization leadership</span><span class="ko">탈탄소 리더십</span></b><p><span class="en">Low-embodied-carbon products win on new codes.</span><span class="ko">저내재탄소 제품이 새 규정에서 이깁니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">Renovation &amp; infra exposure</span><span class="ko">리모델링·인프라 노출</span></b><p><span class="en">R&amp;R and infrastructure cushion new-build cycles.</span><span class="ko">리모델링·인프라가 신축 사이클을 완충합니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Pricing discipline</span><span class="ko">가격 규율</span></b><p><span class="en">Passing through energy and tariff cost inflation.</span><span class="ko">에너지·관세발 원가 상승을 전가합니다.</span></p></div></div></div>
+  </section>
+  <section id="news">
+    <p class="kicker"><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></p>
+    <h2><span class="en">The newsflow: market &amp; competitive events</span><span class="ko">뉴스: 시장·경쟁 이벤트</span></h2>
+    <p class="hint"><span class="en">This section = business/market events (earnings, deals, demand, prices) — not policy. Tap for why it matters.</span><span class="ko">이 섹션은 실적·거래·수요·가격 등 시장 이벤트입니다(정책 아님). 눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jun 2025</span><span class="ac-title"><span class="en">Amrize spun off from Holcim</span><span class="ko">홀심에서 암라이즈 분사</span></span></div><div class="ac-body"><p class="why"><span class="en">Holcim listed its North America building-solutions arm (Amrize) on 23 Jun 2025. Why it matters: creates a large pure-play and reshapes the competitive map.</span><span class="ko">홀심이 북미 건축솔루션 부문(암라이즈)을 2025년 6월 23일 상장했습니다. 의미: 대형 순수기업을 만들고 경쟁 지형을 바꿉니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Feb 2025</span><span class="ac-title"><span class="en">Saint-Gobain FY2024 results</span><span class="ko">생고뱅 2024 회계연도 실적</span></span></div><div class="ac-body"><p class="why"><span class="en">Sales €46.5B, net income €2.84B; H2 returned to growth via M&amp;A despite soft volumes. Why it matters: confirms the pivot to higher-margin solutions.</span><span class="ko">매출 465억 유로, 순이익 28억 4천만 유로로, 물량 부진에도 M&amp;A로 하반기 성장세 전환입니다. 의미: 고마진 솔루션 전환을 확인합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Aug 2025</span><span class="ac-title"><span class="en">US construction material costs spike</span><span class="ko">미국 건설자재 비용 급등</span></span></div><div class="ac-body"><p class="why"><span class="en">AGC flagged 'extreme' steel/aluminum/lumber hikes, adding ~$11k–22k per new home. Why it matters: tariff-driven inflation pressures volumes.</span><span class="ko">AGC가 철강·알루미늄·목재의 '극단적' 인상을 지적해 신축 1채당 약 1.1만~2.2만 달러가 더 듭니다. 의미: 관세발 인플레가 물량을 압박합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Tariffs seen cutting ~450k US homes</span><span class="ko">관세, 미국 주택 약 45만 채 감소 전망</span></span></div><div class="ac-body"><p class="why"><span class="en">CAP projected ~450,000 fewer homes through 2030 on cost inflation. Why it matters: softens medium-term building-product demand.</span><span class="ko">CAP는 원가 상승으로 2030년까지 약 45만 채가 줄 것으로 전망했습니다. 의미: 중기 건자재 수요를 약화시킵니다.</span></p></div></div></div>
+  </section>
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, each with its OWN strategy</span><span class="ko">두 리더, 각자 다른 전략</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader is diagnosed on its own terms: a MECE issue tree → strategy thrusts chosen for THAT company → action plans. The NUMBER of thrusts varies by situation.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 그 회사에 맞게 진단합니다: MECE 이슈트리 → 그 기업에 맞춰 고른 전략 축 → 액션 플랜. 전략 축의 개수는 상황에 따라 다릅니다.</span></p>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>Saint-Gobain</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The world's largest building-products company by revenue, pivoting to light and sustainable construction.</span><span class="ko">매출 기준 세계 최대 건축자재 기업으로, 경량·지속가능 건축으로 전환합니다.</span></p><div class="stats"><div class="stat"><div class="n">€46.5B</div><div class="l"><span class="en">FY24 revenue</span><span class="ko">FY24 매출</span></div></div><div class="stat"><div class="n">€2.84B</div><div class="l"><span class="en">FY24 net income</span><span class="ko">FY24 순이익</span></div></div><div class="stat"><div class="n">~11.4%</div><div class="l"><span class="en">Operating margin</span><span class="ko">영업이익률</span></div></div><div class="stat"><div class="n">~$40B</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — dominant, but cyclical volumes are weak</span><span class="ko">진단 — 지배적이나 경기 물량이 약합니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Organic volumes are weak amid a soft European construction cycle.</span><span class="ko">유럽 건설 경기 부진으로 유기적 물량이 약합니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">High rates depress residential construction; commoditized exposure compounds the cycle.</span><span class="ko">고금리가 주거 건설을 억누르고 범용 노출이 사이클을 가중합니다.</span></p><div class="formula">Value = volume × price × mix + M&amp;A − energy/input costs</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">Where does durable, higher-margin growth come from?</span><span class="ko">지속가능한 고마진 성장은 어디서 오는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">From light-and-sustainable solutions, bolt-on M&A in growth geographies, and decarbonization (the tracks below).</span><span class="ko">경량·지속가능 솔루션, 성장 지역 볼트온 M&amp;A, 탈탄소에서 옵니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why does the #1 see weak volumes?</span><span class="ko">1위 기업의 물량이 약한 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">Cyclical demand (external)</span><span class="ko">경기 수요(외생)</span></b><div class="leaf"><span class="en">High rates and weak European residential construction.</span><span class="ko">고금리와 약한 유럽 주거 건설입니다.</span></div></div><div class="branch"><b><span class="en">Commoditized mix (structural)</span><span class="ko">범용 믹스(구조적)</span></b><div class="leaf"><span class="en">Heavy-material exposure amplifies the cycle.</span><span class="ko">중량물 노출이 사이클을 증폭합니다.</span></div></div><div class="branch"><b><span class="en">Solutions &amp; decarbonization (lever)</span><span class="ko">솔루션·탈탄소(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Shift to light, sustainable, code-driven products.</span><span class="ko">경량·지속가능·규정 대응 제품으로 전환합니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Solutions</span><span class="ko">Track 1 · 솔루션</span></div><div class="tn"><span class="en">Light &amp; sustainable construction</span><span class="ko">경량·지속가능 건축</span></div><p><span class="en">Grow the higher-margin solutions mix that codes reward.</span><span class="ko">규정이 보상하는 고마진 솔루션 믹스를 키웁니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · M&amp;A</span><span class="ko">Track 2 · M&amp;A</span></div><div class="tn"><span class="en">Bolt-on in growth geos</span><span class="ko">성장 지역 볼트온</span></div><p><span class="en">Acquire in North America and India to offset European weakness.</span><span class="ko">북미·인도에서 인수해 유럽 부진을 상쇄합니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Decarbonization</span><span class="ko">Track 3 · 탈탄소</span></div><div class="tn"><span class="en">Win on low-carbon demand</span><span class="ko">저탄소 수요 선점</span></div><p><span class="en">Lead on EPBD/CBAM-driven low-embodied-carbon products.</span><span class="ko">EPBD·CBAM발 저내재탄소 제품을 선도합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Portfolio</span><span class="ko">포트폴리오</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Heavy materials</span><span class="ko">중량물</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Light &amp; sustainable</span><span class="ko">경량·지속가능</span></div></div></div><div class="ap"><div class="apt"><span class="en">Geography</span><span class="ko">지역</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Europe-heavy</span><span class="ko">유럽 편중</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">N. America / India</span><span class="ko">북미·인도</span></div></div></div><div class="ap"><div class="apt"><span class="en">Carbon</span><span class="ko">탄소</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Carbon-intensive</span><span class="ko">탄소집약</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Low-embodied-carbon</span><span class="ko">저내재탄소</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>KCC</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">Korea's broadest building-products player, leaning on high-value silicone and advanced materials.</span><span class="ko">한국에서 가장 넓은 건축자재 사업자로, 고부가 실리콘·첨단소재에 무게를 둡니다.</span></p><div class="stats"><div class="stat"><div class="n">~₩6.6T</div><div class="l"><span class="en">FY revenue</span><span class="ko">연 매출</span></div></div><div class="stat"><div class="n">₩103.4B</div><div class="l"><span class="en">Q1'25 op profit</span><span class="ko">2025 1분기 영업이익</span></div></div><div class="stat"><div class="n">#2</div><div class="l"><span class="en">Global silicone rank</span><span class="ko">글로벌 실리콘 순위</span></div></div><div class="stat"><div class="n">~$3.05B</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — diversified, but domestic construction is weak</span><span class="ko">진단 — 다각화됐으나 국내 건설이 약합니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Weak domestic construction demand and margin pressure in glass and board.</span><span class="ko">약한 국내 건설 수요와 유리·보드의 마진 압박입니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">Korea's property slump, commoditized materials and heavy debt from the Momentive (silicone) deal.</span><span class="ko">한국의 부동산 침체, 범용 자재, 모멘티브(실리콘) 인수에 따른 과중한 부채입니다.</span></p><div class="formula">Profit = building materials (cyclical) + silicone/advanced (growth) − interest cost</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">How to grow value beyond a weak domestic construction cycle?</span><span class="ko">약한 국내 건설 사이클을 넘어 어떻게 가치를 키우는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">Lean into high-value silicone, defend the paint premium, and deleverage (the tracks below).</span><span class="ko">고부가 실리콘에 집중하고 도료 프리미엄을 지키며 부채를 줄입니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why does a diversified leader see pressured returns?</span><span class="ko">다각화된 선두의 수익이 압박받는 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">Property slump (external)</span><span class="ko">부동산 침체(외생)</span></b><div class="leaf"><span class="en">Korea's construction downturn pressures volumes.</span><span class="ko">한국 건설 경기 하강이 물량을 압박합니다.</span></div></div><div class="branch"><b><span class="en">Leverage (structural)</span><span class="ko">레버리지(구조적)</span></b><div class="leaf"><span class="en">Momentive-deal debt weighs on returns.</span><span class="ko">모멘티브 인수 부채가 수익을 누릅니다.</span></div></div><div class="branch"><b><span class="en">Silicone &amp; advanced (lever)</span><span class="ko">실리콘·첨단소재(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Scale high-value silicone and advanced materials.</span><span class="ko">고부가 실리콘·첨단소재를 키웁니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Silicone</span><span class="ko">Track 1 · 실리콘</span></div><div class="tn"><span class="en">Scale high-value silicone</span><span class="ko">고부가 실리콘 확대</span></div><p><span class="en">Grow the #2 global silicone franchise for higher margin.</span><span class="ko">세계 2위 글로벌 실리콘 사업을 키워 마진을 높입니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Paint premium</span><span class="ko">Track 2 · 도료 프리미엄</span></div><div class="tn"><span class="en">Defend paint &amp; interior share</span><span class="ko">도료·인테리어 점유 방어</span></div><p><span class="en">Hold premium architectural paint vs LX Hausys.</span><span class="ko">LX하우시스 대비 프리미엄 건축용 도료를 지킵니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Deleverage</span><span class="ko">Track 3 · 디레버리지</span></div><div class="tn"><span class="en">Cut debt &amp; costs</span><span class="ko">부채·비용 절감</span></div><p><span class="en">Reduce Momentive-related debt and tighten costs.</span><span class="ko">모멘티브 관련 부채를 줄이고 비용을 조입니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Mix</span><span class="ko">믹스</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Building materials</span><span class="ko">건축자재</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">High-value silicone</span><span class="ko">고부가 실리콘</span></div></div></div><div class="ap"><div class="apt"><span class="en">Balance sheet</span><span class="ko">재무구조</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">High leverage</span><span class="ko">높은 레버리지</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Deleveraged</span><span class="ko">부채 축소</span></div></div></div><div class="ap"><div class="apt"><span class="en">Domestic</span><span class="ko">국내</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Cyclical paint/glass</span><span class="ko">경기 도료·유리</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Premium-defended</span><span class="ko">프리미엄 방어</span></div></div></div></div></div></div>
+  </section>
+  <section id="kpi">
+    <p class="kicker"><span class="en">KPIs to watch</span><span class="ko">주목할 지표</span></p>
+    <h2><span class="en">The dials that move this industry</span><span class="ko">이 산업을 움직이는 계기판</span></h2>
+    <p class="hint"><span class="en">Leading indicators with the latest reading — track these to see the thesis play out.</span><span class="ko">최신 수치가 담긴 선행지표입니다. 이 흐름을 추적하면 전망을 검증할 수 있습니다.</span></p>
+    <div class="kpis reveal"><div class="kpi"><div class="kt"><span class="en">Saint-Gobain operating margin</span><span class="ko">생고뱅 영업이익률</span></div><div class="kv"><span class="en">~11.4% (2024)</span><span class="ko">약 11.4%(2024)</span></div><div class="kw"><span class="en">Profitability of the mix shift.</span><span class="ko">믹스 전환의 수익성입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">US construction material costs</span><span class="ko">미국 건설자재 비용</span></div><div class="kv"><span class="en">'extreme' hikes (Aug 2025)</span><span class="ko">'극단적' 인상(2025년 8월)</span></div><div class="kw"><span class="en">Tariff-driven cost pressure.</span><span class="ko">관세발 원가 압박입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">US housing deficit</span><span class="ko">미국 주택 부족</span></div><div class="kv"><span class="en">~3.7–4.9M units</span><span class="ko">약 370만~490만 채</span></div><div class="kw"><span class="en">Structural demand backstop.</span><span class="ko">구조적 수요 버팀목입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">KCC Q1'25 operating profit</span><span class="ko">KCC 2025 1분기 영업이익</span></div><div class="kv"><span class="en">₩103.4B (−3.2%)</span><span class="ko">1,034억 원(−3.2%)</span></div><div class="kw"><span class="en">Korea leader's earnings trend.</span><span class="ko">한국 선두의 이익 추세입니다.</span></div></div></div>
+  </section>
+  <section id="scenarios">
+    <p class="kicker"><span class="en">Scenarios — bull · base · bear</span><span class="ko">시나리오 — 낙관·기본·비관</span></p>
+    <h2><span class="en">Three ways the next few years could break</span><span class="ko">향후 몇 년이 갈릴 세 갈래</span></h2>
+    <div class="scen reveal"><div class="sc bull"><div class="sh"><span class="en">Bull · upside</span><span class="ko">낙관</span></div><div class="sd"><span class="en">Rate cuts + R&amp;R rebound</span><span class="ko">금리 인하 + 리모델링 반등</span></div><p><span class="en">Volumes recover and high-spec mix re-rates margins higher.</span><span class="ko">물량이 회복되고 고사양 믹스가 마진을 재평가합니다.</span></p></div><div class="sc base"><div class="sh"><span class="en">Base · central</span><span class="ko">기본</span></div><div class="sd"><span class="en">Modest ~4% growth; tariffs persist</span><span class="ko">완만한 약 4% 성장, 관세 지속</span></div><p><span class="en">Low-single-digit growth; cost pass-through holds margins.</span><span class="ko">낮은 한 자릿수 성장. 원가 전가가 마진을 유지합니다.</span></p></div><div class="sc bear"><div class="sh"><span class="en">Bear · downside</span><span class="ko">비관</span></div><div class="sd"><span class="en">Tariffs + high rates persist</span><span class="ko">관세 + 고금리 지속</span></div><p><span class="en">Housing starts fall further; volumes and margins compress.</span><span class="ko">주택 착공이 더 감소하고 물량·마진이 압축됩니다.</span></p></div></div>
+  </section>
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight"><li><span class="en">Tariffs and high rates raise costs and dampen new-build demand.</span><span class="ko">관세와 고금리가 비용을 올리고 신축 수요를 위축시킵니다.</span></li><li><span class="en">The market stays fragmented; scale and distribution decide cost position.</span><span class="ko">시장은 분절된 채로, 규모와 유통이 원가 지위를 결정합니다.</span></li><li><span class="en">Value migrates toward low-carbon, high-spec products as codes tighten.</span><span class="ko">규정 강화로 가치가 저탄소·고사양 제품으로 옮겨갑니다.</span></li><li><span class="en">Saint-Gobain rides solutions and M&amp;A; KCC rides silicone and deleveraging.</span><span class="ko">생고뱅은 솔루션·M&amp;A에, KCC는 실리콘·부채 축소에 달려 있습니다.</span></li></ul>
+    </div>
+  </section>
+</div>
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;"><li><a href="https://www.fortunebusinessinsights.com/construction-materials-market-107415">Fortune Business Insights — construction materials</a></li><li><a href="https://www.saint-gobain.com/en/news/full-year-2024-results">Saint-Gobain — FY2024 results</a></li><li><a href="https://www.sec.gov/Archives/edgar/data/0002035989/000114036125006351/ny20033749x8_ex99-1.htm">SEC — Amrize spin-off</a></li><li><a href="https://energy.ec.europa.eu/topics/energy-efficiency/energy-performance-buildings/energy-performance-buildings-directive_en">EU — EPBD</a></li><li><a href="https://www.nahb.org/advocacy/top-priorities/building-materials-trade-policy/how-tariffs-impact-home-building">NAHB — tariffs &amp;amp; home building</a></li><li><a href="https://www.agc.org/news/2025/09/10/construction-material-costs-continue-accelerate-august-amid-extreme-price-hikes-steel-aluminum-and">AGC — construction material costs</a></li><li><a href="https://companiesmarketcap.com/kcc/revenue/">CompaniesMarketCap — KCC</a></li></ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Building Products (GICS 201020) · Generated June 8, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 건축자재(GICS 201020) · 2026년 6월 8일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+
+</body>
+</html>

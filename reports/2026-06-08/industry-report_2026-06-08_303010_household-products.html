@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Household Products · 생활용품 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+
+<style>
+  .cagr-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+  .cagr-badge{display:inline-flex;align-items:baseline;gap:5px;background:#eaf2fb;color:var(--blue);
+    border:1px solid #cfe2f5;border-radius:999px;padding:6px 13px;font-weight:800;font-size:13px;}
+  .cagr-badge .n{font-size:16px;}
+  .cagr-badge.alt{background:#fff6e6;color:#b07400;border-color:#ffe2a6;}
+  /* SCQA diagnosis (Situation · Complication · Question · Answer) */
+  .scqa{margin:12px 0 2px;}
+  .scqa-row{display:flex;gap:12px;position:relative;padding-bottom:14px;}
+  .scqa-row:last-child{padding-bottom:0;}
+  .scqa-row::before{content:"";position:absolute;left:14px;top:30px;bottom:-2px;width:2px;background:var(--line);}
+  .scqa-row:last-child::before{display:none;}
+  .scqa-k{flex:none;width:30px;height:30px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 2px 6px rgba(14,42,71,.18);}
+  .scqa-row.s .scqa-k{background:#5b6b8c;}
+  .scqa-row.c .scqa-k{background:var(--hi);}
+  .scqa-row.q .scqa-k{background:var(--blue);}
+  .scqa-row.a .scqa-k{background:var(--lo);}
+  .scqa-bd{flex:1;padding-top:1px;}
+  .scqa-lab{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;}
+  .scqa-row.a .scqa-lab{color:var(--lo);}
+  .scqa-bd p{margin:0;font-size:13.3px;color:var(--ink);line-height:1.55;}
+  .scqa-row.q .scqa-bd p{font-style:italic;color:#16406a;}
+  .scqa-row.a .scqa-bd p{font-weight:600;}
+  .scqa .formula{margin-top:8px;}
+  .scqa-cap{font-size:11.5px;color:var(--mute);font-style:italic;margin:10px 0 0;}
+  /* MECE issue tree (rendered together with SCQA) */
+  .tree{margin:9px 0 2px;}
+  .tree .root{background:linear-gradient(120deg,#16406a,#0e2a47);color:#fff;border-radius:11px;
+    padding:11px 14px;font-size:13.4px;font-weight:700;border-left:4px solid var(--gold);}
+  .tree .branches{display:grid;gap:9px;margin-top:10px;}
+  .tree .branch{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;padding:10px 13px;background:#f7fafd;}
+  .tree .branch>b{font-size:13.1px;display:block;margin-bottom:5px;color:var(--ink);}
+  .tree .leaf{font-size:12.6px;color:var(--mute);padding-left:15px;position:relative;margin:4px 0;line-height:1.5;}
+  .tree .leaf::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .tree .leaf.lever{color:var(--ink);font-weight:600;}
+  .tree .leaf.lever::before{background:var(--gold);width:8px;height:8px;left:1px;top:7px;}
+  .tree .lever-tag{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#b07400;background:#fff6e6;border-radius:5px;padding:1px 5px;margin-right:5px;}
+  .tree-cap{display:none;}
+  @media(min-width:680px){.tree .branches{grid-template-columns:1fr 1fr 1fr;}}
+  /* value chain — connected flow diagram */
+  .vchain{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:6px 0 4px;}
+  .vc-step{position:relative;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:11px;padding:11px 13px 11px 40px;flex:1;}
+  .vc-step .vc-n{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;
+    background:var(--blue);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .vc-step:last-of-type{border-left-color:var(--gold);}
+  .vc-step:last-of-type .vc-n{background:var(--gold);color:var(--navy);}
+  .vc-step b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc-step .d{font-size:12.3px;color:var(--mute);}
+  .vc-arrow{align-self:center;color:var(--gold);font-weight:900;font-size:16px;line-height:1;
+    transform:rotate(90deg);padding:5px 0;}
+  @media(min-width:720px){
+    .vchain{flex-direction:row;align-items:stretch;flex-wrap:nowrap;}
+    .vc-step{padding:11px 11px 11px 12px;min-width:0;}
+    .vc-step .vc-n{position:static;margin-bottom:6px;}
+    .vc-arrow{transform:none;padding:0 3px;display:flex;align-items:center;}
+  }
+  /* variable 1-3 strategy tracks */
+  .track.t3{background:#10355a;border:1px solid rgba(255,184,28,.45);}
+  .track-grid.n1{grid-template-columns:1fr;}
+  @media(min-width:680px){
+    .track-grid.n2{grid-template-columns:1fr 1fr;}
+    .track-grid.n3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  /* profit pool */
+  .pool{display:flex;flex-direction:column;gap:8px;margin:6px 0 2px;}
+  .pool-row{display:flex;align-items:center;gap:10px;}
+  .pool-row .pn{flex:1.1;font-size:12.6px;color:var(--ink);min-width:0;}
+  .pool-row .ptrack{flex:1.5;height:9px;border-radius:5px;background:#eef2f7;overflow:hidden;}
+  .pool-row .pfill{height:100%;border-radius:5px;}
+  .pool-row .pfill.hi{width:92%;background:var(--gold);}
+  .pool-row .pfill.med{width:55%;background:var(--blue);}
+  .pool-row .pfill.lo{width:22%;background:#c9d4e3;}
+  .pool-row .pv{flex:none;width:58px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .pool-row .pv.hi{color:#b07400;}.pool-row .pv.med{color:var(--blue);}.pool-row .pv.lo{color:var(--mute);}
+  /* KPI watchlist */
+  .kpis{display:grid;grid-template-columns:1fr;gap:11px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);padding:13px 15px;border-left:4px solid var(--blue);}
+  .kpi .kt{font-size:12.5px;font-weight:800;color:var(--ink);}
+  .kpi .kv{font-size:clamp(17px,4.6vw,21px);font-weight:800;color:var(--blue);margin:3px 0 4px;line-height:1.1;}
+  .kpi .kw{font-size:12.3px;color:var(--mute);}
+  /* scenarios */
+  .scen{display:grid;grid-template-columns:1fr;gap:11px;}
+  .sc{border-radius:13px;padding:14px 16px;color:#fff;box-shadow:var(--shadow);}
+  .sc.bull{background:linear-gradient(125deg,#1f9d6b,#14633f);}
+  .sc.base{background:linear-gradient(125deg,#16406a,#0e2a47);}
+  .sc.bear{background:linear-gradient(125deg,#b1402f,#7d2418);}
+  .sc .sh{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .sc .sd{font-size:13.6px;font-weight:800;margin:4px 0 6px;}
+  .sc p{margin:0;font-size:12.8px;color:#eef4fb;}
+  /* positioning 2x2 */
+  .posmap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;}
+  .posmap svg{width:100%;height:auto;display:block;overflow:visible;}
+  .pos-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 2px;font-size:12px;color:var(--ink);}
+  .pos-legend .pl-i{display:flex;align-items:center;gap:6px;}
+  .pos-legend .pl-d{width:11px;height:11px;border-radius:50%;}
+  @media(min-width:680px){.kpis{grid-template-columns:1fr 1fr;}.scen{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Household Products</span><span class="ko">생활용품</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="positioning"><span class="en">Positioning</span><span class="ko">포지셔닝</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button><button class="chip" data-go="scenarios"><span class="en">Scenarios</span><span class="ko">시나리오</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 4 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 4번째</span></p>
+    <h1><span class="en">Household Products</span><span class="ko">생활용품</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · <span class="en">Consumer Staples</span><span class="ko">필수소비재</span> · 303010</span>
+      <span class="pill">2026-06-08</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: Procter &amp;amp; Gamble · LG H&amp;amp;H</span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">Household products (GICS 303010) covers makers of non-durable home goods — detergents, cleaning and surface care, dishwashing and home care. The global home-care market is roughly US$203B in 2025, growing about 5% a year. It is a mature, brand-driven oligopoly: the top five (P&amp;G, Unilever, Reckitt, Henkel, Colgate) hold only ~25–30% combined, with a long private-label and regional tail. The defining force of 2026 is a volume-versus-price reset: after the inflation cycle, players are investing price (cutting) to defend volume against intensifying private label, while tariffs and input costs squeeze margins (P&amp;G flagged a ~US$600M FY26 tariff headwind and ~7,000 job cuts). Regulation is tightening on chemistry and packaging — the EU Detergents Regulation, REACH microplastics limits, US packaging EPR and Korea's K-REACH/K-BPR. The global #1, P&amp;G, is restructuring and premiumizing; Korea's #1, LG H&amp;H, leans on its resilient home-care (HDB) cash flow while turning around a China-hit beauty business. Both are detailed at the end.</span><span class="ko">생활용품(GICS 303010)은 세제, 청소·표면 관리, 식기세척, 홈케어 등 비내구 가정용품 제조업을 아우릅니다. 글로벌 홈케어 시장은 2025년 약 2,030억 달러로 연 약 5% 성장합니다. 성숙한 브랜드 중심 과점 시장으로, 상위 5개사(P&amp;G·유니레버·레킷·헨켈·콜게이트)가 합쳐 약 25~30%에 그치고 PB와 지역 사업자의 긴 꼬리가 있습니다. 2026년을 규정하는 힘은 물량 대 가격의 재조정입니다. 인플레 사이클 이후 기업들은 강해지는 PB에 맞서 물량을 지키려 가격을 투자(인하)하고, 관세·원가가 마진을 압박합니다(P&amp;G는 FY26 약 6억 달러 관세 부담과 약 7,000명 감원을 알렸습니다). 규제는 화학·포장에서 강화됩니다. EU 세제 규정, REACH 미세플라스틱 제한, 미국 포장 EPR, 한국 K-REACH·K-BPR입니다. 글로벌 1위 P&amp;G는 구조조정과 프리미엄화를 진행하고, 한국 1위 LG생활건강은 중국 타격을 받은 뷰티를 회복시키면서 견조한 홈케어(HDB) 현금흐름에 기댑니다. 두 기업은 뒤에서 자세히 다룹니다.</span></p>
+    </div>
+  </section>
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From commodity chemistry to branded shelf presence</span><span class="ko">범용 화학에서 브랜드 매대 존재감까지</span></h2>
+      <p class="lead"><span class="en">The industry turns chemistry into branded staples sold through mass retail. Value ≈ volume × price × mix + brand premium − input &amp; tariff costs; R&amp;D and branding capture the high end.</span><span class="ko">이 산업은 화학을 브랜드 필수재로 바꿔 대형 유통으로 판매합니다. 가치 ≈ 물량 × 가격 × 믹스 + 브랜드 프리미엄 − 원가·관세이며, R&amp;D와 브랜딩이 고부가 영역을 가져갑니다.</span></p>
+      <div class="vchain"><div class="vc-step"><span class="vc-n">1</span><b><span class="en">Raw materials / chemicals</span><span class="ko">원재료·화학</span></b><span class="d"><span class="en">Surfactants, enzymes, fragrances, pulp, packaging.</span><span class="ko">계면활성제·효소·향료·펄프·포장입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">2</span><b><span class="en">R&amp;D / formulation</span><span class="ko">R&amp;D·배합</span></b><span class="d"><span class="en">Efficacy, concentration and sustainability; IP moat.</span><span class="ko">효능·농축·지속가능성으로 지식재산 해자입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">3</span><b><span class="en">Manufacturing</span><span class="ko">제조</span></b><span class="d"><span class="en">High-volume, automated regional plants.</span><span class="ko">대량·자동화 지역 공장입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">4</span><b><span class="en">Branding / marketing</span><span class="ko">브랜딩·마케팅</span></b><span class="d"><span class="en">Brand equity, advertising and premiumization.</span><span class="ko">브랜드 자산·광고·프리미엄화입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">5</span><b><span class="en">Distribution / retail</span><span class="ko">유통·소매</span></b><span class="d"><span class="en">Mass retail, e-commerce, club and refill.</span><span class="ko">대형 유통·전자상거래·창고형·리필입니다.</span></span></div></div>
+      <div class="subh" style="margin-top:16px"><span class="en">Profit pool — where margin concentrates</span><span class="ko">수익풀 — 마진이 집중되는 곳</span></div>
+      <div class="pool"><div class="pool-row"><span class="pn"><span class="en">Raw materials / chemicals</span><span class="ko">원재료·화학</span></span><span class="ptrack"><span class="pfill lo"></span></span><span class="pv lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><div class="pool-row"><span class="pn"><span class="en">R&amp;D / formulation</span><span class="ko">R&amp;D·배합</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Manufacturing</span><span class="ko">제조</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div><div class="pool-row"><span class="pn"><span class="en">Branding / marketing</span><span class="ko">브랜딩·마케팅</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Distribution / retail</span><span class="ko">유통·소매</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div></div>
+      <p class="cap"><span class="en">Margin concentrates in R&amp;D/formulation and branding/marketing (the source of pricing power); raw materials are the thinnest. Manufacturing and distribution sit in the middle, with retailer power compressing the last stage.</span><span class="ko">마진은 R&amp;D·배합과 브랜딩·마케팅(가격 결정력의 원천)에 집중되고, 원재료가 가장 박합니다. 제조·유통은 중간이며, 유통업체 교섭력이 마지막 단계를 압축합니다.</span></p>
+    </div>
+  </section>
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A mature market growing in the mid-single digits</span><span class="ko">낮은 한 자릿수 중반으로 성장하는 성숙 시장</span></h2>
+      <div class="cagr-wrap"><span class="cagr-badge"><span class="en">CAGR</span><span class="ko">연평균 성장</span><span class="n">≈5%</span></span><span class="mute" style="font-size:12.5px"><span class="en">global home care (indicative)</span><span class="ko">글로벌 홈케어(추정)</span></span></div>
+      <div class="colchart"><div class="col"><div class="col-val">$193B</div><div class="col-bar" data-h="44"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">$203B</div><div class="col-bar" data-h="57"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">$213B</div><div class="col-bar" data-h="71"></div><div class="col-lab">2026E</div></div><div class="col"><div class="col-val">$224B</div><div class="col-bar" data-h="85"></div><div class="col-lab">2027E</div></div><div class="col"><div class="col-val">$235B</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div></div>
+      <p class="cap"><span class="en">Global home-care market, US$, indicative (Mordor / GM Insights, 2024–25; ~5% CAGR). 2026–28 extrapolated. Bars use a zoomed baseline. Definitions vary 2–3x ('home care' vs 'household cleaning' vs broad 'household products').</span><span class="ko">글로벌 홈케어 시장, 단위 달러, 추정치입니다(Mordor / GM Insights, 2024~25년, 연평균 약 5% 성장). 2026~28년은 외삽치입니다. 막대는 확대 기준선을 씁니다. 정의별로 2~3배 차이가 납니다('홈케어' 대 '가정용 세정' 대 광의의 '생활용품').</span></p>
+    </div>
+  </section>
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">P&amp;G leads globally; LG H&amp;H leads Korea</span><span class="ko">글로벌은 P&amp;G, 한국은 LG생활건강 선두</span></h2>
+      <div class="pies">
+        <div class="pieblock"><div class="pie-title"><span class="en">Global home care by share — indicative</span><span class="ko">글로벌 홈케어 점유율 — 추정</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0% 13%,#117aca 13% 20%,#ffb81c 20% 25%,#5aa9e6 25% 29%,#c9d4e3 29% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>P&amp;amp;G<b>~13%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Unilever<b>~7%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Reckitt<b>~5%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Henkel<b>~4%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span>Others<b>~71%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea household products — indicative (2024)</span><span class="ko">한국 생활용품 — 추정(2024)</span></div><div class="pie" style="background:conic-gradient(#0047a0 0% 37%,#117aca 37% 50%,#ffb81c 50% 58%,#5aa9e6 58% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>LG H&amp;amp;H<b>~37%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Amorepacific<b>~13%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Aekyung<b>~8%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Others<b>~42%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">Global shares are indicative; precise per-company home-care shares are not published freely and the market is fragmented with a large private-label tail. Korea shares are indicative 2024 trade estimates; LG H&amp;H is the clear leader in daily household goods.</span><span class="ko">글로벌 점유율은 추정치이며, 기업별 정확한 홈케어 점유율은 공개되지 않고 PB 꼬리가 큰 분절 시장입니다. 한국 점유율은 2024년 업계 추정치로, LG생활건강이 생활용품에서 명확한 선두입니다.</span></p>
+    </div>
+  </section>
+  <section id="positioning">
+    <p class="kicker"><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></p>
+    <h2><span class="en">Where the leaders sit — a 2×2 map</span><span class="ko">리더들의 위치 — 2×2 맵</span></h2>
+    <div class="posmap reveal"><svg viewBox="0 0 340 290" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="60" y="18" width="262" height="214" fill="#f7fafd" stroke="#e6ebf4" stroke-width="1.5" rx="8"/><line x1="60" y1="125" x2="322" y2="125" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><line x1="191" y1="18" x2="191" y2="232" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><circle cx="262" cy="65" r="7" fill="var(--navy)"/><text x="262" y="56" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">P&amp;amp;G</text><circle cx="150" cy="150" r="7" fill="var(--krred)"/><text x="150" y="141" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">LG H&amp;amp;H</text><circle cx="235" cy="100" r="5.5" fill="#9fb1c9"/><text x="235" y="91" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Unilever</text><circle cx="205" cy="130" r="5.5" fill="#9fb1c9"/><text x="205" y="121" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Henkel</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="en">Scale / revenue &#8594;</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="ko">규모·매출 &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="en">Brand / premium mix &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="ko">브랜드·프리미엄 믹스 &#8594;</text></svg><div class="pos-legend"><span class="pl-i"><span class="pl-d" style="background:var(--navy)"></span><span class="en">Global #1</span><span class="ko">글로벌 1위</span></span><span class="pl-i"><span class="pl-d" style="background:var(--krred)"></span><span class="en">Korea #1</span><span class="ko">한국 1위</span></span><span class="pl-i"><span class="pl-d" style="background:#9fb1c9"></span><span class="en">Peers</span><span class="ko">경쟁사</span></span></div><p class="cap"><span class="en">P&amp;G pairs the largest scale with the strongest brand/premium mix; LG H&amp;H is regional but premium-skewed across home care and beauty. Unilever is large and diversified; Henkel is mid-scale with a strong adhesives/home-care split.</span><span class="ko">P&amp;G는 최대 규모와 가장 강한 브랜드·프리미엄 믹스를 함께 갖췄고, LG생활건강은 지역 사업자이나 홈케어·뷰티 전반에서 프리미엄에 치우쳐 있습니다. 유니레버는 크고 다각화돼 있으며, 헨켈은 중간 규모로 접착제·홈케어 구성이 강합니다.</span></p></div>
+  </section>
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Mature, low-growth categories drive intense promotion and innovation.</span><span class="ko">성숙·저성장 카테고리가 강한 판촉·혁신 경쟁을 부릅니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Brand equity, scale and shelf access are barriers, but DTC/refill startups niche-disrupt.</span><span class="ko">브랜드·규모·매대 접근이 장벽이나 DTC·리필 스타트업이 틈새를 흔듭니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Commodity chemicals and pulp are price-volatile, but scale buyers have leverage.</span><span class="ko">범용 화학·펄프가 가격 변동적이나 대형 구매자가 교섭력을 가집니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Concentrated mass retailers and growing private label squeeze pricing.</span><span class="ko">집중된 대형 유통과 성장하는 PB가 가격을 압박합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Private label, refills and DIY/natural alternatives erode brand premiums.</span><span class="ko">PB·리필·DIY·천연 대안이 브랜드 프리미엄을 잠식합니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: brand equity and R&amp;D protect pricing, but retailer concentration and private label cap returns; the volume-versus-price balance is the swing factor.</span><span class="ko">종합하면 브랜드 자산과 R&amp;D가 가격을 보호하나, 유통 집중과 PB가 수익을 제한합니다. 물량 대 가격의 균형이 변수입니다.</span></p>
+  </section>
+  <section id="reg">
+    <p class="kicker"><span class="en">Macro forces &amp; the latest RULES</span><span class="ko">거시 환경과 최신 규칙</span></p>
+    <h2><span class="en">The rulebook: policy &amp; regulation</span><span class="ko">규칙: 정책과 규제</span></h2>
+    <p class="mute"><span class="en">Chemistry, microplastics and packaging rules now reshape formulation, labelling and packaging costs across the industry.</span><span class="ko">화학·미세플라스틱·포장 규정이 이제 업계 전반의 배합·표기·포장 비용을 바꿉니다.</span></p>
+    <p class="hint"><span class="en">This section = laws, bills and rules only (dated). Market events are in &#8220;Recent issues&#8221; below.</span><span class="ko">이 섹션은 법·법안·규칙만(시행일 표기)입니다. 시장 이벤트는 아래 &#8216;최근 이슈&#8217;에 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Dec 2025</span><span class="ac-title"><span class="en">EU Detergents &amp; Surfactants Regulation</span><span class="ko">EU 세제·계면활성제 규정</span></span></div><div class="ac-body"><p class="why"><span class="en">Council approved 8 Dec 2025; digital labelling, refill rules and an animal-testing ban apply from 2029. Why it matters: reshapes EU formulation and packaging compliance.</span><span class="ko">2025년 12월 8일 이사회 승인으로 디지털 표기·리필 규정·동물실험 금지가 2029년부터 적용됩니다. 의미: EU 배합·포장 준법을 재편합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Oct 2025</span><span class="ac-title"><span class="en">EU REACH microplastics restriction</span><span class="ko">EU REACH 미세플라스틱 제한</span></span></div><div class="ac-body"><p class="why"><span class="en">First deadline 17 Oct 2025; detergents must comply by 2028. Why it matters: forces removal of intentionally added microplastics.</span><span class="ko">첫 시한이 2025년 10월 17일이고 세제는 2028년까지 준수해야 합니다. 의미: 의도적으로 첨가한 미세플라스틱 제거를 강제합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jun 2026</span><span class="ac-title"><span class="en">US packaging EPR (California SB 54)</span><span class="ko">미국 포장 EPR(캘리포니아 SB 54)</span></span></div><div class="ac-body"><p class="why"><span class="en">First producer reporting due 1 Jun 2026; seven US states now have EPR laws. Why it matters: shifts packaging end-of-life cost to producers.</span><span class="ko">첫 생산자 보고 기한이 2026년 6월 1일이고 미국 7개 주가 EPR 법을 둡니다. 의미: 포장 폐기 비용을 생산자에게 이전합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Korea K-REACH / K-BPR updates</span><span class="ko">한국 K-REACH·K-BPR 개정</span></span></div><div class="ac-body"><p class="why"><span class="en">K-REACH new-substance changes effective 7 Aug 2025; K-BPR amendment from 1 Jan 2025. Why it matters: governs registration and safety approval of household chemical products.</span><span class="ko">K-REACH 신규물질 변경이 2025년 8월 7일 시행되고 K-BPR 개정이 2025년 1월 1일부터 적용됩니다. 의미: 생활화학제품의 등록·안전 승인을 규율합니다.</span></p></div></div></div>
+  </section>
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Brand equity</span><span class="ko">브랜드 자산</span></b><p><span class="en">Marketing scale and pricing power vs private label.</span><span class="ko">PB 대비 마케팅 규모와 가격 결정력입니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">R&amp;D / reformulation</span><span class="ko">R&amp;D·재배합</span></b><p><span class="en">Efficacy plus sustainability and regulatory compliance.</span><span class="ko">효능과 지속가능성·규제 준수입니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">Cost &amp; scale efficiency</span><span class="ko">원가·규모 효율</span></b><p><span class="en">Supply-chain resilience and input/tariff hedging.</span><span class="ko">공급망 회복력과 원가·관세 헤지입니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">Distribution breadth</span><span class="ko">유통 폭</span></b><p><span class="en">Mass-retail and e-commerce shelf access.</span><span class="ko">대형 유통·전자상거래 매대 접근성입니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">Premiumization &amp; innovation</span><span class="ko">프리미엄화·혁신</span></b><p><span class="en">Driving mix and volume above the category.</span><span class="ko">카테고리를 웃도는 믹스·물량 견인입니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Sustainability credentials</span><span class="ko">지속가능성 자격</span></b><p><span class="en">Packaging, microplastics and refill compliance.</span><span class="ko">포장·미세플라스틱·리필 준수입니다.</span></p></div></div></div>
+  </section>
+  <section id="news">
+    <p class="kicker"><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></p>
+    <h2><span class="en">The newsflow: market &amp; competitive events</span><span class="ko">뉴스: 시장·경쟁 이벤트</span></h2>
+    <p class="hint"><span class="en">This section = business/market events (earnings, deals, demand, prices) — not policy. Tap for why it matters.</span><span class="ko">이 섹션은 실적·거래·수요·가격 등 시장 이벤트입니다(정책 아님). 눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Nov 2025</span><span class="ac-title"><span class="en">Kimberly-Clark to acquire Kenvue</span><span class="ko">킴벌리클라크, 켄뷰 인수 추진</span></span></div><div class="ac-body"><p class="why"><span class="en">~$40B equity (~$48.7B total); shareholder-approved Jan 2026; largest US consumer-staples buyout. Why it matters: creates a ~$32B health-and-wellness giant and reshapes scale.</span><span class="ko">주식가치 약 400억 달러(총 약 487억 달러), 2026년 1월 주주 승인으로 미국 최대 필수소비재 인수입니다. 의미: 약 320억 달러 헬스·웰니스 거대 기업을 만들고 규모를 재편합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jun 2025</span><span class="ac-title"><span class="en">P&amp;G restructuring</span><span class="ko">P&amp;G 구조조정</span></span></div><div class="ac-body"><p class="why"><span class="en">Announced ~7,000 job cuts (~15% of non-production) and brand divestitures; $1–1.6B charges. Why it matters: signals maturity and margin pressure at the global #1.</span><span class="ko">약 7,000명 감원(비생산 인력의 약 15%)과 브랜드 매각, 10억~16억 달러 비용을 발표했습니다. 의미: 글로벌 1위의 성숙·마진 압박을 시사합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Kimberly-Clark exits US private-label diapers</span><span class="ko">킴벌리클라크, 미국 PB 기저귀 철수</span></span></div><div class="ac-body"><p class="why"><span class="en">Exited the US private-label diaper business; sales turned volume-led with price investment. Why it matters: shows the pivot from pricing to volume amid trade-down.</span><span class="ko">미국 PB 기저귀 사업에서 철수하고 가격 투자로 물량 주도 매출로 전환했습니다. 의미: 소비 하향 속 가격에서 물량으로의 전환을 보여줍니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Volume-vs-price reset across staples</span><span class="ko">필수소비재 전반의 물량 대 가격 재조정</span></span></div><div class="ac-body"><p class="why"><span class="en">Post-inflation, players sacrifice price to defend share against private label. Why it matters: defines the margin/growth tension of the cycle.</span><span class="ko">인플레 이후 기업들이 PB에 맞서 점유율을 지키려 가격을 양보합니다. 의미: 사이클의 마진·성장 긴장을 규정합니다.</span></p></div></div></div>
+  </section>
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, each with its OWN strategy</span><span class="ko">두 리더, 각자 다른 전략</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader is diagnosed on its own terms: a MECE issue tree → strategy thrusts chosen for THAT company → action plans. The NUMBER of thrusts varies by situation.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 그 회사에 맞게 진단합니다: MECE 이슈트리 → 그 기업에 맞춰 고른 전략 축 → 액션 플랜. 전략 축의 개수는 상황에 따라 다릅니다.</span></p>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>Procter &amp;amp; Gamble</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The world's largest household-products company, restructuring and premiumizing in mature categories.</span><span class="ko">세계 최대 생활용품 기업으로, 성숙 카테고리에서 구조조정과 프리미엄화를 진행합니다.</span></p><div class="stats"><div class="stat"><div class="n">$84.3B</div><div class="l"><span class="en">FY25 revenue</span><span class="ko">FY25 매출</span></div></div><div class="stat"><div class="n">~$15.7B</div><div class="l"><span class="en">FY25 net income</span><span class="ko">FY25 순이익</span></div></div><div class="stat"><div class="n">~$340B</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div><div class="stat"><div class="n">~$600M</div><div class="l"><span class="en">FY26 tariff headwind</span><span class="ko">FY26 관세 부담</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — dominant, but organic growth has stalled</span><span class="ko">진단 — 지배적이나 유기적 성장이 정체됐습니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Organic growth has stalled in mature, low-growth categories.</span><span class="ko">성숙·저성장 카테고리에서 유기적 성장이 정체됐습니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">Developed-market concentration, tariffs (~$600M FY26) and private-label trade-down compress margins.</span><span class="ko">선진 시장 집중, 관세(FY26 약 6억 달러), PB로의 소비 하향이 마진을 압박합니다.</span></p><div class="formula">Growth = volume × price × mix + premiumization − tariff/input costs</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">How to restore growth without sacrificing margin?</span><span class="ko">마진을 희생하지 않고 성장을 어떻게 회복하는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">By restructuring/simplifying, premiumizing the mix, and expanding emerging markets (the tracks below).</span><span class="ko">구조조정·단순화, 믹스 프리미엄화, 신흥시장 확대로 합니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why does the #1 see stalled growth?</span><span class="ko">1위의 성장이 정체된 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">Mature markets (structural)</span><span class="ko">성숙 시장(구조적)</span></b><div class="leaf"><span class="en">Saturated developed-market categories.</span><span class="ko">포화된 선진 시장 카테고리입니다.</span></div></div><div class="branch"><b><span class="en">Cost / tariffs (external)</span><span class="ko">원가·관세(외생)</span></b><div class="leaf"><span class="en">Input inflation and ~$600M tariffs.</span><span class="ko">원가 상승과 약 6억 달러 관세입니다.</span></div></div><div class="branch"><b><span class="en">Premiumization (lever)</span><span class="ko">프리미엄화(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Innovate and premiumize to defend mix.</span><span class="ko">혁신·프리미엄화로 믹스를 지킵니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Restructure</span><span class="ko">Track 1 · 구조조정</span></div><div class="tn"><span class="en">Simplify the portfolio</span><span class="ko">포트폴리오 단순화</span></div><p><span class="en">Cut ~7,000 roles and divest non-core brands.</span><span class="ko">약 7,000명 감원과 비핵심 브랜드 매각입니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Premiumize</span><span class="ko">Track 2 · 프리미엄화</span></div><div class="tn"><span class="en">Defend mix &amp; pricing</span><span class="ko">믹스·가격 방어</span></div><p><span class="en">Innovate to hold pricing vs private label.</span><span class="ko">혁신으로 PB 대비 가격을 지킵니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Emerging markets</span><span class="ko">Track 3 · 신흥시장</span></div><div class="tn"><span class="en">Expand higher growth</span><span class="ko">고성장 확대</span></div><p><span class="en">Grow in emerging markets and resilient supply.</span><span class="ko">신흥시장과 회복력 있는 공급으로 성장합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Portfolio</span><span class="ko">포트폴리오</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Broad</span><span class="ko">광범위</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Simplified</span><span class="ko">단순화</span></div></div></div><div class="ap"><div class="apt"><span class="en">Pricing</span><span class="ko">가격</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Inflation-led</span><span class="ko">인플레 주도</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Premium mix</span><span class="ko">프리미엄 믹스</span></div></div></div><div class="ap"><div class="apt"><span class="en">Geography</span><span class="ko">지역</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Developed-heavy</span><span class="ko">선진 편중</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Emerging-added</span><span class="ko">신흥 확대</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>LG H&amp;amp;H</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">Korea's #1 daily-household-goods maker; a conglomerate of home care (HDB), beauty and refreshment.</span><span class="ko">한국 1위 생활용품 기업으로, 홈케어(HDB)·뷰티·음료를 아우르는 복합기업입니다.</span></p><div class="stats"><div class="stat"><div class="n">₩6.36T</div><div class="l"><span class="en">FY25 revenue (−6.7%)</span><span class="ko">FY25 매출(−6.7%)</span></div></div><div class="stat"><div class="n">₩170.7B</div><div class="l"><span class="en">FY25 op profit (−62.8%)</span><span class="ko">FY25 영업이익(−62.8%)</span></div></div><div class="stat"><div class="n">₩2.23T</div><div class="l"><span class="en">FY25 HDB revenue</span><span class="ko">FY25 HDB 매출</span></div></div><div class="stat"><div class="n">+3.1%</div><div class="l"><span class="en">HDB op profit YoY</span><span class="ko">HDB 영업이익 증가율</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — household is resilient, beauty drags</span><span class="ko">진단 — 생활용품은 견조하나 뷰티가 부담입니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Group profit collapsed in 2025, driven by a loss-making beauty segment.</span><span class="ko">2025년 그룹 이익이 급감했고, 적자 전환한 뷰티가 원인입니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">Over-reliance on China/duty-free beauty plus one-time channel and retirement costs.</span><span class="ko">중국·면세 뷰티 의존과 일회성 채널·희망퇴직 비용입니다.</span></p><div class="formula">Group profit = HDB (stable) + Refreshment (stable) + Beauty (volatile) − one-off costs</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">How to stabilize profit while fixing beauty?</span><span class="ko">뷰티를 고치면서 이익을 어떻게 안정시키는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">By leaning on stable HDB cash flow, diversifying beauty away from China, and restructuring channels (the tracks below).</span><span class="ko">견조한 HDB 현금흐름에 기대고, 뷰티를 중국 밖으로 다각화하며, 채널을 재정비합니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why did a resilient leader's profit collapse?</span><span class="ko">견조한 선두의 이익이 급감한 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">China reliance (external)</span><span class="ko">중국 의존(외생)</span></b><div class="leaf"><span class="en">Duty-free/China beauty weakness hits profit.</span><span class="ko">면세·중국 뷰티 부진이 이익을 타격합니다.</span></div></div><div class="branch"><b><span class="en">One-off costs (structural)</span><span class="ko">일회성 비용(구조적)</span></b><div class="leaf"><span class="en">Channel overhaul and retirements weigh on 2025.</span><span class="ko">채널 개편·희망퇴직이 2025년을 누릅니다.</span></div></div><div class="branch"><b><span class="en">HDB cash flow (lever)</span><span class="ko">HDB 현금흐름(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Lean on resilient home-care earnings.</span><span class="ko">견조한 홈케어 이익에 기댑니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · HDB anchor</span><span class="ko">Track 1 · HDB 중심</span></div><div class="tn"><span class="en">Lean on home care</span><span class="ko">홈케어 의존</span></div><p><span class="en">Use stable HDB/Refreshment cash flow.</span><span class="ko">안정적 HDB·음료 현금흐름을 활용합니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Beauty pivot</span><span class="ko">Track 2 · 뷰티 전환</span></div><div class="tn"><span class="en">Diversify beyond China</span><span class="ko">중국 밖 다각화</span></div><p><span class="en">Grow US/Japan and premium daily-beauty.</span><span class="ko">미국·일본과 프리미엄 데일리뷰티를 키웁니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Restructure</span><span class="ko">Track 3 · 구조조정</span></div><div class="tn"><span class="en">Reset channels &amp; costs</span><span class="ko">채널·비용 재정비</span></div><p><span class="en">Complete the channel overhaul booked in 2025.</span><span class="ko">2025년 반영한 채널 개편을 마무리합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Profit anchor</span><span class="ko">이익 중심</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Beauty-led</span><span class="ko">뷰티 주도</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">HDB-anchored</span><span class="ko">HDB 중심</span></div></div></div><div class="ap"><div class="apt"><span class="en">Beauty</span><span class="ko">뷰티</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">China-reliant</span><span class="ko">중국 의존</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Diversified</span><span class="ko">다각화</span></div></div></div><div class="ap"><div class="apt"><span class="en">Cost base</span><span class="ko">비용 구조</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">One-off heavy</span><span class="ko">일회성 과다</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Reset</span><span class="ko">재정비</span></div></div></div></div></div></div>
+  </section>
+  <section id="kpi">
+    <p class="kicker"><span class="en">KPIs to watch</span><span class="ko">주목할 지표</span></p>
+    <h2><span class="en">The dials that move this industry</span><span class="ko">이 산업을 움직이는 계기판</span></h2>
+    <p class="hint"><span class="en">Leading indicators with the latest reading — track these to see the thesis play out.</span><span class="ko">최신 수치가 담긴 선행지표입니다. 이 흐름을 추적하면 전망을 검증할 수 있습니다.</span></p>
+    <div class="kpis reveal"><div class="kpi"><div class="kt"><span class="en">P&amp;G organic sales growth</span><span class="ko">P&amp;G 유기적 매출 성장</span></div><div class="kv"><span class="en">low-single-digit (FY25)</span><span class="ko">낮은 한 자릿수(FY25)</span></div><div class="kw"><span class="en">Demand health vs pricing.</span><span class="ko">가격 대비 수요 건전성입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Volume vs price mix</span><span class="ko">물량 대 가격 믹스</span></div><div class="kv"><span class="en">+2.4% vol / −0.9% price (K-C, 9M'25)</span><span class="ko">물량 +2.4%·가격 −0.9%(K-C, 9M'25)</span></div><div class="kw"><span class="en">Trade-down / private-label signal.</span><span class="ko">소비 하향·PB 신호입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">P&amp;G tariff headwind</span><span class="ko">P&amp;G 관세 부담</span></div><div class="kv"><span class="en">~$600M (FY26)</span><span class="ko">약 6억 달러(FY26)</span></div><div class="kw"><span class="en">Margin pressure gauge.</span><span class="ko">마진 압박의 척도입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">LG H&amp;H operating margin</span><span class="ko">LG생활건강 영업이익률</span></div><div class="kv"><span class="en">~2.7% (2025)</span><span class="ko">약 2.7%(2025)</span></div><div class="kw"><span class="en">Korea leader's turnaround tracker.</span><span class="ko">한국 선두의 회복 추적입니다.</span></div></div></div>
+  </section>
+  <section id="scenarios">
+    <p class="kicker"><span class="en">Scenarios — bull · base · bear</span><span class="ko">시나리오 — 낙관·기본·비관</span></p>
+    <h2><span class="en">Three ways the next few years could break</span><span class="ko">향후 몇 년이 갈릴 세 갈래</span></h2>
+    <div class="scen reveal"><div class="sc bull"><div class="sh"><span class="en">Bull · upside</span><span class="ko">낙관</span></div><div class="sd"><span class="en">Volume recovers + input costs ease</span><span class="ko">물량 회복 + 원가 완화</span></div><p><span class="en">Premiumization re-rates margins as trade-down fades.</span><span class="ko">소비 하향이 잦아들며 프리미엄화가 마진을 재평가합니다.</span></p></div><div class="sc base"><div class="sh"><span class="en">Base · central</span><span class="ko">기본</span></div><div class="sd"><span class="en">~5% growth; volume traded for price</span><span class="ko">약 5% 성장, 가격 대신 물량</span></div><p><span class="en">Steady growth; margins held by mix and cost discipline.</span><span class="ko">꾸준한 성장. 믹스·원가 규율로 마진을 유지합니다.</span></p></div><div class="sc bear"><div class="sh"><span class="en">Bear · downside</span><span class="ko">비관</span></div><div class="sd"><span class="en">Private label + tariffs persist</span><span class="ko">PB + 관세 지속</span></div><p><span class="en">Price investment and input inflation compress margins.</span><span class="ko">가격 투자와 원가 상승이 마진을 압축합니다.</span></p></div></div>
+  </section>
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight"><li><span class="en">Categories are mature; private label and retailer power cap pricing.</span><span class="ko">카테고리가 성숙해 PB와 유통 교섭력이 가격을 제한합니다.</span></li><li><span class="en">Tariffs and input inflation pressure margins through 2026.</span><span class="ko">관세와 원가 상승이 2026년 내내 마진을 압박합니다.</span></li><li><span class="en">Chemistry and packaging rules raise reformulation and compliance costs.</span><span class="ko">화학·포장 규정이 재배합·준법 비용을 높입니다.</span></li><li><span class="en">P&amp;G rides restructuring and premiumization; LG H&amp;H rides HDB cash flow and a beauty turnaround.</span><span class="ko">P&amp;G는 구조조정·프리미엄화에, LG생활건강은 HDB 현금흐름·뷰티 회복에 달려 있습니다.</span></li></ul>
+    </div>
+  </section>
+</div>
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;"><li><a href="https://www.mordorintelligence.com/industry-reports/home-care-market">Mordor — home care market</a></li><li><a href="https://www.sec.gov/Archives/edgar/data/0000080424/000008042425000067/fy2425q4amj8-kexhibit991.htm">P&amp;amp;G — FY2025 results (SEC 8-K)</a></li><li><a href="https://www.cnbc.com/2025/06/05/procter-gamble-job-cuts-restructuring.html">CNBC — P&amp;amp;G restructuring</a></li><li><a href="https://www.cnbc.com/2025/11/03/kimberly-clark-to-buy-kenvue.html">CNBC — Kimberly-Clark / Kenvue</a></li><li><a href="https://www.lghnh.com/ir/statements.jsp">LG H&amp;amp;H — IR financials</a></li><li><a href="https://www.consilium.europa.eu/en/press/press-releases/2025/12/08/consumer-and-environmental-protection-council-approves-the-detergents-and-surfactants-regulation/">EU Council — Detergents Regulation</a></li><li><a href="https://calrecycle.ca.gov/packaging/packaging-epr/">CalRecycle — SB 54 packaging EPR</a></li></ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Household Products (GICS 303010) · Generated June 8, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 생활용품(GICS 303010) · 2026년 6월 8일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+
+</body>
+</html>
