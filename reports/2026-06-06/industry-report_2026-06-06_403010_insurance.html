@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insurance · 보험 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+
+<style>
+  .cagr-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+  .cagr-badge{display:inline-flex;align-items:baseline;gap:5px;background:#eaf2fb;color:var(--blue);
+    border:1px solid #cfe2f5;border-radius:999px;padding:6px 13px;font-weight:800;font-size:13px;}
+  .cagr-badge .n{font-size:16px;}
+  .cagr-badge.alt{background:#fff6e6;color:#b07400;border-color:#ffe2a6;}
+  /* SCQA diagnosis (Situation · Complication · Question · Answer) */
+  .scqa{margin:12px 0 2px;}
+  .scqa-row{display:flex;gap:12px;position:relative;padding-bottom:14px;}
+  .scqa-row:last-child{padding-bottom:0;}
+  .scqa-row::before{content:"";position:absolute;left:14px;top:30px;bottom:-2px;width:2px;background:var(--line);}
+  .scqa-row:last-child::before{display:none;}
+  .scqa-k{flex:none;width:30px;height:30px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 2px 6px rgba(14,42,71,.18);}
+  .scqa-row.s .scqa-k{background:#5b6b8c;}
+  .scqa-row.c .scqa-k{background:var(--hi);}
+  .scqa-row.q .scqa-k{background:var(--blue);}
+  .scqa-row.a .scqa-k{background:var(--lo);}
+  .scqa-bd{flex:1;padding-top:1px;}
+  .scqa-lab{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;}
+  .scqa-row.a .scqa-lab{color:var(--lo);}
+  .scqa-bd p{margin:0;font-size:13.3px;color:var(--ink);line-height:1.55;}
+  .scqa-row.q .scqa-bd p{font-style:italic;color:#16406a;}
+  .scqa-row.a .scqa-bd p{font-weight:600;}
+  .scqa .formula{margin-top:8px;}
+  .scqa-cap{font-size:11.5px;color:var(--mute);font-style:italic;margin:10px 0 0;}
+  /* MECE issue tree (rendered together with SCQA) */
+  .tree{margin:9px 0 2px;}
+  .tree .root{background:linear-gradient(120deg,#16406a,#0e2a47);color:#fff;border-radius:11px;
+    padding:11px 14px;font-size:13.4px;font-weight:700;border-left:4px solid var(--gold);}
+  .tree .branches{display:grid;gap:9px;margin-top:10px;}
+  .tree .branch{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;padding:10px 13px;background:#f7fafd;}
+  .tree .branch>b{font-size:13.1px;display:block;margin-bottom:5px;color:var(--ink);}
+  .tree .leaf{font-size:12.6px;color:var(--mute);padding-left:15px;position:relative;margin:4px 0;line-height:1.5;}
+  .tree .leaf::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .tree .leaf.lever{color:var(--ink);font-weight:600;}
+  .tree .leaf.lever::before{background:var(--gold);width:8px;height:8px;left:1px;top:7px;}
+  .tree .lever-tag{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#b07400;background:#fff6e6;border-radius:5px;padding:1px 5px;margin-right:5px;}
+  .tree-cap{display:none;}
+  @media(min-width:680px){.tree .branches{grid-template-columns:1fr 1fr 1fr;}}
+  /* value chain — connected flow diagram */
+  .vchain{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:6px 0 4px;}
+  .vc-step{position:relative;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:11px;padding:11px 13px 11px 40px;flex:1;}
+  .vc-step .vc-n{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;
+    background:var(--blue);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .vc-step:last-of-type{border-left-color:var(--gold);}
+  .vc-step:last-of-type .vc-n{background:var(--gold);color:var(--navy);}
+  .vc-step b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc-step .d{font-size:12.3px;color:var(--mute);}
+  .vc-arrow{align-self:center;color:var(--gold);font-weight:900;font-size:16px;line-height:1;
+    transform:rotate(90deg);padding:5px 0;}
+  @media(min-width:720px){
+    .vchain{flex-direction:row;align-items:stretch;flex-wrap:nowrap;}
+    .vc-step{padding:11px 11px 11px 12px;min-width:0;}
+    .vc-step .vc-n{position:static;margin-bottom:6px;}
+    .vc-arrow{transform:none;padding:0 3px;display:flex;align-items:center;}
+  }
+  /* variable 1-3 strategy tracks */
+  .track.t3{background:#10355a;border:1px solid rgba(255,184,28,.45);}
+  .track-grid.n1{grid-template-columns:1fr;}
+  @media(min-width:680px){
+    .track-grid.n2{grid-template-columns:1fr 1fr;}
+    .track-grid.n3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  /* profit pool */
+  .pool{display:flex;flex-direction:column;gap:8px;margin:6px 0 2px;}
+  .pool-row{display:flex;align-items:center;gap:10px;}
+  .pool-row .pn{flex:1.1;font-size:12.6px;color:var(--ink);min-width:0;}
+  .pool-row .ptrack{flex:1.5;height:9px;border-radius:5px;background:#eef2f7;overflow:hidden;}
+  .pool-row .pfill{height:100%;border-radius:5px;}
+  .pool-row .pfill.hi{width:92%;background:var(--gold);}
+  .pool-row .pfill.med{width:55%;background:var(--blue);}
+  .pool-row .pfill.lo{width:22%;background:#c9d4e3;}
+  .pool-row .pv{flex:none;width:58px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .pool-row .pv.hi{color:#b07400;}.pool-row .pv.med{color:var(--blue);}.pool-row .pv.lo{color:var(--mute);}
+  /* KPI watchlist */
+  .kpis{display:grid;grid-template-columns:1fr;gap:11px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);padding:13px 15px;border-left:4px solid var(--blue);}
+  .kpi .kt{font-size:12.5px;font-weight:800;color:var(--ink);}
+  .kpi .kv{font-size:clamp(17px,4.6vw,21px);font-weight:800;color:var(--blue);margin:3px 0 4px;line-height:1.1;}
+  .kpi .kw{font-size:12.3px;color:var(--mute);}
+  /* scenarios */
+  .scen{display:grid;grid-template-columns:1fr;gap:11px;}
+  .sc{border-radius:13px;padding:14px 16px;color:#fff;box-shadow:var(--shadow);}
+  .sc.bull{background:linear-gradient(125deg,#1f9d6b,#14633f);}
+  .sc.base{background:linear-gradient(125deg,#16406a,#0e2a47);}
+  .sc.bear{background:linear-gradient(125deg,#b1402f,#7d2418);}
+  .sc .sh{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .sc .sd{font-size:13.6px;font-weight:800;margin:4px 0 6px;}
+  .sc p{margin:0;font-size:12.8px;color:#eef4fb;}
+  /* positioning 2x2 */
+  .posmap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;}
+  .posmap svg{width:100%;height:auto;display:block;overflow:visible;}
+  .pos-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 2px;font-size:12px;color:var(--ink);}
+  .pos-legend .pl-i{display:flex;align-items:center;gap:6px;}
+  .pos-legend .pl-d{width:11px;height:11px;border-radius:50%;}
+  @media(min-width:680px){.kpis{grid-template-columns:1fr 1fr;}.scen{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Insurance</span><span class="ko">보험</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="positioning"><span class="en">Positioning</span><span class="ko">포지셔닝</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button><button class="chip" data-go="scenarios"><span class="en">Scenarios</span><span class="ko">시나리오</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 5 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 5번째</span></p>
+    <h1><span class="en">Insurance</span><span class="ko">보험</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Financials · 403010</span>
+      <span class="pill">2026-06-06</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: Allianz · Samsung Life</span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">Insurance (GICS 403010) pools and prices risk: policyholders pay premiums for contingent payouts across life, property &amp; casualty, multiline and reinsurance. The global market is roughly US$7.5T of premiums in 2025, growing about 2.3% in real terms, and SIPRI-style cat data shows insured losses near US$107B in 2025 after a record US$141B in 2024. The defining force of 2026 is the higher-for-longer rate environment lifting investment ('float') income, even as climate-driven catastrophe frequency rises and reinsurance softens. New capital rules are reshaping the field: IFRS 17 and the global Insurance Capital Standard are binding for large groups, and Korea's K-ICS core-capital rule (effective 2027) is expected to drive consolidation. The largest pure-play global insurer by revenue, Allianz, posted a record FY2025 operating profit; Korea's largest insurer, Samsung Life, is managing a huge Samsung Electronics stake. Both are detailed at the end.</span><span class="ko">보험(GICS 403010)은 위험을 모으고 가격을 매깁니다. 보험계약자가 보험료를 내고 생명·손해·종합·재보험 전반의 조건부 지급을 받습니다. 글로벌 시장은 2025년 약 7.5조 달러 보험료로 실질 약 2.3% 성장하며, 재해 데이터는 2024년 사상 최대 1,410억 달러 후 2025년 보험손실이 약 1,070억 달러임을 보여줍니다. 2026년을 규정하는 힘은 운용('플로트') 수익을 키우는 고금리 장기화이며, 기후발 재해 빈도는 늘고 재보험은 완화됩니다. 새 자본 규제가 판도를 바꿉니다. IFRS 17과 글로벌 보험자본기준이 대형 그룹에 적용되고, 한국 K-ICS 핵심자본 규정(2027년 시행)이 통합을 부를 전망입니다. 매출 기준 최대 순수 글로벌 보험사 알리안츠는 FY2025 사상 최대 영업이익을 기록했고, 한국 최대 보험사 삼성생명은 막대한 삼성전자 지분을 관리합니다. 두 기업은 뒤에서 자세히 다룹니다.</span></p>
+    </div>
+  </section>
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From underwriting to float to claims and reinsurance</span><span class="ko">언더라이팅에서 플로트, 그리고 보험금·재보험으로</span></h2>
+      <p class="lead"><span class="en">The industry designs, prices, invests and pays. Value ≈ underwriting margin + investment income on float − claims and reinsurance cost; float is the engine in a higher-rate era.</span><span class="ko">이 산업은 설계·가격·운용·지급을 합니다. 가치 ≈ 언더라이팅 마진 + 플로트 운용수익 − 보험금·재보험 비용이며, 고금리 시대에 플로트가 엔진입니다.</span></p>
+      <div class="vchain"><div class="vc-step"><span class="vc-n">1</span><b><span class="en">Product design / underwriting</span><span class="ko">상품 설계·언더라이팅</span></b><span class="d"><span class="en">Define coverage, select and price risks.</span><span class="ko">보장 정의·위험 선택·가격 책정입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">2</span><b><span class="en">Distribution</span><span class="ko">유통</span></b><span class="d"><span class="en">Agents, brokers, bancassurance, direct/digital.</span><span class="ko">설계사·브로커·방카·다이렉트입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">3</span><b><span class="en">Risk pooling / pricing</span><span class="ko">위험 풀링·가격</span></b><span class="d"><span class="en">Aggregate portfolios, set premium adequacy.</span><span class="ko">포트폴리오 집계·보험료 적정성 설정입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">4</span><b><span class="en">Investment of float</span><span class="ko">플로트 운용</span></b><span class="d"><span class="en">Invest premiums held before claims.</span><span class="ko">지급 전 보유 보험료를 운용합니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">5</span><b><span class="en">Claims / reinsurance</span><span class="ko">보험금·재보험</span></b><span class="d"><span class="en">Settle claims and cede tail risk.</span><span class="ko">보험금 지급과 꼬리위험 출재입니다.</span></span></div></div>
+      <div class="subh" style="margin-top:16px"><span class="en">Profit pool — where margin concentrates</span><span class="ko">수익풀 — 마진이 집중되는 곳</span></div><div class="pool"><div class="pool-row"><span class="pn"><span class="en">Product design / underwriting</span><span class="ko">상품 설계·언더라이팅</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Distribution</span><span class="ko">유통</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div><div class="pool-row"><span class="pn"><span class="en">Risk pooling / pricing</span><span class="ko">위험 풀링·가격</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div><div class="pool-row"><span class="pn"><span class="en">Investment of float</span><span class="ko">플로트 운용</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Claims / reinsurance</span><span class="ko">보험금·재보험</span></span><span class="ptrack"><span class="pfill lo"></span></span><span class="pv lo"><span class="en">Low</span><span class="ko">낮음</span></span></div></div><p class="cap"><span class="en">Margin concentrates in disciplined underwriting and investment of float; distribution is mid (brokers earn rich, asset-light margins) and claims are a cost center, though reinsurers earn well in hard markets.</span><span class="ko">마진은 규율 있는 언더라이팅과 플로트 운용에 집중됩니다. 유통은 중간(브로커는 자산경량 고마진), 보험금은 비용 센터이나 경성시장에서 재보험사는 수익이 좋습니다.</span></p>
+    </div>
+  </section>
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A large market lifted by float income</span><span class="ko">플로트 수익이 띄우는 거대 시장</span></h2>
+      <div class="cagr-wrap"><span class="cagr-badge"><span class="en">CAGR</span><span class="ko">연평균 성장</span><span class="n">≈2.3%</span></span><span class="mute" style="font-size:12.5px"><span class="en">global premiums, real growth (Swiss Re sigma)</span><span class="ko">글로벌 보험료, 실질 성장(Swiss Re sigma)</span></span></div>
+      <div class="colchart"><div class="col"><div class="col-val">$7.3T</div><div class="col-bar" data-h="46"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">$7.5T</div><div class="col-bar" data-h="58"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">$7.7T</div><div class="col-bar" data-h="72"></div><div class="col-lab">2026E</div></div><div class="col"><div class="col-val">$7.9T</div><div class="col-bar" data-h="86"></div><div class="col-lab">2027E</div></div><div class="col"><div class="col-val">$8.1T</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div></div>
+      <p class="cap"><span class="en">Global insurance premiums (life + non-life), US$, indicative (Swiss Re Institute sigma, 2025; ~2.3% real CAGR). 2028E extrapolated. Bars use a zoomed baseline. Nominal growth is ~5–6%.</span><span class="ko">글로벌 보험료(생명+손해), 단위 달러, 추정치입니다(Swiss Re Institute sigma, 2025년, 연평균 실질 약 2.3% 성장). 2028년은 외삽치입니다. 막대는 확대 기준선을 씁니다. 명목 성장은 약 5~6%입니다.</span></p>
+    </div>
+  </section>
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">Fragmented globally; Samsung Life leads Korea</span><span class="ko">글로벌은 분산, 삼성생명이 한국 선도</span></h2>
+      <div class="pies">
+        <div class="pieblock"><div class="pie-title"><span class="en">Global insurers — indicative</span><span class="ko">글로벌 보험사 — 추정</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0% 3%,#117aca 3% 5%,#ffb81c 5% 7%,#5aa9e6 7% 9%,#c9d4e3 9% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>Allianz<b>~3%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Ping An<b>~2%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>China Life<b>~2%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Berkshire (ins.)<b>~2%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span>Others<b>~91%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea life insurers — 2025</span><span class="ko">한국 생명보험사 — 2025년</span></div><div class="pie" style="background:conic-gradient(#0047a0 0% 23%,#117aca 23% 37%,#ffb81c 37% 49%,#c9d4e3 49% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>Samsung Life<b>~23%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Hanwha Life<b>~14%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Kyobo Life<b>~12%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span>Others<b>~51%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">Global insurance is so fragmented no insurer exceeds ~3% (indicative). Korea shares are life-insurer premium share (2025); Samsung Life leads. In non-life, the top 4 (Samsung F&amp;M, DB, Hyundai, KB) hold over 80%.</span><span class="ko">글로벌 보험은 매우 분산돼 어떤 보험사도 약 3%를 넘지 못합니다(추정). 한국 점유율은 생명보험 보험료 점유율(2025)로 삼성생명이 선두입니다. 손해보험에서는 상위 4사(삼성화재·DB·현대·KB)가 80% 이상을 차지합니다.</span></p>
+    </div>
+  </section>
+  <section id="positioning">
+    <p class="kicker"><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></p>
+    <h2><span class="en">Where the leaders sit — a 2×2 map</span><span class="ko">리더들의 위치 — 2×2 맵</span></h2>
+    <div class="posmap reveal"><svg viewBox="0 0 340 290" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="60" y="18" width="262" height="214" fill="#f7fafd" stroke="#e6ebf4" stroke-width="1.5" rx="8"/><line x1="60" y1="125" x2="322" y2="125" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><line x1="191" y1="18" x2="191" y2="232" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><circle cx="250" cy="80" r="7" fill="var(--navy)"/><text x="250" y="71" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Allianz</text><circle cx="195" cy="120" r="7" fill="var(--krred)"/><text x="195" y="111" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Samsung Life</text><circle cx="270" cy="100" r="5.5" fill="#9fb1c9"/><text x="270" y="91" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Ping An</text><circle cx="225" cy="135" r="5.5" fill="#9fb1c9"/><text x="225" y="126" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">AXA</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="en">Scale / assets &#8594;</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="ko">규모·자산 &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="en">Diversification / profitability &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="ko">다각화·수익성 &#8594;</text></svg><div class="pos-legend"><span class="pl-i"><span class="pl-d" style="background:var(--navy)"></span><span class="en">Global #1</span><span class="ko">글로벌 1위</span></span><span class="pl-i"><span class="pl-d" style="background:var(--krred)"></span><span class="en">Korea #1</span><span class="ko">한국 1위</span></span><span class="pl-i"><span class="pl-d" style="background:#9fb1c9"></span><span class="en">Peers</span><span class="ko">경쟁사</span></span></div><p class="cap"><span class="en">Allianz pairs vast scale with diversified P&amp;C, life and asset management; Samsung Life is asset-rich but concentrated in life and a large equity stake. Ping An and AXA are large multiline peers.</span><span class="ko">알리안츠는 방대한 규모와 다각화된 손해·생명·자산운용을 함께 갖췄고, 삼성생명은 자산은 많으나 생명과 대규모 지분에 집중돼 있습니다. 핑안·AXA는 대형 종합 보험사입니다.</span></p></div>
+  </section>
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Fragmented, commoditized coverage with price competition.</span><span class="ko">분산·범용 보장에 가격 경쟁이 있습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Capital and capital rules block entry, but insurtech lowers distribution barriers.</span><span class="ko">자본·자본 규제가 진입을 막으나 인슈어테크가 유통 장벽을 낮춥니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Reinsurers and capital markets set capacity; 2025–26 softening reduces it.</span><span class="ko">재보험사·자본시장이 용량을 정하나 2025~26 완화로 줄어듭니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Brokers and large corporates exert pricing pressure.</span><span class="ko">브로커·대형 기업이 가격 압박을 가합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Self-insurance, captives and cat bonds chip at the edges only.</span><span class="ko">자가보험·캡티브·재해채권이 일부만 잠식합니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: capital and scale protect incumbents, but rising catastrophe risk and softening reinsurance reshape P&amp;C pricing; rates lift investment income.</span><span class="ko">종합하면 자본·규모가 기존 사업을 보호하나, 커지는 재해 위험과 완화되는 재보험이 손해 가격을 재편합니다. 금리가 운용수익을 높입니다.</span></p>
+  </section>
+  <section id="reg">
+    <p class="kicker"><span class="en">Macro forces &amp; the latest RULES</span><span class="ko">거시 환경과 최신 규칙</span></p>
+    <h2><span class="en">The rulebook: policy &amp; regulation</span><span class="ko">규칙: 정책과 규제</span></h2>
+    <p class="mute"><span class="en">Accounting and capital rules now decide reported profit, solvency headroom and which insurers must consolidate.</span><span class="ko">회계·자본 규제가 이제 보고 이익·지급여력 여유와 어떤 보험사가 통합해야 하는지를 결정합니다.</span></p>
+    <p class="hint"><span class="en">This section = laws, bills and rules only (dated). Market events are in &#8220;Recent issues&#8221; below.</span><span class="ko">이 섹션은 법·법안·규칙만(시행일 표기)입니다. 시장 이벤트는 아래 &#8216;최근 이슈&#8217;에 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">IFRS 17 + Insurance Capital Standard binding</span><span class="ko">IFRS 17 + 보험자본기준 적용</span></span></div><div class="ac-body"><p class="why"><span class="en">ICS now binding for internationally active groups under IAIS. Why it matters: standardizes solvency comparison and exposes duration mismatches.</span><span class="ko">IAIS 하에서 보험자본기준이 국제 활동 그룹에 적용됩니다. 의미: 지급여력 비교를 표준화하고 만기 불일치를 드러냅니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Mar 2025</span><span class="ac-title"><span class="en">Korea K-ICS recalibration</span><span class="ko">한국 K-ICS 재조정</span></span></div><div class="ac-body"><p class="why"><span class="en">FSC eased the K-ICS benchmark toward 130%. Why it matters: directly governs Korean insurers' capital headroom and bond issuance.</span><span class="ko">금융위가 K-ICS 기준을 130% 수준으로 완화했습니다. 의미: 한국 보험사의 자본 여유와 채권 발행을 직접 규율합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jan 2026</span><span class="ac-title"><span class="en">Korea core-capital rule unveiled</span><span class="ko">한국 핵심자본 규정 발표</span></span></div><div class="ac-body"><p class="why"><span class="en">Mandatory core-capital ratio above 50% from 2027 (transition to 2035). Why it matters: ~7 mid/small insurers at risk; expected to drive consolidation.</span><span class="ko">핵심자본비율 50% 이상을 2027년부터 의무화(2035년까지 전환)합니다. 의미: 중소형 7곳가량이 위험해 통합을 부를 전망입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026–27</span><span class="ac-title"><span class="en">EU Solvency II review phases in</span><span class="ko">EU 솔벤시 II 검토 단계 적용</span></span></div><div class="ac-body"><p class="why"><span class="en">Recalibrated risk margin and long-term-guarantee measures. Why it matters: frees capital for EU insurers to invest.</span><span class="ko">위험마진·장기보증 조치를 재조정합니다. 의미: EU 보험사의 투자 자본을 풀어줍니다.</span></p></div></div></div>
+  </section>
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Underwriting discipline</span><span class="ko">언더라이팅 규율</span></b><p><span class="en">Combined ratio below 100%.</span><span class="ko">합산비율 100% 미만입니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">Investment / ALM skill</span><span class="ko">운용·자산부채관리</span></b><p><span class="en">Monetizing float at scale.</span><span class="ko">대규모 플로트 운용 능력입니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">Capital strength</span><span class="ko">자본 건전성</span></b><p><span class="en">Solvency resilience (K-ICS / Solvency II).</span><span class="ko">지급여력 회복력(K-ICS·솔벤시 II)입니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">Distribution reach</span><span class="ko">유통 도달</span></b><p><span class="en">Bancassurance, GA and digital.</span><span class="ko">방카·법인대리점·디지털입니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">Data / AI</span><span class="ko">데이터·AI</span></b><p><span class="en">Pricing, fraud and claims efficiency.</span><span class="ko">가격·사기·보험금 효율입니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Cat &amp; reinsurance management</span><span class="ko">재해·재보험 관리</span></b><p><span class="en">Managing tail risk and capacity.</span><span class="ko">꼬리위험과 용량 관리입니다.</span></p></div></div></div>
+  </section>
+  <section id="news">
+    <p class="kicker"><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></p>
+    <h2><span class="en">The newsflow: market &amp; competitive events</span><span class="ko">뉴스: 시장·경쟁 이벤트</span></h2>
+    <p class="hint"><span class="en">This section = business/market events (earnings, deals, demand, prices) — not policy. Tap for why it matters.</span><span class="ko">이 섹션은 실적·거래·수요·가격 등 시장 이벤트입니다(정책 아님). 눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Insured catastrophe losses ~US$107B</span><span class="ko">보험 재해손실 약 1,070억 달러</span></span></div><div class="ac-body"><p class="why"><span class="en">Down 24% from 2024's US$141B; LA wildfires drove record claims. Why it matters: rising cat frequency pressures P&amp;C pricing and reinsurance.</span><span class="ko">2024년 1,410억 달러 대비 24% 감소했으나 LA 산불이 기록적 청구를 냈습니다. 의미: 커지는 재해 빈도가 손해 가격·재보험을 압박합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">Reinsurance market softens at renewals</span><span class="ko">재보험 시장, 갱신서 완화</span></span></div><div class="ac-body"><p class="why"><span class="en">Double-digit risk-adjusted rate cuts on property cat despite losses. Why it matters: abundant capital is reversing the hard market.</span><span class="ko">손실에도 재산재해 위험조정 요율이 두 자릿수 하락했습니다. 의미: 풍부한 자본이 경성시장을 되돌립니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">AI underwriting accelerates</span><span class="ko">AI 언더라이팅 가속</span></span></div><div class="ac-body"><p class="why"><span class="en">AI-specific insurance premiums projected ~US$4.7B by 2032. Why it matters: efficiency is becoming a competitive differentiator.</span><span class="ko">AI 전용 보험료가 2032년 약 47억 달러로 전망됩니다. 의미: 효율이 경쟁 차별화 요소가 됩니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Feb 2026</span><span class="ac-title"><span class="en">Allianz posts record FY2025 operating profit</span><span class="ko">알리안츠, FY25 사상 최대 영업이익</span></span></div><div class="ac-body"><p class="why"><span class="en">Operating profit €17.4B (+8.4%); Ping An profit +10.3%. Why it matters: higher rates are lifting investment income across leaders.</span><span class="ko">영업이익 174억 유로(+8.4%), 핑안 이익 +10.3%입니다. 의미: 고금리가 선두들의 운용수익을 높입니다.</span></p></div></div></div>
+  </section>
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, each with its OWN strategy</span><span class="ko">두 리더, 각자 다른 전략</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader is diagnosed on its own terms: a MECE issue tree → strategy thrusts chosen for THAT company → action plans. The NUMBER of thrusts varies by situation (one for a single-mandate player, up to three where the diagnosis demands it) — it is not a fixed two-track template.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 그 회사에 맞게 진단합니다: MECE 이슈트리 → 그 기업에 맞춰 고른 전략 축 → 액션 플랜. 전략 축의 '개수'는 상황에 따라 다릅니다(단일 사명 기업은 1개, 진단이 요구하면 최대 3개). 고정된 2트랙 틀이 아닙니다.</span></p>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>Allianz</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The largest pure-play global insurer by revenue, with diversified P&amp;C, life/health and asset management.</span><span class="ko">매출 기준 최대 순수 글로벌 보험사로, 손해·생명/건강·자산운용을 다각화했습니다.</span></p><div class="stats"><div class="stat"><div class="n">€186.9B</div><div class="l"><span class="en">FY25 revenue</span><span class="ko">FY25 매출</span></div></div><div class="stat"><div class="n">€17.4B</div><div class="l"><span class="en">FY25 operating profit</span><span class="ko">FY25 영업이익</span></div></div><div class="stat"><div class="n">~€155B</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div><div class="stat"><div class="n">$1.09T</div><div class="l"><span class="en">Total assets</span><span class="ko">총자산</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — record results, but forward guidance is cautious</span><span class="ko">진단 — 사상 최대 실적이나 향후 가이던스는 신중합니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Modest forward guidance disappointed investors despite a record year.</span><span class="ko">사상 최대 해에도 신중한 가이던스가 투자자를 실망시켰습니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">A mature European core, FX/rate normalization and a cautious nat-cat outlook cap growth.</span><span class="ko">성숙한 유럽 본업, 환율·금리 정상화, 신중한 재해 전망이 성장을 제한합니다.</span></p><div class="formula">Operating profit = Underwriting + investment income + asset-mgmt fees; growth capped by mature EU core</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">How to grow faster than a mature European base allows?</span><span class="ko">성숙한 유럽 기반이 허용하는 것보다 빠르게 성장하려면?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">Scale asset management, grow Asia P&amp;C, and deploy freed capital (the tracks below).</span><span class="ko">자산운용을 키우고 아시아 손해를 늘리며 풀린 자본을 배치합니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why do record results draw a cautious outlook?</span><span class="ko">사상 최대 실적에도 전망이 신중한 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">Mature core (structural)</span><span class="ko">성숙한 본업(구조적)</span></b><div class="leaf"><span class="en">European P&amp;C/life is low-growth.</span><span class="ko">유럽 손해·생명이 저성장입니다.</span></div></div><div class="branch"><b><span class="en">Rate/FX normalization (external)</span><span class="ko">금리·환율 정상화(외생)</span></b><div class="leaf"><span class="en">Tailwinds fade as rates normalize.</span><span class="ko">금리 정상화로 순풍이 약해집니다.</span></div></div><div class="branch"><b><span class="en">Asset mgmt &amp; Asia (lever)</span><span class="ko">자산운용·아시아(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Scale fees and emerging-market P&amp;C.</span><span class="ko">수수료와 신흥시장 손해를 키웁니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Asset management</span><span class="ko">Track 1 · 자산운용</span></div><div class="tn"><span class="en">Scale PIMCO/AGI fees</span><span class="ko">PIMCO·AGI 수수료 확대</span></div><p><span class="en">Grow higher-margin asset management for fee income.</span><span class="ko">고마진 자산운용을 키워 수수료 수익을 늘립니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Asia growth</span><span class="ko">Track 2 · 아시아 성장</span></div><div class="tn"><span class="en">Grow Asia/EM P&amp;C</span><span class="ko">아시아·신흥 손해 확대</span></div><p><span class="en">Expand property &amp; casualty in faster-growing markets.</span><span class="ko">더 빠르게 성장하는 시장에서 손해보험을 확대합니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Capital return</span><span class="ko">Track 3 · 자본 환원</span></div><div class="tn"><span class="en">Deploy freed capital</span><span class="ko">풀린 자본 배치</span></div><p><span class="en">Use Solvency II relief for buybacks and M&amp;A.</span><span class="ko">솔벤시 II 완화를 자사주·인수에 활용합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Earnings mix</span><span class="ko">이익 구성</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Underwriting-led</span><span class="ko">언더라이팅 중심</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Fee + underwriting</span><span class="ko">수수료+언더라이팅</span></div></div></div><div class="ap"><div class="apt"><span class="en">Geography</span><span class="ko">지역</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Europe-heavy</span><span class="ko">유럽 편중</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Asia growth</span><span class="ko">아시아 성장</span></div></div></div><div class="ap"><div class="apt"><span class="en">Capital</span><span class="ko">자본</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Retained</span><span class="ko">유보</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Returns + M&amp;A</span><span class="ko">환원+인수</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>Samsung Life</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">Korea's largest insurer by assets and market cap, managing a huge Samsung Electronics stake.</span><span class="ko">자산·시가총액 기준 한국 최대 보험사로, 막대한 삼성전자 지분을 관리합니다.</span></p><div class="stats"><div class="stat"><div class="n">~₩319T</div><div class="l"><span class="en">Total assets</span><span class="ko">총자산</span></div></div><div class="stat"><div class="n">~22.8%</div><div class="l"><span class="en">Life market share</span><span class="ko">생명 시장 점유율</span></div></div><div class="stat"><div class="n">~₩59T</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div><div class="stat"><div class="n">~₩46T</div><div class="l"><span class="en">Samsung Electronics stake</span><span class="ko">삼성전자 지분 가치</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — #1 by assets, but a huge equity stake is trapped</span><span class="ko">진단 — 자산 1위이나 막대한 지분이 묶여 있습니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">A ~₩46T Samsung Electronics stake is undistributable and draws scrutiny.</span><span class="ko">약 46조 원 삼성전자 지분이 배분 불가이고 감시를 받습니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">Legacy chaebol cross-holding plus IFRS 17 treatment and ownership-limit reforms.</span><span class="ko">전통적 그룹 순환출자에 IFRS 17 처리와 소유 한도 개혁이 더해집니다.</span></p><div class="formula">Value = Insurance earnings + investment income − trapped equity discount; the stake caps re-rating</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">How to unlock value and strengthen capital ahead of 2027 rules?</span><span class="ko">2027년 규정에 앞서 가치를 풀고 자본을 강화하려면?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">Gradually sell down the stake, shore up capital, and shift to protection products (the tracks below).</span><span class="ko">지분을 점진 매각하고 자본을 보강하며 보장성 상품으로 전환합니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why does the #1 insurer trade with a discount?</span><span class="ko">1위 보험사가 할인 거래되는 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">Cross-holding (structural)</span><span class="ko">순환출자(구조적)</span></b><div class="leaf"><span class="en">A legacy Samsung Electronics stake is locked.</span><span class="ko">전통적 삼성전자 지분이 묶여 있습니다.</span></div></div><div class="branch"><b><span class="en">Accounting/ownership rules (external)</span><span class="ko">회계·소유 규제(외생)</span></b><div class="leaf"><span class="en">IFRS 17 and ownership limits constrain it.</span><span class="ko">IFRS 17과 소유 한도가 제약합니다.</span></div></div><div class="branch"><b><span class="en">Stake sell-down (lever)</span><span class="ko">지분 매각(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Gradually monetize and return capital.</span><span class="ko">점진적으로 현금화하고 자본을 환원합니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Unlock value</span><span class="ko">Track 1 · 가치 실현</span></div><div class="tn"><span class="en">Sell down the equity stake</span><span class="ko">지분 점진 매각</span></div><p><span class="en">Continue block sales of Samsung Electronics shares.</span><span class="ko">삼성전자 지분의 블록 매각을 이어갑니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Capital</span><span class="ko">Track 2 · 자본</span></div><div class="tn"><span class="en">Strengthen K-ICS / core capital</span><span class="ko">K-ICS·핵심자본 강화</span></div><p><span class="en">Shore up core capital ahead of the 2027 rule.</span><span class="ko">2027년 규정에 앞서 핵심자본을 보강합니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Product mix</span><span class="ko">Track 3 · 상품 구성</span></div><div class="tn"><span class="en">Shift to protection / health</span><span class="ko">보장·건강으로 전환</span></div><p><span class="en">Grow protection and health products to lift new-business value.</span><span class="ko">보장·건강 상품을 키워 신계약 가치를 높입니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Equity stake</span><span class="ko">지분</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Locked</span><span class="ko">묶임</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Monetized</span><span class="ko">현금화</span></div></div></div><div class="ap"><div class="apt"><span class="en">Capital</span><span class="ko">자본</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Rule-exposed</span><span class="ko">규정 노출</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Core-capital strong</span><span class="ko">핵심자본 강화</span></div></div></div><div class="ap"><div class="apt"><span class="en">Products</span><span class="ko">상품</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Savings-heavy</span><span class="ko">저축성 편중</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Protection-led</span><span class="ko">보장성 중심</span></div></div></div></div></div></div>
+  </section>
+  <section id="kpi">
+    <p class="kicker"><span class="en">KPIs to watch</span><span class="ko">주목할 지표</span></p>
+    <h2><span class="en">The dials that move this industry</span><span class="ko">이 산업을 움직이는 계기판</span></h2>
+    <p class="hint"><span class="en">Leading indicators with the latest reading — track these to see the thesis play out.</span><span class="ko">최신 수치가 담긴 선행지표입니다. 이 흐름을 추적하면 전망을 검증할 수 있습니다.</span></p>
+    <div class="kpis reveal"><div class="kpi"><div class="kt"><span class="en">Global insured cat losses</span><span class="ko">글로벌 보험 재해손실</span></div><div class="kv"><span class="en">~$107B (2025)</span><span class="ko">약 1,070억 달러(2025)</span></div><div class="kw"><span class="en">P&amp;C pricing pressure.</span><span class="ko">손해 가격 압박입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Allianz operating profit</span><span class="ko">알리안츠 영업이익</span></div><div class="kv"><span class="en">€17.4B (+8.4%)</span><span class="ko">174억 유로(+8.4%)</span></div><div class="kw"><span class="en">Rate-driven earnings.</span><span class="ko">금리 주도 이익입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Samsung Life market share</span><span class="ko">삼성생명 시장 점유율</span></div><div class="kv"><span class="en">~22.8%</span><span class="ko">약 22.8%</span></div><div class="kw"><span class="en">Korea life leadership.</span><span class="ko">한국 생명 선도입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Global premium real CAGR</span><span class="ko">글로벌 보험료 실질 성장</span></div><div class="kv"><span class="en">~2.3%</span><span class="ko">약 2.3%</span></div><div class="kw"><span class="en">Structural growth pace.</span><span class="ko">구조적 성장 속도입니다.</span></div></div></div>
+  </section>
+  <section id="scenarios">
+    <p class="kicker"><span class="en">Scenarios — bull · base · bear</span><span class="ko">시나리오 — 낙관·기본·비관</span></p>
+    <h2><span class="en">Three ways the next few years could break</span><span class="ko">향후 몇 년이 갈릴 세 갈래</span></h2>
+    <div class="scen reveal"><div class="sc bull"><div class="sh"><span class="en">Bull · upside</span><span class="ko">낙관</span></div><div class="sd"><span class="en">Rates stay high + benign cat year</span><span class="ko">고금리 유지 + 온건한 재해</span></div><p><span class="en">Float income compounds; combined ratios improve.</span><span class="ko">플로트 수익이 복리로 늘고 합산비율이 개선됩니다.</span></p></div><div class="sc base"><div class="sh"><span class="en">Base · central</span><span class="ko">기본</span></div><div class="sd"><span class="en">Steady rates; normal catastrophe load</span><span class="ko">꾸준한 금리 + 평년 재해</span></div><p><span class="en">Mid-single-digit nominal growth; margins firm.</span><span class="ko">한 자릿수 중반 명목 성장. 마진이 견조합니다.</span></p></div><div class="sc bear"><div class="sh"><span class="en">Bear · downside</span><span class="ko">비관</span></div><div class="sd"><span class="en">Rate cuts + major cat year</span><span class="ko">금리 인하 + 대형 재해</span></div><p><span class="en">Float income falls; large losses pressure capital.</span><span class="ko">플로트 수익이 줄고 대형 손실이 자본을 압박합니다.</span></p></div></div>
+  </section>
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight">
+        <li><span class="en">Climate-driven catastrophe frequency keeps rising, pressuring P&amp;C pricing.</span><span class="ko">기후발 재해 빈도가 계속 올라 손해 가격을 압박합니다.</span></li><li><span class="en">Float income is rate-sensitive; cuts would reduce a key earnings driver.</span><span class="ko">플로트 수익은 금리 민감해 인하 시 핵심 이익 동인이 줄어듭니다.</span></li><li><span class="en">Capital rules (K-ICS, Solvency II) reshape solvency and drive consolidation.</span><span class="ko">자본 규제(K-ICS·솔벤시 II)가 지급여력을 재편하고 통합을 부릅니다.</span></li><li><span class="en">Allianz rides asset management and Asia; Samsung Life rides unlocking its equity stake.</span><span class="ko">알리안츠는 자산운용·아시아에, 삼성생명은 지분 가치 실현에 달려 있습니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://www.swissre.com/institute/research/sigma-research/sigma-2025-02-world-insurance-riskier-fragmented-world.html">Swiss Re Institute — sigma world insurance</a></li><li><a href="https://www.allianz.com/en/mediacenter/news/media-releases/financials/260226-4q-2025-earnings-release.html">Allianz — 4Q/FY2025 results</a></li><li><a href="https://www.morningstar.com/company-reports/1193013-samsung-life-is-koreas-largest-life-insurer-with-a-big-problematic-stake-in-samsung-electronics">Morningstar — Samsung Life profile</a></li><li><a href="https://en.sedaily.com/finance/2025/12/31/korea-to-introduce-core-capital-rules-for-insurers-from-2027">Sedaily — Korea core-capital rule</a></li><li><a href="https://www.insurancejournal.com/news/national/2025/12/31/852702.htm">Insurance Journal — 2025 cat losses</a></li><li><a href="https://companiesmarketcap.com/samsung-life-insurance/marketcap/">companiesmarketcap — Samsung Life</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Insurance (GICS 403010) · Generated June 6, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 보험(GICS 403010) · 2026년 6월 6일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>

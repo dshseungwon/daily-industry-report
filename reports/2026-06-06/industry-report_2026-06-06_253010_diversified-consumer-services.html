@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diversified Consumer Services · 종합 소비자 서비스 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+
+<style>
+  .cagr-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+  .cagr-badge{display:inline-flex;align-items:baseline;gap:5px;background:#eaf2fb;color:var(--blue);
+    border:1px solid #cfe2f5;border-radius:999px;padding:6px 13px;font-weight:800;font-size:13px;}
+  .cagr-badge .n{font-size:16px;}
+  .cagr-badge.alt{background:#fff6e6;color:#b07400;border-color:#ffe2a6;}
+  /* SCQA diagnosis (Situation · Complication · Question · Answer) */
+  .scqa{margin:12px 0 2px;}
+  .scqa-row{display:flex;gap:12px;position:relative;padding-bottom:14px;}
+  .scqa-row:last-child{padding-bottom:0;}
+  .scqa-row::before{content:"";position:absolute;left:14px;top:30px;bottom:-2px;width:2px;background:var(--line);}
+  .scqa-row:last-child::before{display:none;}
+  .scqa-k{flex:none;width:30px;height:30px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 2px 6px rgba(14,42,71,.18);}
+  .scqa-row.s .scqa-k{background:#5b6b8c;}
+  .scqa-row.c .scqa-k{background:var(--hi);}
+  .scqa-row.q .scqa-k{background:var(--blue);}
+  .scqa-row.a .scqa-k{background:var(--lo);}
+  .scqa-bd{flex:1;padding-top:1px;}
+  .scqa-lab{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;}
+  .scqa-row.a .scqa-lab{color:var(--lo);}
+  .scqa-bd p{margin:0;font-size:13.3px;color:var(--ink);line-height:1.55;}
+  .scqa-row.q .scqa-bd p{font-style:italic;color:#16406a;}
+  .scqa-row.a .scqa-bd p{font-weight:600;}
+  .scqa .formula{margin-top:8px;}
+  .scqa-cap{font-size:11.5px;color:var(--mute);font-style:italic;margin:10px 0 0;}
+  /* MECE issue tree (rendered together with SCQA) */
+  .tree{margin:9px 0 2px;}
+  .tree .root{background:linear-gradient(120deg,#16406a,#0e2a47);color:#fff;border-radius:11px;
+    padding:11px 14px;font-size:13.4px;font-weight:700;border-left:4px solid var(--gold);}
+  .tree .branches{display:grid;gap:9px;margin-top:10px;}
+  .tree .branch{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;padding:10px 13px;background:#f7fafd;}
+  .tree .branch>b{font-size:13.1px;display:block;margin-bottom:5px;color:var(--ink);}
+  .tree .leaf{font-size:12.6px;color:var(--mute);padding-left:15px;position:relative;margin:4px 0;line-height:1.5;}
+  .tree .leaf::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .tree .leaf.lever{color:var(--ink);font-weight:600;}
+  .tree .leaf.lever::before{background:var(--gold);width:8px;height:8px;left:1px;top:7px;}
+  .tree .lever-tag{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#b07400;background:#fff6e6;border-radius:5px;padding:1px 5px;margin-right:5px;}
+  .tree-cap{display:none;}
+  @media(min-width:680px){.tree .branches{grid-template-columns:1fr 1fr 1fr;}}
+  /* value chain — connected flow diagram */
+  .vchain{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:6px 0 4px;}
+  .vc-step{position:relative;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:11px;padding:11px 13px 11px 40px;flex:1;}
+  .vc-step .vc-n{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;
+    background:var(--blue);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .vc-step:last-of-type{border-left-color:var(--gold);}
+  .vc-step:last-of-type .vc-n{background:var(--gold);color:var(--navy);}
+  .vc-step b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc-step .d{font-size:12.3px;color:var(--mute);}
+  .vc-arrow{align-self:center;color:var(--gold);font-weight:900;font-size:16px;line-height:1;
+    transform:rotate(90deg);padding:5px 0;}
+  @media(min-width:720px){
+    .vchain{flex-direction:row;align-items:stretch;flex-wrap:nowrap;}
+    .vc-step{padding:11px 11px 11px 12px;min-width:0;}
+    .vc-step .vc-n{position:static;margin-bottom:6px;}
+    .vc-arrow{transform:none;padding:0 3px;display:flex;align-items:center;}
+  }
+  /* variable 1-3 strategy tracks */
+  .track.t3{background:#10355a;border:1px solid rgba(255,184,28,.45);}
+  .track-grid.n1{grid-template-columns:1fr;}
+  @media(min-width:680px){
+    .track-grid.n2{grid-template-columns:1fr 1fr;}
+    .track-grid.n3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  /* profit pool */
+  .pool{display:flex;flex-direction:column;gap:8px;margin:6px 0 2px;}
+  .pool-row{display:flex;align-items:center;gap:10px;}
+  .pool-row .pn{flex:1.1;font-size:12.6px;color:var(--ink);min-width:0;}
+  .pool-row .ptrack{flex:1.5;height:9px;border-radius:5px;background:#eef2f7;overflow:hidden;}
+  .pool-row .pfill{height:100%;border-radius:5px;}
+  .pool-row .pfill.hi{width:92%;background:var(--gold);}
+  .pool-row .pfill.med{width:55%;background:var(--blue);}
+  .pool-row .pfill.lo{width:22%;background:#c9d4e3;}
+  .pool-row .pv{flex:none;width:58px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .pool-row .pv.hi{color:#b07400;}.pool-row .pv.med{color:var(--blue);}.pool-row .pv.lo{color:var(--mute);}
+  /* KPI watchlist */
+  .kpis{display:grid;grid-template-columns:1fr;gap:11px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);padding:13px 15px;border-left:4px solid var(--blue);}
+  .kpi .kt{font-size:12.5px;font-weight:800;color:var(--ink);}
+  .kpi .kv{font-size:clamp(17px,4.6vw,21px);font-weight:800;color:var(--blue);margin:3px 0 4px;line-height:1.1;}
+  .kpi .kw{font-size:12.3px;color:var(--mute);}
+  /* scenarios */
+  .scen{display:grid;grid-template-columns:1fr;gap:11px;}
+  .sc{border-radius:13px;padding:14px 16px;color:#fff;box-shadow:var(--shadow);}
+  .sc.bull{background:linear-gradient(125deg,#1f9d6b,#14633f);}
+  .sc.base{background:linear-gradient(125deg,#16406a,#0e2a47);}
+  .sc.bear{background:linear-gradient(125deg,#b1402f,#7d2418);}
+  .sc .sh{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .sc .sd{font-size:13.6px;font-weight:800;margin:4px 0 6px;}
+  .sc p{margin:0;font-size:12.8px;color:#eef4fb;}
+  /* positioning 2x2 */
+  .posmap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;}
+  .posmap svg{width:100%;height:auto;display:block;overflow:visible;}
+  .pos-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 2px;font-size:12px;color:var(--ink);}
+  .pos-legend .pl-i{display:flex;align-items:center;gap:6px;}
+  .pos-legend .pl-d{width:11px;height:11px;border-radius:50%;}
+  @media(min-width:680px){.kpis{grid-template-columns:1fr 1fr;}.scen{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Consumer Services</span><span class="ko">소비자 서비스</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="positioning"><span class="en">Positioning</span><span class="ko">포지셔닝</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button><button class="chip" data-go="scenarios"><span class="en">Scenarios</span><span class="ko">시나리오</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 3 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 3번째</span></p>
+    <h1><span class="en">Diversified Consumer Services</span><span class="ko">종합 소비자 서비스</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Consumer Discretionary · 253010</span>
+      <span class="pill">2026-06-06</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: Service Corp Intl · MegaStudyEdu</span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">Diversified Consumer Services (GICS 253010) covers personal services outside retail and leisure — private education, childcare, deathcare and household services such as tax prep and home warranty. Proxied by global educational services (the largest sub-pool), the market is roughly US$3.73T in 2025, growing about 6.9% a year, with deathcare a separate ~US$100B+ pool. The defining forces of 2026 are AI and demographics: free AI tutors and the rollback of Korea's AI digital-textbook program shift learning to private edtech, while falling birth rates squeeze Korean education demand even as national private-education spend hit a record ₩29.2T in 2024. The industry is highly fragmented — no single firm holds material global share. The global #1 by revenue, Service Corporation International (deathcare), is consolidating a fragmented market; Korea's largest listed private-education firm, MegaStudyEdu, is pivoting to repeaters, adults and AI tutoring. Both are detailed at the end.</span><span class="ko">종합 소비자 서비스(GICS 253010)는 소매·레저 밖의 개인 서비스(사교육·보육·장례, 세무·홈워런티 등 가사 서비스)를 다룹니다. 가장 큰 하위 풀인 글로벌 교육 서비스로 대리 추정하면 시장은 2025년 약 3.73조 달러로 연 약 6.9% 성장하며, 장례는 별도의 약 1,000억 달러 이상 풀입니다. 2026년을 규정하는 힘은 AI와 인구입니다. 무료 AI 튜터와 한국 AI 디지털교과서 사업 후퇴가 학습을 사교육 에듀테크로 옮기고, 출산율 하락이 한국 교육 수요를 압박하는 한편 2024년 사교육비는 사상 최대 29.2조 원이었습니다. 산업은 매우 분산돼 어떤 기업도 의미 있는 글로벌 점유율이 없습니다. 매출 기준 글로벌 1위 서비스코퍼레이션인터내셔널(장례)은 분산 시장을 통합 중이며, 한국 최대 상장 사교육 기업 메가스터디교육은 재수생·성인·AI 튜터링으로 전환합니다. 두 기업은 뒤에서 자세히 다룹니다.</span></p>
+    </div>
+  </section>
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From IP to delivery to recurring monetization</span><span class="ko">지식재산에서 서비스 제공, 그리고 반복 수익화로</span></h2>
+      <p class="lead"><span class="en">The industry runs from content/IP to service delivery to recurring revenue. Value ≈ brand trust × delivery scale + recurring/pre-need monetization − talent and acquisition cost.</span><span class="ko">이 산업은 콘텐츠·지식재산에서 서비스 제공, 그리고 반복 수익으로 이어집니다. 가치 ≈ 브랜드 신뢰 × 제공 규모 + 반복·선납 수익화 − 인재·고객획득 비용입니다.</span></p>
+      <div class="vchain"><div class="vc-step"><span class="vc-n">1</span><b><span class="en">Content / IP &amp; curriculum</span><span class="ko">콘텐츠·지식재산·커리큘럼</span></b><span class="d"><span class="en">Courses, star-instructor lectures, service protocols.</span><span class="ko">강좌·스타 강사 강의·서비스 프로토콜입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">2</span><b><span class="en">Talent &amp; facilities</span><span class="ko">인재·시설</span></b><span class="d"><span class="en">Instructors, directors, real estate and centers.</span><span class="ko">강사·전문가·부동산·센터입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">3</span><b><span class="en">Service delivery</span><span class="ko">서비스 제공</span></b><span class="d"><span class="en">Teaching, funeral arrangement, childcare ops.</span><span class="ko">강의·장례 진행·보육 운영입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">4</span><b><span class="en">Distribution / acquisition</span><span class="ko">유통·고객획득</span></b><span class="d"><span class="en">Branding, enrollment, branches, platforms.</span><span class="ko">브랜드·등록·지점·플랫폼입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">5</span><b><span class="en">Aftercare / recurring</span><span class="ko">사후·반복</span></b><span class="d"><span class="en">Pre-need trusts, subscriptions, renewals.</span><span class="ko">선납 신탁·구독·갱신입니다.</span></span></div></div>
+      <div class="subh" style="margin-top:16px"><span class="en">Profit pool — where margin concentrates</span><span class="ko">수익풀 — 마진이 집중되는 곳</span></div><div class="pool"><div class="pool-row"><span class="pn"><span class="en">Content / IP &amp; curriculum</span><span class="ko">콘텐츠·지식재산·커리큘럼</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Talent &amp; facilities</span><span class="ko">인재·시설</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div><div class="pool-row"><span class="pn"><span class="en">Service delivery</span><span class="ko">서비스 제공</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div><div class="pool-row"><span class="pn"><span class="en">Distribution / acquisition</span><span class="ko">유통·고객획득</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Aftercare / recurring</span><span class="ko">사후·반복</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div></div><p class="cap"><span class="en">Margin concentrates in content/IP, distribution (brand and enrollment) and recurring monetization (pre-need, subscriptions); talent and facilities are mid-cost layers.</span><span class="ko">마진은 콘텐츠·지식재산, 유통(브랜드·등록), 반복 수익화(선납·구독)에 집중됩니다. 인재·시설은 중간 비용 층입니다.</span></p>
+    </div>
+  </section>
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A large market reshaped by AI and demographics</span><span class="ko">AI와 인구가 재편하는 거대 시장</span></h2>
+      <div class="cagr-wrap"><span class="cagr-badge"><span class="en">CAGR</span><span class="ko">연평균 성장</span><span class="n">≈6.9%</span></span><span class="mute" style="font-size:12.5px"><span class="en">global educational services (proxy; TBRC)</span><span class="ko">글로벌 교육 서비스(대리지표; TBRC)</span></span></div>
+      <div class="colchart"><div class="col"><div class="col-val">$3.49T</div><div class="col-bar" data-h="44"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">$3.73T</div><div class="col-bar" data-h="57"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">$3.98T</div><div class="col-bar" data-h="71"></div><div class="col-lab">2026E</div></div><div class="col"><div class="col-val">$4.27T</div><div class="col-bar" data-h="85"></div><div class="col-lab">2027E</div></div><div class="col"><div class="col-val">$4.57T</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div></div>
+      <p class="cap"><span class="en">Global educational services market, US$, indicative proxy for the GICS industry (The Business Research Company, 2026; ~6.9% CAGR). 2027–28 extrapolated. Bars use a zoomed baseline. Deathcare (~US$100B+) and childcare are separate pools; the GICS industry has no single tally.</span><span class="ko">글로벌 교육 서비스 시장, 단위 달러, GICS 산업의 대리 추정치입니다(The Business Research Company, 2026년, 연평균 약 6.9% 성장). 2027~28년은 외삽치입니다. 막대는 확대 기준선을 씁니다. 장례(약 1,000억 달러 이상)·보육은 별도 풀이며, GICS 산업의 단일 집계는 없습니다.</span></p>
+    </div>
+  </section>
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">Fragmented globally; MegaStudyEdu leads Korean edtech</span><span class="ko">글로벌은 분산, 메가스터디가 한국 에듀테크 선도</span></h2>
+      <div class="pies">
+        <div class="pieblock"><div class="pie-title"><span class="en">Deathcare (NA) — illustrative subsegment</span><span class="ko">장례(북미) — 예시 부문</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0% 16%,#117aca 16% 22%,#ffb81c 22% 26%,#c9d4e3 26% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>Service Corp Intl<b>~16%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Carriage Services<b>~6%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Park Lawn / Foundation<b>~4%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span>Others<b>~74%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea online education — indicative</span><span class="ko">한국 온라인 교육 — 추정</span></div><div class="pie" style="background:conic-gradient(#0047a0 0% 47%,#117aca 47% 70%,#ffb81c 70% 84%,#c9d4e3 84% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>MegaStudyEdu<b>~47%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Daesung<b>~23%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Etoos<b>~14%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span>Others<b>~16%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">The GICS industry is highly fragmented; the left chart shows the consolidated North American deathcare subsegment as an illustration. Korea shares compare branded online-education leaders; the national ₩29.2T private-education market is itself hyper-fragmented.</span><span class="ko">GICS 산업은 매우 분산돼, 왼쪽 차트는 통합된 북미 장례 부문을 예시로 보여줍니다. 한국 점유율은 브랜드 온라인 교육 선두 비교이며, 29.2조 원 사교육 시장 자체는 매우 분산돼 있습니다.</span></p>
+    </div>
+  </section>
+  <section id="positioning">
+    <p class="kicker"><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></p>
+    <h2><span class="en">Where the leaders sit — a 2×2 map</span><span class="ko">리더들의 위치 — 2×2 맵</span></h2>
+    <div class="posmap reveal"><svg viewBox="0 0 340 290" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="60" y="18" width="262" height="214" fill="#f7fafd" stroke="#e6ebf4" stroke-width="1.5" rx="8"/><line x1="60" y1="125" x2="322" y2="125" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><line x1="191" y1="18" x2="191" y2="232" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><circle cx="250" cy="85" r="7" fill="var(--navy)"/><text x="250" y="76" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">SCI</text><circle cx="180" cy="120" r="7" fill="var(--krred)"/><text x="180" y="111" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">MegaStudyEdu</text><circle cx="265" cy="110" r="5.5" fill="#9fb1c9"/><text x="265" y="101" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Bright Horizons</text><circle cx="220" cy="140" r="5.5" fill="#9fb1c9"/><text x="220" y="131" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Carriage</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="en">Scale / network density &#8594;</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="ko">규모·네트워크 밀도 &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="en">Recurring / pricing power &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="ko">반복 수익·가격결정력 &#8594;</text></svg><div class="pos-legend"><span class="pl-i"><span class="pl-d" style="background:var(--navy)"></span><span class="en">Global #1</span><span class="ko">글로벌 1위</span></span><span class="pl-i"><span class="pl-d" style="background:var(--krred)"></span><span class="en">Korea #1</span><span class="ko">한국 1위</span></span><span class="pl-i"><span class="pl-d" style="background:#9fb1c9"></span><span class="en">Peers</span><span class="ko">경쟁사</span></span></div><p class="cap"><span class="en">SCI pairs the largest deathcare network with strong pre-need pricing power; MegaStudyEdu is a single-market edtech leader with brand power but demographic headwinds. Bright Horizons leads childcare.</span><span class="ko">SCI는 최대 장례 네트워크와 강한 선납 가격결정력을 함께 갖췄고, 메가스터디교육은 브랜드는 강하나 인구 역풍이 있는 단일 시장 에듀테크 선두입니다. 브라이트호라이즌스는 보육을 선도합니다.</span></p></div>
+  </section>
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Fragmented and brand/star-instructor driven, with price and talent wars.</span><span class="ko">분산·브랜드·스타 강사 중심으로 가격·인재 경쟁이 있습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Low capital for edtech, but brand, trust and licensing raise barriers.</span><span class="ko">에듀테크 자본은 적으나 브랜드·신뢰·인허가가 장벽입니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Star instructors and licensed professionals command scarcity premiums.</span><span class="ko">스타 강사·면허 전문가가 희소성 프리미엄을 요구합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Families are price-sensitive but demand is inelastic for high-stakes services.</span><span class="ko">가계는 가격에 민감하나 고부담 서비스 수요는 비탄력적입니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Free AI tutors, public lectures and direct cremation pressure incumbents.</span><span class="ko">무료 AI 튜터·공교육 강의·직접 화장이 기존 사업을 압박합니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: brand and trust protect incumbents, but AI substitution and demographics pressure education; deathcare is more defensible via pre-need.</span><span class="ko">종합하면 브랜드·신뢰가 기존 사업을 보호하나, AI 대체와 인구가 교육을 압박합니다. 장례는 선납으로 더 방어적입니다.</span></p>
+  </section>
+  <section id="reg">
+    <p class="kicker"><span class="en">Macro forces &amp; the latest RULES</span><span class="ko">거시 환경과 최신 규칙</span></p>
+    <h2><span class="en">The rulebook: policy &amp; regulation</span><span class="ko">규칙: 정책과 규제</span></h2>
+    <p class="mute"><span class="en">Education, academy and consumer-protection rules now decide how private services operate and what they may charge.</span><span class="ko">교육·학원·소비자보호 규제가 이제 사교육 서비스의 운영 방식과 가격을 결정합니다.</span></p>
+    <p class="hint"><span class="en">This section = laws, bills and rules only (dated). Market events are in &#8220;Recent issues&#8221; below.</span><span class="ko">이 섹션은 법·법안·규칙만(시행일 표기)입니다. 시장 이벤트는 아래 &#8216;최근 이슈&#8217;에 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Dec 2025</span><span class="ac-title"><span class="en">Korea AI digital textbooks downgraded</span><span class="ko">한국 AI 디지털교과서 지위 격하</span></span></div><div class="ac-body"><p class="why"><span class="en">An amendment reclassifies AI textbooks as 'educational materials', not official textbooks. Why it matters: pushes AI learning into private edtech channels.</span><span class="ko">개정으로 AI 교과서를 정규 교과서가 아닌 '교육자료'로 재분류합니다. 의미: AI 학습을 사교육 에듀테크 채널로 밀어냅니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2024–25</span><span class="ac-title"><span class="en">Korea hagwon 10 p.m. operating curfew</span><span class="ko">한국 학원 밤 10시 운영 제한</span></span></div><div class="ac-body"><p class="why"><span class="en">The Private Academy Act caps offline operating hours. Why it matters: shifts demand to online lectures and 1:1 tutoring.</span><span class="ko">학원법이 오프라인 운영 시간을 제한합니다. 의미: 수요를 온라인 강의와 1:1 과외로 옮깁니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2024–25</span><span class="ac-title"><span class="en">Korea 'killer-question' &amp; collusion crackdown</span><span class="ko">한국 '킬러문항'·유착 단속</span></span></div><div class="ac-body"><p class="why"><span class="en">Suneung killer-questions excluded; hagwon-exam collusion probed. Why it matters: compliance and reputational risk for premium exam prep.</span><span class="ko">수능 킬러문항 배제와 학원·시험 유착 조사입니다. 의미: 프리미엄 입시 준비의 준법·평판 위험입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2024–25</span><span class="ac-title"><span class="en">US FTC Funeral Rule price disclosure</span><span class="ko">미국 FTC 장례 규정 가격 공시</span></span></div><div class="ac-body"><p class="why"><span class="en">Enforcement of pre-need trust and price-disclosure rules. Why it matters: governs SCI's high-margin pre-need backlog and pricing.</span><span class="ko">선납 신탁·가격 공시 규정 집행입니다. 의미: SCI의 고마진 선납 잔고와 가격을 규율합니다.</span></p></div></div></div>
+  </section>
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Star talent / IP</span><span class="ko">스타 인재·지식재산</span></b><p><span class="en">Instructors and proprietary curriculum.</span><span class="ko">강사와 독자 커리큘럼입니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">Brand trust</span><span class="ko">브랜드 신뢰</span></b><p><span class="en">Trust in high-stakes, life-stage services.</span><span class="ko">고부담·생애주기 서비스의 신뢰입니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">Recurring revenue</span><span class="ko">반복 수익</span></b><p><span class="en">Pre-need, subscriptions, repeaters.</span><span class="ko">선납·구독·재수생입니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">Digital / AI platform</span><span class="ko">디지털·AI 플랫폼</span></b><p><span class="en">Platform capability and data.</span><span class="ko">플랫폼 역량과 데이터입니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">Regulatory navigation</span><span class="ko">규제 대응</span></b><p><span class="en">Licensing and curfew compliance.</span><span class="ko">인허가와 운영시간 규정 준수입니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Network density</span><span class="ko">네트워크 밀도</span></b><p><span class="en">Branches, centers and real estate.</span><span class="ko">지점·센터·부동산입니다.</span></p></div></div></div>
+  </section>
+  <section id="news">
+    <p class="kicker"><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></p>
+    <h2><span class="en">The newsflow: market &amp; competitive events</span><span class="ko">뉴스: 시장·경쟁 이벤트</span></h2>
+    <p class="hint"><span class="en">This section = business/market events (earnings, deals, demand, prices) — not policy. Tap for why it matters.</span><span class="ko">이 섹션은 실적·거래·수요·가격 등 시장 이벤트입니다(정책 아님). 눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Feb 2026</span><span class="ac-title"><span class="en">Service Corp Intl posts FY2025 revenue US$4.3B</span><span class="ko">SCI, FY25 매출 43억 달러</span></span></div><div class="ac-body"><p class="why"><span class="en">Revenue +3% with 2026 guidance issued. Why it matters: confirms deathcare resilience and pricing power.</span><span class="ko">매출 +3%, 2026년 가이던스 제시입니다. 의미: 장례의 견조함과 가격결정력을 확인합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Feb 2026</span><span class="ac-title"><span class="en">MegaStudyEdu weighs sale of controlling stake</span><span class="ko">메가스터디교육, 경영권 매각 검토</span></span></div><div class="ac-body"><p class="why"><span class="en">Reports say the firm is weighing a controlling-stake sale. Why it matters: signals consolidation/PE interest amid demographic headwinds.</span><span class="ko">경영권 지분 매각을 검토 중이라는 보도입니다. 의미: 인구 역풍 속 통합·사모 관심을 시사합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Korea AI digital-textbook program rolled back</span><span class="ko">한국 AI 디지털교과서 사업 후퇴</span></span></div><div class="ac-body"><p class="why"><span class="en">The state AI-textbook program was scaled back after a few months. Why it matters: opportunity shifts to private AI tutoring tools.</span><span class="ko">국가 AI 교과서 사업이 수개월 만에 축소됐습니다. 의미: 기회가 사교육 AI 튜터링 도구로 옮겨갑니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Feb 2026</span><span class="ac-title"><span class="en">Bright Horizons FY2025 revenue US$2.93B (+9%)</span><span class="ko">브라이트호라이즌스 FY25 매출 29.3억 달러(+9%)</span></span></div><div class="ac-body"><p class="why"><span class="en">Operating income rose 28% on a childcare demand rebound. Why it matters: dependent-care demand is recovering post-pandemic.</span><span class="ko">보육 수요 회복으로 영업이익이 28% 늘었습니다. 의미: 팬데믹 이후 돌봄 수요가 회복 중입니다.</span></p></div></div></div>
+  </section>
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, each with its OWN strategy</span><span class="ko">두 리더, 각자 다른 전략</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader is diagnosed on its own terms: a MECE issue tree → strategy thrusts chosen for THAT company → action plans. The NUMBER of thrusts varies by situation (one for a single-mandate player, up to three where the diagnosis demands it) — it is not a fixed two-track template.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 그 회사에 맞게 진단합니다: MECE 이슈트리 → 그 기업에 맞춰 고른 전략 축 → 액션 플랜. 전략 축의 '개수'는 상황에 따라 다릅니다(단일 사명 기업은 1개, 진단이 요구하면 최대 3개). 고정된 2트랙 틀이 아닙니다.</span></p>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>Service Corporation International</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The largest GICS-253010 firm by revenue, North America's #1 deathcare provider consolidating a fragmented market.</span><span class="ko">매출 기준 GICS-253010 최대 기업으로, 분산 시장을 통합하는 북미 1위 장례 사업자입니다.</span></p><div class="stats"><div class="stat"><div class="n">$4.3B</div><div class="l"><span class="en">FY25 revenue (+3%)</span><span class="ko">FY25 매출(+3%)</span></div></div><div class="stat"><div class="n">~22.7%</div><div class="l"><span class="en">Operating margin</span><span class="ko">영업이익률</span></div></div><div class="stat"><div class="n">~$11.1B</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div><div class="stat"><div class="n">~1,490</div><div class="l"><span class="en">Funeral locations</span><span class="ko">장례 시설</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — #1 consolidator, but per-call revenue is pressured</span><span class="ko">진단 — 1위 통합기업이나 건당 매출이 압박됩니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">A normalizing death rate and low-cost direct cremation pressure per-call revenue.</span><span class="ko">사망률 정상화와 저가 직접 화장이 건당 매출을 압박합니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">Post-COVID death normalization plus a consumer shift from full-service funerals.</span><span class="ko">코로나 이후 사망 정상화와 풀서비스 장례 이탈입니다.</span></p><div class="formula">Revenue = Cases × revenue per case + pre-need backlog; cremation shift lowers per-case revenue</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">How to grow revenue per family as preferences shift?</span><span class="ko">선호가 바뀌는 가운데 가구당 매출을 어떻게 키우는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">Grow pre-need and cemetery sales, premiumize cremation, and keep consolidating (the tracks below).</span><span class="ko">선납·묘지 판매를 키우고 화장을 프리미엄화하며 통합을 이어갑니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why does the #1 deathcare firm face revenue pressure?</span><span class="ko">1위 장례 기업이 매출 압박을 받는 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">Death normalization (external)</span><span class="ko">사망 정상화(외생)</span></b><div class="leaf"><span class="en">Post-COVID death rates flatten volume.</span><span class="ko">코로나 이후 사망률이 물량을 평탄화합니다.</span></div></div><div class="branch"><b><span class="en">Cremation shift (structural)</span><span class="ko">화장 전환(구조적)</span></b><div class="leaf"><span class="en">Low-cost cremation cuts per-call revenue.</span><span class="ko">저가 화장이 건당 매출을 줄입니다.</span></div></div><div class="branch"><b><span class="en">Pre-need &amp; premiumize (lever)</span><span class="ko">선납·프리미엄(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Grow pre-need and cremation memorialization.</span><span class="ko">선납과 화장 추모를 키웁니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Pre-need</span><span class="ko">Track 1 · 선납</span></div><div class="tn"><span class="en">Grow pre-need &amp; cemetery</span><span class="ko">선납·묘지 확대</span></div><p><span class="en">Build the high-margin pre-need and cemetery-property backlog.</span><span class="ko">고마진 선납·묘지 잔고를 키웁니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Premiumize</span><span class="ko">Track 2 · 프리미엄화</span></div><div class="tn"><span class="en">Upgrade cremation memorialization</span><span class="ko">화장 추모 고도화</span></div><p><span class="en">Premiumize cremation services to lift revenue per case.</span><span class="ko">화장 서비스를 프리미엄화해 건당 매출을 높입니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Consolidate</span><span class="ko">Track 3 · 통합</span></div><div class="tn"><span class="en">Acquire independents</span><span class="ko">독립 사업자 인수</span></div><p><span class="en">Keep consolidating a fragmented, aging-owner market.</span><span class="ko">고령 점주 중심의 분산 시장을 계속 통합합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Revenue mix</span><span class="ko">매출 구성</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">At-need</span><span class="ko">사후 수요</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Pre-need backlog</span><span class="ko">선납 잔고</span></div></div></div><div class="ap"><div class="apt"><span class="en">Cremation</span><span class="ko">화장</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Low-cost direct</span><span class="ko">저가 직접</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Premium memorial</span><span class="ko">프리미엄 추모</span></div></div></div><div class="ap"><div class="apt"><span class="en">Footprint</span><span class="ko">거점</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Organic</span><span class="ko">유기적</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Consolidated</span><span class="ko">통합 확대</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>MegaStudyEdu</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">Korea's largest listed private-education firm, pivoting to repeaters, adults and AI tutoring amid demographic decline.</span><span class="ko">한국 최대 상장 사교육 기업으로, 인구 감소 속 재수생·성인·AI 튜터링으로 전환합니다.</span></p><div class="stats"><div class="stat"><div class="n">₩942B</div><div class="l"><span class="en">FY24 revenue</span><span class="ko">FY24 매출</span></div></div><div class="stat"><div class="n">₩46.2B</div><div class="l"><span class="en">FY24 net earnings</span><span class="ko">FY24 순이익</span></div></div><div class="stat"><div class="n">~₩600B</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div><div class="stat"><div class="n">60%</div><div class="l"><span class="en">Profit return plan</span><span class="ko">이익 환원 계획</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — brand leader, but demographics squeeze margins</span><span class="ko">진단 — 브랜드 선두이나 인구가 마진을 압박합니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Profit fell sharply despite record national private-education spend.</span><span class="ko">사상 최대 사교육비에도 이익이 급감했습니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">A falling school-age population plus rising talent/content cost and regulatory limits.</span><span class="ko">학령인구 감소에 인재·콘텐츠 비용과 규제 제약이 더해집니다.</span></p><div class="formula">Profit = Students × ARPU − talent &amp; content cost; demographics shrink the student base</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">How to grow as the core student base shrinks?</span><span class="ko">핵심 학생 기반이 줄어드는 가운데 어떻게 성장하는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">Lean into repeaters and adults, deploy AI tutoring, and consider restructuring (the tracks below).</span><span class="ko">재수생·성인에 집중하고 AI 튜터링을 도입하며 구조 개편을 검토합니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why does a brand leader see profit fall?</span><span class="ko">브랜드 선두의 이익이 감소하는 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">Demographics (external)</span><span class="ko">인구(외생)</span></b><div class="leaf"><span class="en">A falling school-age population cuts demand.</span><span class="ko">학령인구 감소가 수요를 줄입니다.</span></div></div><div class="branch"><b><span class="en">Cost &amp; regulation (structural)</span><span class="ko">비용·규제(구조적)</span></b><div class="leaf"><span class="en">Talent cost and curfew limits squeeze margin.</span><span class="ko">인재 비용과 운영시간 제한이 마진을 압박합니다.</span></div></div><div class="branch"><b><span class="en">Adjacent markets &amp; AI (lever)</span><span class="ko">인접 시장·AI(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Grow repeaters/adults and deploy AI tutoring.</span><span class="ko">재수생·성인을 키우고 AI 튜터링을 도입합니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Adjacent demand</span><span class="ko">Track 1 · 인접 수요</span></div><div class="tn"><span class="en">Grow repeaters &amp; adults</span><span class="ko">재수생·성인 확대</span></div><p><span class="en">Lean into repeaters and adult/professional exams to offset demographics.</span><span class="ko">재수생·성인·전문 시험에 집중해 인구 감소를 상쇄합니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · AI tutoring</span><span class="ko">Track 2 · AI 튜터링</span></div><div class="tn"><span class="en">Deploy proprietary AI tutoring</span><span class="ko">독자 AI 튜터링 도입</span></div><p><span class="en">Roll out AI tutoring as the state AI-textbook program retreats.</span><span class="ko">국가 AI 교과서 후퇴 속 AI 튜터링을 전개합니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Restructuring</span><span class="ko">Track 3 · 구조 개편</span></div><div class="tn"><span class="en">Explore strategic options</span><span class="ko">전략적 선택지 검토</span></div><p><span class="en">Consider a controlling-stake sale or restructuring for scale.</span><span class="ko">규모를 위한 경영권 매각·구조 개편을 검토합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Student mix</span><span class="ko">학생 구성</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">K-12 reliant</span><span class="ko">초중고 의존</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Repeaters + adults</span><span class="ko">재수생+성인</span></div></div></div><div class="ap"><div class="apt"><span class="en">Delivery</span><span class="ko">제공</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Recorded lectures</span><span class="ko">녹화 강의</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">AI tutoring</span><span class="ko">AI 튜터링</span></div></div></div><div class="ap"><div class="apt"><span class="en">Structure</span><span class="ko">구조</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Standalone</span><span class="ko">독립</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Strategic options</span><span class="ko">전략적 선택지</span></div></div></div></div></div></div>
+  </section>
+  <section id="kpi">
+    <p class="kicker"><span class="en">KPIs to watch</span><span class="ko">주목할 지표</span></p>
+    <h2><span class="en">The dials that move this industry</span><span class="ko">이 산업을 움직이는 계기판</span></h2>
+    <p class="hint"><span class="en">Leading indicators with the latest reading — track these to see the thesis play out.</span><span class="ko">최신 수치가 담긴 선행지표입니다. 이 흐름을 추적하면 전망을 검증할 수 있습니다.</span></p>
+    <div class="kpis reveal"><div class="kpi"><div class="kt"><span class="en">SCI FY25 revenue</span><span class="ko">SCI FY25 매출</span></div><div class="kv"><span class="en">$4.3B (+3%)</span><span class="ko">43억 달러(+3%)</span></div><div class="kw"><span class="en">Deathcare resilience.</span><span class="ko">장례 견조함입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Korea private-education spend</span><span class="ko">한국 사교육비</span></div><div class="kv"><span class="en">₩29.2T (2024)</span><span class="ko">29.2조 원(2024)</span></div><div class="kw"><span class="en">Market size vs demographics.</span><span class="ko">인구 대비 시장 규모입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">MegaStudyEdu net earnings</span><span class="ko">메가스터디교육 순이익</span></div><div class="kv"><span class="en">₩46.2B (−51%)</span><span class="ko">462억 원(−51%)</span></div><div class="kw"><span class="en">Margin-squeeze gauge.</span><span class="ko">마진 압박의 척도입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Education services CAGR</span><span class="ko">교육 서비스 연평균 성장</span></div><div class="kv"><span class="en">~6.9%</span><span class="ko">약 6.9%</span></div><div class="kw"><span class="en">Structural demand pace.</span><span class="ko">구조적 수요 속도입니다.</span></div></div></div>
+  </section>
+  <section id="scenarios">
+    <p class="kicker"><span class="en">Scenarios — bull · base · bear</span><span class="ko">시나리오 — 낙관·기본·비관</span></p>
+    <h2><span class="en">Three ways the next few years could break</span><span class="ko">향후 몇 년이 갈릴 세 갈래</span></h2>
+    <div class="scen reveal"><div class="sc bull"><div class="sh"><span class="en">Bull · upside</span><span class="ko">낙관</span></div><div class="sd"><span class="en">AI tutoring scales + adult demand</span><span class="ko">AI 튜터링 확대 + 성인 수요</span></div><p><span class="en">Edtech monetizes AI; deathcare consolidates steadily.</span><span class="ko">에듀테크가 AI를 수익화하고 장례가 꾸준히 통합됩니다.</span></p></div><div class="sc base"><div class="sh"><span class="en">Base · central</span><span class="ko">기본</span></div><div class="sd"><span class="en">Steady demand; margins stabilize</span><span class="ko">꾸준한 수요 + 마진 안정</span></div><p><span class="en">Mid-single-digit growth; pricing power holds.</span><span class="ko">한 자릿수 중반 성장. 가격결정력이 유지됩니다.</span></p></div><div class="sc bear"><div class="sh"><span class="en">Bear · downside</span><span class="ko">비관</span></div><div class="sd"><span class="en">Demographic decline + AI free tools</span><span class="ko">인구 감소 + AI 무료 도구</span></div><p><span class="en">Student base shrinks; free AI erodes paid demand.</span><span class="ko">학생 기반이 줄고 무료 AI가 유료 수요를 잠식합니다.</span></p></div></div>
+  </section>
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight">
+        <li><span class="en">AI substitution and demographics structurally pressure private education.</span><span class="ko">AI 대체와 인구가 사교육을 구조적으로 압박합니다.</span></li><li><span class="en">Deathcare faces a normalizing death rate and a shift to low-cost cremation.</span><span class="ko">장례는 사망률 정상화와 저가 화장 전환에 직면합니다.</span></li><li><span class="en">Regulation (curfews, funeral rules) shapes pricing and operations.</span><span class="ko">규제(운영시간·장례 규정)가 가격과 운영을 좌우합니다.</span></li><li><span class="en">SCI rides pre-need consolidation; MegaStudyEdu rides AI and adjacent demand.</span><span class="ko">SCI는 선납·통합에, 메가스터디교육은 AI·인접 수요에 달려 있습니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://news.sci-corp.com/2026-02-11-SERVICE-CORPORATION-INTERNATIONAL-ANNOUNCES-FOURTH-QUARTER-2025-FINANCIAL-RESULTS-AND-PROVIDES-2026-GUIDANCE">SCI — FY2025 results</a></li><li><a href="https://investors.brighthorizons.com/news-releases/news-release-details/bright-horizons-family-solutions-reports-financial-results-4">Bright Horizons — FY2025 results</a></li><li><a href="https://www.koreaherald.com/article/10440947">Korea Herald — record private-education spend</a></li><li><a href="https://www.kedglobal.com/mergers-acquisitions/newsView/ked202602050004">KED Global — MegaStudyEdu stake sale</a></li><li><a href="https://restofworld.org/2025/south-korea-ai-textbook/">Rest of World — Korea AI textbook rollback</a></li><li><a href="https://www.thebusinessresearchcompany.com/report/educational-services-global-market-report">The Business Research Company — educational services</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Diversified Consumer Services (GICS 253010) · Generated June 6, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 종합 소비자 서비스(GICS 253010) · 2026년 6월 6일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>

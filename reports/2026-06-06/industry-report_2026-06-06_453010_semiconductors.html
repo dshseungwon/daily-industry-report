@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semiconductors &amp; Semiconductor Equipment · 반도체·반도체장비 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+
+<style>
+  .cagr-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+  .cagr-badge{display:inline-flex;align-items:baseline;gap:5px;background:#eaf2fb;color:var(--blue);
+    border:1px solid #cfe2f5;border-radius:999px;padding:6px 13px;font-weight:800;font-size:13px;}
+  .cagr-badge .n{font-size:16px;}
+  .cagr-badge.alt{background:#fff6e6;color:#b07400;border-color:#ffe2a6;}
+  /* SCQA diagnosis (Situation · Complication · Question · Answer) */
+  .scqa{margin:12px 0 2px;}
+  .scqa-row{display:flex;gap:12px;position:relative;padding-bottom:14px;}
+  .scqa-row:last-child{padding-bottom:0;}
+  .scqa-row::before{content:"";position:absolute;left:14px;top:30px;bottom:-2px;width:2px;background:var(--line);}
+  .scqa-row:last-child::before{display:none;}
+  .scqa-k{flex:none;width:30px;height:30px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 2px 6px rgba(14,42,71,.18);}
+  .scqa-row.s .scqa-k{background:#5b6b8c;}
+  .scqa-row.c .scqa-k{background:var(--hi);}
+  .scqa-row.q .scqa-k{background:var(--blue);}
+  .scqa-row.a .scqa-k{background:var(--lo);}
+  .scqa-bd{flex:1;padding-top:1px;}
+  .scqa-lab{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;}
+  .scqa-row.a .scqa-lab{color:var(--lo);}
+  .scqa-bd p{margin:0;font-size:13.3px;color:var(--ink);line-height:1.55;}
+  .scqa-row.q .scqa-bd p{font-style:italic;color:#16406a;}
+  .scqa-row.a .scqa-bd p{font-weight:600;}
+  .scqa .formula{margin-top:8px;}
+  .scqa-cap{font-size:11.5px;color:var(--mute);font-style:italic;margin:10px 0 0;}
+  /* MECE issue tree (rendered together with SCQA) */
+  .tree{margin:9px 0 2px;}
+  .tree .root{background:linear-gradient(120deg,#16406a,#0e2a47);color:#fff;border-radius:11px;
+    padding:11px 14px;font-size:13.4px;font-weight:700;border-left:4px solid var(--gold);}
+  .tree .branches{display:grid;gap:9px;margin-top:10px;}
+  .tree .branch{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;padding:10px 13px;background:#f7fafd;}
+  .tree .branch>b{font-size:13.1px;display:block;margin-bottom:5px;color:var(--ink);}
+  .tree .leaf{font-size:12.6px;color:var(--mute);padding-left:15px;position:relative;margin:4px 0;line-height:1.5;}
+  .tree .leaf::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .tree .leaf.lever{color:var(--ink);font-weight:600;}
+  .tree .leaf.lever::before{background:var(--gold);width:8px;height:8px;left:1px;top:7px;}
+  .tree .lever-tag{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#b07400;background:#fff6e6;border-radius:5px;padding:1px 5px;margin-right:5px;}
+  .tree-cap{display:none;}
+  @media(min-width:680px){.tree .branches{grid-template-columns:1fr 1fr 1fr;}}
+  /* value chain — connected flow diagram */
+  .vchain{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:6px 0 4px;}
+  .vc-step{position:relative;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:11px;padding:11px 13px 11px 40px;flex:1;}
+  .vc-step .vc-n{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;
+    background:var(--blue);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .vc-step:last-of-type{border-left-color:var(--gold);}
+  .vc-step:last-of-type .vc-n{background:var(--gold);color:var(--navy);}
+  .vc-step b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc-step .d{font-size:12.3px;color:var(--mute);}
+  .vc-arrow{align-self:center;color:var(--gold);font-weight:900;font-size:16px;line-height:1;
+    transform:rotate(90deg);padding:5px 0;}
+  @media(min-width:720px){
+    .vchain{flex-direction:row;align-items:stretch;flex-wrap:nowrap;}
+    .vc-step{padding:11px 11px 11px 12px;min-width:0;}
+    .vc-step .vc-n{position:static;margin-bottom:6px;}
+    .vc-arrow{transform:none;padding:0 3px;display:flex;align-items:center;}
+  }
+  /* variable 1-3 strategy tracks */
+  .track.t3{background:#10355a;border:1px solid rgba(255,184,28,.45);}
+  .track-grid.n1{grid-template-columns:1fr;}
+  @media(min-width:680px){
+    .track-grid.n2{grid-template-columns:1fr 1fr;}
+    .track-grid.n3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  /* profit pool */
+  .pool{display:flex;flex-direction:column;gap:8px;margin:6px 0 2px;}
+  .pool-row{display:flex;align-items:center;gap:10px;}
+  .pool-row .pn{flex:1.1;font-size:12.6px;color:var(--ink);min-width:0;}
+  .pool-row .ptrack{flex:1.5;height:9px;border-radius:5px;background:#eef2f7;overflow:hidden;}
+  .pool-row .pfill{height:100%;border-radius:5px;}
+  .pool-row .pfill.hi{width:92%;background:var(--gold);}
+  .pool-row .pfill.med{width:55%;background:var(--blue);}
+  .pool-row .pfill.lo{width:22%;background:#c9d4e3;}
+  .pool-row .pv{flex:none;width:58px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .pool-row .pv.hi{color:#b07400;}.pool-row .pv.med{color:var(--blue);}.pool-row .pv.lo{color:var(--mute);}
+  /* KPI watchlist */
+  .kpis{display:grid;grid-template-columns:1fr;gap:11px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);padding:13px 15px;border-left:4px solid var(--blue);}
+  .kpi .kt{font-size:12.5px;font-weight:800;color:var(--ink);}
+  .kpi .kv{font-size:clamp(17px,4.6vw,21px);font-weight:800;color:var(--blue);margin:3px 0 4px;line-height:1.1;}
+  .kpi .kw{font-size:12.3px;color:var(--mute);}
+  /* scenarios */
+  .scen{display:grid;grid-template-columns:1fr;gap:11px;}
+  .sc{border-radius:13px;padding:14px 16px;color:#fff;box-shadow:var(--shadow);}
+  .sc.bull{background:linear-gradient(125deg,#1f9d6b,#14633f);}
+  .sc.base{background:linear-gradient(125deg,#16406a,#0e2a47);}
+  .sc.bear{background:linear-gradient(125deg,#b1402f,#7d2418);}
+  .sc .sh{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .sc .sd{font-size:13.6px;font-weight:800;margin:4px 0 6px;}
+  .sc p{margin:0;font-size:12.8px;color:#eef4fb;}
+  /* positioning 2x2 */
+  .posmap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;}
+  .posmap svg{width:100%;height:auto;display:block;overflow:visible;}
+  .pos-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 2px;font-size:12px;color:var(--ink);}
+  .pos-legend .pl-i{display:flex;align-items:center;gap:6px;}
+  .pos-legend .pl-d{width:11px;height:11px;border-radius:50%;}
+  @media(min-width:680px){.kpis{grid-template-columns:1fr 1fr;}.scen{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Semiconductors</span><span class="ko">반도체</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="positioning"><span class="en">Positioning</span><span class="ko">포지셔닝</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button><button class="chip" data-go="scenarios"><span class="en">Scenarios</span><span class="ko">시나리오</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 6 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 6번째</span></p>
+    <h1><span class="en">Semiconductors &amp; Semiconductor Equipment</span><span class="ko">반도체·반도체장비</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · Information Technology · 453010</span>
+      <span class="pill">2026-06-06</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: NVIDIA · Samsung Electronics</span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">Semiconductors &amp; Semiconductor Equipment (GICS 453010) designs, fabricates, packages and tests integrated circuits, plus the tools and materials to make them. The global market reached about US$772B in 2025 (+22%) and is forecast near US$975B in 2026, approaching the US$1T threshold, on an AI-driven super-cycle. The defining force of 2026 is AI demand: hyperscaler and 'Stargate'-scale buildouts have created a record DRAM/NAND shortage (DRAM prices up ~171% in 2025), and SK hynix overtook Samsung in annual operating profit for the first time on HBM dominance. Export controls remain pivotal — US BIS rules, the Korean K-Chips Act and the EU Chips Act all reroute investment. The global #1 by revenue and market cap, NVIDIA (~US$130B FY2025, ~US$5T), leads AI accelerators; Korea's largest semiconductor player by total revenue, Samsung Electronics, is racing to close HBM and foundry gaps. Both are detailed at the end.</span><span class="ko">반도체·반도체장비(GICS 453010)는 집적회로를 설계·제조·패키징·테스트하고 이를 만드는 장비·소재를 다룹니다. 글로벌 시장은 2025년 약 7,720억 달러(+22%)에 이르렀고 AI 슈퍼사이클로 2026년 약 9,750억 달러로 1조 달러에 근접할 전망입니다. 2026년을 규정하는 힘은 AI 수요입니다. 하이퍼스케일러와 '스타게이트' 규모의 구축이 사상 최대 D램·낸드 부족을 만들었고(2025년 D램 가격 약 171% 상승), SK하이닉스가 HBM 우위로 처음으로 연간 영업이익에서 삼성을 추월했습니다. 수출 통제가 여전히 핵심입니다. 미국 BIS 규정, 한국 K칩스법, EU 칩스법이 모두 투자를 재배치합니다. 매출·시가총액 기준 글로벌 1위 엔비디아(FY2025 약 1,300억 달러, 약 5조 달러)는 AI 가속기를 선도하고, 총매출 기준 한국 최대 반도체 기업 삼성전자는 HBM·파운드리 격차 축소에 속도를 냅니다. 두 기업은 뒤에서 자세히 다룹니다.</span></p>
+    </div>
+  </section>
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From design to fabs to advanced packaging</span><span class="ko">설계에서 팹, 그리고 첨단 패키징으로</span></h2>
+      <p class="lead"><span class="en">The industry runs from design and equipment to fabs, devices and packaging. Value ≈ node leadership × capacity + AI/HBM mix − capex and yield risk.</span><span class="ko">이 산업은 설계·장비에서 팹, 디바이스, 패키징으로 이어집니다. 가치 ≈ 공정 우위 × 생산능력 + AI·HBM 비중 − 설비투자·수율 위험입니다.</span></p>
+      <div class="vchain"><div class="vc-step"><span class="vc-n">1</span><b><span class="en">Design / EDA &amp; IP</span><span class="ko">설계·EDA·IP</span></b><span class="d"><span class="en">Chip architecture, design software and IP cores.</span><span class="ko">칩 설계·설계 소프트웨어·IP 코어입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">2</span><b><span class="en">Manufacturing equipment</span><span class="ko">제조 장비</span></b><span class="d"><span class="en">Lithography, etch, deposition tools and materials.</span><span class="ko">리소·식각·증착 장비와 소재입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">3</span><b><span class="en">Foundry / fab</span><span class="ko">파운드리·팹</span></b><span class="d"><span class="en">Contract wafer manufacturing at advanced nodes.</span><span class="ko">첨단 공정 위탁 웨이퍼 제조입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">4</span><b><span class="en">Memory / logic devices</span><span class="ko">메모리·로직</span></b><span class="d"><span class="en">DRAM, NAND, HBM and integrated logic.</span><span class="ko">D램·낸드·HBM·통합 로직입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">5</span><b><span class="en">Packaging / test</span><span class="ko">패키징·테스트</span></b><span class="d"><span class="en">Advanced packaging (CoWoS) and final test.</span><span class="ko">첨단 패키징(CoWoS)·최종 테스트입니다.</span></span></div></div>
+      <div class="subh" style="margin-top:16px"><span class="en">Profit pool — where margin concentrates</span><span class="ko">수익풀 — 마진이 집중되는 곳</span></div><div class="pool"><div class="pool-row"><span class="pn"><span class="en">Design / EDA &amp; IP</span><span class="ko">설계·EDA·IP</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Manufacturing equipment</span><span class="ko">제조 장비</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Foundry / fab</span><span class="ko">파운드리·팹</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Memory / logic devices</span><span class="ko">메모리·로직</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Packaging / test</span><span class="ko">패키징·테스트</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div></div><p class="cap"><span class="en">Margin concentrates in design/IP, equipment (ASML's EUV monopoly), leading-edge foundry and memory in the up-cycle; packaging/test is mid but advanced packaging is rising fast.</span><span class="ko">마진은 설계·IP, 장비(ASML의 EUV 독점), 선단 파운드리, 상승 사이클의 메모리에 집중됩니다. 패키징·테스트는 중간이나 첨단 패키징이 빠르게 부상합니다.</span></p>
+    </div>
+  </section>
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A market racing toward $1 trillion</span><span class="ko">1조 달러를 향해 질주하는 시장</span></h2>
+      <div class="cagr-wrap"><span class="cagr-badge"><span class="en">CAGR</span><span class="ko">연평균 성장</span><span class="n">≈16–18%</span></span><span class="mute" style="font-size:12.5px"><span class="en">global semiconductor market (WSTS / Gartner)</span><span class="ko">글로벌 반도체 시장(WSTS / Gartner)</span></span></div>
+      <div class="colchart"><div class="col"><div class="col-val">$631B</div><div class="col-bar" data-h="44"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">$772B</div><div class="col-bar" data-h="62"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">$975B</div><div class="col-bar" data-h="83"></div><div class="col-lab">2026E</div></div><div class="col"><div class="col-val">$1.07T</div><div class="col-bar" data-h="92"></div><div class="col-lab">2027E</div></div><div class="col"><div class="col-val">$1.15T</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div></div>
+      <p class="cap"><span class="en">Global semiconductor revenue, US$, (WSTS Autumn 2025; 2025 actual +22%). 2027–28 extrapolated. Bars use a zoomed baseline. Near-term CAGR is elevated by the AI/memory up-cycle and will normalize.</span><span class="ko">글로벌 반도체 매출, 단위 달러(WSTS 2025년 가을, 2025년 실적 +22%). 2027~28년은 외삽치입니다. 막대는 확대 기준선을 씁니다. 단기 성장률은 AI·메모리 상승 사이클로 높으며 정상화될 것입니다.</span></p>
+    </div>
+  </section>
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">NVIDIA leads globally; Samsung leads Korea</span><span class="ko">엔비디아가 글로벌 선도, 삼성이 한국 선도</span></h2>
+      <div class="pies">
+        <div class="pieblock"><div class="pie-title"><span class="en">Global chip revenue — 2025</span><span class="ko">글로벌 반도체 매출 — 2025년</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0% 16%,#117aca 16% 25%,#ffb81c 25% 33%,#5aa9e6 33% 39%,#c9d4e3 39% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>NVIDIA<b>~16%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Samsung<b>~9%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>SK hynix<b>~8%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Broadcom<b>~6%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span>Others<b>~61%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea semiconductors — 2025</span><span class="ko">한국 반도체 — 2025년</span></div><div class="pie" style="background:conic-gradient(#0047a0 0% 56%,#117aca 56% 99%,#ffb81c 99% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>Samsung Electronics<b>~56%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>SK hynix<b>~43%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Others<b>~1%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">Global shares are by 2025 chip-vendor revenue (indicative); pure-play foundry TSMC is excluded from the vendor ranking (it holds ~70% of foundry). Korea shares compare the two memory giants; Samsung leads by total revenue, SK hynix by HBM profit.</span><span class="ko">글로벌 점유율은 2025년 반도체 기업 매출 기준 추정치입니다. 순수 파운드리 TSMC는 기업 순위에서 제외했습니다(파운드리의 약 70% 차지). 한국 점유율은 두 메모리 거인 비교로, 삼성이 총매출, SK하이닉스가 HBM 이익에서 앞섭니다.</span></p>
+    </div>
+  </section>
+  <section id="positioning">
+    <p class="kicker"><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></p>
+    <h2><span class="en">Where the leaders sit — a 2×2 map</span><span class="ko">리더들의 위치 — 2×2 맵</span></h2>
+    <div class="posmap reveal"><svg viewBox="0 0 340 290" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="60" y="18" width="262" height="214" fill="#f7fafd" stroke="#e6ebf4" stroke-width="1.5" rx="8"/><line x1="60" y1="125" x2="322" y2="125" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><line x1="191" y1="18" x2="191" y2="232" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><circle cx="270" cy="55" r="7" fill="var(--navy)"/><text x="270" y="46" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">NVIDIA</text><circle cx="200" cy="100" r="7" fill="var(--krred)"/><text x="200" y="91" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Samsung</text><circle cx="225" cy="80" r="5.5" fill="#9fb1c9"/><text x="225" y="71" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">SK hynix</text><circle cx="245" cy="120" r="5.5" fill="#9fb1c9"/><text x="245" y="111" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Broadcom</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="en">Scale / revenue &#8594;</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="ko">규모·매출 &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="en">AI / leading-edge position &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="ko">AI·선단 공정 위치 &#8594;</text></svg><div class="pos-legend"><span class="pl-i"><span class="pl-d" style="background:var(--navy)"></span><span class="en">Global #1</span><span class="ko">글로벌 1위</span></span><span class="pl-i"><span class="pl-d" style="background:var(--krred)"></span><span class="en">Korea #1</span><span class="ko">한국 1위</span></span><span class="pl-i"><span class="pl-d" style="background:#9fb1c9"></span><span class="en">Peers</span><span class="ko">경쟁사</span></span></div><p class="cap"><span class="en">NVIDIA sits top-right on AI accelerators and unmatched value capture; Samsung is large but trails in HBM and foundry. SK hynix leads HBM; Broadcom is strong in custom AI silicon.</span><span class="ko">엔비디아는 AI 가속기와 독보적 가치 확보로 우상단에 있고, 삼성은 크지만 HBM·파운드리에서 뒤집니다. SK하이닉스는 HBM을, 브로드컴은 맞춤 AI 실리콘을 주도합니다.</span></p></div>
+  </section>
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Few giants compete fiercely in HBM and foundry.</span><span class="ko">소수 거인이 HBM·파운드리에서 치열히 경쟁합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Leading-edge fabs cost US$20B+ with decades of process IP.</span><span class="ko">선단 팹은 200억 달러 이상에 수십 년 공정 지식재산이 필요합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">ASML's EUV monopoly and few critical-material vendors.</span><span class="ko">ASML의 EUV 독점과 소수 핵심 소재 공급자입니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Hyperscalers are huge but currently supply-constrained.</span><span class="ko">하이퍼스케일러는 거대하나 현재 공급 제약 상태입니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">No alternative to silicon ICs; chiplets are evolutions.</span><span class="ko">실리콘 IC의 대안이 없고 칩렛은 진화입니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: extreme barriers and supplier power protect leaders; in the AI up-cycle, buyer power is weak and pricing power strong.</span><span class="ko">종합하면 극심한 장벽과 공급자 교섭력이 선두를 보호합니다. AI 상승 사이클에서 구매자 교섭력은 약하고 가격결정력은 강합니다.</span></p>
+  </section>
+  <section id="reg">
+    <p class="kicker"><span class="en">Macro forces &amp; the latest RULES</span><span class="ko">거시 환경과 최신 규칙</span></p>
+    <h2><span class="en">The rulebook: policy &amp; regulation</span><span class="ko">규칙: 정책과 규제</span></h2>
+    <p class="mute"><span class="en">Export controls and chip-incentive laws now decide who can build what, where, and sell to whom.</span><span class="ko">수출 통제와 반도체 지원법이 이제 누가 무엇을 어디서 만들고 누구에게 파는지를 결정합니다.</span></p>
+    <p class="hint"><span class="en">This section = laws, bills and rules only (dated). Market events are in &#8220;Recent issues&#8221; below.</span><span class="ko">이 섹션은 법·법안·규칙만(시행일 표기)입니다. 시장 이벤트는 아래 &#8216;최근 이슈&#8217;에 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Feb 2025</span><span class="ac-title"><span class="en">Korea 'K-Chips Act' tax-credit expansion</span><span class="ko">한국 'K칩스법' 세액공제 확대</span></span></div><div class="ac-body"><p class="why"><span class="en">Facility-investment credit raised to 20% (large/mid) and 30% (SMEs). Why it matters: boosts Samsung/SK hynix capex economics vs US/EU.</span><span class="ko">설비투자 공제를 20%(대·중)·30%(중소)로 올렸습니다. 의미: 미국·EU 대비 삼성·SK하이닉스 설비 경제성을 높입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jan 2026</span><span class="ac-title"><span class="en">US BIS revised AI-chip license policy</span><span class="ko">미국 BIS, AI칩 허가 정책 개정</span></span></div><div class="ac-body"><p class="why"><span class="en">Advanced-AI-chip exports to China shifted to case-by-case review. Why it matters: partial loosening reopens China revenue with uncertainty.</span><span class="ko">대중 첨단 AI칩 수출을 사안별 심사로 전환했습니다. 의미: 부분 완화로 중국 매출이 불확실 속에 재개됩니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">US Entity List additions</span><span class="ko">미국 단체목록 추가</span></span></div><div class="ac-body"><p class="why"><span class="en">Dozens of PRC entities added across 2025. Why it matters: constrains China sales and reroutes supply chains.</span><span class="ko">2025년 수십 개 중국 단체가 추가됐습니다. 의미: 중국 판매를 제약하고 공급망을 재편합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">EU Chips Act 2.0 proposal</span><span class="ko">EU 칩스법 2.0 제안</span></span></div><div class="ac-body"><p class="why"><span class="en">Targets reduced dependency and more advanced EU production. Why it matters: signals more European subsidy competition.</span><span class="ko">역내 의존도 축소와 첨단 생산 확대를 목표로 합니다. 의미: 유럽 보조금 경쟁 심화를 시사합니다.</span></p></div></div></div>
+  </section>
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Node leadership</span><span class="ko">공정 우위</span></b><p><span class="en">Leading-edge process (HBM4, sub-3nm).</span><span class="ko">선단 공정(HBM4·3나노 이하)입니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">Capex &amp; cash</span><span class="ko">설비투자·현금</span></b><p><span class="en">Funding US$20B+ fabs.</span><span class="ko">200억 달러 이상 팹 조달입니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">Secured AI demand</span><span class="ko">확보된 AI 수요</span></b><p><span class="en">Long-term hyperscaler contracts.</span><span class="ko">장기 하이퍼스케일러 계약입니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">Yield &amp; packaging</span><span class="ko">수율·패키징</span></b><p><span class="en">CoWoS and TSV execution.</span><span class="ko">CoWoS·TSV 실행입니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">EUV &amp; materials access</span><span class="ko">EUV·소재 접근</span></b><p><span class="en">Securing scarce tools and inputs.</span><span class="ko">희소 장비·소재 확보입니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Export-control navigation</span><span class="ko">수출 통제 대응</span></b><p><span class="en">Managing geopolitics and incentives.</span><span class="ko">지정학·인센티브 관리입니다.</span></p></div></div></div>
+  </section>
+  <section id="news">
+    <p class="kicker"><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></p>
+    <h2><span class="en">The newsflow: market &amp; competitive events</span><span class="ko">뉴스: 시장·경쟁 이벤트</span></h2>
+    <p class="hint"><span class="en">This section = business/market events (earnings, deals, demand, prices) — not policy. Tap for why it matters.</span><span class="ko">이 섹션은 실적·거래·수요·가격 등 시장 이벤트입니다(정책 아님). 눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025–26</span><span class="ac-title"><span class="en">AI-driven DRAM/NAND shortage and price surge</span><span class="ko">AI발 D램·낸드 부족·가격 급등</span></span></div><div class="ac-body"><p class="why"><span class="en">DRAM prices up ~171% and NAND ~246% in 2025; DDR5 spot quadrupled. Why it matters: record memory margins but a squeeze on device OEMs.</span><span class="ko">2025년 D램 가격 약 171%·낸드 약 246% 상승, DDR5 현물 4배입니다. 의미: 기록적 메모리 마진이나 기기 OEM은 압박받습니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jan 2026</span><span class="ac-title"><span class="en">SK hynix tops Samsung in annual profit</span><span class="ko">SK하이닉스, 연간 이익서 삼성 추월</span></span></div><div class="ac-body"><p class="why"><span class="en">Operating profit ₩47.2T vs Samsung ₩43.6T (FY2025) on HBM. Why it matters: reshapes the memory leadership hierarchy.</span><span class="ko">HBM으로 영업이익 47.2조 원 대 삼성 43.6조 원(FY2025)입니다. 의미: 메모리 리더십 구도를 바꿉니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Oct 2025</span><span class="ac-title"><span class="en">OpenAI 'Stargate' LOIs with Samsung &amp; SK hynix</span><span class="ko">오픈AI '스타게이트' 삼성·SK하이닉스 LOI</span></span></div><div class="ac-body"><p class="why"><span class="en">Could absorb up to ~40% of global DRAM output. Why it matters: locks up supply and intensifies the shortage.</span><span class="ko">글로벌 D램 생산의 최대 약 40%를 흡수할 수 있습니다. 의미: 공급을 묶고 부족을 심화합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2026</span><span class="ac-title"><span class="en">NVIDIA data-center revenue hits record</span><span class="ko">엔비디아 데이터센터 매출 사상 최대</span></span></div><div class="ac-body"><p class="why"><span class="en">Quarterly data-center revenue ~US$62.3B (+75%); market cap passed US$5T. Why it matters: confirms the AI capex super-cycle.</span><span class="ko">분기 데이터센터 매출 약 623억 달러(+75%), 시가총액 5조 달러 돌파입니다. 의미: AI 설비 슈퍼사이클을 확인합니다.</span></p></div></div></div>
+  </section>
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, each with its OWN strategy</span><span class="ko">두 리더, 각자 다른 전략</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader is diagnosed on its own terms: a MECE issue tree → strategy thrusts chosen for THAT company → action plans. The NUMBER of thrusts varies by situation (one for a single-mandate player, up to three where the diagnosis demands it) — it is not a fixed two-track template.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 그 회사에 맞게 진단합니다: MECE 이슈트리 → 그 기업에 맞춰 고른 전략 축 → 액션 플랜. 전략 축의 '개수'는 상황에 따라 다릅니다(단일 사명 기업은 1개, 진단이 요구하면 최대 3개). 고정된 2트랙 틀이 아닙니다.</span></p>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>NVIDIA</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The largest semiconductor company by revenue and market cap, leading AI accelerators.</span><span class="ko">매출·시가총액 기준 최대 반도체 기업으로 AI 가속기를 선도합니다.</span></p><div class="stats"><div class="stat"><div class="n">~$130.5B</div><div class="l"><span class="en">FY25 revenue (+114%)</span><span class="ko">FY25 매출(+114%)</span></div></div><div class="stat"><div class="n">~62.5%</div><div class="l"><span class="en">Operating margin</span><span class="ko">영업이익률</span></div></div><div class="stat"><div class="n">~$5T</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div><div class="stat"><div class="n">~88%</div><div class="l"><span class="en">Data-center share of revenue</span><span class="ko">데이터센터 매출 비중</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — dominant, but concentrated and geopolitically exposed</span><span class="ko">진단 — 지배적이나 집중·지정학에 노출됩니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Revenue is tied to a handful of hyperscalers and capped by China controls.</span><span class="ko">매출이 소수 하이퍼스케일러에 묶이고 중국 통제로 제한됩니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">Customer concentration plus export controls limit a large addressable market.</span><span class="ko">고객 집중에 수출 통제가 더해져 큰 시장을 제한합니다.</span></p><div class="formula">Revenue = Accelerators × ASP × demand; concentration and China controls cap the upside</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">Can it sustain growth as concentration and geopolitics bite?</span><span class="ko">집중·지정학이 압박하는 가운데 성장을 지속할 수 있는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">Diversify customers, deepen the full-stack platform, and ship compliant China SKUs (the tracks below).</span><span class="ko">고객을 다변화하고 풀스택 플랫폼을 심화하며 규정 준수 중국 제품을 출하합니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why is the dominant chipmaker still exposed?</span><span class="ko">지배적 반도체 기업이 여전히 노출된 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">Customer concentration (structural)</span><span class="ko">고객 집중(구조적)</span></b><div class="leaf"><span class="en">A few hyperscalers drive most revenue.</span><span class="ko">소수 하이퍼스케일러가 대부분 매출을 이끕니다.</span></div></div><div class="branch"><b><span class="en">Geopolitics (external)</span><span class="ko">지정학(외생)</span></b><div class="leaf"><span class="en">China export controls cap a large market.</span><span class="ko">중국 수출 통제가 큰 시장을 제한합니다.</span></div></div><div class="branch"><b><span class="en">Platform &amp; diversification (lever)</span><span class="ko">플랫폼·다변화(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Deepen the platform and broaden customers.</span><span class="ko">플랫폼을 심화하고 고객을 넓힙니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Diversify demand</span><span class="ko">Track 1 · 수요 다변화</span></div><div class="tn"><span class="en">Win sovereign &amp; enterprise AI</span><span class="ko">주권·기업 AI 확보</span></div><p><span class="en">Grow sovereign-AI and enterprise deals beyond hyperscalers.</span><span class="ko">하이퍼스케일러 너머 주권·기업 AI를 키웁니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Full-stack</span><span class="ko">Track 2 · 풀스택</span></div><div class="tn"><span class="en">Deepen platform &amp; CUDA lock-in</span><span class="ko">플랫폼·CUDA 고착 심화</span></div><p><span class="en">Extend networking and software to deepen the moat.</span><span class="ko">네트워킹·소프트웨어로 해자를 심화합니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · China SKUs</span><span class="ko">Track 3 · 중국 제품</span></div><div class="tn"><span class="en">Ship compliant China parts</span><span class="ko">규정 준수 중국 제품</span></div><p><span class="en">Offer export-compliant SKUs to recover China revenue.</span><span class="ko">수출 규정에 맞는 제품으로 중국 매출을 회복합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Customers</span><span class="ko">고객</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Hyperscaler-led</span><span class="ko">하이퍼스케일러 중심</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Sovereign + enterprise</span><span class="ko">주권+기업</span></div></div></div><div class="ap"><div class="apt"><span class="en">Offering</span><span class="ko">제공</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Chips</span><span class="ko">칩</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Full-stack platform</span><span class="ko">풀스택 플랫폼</span></div></div></div><div class="ap"><div class="apt"><span class="en">China</span><span class="ko">중국</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Restricted</span><span class="ko">제한</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Compliant SKUs</span><span class="ko">규정 준수 제품</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>Samsung Electronics</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">Korea's largest semiconductor player by total revenue, racing to close HBM and foundry gaps.</span><span class="ko">총매출 기준 한국 최대 반도체 기업으로, HBM·파운드리 격차 축소에 속도를 냅니다.</span></p><div class="stats"><div class="stat"><div class="n">~$72.5B</div><div class="l"><span class="en">2025 chip revenue</span><span class="ko">2025 반도체 매출</span></div></div><div class="stat"><div class="n">₩43.6T</div><div class="l"><span class="en">FY25 group operating profit</span><span class="ko">FY25 그룹 영업이익</span></div></div><div class="stat"><div class="n">~$1.4T</div><div class="l"><span class="en">Market cap</span><span class="ko">시가총액</span></div></div><div class="stat"><div class="n">#2</div><div class="l"><span class="en">Global chip vendor</span><span class="ko">글로벌 반도체 순위</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — scale leader, but lagging in HBM and foundry</span><span class="ko">진단 — 규모 선두이나 HBM·파운드리에서 뒤집니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">SK hynix overtook Samsung in profit on HBM, and foundry trails TSMC.</span><span class="ko">SK하이닉스가 HBM으로 이익에서 앞섰고 파운드리는 TSMC에 뒤집니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">Late HBM3E qualification and advanced-node yield gaps narrowing too slowly.</span><span class="ko">늦은 HBM3E 인증과 더디게 좁혀지는 선단 공정 수율 격차입니다.</span></p><div class="formula">Profit = Memory cycle × HBM share + foundry margin; HBM/foundry gaps cap the upside</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">How to reclaim memory leadership and grow foundry?</span><span class="ko">메모리 리더십을 되찾고 파운드리를 키우려면?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">Ramp HBM4, close the foundry yield gap, and leverage integration (the tracks below).</span><span class="ko">HBM4를 양산하고 파운드리 수율 격차를 좁히며 통합을 활용합니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why does the scale leader trail on profit?</span><span class="ko">규모 선두가 이익에서 뒤지는 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">HBM gap (competitive)</span><span class="ko">HBM 격차(경쟁)</span></b><div class="leaf"><span class="en">Late HBM3E qualification ceded the lead.</span><span class="ko">늦은 HBM3E 인증으로 주도권을 내줬습니다.</span></div></div><div class="branch"><b><span class="en">Foundry yield (structural)</span><span class="ko">파운드리 수율(구조적)</span></b><div class="leaf"><span class="en">Advanced-node yield trails TSMC.</span><span class="ko">선단 공정 수율이 TSMC에 뒤집니다.</span></div></div><div class="branch"><b><span class="en">HBM4 &amp; integration (lever)</span><span class="ko">HBM4·통합(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Ramp HBM4 and integrate memory-foundry-packaging.</span><span class="ko">HBM4를 양산하고 메모리·파운드리·패키징을 통합합니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · HBM ramp</span><span class="ko">Track 1 · HBM 양산</span></div><div class="tn"><span class="en">Accelerate HBM4 qualification</span><span class="ko">HBM4 인증 가속</span></div><p><span class="en">Qualify and ramp HBM4 in 2026 to reclaim memory profit.</span><span class="ko">2026년 HBM4를 인증·양산해 메모리 이익을 되찾습니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Foundry</span><span class="ko">Track 2 · 파운드리</span></div><div class="tn"><span class="en">Close the yield gap</span><span class="ko">수율 격차 축소</span></div><p><span class="en">Improve advanced-node yields to win foundry share.</span><span class="ko">선단 공정 수율을 개선해 파운드리 점유율을 확보합니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Integration</span><span class="ko">Track 3 · 통합</span></div><div class="tn"><span class="en">Leverage incentives &amp; integration</span><span class="ko">인센티브·통합 활용</span></div><p><span class="en">Use K-Chips Act incentives and an integrated memory-foundry-packaging offering.</span><span class="ko">K칩스법 인센티브와 통합 제공을 활용합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Memory</span><span class="ko">메모리</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">HBM laggard</span><span class="ko">HBM 후발</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">HBM4 leader</span><span class="ko">HBM4 선도</span></div></div></div><div class="ap"><div class="apt"><span class="en">Foundry</span><span class="ko">파운드리</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Yield gap</span><span class="ko">수율 격차</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Closing on TSMC</span><span class="ko">TSMC 추격</span></div></div></div><div class="ap"><div class="apt"><span class="en">Model</span><span class="ko">모델</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Siloed</span><span class="ko">분절</span></div><div class="ap-arrow">→</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Integrated stack</span><span class="ko">통합 스택</span></div></div></div></div></div></div>
+  </section>
+  <section id="kpi">
+    <p class="kicker"><span class="en">KPIs to watch</span><span class="ko">주목할 지표</span></p>
+    <h2><span class="en">The dials that move this industry</span><span class="ko">이 산업을 움직이는 계기판</span></h2>
+    <p class="hint"><span class="en">Leading indicators with the latest reading — track these to see the thesis play out.</span><span class="ko">최신 수치가 담긴 선행지표입니다. 이 흐름을 추적하면 전망을 검증할 수 있습니다.</span></p>
+    <div class="kpis reveal"><div class="kpi"><div class="kt"><span class="en">DRAM price change</span><span class="ko">D램 가격 변동</span></div><div class="kv"><span class="en">+171% (2025)</span><span class="ko">+171%(2025)</span></div><div class="kw"><span class="en">Memory up-cycle gauge.</span><span class="ko">메모리 상승 사이클 척도입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">NVIDIA data-center revenue</span><span class="ko">엔비디아 데이터센터 매출</span></div><div class="kv"><span class="en">~$62.3B/qtr</span><span class="ko">분기 약 623억 달러</span></div><div class="kw"><span class="en">AI demand engine.</span><span class="ko">AI 수요 엔진입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">SK hynix vs Samsung profit</span><span class="ko">SK하이닉스 대 삼성 이익</span></div><div class="kv"><span class="en">₩47.2T vs ₩43.6T</span><span class="ko">47.2조 대 43.6조 원</span></div><div class="kw"><span class="en">Memory leadership shift.</span><span class="ko">메모리 리더십 이동입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Global chip market</span><span class="ko">글로벌 반도체 시장</span></div><div class="kv"><span class="en">~$975B (2026E)</span><span class="ko">약 9,750억 달러(2026E)</span></div><div class="kw"><span class="en">Approaching $1T.</span><span class="ko">1조 달러 근접입니다.</span></div></div></div>
+  </section>
+  <section id="scenarios">
+    <p class="kicker"><span class="en">Scenarios — bull · base · bear</span><span class="ko">시나리오 — 낙관·기본·비관</span></p>
+    <h2><span class="en">Three ways the next few years could break</span><span class="ko">향후 몇 년이 갈릴 세 갈래</span></h2>
+    <div class="scen reveal"><div class="sc bull"><div class="sh"><span class="en">Bull · upside</span><span class="ko">낙관</span></div><div class="sd"><span class="en">AI super-cycle + memory shortage persists</span><span class="ko">AI 슈퍼사이클 + 메모리 부족 지속</span></div><p><span class="en">Pricing power compounds; record margins extend.</span><span class="ko">가격결정력이 복리로 늘고 기록적 마진이 이어집니다.</span></p></div><div class="sc base"><div class="sh"><span class="en">Base · central</span><span class="ko">기본</span></div><div class="sd"><span class="en">AI grows steadily; supply catches up</span><span class="ko">AI 꾸준한 성장 + 공급 회복</span></div><p><span class="en">Strong but normalizing growth; margins firm.</span><span class="ko">강하나 정상화되는 성장. 마진이 견조합니다.</span></p></div><div class="sc bear"><div class="sh"><span class="en">Bear · downside</span><span class="ko">비관</span></div><div class="sd"><span class="en">AI digestion + export controls tighten</span><span class="ko">AI 소화 + 수출 통제 강화</span></div><p><span class="en">Utilization falls; China limits and a glut pressure prices.</span><span class="ko">가동률이 떨어지고 중국 제한·과잉이 가격을 압박합니다.</span></p></div></div>
+  </section>
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight">
+        <li><span class="en">The AI capex cycle drives demand but concentrates it in a few buyers.</span><span class="ko">AI 설비 사이클이 수요를 견인하나 소수 구매자에게 집중시킵니다.</span></li><li><span class="en">Export controls keep rerouting where chips are made and sold.</span><span class="ko">수출 통제가 반도체 생산·판매 위치를 계속 재편합니다.</span></li><li><span class="en">A memory up-cycle is cyclical; oversupply would sharply cut margins.</span><span class="ko">메모리 상승 사이클은 경기순환적이라 과잉공급 시 마진이 급감합니다.</span></li><li><span class="en">NVIDIA rides platform diversification; Samsung rides HBM4 and foundry catch-up.</span><span class="ko">엔비디아는 플랫폼 다변화에, 삼성은 HBM4·파운드리 추격에 달려 있습니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><a href="https://www.wsts.org/76/Recent-News-Release">WSTS — semiconductor forecast</a></li><li><a href="https://www.sec.gov/Archives/edgar/data/0001045810/000104581025000021/q4fy25pr.htm">NVIDIA — Q4 FY25 results (SEC)</a></li><li><a href="https://news.samsung.com/global/samsung-electronics-announces-fourth-quarter-and-fy-2025-results">Samsung Electronics — FY2025 results</a></li><li><a href="https://www.cnbc.com/2026/01/29/sk-hynix-beats-samsung-2025-profit-ai-memory-hbm.html">CNBC — SK hynix beats Samsung on profit</a></li><li><a href="https://www.federalregister.gov/documents/2026/01/15/2026-00789/revision-to-license-review-policy-for-advanced-computing-commodities">US Federal Register — BIS license policy</a></li><li><a href="https://spectrum.ieee.org/dram-shortage">IEEE Spectrum — DRAM shortage</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Semiconductors &amp; Semiconductor Equipment (GICS 453010) · Generated June 6, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 반도체·반도체장비(GICS 453010) · 2026년 6월 6일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body>
+</html>
