@@ -1,0 +1,66 @@
+name: Daily Industry Report
+
+# WHAT THIS DOES
+# GitHub runs this on its own servers. It installs Claude Code, hands it the
+# instructions in prompts/daily-industry-report.md, lets it build + fact-check
+# today's 7 reports, then commits and pushes them. GitHub Pages serves the result.
+# No PAT, no laptop required.
+
+on:
+  # ── DAILY SCHEDULE IS OFF FOR NOW ──────────────────────────────────────────
+  # After you add the ANTHROPIC_API_KEY secret and test once with "Run workflow",
+  # un-comment the two lines below to turn on the daily run.
+  # GitHub cron is ALWAYS UTC. 21:00 UTC == 06:00 KST the next morning.
+  # schedule:
+  #   - cron: "0 21 * * *"
+  workflow_dispatch: {}   # the "Run workflow" button — works right now
+
+concurrency:
+  group: daily-industry-report
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90   # our own cap. GitHub's hard limit is 6h; this kills a stuck run sooner.
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node (Claude Code + build_index.js)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Set up Python (HTML generator)
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Generate + fact-check today's reports
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_MODEL: opus   # set to "sonnet" to cut cost; "opus" for best quality
+        run: |
+          claude -p "$(cat prompts/daily-industry-report.md)" \
+            --model "$CLAUDE_MODEL" \
+            --dangerously-skip-permissions \
+            --verbose
+
+      - name: Commit & push
+        run: |
+          git config user.name "Daily Industry Report Bot"
+          git config user.email "daily-industry-report@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to publish today."
+          else
+            git commit -m "Publish reports $(date -u +%Y-%m-%d)"
+            git push
+          fi
