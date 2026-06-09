@@ -3,17 +3,14 @@ name: Daily Industry Report
 # WHAT THIS DOES
 # GitHub runs this on its own servers. It installs Claude Code, hands it the
 # instructions in prompts/daily-industry-report.md, lets it build + fact-check
-# today's 7 reports, then commits and pushes them. GitHub Pages serves the result.
-# No PAT, no laptop required.
+# today's 7 reports, commits and pushes them (GitHub Pages serves the result),
+# then emails you a morning digest (7 one-liners + 1 deep pick). No laptop required.
 
 on:
-  # ── DAILY SCHEDULE IS OFF FOR NOW ──────────────────────────────────────────
-  # After you add the CLAUDE_CODE_OAUTH_TOKEN secret and test once with "Run workflow",
-  # un-comment the two lines below to turn on the daily run.
-  # GitHub cron is ALWAYS UTC. 21:00 UTC == 06:00 KST the next morning.
+  # Daily schedule is ON. GitHub cron is ALWAYS UTC. 21:00 UTC == 06:00 KST next morning.
   schedule:
-    - cron: "0 21 * * *"
-  workflow_dispatch: {}   # the "Run workflow" button — works right now
+    - cron: "0 21 * * *"   # 21:00 UTC == 06:00 KST (다음날 아침)
+  workflow_dispatch: {}    # 수동 실행 버튼도 그대로 유지
 
 concurrency:
   group: daily-industry-report
@@ -67,3 +64,27 @@ jobs:
             git commit -m "Publish reports $(date -u +%Y-%m-%d)"
             git push
           fi
+
+      - name: Prepare digest
+        run: |
+          # Fallback if Claude did not produce the digest, so the email step never hard-fails.
+          if [ ! -s digest.html ]; then
+            echo "<p>오늘 다이제스트 생성에 실패했습니다. Actions 로그를 확인하세요.</p>" > digest.html
+          fi
+          SUBJ="$(head -n1 digest_subject.txt 2>/dev/null || true)"
+          [ -z "$SUBJ" ] && SUBJ="The Industry Brief 다이제스트 $(date -u +%Y-%m-%d)"
+          echo "DIGEST_SUBJECT=$SUBJ" >> "$GITHUB_ENV"
+
+      - name: Email the morning digest
+        if: success()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          from: The Industry Brief <${{ secrets.MAIL_USERNAME }}>
+          to: dshseungwon@gmail.com
+          subject: ${{ env.DIGEST_SUBJECT }}
+          html_body: file://digest.html

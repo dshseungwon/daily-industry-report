@@ -1,0 +1,6 @@
+# Personal morning digest (emailed each day, not published)
+digest.html
+digest_subject.txt
+
+# macOS cruft
+.DS_Store

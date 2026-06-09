@@ -113,3 +113,33 @@ existing entries; if an entry for today's file already exists, overwrite it), th
 `node build_index.js` to rebuild index.html. Do NOT commit or push — the workflow does
 that. Finish by printing a short summary: today's 7 GICS industries, each one's global
 #1 and Korea #1, and any figures corrected during STEP 6.
+
+STEP 8 — WRITE THE MORNING DIGEST (a later workflow step emails it; do NOT commit it).
+After the 7 reports and reports.json/index.html are done, write TWO files at the repo
+ROOT:
+
+1) `digest.html` — a self-contained, INLINE-STYLED (email-safe) HTML body, KOREAN-
+   primary in polite 합쇼체 (this is a personal morning brief the owner actually reads).
+   Mobile-friendly, max-width ~600px, INLINE css only (no <style> blocks, no external
+   assets, no <script>; mail clients strip them). Structure, in this order:
+   - Header line: "The Industry Brief · 오늘의 다이제스트 · <YYYY-MM-DD>" with a link to
+     the landing page https://dshseungwon.github.io/daily-industry-report/ .
+   - "오늘의 픽" card FIRST: pick the SINGLE most interesting/important of today's 7
+     (one short clause on why it is the pick), then a 3-LINE summary (exactly 3 sentences)
+     of what is moving and why it matters today, then a prominent link
+     "전체 리포트 보기 →" to that report's live URL.
+   - "오늘의 7개 산업" list: each of the 7 on ONE line —
+     산업명(국문) (English) · 글로벌 1위 / 한국 1위 · 한 줄 takeaway —
+     and make each line a link to its own live report URL.
+   - Live URLs are exactly
+     https://dshseungwon.github.io/daily-industry-report/reports/<YYYY-MM-DD>/<filename>
+     using the precise filenames you created in reports/<YYYY-MM-DD>/.
+   Keep it scannable: the whole email should be readable in under a minute. No em-dash
+   characters anywhere; use commas, periods, or parentheses.
+
+2) `digest_subject.txt` — exactly ONE line, the email subject, e.g.
+   "오늘의 픽: <산업명(국문)> · The Industry Brief <YYYY-MM-DD>". No trailing newline-only
+   second line.
+
+These two files are git-ignored on purpose; leave them in the working tree and do NOT
+commit them. Then finish by printing the short run summary as described in STEP 7.
