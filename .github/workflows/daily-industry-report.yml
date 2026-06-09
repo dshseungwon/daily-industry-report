@@ -11,8 +11,8 @@ on:
   # After you add the CLAUDE_CODE_OAUTH_TOKEN secret and test once with "Run workflow",
   # un-comment the two lines below to turn on the daily run.
   # GitHub cron is ALWAYS UTC. 21:00 UTC == 06:00 KST the next morning.
-  # schedule:
-  #   - cron: "0 21 * * *"
+  schedule:
+    - cron: "0 21 * * *"
   workflow_dispatch: {}   # the "Run workflow" button — works right now
 
 concurrency:
