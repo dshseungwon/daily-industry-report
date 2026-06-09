@@ -8,7 +8,7 @@ name: Daily Industry Report
 
 on:
   # ── DAILY SCHEDULE IS OFF FOR NOW ──────────────────────────────────────────
-  # After you add the ANTHROPIC_API_KEY secret and test once with "Run workflow",
+  # After you add the CLAUDE_CODE_OAUTH_TOKEN secret and test once with "Run workflow",
   # un-comment the two lines below to turn on the daily run.
   # GitHub cron is ALWAYS UTC. 21:00 UTC == 06:00 KST the next morning.
   # schedule:
@@ -45,7 +45,10 @@ jobs:
 
       - name: Generate + fact-check today's reports
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Max/Pro subscription auth. Run `claude setup-token` locally and store the
+          # resulting sk-ant-oat01-... value as the CLAUDE_CODE_OAUTH_TOKEN secret.
+          # This runs on your Max plan's agent credit, NOT separate pay-as-you-go API billing.
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           CLAUDE_MODEL: opus   # set to "sonnet" to cut cost; "opus" for best quality
         run: |
           claude -p "$(cat prompts/daily-industry-report.md)" \
