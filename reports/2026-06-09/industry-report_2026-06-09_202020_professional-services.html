@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Professional Services · 전문 서비스 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+
+<style>
+  .cagr-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+  .cagr-badge{display:inline-flex;align-items:baseline;gap:5px;background:#eaf2fb;color:var(--blue);
+    border:1px solid #cfe2f5;border-radius:999px;padding:6px 13px;font-weight:800;font-size:13px;}
+  .cagr-badge .n{font-size:16px;}
+  .cagr-badge.alt{background:#fff6e6;color:#b07400;border-color:#ffe2a6;}
+  /* SCQA diagnosis (Situation · Complication · Question · Answer) */
+  .scqa{margin:12px 0 2px;}
+  .scqa-row{display:flex;gap:12px;position:relative;padding-bottom:14px;}
+  .scqa-row:last-child{padding-bottom:0;}
+  .scqa-row::before{content:"";position:absolute;left:14px;top:30px;bottom:-2px;width:2px;background:var(--line);}
+  .scqa-row:last-child::before{display:none;}
+  .scqa-k{flex:none;width:30px;height:30px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 2px 6px rgba(14,42,71,.18);}
+  .scqa-row.s .scqa-k{background:#5b6b8c;}
+  .scqa-row.c .scqa-k{background:var(--hi);}
+  .scqa-row.q .scqa-k{background:var(--blue);}
+  .scqa-row.a .scqa-k{background:var(--lo);}
+  .scqa-bd{flex:1;padding-top:1px;}
+  .scqa-lab{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;}
+  .scqa-row.a .scqa-lab{color:var(--lo);}
+  .scqa-bd p{margin:0;font-size:13.3px;color:var(--ink);line-height:1.55;}
+  .scqa-row.q .scqa-bd p{font-style:italic;color:#16406a;}
+  .scqa-row.a .scqa-bd p{font-weight:600;}
+  .scqa .formula{margin-top:8px;}
+  .scqa-cap{font-size:11.5px;color:var(--mute);font-style:italic;margin:10px 0 0;}
+  /* MECE issue tree (rendered together with SCQA) */
+  .tree{margin:9px 0 2px;}
+  .tree .root{background:linear-gradient(120deg,#16406a,#0e2a47);color:#fff;border-radius:11px;
+    padding:11px 14px;font-size:13.4px;font-weight:700;border-left:4px solid var(--gold);}
+  .tree .branches{display:grid;gap:9px;margin-top:10px;}
+  .tree .branch{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;padding:10px 13px;background:#f7fafd;}
+  .tree .branch>b{font-size:13.1px;display:block;margin-bottom:5px;color:var(--ink);}
+  .tree .leaf{font-size:12.6px;color:var(--mute);padding-left:15px;position:relative;margin:4px 0;line-height:1.5;}
+  .tree .leaf::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .tree .leaf.lever{color:var(--ink);font-weight:600;}
+  .tree .leaf.lever::before{background:var(--gold);width:8px;height:8px;left:1px;top:7px;}
+  .tree .lever-tag{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#b07400;background:#fff6e6;border-radius:5px;padding:1px 5px;margin-right:5px;}
+  .tree-cap{display:none;}
+  @media(min-width:680px){.tree .branches{grid-template-columns:1fr 1fr 1fr;}}
+  /* value chain — connected flow diagram */
+  .vchain{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:6px 0 4px;}
+  .vc-step{position:relative;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:11px;padding:11px 13px 11px 40px;flex:1;}
+  .vc-step .vc-n{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;
+    background:var(--blue);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .vc-step:last-of-type{border-left-color:var(--gold);}
+  .vc-step:last-of-type .vc-n{background:var(--gold);color:var(--navy);}
+  .vc-step b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc-step .d{font-size:12.3px;color:var(--mute);}
+  .vc-arrow{align-self:center;color:var(--gold);font-weight:900;font-size:16px;line-height:1;
+    transform:rotate(90deg);padding:5px 0;}
+  @media(min-width:720px){
+    .vchain{flex-direction:row;align-items:stretch;flex-wrap:nowrap;}
+    .vc-step{padding:11px 11px 11px 12px;min-width:0;}
+    .vc-step .vc-n{position:static;margin-bottom:6px;}
+    .vc-arrow{transform:none;padding:0 3px;display:flex;align-items:center;}
+  }
+  /* variable 1-3 strategy tracks */
+  .track.t3{background:#10355a;border:1px solid rgba(255,184,28,.45);}
+  .track-grid.n1{grid-template-columns:1fr;}
+  @media(min-width:680px){
+    .track-grid.n2{grid-template-columns:1fr 1fr;}
+    .track-grid.n3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  /* profit pool */
+  .pool{display:flex;flex-direction:column;gap:8px;margin:6px 0 2px;}
+  .pool-row{display:flex;align-items:center;gap:10px;}
+  .pool-row .pn{flex:1.1;font-size:12.6px;color:var(--ink);min-width:0;}
+  .pool-row .ptrack{flex:1.5;height:9px;border-radius:5px;background:#eef2f7;overflow:hidden;}
+  .pool-row .pfill{height:100%;border-radius:5px;}
+  .pool-row .pfill.hi{width:92%;background:var(--gold);}
+  .pool-row .pfill.med{width:55%;background:var(--blue);}
+  .pool-row .pfill.lo{width:22%;background:#c9d4e3;}
+  .pool-row .pv{flex:none;width:58px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .pool-row .pv.hi{color:#b07400;}.pool-row .pv.med{color:var(--blue);}.pool-row .pv.lo{color:var(--mute);}
+  /* KPI watchlist */
+  .kpis{display:grid;grid-template-columns:1fr;gap:11px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);padding:13px 15px;border-left:4px solid var(--blue);}
+  .kpi .kt{font-size:12.5px;font-weight:800;color:var(--ink);}
+  .kpi .kv{font-size:clamp(17px,4.6vw,21px);font-weight:800;color:var(--blue);margin:3px 0 4px;line-height:1.1;}
+  .kpi .kw{font-size:12.3px;color:var(--mute);}
+  /* scenarios */
+  .scen{display:grid;grid-template-columns:1fr;gap:11px;}
+  .sc{border-radius:13px;padding:14px 16px;color:#fff;box-shadow:var(--shadow);}
+  .sc.bull{background:linear-gradient(125deg,#1f9d6b,#14633f);}
+  .sc.base{background:linear-gradient(125deg,#16406a,#0e2a47);}
+  .sc.bear{background:linear-gradient(125deg,#b1402f,#7d2418);}
+  .sc .sh{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .sc .sd{font-size:13.6px;font-weight:800;margin:4px 0 6px;}
+  .sc p{margin:0;font-size:12.8px;color:#eef4fb;}
+  /* positioning 2x2 */
+  .posmap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;}
+  .posmap svg{width:100%;height:auto;display:block;overflow:visible;}
+  .pos-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 2px;font-size:12px;color:var(--ink);}
+  .pos-legend .pl-i{display:flex;align-items:center;gap:6px;}
+  .pos-legend .pl-d{width:11px;height:11px;border-radius:50%;}
+  @media(min-width:680px){.kpis{grid-template-columns:1fr 1fr;}.scen{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Professional Services</span><span class="ko">전문 서비스</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="positioning"><span class="en">Positioning</span><span class="ko">포지셔닝</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button><button class="chip" data-go="scenarios"><span class="en">Scenarios</span><span class="ko">시나리오</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 2 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 2번째</span></p>
+    <h1><span class="en">Professional Services</span><span class="ko">전문 서비스</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · <span class="en">Industrials</span><span class="ko">산업재</span> · 202020</span>
+      <span class="pill">2026-06-09</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: ADP · Saramin</span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">Professional Services (GICS 202020) spans HR &amp; employment services (payroll, staffing, talent), and research, consulting, data &amp; analytics — firms such as ADP, Paychex, Adecco, Randstad, RELX, Wolters Kluwer, Verisk, Gartner and Nielsen. It is a vast, fragmented market estimated at roughly US$6.4 trillion in 2025 and growing about 6% a year, but it splits cleanly into two profit profiles: low-margin, cyclical labor businesses (staffing) and high-margin, recurring data &amp; analytics franchises. The defining force of 2026 is AI — both a tailwind (AI-enabled analytics, automated payroll/compliance) and a threat (AI-driven layoffs that hit junior consulting and staffing demand; AI cited in ~55,000 US job cuts in 2025). Regulation is tightening fast: the EU AI Act's high-risk rules land Aug 2, 2026, alongside data-privacy and labor-law changes in Korea. The global #1 by revenue and market value, ADP (FY25 revenue US$20.6B, ~US$80B market cap), is leaning into AI-enabled HCM; Korea's listed proxy leader, the recruitment platform Saramin, is small by global standards. Both are detailed at the end.</span><span class="ko">전문 서비스(GICS 202020)는 HR·고용 서비스(급여·인력파견·인재)와 리서치·컨설팅·데이터&amp;애널리틱스를 아우르며, ADP, 페이첵스, 아데코, 란스타드, RELX, 볼터스클루버, 베리스크, 가트너, 닐슨 같은 기업이 속합니다. 2025년 약 6조 4천억 달러로 추정되고 연 약 6% 성장하는 거대·분절 시장이나, 수익 구조는 둘로 갈립니다. 저마진·경기민감 인력 사업(스태핑)과 고마진·반복형 데이터&amp;애널리틱스 사업입니다. 2026년을 규정하는 힘은 AI입니다. AI 기반 애널리틱스와 자동화 급여·컴플라이언스는 순풍이지만, AI발 감원은 주니어 컨설팅·스태핑 수요를 때립니다(2025년 미국 감원 약 5만 5천 건에 AI가 거론됨). 규제도 빠르게 강화됩니다. EU AI법 고위험 규정이 2026년 8월 2일 적용되고, 한국의 데이터·노동법 변화도 겹칩니다. 매출·시가총액 기준 글로벌 1위 ADP(FY25 매출 206억 달러, 시총 약 800억 달러)는 AI 기반 HCM에 무게를 둡니다. 한국 상장 대용 선두인 채용 플랫폼 사람인은 글로벌 기준으로는 작습니다. 두 기업은 뒤에서 자세히 다룹니다.</span></p>
+    </div>
+  </section>
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From data &amp; talent to recurring decision tools</span><span class="ko">데이터·인재에서 반복형 의사결정 도구까지</span></h2>
+      <p class="lead"><span class="en">The industry turns proprietary data and human expertise into platforms and services billed to enterprise clients. Value ≈ clients × retention × price/seat + data depth − delivery (labor) cost; proprietary data and embedded software lift the high end.</span><span class="ko">이 산업은 독점 데이터와 인적 전문성을 플랫폼·서비스로 바꿔 기업 고객에 청구합니다. 가치 ≈ 고객 수 × 유지율 × 좌석당 가격 + 데이터 깊이 − 전달(인건)비이며, 독점 데이터와 내장 소프트웨어가 고부가 영역을 끌어올립니다.</span></p>
+      <div class="vchain"><div class="vc-step"><span class="vc-n">1</span><b><span class="en">Data &amp; talent sourcing</span><span class="ko">데이터·인재 확보</span></b><span class="d"><span class="en">Proprietary datasets, candidate pools, expert networks.</span><span class="ko">독점 데이터셋, 후보자 풀, 전문가 네트워크입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">2</span><b><span class="en">Platform &amp; analytics build</span><span class="ko">플랫폼·애널리틱스 구축</span></b><span class="d"><span class="en">Software, AI models and workflow tools on top of data.</span><span class="ko">데이터 위에 소프트웨어·AI 모델·워크플로 도구를 얹습니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">3</span><b><span class="en">Delivery &amp; advisory</span><span class="ko">전달·자문</span></b><span class="d"><span class="en">Consultants, recruiters and managed services execute.</span><span class="ko">컨설턴트·리크루터·매니지드 서비스가 실행합니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">4</span><b><span class="en">Distribution &amp; sales</span><span class="ko">유통·영업</span></b><span class="d"><span class="en">Direct enterprise sales and subscription channels.</span><span class="ko">직접 기업 영업과 구독 채널입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">5</span><b><span class="en">Client outcomes / renewal</span><span class="ko">고객 성과·갱신</span></b><span class="d"><span class="en">Retention, upsell and recurring subscription revenue.</span><span class="ko">유지·업셀과 반복 구독 매출입니다.</span></span></div></div>
+      <div class="subh" style="margin-top:16px"><span class="en">Profit pool — where margin concentrates</span><span class="ko">수익풀 — 마진이 집중되는 곳</span></div>
+      <div class="pool"><div class="pool-row"><span class="pn"><span class="en">Data &amp; talent sourcing</span><span class="ko">데이터·인재 확보</span></span><span class="ptrack"><span class="pfill lo"></span></span><span class="pv lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Platform &amp; analytics build</span><span class="ko">플랫폼·애널리틱스 구축</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Delivery &amp; advisory</span><span class="ko">전달·자문</span></span><span class="ptrack"><span class="pfill lo"></span></span><span class="pv lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Distribution &amp; sales</span><span class="ko">유통·영업</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div><div class="pool-row"><span class="pn"><span class="en">Client outcomes / renewal</span><span class="ko">고객 성과·갱신</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div></div>
+      <p class="cap"><span class="en">Margin concentrates in proprietary data platforms and recurring subscriptions (renewal); labor-heavy sourcing and delivery (staffing, junior consulting) capture the least. Distribution sits in the middle.</span><span class="ko">마진은 독점 데이터 플랫폼과 반복 구독(갱신)에 집중되고, 인력집약 확보·전달(스태핑·주니어 컨설팅)이 가장 적게 가져갑니다. 유통은 중간입니다.</span></p>
+    </div>
+  </section>
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A vast market growing in the mid single digits</span><span class="ko">중간 한 자릿수로 성장하는 거대 시장</span></h2>
+      <div class="cagr-wrap"><span class="cagr-badge"><span class="en">CAGR</span><span class="ko">연평균 성장</span><span class="n">≈6.2%</span></span><span class="mute" style="font-size:12.5px"><span class="en">global professional services (indicative)</span><span class="ko">글로벌 전문 서비스(추정)</span></span></div>
+      <div class="colchart"><div class="col"><div class="col-val">$6.00T</div><div class="col-bar" data-h="44"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">$6.37T</div><div class="col-bar" data-h="56"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">$6.76T</div><div class="col-bar" data-h="70"></div><div class="col-lab">2026E</div></div><div class="col"><div class="col-val">$7.18T</div><div class="col-bar" data-h="85"></div><div class="col-lab">2027E</div></div><div class="col"><div class="col-val">$7.63T</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div></div>
+      <p class="cap"><span class="en">Global professional services market, US$, indicative (The Business Research Company, 2025; ~6.2% CAGR to 2030). 2026–28 extrapolated. Bars use a zoomed baseline. Definitions vary widely; narrower subsegments (e.g. HR professional services ~US$7.8B 2025) grow faster.</span><span class="ko">글로벌 전문 서비스 시장, 단위 달러, 추정치입니다(The Business Research Company, 2025년, 2030년까지 연평균 약 6.2% 성장). 2026~28년은 외삽치입니다. 막대는 확대 기준선을 씁니다. 정의별 편차가 크며, 좁은 하위 부문(예: HR 전문 서비스 2025년 약 78억 달러)은 더 빨리 성장합니다.</span></p>
+    </div>
+  </section>
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">A fragmented global market; Saramin leads listed Korean HR</span><span class="ko">분절된 글로벌 시장, 한국 상장 HR은 사람인이 선두</span></h2>
+      <div class="pies">
+        <div class="pieblock"><div class="pie-title"><span class="en">Global professional services by revenue scale — indicative</span><span class="ko">글로벌 전문 서비스 매출 규모 — 추정</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0% 4%,#117aca 4% 7.5%,#ffb81c 7.5% 10.5%,#5aa9e6 10.5% 12.5%,#c9d4e3 12.5% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>ADP<b>~4%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Randstad<b>~3.5%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Adecco<b>~3%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>RELX<b>~2%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span>Others<b>~87.5%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea listed HR / recruitment — indicative</span><span class="ko">한국 상장 HR·채용 — 추정</span></div><div class="pie" style="background:conic-gradient(#0047a0 0% 34%,#117aca 34% 58%,#ffb81c 58% 71%,#5aa9e6 71% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>Saramin<b>~34%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>JobKorea (PE-owned)<b>~24%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Wanted Lab<b>~13%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Others<b>~29%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">Global shares are indicative of total-market revenue; the industry is highly fragmented with no player above ~4%. Korea shares are an indicative slice of the online recruitment/HR-platform niche — Saramin (FY24 revenue ~₩128B) is the largest listed pure-play; JobKorea is larger by membership but privately held under PE ownership. Korea has no globally meaningful professional-services champion.</span><span class="ko">글로벌 점유율은 전체 시장 매출 기준 추정치이며, 업계는 매우 분절돼 4%를 넘는 기업이 없습니다. 한국 점유율은 온라인 채용·HR 플랫폼 틈새의 추정 비중입니다. 사람인(FY24 매출 약 1,284억 원)이 최대 상장 순수기업이고, 잡코리아는 회원 기준 더 크나 사모펀드 소유 비상장입니다. 한국에는 글로벌급 전문 서비스 챔피언이 없습니다.</span></p>
+    </div>
+  </section>
+  <section id="positioning">
+    <p class="kicker"><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></p>
+    <h2><span class="en">Where the leaders sit — a 2×2 map</span><span class="ko">리더들의 위치 — 2×2 맵</span></h2>
+    <div class="posmap reveal"><svg viewBox="0 0 340 290" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="60" y="18" width="262" height="214" fill="#f7fafd" stroke="#e6ebf4" stroke-width="1.5" rx="8"/><line x1="60" y1="125" x2="322" y2="125" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><line x1="191" y1="18" x2="191" y2="232" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><circle cx="270" cy="55" r="7" fill="var(--navy)"/><text x="270" y="46" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">ADP</text><circle cx="110" cy="80" r="7" fill="var(--krred)"/><text x="110" y="71" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Saramin</text><circle cx="235" cy="170" r="5.5" fill="#9fb1c9"/><text x="235" y="161" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Randstad</text><circle cx="248" cy="78" r="5.5" fill="#9fb1c9"/><text x="248" y="69" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">RELX</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="en">Scale / revenue &#8594;</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="ko">규모·매출 &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="en">Recurring data &amp; software mix &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="ko">반복형 데이터·SW 믹스 &#8594;</text></svg><div class="pos-legend"><span class="pl-i"><span class="pl-d" style="background:var(--navy)"></span><span class="en">Global #1</span><span class="ko">글로벌 1위</span></span><span class="pl-i"><span class="pl-d" style="background:var(--krred)"></span><span class="en">Korea #1</span><span class="ko">한국 1위</span></span><span class="pl-i"><span class="pl-d" style="background:#9fb1c9"></span><span class="en">Peers</span><span class="ko">경쟁사</span></span></div><p class="cap"><span class="en">ADP pairs scale with a deeply recurring HCM software/data mix; RELX is mid-scale but the purest data-and-analytics play. Randstad is large but labor-heavy and cyclical. Saramin is small but a recurring digital platform.</span><span class="ko">ADP는 규모와 깊은 반복형 HCM 소프트웨어·데이터 믹스를 함께 갖췄고, RELX는 중간 규모이나 가장 순수한 데이터&amp;애널리틱스 사업자입니다. 란스타드는 크지만 인력 중심의 경기민감 사업입니다. 사람인은 작지만 반복형 디지털 플랫폼입니다.</span></p></div>
+  </section>
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Thousands of staffing and consulting firms compete on price; data niches are calmer.</span><span class="ko">수천 개의 스태핑·컨설팅 기업이 가격으로 경쟁하나 데이터 틈새는 잠잠합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Staffing is easy to enter; proprietary-data platforms have high switching-cost moats.</span><span class="ko">스태핑은 진입이 쉽지만 독점 데이터 플랫폼은 높은 전환비용 해자를 갖습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Skilled talent and data licensors hold leverage in tight labor markets.</span><span class="ko">숙련 인재와 데이터 라이선서가 타이트한 노동시장에서 교섭력을 갖습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Enterprise buyers negotiate hard, but embedded workflows and data lock in renewals.</span><span class="ko">기업 구매자가 강하게 협상하나 내장 워크플로·데이터가 갱신을 고정합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Generative AI and in-house tools can replace junior consulting and basic staffing.</span><span class="ko">생성형 AI와 사내 도구가 주니어 컨설팅·기본 스태핑을 대체할 수 있습니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: commoditized labor businesses face fierce rivalry and AI substitution, but proprietary-data and embedded-software franchises enjoy strong moats and recurring revenue.</span><span class="ko">종합하면 범용 인력 사업은 치열한 경쟁과 AI 대체에 직면하나, 독점 데이터·내장 소프트웨어 사업은 강한 해자와 반복 매출을 누립니다.</span></p>
+  </section>
+  <section id="reg">
+    <p class="kicker"><span class="en">Macro forces &amp; the latest RULES</span><span class="ko">거시 환경과 최신 규칙</span></p>
+    <h2><span class="en">The rulebook: policy &amp; regulation</span><span class="ko">규칙: 정책과 규제</span></h2>
+    <p class="mute"><span class="en">AI rules, data privacy and labor law now decide how analytics, hiring and staffing can be operated and sold.</span><span class="ko">AI 규정, 데이터 프라이버시, 노동법이 이제 애널리틱스·채용·스태핑을 어떻게 운영·판매할 수 있는지를 결정합니다.</span></p>
+    <p class="hint"><span class="en">This section = laws, bills and rules only (dated). Market events are in &#8220;Recent issues&#8221; below.</span><span class="ko">이 섹션은 법·법안·규칙만(시행일 표기)입니다. 시장 이벤트는 아래 &#8216;최근 이슈&#8217;에 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Aug 2025</span><span class="ac-title"><span class="en">EU AI Act — GPAI rules apply</span><span class="ko">EU AI법 — 범용 AI(GPAI) 규정 적용</span></span></div><div class="ac-body"><p class="why"><span class="en">From 2 Aug 2025, obligations for general-purpose AI models and EU governance took effect. Why it matters: analytics and HR-tech vendors must document and govern AI models.</span><span class="ko">2025년 8월 2일부터 범용 AI 모델 의무와 EU 거버넌스가 발효됐습니다. 의미: 애널리틱스·HR테크 사업자가 AI 모델을 문서화·관리해야 합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Aug 2026</span><span class="ac-title"><span class="en">EU AI Act — high-risk rules start</span><span class="ko">EU AI법 — 고위험 규정 시행</span></span></div><div class="ac-body"><p class="why"><span class="en">From 2 Aug 2026, Annex III high-risk rules (incl. AI used in employment/hiring) and Art. 50 transparency apply. Why it matters: HR-screening and analytics tools need conformity assessment. (A Nov 2025 Digital Omnibus proposes deferral to Dec 2027.)</span><span class="ko">2026년 8월 2일부터 부속서 III 고위험 규정(고용·채용 AI 포함)과 제50조 투명성이 적용됩니다. 의미: HR 선별·애널리틱스 도구가 적합성 평가를 받아야 합니다. (2025년 11월 디지털 옴니버스가 2027년 12월 연기를 제안 중입니다.)</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Mar 2026</span><span class="ac-title"><span class="en">Korea Labor Union Act ("Yellow Envelope") in force</span><span class="ko">한국 노동조합법('노란봉투법') 시행</span></span></div><div class="ac-body"><p class="why"><span class="en">Amendments passed Aug 2025 take effect 10 Mar 2026, broadening employer liability and bargaining scope. Why it matters: raises labor and compliance cost for staffing and outsourcing firms.</span><span class="ko">2025년 8월 통과한 개정안이 2026년 3월 10일 시행돼 사용자 책임과 교섭 범위를 넓힙니다. 의미: 스태핑·아웃소싱 기업의 노동·컴플라이언스 비용을 높입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2024-25</span><span class="ac-title"><span class="en">Korea PIPA &amp; AI-hiring guidance tightened</span><span class="ko">한국 개인정보보호법·AI 채용 가이드 강화</span></span></div><div class="ac-body"><p class="why"><span class="en">PIPA enforcement and automated-decision rules expanded, with guidance on AI in recruitment. Why it matters: tightens how HR platforms process candidate data and run AI screening.</span><span class="ko">개인정보보호법(PIPA) 집행과 자동화 의사결정 규정이 확대되고 AI 채용 가이드가 나왔습니다. 의미: HR 플랫폼의 후보자 데이터 처리와 AI 선별 방식을 조입니다.</span></p></div></div></div>
+  </section>
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Proprietary data &amp; IP</span><span class="ko">독점 데이터·지식재산</span></b><p><span class="en">Hard-to-replicate datasets that anchor pricing power.</span><span class="ko">가격 결정력을 떠받치는 복제 어려운 데이터셋입니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">Recurring, embedded software</span><span class="ko">반복형 내장 소프트웨어</span></b><p><span class="en">Subscriptions and workflow lock-in that lift retention.</span><span class="ko">유지율을 높이는 구독·워크플로 고착입니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">Scale &amp; client base</span><span class="ko">규모·고객 기반</span></b><p><span class="en">Large client counts spread fixed cost and data network effects.</span><span class="ko">대규모 고객이 고정비와 데이터 네트워크 효과를 분산합니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">AI-enabled productivity</span><span class="ko">AI 기반 생산성</span></b><p><span class="en">Automating delivery to defend margin as AI compresses hours.</span><span class="ko">AI가 작업 시간을 줄일 때 전달을 자동화해 마진을 지킵니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">Talent &amp; expertise depth</span><span class="ko">인재·전문성 깊이</span></b><p><span class="en">Scarce experts and recruiters who win premium mandates.</span><span class="ko">프리미엄 수주를 따내는 희소 전문가·리크루터입니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Trust &amp; compliance</span><span class="ko">신뢰·컴플라이언스</span></b><p><span class="en">Data-privacy and AI-governance credibility wins enterprise deals.</span><span class="ko">데이터 프라이버시·AI 거버넌스 신뢰가 기업 거래를 따냅니다.</span></p></div></div></div>
+  </section>
+  <section id="news">
+    <p class="kicker"><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></p>
+    <h2><span class="en">The newsflow: market &amp; competitive events</span><span class="ko">뉴스: 시장·경쟁 이벤트</span></h2>
+    <p class="hint"><span class="en">This section = business/market events (earnings, deals, demand) — not policy. Tap for why it matters.</span><span class="ko">이 섹션은 실적·거래·수요 등 시장 이벤트입니다(정책 아님). 눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jul 2025</span><span class="ac-title"><span class="en">ADP reports strong FY2025 results</span><span class="ko">ADP, 2025 회계연도 호실적 발표</span></span></div><div class="ac-body"><p class="why"><span class="en">Revenue +7% to US$20.6B, net earnings +9% to US$4.1B, adjusted EBIT margin 26.0%, retention ~92.1%. Why it matters: confirms the resilience of recurring HCM and payroll demand.</span><span class="ko">매출 7% 증가한 206억 달러, 순이익 9% 증가한 41억 달러, 조정 EBIT 마진 26.0%, 유지율 약 92.1%입니다. 의미: 반복형 HCM·급여 수요의 견조함을 확인합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Dec 2025</span><span class="ac-title"><span class="en">AI cited in ~55,000 US layoffs in 2025</span><span class="ko">2025년 미국 감원 약 5만 5천 건에 AI 거론</span></span></div><div class="ac-body"><p class="why"><span class="en">CNBC reported AI was cited in roughly 55,000 US job cuts in 2025. Why it matters: signals AI both lifts analytics demand and erodes junior staffing/consulting volumes.</span><span class="ko">CNBC는 2025년 미국 감원 약 5만 5천 건에 AI가 거론됐다고 보도했습니다. 의미: AI가 애널리틱스 수요를 키우면서 주니어 스태핑·컨설팅 물량을 깎는 신호입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Feb 2025</span><span class="ac-title"><span class="en">RELX FY2024: record £9.4B revenue</span><span class="ko">RELX 2024 회계연도: 매출 94억 파운드 기록</span></span></div><div class="ac-body"><p class="why"><span class="en">Revenue +7% to £9.43B; adjusted operating margin 33.9%, driven by AI-enabled analytics. Why it matters: shows the high-margin data &amp; analytics half of the industry compounding.</span><span class="ko">매출 7% 증가한 94억 3천만 파운드, 조정 영업이익률 33.9%로 AI 기반 애널리틱스가 견인했습니다. 의미: 고마진 데이터&amp;애널리틱스 부문이 복리로 성장함을 보여줍니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2024-25</span><span class="ac-title"><span class="en">Adecco overtakes Randstad in Europe</span><span class="ko">아데코, 유럽에서 란스타드 추월</span></span></div><div class="ac-body"><p class="why"><span class="en">Adecco (US$25.2B) gained ~200bps share to become Europe's largest staffer; Randstad (US$26.2B) stays #1 globally as the staffing market shrank ~5%. Why it matters: cyclical labor demand is reshaping the staffing league table.</span><span class="ko">아데코(252억 달러)가 점유율 약 200bp를 얻어 유럽 최대 스태퍼가 됐고, 란스타드(262억 달러)는 스태핑 시장이 약 5% 축소된 가운데 글로벌 1위를 유지합니다. 의미: 경기형 인력 수요가 스태핑 순위를 재편합니다.</span></p></div></div></div>
+  </section>
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, each with its OWN strategy</span><span class="ko">두 리더, 각자 다른 전략</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader is diagnosed on its own terms: a MECE issue tree → strategy thrusts chosen for THAT company → action plans. The NUMBER of thrusts varies by situation.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 그 회사에 맞게 진단합니다: MECE 이슈트리 → 그 기업에 맞춰 고른 전략 축 → 액션 플랜. 전략 축의 개수는 상황에 따라 다릅니다.</span></p>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>ADP</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The world's largest professional-services firm by revenue and market value — a recurring HR &amp; payroll (HCM) platform serving 1.1M+ clients.</span><span class="ko">매출·시가총액 기준 세계 최대 전문 서비스 기업으로, 110만 이상 고객을 보유한 반복형 HR·급여(HCM) 플랫폼입니다.</span></p><div class="stats"><div class="stat"><div class="n">$20.6B</div><div class="l"><span class="en">FY25 revenue (+7%)</span><span class="ko">FY25 매출(+7%)</span></div></div><div class="stat"><div class="n">$4.1B</div><div class="l"><span class="en">FY25 net earnings</span><span class="ko">FY25 순이익</span></div></div><div class="stat"><div class="n">26.0%</div><div class="l"><span class="en">Adj. EBIT margin</span><span class="ko">조정 EBIT 마진</span></div></div><div class="stat"><div class="n">~$80B</div><div class="l"><span class="en">Market cap (2026)</span><span class="ko">시가총액(2026)</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — dominant, but labor markets and AI cloud growth</span><span class="ko">진단 — 지배적이나 노동시장·AI가 성장을 흐립니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Growth is steady but maturing; pays-per-control hinge on a softening labor market.</span><span class="ko">성장은 견조하나 성숙기에 들고, 처리 인원이 둔화되는 노동시장에 좌우됩니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">AI-driven layoffs cut employment headcount; AI also lets rivals automate payroll/HR.</span><span class="ko">AI발 감원이 고용 인원을 줄이고, AI가 경쟁사의 급여·HR 자동화도 가능하게 합니다.</span></p><div class="formula">Revenue = clients × pays-per-control × price/seat + float income</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">Where does durable growth come from if employment headcount stalls?</span><span class="ko">고용 인원이 정체되면 지속가능한 성장은 어디서 오는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">From AI-enabled HCM, upmarket/global expansion, and float-income leverage (the tracks below).</span><span class="ko">AI 기반 HCM, 상위·글로벌 확장, 플로트 수익 레버에서 옵니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why does the #1 face maturing growth?</span><span class="ko">1위 기업의 성장이 성숙기에 든 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">Labor cycle (external)</span><span class="ko">노동 사이클(외생)</span></b><div class="leaf"><span class="en">Softer hiring lowers pays-per-control.</span><span class="ko">채용 둔화가 처리 인원을 낮춥니다.</span></div></div><div class="branch"><b><span class="en">AI substitution (structural)</span><span class="ko">AI 대체(구조적)</span></b><div class="leaf"><span class="en">AI lets clients and rivals automate basic HR.</span><span class="ko">AI가 고객·경쟁사의 기본 HR 자동화를 가능하게 합니다.</span></div></div><div class="branch"><b><span class="en">AI-enabled HCM (lever)</span><span class="ko">AI 기반 HCM(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Embed AI analytics to lift price/seat and retention.</span><span class="ko">AI 애널리틱스를 내장해 좌석당 가격·유지율을 올립니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · AI HCM</span><span class="ko">Track 1 · AI HCM</span></div><div class="tn"><span class="en">Embed AI analytics</span><span class="ko">AI 애널리틱스 내장</span></div><p><span class="en">Use ADP's pay data to sell AI-driven workforce insights.</span><span class="ko">ADP의 급여 데이터로 AI 기반 인력 인사이트를 판매합니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Upmarket</span><span class="ko">Track 2 · 상위 시장</span></div><div class="tn"><span class="en">Grow global &amp; enterprise</span><span class="ko">글로벌·대기업 확대</span></div><p><span class="en">Win multinational HCM mandates across 140+ countries.</span><span class="ko">140여 개국에서 다국적 HCM 수주를 따냅니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Float</span><span class="ko">Track 3 · 플로트</span></div><div class="tn"><span class="en">Monetize client funds</span><span class="ko">고객 자금 수익화</span></div><p><span class="en">Earn interest on client funds held for payroll processing.</span><span class="ko">급여 처리용 고객 자금에서 이자 수익을 얻습니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Product</span><span class="ko">제품</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Payroll processing</span><span class="ko">급여 처리</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">AI workforce analytics</span><span class="ko">AI 인력 애널리틱스</span></div></div></div><div class="ap"><div class="apt"><span class="en">Geography</span><span class="ko">지역</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">US-centric</span><span class="ko">미국 중심</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Multinational HCM</span><span class="ko">다국적 HCM</span></div></div></div><div class="ap"><div class="apt"><span class="en">Segment</span><span class="ko">세그먼트</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">SMB volume</span><span class="ko">중소기업 물량</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Enterprise &amp; upsell</span><span class="ko">대기업·업셀</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>Saramin</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">Korea's largest listed pure-play recruitment/HR platform — a weak global comparator, used here as the closest meaningful proxy.</span><span class="ko">한국 최대 상장 순수 채용·HR 플랫폼으로, 글로벌 비교 대상으로는 약하나 가장 의미 있는 대용 기업으로 씁니다.</span></p><div class="stats"><div class="stat"><div class="n">~₩128B</div><div class="l"><span class="en">FY24 revenue (−2.4%)</span><span class="ko">FY24 매출(−2.4%)</span></div></div><div class="stat"><div class="n">~₩30.8B</div><div class="l"><span class="en">Q1'24 revenue</span><span class="ko">2024 1분기 매출</span></div></div><div class="stat"><div class="n">#2</div><div class="l"><span class="en">Korea job-portal rank</span><span class="ko">한국 잡포털 순위</span></div></div><div class="stat"><div class="n">3</div><div class="l"><span class="en">Business segments</span><span class="ko">사업 부문 수</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — niche leader, but hiring slowdown caps growth</span><span class="ko">진단 — 틈새 선두이나 채용 둔화가 성장을 제한합니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Revenue fell ~2.4% in FY24 as Korean hiring weakened.</span><span class="ko">한국 채용 약세로 FY24 매출이 약 2.4% 감소했습니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">A cyclical job-ad model tied to a slowing economy and a shrinking working-age population.</span><span class="ko">둔화되는 경제와 줄어드는 생산가능인구에 묶인 경기형 채용광고 모델입니다.</span></p><div class="formula">Revenue = job postings × price + outsourcing + recruiting solutions</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">How to grow beyond a cyclical domestic job-board market?</span><span class="ko">경기형 국내 채용 시장을 넘어 어떻게 성장하는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">Lean into AI matching, diversify into HR SaaS &amp; outsourcing, and defend platform share (the tracks below).</span><span class="ko">AI 매칭에 집중하고 HR SaaS·아웃소싱으로 다각화하며 플랫폼 점유를 지킵니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why does the niche leader see flat revenue?</span><span class="ko">틈새 선두의 매출이 정체된 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">Hiring slowdown (external)</span><span class="ko">채용 둔화(외생)</span></b><div class="leaf"><span class="en">Weak economy cuts job-posting volume.</span><span class="ko">약한 경제가 채용공고 물량을 줄입니다.</span></div></div><div class="branch"><b><span class="en">Single-market exposure (structural)</span><span class="ko">단일 시장 노출(구조적)</span></b><div class="leaf"><span class="en">Almost all revenue is domestic and cyclical.</span><span class="ko">매출 대부분이 국내·경기형입니다.</span></div></div><div class="branch"><b><span class="en">AI matching &amp; SaaS (lever)</span><span class="ko">AI 매칭·SaaS(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Add AI matching and recurring HR software.</span><span class="ko">AI 매칭과 반복형 HR 소프트웨어를 더합니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n2"><div class="track t1"><div class="tt"><span class="en">Track 1 · AI matching</span><span class="ko">Track 1 · AI 매칭</span></div><div class="tn"><span class="en">Smarter job matching</span><span class="ko">더 똑똑한 채용 매칭</span></div><p><span class="en">Use AI to raise match quality and per-posting value.</span><span class="ko">AI로 매칭 품질과 공고당 가치를 높입니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Diversify</span><span class="ko">Track 2 · 다각화</span></div><div class="tn"><span class="en">HR SaaS &amp; outsourcing</span><span class="ko">HR SaaS·아웃소싱</span></div><p><span class="en">Grow recurring HR software and staffing services.</span><span class="ko">반복형 HR 소프트웨어와 인력 서비스를 키웁니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Product</span><span class="ko">제품</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Job ads</span><span class="ko">채용 광고</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">AI matching &amp; SaaS</span><span class="ko">AI 매칭·SaaS</span></div></div></div><div class="ap"><div class="apt"><span class="en">Revenue mix</span><span class="ko">매출 믹스</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Cyclical postings</span><span class="ko">경기형 공고</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Recurring services</span><span class="ko">반복형 서비스</span></div></div></div><div class="ap"><div class="apt"><span class="en">Platform</span><span class="ko">플랫폼</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">#2 portal</span><span class="ko">2위 포털</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Share defense</span><span class="ko">점유 방어</span></div></div></div></div></div></div>
+  </section>
+  <section id="kpi">
+    <p class="kicker"><span class="en">KPIs to watch</span><span class="ko">주목할 지표</span></p>
+    <h2><span class="en">The dials that move this industry</span><span class="ko">이 산업을 움직이는 계기판</span></h2>
+    <p class="hint"><span class="en">Leading indicators with the latest reading — track these to see the thesis play out.</span><span class="ko">최신 수치가 담긴 선행지표입니다. 이 흐름을 추적하면 전망을 검증할 수 있습니다.</span></p>
+    <div class="kpis reveal"><div class="kpi"><div class="kt"><span class="en">ADP adjusted EBIT margin</span><span class="ko">ADP 조정 EBIT 마진</span></div><div class="kv"><span class="en">26.0% (FY25)</span><span class="ko">26.0%(FY25)</span></div><div class="kw"><span class="en">Profitability of recurring HCM.</span><span class="ko">반복형 HCM의 수익성입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">RELX adjusted operating margin</span><span class="ko">RELX 조정 영업이익률</span></div><div class="kv"><span class="en">33.9% (FY24)</span><span class="ko">33.9%(FY24)</span></div><div class="kw"><span class="en">Data &amp; analytics margin benchmark.</span><span class="ko">데이터&amp;애널리틱스 마진 기준점입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Global staffing market</span><span class="ko">글로벌 스태핑 시장</span></div><div class="kv"><span class="en">≈€573B (−5%, 2024)</span><span class="ko">약 5,730억 유로(−5%, 2024)</span></div><div class="kw"><span class="en">Cyclical labor demand gauge.</span><span class="ko">경기형 인력 수요 지표입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Saramin FY24 revenue</span><span class="ko">사람인 FY24 매출</span></div><div class="kv"><span class="en">~₩128B (−2.4%)</span><span class="ko">약 1,284억 원(−2.4%)</span></div><div class="kw"><span class="en">Korea hiring-demand proxy.</span><span class="ko">한국 채용 수요 대용 지표입니다.</span></div></div></div>
+  </section>
+  <section id="scenarios">
+    <p class="kicker"><span class="en">Scenarios — bull · base · bear</span><span class="ko">시나리오 — 낙관·기본·비관</span></p>
+    <h2><span class="en">Three ways the next few years could break</span><span class="ko">향후 몇 년이 갈릴 세 갈래</span></h2>
+    <div class="scen reveal"><div class="sc bull"><div class="sh"><span class="en">Bull · upside</span><span class="ko">낙관</span></div><div class="sd"><span class="en">AI lifts analytics + hiring rebound</span><span class="ko">AI가 애널리틱스 견인 + 채용 반등</span></div><p><span class="en">AI monetization accelerates data franchises while a labor rebound revives staffing.</span><span class="ko">AI 수익화가 데이터 사업을 가속하고 노동 반등이 스태핑을 살립니다.</span></p></div><div class="sc base"><div class="sh"><span class="en">Base · central</span><span class="ko">기본</span></div><div class="sd"><span class="en">Steady ~6% growth; AI a wash</span><span class="ko">완만한 약 6% 성장, AI 상쇄</span></div><p><span class="en">Mid-single-digit growth; data &amp; analytics outpaces cyclical staffing.</span><span class="ko">중간 한 자릿수 성장. 데이터&amp;애널리틱스가 경기형 스태핑을 앞섭니다.</span></p></div><div class="sc bear"><div class="sh"><span class="en">Bear · downside</span><span class="ko">비관</span></div><div class="sd"><span class="en">AI disrupts + weak labor market</span><span class="ko">AI 파괴 + 약한 노동시장</span></div><p><span class="en">AI substitution and soft hiring compress staffing and junior consulting volumes.</span><span class="ko">AI 대체와 채용 부진이 스태핑·주니어 컨설팅 물량을 압축합니다.</span></p></div></div>
+  </section>
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight"><li><span class="en">AI is both tailwind and threat: it lifts analytics but erodes junior staffing and consulting.</span><span class="ko">AI는 순풍이자 위협입니다. 애널리틱스를 키우나 주니어 스태핑·컨설팅을 깎습니다.</span></li><li><span class="en">The market stays fragmented; proprietary data and recurring software decide who earns premium margins.</span><span class="ko">시장은 분절된 채로, 독점 데이터와 반복형 소프트웨어가 프리미엄 마진을 가르는 기준입니다.</span></li><li><span class="en">Regulation (EU AI Act, data privacy, labor law) raises compliance cost but rewards trusted players.</span><span class="ko">규제(EU AI법·데이터 프라이버시·노동법)가 컴플라이언스 비용을 올리나 신뢰받는 기업에 보상합니다.</span></li><li><span class="en">ADP rides AI-enabled HCM; Saramin rides AI matching and recurring HR services in a small home market.</span><span class="ko">ADP는 AI 기반 HCM에, 사람인은 작은 내수에서 AI 매칭·반복형 HR 서비스에 달려 있습니다.</span></li></ul>
+    </div>
+  </section>
+</div>
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;"><li><a href="https://www.thebusinessresearchcompany.com/report/professional-services-global-market-report">The Business Research Company — professional services market</a></li><li><a href="https://s205.q4cdn.com/887941133/files/doc_financials/2025/q4/ADP-4Q25-Earnings-Release.pdf">ADP — Q4 &amp; FY2025 results</a></li><li><a href="https://www.relx.com/media/press-releases/year-2025/relx-2024-results">RELX — 2024 results</a></li><li><a href="https://www.staffingindustry.com/news/global-daily-news/the-adecco-group-overtakes-randstad-as-europes-largest-staffing-firm">Staffing Industry Analysts — Adecco vs Randstad</a></li><li><a href="https://artificialintelligenceact.eu/implementation-timeline/">EU Artificial Intelligence Act — implementation timeline</a></li><li><a href="https://www.cnbc.com/2025/12/21/ai-job-cuts-amazon-microsoft-and-more-cite-ai-for-2025-layoffs.html">CNBC — AI-cited layoffs 2025</a></li><li><a href="https://aimgroup.com/2025/02/20/saramin-q4-2024-muted-hiring-weighs-down-financials/">AIM Group — Saramin Q4 2024</a></li></ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Professional Services (GICS 202020) · Generated June 9, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 전문 서비스(GICS 202020) · 2026년 6월 9일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+
+</body>
+</html>

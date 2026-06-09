@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personal Care Products · 퍼스널케어 제품 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+
+<style>
+  .cagr-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+  .cagr-badge{display:inline-flex;align-items:baseline;gap:5px;background:#eaf2fb;color:var(--blue);
+    border:1px solid #cfe2f5;border-radius:999px;padding:6px 13px;font-weight:800;font-size:13px;}
+  .cagr-badge .n{font-size:16px;}
+  .cagr-badge.alt{background:#fff6e6;color:#b07400;border-color:#ffe2a6;}
+  /* SCQA diagnosis (Situation · Complication · Question · Answer) */
+  .scqa{margin:12px 0 2px;}
+  .scqa-row{display:flex;gap:12px;position:relative;padding-bottom:14px;}
+  .scqa-row:last-child{padding-bottom:0;}
+  .scqa-row::before{content:"";position:absolute;left:14px;top:30px;bottom:-2px;width:2px;background:var(--line);}
+  .scqa-row:last-child::before{display:none;}
+  .scqa-k{flex:none;width:30px;height:30px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 2px 6px rgba(14,42,71,.18);}
+  .scqa-row.s .scqa-k{background:#5b6b8c;}
+  .scqa-row.c .scqa-k{background:var(--hi);}
+  .scqa-row.q .scqa-k{background:var(--blue);}
+  .scqa-row.a .scqa-k{background:var(--lo);}
+  .scqa-bd{flex:1;padding-top:1px;}
+  .scqa-lab{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;}
+  .scqa-row.a .scqa-lab{color:var(--lo);}
+  .scqa-bd p{margin:0;font-size:13.3px;color:var(--ink);line-height:1.55;}
+  .scqa-row.q .scqa-bd p{font-style:italic;color:#16406a;}
+  .scqa-row.a .scqa-bd p{font-weight:600;}
+  .scqa .formula{margin-top:8px;}
+  .scqa-cap{font-size:11.5px;color:var(--mute);font-style:italic;margin:10px 0 0;}
+  /* MECE issue tree (rendered together with SCQA) */
+  .tree{margin:9px 0 2px;}
+  .tree .root{background:linear-gradient(120deg,#16406a,#0e2a47);color:#fff;border-radius:11px;
+    padding:11px 14px;font-size:13.4px;font-weight:700;border-left:4px solid var(--gold);}
+  .tree .branches{display:grid;gap:9px;margin-top:10px;}
+  .tree .branch{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;padding:10px 13px;background:#f7fafd;}
+  .tree .branch>b{font-size:13.1px;display:block;margin-bottom:5px;color:var(--ink);}
+  .tree .leaf{font-size:12.6px;color:var(--mute);padding-left:15px;position:relative;margin:4px 0;line-height:1.5;}
+  .tree .leaf::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .tree .leaf.lever{color:var(--ink);font-weight:600;}
+  .tree .leaf.lever::before{background:var(--gold);width:8px;height:8px;left:1px;top:7px;}
+  .tree .lever-tag{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#b07400;background:#fff6e6;border-radius:5px;padding:1px 5px;margin-right:5px;}
+  .tree-cap{display:none;}
+  @media(min-width:680px){.tree .branches{grid-template-columns:1fr 1fr 1fr;}}
+  /* value chain — connected flow diagram */
+  .vchain{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:6px 0 4px;}
+  .vc-step{position:relative;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:11px;padding:11px 13px 11px 40px;flex:1;}
+  .vc-step .vc-n{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;
+    background:var(--blue);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .vc-step:last-of-type{border-left-color:var(--gold);}
+  .vc-step:last-of-type .vc-n{background:var(--gold);color:var(--navy);}
+  .vc-step b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc-step .d{font-size:12.3px;color:var(--mute);}
+  .vc-arrow{align-self:center;color:var(--gold);font-weight:900;font-size:16px;line-height:1;
+    transform:rotate(90deg);padding:5px 0;}
+  @media(min-width:720px){
+    .vchain{flex-direction:row;align-items:stretch;flex-wrap:nowrap;}
+    .vc-step{padding:11px 11px 11px 12px;min-width:0;}
+    .vc-step .vc-n{position:static;margin-bottom:6px;}
+    .vc-arrow{transform:none;padding:0 3px;display:flex;align-items:center;}
+  }
+  /* variable 1-3 strategy tracks */
+  .track.t3{background:#10355a;border:1px solid rgba(255,184,28,.45);}
+  .track-grid.n1{grid-template-columns:1fr;}
+  @media(min-width:680px){
+    .track-grid.n2{grid-template-columns:1fr 1fr;}
+    .track-grid.n3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  /* profit pool */
+  .pool{display:flex;flex-direction:column;gap:8px;margin:6px 0 2px;}
+  .pool-row{display:flex;align-items:center;gap:10px;}
+  .pool-row .pn{flex:1.1;font-size:12.6px;color:var(--ink);min-width:0;}
+  .pool-row .ptrack{flex:1.5;height:9px;border-radius:5px;background:#eef2f7;overflow:hidden;}
+  .pool-row .pfill{height:100%;border-radius:5px;}
+  .pool-row .pfill.hi{width:92%;background:var(--gold);}
+  .pool-row .pfill.med{width:55%;background:var(--blue);}
+  .pool-row .pfill.lo{width:22%;background:#c9d4e3;}
+  .pool-row .pv{flex:none;width:58px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .pool-row .pv.hi{color:#b07400;}.pool-row .pv.med{color:var(--blue);}.pool-row .pv.lo{color:var(--mute);}
+  /* KPI watchlist */
+  .kpis{display:grid;grid-template-columns:1fr;gap:11px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);padding:13px 15px;border-left:4px solid var(--blue);}
+  .kpi .kt{font-size:12.5px;font-weight:800;color:var(--ink);}
+  .kpi .kv{font-size:clamp(17px,4.6vw,21px);font-weight:800;color:var(--blue);margin:3px 0 4px;line-height:1.1;}
+  .kpi .kw{font-size:12.3px;color:var(--mute);}
+  /* scenarios */
+  .scen{display:grid;grid-template-columns:1fr;gap:11px;}
+  .sc{border-radius:13px;padding:14px 16px;color:#fff;box-shadow:var(--shadow);}
+  .sc.bull{background:linear-gradient(125deg,#1f9d6b,#14633f);}
+  .sc.base{background:linear-gradient(125deg,#16406a,#0e2a47);}
+  .sc.bear{background:linear-gradient(125deg,#b1402f,#7d2418);}
+  .sc .sh{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .sc .sd{font-size:13.6px;font-weight:800;margin:4px 0 6px;}
+  .sc p{margin:0;font-size:12.8px;color:#eef4fb;}
+  /* positioning 2x2 */
+  .posmap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;}
+  .posmap svg{width:100%;height:auto;display:block;overflow:visible;}
+  .pos-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 2px;font-size:12px;color:var(--ink);}
+  .pos-legend .pl-i{display:flex;align-items:center;gap:6px;}
+  .pos-legend .pl-d{width:11px;height:11px;border-radius:50%;}
+  @media(min-width:680px){.kpis{grid-template-columns:1fr 1fr;}.scen{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Personal Care Products</span><span class="ko">퍼스널케어 제품</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="positioning"><span class="en">Positioning</span><span class="ko">포지셔닝</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5 Forces</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">플레이어</span></button><button class="chip" data-go="scenarios"><span class="en">Scenarios</span><span class="ko">시나리오</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
+  </div>
+</div>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 4 of 7</span><span class="ko">디 인더스트리 브리프 · 오늘의 7개 중 4번째</span></p>
+    <h1><span class="en">Personal Care Products</span><span class="ko">퍼스널케어 제품</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · <span class="en">Consumer Staples</span><span class="ko">필수소비재</span> · 303020</span>
+      <span class="pill">2026-06-09</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">플레이어</span>: L&#39;Or&eacute;al · Amorepacific</span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">Personal care products (GICS 303020) covers beauty, cosmetics, skincare, haircare and oral &amp; personal hygiene sold by branded houses such as L&#39;Or&eacute;al, Est&eacute;e Lauder, Unilever&#39;s beauty arm, Beiersdorf and Shiseido (in Korea: Amorepacific and LG H&amp;H). The global beauty &amp; personal care market is roughly US$582B in 2025, growing about 4.4% a year — a large, brand-driven and innovation-led market where the top player still holds only low-double-digit share. The defining force of 2026 is the geographic re-set of demand: K-beauty exports hit a record US$11.4B in 2025 (now the world&#39;s #2 exporter), the US has overtaken China as the swing growth market, and prestige/derma-skincare keep outgrowing mass. Regulation is tightening on safety and chemistry: the US MoCRA regime (registration deadline 1 Jul 2024), the EU Cosmetics Regulation plus the microplastics restriction (rinse-off ban from Oct 2027), and Korea&#39;s export-driven cosmetics rules. The global #1 by beauty revenue, L&#39;Or&eacute;al (&euro;43.48B in 2024, 8th straight record year), is leaning on derma-beauty and premiumization; Korea&#39;s leader by cosmetics revenue, Amorepacific (KRW4.26T in 2024), is pivoting from China toward the US and Western markets. Both are detailed at the end.</span><span class="ko">퍼스널케어 제품(GICS 303020)은 뷰티·화장품·스킨케어·헤어케어와 구강·개인위생을 아우르며, 로레알·에스티로더·유니레버 뷰티 부문·바이어스도르프·시세이도 같은 브랜드 기업이 주도합니다(한국은 아모레퍼시픽과 LG생활건강). 글로벌 뷰티·퍼스널케어 시장은 2025년 약 5,820억 달러로 연 약 4.4% 성장하나, 크고 브랜드·혁신 주도형이어서 1위 기업조차 낮은 두 자릿수 시장점유율에 그칩니다. 2026년을 규정하는 힘은 수요의 지리적 재편입니다. K뷰티 수출은 2025년 사상 최고치 114억 달러(세계 2위 수출국)를 기록했고, 미국이 중국을 제치고 성장의 핵심 시장으로 부상했으며, 프레스티지·더마 스킨케어가 매스 제품을 계속 앞섭니다. 규제는 안전과 성분에서 강화됩니다. 미국 MoCRA 체제(등록 마감 2024년 7월 1일), EU 화장품 규정과 미세플라스틱 제한(린스오프 제품 2027년 10월 금지), 한국의 수출 중심 화장품 규정입니다. 뷰티 매출 기준 글로벌 1위 로레알(2024년 434억 8천만 유로, 8년 연속 사상 최대)은 더마뷰티와 프리미엄화에 기대고, 화장품 매출 기준 한국 선두 아모레퍼시픽(2024년 4조 2,600억 원)은 중국에서 미국·서구 시장으로 전환 중입니다. 두 기업은 뒤에서 자세히 다룹니다.</span></p>
+    </div>
+  </section>
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">From ingredients to branded shelf and loyalty</span><span class="ko">원료에서 브랜드 진열과 충성도까지</span></h2>
+      <p class="lead"><span class="en">The industry turns commodity actives and packaging into branded, marketed products sold through retail, e-commerce and travel retail. Value ≈ units × price × premium mix + repeat purchase − ingredient/marketing costs; brand, formulation IP and distribution lift the high end.</span><span class="ko">이 산업은 범용 활성성분과 용기를 브랜드·마케팅 제품으로 바꿔 리테일·이커머스·여행소매로 판매합니다. 가치 ≈ 수량 × 가격 × 프리미엄 믹스 + 재구매 − 원료·마케팅 비용이며, 브랜드·제형 IP·유통이 고부가 영역을 끌어올립니다.</span></p>
+      <div class="vchain"><div class="vc-step"><span class="vc-n">1</span><b><span class="en">Ingredients &amp; R&amp;D</span><span class="ko">원료·연구개발</span></b><span class="d"><span class="en">Actives, fragrances, packaging; formulation IP.</span><span class="ko">활성성분·향료·용기와 제형 IP입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">2</span><b><span class="en">Manufacturing &amp; fill</span><span class="ko">제조·충전</span></b><span class="d"><span class="en">In-house or contract (ODM/OEM) production.</span><span class="ko">자체 또는 위탁(ODM·OEM) 생산입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">3</span><b><span class="en">Brand &amp; marketing</span><span class="ko">브랜드·마케팅</span></b><span class="d"><span class="en">Brand equity, influencers, digital demand creation.</span><span class="ko">브랜드 자산·인플루언서·디지털 수요 창출입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">4</span><b><span class="en">Distribution &amp; retail</span><span class="ko">유통·리테일</span></b><span class="d"><span class="en">Mass, prestige, e-commerce and travel retail.</span><span class="ko">매스·프레스티지·이커머스·여행소매입니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">5</span><b><span class="en">Consumer &amp; loyalty</span><span class="ko">소비자·충성도</span></b><span class="d"><span class="en">Repeat purchase, premiumization and CRM data.</span><span class="ko">재구매·프리미엄화와 고객 데이터입니다.</span></span></div></div>
+      <div class="subh" style="margin-top:16px"><span class="en">Profit pool — where margin concentrates</span><span class="ko">수익풀 — 마진이 집중되는 곳</span></div>
+      <div class="pool"><div class="pool-row"><span class="pn"><span class="en">Ingredients &amp; R&amp;D</span><span class="ko">원료·연구개발</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div><div class="pool-row"><span class="pn"><span class="en">Manufacturing &amp; fill</span><span class="ko">제조·충전</span></span><span class="ptrack"><span class="pfill lo"></span></span><span class="pv lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Brand &amp; marketing</span><span class="ko">브랜드·마케팅</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Distribution &amp; retail</span><span class="ko">유통·리테일</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div><div class="pool-row"><span class="pn"><span class="en">Consumer &amp; loyalty</span><span class="ko">소비자·충성도</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div></div>
+      <p class="cap"><span class="en">Margin concentrates in brand &amp; marketing and consumer loyalty (premium, repeat purchase); manufacturing/fill (often outsourced to ODMs) captures the least. R&amp;D and distribution sit in the middle.</span><span class="ko">마진은 브랜드·마케팅과 소비자 충성도(프리미엄·재구매)에 집중되고, 제조·충전(흔히 ODM 위탁)이 가장 적게 가져갑니다. 연구개발과 유통은 중간입니다.</span></p>
+    </div>
+  </section>
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A large market growing in the mid single digits</span><span class="ko">중간 한 자릿수로 성장하는 거대 시장</span></h2>
+      <div class="cagr-wrap"><span class="cagr-badge"><span class="en">CAGR</span><span class="ko">연평균 성장</span><span class="n">≈4.4%</span></span><span class="mute" style="font-size:12.5px"><span class="en">global beauty &amp; personal care (indicative)</span><span class="ko">글로벌 뷰티·퍼스널케어(추정)</span></span></div>
+      <div class="colchart"><div class="col"><div class="col-val">$558B</div><div class="col-bar" data-h="46"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">$582B</div><div class="col-bar" data-h="58"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">$608B</div><div class="col-bar" data-h="71"></div><div class="col-lab">2026E</div></div><div class="col"><div class="col-val">$635B</div><div class="col-bar" data-h="85"></div><div class="col-lab">2027E</div></div><div class="col"><div class="col-val">$663B</div><div class="col-bar" data-h="100"></div><div class="col-lab">2028E</div></div></div>
+      <p class="cap"><span class="en">Global beauty &amp; personal care market, US$, indicative (Grand View Research / Precedence Research, 2025; ~4.4% CAGR). 2026–28 extrapolated. Bars use a zoomed baseline. Definitions vary widely (estimates range US$0.56T–0.64T for 2024).</span><span class="ko">글로벌 뷰티·퍼스널케어 시장, 단위 달러, 추정치입니다(Grand View Research / Precedence Research, 2025년, 연평균 약 4.4% 성장). 2026~28년은 외삽치입니다. 막대는 확대 기준선을 씁니다. 정의별 편차가 크며 2024년 추정치는 0.56조~0.64조 달러에 분포합니다.</span></p>
+    </div>
+  </section>
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율(MS) 현황</span></p>
+      <h2><span class="en">A brand-fragmented global market; Amorepacific leads in Korea</span><span class="ko">브랜드 분산형 글로벌 시장, 한국은 아모레퍼시픽이 선두</span></h2>
+      <div class="pies">
+        <div class="pieblock"><div class="pie-title"><span class="en">Global beauty &amp; personal care by revenue scale — indicative</span><span class="ko">글로벌 뷰티·퍼스널케어 매출 규모 — 추정</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0% 13%,#117aca 13% 22%,#ffb81c 22% 28%,#5aa9e6 28% 32%,#c9d4e3 32% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>L&#39;Or&eacute;al<b>~13%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Unilever<b>~9%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>P&amp;G<b>~6%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Est&eacute;e Lauder<b>~4%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span>Others<b>~68%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea cosmetics — indicative</span><span class="ko">한국 화장품 — 추정</span></div><div class="pie" style="background:conic-gradient(#0047a0 0% 28%,#117aca 28% 47%,#ffb81c 47% 56%,#5aa9e6 56% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>Amorepacific<b>~28%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>LG H&amp;H<b>~19%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>APR / indie<b>~9%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Others<b>~44%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">Global shares are indicative of total-market revenue; the market is brand-fragmented with the leader at low-double-digits. Korea shares are indicative; Amorepacific leads by cosmetics revenue (KRW4.26T in 2024) ahead of LG H&amp;H&#39;s beauty arm (KRW2.85T), with fast-rising indie/ODM names behind.</span><span class="ko">글로벌 점유율은 전체 시장 매출 기준 추정치이며, 시장은 브랜드 분산형으로 1위가 낮은 두 자릿수입니다. 한국 점유율은 추정치로, 아모레퍼시픽이 화장품 매출(2024년 4조 2,600억 원)에서 LG생활건강 뷰티 부문(2조 8,500억 원)을 앞서며, 빠르게 성장하는 인디·ODM 기업이 뒤를 잇습니다.</span></p>
+    </div>
+  </section>
+  <section id="positioning">
+    <p class="kicker"><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></p>
+    <h2><span class="en">Where the leaders sit — a 2×2 map</span><span class="ko">리더들의 위치 — 2×2 맵</span></h2>
+    <div class="posmap reveal"><svg viewBox="0 0 340 290" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="60" y="18" width="262" height="214" fill="#f7fafd" stroke="#e6ebf4" stroke-width="1.5" rx="8"/><line x1="60" y1="125" x2="322" y2="125" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><line x1="191" y1="18" x2="191" y2="232" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><circle cx="280" cy="55" r="7" fill="var(--navy)"/><text x="280" y="46" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">L&#39;Or&eacute;al</text><circle cx="150" cy="95" r="7" fill="var(--krred)"/><text x="150" y="86" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Amorepacific</text><circle cx="225" cy="135" r="5.5" fill="#9fb1c9"/><text x="225" y="126" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Unilever</text><circle cx="180" cy="120" r="5.5" fill="#9fb1c9"/><text x="180" y="155" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Est&eacute;e Lauder</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="en">Scale / revenue &#8594;</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="ko">규모·매출 &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="en">Premium / prestige mix &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="ko">프리미엄·프레스티지 믹스 &#8594;</text></svg><div class="pos-legend"><span class="pl-i"><span class="pl-d" style="background:var(--navy)"></span><span class="en">Global #1</span><span class="ko">글로벌 1위</span></span><span class="pl-i"><span class="pl-d" style="background:var(--krred)"></span><span class="en">Korea #1</span><span class="ko">한국 1위</span></span><span class="pl-i"><span class="pl-d" style="background:#9fb1c9"></span><span class="en">Peers</span><span class="ko">경쟁사</span></span></div><p class="cap"><span class="en">L&#39;Or&eacute;al pairs the largest scale with the deepest premium/derma-beauty mix; Amorepacific is mid-scale but skews premium and is fast-growing in the West. Unilever is large but mass-skewed; Est&eacute;e Lauder is prestige but smaller and in turnaround.</span><span class="ko">로레알은 최대 규모와 가장 깊은 프리미엄·더마뷰티 믹스를 함께 갖췄고, 아모레퍼시픽은 중간 규모이나 프리미엄에 치우치며 서구에서 빠르게 성장합니다. 유니레버는 크지만 매스 중심이고, 에스티로더는 프레스티지이나 규모가 작고 회복 국면입니다.</span></p></div>
+  </section>
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">산업 구조의 매력도</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Global majors, indie disruptors and K-beauty all chase share with constant launches.</span><span class="ko">글로벌 대기업·인디 브랜드·K뷰티가 끊임없는 출시로 점유를 다툽니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">ODM/contract makers and social commerce let indie brands launch with little capital.</span><span class="ko">ODM·위탁 제조와 소셜 커머스로 인디 브랜드가 적은 자본으로 진입합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Actives, packaging and ODM capacity are abundant and fragmented.</span><span class="ko">활성성분·용기·ODM 생산능력이 풍부하고 분산돼 있습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Retailers and platforms negotiate hard, but strong brands command pricing power.</span><span class="ko">리테일·플랫폼이 강하게 협상하나 강한 브랜드가 가격 결정력을 가집니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Private label and DIY/clean alternatives exist, but ritual and brand loyalty resist.</span><span class="ko">PB·DIY·클린 대안이 있으나 사용 습관과 브랜드 충성도가 이를 막습니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: low entry barriers and intense rivalry cap returns, but brand equity, formulation IP and premiumization protect the leaders&#39; margins.</span><span class="ko">종합하면 낮은 진입장벽과 치열한 경쟁이 수익을 제한하나, 브랜드 자산·제형 IP·프리미엄화가 선두 기업의 마진을 보호합니다.</span></p>
+  </section>
+  <section id="reg">
+    <p class="kicker"><span class="en">Macro forces &amp; the latest RULES</span><span class="ko">거시 환경과 최신 규칙</span></p>
+    <h2><span class="en">The rulebook: policy &amp; regulation</span><span class="ko">규칙: 정책과 규제</span></h2>
+    <p class="mute"><span class="en">Safety, ingredient and labeling rules now decide which products can be sold and how much compliance costs to bring them to market.</span><span class="ko">안전·성분·표시 규정이 이제 어떤 제품을 팔 수 있는지와 출시까지의 규제 준수 비용을 결정합니다.</span></p>
+    <p class="hint"><span class="en">This section = laws, bills and rules only (dated). Market events are in &#8220;Recent issues&#8221; below.</span><span class="ko">이 섹션은 법·법안·규칙만(시행일 표기)입니다. 시장 이벤트는 아래 &#8216;최근 이슈&#8217;에 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jul 2024</span><span class="ac-title"><span class="en">US MoCRA registration deadline</span><span class="ko">미국 MoCRA 등록 마감</span></span></div><div class="ac-body"><p class="why"><span class="en">Modernization of Cosmetics Regulation Act of 2022; FDA set 1 Jul 2024 as the facility-registration &amp; product-listing deadline (biennial renewal). Why it matters: first mandatory federal cosmetics oversight raises compliance costs for all sellers in the US.</span><span class="ko">2022년 화장품규제현대화법(MoCRA)으로, FDA는 시설 등록·제품 등재 마감을 2024년 7월 1일로 정했습니다(2년마다 갱신). 의미: 미국 최초의 의무 연방 화장품 감독으로 모든 판매자의 규제 준수 비용을 높입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Oct 2023</span><span class="ac-title"><span class="en">EU microplastics restriction in force</span><span class="ko">EU 미세플라스틱 제한 발효</span></span></div><div class="ac-body"><p class="why"><span class="en">Commission Regulation (EU) 2023/2055 applied from 17 Oct 2023; rinse-off cosmetics banned from Oct 2027, leave-on from Oct 2029. Why it matters: forces reformulation away from synthetic polymer microparticles.</span><span class="ko">집행위 규정 (EU) 2023/2055가 2023년 10월 17일부터 적용됐습니다. 린스오프 화장품은 2027년 10월, 리브온은 2029년 10월부터 금지됩니다. 의미: 합성 고분자 미세입자에서 벗어난 재제형을 강제합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2009 / ongoing</span><span class="ac-title"><span class="en">EU Cosmetics Regulation 1223/2009</span><span class="ko">EU 화장품 규정 1223/2009</span></span></div><div class="ac-body"><p class="why"><span class="en">Baseline EU framework (safety assessment, CPNP notification, banned-substance Annexes), updated regularly — incl. fragrance-allergen labeling phasing in. Why it matters: the global benchmark many markets, including Korea, align to for exports.</span><span class="ko">EU의 기본 틀(안전성 평가, CPNP 신고, 금지물질 부속서)로 정기 개정되며 향료 알레르겐 표시가 단계 도입됩니다. 의미: 한국을 포함한 다수 시장이 수출을 위해 맞추는 글로벌 기준입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2024-25</span><span class="ac-title"><span class="en">Korea cosmetics &amp; K-beauty export rules</span><span class="ko">한국 화장품·K뷰티 수출 규정</span></span></div><div class="ac-body"><p class="why"><span class="en">MFDS Cosmetics Act framework plus customized-cosmetics rules and tightening export documentation/labeling for major markets. Why it matters: governs the export-led K-beauty boom and access to the US and EU.</span><span class="ko">식약처 화장품법 체계에 맞춤형화장품 규정과 주요 시장용 수출 서류·표시 강화가 더해집니다. 의미: 수출 주도 K뷰티 호황과 미국·EU 진출을 규율합니다.</span></p></div></div></div>
+  </section>
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인(KSF)</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">이 산업에서 이기는 조건</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Brand equity</span><span class="ko">브랜드 자산</span></b><p><span class="en">Emotional, premium brands that command pricing power.</span><span class="ko">가격 결정력을 가진 감성·프리미엄 브랜드입니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">Formulation &amp; R&amp;D</span><span class="ko">제형·연구개발</span></b><p><span class="en">Differentiated actives, derma and clean-science claims.</span><span class="ko">차별화된 성분·더마·클린 사이언스 소구입니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">Distribution &amp; channel mix</span><span class="ko">유통·채널 믹스</span></b><p><span class="en">Prestige, mass, e-commerce and travel-retail reach.</span><span class="ko">프레스티지·매스·이커머스·여행소매 도달입니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">Digital &amp; influencer marketing</span><span class="ko">디지털·인플루언서 마케팅</span></b><p><span class="en">Social demand creation and content-led launches.</span><span class="ko">소셜 수요 창출과 콘텐츠 주도 출시입니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">Geographic &amp; channel diversification</span><span class="ko">지역·채널 다각화</span></b><p><span class="en">US, EU and emerging exposure to offset China risk.</span><span class="ko">중국 리스크를 상쇄할 미국·EU·신흥시장 노출입니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Regulatory &amp; safety compliance</span><span class="ko">규제·안전 준수</span></b><p><span class="en">Fast MoCRA/EU/Korea registration and clean-label readiness.</span><span class="ko">신속한 MoCRA·EU·한국 등록과 클린 라벨 대응입니다.</span></p></div></div></div>
+  </section>
+  <section id="news">
+    <p class="kicker"><span class="en">What's moving the industry now</span><span class="ko">지금 산업을 움직이는 것</span></p>
+    <h2><span class="en">The newsflow: market &amp; competitive events</span><span class="ko">뉴스: 시장·경쟁 이벤트</span></h2>
+    <p class="hint"><span class="en">This section = business/market events (earnings, deals, demand, prices) — not policy. Tap for why it matters.</span><span class="ko">이 섹션은 실적·거래·수요·가격 등 시장 이벤트입니다(정책 아님). 눌러서 의미를 확인하십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Feb 2026</span><span class="ac-title"><span class="en">K-beauty exports hit record US$11.4B</span><span class="ko">K뷰티 수출 사상 최고 114억 달러</span></span></div><div class="ac-body"><p class="why"><span class="en">2025 cosmetics exports rose 11.8% to US$11.4B (from US$10.2B), making Korea the world&#39;s #2 exporter. Why it matters: confirms K-beauty&#39;s structural, US-led export boom.</span><span class="ko">2025년 화장품 수출이 11.8% 증가한 114억 달러(102억 달러에서)로 한국이 세계 2위 수출국이 됐습니다. 의미: 미국 주도의 구조적 K뷰티 수출 호황을 확인합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Mar 2025</span><span class="ac-title"><span class="en">Est&eacute;e Lauder &amp; Puig merger talks</span><span class="ko">에스티로더·푸이그 합병 논의</span></span></div><div class="ac-body"><p class="why"><span class="en">The two were reported in discussions over a potential combination on 23 Mar 2025. Why it matters: signals consolidation pressure as prestige players seek scale.</span><span class="ko">두 회사가 2025년 3월 23일 잠재적 결합을 논의 중인 것으로 보도됐습니다. 의미: 프레스티지 기업이 규모를 추구하며 통합 압력이 커짐을 시사합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Feb 2025</span><span class="ac-title"><span class="en">Amorepacific FY2024: US tops China</span><span class="ko">아모레퍼시픽 2024: 미국이 중국 추월</span></span></div><div class="ac-body"><p class="why"><span class="en">FY2024 sales KRW4.26T, operating profit KRW249.3B; US revenue surpassed Greater China for the first time. Why it matters: validates the pivot away from China dependence.</span><span class="ko">2024년 매출 4조 2,600억 원, 영업이익 2,493억 원으로, 미국 매출이 처음으로 중화권을 넘어섰습니다. 의미: 중국 의존 탈피 전환을 입증합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Apr 2025</span><span class="ac-title"><span class="en">L&#39;Or&eacute;al Q1 2025: derma-beauty leads</span><span class="ko">로레알 2025 1분기: 더마뷰티 견인</span></span></div><div class="ac-body"><p class="why"><span class="en">Q1 sales rose with Dermatological Beauty up ~10.8% like-for-like, offsetting softer skincare. Why it matters: shows where durable, higher-margin growth now sits.</span><span class="ko">1분기 매출이 증가했고 더마톨로지컬 뷰티가 동일기준 약 10.8% 성장해 부진한 스킨케어를 상쇄했습니다. 의미: 지속가능한 고마진 성장의 위치를 보여줍니다.</span></p></div></div></div>
+  </section>
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">플레이어 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, each with its OWN strategy</span><span class="ko">두 리더, 각자 다른 전략</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader is diagnosed on its own terms: a MECE issue tree → strategy thrusts chosen for THAT company → action plans. The NUMBER of thrusts varies by situation.</span><span class="ko">위의 산업 분석이 본론입니다. 아래에서는 각 리더를 그 회사에 맞게 진단합니다: MECE 이슈트리 → 그 기업에 맞춰 고른 전략 축 → 액션 플랜. 전략 축의 개수는 상황에 따라 다릅니다.</span></p>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>L&#39;Or&eacute;al</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The world&#39;s largest beauty company by revenue, in its 8th straight record year, leaning on derma-beauty and premiumization.</span><span class="ko">매출 기준 세계 최대 뷰티 기업으로, 8년 연속 사상 최대 실적 속에 더마뷰티와 프리미엄화에 무게를 둡니다.</span></p><div class="stats"><div class="stat"><div class="n">&euro;43.48B</div><div class="l"><span class="en">FY24 sales</span><span class="ko">FY24 매출</span></div></div><div class="stat"><div class="n">+5.6%</div><div class="l"><span class="en">FY24 reported growth</span><span class="ko">FY24 보고 성장</span></div></div><div class="stat"><div class="n">~13%</div><div class="l"><span class="en">Global BPC share</span><span class="ko">글로벌 BPC 점유</span></div></div><div class="stat"><div class="n">~&euro;5.2B</div><div class="l"><span class="en">Derma-beauty sales</span><span class="ko">더마뷰티 매출</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — dominant, but skincare and China have softened</span><span class="ko">진단 — 지배적이나 스킨케어·중국이 둔화됐습니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Growth is slowing as the China prestige market and parts of skincare cool.</span><span class="ko">중국 프레스티지 시장과 스킨케어 일부가 식으면서 성장이 둔화됩니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">Heavy reliance on Chinese prestige demand and a maturing core skincare mix.</span><span class="ko">중국 프레스티지 수요 의존과 성숙기에 든 핵심 스킨케어 믹스입니다.</span></p><div class="formula">Value = units × price × premium mix + repeat − ingredient/marketing costs</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">Where does durable, higher-margin growth come from next?</span><span class="ko">지속가능한 고마진 성장은 다음에 어디서 오는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">From derma-beauty, premiumization, and beauty-tech/diversified geographies (the tracks below).</span><span class="ko">더마뷰티, 프리미엄화, 뷰티테크·지역 다각화에서 옵니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why is the #1 seeing slower growth?</span><span class="ko">1위 기업의 성장이 둔화된 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">China prestige (external)</span><span class="ko">중국 프레스티지(외생)</span></b><div class="leaf"><span class="en">Weaker Chinese demand drags premium skincare.</span><span class="ko">약한 중국 수요가 프리미엄 스킨케어를 끌어내립니다.</span></div></div><div class="branch"><b><span class="en">Mature core (structural)</span><span class="ko">성숙한 핵심(구조적)</span></b><div class="leaf"><span class="en">Legacy skincare lines are maturing in the West.</span><span class="ko">기존 스킨케어 라인이 서구에서 성숙기에 들었습니다.</span></div></div><div class="branch"><b><span class="en">Derma &amp; premium (lever)</span><span class="ko">더마·프리미엄(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Scale derma-beauty and premium innovation.</span><span class="ko">더마뷰티와 프리미엄 혁신을 키웁니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Derma-beauty</span><span class="ko">Track 1 · 더마뷰티</span></div><div class="tn"><span class="en">Scale dermatological brands</span><span class="ko">더마톨로지 브랜드 확대</span></div><p><span class="en">Grow CeraVe, La Roche-Posay and the fastest division.</span><span class="ko">세라비·라로슈포제 등 가장 빠른 부문을 키웁니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Premiumization</span><span class="ko">Track 2 · 프리미엄화</span></div><div class="tn"><span class="en">Trade up the mix</span><span class="ko">믹스 고급화</span></div><p><span class="en">Lift price/mix via L&#39;Or&eacute;al Luxe and fragrance.</span><span class="ko">로레알 럭스·향수로 가격·믹스를 올립니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Beauty-tech &amp; geo</span><span class="ko">Track 3 · 뷰티테크·지역</span></div><div class="tn"><span class="en">Diversify beyond China</span><span class="ko">중국 너머 다각화</span></div><p><span class="en">Use AI/beauty-tech and grow US, India, emerging.</span><span class="ko">AI·뷰티테크를 활용하고 미국·인도·신흥을 키웁니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Portfolio</span><span class="ko">포트폴리오</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Mature skincare</span><span class="ko">성숙 스킨케어</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Derma &amp; premium</span><span class="ko">더마·프리미엄</span></div></div></div><div class="ap"><div class="apt"><span class="en">Geography</span><span class="ko">지역</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">China-reliant</span><span class="ko">중국 의존</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">US / India / emerging</span><span class="ko">미국·인도·신흥</span></div></div></div><div class="ap"><div class="apt"><span class="en">Capability</span><span class="ko">역량</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Mass marketing</span><span class="ko">매스 마케팅</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">AI beauty-tech</span><span class="ko">AI 뷰티테크</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>Amorepacific</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">Korea&#39;s largest cosmetics maker by revenue, pivoting from China toward the US and Western markets.</span><span class="ko">매출 기준 한국 최대 화장품 기업으로, 중국에서 미국·서구 시장으로 전환합니다.</span></p><div class="stats"><div class="stat"><div class="n">&#8361;4.26T</div><div class="l"><span class="en">FY24 sales</span><span class="ko">FY24 매출</span></div></div><div class="stat"><div class="n">&#8361;249.3B</div><div class="l"><span class="en">FY24 op profit</span><span class="ko">FY24 영업이익</span></div></div><div class="stat"><div class="n">#1</div><div class="l"><span class="en">Korea by revenue</span><span class="ko">한국 매출 1위</span></div></div><div class="stat"><div class="n">93.2%</div><div class="l"><span class="en">COSRX stake</span><span class="ko">코스알엑스 지분</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — recovering, but still rebalancing away from China</span><span class="ko">진단 — 회복 중이나 여전히 중국 의존 재조정 단계입니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 핵심 문제</span></span><p><span class="en">Past over-reliance on Chinese demand left earnings volatile.</span><span class="ko">과거 중국 수요 의존이 이익 변동성을 키웠습니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">원인 · 근본 이유</span></span><p><span class="en">Greater China weakness and duty-free dependence dragged the legacy mix.</span><span class="ko">중화권 부진과 면세 의존이 기존 믹스를 끌어내렸습니다.</span></p><div class="formula">Profit = brand portfolio × global mix + COSRX/US growth − China drag</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설적 접근</span></span><p><span class="en">How to grow durably beyond a volatile China cycle?</span><span class="ko">변동성 큰 중국 사이클을 넘어 어떻게 지속 성장하는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">해결 · 방향</span></span><p><span class="en">Lean into US/Western growth, scale COSRX, and premiumize the brand mix (the tracks below).</span><span class="ko">미국·서구 성장에 집중하고 코스알엑스를 키우며 브랜드 믹스를 프리미엄화합니다(아래 트랙).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈트리 · 원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why has the leader&#39;s growth been volatile?</span><span class="ko">선두 기업의 성장이 변동적이었던 이유는?</span></div><div class="branches"><div class="branch"><b><span class="en">China cycle (external)</span><span class="ko">중국 사이클(외생)</span></b><div class="leaf"><span class="en">Greater China demand and duty-free swung hard.</span><span class="ko">중화권 수요와 면세가 크게 출렁였습니다.</span></div></div><div class="branch"><b><span class="en">Channel mix (structural)</span><span class="ko">채널 믹스(구조적)</span></b><div class="leaf"><span class="en">Legacy duty-free reliance hurt resilience.</span><span class="ko">기존 면세 의존이 안정성을 해쳤습니다.</span></div></div><div class="branch"><b><span class="en">US &amp; COSRX (lever)</span><span class="ko">미국·코스알엑스(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Scale US/Western demand and COSRX.</span><span class="ko">미국·서구 수요와 코스알엑스를 키웁니다.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈트리 — 가지는 상호배타적이며, 금색 잎이 핵심 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위는 SCQA 흐름이고, 아래 이슈트리는 원인(C)을 MECE 가지로 분해합니다. 금색이 핵심 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Western growth</span><span class="ko">Track 1 · 서구 성장</span></div><div class="tn"><span class="en">Grow US &amp; Europe</span><span class="ko">미국·유럽 확대</span></div><p><span class="en">Build on US revenue now topping Greater China.</span><span class="ko">중화권을 넘어선 미국 매출을 발판으로 키웁니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · COSRX</span><span class="ko">Track 2 · 코스알엑스</span></div><div class="tn"><span class="en">Scale the indie engine</span><span class="ko">인디 엔진 확대</span></div><p><span class="en">Leverage 93.2%-owned COSRX as a global growth driver.</span><span class="ko">93.2% 지분 코스알엑스를 글로벌 성장 동력으로 활용합니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Premiumize</span><span class="ko">Track 3 · 프리미엄화</span></div><div class="tn"><span class="en">Trade up flagship brands</span><span class="ko">대표 브랜드 고급화</span></div><p><span class="en">Lift Sulwhasoo and prestige skincare margins.</span><span class="ko">설화수·프레스티지 스킨케어 마진을 올립니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">액션 플랜</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Geography</span><span class="ko">지역</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">China-heavy</span><span class="ko">중국 편중</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">US / Western</span><span class="ko">미국·서구</span></div></div></div><div class="ap"><div class="apt"><span class="en">Portfolio</span><span class="ko">포트폴리오</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Legacy brands</span><span class="ko">기존 브랜드</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">COSRX &amp; premium</span><span class="ko">코스알엑스·프리미엄</span></div></div></div><div class="ap"><div class="apt"><span class="en">Channel</span><span class="ko">채널</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Duty-free reliant</span><span class="ko">면세 의존</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Diversified retail</span><span class="ko">다각화 리테일</span></div></div></div></div></div></div>
+  </section>
+  <section id="kpi">
+    <p class="kicker"><span class="en">KPIs to watch</span><span class="ko">주목할 지표</span></p>
+    <h2><span class="en">The dials that move this industry</span><span class="ko">이 산업을 움직이는 계기판</span></h2>
+    <p class="hint"><span class="en">Leading indicators with the latest reading — track these to see the thesis play out.</span><span class="ko">최신 수치가 담긴 선행지표입니다. 이 흐름을 추적하면 전망을 검증할 수 있습니다.</span></p>
+    <div class="kpis reveal"><div class="kpi"><div class="kt"><span class="en">Korea cosmetics exports</span><span class="ko">한국 화장품 수출</span></div><div class="kv"><span class="en">US$11.4B (2025)</span><span class="ko">114억 달러(2025)</span></div><div class="kw"><span class="en">K-beauty export momentum.</span><span class="ko">K뷰티 수출 모멘텀입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">L&#39;Or&eacute;al derma-beauty growth</span><span class="ko">로레알 더마뷰티 성장</span></div><div class="kv"><span class="en">~+10.8% LFL (Q1 2025)</span><span class="ko">동일기준 약 +10.8%(2025 1분기)</span></div><div class="kw"><span class="en">Where premium growth sits.</span><span class="ko">프리미엄 성장의 위치입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Amorepacific FY24 sales</span><span class="ko">아모레퍼시픽 FY24 매출</span></div><div class="kv"><span class="en">&#8361;4.26T (US tops China)</span><span class="ko">4.26조 원(미국&gt;중국)</span></div><div class="kw"><span class="en">Korea leader&#39;s rebalancing.</span><span class="ko">한국 선두의 재조정입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Global BPC market growth</span><span class="ko">글로벌 BPC 시장 성장</span></div><div class="kv"><span class="en">~4.4% CAGR</span><span class="ko">연평균 약 4.4%</span></div><div class="kw"><span class="en">Structural demand backdrop.</span><span class="ko">구조적 수요 배경입니다.</span></div></div></div>
+  </section>
+  <section id="scenarios">
+    <p class="kicker"><span class="en">Scenarios — bull · base · bear</span><span class="ko">시나리오 — 낙관·기본·비관</span></p>
+    <h2><span class="en">Three ways the next few years could break</span><span class="ko">향후 몇 년이 갈릴 세 갈래</span></h2>
+    <div class="scen reveal"><div class="sc bull"><div class="sh"><span class="en">Bull · upside</span><span class="ko">낙관</span></div><div class="sd"><span class="en">China rebounds + K-beauty surges</span><span class="ko">중국 반등 + K뷰티 급증</span></div><p><span class="en">Premium re-rates and exports compound; margins expand.</span><span class="ko">프리미엄이 재평가되고 수출이 복리로 늘어 마진이 확대됩니다.</span></p></div><div class="sc base"><div class="sh"><span class="en">Base · central</span><span class="ko">기본</span></div><div class="sd"><span class="en">Steady ~4–5% growth; US leads</span><span class="ko">꾸준한 약 4~5% 성장, 미국 견인</span></div><p><span class="en">Mid-single-digit growth; premium and derma hold margins.</span><span class="ko">중간 한 자릿수 성장. 프리미엄·더마가 마진을 유지합니다.</span></p></div><div class="sc bear"><div class="sh"><span class="en">Bear · downside</span><span class="ko">비관</span></div><div class="sd"><span class="en">China slump + tariffs persist</span><span class="ko">중국 침체 + 관세 지속</span></div><p><span class="en">Demand stalls; price competition compresses margins.</span><span class="ko">수요가 정체되고 가격 경쟁이 마진을 압축합니다.</span></p></div></div>
+  </section>
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 &amp; 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">산업은 어디로 가는가</span></h2>
+      <ul class="tight"><li><span class="en">Demand is re-setting geographically: the US and K-beauty exports lead while China stays volatile.</span><span class="ko">수요가 지리적으로 재편됩니다. 미국과 K뷰티 수출이 앞서고 중국은 변동성이 큽니다.</span></li><li><span class="en">Low entry barriers and indie/ODM disruption keep rivalry intense; brand equity decides margin.</span><span class="ko">낮은 진입장벽과 인디·ODM 파괴가 경쟁을 치열하게 유지하며, 브랜드 자산이 마진을 결정합니다.</span></li><li><span class="en">Tightening rules (MoCRA, EU microplastics) raise compliance costs and favor scale players.</span><span class="ko">강화되는 규정(MoCRA·EU 미세플라스틱)이 규제 준수 비용을 높이고 규모 기업에 유리합니다.</span></li><li><span class="en">L&#39;Or&eacute;al rides derma-beauty and premiumization; Amorepacific rides US growth and COSRX.</span><span class="ko">로레알은 더마뷰티·프리미엄화에, 아모레퍼시픽은 미국 성장·코스알엑스에 달려 있습니다.</span></li></ul>
+    </div>
+  </section>
+</div>
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;"><li><a href="https://www.grandviewresearch.com/industry-analysis/beauty-personal-care-products-market">Grand View Research — beauty &amp;amp; personal care market</a></li><li><a href="https://www.globenewswire.com/news-release/2025/02/06/3022263/0/en/2024-Annual-Results.html">L&#39;Or&eacute;al — 2024 Annual Results</a></li><li><a href="https://www.apgroup.com/int/en/news/2025-02-06-1.html">Amorepacific Group — 2024 Earnings Summary</a></li><li><a href="https://www.fda.gov/cosmetics/cosmetics-laws-regulations/modernization-cosmetics-regulation-act-2022-mocra">FDA — MoCRA 2022</a></li><li><a href="https://single-market-economy.ec.europa.eu/sectors/chemicals/reach/restrictions/commission-regulation-eu-20232055-restriction-microplastics-intentionally-added-products_en">EU — microplastics restriction (2023/2055)</a></li><li><a href="https://www.globalcosmeticsnews.com/k-beauty-milestone-korean-cosmetics-exports-surpass-us10-billion/">Global Cosmetics News — K-beauty exports</a></li><li><a href="https://wwd.com/beauty-industry-news/beauty-features/loreal-q1-sales-rise-1238924993/">WWD — L&#39;Or&eacute;al Q1 2025</a></li></ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Personal Care Products (GICS 303020) · Generated June 9, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">디 인더스트리 브리프 · 퍼스널케어 제품(GICS 303020) · 2026년 6월 9일 생성. 공개 자료 기준 반올림이며 정보 제공용으로 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+
+</body>
+</html>
