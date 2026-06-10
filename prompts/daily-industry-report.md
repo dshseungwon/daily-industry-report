@@ -50,11 +50,46 @@ KOREA #1 (largest South Korean; if none meaningful, say so and name the closest 
 do not invent). Keep source URLs. Run the 7 industries' research in PARALLEL with
 subagents (the Agent tool) to save time.
 
-STEP 3 — KOREAN = polite, deferential business register ending in ~습니다 / ~합니다 /
-~드립니다 (합쇼체, a secretary briefing an executive), NOT the plain ~다 style. Write
-Korean natively (no 직역체). Consistent glossary (net interest income->순이자이익,
-moat->해자, KSF->핵심성공요인, market share->시장점유율, value chain->가치사슬). Keep
-numbers/names/dates identical across languages.
+STEP 3 — KOREAN: TWO-PASS, never inline. Translationese is the #1 quality complaint;
+the fix is to never translate sentence-by-sentence while looking at English.
+PASS 1 (here): build each report ENGLISH-ONLY — every <span class="ko"> temporarily
+holds the IDENTICAL English text as its <span class="en"> twin (equal span counts
+guaranteed by construction).
+PASS 2 (runs AFTER the STEP 6a/6b fact-check corrections, so corrected English is the
+source): for each report, a dedicated subagent extracts the unique EN strings and
+REWRITES each one in Korean as a top-tier executive secretary briefing the chairman.
+Korean rewrite rules (give these to the rewrite subagents verbatim):
+- 합쇼체 보고체: "~로 파악됩니다", "~한 바 있습니다", "~할 것으로 보입니다",
+  "시사점을 말씀드리면 ~라는 점입니다". 문장 구조는 영어를 버리고 한국어 호흡으로
+  재구성(문장 분할, 연결어 "실제로/다만/앞서/이에 따라" 추가 자유).
+- 번역체 금지: "~에 의해", "~되어지다", "면세 입국", "재경로화" 같은 직역 명사구 금지.
+- 짧은 라벨/제목/차트 라벨/KPI 제목은 간결한 명사형(예: "Executive summary"→"핵심 보고",
+  "Bull · upside"→"낙관 시나리오", "KPIs to watch"→"주시할 지표"). "Why it matters:"→"시사점:".
+- 용어집: market share→시장점유율, value chain→가치사슬, moat→해자, KSF→핵심성공요인,
+  CAGR→연평균 성장률(CAGR), profit pool→이익 풀, backlog→수주잔고, occupancy→입주율.
+- 단위 변환은 반드시 검산: $X billion = X×10억 달러($35.71B→357억 1,000만 달러),
+  $X trillion = X조 달러, €1,085B→1조 850억 유로(1,085 billion = 1조 850억; 1,085억이 아님),
+  ₩61.1T→61.1조 원, X percentage points→X%포인트. 헷갈리면 원문 표기 유지가 오역보다 낫다.
+- 한국 기업은 한국어 정식 명칭, 해외 기업은 통용 한글 표기(널리 쓰일 때만), 약어형
+  사명·기관(SLB, UPS, ZF, FDA, CMS)은 영문 유지. 수치/연도/날짜/%는 EN과 정확히 일치.
+After PASS 2, run the EN/KO NUMERIC-CONSISTENCY GATE on every file and fix all real
+mismatches before finishing (false positives like "about a quarter"→"약 25%" may be
+accepted; absolute rule: years, %, and converted currency magnitudes must be correct):
+
+python3 - <<'PY'
+import re, glob, sys
+bad_total = 0
+for f in glob.glob('reports/*/industry-report_*.html'):
+    s = open(f, encoding='utf-8').read()
+    for e, k in re.findall(r'<span class="en">(.*?)</span><span class="ko">(.*?)</span>', s, re.S):
+        if not re.search(r'[가-힣]', k): continue
+        ye = set(m.group(0) for m in re.finditer(r'(?<!\d)(?:19|20)\d{2}(?!\d)', e))
+        yk = set(m.group(0) for m in re.finditer(r'(?<!\d)(?:19|20)\d{2}(?!\d)', k))
+        pe = sorted(re.findall(r'\d+(?:\.\d+)?(?=%)', e)); pk = sorted(re.findall(r'\d+(?:\.\d+)?(?=%|％)', k))
+        if (pe != pk and not set(pe) <= set(pk)) or not ye <= yk:
+            print(f, '|', e[:70]); bad_total += 1
+print('mismatches:', bad_total)
+PY
 
 STEP 4 — Build ONE bilingual .html per industry (NO external dependencies). Every
 string as <span class="en">…</span><span class="ko">…</span>; ENGLISH DEFAULT
@@ -75,7 +110,10 @@ Korea pies summing to 100%); (6) Competitive positioning (2x2 SVG with Global #1
 Korea #1 red, 2-3 peers = 4 plotted points, one-line takeaway); (7) Porter's Five
 Forces (rated); (8) Macro forces & the latest RULES (laws only, dated); (9) Key Success
 Factors (6 cards); (10) What's moving the industry now (market events only, dated);
-(11) PLAYERS · strategy analysis — Global #1 then Korea #1, EACH with stat callouts, an
+(11) PLAYERS · strategy analysis — Global #1 then Korea #1, EACH with stat callouts that
+MUST include a MARKET CAP stat ("Market cap"/"시가총액", current value with as-of month,
+e.g. "$348B (Jun 2026)" / "3,480억 달러(2026년 6월)"; if the company is unlisted write
+"Private (unlisted)"/"비상장" — e.g. Bosch, delisted Osstem Implant), plus an
 SCQA diagnosis (S = biggest problem, C = root cause WITH a driver-decomposition formula
 line, Q = hypothesis-framed question, A = answer that maps to the tracks), 1-3 tailored
 strategy tracks, and 3 action-plan cards (현재->목표 / From->To); (12) KPIs to watch
@@ -96,7 +134,8 @@ created or changed must pass a FRESH verification before this run ends.
 (a) FACT-CHECK: for each of the 7 reports, dispatch an INDEPENDENT verification (fresh
 web search, do NOT reuse the original research) rating each KEY claim ✓ Confirmed /
 ⚠ Roughly right / ✗ Wrong-or-unsupported: the GLOBAL #1 and KOREA #1 identity, each
-player's headline financials, market-size figures and CAGR, market-share percentages,
+player's headline financials AND current market cap (±10% tolerance; "비상장" claims
+must be verified too), market-size figures and CAGR, market-share percentages,
 and every dated regulation/recent-issue. Run the 7 in PARALLEL (one subagent each).
 (b) CORRECT every ✗ and every stale/meaningfully-off ⚠ in the HTML, keeping EN and KO
 numbers IDENTICAL. Where a number is genuinely scope-dependent, keep it but label it
@@ -105,8 +144,11 @@ numbers IDENTICAL. Where a number is genuinely scope-dependent, keep it but labe
 counts; exactly 2 pie charts summing to 100%; 5 Five-Forces items; 6 KSF cards; 2
 leader/strategy blocks; a value-chain flow + profit-pool bar; a 2x2 SVG with 4 plotted
 points; 2 SCQA diagnoses (S/C/Q/A each appear twice); a KPI watchlist (3-4 cards); 3
-scenario cards; and that the regulation and news sections share NO duplicate item. Fix
-any failure.
+scenario cards; a market-cap stat in BOTH player blocks; equal en/ko span counts AFTER
+the Korean rewrite pass; and that the regulation and news sections share NO duplicate
+item. Fix any failure. Order of operations within this run: STEP 4 (English build) →
+STEP 6a/6b (fact-check + corrections, English) → STEP 3 PASS 2 (Korean rewrite) →
+numeric-consistency gate → STEP 6c integrity gate → STEP 7.
 
 STEP 7 — Merge today's 7 objects into reports.json (it holds all history; do not drop
 existing entries; if an entry for today's file already exists, overwrite it), then run
@@ -120,7 +162,7 @@ ROOT:
 
 1) `digest.html` — a self-contained, INLINE-STYLED (email-safe) HTML body, KOREAN-
    primary in polite 합쇼체 (this is a personal morning brief the owner actually reads).
-   Mobile-friendly, max-width ~600px, INLINE css only (no <style> blocks, no external
+   Write the Korean natively in the same secretary-briefing register as the reports (번역체 금지). Mobile-friendly, max-width ~600px, INLINE css only (no <style> blocks, no external
    assets, no <script>; mail clients strip them). Structure, in this order:
    - Header line: "The Industry Brief · 오늘의 다이제스트 · <YYYY-MM-DD>" with a link to
      the landing page https://dshseungwon.github.io/daily-industry-report/ .

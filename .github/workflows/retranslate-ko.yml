@@ -1,0 +1,54 @@
+name: Retranslate Korean + Market-Cap Backfill (one-off)
+
+on:
+  workflow_dispatch: {}
+
+concurrency:
+  group: retranslate-ko
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  retranslate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Rewrite Korean + add market caps
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          CLAUDE_MODEL: opus
+        run: |
+          claude -p "$(cat prompts/retranslate-ko.md)" \
+            --model "$CLAUDE_MODEL" \
+            --dangerously-skip-permissions \
+            --verbose
+
+      - name: Commit & push
+        run: |
+          git config user.name "Daily Industry Report Bot"
+          git config user.email "daily-industry-report@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "Retranslate Korean in briefing register + market-cap backfill"
+            git push
+          fi
