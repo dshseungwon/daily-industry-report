@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Life Sciences Tools &amp; Services · 생명과학 도구·서비스 — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+
+<style>
+  .cagr-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+  .cagr-badge{display:inline-flex;align-items:baseline;gap:5px;background:#eaf2fb;color:var(--blue);
+    border:1px solid #cfe2f5;border-radius:999px;padding:6px 13px;font-weight:800;font-size:13px;}
+  .cagr-badge .n{font-size:16px;}
+  .cagr-badge.alt{background:#fff6e6;color:#b07400;border-color:#ffe2a6;}
+  /* SCQA diagnosis (Situation · Complication · Question · Answer) */
+  .scqa{margin:12px 0 2px;}
+  .scqa-row{display:flex;gap:12px;position:relative;padding-bottom:14px;}
+  .scqa-row:last-child{padding-bottom:0;}
+  .scqa-row::before{content:"";position:absolute;left:14px;top:30px;bottom:-2px;width:2px;background:var(--line);}
+  .scqa-row:last-child::before{display:none;}
+  .scqa-k{flex:none;width:30px;height:30px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 2px 6px rgba(14,42,71,.18);}
+  .scqa-row.s .scqa-k{background:#5b6b8c;}
+  .scqa-row.c .scqa-k{background:var(--hi);}
+  .scqa-row.q .scqa-k{background:var(--blue);}
+  .scqa-row.a .scqa-k{background:var(--lo);}
+  .scqa-bd{flex:1;padding-top:1px;}
+  .scqa-lab{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;}
+  .scqa-row.a .scqa-lab{color:var(--lo);}
+  .scqa-bd p{margin:0;font-size:13.3px;color:var(--ink);line-height:1.55;}
+  .scqa-row.q .scqa-bd p{font-style:italic;color:#16406a;}
+  .scqa-row.a .scqa-bd p{font-weight:600;}
+  .scqa .formula{margin-top:8px;}
+  .scqa-cap{font-size:11.5px;color:var(--mute);font-style:italic;margin:10px 0 0;}
+  /* MECE issue tree (rendered together with SCQA) */
+  .tree{margin:9px 0 2px;}
+  .tree .root{background:linear-gradient(120deg,#16406a,#0e2a47);color:#fff;border-radius:11px;
+    padding:11px 14px;font-size:13.4px;font-weight:700;border-left:4px solid var(--gold);}
+  .tree .branches{display:grid;gap:9px;margin-top:10px;}
+  .tree .branch{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;padding:10px 13px;background:#f7fafd;}
+  .tree .branch>b{font-size:13.1px;display:block;margin-bottom:5px;color:var(--ink);}
+  .tree .leaf{font-size:12.6px;color:var(--mute);padding-left:15px;position:relative;margin:4px 0;line-height:1.5;}
+  .tree .leaf::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .tree .leaf.lever{color:var(--ink);font-weight:600;}
+  .tree .leaf.lever::before{background:var(--gold);width:8px;height:8px;left:1px;top:7px;}
+  .tree .lever-tag{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#b07400;background:#fff6e6;border-radius:5px;padding:1px 5px;margin-right:5px;}
+  .tree-cap{display:none;}
+  @media(min-width:680px){.tree .branches{grid-template-columns:1fr 1fr 1fr;}}
+  /* value chain — connected flow diagram */
+  .vchain{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:6px 0 4px;}
+  .vc-step{position:relative;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:11px;padding:11px 13px 11px 40px;flex:1;}
+  .vc-step .vc-n{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;
+    background:var(--blue);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .vc-step:last-of-type{border-left-color:var(--gold);}
+  .vc-step:last-of-type .vc-n{background:var(--gold);color:var(--navy);}
+  .vc-step b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc-step .d{font-size:12.3px;color:var(--mute);}
+  .vc-arrow{align-self:center;color:var(--gold);font-weight:900;font-size:16px;line-height:1;
+    transform:rotate(90deg);padding:5px 0;}
+  @media(min-width:720px){
+    .vchain{flex-direction:row;align-items:stretch;flex-wrap:nowrap;}
+    .vc-step{padding:11px 11px 11px 12px;min-width:0;}
+    .vc-step .vc-n{position:static;margin-bottom:6px;}
+    .vc-arrow{transform:none;padding:0 3px;display:flex;align-items:center;}
+  }
+  /* variable 1-3 strategy tracks */
+  .track.t3{background:#10355a;border:1px solid rgba(255,184,28,.45);}
+  .track-grid.n1{grid-template-columns:1fr;}
+  @media(min-width:680px){
+    .track-grid.n2{grid-template-columns:1fr 1fr;}
+    .track-grid.n3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  /* profit pool */
+  .pool{display:flex;flex-direction:column;gap:8px;margin:6px 0 2px;}
+  .pool-row{display:flex;align-items:center;gap:10px;}
+  .pool-row .pn{flex:1.1;font-size:12.6px;color:var(--ink);min-width:0;}
+  .pool-row .ptrack{flex:1.5;height:9px;border-radius:5px;background:#eef2f7;overflow:hidden;}
+  .pool-row .pfill{height:100%;border-radius:5px;}
+  .pool-row .pfill.hi{width:92%;background:var(--gold);}
+  .pool-row .pfill.med{width:55%;background:var(--blue);}
+  .pool-row .pfill.lo{width:22%;background:#c9d4e3;}
+  .pool-row .pv{flex:none;width:58px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .pool-row .pv.hi{color:#b07400;}.pool-row .pv.med{color:var(--blue);}.pool-row .pv.lo{color:var(--mute);}
+  /* KPI watchlist */
+  .kpis{display:grid;grid-template-columns:1fr;gap:11px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);padding:13px 15px;border-left:4px solid var(--blue);}
+  .kpi .kt{font-size:12.5px;font-weight:800;color:var(--ink);}
+  .kpi .kv{font-size:clamp(17px,4.6vw,21px);font-weight:800;color:var(--blue);margin:3px 0 4px;line-height:1.1;}
+  .kpi .kw{font-size:12.3px;color:var(--mute);}
+  /* scenarios */
+  .scen{display:grid;grid-template-columns:1fr;gap:11px;}
+  .sc{border-radius:13px;padding:14px 16px;color:#fff;box-shadow:var(--shadow);}
+  .sc.bull{background:linear-gradient(125deg,#1f9d6b,#14633f);}
+  .sc.base{background:linear-gradient(125deg,#16406a,#0e2a47);}
+  .sc.bear{background:linear-gradient(125deg,#b1402f,#7d2418);}
+  .sc .sh{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .sc .sd{font-size:13.6px;font-weight:800;margin:4px 0 6px;}
+  .sc p{margin:0;font-size:12.8px;color:#eef4fb;}
+  /* positioning 2x2 */
+  .posmap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;}
+  .posmap svg{width:100%;height:auto;display:block;overflow:visible;}
+  .pos-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 2px;font-size:12px;color:var(--ink);}
+  .pos-legend .pl-i{display:flex;align-items:center;gap:6px;}
+  .pos-legend .pl-d{width:11px;height:11px;border-radius:50%;}
+  @media(min-width:680px){.kpis{grid-template-columns:1fr 1fr;}.scen{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Life Sciences Tools &amp; Services</span><span class="ko">생명과학 도구 및 서비스</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="positioning"><span class="en">Positioning</span><span class="ko">포지셔닝</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5가지 경쟁요인</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">주요 플레이어</span></button><button class="chip" data-go="scenarios"><span class="en">Scenarios</span><span class="ko">시나리오</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">영문</span></button>
+  </div>
+</div>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 5 of 7</span><span class="ko">Industry Brief · GICS 일별 설정 5/7</span></p>
+    <h1><span class="en">Life Sciences Tools &amp; Services</span><span class="ko">생명과학 도구 및 서비스</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석 및 경쟁구조</span></p>
+    <div class="pill-row">
+      <span class="pill">GICS · <span class="en">Health Care</span><span class="ko">헬스케어</span> · 352030</span>
+      <span class="pill">2026-06-10</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">주요 플레이어</span>: Thermo Fisher · Samsung Biologics</span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">GICS Life Sciences Tools &amp; Services (352030) sells the picks-and-shovels of drug discovery: lab instruments, the consumables and reagents that feed them, and outsourced R&amp;D and manufacturing services (CRO/CDMO) for pharma and biotech. The global market sat near US$154B in 2025 and grows roughly 7% a year (Mordor Intelligence), with services and bioprocessing the fastest-growing pools. After two brutal years of biotech-funding drought and inventory destocking, 2025 was the inflection: Danaher's Biotechnology segment grew 9% in Q4 and the destocking is over. Margin concentrates in proprietary consumables and outsourced services, not commodity instruments. The defining 2026 policy event is the BIOSECURE Act, signed into law on 18 Dec 2025, which curbs federal dealings with Chinese biotech firms of concern and reshuffles CDMO demand toward non-China suppliers. The global #1, Thermo Fisher Scientific, posted US$44.6B FY2025 revenue and is doubling down on bioproduction scale. Korea's leader, Samsung Biologics, became the first Korean biopharma to clear ₩2T operating profit on roughly ₩4.6T (~US$3.1B) FY2025 revenue and is the world's largest biologics CDMO by capacity. Both are detailed at the end.</span><span class="ko">GICS Life Sciences Tools & Services (352030)는 의약품 개발에 필요한 도구와 소모품, 그리고 제약·바이오를 위한 연구개발·위탁생산 서비스(CRO/CDMO)를 제공합니다. 전 세계 시장은 2025년 약 1,540억 달러 규모였고 연간 약 7% 성장(Mordor Intelligence)하며, 서비스와 바이오프로세싱이 가장 빠르게 확대되고 있습니다. 두 해의 바이오 자금 경색과 재고 조정 후 2025년이 전환점이었으며, 다나허의 바이오테크 부문은 4분기에 9% 성장하며 재고 정리는 끝났습니다. 마진은 범용 기기보다 독점적 소모품과 위탁 서비스에 집중됩니다. 2026년 핵심 정책 사건은 2025년 12월 18일 제정된 생물보안법(BIOSECURE Act)으로, 연방 차원의 중국계 바이오기업 거래를 제한하고 CDMO 수요를 비중국 공급사로 재편합니다. 글로벌 1위 써모피셔(써모 피셔 사이언티픽)는 2025 회계연도 매출 446억 달러를 기록했고, 바이오생산 확대에 주력하고 있습니다. 국내 선두인 삼성바이오로직스는 2025 회계연도 약 4조6,000억 원(약 31억 달러) 매출에 영업이익 2조 원을 최초로 달성했으며, 용량 기준 세계 최대 바이오 CDMO입니다. 두 기업에 대한 상세 내용은 말미에 기재되어 있습니다.</span></p>
+    </div>
+  </section>
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의 및 가치사슬</span></p>
+      <h2><span class="en">From instruments to molecules made on contract</span><span class="ko">기기에서 수탁생산 분자로</span></h2>
+      <p class="lead"><span class="en">The industry equips and runs the discovery-to-manufacturing pipeline: instruments enable experiments, consumables and reagents are bought again and again, and CRO/CDMO services execute trials and make the drugs. Value ≈ installed instrument base × consumables pull-through × service contracts + recurring revenue mix − capacity and labor cost.</span><span class="ko">업계는 발견에서 제조에 이르는 파이프라인을 설비하고 운영합니다: 기기가 실험을 가능케 하고, 소모품·시약은 반복 구매되며, CRO/CDMO가 임상·생산을 수행합니다. 가치 구성은 대략 설치된 기기 기반 × 소모품 소모(풀스루) × 서비스 계약 + 반복수익 구성 − 설비·노무비입니다.</span></p>
+      <div class="vchain"><div class="vc-step"><span class="vc-n">1</span><b><span class="en">Instruments &amp; platforms</span><span class="ko">기기 및 플랫폼</span></b><span class="d"><span class="en">Sequencers, mass specs, chromatography, lab automation.</span><span class="ko">시퀀서, 질량분석기, 크로마토그래피 장비, 실험실 자동화 장비</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">2</span><b><span class="en">Consumables &amp; reagents</span><span class="ko">소모품 및 시약</span></b><span class="d"><span class="en">Kits, columns, antibodies, media — recurring spend.</span><span class="ko">키트, 컬럼, 항체, 배지 — 반복적으로 발생하는 지출</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">3</span><b><span class="en">Research services (CRO)</span><span class="ko">연구대행 서비스(CRO)</span></b><span class="d"><span class="en">Outsourced discovery, preclinical and clinical trials.</span><span class="ko">발견 단계, 전임상·임상 시험의 외주화</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">4</span><b><span class="en">Manufacturing services (CDMO)</span><span class="ko">제조대행 서비스(CDMO)</span></b><span class="d"><span class="en">Contract production of drug substance and product.</span><span class="ko">의약품 원료 및 완제품의 위탁생산</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">5</span><b><span class="en">Pharma &amp; biotech customers</span><span class="ko">제약·바이오 고객군</span></b><span class="d"><span class="en">Drug developers who buy tools and outsource the work.</span><span class="ko">도구를 구매하고 업무를 외주로 맡기는 신약 개발사</span></span></div></div>
+      <div class="subh" style="margin-top:16px"><span class="en">Profit pool — where margin concentrates</span><span class="ko">이익 풀 — 마진 집중 구간</span></div>
+      <div class="pool"><div class="pool-row"><span class="pn"><span class="en">Instruments &amp; platforms</span><span class="ko">기기 및 플랫폼</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div><div class="pool-row"><span class="pn"><span class="en">Consumables &amp; reagents</span><span class="ko">소모품 및 시약</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Research services (CRO)</span><span class="ko">연구대행 서비스(CRO)</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med"><span class="en">Medium</span><span class="ko">중간</span></span></div><div class="pool-row"><span class="pn"><span class="en">Manufacturing services (CDMO)</span><span class="ko">제조대행 서비스(CDMO)</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi"><span class="en">High</span><span class="ko">높음</span></span></div><div class="pool-row"><span class="pn"><span class="en">Pharma &amp; biotech customers</span><span class="ko">제약·바이오 고객군</span></span><span class="ptrack"><span class="pfill lo"></span></span><span class="pv lo"><span class="en">Low</span><span class="ko">낮음</span></span></div></div>
+      <p class="cap"><span class="en">Margin concentrates in high-recurring proprietary consumables and in differentiated outsourced services (specialized CRO work, large-scale biologics CDMO). One-off instrument hardware is more competitive and capital-heavy; downstream pharma buyers capture little of the tools margin themselves.</span><span class="ko">마진은 반복 매출이 높은 독점적 소모품과 차별화된 외주 서비스(특화된 CRO 업무, 대규모 바이오 의약품 CDMO)에 집중됩니다. 일회성 장비 하드웨어는 경쟁이 치열하고 자본 집약적이며, 하류의 제약 구매자들은 도구 자체의 마진을 거의 흡수하지 못합니다.</span></p>
+    </div>
+  </section>
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모 및 성장</span></p>
+      <h2><span class="en">A ~$154B market emerging from the destocking trough</span><span class="ko">재고조정 저점에서 회복 중인 약 1,540억 달러 규모 시장</span></h2>
+      <div class="cagr-wrap"><span class="cagr-badge"><span class="en">CAGR</span><span class="ko">연평균 성장률(CAGR)</span><span class="n">≈6.9%</span></span><span class="mute" style="font-size:12.5px"><span class="en">life science tools, 2026–2031 (Mordor Intelligence)</span><span class="ko">생명과학 도구 시장, 2026–2031년(Mordor Intelligence)</span></span></div>
+      <div class="colchart"><div class="col"><div class="col-val">$153.8B</div><div class="col-bar" data-h="44"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">$164.5B</div><div class="col-bar" data-h="58"></div><div class="col-lab">2026E</div></div><div class="col"><div class="col-val">$175.9B</div><div class="col-bar" data-h="72"></div><div class="col-lab">2027E</div></div><div class="col"><div class="col-val">$188.1B</div><div class="col-bar" data-h="86"></div><div class="col-lab">2028E</div></div><div class="col"><div class="col-val">$201.1B</div><div class="col-bar" data-h="100"></div><div class="col-lab">2029E</div></div></div>
+      <p class="cap"><span class="en">Life science tools market, US$, indicative (Mordor Intelligence: 2025 ~$153.8B, 2026 ~$164.5B, ~6.93% CAGR to 2031). 2027–29 extrapolated at trend. Bars use a zoomed baseline (44–100), so visual gaps overstate the true ~7% annual change. Estimates vary widely by definition: Precedence Research puts 2025 at ~$151.6B but forecasts a far higher 12.7% CAGR on a broader scope.</span><span class="ko">라이프사이언스 도구 시장(달러 기준, 예시): Mordor Intelligence는 2025년 약 1,538억 달러, 2026년 약 1,645억 달러, 2031년까지 연평균 성장률(CAGR) 약 6.93%로 제시합니다. 2027–29년은 추세 기반 외삽입니다. 그래프는 44–100으로 확대된 기준선을 사용해 시각적 간극이 연평균 약 7%의 실제 변화를 과장해 보입니다. 추정치는 정의에 따라 크게 달라지며, Precedence Research는 2025년을 약 1,516억 달러로 보되 범위를 넓혀 12.7%의 높은 CAGR을 제시합니다.</span></p>
+    </div>
+  </section>
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share (MS) status</span><span class="ko">시장점유율 현황</span></p>
+      <h2><span class="en">Thermo leads globally; Samsung dominates Korea</span><span class="ko">글로벌 선두는 Thermo Fisher, 국내에서는 삼성바이오로직스가 우위를 차지합니다.</span></h2>
+      <div class="pies">
+        <div class="pieblock"><div class="pie-title"><span class="en">Global tools majors by revenue — indicative</span><span class="ko">글로벌 도구 업체 매출 기준(예시)</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0% 33%,#117aca 33% 51%,#ffb81c 51% 64%,#5aa9e6 64% 73%,#c9d4e3 73% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span>Thermo Fisher<b>~33%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>Danaher<b>~18%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Agilent<b>~13%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Lonza<b>~9%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span>Others<b>~27%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea CDMO / tools players — indicative</span><span class="ko">국내 CDMO·도구 업체(예시)</span></div><div class="pie" style="background:conic-gradient(#0047a0 0% 55%,#117aca 55% 73%,#ffb81c 73% 85%,#5aa9e6 85% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span>Samsung Biologics<b>~55%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span>SK pharmteco<b>~18%</b></div><div class="lg-item"><span class="lg-dot" style="background:#ffb81c"></span>Lotte Biologics<b>~12%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span>Others<b>~15%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">Global shares are indicative of the leading tools-and-services majors by revenue (Thermo ~$44.6B, Danaher ~$24.6B FY2025); the full universe is fragmented across hundreds of niche suppliers. Korea shares are indicative of the domestic biologics CDMO pool, where Samsung Biologics towers over SK pharmteco and Lotte Biologics by capacity and revenue.</span><span class="ko">글로벌 점유율은 매출 기준 주요 도구·서비스 기업의 대략적 비중을 나타냅니다(Thermo 약 446억 달러, Danaher 약 246억 달러(FY2025)). 전체 시장은 수백 개의 니치 공급사로 분산되어 있습니다. 국내 점유율은 바이오 의약품 CDMO 풀을 반영하며, 삼성바이오로직스가 수용능력과 매출에서 SK팜테코·롯데바이오로직스를 크게 앞섭니다.</span></p>
+    </div>
+  </section>
+  <section id="positioning">
+    <p class="kicker"><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></p>
+    <h2><span class="en">Where the leaders sit — a 2×2 map</span><span class="ko">리더 분포 — 2×2 매트릭스</span></h2>
+    <div class="posmap reveal"><svg viewBox="0 0 340 290" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="60" y="18" width="262" height="214" fill="#f7fafd" stroke="#e6ebf4" stroke-width="1.5" rx="8"/><line x1="60" y1="125" x2="322" y2="125" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><line x1="191" y1="18" x2="191" y2="232" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><circle cx="290" cy="60" r="7" fill="var(--navy)"/><text x="290" y="51" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Thermo Fisher</text><circle cx="140" cy="70" r="7" fill="var(--krred)"/><text x="140" y="61" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Samsung Bio</text><circle cx="235" cy="100" r="5.5" fill="#9fb1c9"/><text x="235" y="91" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Danaher</text><circle cx="210" cy="160" r="5.5" fill="#9fb1c9"/><text x="210" y="151" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Agilent</text><circle cx="150" cy="135" r="5.5" fill="#9fb1c9"/><text x="150" y="126" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Lonza</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="en">Breadth of portfolio &#8594;</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="ko">Breadth of portfolio &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="en">Services / recurring intensity &#8594;</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="ko">Services / recurring intensity &#8594;</text></svg><div class="pos-legend"><span class="pl-i"><span class="pl-d" style="background:var(--navy)"></span><span class="en">Global #1</span><span class="ko">글로벌 1위</span></span><span class="pl-i"><span class="pl-d" style="background:var(--krred)"></span><span class="en">Korea #1</span><span class="ko">한국 1위</span></span><span class="pl-i"><span class="pl-d" style="background:#9fb1c9"></span><span class="en">Peers</span><span class="ko">동종업체</span></span></div><p class="cap"><span class="en">Thermo Fisher pairs the broadest end-to-end portfolio with deep recurring consumables and services. Samsung Biologics is a pure-play, services-heavy CDMO with narrow breadth but world-leading scale. Danaher is bioprocessing-led; Lonza is CDMO-focused; Agilent leans toward instruments and analytics.</span><span class="ko">Thermo Fisher는 폭넓은 엔드투엔드 포트폴리오와 반복적 소비재·서비스가 강점입니다. 삼성바이오로직스는 서비스 중심의 CDMO 전문회사로 범위는 좁지만 세계적 규모를 확보하고 있습니다. Danaher는 바이오프로세싱 중심, Lonza는 CDMO 초점, Agilent는 분석·기기 쪽으로 기울어 있습니다.</span></p></div>
+  </section>
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 다섯 가지 힘</span></p>
+    <h2><span class="en">Structural attractiveness</span><span class="ko">구조적 매력도</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">경쟁 강도</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">A few scaled majors plus many niche suppliers; high switching costs on validated instruments soften price wars.</span><span class="ko">소수의 대형 기업과 다수의 니치 공급사가 공존하며, 검증된 기기의 전환 비용이 높아 가격 경쟁이 완화됩니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입자의 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">High capital, regulatory validation and installed-base lock-in make scaled entry very hard, especially in CDMO.</span><span class="ko">특히 CDMO 분야에서는 높은 자본투입, 규제 검증, 설치 기반의 락인이 있어 규모 있는 신규 진입이 매우 어렵습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 우위</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Component and raw-material suppliers are fragmented; the tools majors hold the leverage over their inputs.</span><span class="ko">부품·원재료 공급사는 분산되어 있으나 도구 대형사는 공급 측에 대한 지배력을 보유하고 있습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">수요자 우위</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Large pharma negotiates hard and can dual-source, but validated workflows and switching costs limit defection.</span><span class="ko">대형 제약사는 강한 협상력을 가지며 이원화 소싱도 가능하지만, 검증된 작업흐름과 전환 비용 때문에 이탈이 제한됩니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">In-housing R&amp;D or manufacturing is costly and slow; few true substitutes exist for specialized tools and capacity.</span><span class="ko">연구개발이나 제조의 자체 내재화는 비용과 시간이 많이 소요되며, 특수 기기와 수용능력을 대체할 실질적 선택지가 거의 없습니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: an attractive structure — high entry barriers, weak suppliers and sticky validated workflows protect returns. The main check is buyer concentration in big pharma; demand cyclicality from biotech funding is the swing factor.</span><span class="ko">요약: 매력적인 산업구조—높은 진입장벽, 약한 공급자, 고착된 검증 워크플로우가 수익성을 보호합니다. 다만 대형 제약사 쏠림이 주요 리스크이며, 바이오텍 자금 흐름에 따른 수요 사이클성이 변동 요인입니다.</span></p>
+  </section>
+  <section id="reg">
+    <p class="kicker"><span class="en">Macro forces &amp; the latest RULES</span><span class="ko">거시 요인 및 최신 규제</span></p>
+    <h2><span class="en">The rulebook: policy &amp; regulation</span><span class="ko">규정의 큰 흐름: 정책 및 규제</span></h2>
+    <p class="mute"><span class="en">Biosecurity rules, research funding and trade policy now decide who can supply, who gets funded, and where capacity is built.</span><span class="ko">바이오보안 규정, 연구자금 배분, 무역정책이 누가 공급하고 누가 자금을 받으며 어디에 생산능력이 구축될지를 좌우합니다.</span></p>
+    <p class="hint"><span class="en">This section = laws, bills and rules only (dated). Market events are in &#8220;What's moving the industry now&#8221; below.</span><span class="ko">본 항목은 법률·법안·규정(날짜 표기)만을 다룹니다. 시장 이벤트는 아래 '업계 현황'에서 설명합니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Dec 2025</span><span class="ac-title"><span class="en">BIOSECURE Act signed into law</span><span class="ko">생물보안법(BIOSECURE Act) 법 제정</span></span></div><div class="ac-body"><p class="why"><span class="en">Folded into the FY2026 NDAA and signed on 18 Dec 2025, the BIOSECURE Act bars federal agencies from contracting with named Chinese 'biotechnology companies of concern' (e.g. WuXi entities), with a five-year safe harbor once the FAR is updated. Why it matters: redirects CRO/CDMO demand toward non-China suppliers like Samsung Biologics and Lonza.</span><span class="ko">2025년 12월 18일 제정된 FY2026 국방수권법(NDAA)에 포함된 생물보안법은 연방기관이 지정된 중국계 '우려 대상 바이오기업'(예: 우시 계열사 등)과 계약하는 것을 금지하며, 연방조달 규정(FAR) 개정 후 5년간의 유예 기간을 둡니다. 의미: CRO·CDMO 수요가 삼성바이오로직스, 론자 등 비(非)중국 공급처로 재편됩니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Proposed NIH budget cuts pressure demand</span><span class="ko">NIH 예산안 삭감안의 압박</span></span></div><div class="ac-body"><p class="why"><span class="en">The Administration's FY2026 budget proposed deep cuts to NIH funding and capped research overhead/indirect-cost rates at 15% — the cap was blocked by federal courts (injunction upheld Jan 2026) and Congress rejected the deepest cuts, but the uncertainty weighed on academic and biotech tool buyers throughout 2025. Why it matters: NIH dollars seed much of the academic instrument and reagent demand the sector relies on.</span><span class="ko">정부의 FY2026 예산안은 NIH 예산을 대폭 삭감하고 연구간접비율을 15%로 상한하려 했습니다. 상한 조치는 연방 법원에 의해 제동이 걸렸고(2026년 1월 가처분 결정 유지), 의회도 최심한 삭감안을 거부했으나 2025년 내내 학계와 바이오도구 수요에 불확실성을 남겼습니다. 의미: NIH 자금은 학술용 기기·시약 수요의 초기 동력을 제공합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Pharma tariffs &amp; Section 232 review</span><span class="ko">의약품 관세 및 섹션 232 조사</span></span></div><div class="ac-body"><p class="why"><span class="en">The 2025 US tariff agenda and a Section 232 national-security review of pharmaceutical imports threatened duties on drugs and inputs, pushing producers to localize supply. Why it matters: tariffs raise input costs for instrument and reagent makers but boost the case for US-based CDMO capacity.</span><span class="ko">2025년 미 관세 의제와 의약품 수입에 대한 섹션 232(국가안보) 검토는 의약품과 원재료에 관세 부과 가능성을 제기해 생산자들의 공급 국산화를 촉진했습니다. 의미: 관세는 기기·시약 제조업체의 원가를 높이나, 미국 내 CDMO 역량 확충의 명분을 강화합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2024-26</span><span class="ac-title"><span class="en">EU IVDR &amp; data rules tighten lab compliance</span><span class="ko">EU IVDR 및 데이터 규정의 검사실 규제 강화</span></span></div><div class="ac-body"><p class="why"><span class="en">The EU In Vitro Diagnostic Regulation (IVDR) transition periods extend into 2025–2027, and AI/data rules raise validation and traceability requirements for lab and diagnostic tools. Why it matters: compliance favors scaled vendors that can certify quality systems across markets.</span><span class="ko">유럽의 체외진단기기 규정(IVDR) 전환 기간이 2025–2027년까지 이어지고 AI·데이터 규제가 검증성과 추적성 요건을 강화합니다. 의미: 규제 준수는 여러 시장에서 품질관리체계를 인증할 수 있는 규모 있는 공급업체에 유리합니다.</span></p></div></div></div>
+  </section>
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심성공요인</span></p>
+    <h2><span class="en">What it takes to win</span><span class="ko">승리 요건</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Recurring consumables pull-through</span><span class="ko">소모품의 반복구매 유도</span></b><p><span class="en">Large installed instrument base that locks in repeat reagent revenue.</span><span class="ko">설치된 대형 기기 기반이 반복 시약 매출을 고정화합니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">Manufacturing scale &amp; capacity</span><span class="ko">제조 규모 및 생산능력</span></b><p><span class="en">Validated CDMO capacity that wins large, multi-year supply deals.</span><span class="ko">대규모·다년 공급계약을 수주하는 검증된 CDMO 역량</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">Regulatory &amp; quality track record</span><span class="ko">규제·품질 이력</span></b><p><span class="en">Clean FDA/EMA inspection history that de-risks customer audits.</span><span class="ko">FDA·EMA 무결점 검사 기록으로 고객 감사 리스크를 낮춤</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">Innovation &amp; M&amp;A engine</span><span class="ko">혁신 및 인수합병 동력</span></b><p><span class="en">Continuous platform launches plus bolt-on acquisitions for new modalities.</span><span class="ko">지속적 플랫폼 출시와 신모달리티 확보를 위한 소규모 인수 병행</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">End-to-end breadth</span><span class="ko">엔드투엔드(End-to-End) 역량</span></b><p><span class="en">A one-stop portfolio from discovery tools to commercial manufacturing.</span><span class="ko">발견단계 도구부터 상업적 제조까지 일괄 제공하는 포트폴리오</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Geographic supply resilience</span><span class="ko">지리적 공급 회복탄력성</span></b><p><span class="en">Multi-region capacity that hedges tariffs and biosecurity restrictions.</span><span class="ko">관세와 생물안전 규제 리스크를 분산시키는 다지역 생산능력</span></p></div></div></div>
+  </section>
+  <section id="news">
+    <p class="kicker"><span class="en">What's moving the industry now</span><span class="ko">업계를 움직이는 요인</span></p>
+    <h2><span class="en">The newsflow: market &amp; competitive events</span><span class="ko">뉴스 흐름: 시장 및 경쟁 이벤트</span></h2>
+    <p class="hint"><span class="en">This section = business/market events (earnings, deals, demand, prices) — not policy. Tap for why it matters.</span><span class="ko">이 섹션은 정책이 아닌 비즈니스/시장 이벤트(실적, 거래, 수요, 가격)입니다 — 왜 중요한지 보시려면 탭해주십시오.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jan 2026</span><span class="ac-title"><span class="en">Thermo Fisher FY2025 revenue $44.6B, +4%</span><span class="ko">써모피셔 FY2025 매출 446억 달러, 전년비 +4%</span></span></div><div class="ac-body"><p class="why"><span class="en">Thermo Fisher reported FY2025 revenue up 4% to $44.56B, citing share gains and an improving demand backdrop. Why it matters: confirms the global #1 is growing again after the post-COVID slump and consolidating its lead.</span><span class="ko">써모피셔는 FY2025 매출이 4% 증가한 445.6억 달러로 집계됐으며, 점유율 확대와 수요 개선을 배경으로 제시했습니다. 의의: 팬데믹 이후 침체에서 회복하며 글로벌 1위 지위를 재확고하고 있음을 확인시켜 줍니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Q4 2025</span><span class="ac-title"><span class="en">Danaher bioprocessing rebounds, +9%</span><span class="ko">다나허 바이오프로세싱 부문 반등, +9%</span></span></div><div class="ac-body"><p class="why"><span class="en">Danaher's Biotechnology segment grew 9% to $2.03B in Q4 2025 as inventory destocking ended; full-year revenue rose 3% to $24.6B. Why it matters: marks the bioprocessing recovery that lifts the whole consumables-and-services pool.</span><span class="ko">Danaher의 생명공학 부문은 재고 축소가 종료되며 2025년 4분기 매출이 9% 증가한 20.3억 달러를 기록했고, 연간 매출은 3% 늘어 246억 달러였습니다. 의미: 바이오프로세싱 회복이 시작되어 소모품·서비스 전체 이익 풀을 끌어올립니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Sep 2025</span><span class="ac-title"><span class="en">Samsung Biologics wins $1.3B US order</span><span class="ko">삼성바이오로직스, 미주 13억 달러 수주</span></span></div><div class="ac-body"><p class="why"><span class="en">Samsung Biologics signed a roughly $1.3B contract with a US pharma client in Sept 2025 — its second-largest ever. Why it matters: shows CDMO demand shifting to non-China suppliers and validates Samsung's capacity bet.</span><span class="ko">삼성바이오로직스는 2025년 9월 미국 제약사와 약 13억 달러 규모의 계약을 체결했으며, 이는 사상 두 번째로 큰 계약입니다. 의미: CDMO 수요가 중국 외 공급자로 이동하고 있음을 보여주며 삼성의 설비 투자 결정이 유효함을 입증합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">2025</span><span class="ac-title"><span class="en">Thermo buys Solventum filtration unit</span><span class="ko">써모피셔, Solventum의 여과 사업부 인수</span></span></div><div class="ac-body"><p class="why"><span class="en">Thermo Fisher closed its acquisition of Solventum's Purification &amp; Filtration business (~$750M of 2025 revenue), strengthening bioproduction. Why it matters: deepens recurring single-use and filtration revenue in the high-margin consumables pool.</span><span class="ko">써모피셔는 Solventum의 정제·여과 사업부(2025년 매출 약 7.5억 달러) 인수를 마무리해 바이오생산 포트폴리오를 강화했습니다. 의미: 고마진 소모품 풀에서 일회용품과 여과 관련 반복 매출을 확대합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Feb 2026</span><span class="ac-title"><span class="en">Samsung Biologics tops ₩2T operating profit</span><span class="ko">삼성바이오로직스, 영업이익 2조원 돌파</span></span></div><div class="ac-body"><p class="why"><span class="en">Samsung Biologics reported FY2025 revenue up ~30% to ~₩4.6T and operating profit of ~₩2.07T — the first Korean biopharma to clear ₩2T. Why it matters: cements the Korea #1's scale and ~45% operating margin as global demand reflows.</span><span class="ko">삼성바이오로직스는 2025 회계연도 매출이 약 4조 6,000억원으로 전년 대비 약 30% 증가했으며, 영업이익은 약 2조 700억원으로 국내 바이오기업 최초로 2조원을 넘겼습니다. 의미: 글로벌 수요 재편 속에서 국내 1위로서의 규모와 약 45%의 영업이익률을 확고히 합니다.</span></p></div></div></div>
+  </section>
+  <section id="players">
+    <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players · strategy analysis</span><span class="ko">사업자 · 전략 분석</span></span><span class="ln"></span></div>
+    <h2><span class="en">The two leaders, each with its OWN strategy</span><span class="ko">두 리더, 각기 다른 전략</span></h2>
+    <p class="mute" style="margin-top:-4px"><span class="en">The industry view above is the main act. Below, each leader is diagnosed on its own terms: a MECE issue tree → strategy thrusts chosen for THAT company → action plans. The NUMBER of thrusts varies by situation.</span><span class="ko">위의 업계 관점이 핵심입니다. 아래는 각 선도기업을 개별 진단한 순서입니다: MECE 문제트리 → 해당 기업별 전략 방향 → 실행 계획. 전략 방향의 수는 상황에 따라 달라집니다.</span></p>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1</span><span class="ko">글로벌 1위</span></div><h3>Thermo Fisher Scientific</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The world's largest life sciences tools and services company by revenue, with an end-to-end portfolio from instruments to CDMO.</span><span class="ko">매출 기준 세계 최대의 생명과학 기기·서비스 기업으로, 기기부터 CDMO에 이르는 엔드투엔드 포트폴리오를 보유합니다.</span></p><div class="stats"><div class="stat"><div class="n">$44.6B</div><div class="l"><span class="en">FY25 revenue (+4%)</span><span class="ko">2025 회계연도 매출(전년 대비 +4%)</span></div></div><div class="stat"><div class="n">52%</div><div class="l"><span class="en">Lab products &amp; biopharma svcs</span><span class="ko">랩 제품 및 바이오제약 서비스</span></div></div><div class="stat"><div class="n">~22%</div><div class="l"><span class="en">Life sciences solutions</span><span class="ko">생명과학 솔루션</span></div></div><div class="stat"><div class="n">#1</div><div class="l"><span class="en">Global tools rank</span><span class="ko">Global tools 순위</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — biggest and broadest, but tied to a cyclical demand cycle</span><span class="ko">진단 — 규모는 가장 크고 범위도 넓으나, 수요가 경기 주기에 묶여 있습니다</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">현황 · 최대 문제점</span></span><p><span class="en">Clear #1 by scale, but growth slowed to low-single digits as funding and destocking bit.</span><span class="ko">규모로는 명확한 1위이나, 자금 조달 둔화와 재고 축소의 영향으로 성장률이 한자릿수 초반으로 떨어졌습니다</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">문제점 · 근본 원인</span></span><p><span class="en">Demand is cyclical with biotech funding, China is soft, and instrument hardware is commoditizing.</span><span class="ko">수요는 바이오텍 자금 흐름에 따라 경기적 변동을 보이며, 중국 수요는 부진하고 장비 하드웨어는 상품화되고 있습니다</span></p><div class="formula">Value = installed base × consumables pull-through × service mix − cost</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설</span></span><p><span class="en">How does scale convert into durable, recurring, higher-margin growth?</span><span class="ko">규모가 어떻게 지속적이고 반복 가능한 고마진 성장으로 전환될 수 있습니까?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">답변 · 방향성</span></span><p><span class="en">Tilt the mix toward bioproduction consumables and pharma services, and buy in recurring revenue (the tracks below).</span><span class="ko">제품 믹스를 바이오생산 소모품과 제약 서비스 쪽으로 기울이고, 반복매출을 인수로 확보하십시오(아래 트랙 참조).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈 트리 · 근본원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why is growth cyclical despite #1 scale?</span><span class="ko">규모 1위인데도 성장이 경기적 변동을 보이는 이유는 무엇입니까?</span></div><div class="branches"><div class="branch"><b><span class="en">Funding cycle (external)</span><span class="ko">자금 조달 사이클(외부 요인)</span></b><div class="leaf"><span class="en">Biotech funding and China demand swing instrument orders.</span><span class="ko">바이오텍 자금과 중국 수요가 장비 주문을 좌우합니다.</span></div></div><div class="branch"><b><span class="en">Hardware commoditization (structural)</span><span class="ko">하드웨어 상품화(구조적 요인)</span></b><div class="leaf"><span class="en">One-off instrument sales face price competition.</span><span class="ko">일회성 장비 판매는 가격 경쟁에 직면합니다.</span></div></div><div class="branch"><b><span class="en">Recurring &amp; bioproduction (lever)</span><span class="ko">반복 수익 및 바이오생산(레버)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Grow consumables, single-use and pharma services.</span><span class="ko">소모품, 일회용 제품 및 제약 서비스 확대 추진.</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈 트리 — 가지는 상호 배타적이며, 금색 잎이 결합 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위에는 SCQA 서사; 아래 이슈 트리는 원인(C)을 MECE 분기로 분해하며, 금색 = 결합 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Bioproduction</span><span class="ko">트랙 1 · 바이오생산</span></div><div class="tn"><span class="en">Scale single-use &amp; filtration</span><span class="ko">일회용 시스템 및 여과 설비 확대</span></div><p><span class="en">Integrate the Solventum filtration unit to deepen recurring bioprocessing revenue.</span><span class="ko">Solventum 여과 장치를 통합해 반복형 바이오프로세싱 매출을 강화합니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Pharma services</span><span class="ko">트랙 2 · 제약 서비스</span></div><div class="tn"><span class="en">Grow CDMO &amp; clinical</span><span class="ko">CDMO 및 임상 서비스 확대</span></div><p><span class="en">Expand contract manufacturing and clinical-trial services for durable demand.</span><span class="ko">계약 제조와 임상시험 서비스를 확충해 지속 수요를 확보합니다.</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · Localization</span><span class="ko">트랙 3 · 현지화</span></div><div class="tn"><span class="en">Build US capacity</span><span class="ko">미국 내 생산능력 확보</span></div><p><span class="en">Invest in domestic capacity to hedge tariffs and biosecurity rules.</span><span class="ko">관세와 생물안전 규제에 대비해 국내(미국) 생산능력에 투자합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">실행 계획</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Mix</span><span class="ko">혼합 모델</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">기존</span></small><span class="en">Instrument hardware</span><span class="ko">장비(Instrument) 하드웨어</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Recurring consumables</span><span class="ko">소모성 반복 구매 품목</span></div></div></div><div class="ap"><div class="apt"><span class="en">Services</span><span class="ko">서비스</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">기존</span></small><span class="en">Product sales</span><span class="ko">제품 판매</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">Pharma services</span><span class="ko">제약(바이오) 서비스</span></div></div></div><div class="ap"><div class="apt"><span class="en">Footprint</span><span class="ko">사업 거점</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">기존</span></small><span class="en">Global single-source</span><span class="ko">글로벌 단일 소스</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">US-localized capacity</span><span class="ko">미국 현지화된 생산능력</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1</span><span class="ko">한국 1위</span></div><h3>Samsung Biologics</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">The world's largest biologics CDMO by capacity and Korea's largest player in the sector. Note: classified by some indices under Pharma/Biotech rather than Tools &amp; Services, but it competes squarely in outsourced manufacturing services.</span><span class="ko">용량 기준 세계 최대 바이올로직스 CDMO이자 국내(한국) 해당 분야 최대 사업자입니다. 참고: 일부 지표에서는 Pharma/Biotech로 분류되나, 아웃소싱 제조 서비스 부문에서 직접 경쟁합니다.</span></p><div class="stats"><div class="stat"><div class="n">~₩4.6T</div><div class="l"><span class="en">FY25 revenue (+~30%)</span><span class="ko">FY25 매출(+약 30%)</span></div></div><div class="stat"><div class="n">~₩2.07T</div><div class="l"><span class="en">FY25 operating profit</span><span class="ko">FY25 영업이익</span></div></div><div class="stat"><div class="n">~45%</div><div class="l"><span class="en">Operating margin</span><span class="ko">영업이익률</span></div></div><div class="stat"><div class="n">845kL</div><div class="l"><span class="en">Installed capacity (world #1)</span><span class="ko">설비 용량(세계 1위)</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — record growth, but concentrated in one modality and region</span><span class="ko">진단 — 기록적 성장세이나 단일 방식·지역에 편중됨</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">현황 · 최대 문제점</span></span><p><span class="en">Record profitability, but revenue leans heavily on antibody (mAb) drug-substance manufacturing.</span><span class="ko">사상 최대 수익성을 기록했으나 매출이 항체(mAb) 원료의약품 제조에 크게 의존합니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">문제점 · 근본 원인</span></span><p><span class="en">Capacity is Korea-based and modality-narrow, exposing it to new modalities and supply-localization demands.</span><span class="ko">설비가 국내에 집중되고 방식도 편중돼 있어 신모달리티와 공급 현지화 요구에 취약합니다.</span></p><div class="formula">Profit = capacity × utilization × price − fixed cost + new-modality mix</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설</span></span><p><span class="en">How to extend the lead beyond mAbs and the home base?</span><span class="ko">mAb와 국내 기반을 넘어서 어떻게 우위를 확장할 것인가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">답변 · 방향성</span></span><p><span class="en">Build Bio Campus II capacity, add new modalities (ADC, mRNA), and expand US presence (the tracks below).</span><span class="ko">Bio Campus II 증설, 신규 모달리티(ADC, mRNA) 도입, 미국 진출 확대(아래 항목 참조).</span></p></div></div></div><div class="subh" style="margin:14px 0 0"><span class="en">Issue tree · root-cause decomposition</span><span class="ko">이슈 트리 · 근본원인 분해</span></div><div class="tree"><div class="root"><span class="en">Why is the Korea leader's growth concentration a risk?</span><span class="ko">왜 국내 1위 기업의 성장 편중이 리스크인가?</span></div><div class="branches"><div class="branch"><b><span class="en">Modality concentration (structural)</span><span class="ko">모달리티 편중(구조적)</span></b><div class="leaf"><span class="en">Revenue leans on antibody drug-substance work.</span><span class="ko">매출이 항체 원료의약품 작업에 치중되어 있습니다.</span></div></div><div class="branch"><b><span class="en">Geographic base (external)</span><span class="ko">지리적 기반(외부)</span></b><div class="leaf"><span class="en">Capacity sits in Korea as clients seek local supply.</span><span class="ko">수요처가 현지 공급을 원함에 따라 설비는 한국에 배치됩니다.</span></div></div><div class="branch"><b><span class="en">New modalities &amp; geography (lever)</span><span class="ko">신규 치료법 및 지역(지렛대)</span></b><div class="leaf lever"><span class="lever-tag"><span class="en">Lever</span><span class="ko">레버</span></span><span class="en">Add ADC/mRNA capacity and US footprint.</span><span class="ko">ADC·mRNA 설비와 미국 거점 추가</span></div></div></div><p class="tree-cap"><span class="en">MECE issue tree — branches are mutually exclusive; the gold leaf is the binding lever.</span><span class="ko">MECE 이슈 트리 — 가지는 상호 배타적이며, 금색 잎이 결합 레버입니다.</span></p></div><p class="scqa-cap"><span class="en">SCQA narrative above; the issue tree below decomposes the cause (C) into MECE branches, gold = the binding lever.</span><span class="ko">위에는 SCQA 서사; 아래 이슈 트리는 원인(C)을 MECE 분기로 분해하며, 금색 = 결합 레버입니다.</span></p></div><div class="track-grid n3"><div class="track t1"><div class="tt"><span class="en">Track 1 · Capacity</span><span class="ko">트랙 1 · 설비</span></div><div class="tn"><span class="en">Build Bio Campus II</span><span class="ko">Bio 캠퍼스 II 건설</span></div><p><span class="en">Add Plants 5–8 toward 1.32M L total capacity by 2032.</span><span class="ko">2032년까지 총 132만 L 목표로 5~8호기 증설</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · New modalities</span><span class="ko">트랙 2 · 신규 치료법</span></div><div class="tn"><span class="en">Expand ADC &amp; mRNA</span><span class="ko">ADC 및 mRNA 확대</span></div><p><span class="en">Diversify beyond antibodies into higher-value modalities.</span><span class="ko">항체에서 벗어나 고부가 치료법으로 다각화</span></p></div><div class="track t3"><div class="tt"><span class="en">Track 3 · US presence</span><span class="ko">트랙 3 · 미국 거점</span></div><div class="tn"><span class="en">Get closer to clients</span><span class="ko">고객 접근성 강화</span></div><p><span class="en">Use the New Jersey office to win BIOSECURE-driven demand.</span><span class="ko">뉴저지 사무소를 활용해 생물보안법(BIOSECURE)에 따른 수요를 확보합니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">실행 계획</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Capacity</span><span class="ko">설비 용량</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">기존</span></small><span class="en">845kL today</span><span class="ko">현재 84.5만 L</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">1.32M L by 2032</span><span class="ko">2032년까지 132만 L</span></div></div></div><div class="ap"><div class="apt"><span class="en">Modality</span><span class="ko">제품 유형</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">기존</span></small><span class="en">Antibody-heavy</span><span class="ko">항체 중심</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">ADC / mRNA mix</span><span class="ko">ADC·mRNA 혼합</span></div></div></div><div class="ap"><div class="apt"><span class="en">Geography</span><span class="ko">지리적 요인</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">기존</span></small><span class="en">Korea-centric</span><span class="ko">한국 중심</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">목표</span></small><span class="en">US-facing footprint</span><span class="ko">미국 시장 인접 거점</span></div></div></div></div></div></div>
+  </section>
+  <section id="kpi">
+    <p class="kicker"><span class="en">KPIs to watch</span><span class="ko">주목할 KPI</span></p>
+    <h2><span class="en">The dials that move this industry</span><span class="ko">업황을 좌우하는 핵심 변수</span></h2>
+    <p class="hint"><span class="en">Leading indicators with the latest reading — track these to see the thesis play out.</span><span class="ko">최신 수치 기반 선행지표 — 가설 검증을 위해 지속 추적하십시오.</span></p>
+    <div class="kpis reveal"><div class="kpi"><div class="kt"><span class="en">Bioprocessing core growth</span><span class="ko">바이오프로세싱 핵심 성장</span></div><div class="kv"><span class="en">+9% (Danaher Q4 2025)</span><span class="ko">+9% (Danaher 2025년 4분기)</span></div><div class="kw"><span class="en">Signals the destocking recovery.</span><span class="ko">재고조정 완화 신호입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Thermo Fisher revenue growth</span><span class="ko">써모피셔 매출 성장</span></div><div class="kv"><span class="en">+4% (FY2025)</span><span class="ko">+4% (FY2025)</span></div><div class="kw"><span class="en">Overall demand for the global #1.</span><span class="ko">전 세계 1위 제품에 대한 전반적 수요.</span></div></div><div class="kpi"><div class="kt"><span class="en">Samsung Biologics revenue</span><span class="ko">삼성바이오로직스 매출</span></div><div class="kv"><span class="en">~₩4.6T (+~30%, FY2025)</span><span class="ko">약 4조6,000억 원(전년比 약 +30%, FY2025)</span></div><div class="kw"><span class="en">CDMO demand and capacity ramp.</span><span class="ko">CDMO 수요 증가와 생산능력 확대.</span></div></div><div class="kpi"><div class="kt"><span class="en">BIOSECURE FAR rule timing</span><span class="ko">생물보안법(BIOSECURE) FAR 규정 시점</span></div><div class="kv"><span class="en">Pending (2026)</span><span class="ko">계류중(2026)</span></div><div class="kw"><span class="en">Starts the five-year supplier shift.</span><span class="ko">공급망의 5년 전환을 촉발합니다.</span></div></div></div>
+  </section>
+  <section id="scenarios">
+    <p class="kicker"><span class="en">Scenarios — bull · base · bear</span><span class="ko">시나리오 — 강세 · 기준 · 약세</span></p>
+    <h2><span class="en">Three ways the next few years could break</span><span class="ko">향후 몇 년의 전개가 달라질 수 있는 세 가지 경로</span></h2>
+    <div class="scen reveal"><div class="sc bull"><div class="sh"><span class="en">Bull · upside</span><span class="ko">강세 시나리오</span></div><div class="sd"><span class="en">Funding rebound + BIOSECURE reshoring</span><span class="ko">자금 회복 및 BIOSECURE 리쇼어링</span></div><p><span class="en">Swing variable: biotech funding recovers and BIOSECURE diverts China CDMO work to Western and Korean suppliers, lifting volumes and prices.</span><span class="ko">변수: 바이오텍 자금이 회복되고 BIOSECURE로 인해 중국 CDMO 물량이 서구 및 한국 공급사로 전환되면 물량과 가격이 상승합니다.</span></p></div><div class="sc base"><div class="sh"><span class="en">Base · central</span><span class="ko">기본 시나리오</span></div><div class="sd"><span class="en">~7% growth; services lead</span><span class="ko">약 7% 성장; 서비스 주도</span></div><p><span class="en">Swing variable: steady pharma R&amp;D spend keeps the market growing ~7% with services and consumables outpacing instruments.</span><span class="ko">변수: 제약 R&D 지출이 안정적으로 유지되면 시장은 연평균 약 7%로 성장하며, 서비스와 소모품이 기기 부문을 앞질러 성장합니다.</span></p></div><div class="sc bear"><div class="sh"><span class="en">Bear · downside</span><span class="ko">약세 시나리오</span></div><div class="sd"><span class="en">NIH cuts + tariffs squeeze</span><span class="ko">NIH 예산 삭감과 관세 압박</span></div><p><span class="en">Swing variable: NIH funding cuts and pharma tariffs depress academic and biotech demand while raising input costs, compressing margins.</span><span class="ko">변수: NIH 예산 삭감과 제약 관세가 학계·바이오텍 수요를 위축시키고 원가를 끌어올려 마진을 압박합니다.</span></p></div></div>
+  </section>
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크 및 전망</span></p>
+      <h2><span class="en">Where the industry is headed</span><span class="ko">업계 향방</span></h2>
+      <ul class="tight"><li><span class="en">The bioprocessing recovery is real but uneven; demand still tracks volatile biotech funding cycles.</span><span class="ko">바이오공정 업황 회복은 실체가 있으나 균일하지 않으며, 수요는 여전히 변동성이 큰 바이오텍 자금 주기와 연동됩니다.</span></li><li><span class="en">BIOSECURE and tariffs reshuffle supply chains, favoring non-China and US-localized capacity.</span><span class="ko">BIOSECURE 법안과 관세가 공급망을 재편해 중국 외 지역 및 미국 내 생산능력을 우대하고 있습니다.</span></li><li><span class="en">NIH funding cuts and policy uncertainty are the biggest downside risk to academic and biotech demand.</span><span class="ko">학계·바이오텍 수요에 대한 최대 하방 리스크는 NIH 예산 삭감과 정책 불확실성입니다.</span></li><li><span class="en">Thermo Fisher rides breadth and recurring revenue; Samsung Biologics rides capacity scale and CDMO demand reflow.</span><span class="ko">써모피셔는 제품군 폭과 반복수익으로 우위를 확보하고 있으며, 삼성바이오로직스는 대규모 생산능력과 CDMO 수요 회복의 수혜를 보고 있습니다.</span></li></ul>
+    </div>
+  </section>
+</div>
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;"><li><a href="https://www.mordorintelligence.com/industry-reports/life-science-tools-market">Mordor Intelligence — Life Science Tools Market</a></li><li><a href="https://www.precedenceresearch.com/life-science-tools-market">Precedence Research — Life Science Tools Market</a></li><li><a href="https://ir.thermofisher.com/investors/news-events/news/news-details/2026/Thermo-Fisher-Scientific-Reports-Fourth-Quarter-and-Full-Year-2025-Results/default.aspx">Thermo Fisher — Q4 &amp; FY2025 Results</a></li><li><a href="https://www.prnewswire.com/news-releases/danaher-reports-fourth-quarter-and-full-year-2025-results-302671883.html">Danaher — Q4 &amp; FY2025 Results</a></li><li><a href="https://www.fiercepharma.com/pharma/samsung-bio-sticks-landing-2025-it-becomes-first-korean-biopharma-hit-2-trillion-won-profit">FiercePharma — Samsung Biologics FY2025</a></li><li><a href="https://samsungbiologics.com/media/company-news/samsung-biologics-reports-fourth-quarter-and-fiscal-year-2025-financial-results">Samsung Biologics — FY2025 Results</a></li><li><a href="https://www.kedglobal.com/bio-pharma/newsView/ked202509090004">KED Global — Samsung Biologics $1.3B US order</a></li><li><a href="https://www.arnoldporter.com/en/perspectives/advisories/2025/12/the-biosecure-act-becomes-law">Arnold &amp; Porter — BIOSECURE Act Becomes Law</a></li></ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Life Sciences Tools &amp; Services (GICS 352030) · Generated June 10, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">Industry Brief · 생명과학 장비·서비스(GICS 352030) · 2026년 6월 10일 작성. 공공 출처 기반, 반올림 표기; 정보 제공 목적이며 투자 권유 아님.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  setLang('en'); // default English on every visit
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+
+</body>
+</html>
