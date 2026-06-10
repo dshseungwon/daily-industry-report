@@ -126,7 +126,7 @@ const totalReports=reports.length, totalDays=dates.length;
 const lastUpdEn=dates.length?fmtDate(dates[0]):"", lastUpdKo=dates.length?fmtDateKo(dates[0]):"";
 
 const html=`<!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -192,7 +192,7 @@ const html=`<!DOCTYPE html>
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.rcard{transition:none;}}
 </style>
 </head>
-<body class="lang-en">
+<body class="lang-ko">
   <div class="topbar"><div class="row">
     <div class="brand">The Industry Brief</div>
     <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">EN</span></button>
@@ -225,7 +225,7 @@ ${upHtml}
   <script>
     var KEY='dis-lang';
     function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
-    setLang('en'); // default English on every visit
+    var saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}setLang(saved==='en'?'en':'ko'); // default Korean; remembers selection
     var b=document.getElementById('lang');
     if(b)b.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
     var q=document.getElementById('search'),nores=document.getElementById('noresult');

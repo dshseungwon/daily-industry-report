@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -247,7 +247,7 @@
 </style>
 
 </head>
-<body class="lang-en">
+<body class="lang-ko">
 
 <div class="topbar">
   <div class="row">
@@ -394,7 +394,7 @@
   document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
   var KEY='dis-lang';
   function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
-  setLang('en'); // default English on every visit
+  var saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}setLang(saved==='en'?'en':'ko'); // default Korean; remembers selection
   var btn=document.getElementById('lang');
   if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
   function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
