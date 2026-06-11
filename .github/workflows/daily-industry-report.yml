@@ -61,7 +61,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to publish today."
           else
-            git commit -m "Publish reports $(date -u +%Y-%m-%d)"
+            git commit -m "Publish reports $(TZ=Asia/Seoul date +%Y-%m-%d)"
             git push
           fi
 
@@ -72,7 +72,7 @@ jobs:
             echo "<p>오늘 다이제스트 생성에 실패했습니다. Actions 로그를 확인하세요.</p>" > digest.html
           fi
           SUBJ="$(head -n1 digest_subject.txt 2>/dev/null || true)"
-          [ -z "$SUBJ" ] && SUBJ="The Industry Brief 다이제스트 $(date -u +%Y-%m-%d)"
+          [ -z "$SUBJ" ] && SUBJ="The Industry Brief 다이제스트 $(TZ=Asia/Seoul date +%Y-%m-%d)"
           echo "DIGEST_SUBJECT=$SUBJ" >> "$GITHUB_ENV"
 
       - name: Email the morning digest

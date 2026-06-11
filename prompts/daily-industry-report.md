@@ -27,13 +27,14 @@ and per-company strategy blocks using a 4-step SCQA DIAGNOSIS (Situation, Compli
 Question, Answer) plus 1-3 tailored strategy tracks.
 
 STEP 1 — Pick today's 7 GICS industries with the LANE rotation (one per lane -> 7
-different list positions; do NOT use a consecutive day*7 block). Compute today's date
-with `date -u +%Y-%m-%d` and run:
+different list positions; do NOT use a consecutive day*7 block). Compute today's date in Korea time
+with `TZ=Asia/Seoul date +%F` and run:
 
 python3 - <<'PY'
-from datetime import date
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 industries = ["Energy Equipment & Services","Oil, Gas & Consumable Fuels","Chemicals","Construction Materials","Containers & Packaging","Metals & Mining","Paper & Forest Products","Aerospace & Defense","Building Products","Construction & Engineering","Electrical Equipment","Industrial Conglomerates","Machinery","Trading Companies & Distributors","Commercial Services & Supplies","Professional Services","Air Freight & Logistics","Passenger Airlines","Marine Transportation","Ground Transportation","Transportation Infrastructure","Automobile Components","Automobiles","Household Durables","Leisure Products","Textiles, Apparel & Luxury Goods","Hotels, Restaurants & Leisure","Diversified Consumer Services","Distributors","Broadline Retail","Specialty Retail","Consumer Staples Distribution & Retail","Beverages","Food Products","Tobacco","Household Products","Personal Care Products","Health Care Equipment & Supplies","Health Care Providers & Services","Health Care Technology","Biotechnology","Pharmaceuticals","Life Sciences Tools & Services","Banks","Financial Services","Consumer Finance","Capital Markets","Mortgage REITs","Insurance","IT Services","Software","Communications Equipment","Technology Hardware, Storage & Peripherals","Electronic Equipment, Instruments & Components","Semiconductors & Semiconductor Equipment","Diversified Telecommunication Services","Wireless Telecommunication Services","Media","Entertainment","Interactive Media & Services","Electric Utilities","Gas Utilities","Multi-Utilities","Water Utilities","Independent Power and Renewable Electricity Producers","Diversified REITs","Industrial REITs","Hotel & Resort REITs","Office REITs","Health Care REITs","Residential REITs","Retail REITs","Specialized REITs","Real Estate Management & Development"]
-N=len(industries); PER=7; day=(date.today()-date(2026,1,1)).days
+N=len(industries); PER=7; day=(datetime.now(ZoneInfo("Asia/Seoul")).date()-date(2026,1,1)).days
 for l in range(PER):
     s=(l*N)//PER; e=((l+1)*N)//PER; i=s+(day%(e-s)); print(l+1, i, "|", industries[i])
 PY
@@ -91,6 +92,33 @@ for f in glob.glob('reports/*/industry-report_*.html'):
 print('mismatches:', bad_total)
 PY
 
+
+STYLE — PLAIN, STANDARD, NO HEADLINE FLOURISHES (applies to BOTH English and Korean,
+section titles AND prose). This is the #1 quality rule. Write like a competent
+secretary briefing an executive: plain, specific, useful. Never reach for a clever or
+"impressive" phrase.
+- Use these EXACT standard section labels, nothing creative:
+  Executive summary / 핵심 요약 · Definition & value chain / 정의와 가치사슬 ·
+  Market size & growth / 시장 규모와 성장 · Market share / 시장점유율 ·
+  Competitive positioning / 경쟁 포지셔닝 · Porter's Five Forces / 포터의 5가지 경쟁요인 ·
+  Regulation & policy / 규제·정책 · Key Success Factors / 핵심 성공 요인 ·
+  Recent market events / 최근 시장 동향 · Players · strategy analysis / 주요 기업 · 전략 분석 ·
+  KPIs to watch / 주시할 지표 · Scenarios: bull, base, bear / 시나리오: 낙관·기본·비관 ·
+  Risks & outlook / 리스크와 전망.
+- The one-line sub-headline under each label is a PLAIN factual finding (specific and
+  useful), never a magazine headline, metaphor, or slogan.
+- Executive summary: AT MOST 3 sentences, the single most important points only.
+- Every strategy/action line must be concrete and self-explanatory to a reader with no
+  extra context. No cryptic shorthand (bad: "동탄을 일정대로 완수"; good: "동탄 헬스케어 리츠를
+  예정대로 상장·가동합니다").
+- BANNED — real examples of what NOT to write (EN or KO):
+  "A trillion-dollar asset pool, a coming wave of demand" / "1조 달러에 육박하는 자산 풀, 다가오는 수요의 파도";
+  "Global giants race ahead, Korea at the starting line" / "글로벌은 거인 독주, 한국은 아직 출발선";
+  "What it takes to win" / "승부를 가르는 조건" (use Key Success Factors / 핵심 성공 요인);
+  "The two players, each with its OWN strategy" / "두 플레이어, 각자의 전략" (use the standard label above);
+  "Keep the deal machine running" / "딜 머신을 계속 돌린다" (write plainly, e.g. "M&A로 성장을 이어갑니다");
+  "Three ways the next few years could break" / "향후 몇 년, 세 갈래 시나리오".
+
 STEP 4 — Build ONE bilingual .html per industry (NO external dependencies). Every
 string as <span class="en">…</span><span class="ko">…</span>; ENGLISH DEFAULT
 (<html lang="en">, <body class="lang-en">, script calls setLang('en')). Market size =
@@ -103,8 +131,7 @@ MECE: "Macro forces & the latest RULES" = laws/bills/regulations ONLY (dated);
 demand, prices). No item may appear in both.
 
 Structure (analysis dominant; players secondary): (1) Header — brand "The Industry
-Brief", industry, date, "GICS day-set k of 7", GICS sector + code; (2) Executive
-summary; (3) Definition & value chain (numbered arrow flow + profit-pool bar); (4)
+Brief", industry, date, "GICS day-set k of 7", GICS sector + code; (2) Executive summary (≤3 sentences, the single most important points only); (3) Definition & value chain (numbered arrow flow + profit-pool bar); (4)
 Market size & growth (CAGR badge + zoomed column chart); (5) Market share (global +
 Korea pies summing to 100%); (6) Competitive positioning (2x2 SVG with Global #1 navy,
 Korea #1 red, 2-3 peers = 4 plotted points, one-line takeaway); (7) Porter's Five

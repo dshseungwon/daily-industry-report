@@ -23,6 +23,8 @@ translationese. For each old report, REWRITE every <span class="ko"> from its
   X percentage points→X%포인트. 헷갈리면 원문 표기 유지가 오역보다 낫다.
 - 한국 기업은 한국어 정식 명칭, 해외 기업은 통용 한글 표기(널리 쓰일 때만), 약어형
   사명·기관(SLB, UPS, ZF, FDA, CMS)은 영문 유지. 수치/연도/날짜/%는 EN과 정확히 일치.
+
+- 제목·라벨은 멋부린 헤드라인 금지, 표준 용어로: "승부를 가르는 조건"→"핵심 성공 요인", "두 플레이어, 각자의 전략"→"주요 기업 · 전략 분석", "규정집"→"규제·정책", "뉴스 흐름"→"최근 시장 동향", "계기판"→"주시할 지표", "향후 몇 년, 세 갈래 경로"→"시나리오: 낙관·기본·비관". 비유·장식어 금지, 비서가 임원에게 보고하듯 평이하게.
 - HTML 엔티티(&amp; 등)는 그대로 유지. ko 스팬 안에 태그를 새로 넣지 말 것.
 Recommended mechanics per report: extract unique EN span strings to JSON, write the
 Korean array, inject by matching the en-span text (normalize whitespace), exactly as a
