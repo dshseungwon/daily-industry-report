@@ -48,10 +48,25 @@ jobs:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           CLAUDE_MODEL: opus   # set to "sonnet" to cut cost; "opus" for best quality
         run: |
+          # Model policy: use Fable5 through 2026-06-21 (KST), then auto-revert to opus.
+          # The exact Fable CLI alias is uncertain, so probe candidates cheaply and fall
+          # back to opus if none work — the daily report must always publish.
+          TODAY=$(TZ=Asia/Seoul date +%Y%m%d)
+          MODEL=opus
+          if [ "$TODAY" -le 20260621 ]; then
+            for m in fable5 fable-5 fable; do
+              if claude -p "Reply with: ok" --model "$m" --dangerously-skip-permissions >/dev/null 2>&1; then
+                MODEL="$m"; break
+              fi
+            done
+          fi
+          echo "Using model: $MODEL (KST $TODAY)"
           claude -p "$(cat prompts/daily-industry-report.md)" \
-            --model "$CLAUDE_MODEL" \
+            --model "$MODEL" \
             --dangerously-skip-permissions \
-            --verbose
+            --verbose \
+          || { echo "::warning::run with $MODEL failed; retrying on opus"; \
+               claude -p "$(cat prompts/daily-industry-report.md)" --model opus --dangerously-skip-permissions --verbose; }
 
       - name: Commit & push
         run: |
