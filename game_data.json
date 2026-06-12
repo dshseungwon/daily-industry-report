@@ -1,0 +1,2198 @@
+[
+  {
+    "gics": "501010",
+    "industry_en": "Diversified Telecommunication Services",
+    "industry_ko": "종합 통신 서비스",
+    "sector": "Communication Services",
+    "ksf_weights": {
+      "tech": 0.25,
+      "brand": 0.25,
+      "scale": 0.417,
+      "global": 0.083
+    },
+    "ksf_en": [
+      "Network reach & quality",
+      "Convergence/bundling",
+      "Capex discipline",
+      "B2B/AI monetization",
+      "Cybersecurity & trust",
+      "Cost transformation"
+    ],
+    "global_company": "Deutsche Telekom",
+    "korea_company": "KT Corporation",
+    "global_firms": [
+      {
+        "name": "Deutsche Telekom",
+        "share": 17.0
+      },
+      {
+        "name": "Verizon",
+        "share": 17.0
+      },
+      {
+        "name": "AT&T",
+        "share": 16.0
+      }
+    ]
+  },
+  {
+    "gics": "502020",
+    "industry_en": "Entertainment",
+    "industry_ko": "엔터테인먼트",
+    "sector": "Communication Services",
+    "ksf_weights": {
+      "tech": 0.25,
+      "brand": 0.417,
+      "scale": 0.25,
+      "global": 0.083
+    },
+    "ksf_en": [
+      "Owned franchise IP",
+      "Direct-to-consumer scale",
+      "Live-ops & recommendation tech",
+      "Multi-revenue monetization",
+      "Content-cost discipline",
+      "Local-content & regulatory navigation"
+    ],
+    "global_company": "Netflix",
+    "korea_company": "KRAFTON",
+    "global_firms": [
+      {
+        "name": "Netflix",
+        "share": 28.0
+      },
+      {
+        "name": "Prime Video",
+        "share": 18.0
+      },
+      {
+        "name": "Disney+",
+        "share": 11.0
+      }
+    ]
+  },
+  {
+    "gics": "502030",
+    "industry_en": "Interactive Media & Services",
+    "industry_ko": "인터랙티브 미디어·서비스",
+    "sector": "Communication Services",
+    "ksf_weights": {
+      "tech": 0.3,
+      "brand": 0.3,
+      "scale": 0.3,
+      "global": 0.1
+    },
+    "ksf_en": [
+      "User scale & engagement",
+      "First-party data & targeting",
+      "AI model & compute",
+      "Ad-tech & auction depth",
+      "Multi-revenue monetization",
+      "Regulatory & trust navigation"
+    ],
+    "global_company": "Alphabet (Google)",
+    "korea_company": "NAVER",
+    "global_firms": [
+      {
+        "name": "Meta",
+        "share": 26.8
+      },
+      {
+        "name": "Google",
+        "share": 26.4
+      },
+      {
+        "name": "Amazon",
+        "share": 9.0
+      }
+    ]
+  },
+  {
+    "gics": "502010",
+    "industry_en": "Media",
+    "industry_ko": "미디어",
+    "sector": "Communication Services",
+    "ksf_weights": {
+      "tech": 0.3,
+      "brand": 0.3,
+      "scale": 0.3,
+      "global": 0.1
+    },
+    "ksf_en": [
+      "Proprietary data & identity",
+      "AI-led integration",
+      "Scale in media buying",
+      "Creative reputation & talent",
+      "Client retention & diversification",
+      "Retail media & commerce"
+    ],
+    "global_company": "Omnicom",
+    "korea_company": "Cheil Worldwide",
+    "global_firms": [
+      {
+        "name": "Omnicom (incl. IPG)",
+        "share": 30.0
+      },
+      {
+        "name": "Publicis",
+        "share": 23.0
+      },
+      {
+        "name": "WPP",
+        "share": 20.0
+      }
+    ]
+  },
+  {
+    "gics": "501020",
+    "industry_en": "Wireless Telecommunication Services",
+    "industry_ko": "무선 통신 서비스",
+    "sector": "Communication Services",
+    "ksf_weights": {
+      "tech": 0.417,
+      "brand": 0.25,
+      "scale": 0.25,
+      "global": 0.083
+    },
+    "ksf_en": [
+      "Network quality & spectrum",
+      "Capex efficiency",
+      "Acquisition & low churn",
+      "ARPU expansion",
+      "Cybersecurity & trust",
+      "AI / data-center diversification"
+    ],
+    "global_company": "China Mobile",
+    "korea_company": "SK Telecom",
+    "global_firms": [
+      {
+        "name": "China Mobile",
+        "share": 19.0
+      },
+      {
+        "name": "Reliance Jio",
+        "share": 6.0
+      },
+      {
+        "name": "China Telecom",
+        "share": 5.0
+      }
+    ]
+  },
+  {
+    "gics": "251010",
+    "industry_en": "Automobile Components",
+    "industry_ko": "자동차 부품",
+    "sector": "Consumer Discretionary",
+    "ksf_weights": {
+      "tech": 0.25,
+      "brand": 0.25,
+      "scale": 0.25,
+      "global": 0.25
+    },
+    "ksf_en": [
+      "Local-for-local footprint",
+      "Electronics & software shift",
+      "Cost-restructuring agility",
+      "Customer diversification",
+      "Supply-chain resilience",
+      "Aftermarket & adjacencies"
+    ],
+    "global_company": "Bosch (Mobility)",
+    "korea_company": "Hyundai Mobis",
+    "global_firms": [
+      {
+        "name": "Bosch",
+        "share": 16.0
+      },
+      {
+        "name": "Denso",
+        "share": 13.0
+      },
+      {
+        "name": "Magna",
+        "share": 12.0
+      }
+    ]
+  },
+  {
+    "gics": "251020",
+    "industry_en": "Automobiles",
+    "industry_ko": "자동차",
+    "sector": "Consumer Discretionary",
+    "ksf_weights": {
+      "tech": 0.357,
+      "brand": 0.214,
+      "scale": 0.214,
+      "global": 0.214
+    },
+    "ksf_en": [
+      "Manufacturing scale & cost",
+      "EV & battery platform",
+      "Software & autonomy",
+      "Brand & pricing power",
+      "Geographic & tariff agility",
+      "Captive finance & aftermarket"
+    ],
+    "global_company": "Tesla",
+    "korea_company": "Hyundai Motor",
+    "global_firms": [
+      {
+        "name": "Toyota",
+        "share": 13.0
+      },
+      {
+        "name": "Volkswagen",
+        "share": 10.0
+      },
+      {
+        "name": "Hyundai-Kia",
+        "share": 8.0
+      }
+    ]
+  },
+  {
+    "gics": "255030",
+    "industry_en": "Broadline Retail",
+    "industry_ko": "종합 소매",
+    "sector": "Consumer Discretionary",
+    "ksf_weights": {
+      "tech": 0.1,
+      "brand": 0.3,
+      "scale": 0.3,
+      "global": 0.3
+    },
+    "ksf_en": [
+      "Logistics & delivery speed",
+      "Marketplace selection",
+      "Retail-media monetization",
+      "Subscription lock-in",
+      "Capital access",
+      "Cost & pricing discipline"
+    ],
+    "global_company": "Amazon",
+    "korea_company": "Coupang",
+    "global_firms": [
+      {
+        "name": "Amazon",
+        "share": 16.0
+      },
+      {
+        "name": "Alibaba",
+        "share": 12.0
+      },
+      {
+        "name": "PDD/Pinduoduo",
+        "share": 7.0
+      }
+    ]
+  },
+  {
+    "gics": "255010",
+    "industry_en": "Distributors",
+    "industry_ko": "유통(소비재)",
+    "sector": "Consumer Discretionary",
+    "ksf_weights": {
+      "tech": 0.3,
+      "brand": 0.1,
+      "scale": 0.3,
+      "global": 0.3
+    },
+    "ksf_en": [
+      "Network density",
+      "Catalog accuracy",
+      "Inventory turns",
+      "Supplier & private label",
+      "Digital platform",
+      "Consolidation execution"
+    ],
+    "global_company": "Genuine Parts Company",
+    "korea_company": "K Car",
+    "global_firms": [
+      {
+        "name": "Genuine Parts (NAPA)",
+        "share": 9.0
+      },
+      {
+        "name": "AutoZone",
+        "share": 6.0
+      },
+      {
+        "name": "O'Reilly",
+        "share": 6.0
+      }
+    ]
+  },
+  {
+    "gics": "253010",
+    "industry_en": "Diversified Consumer Services",
+    "industry_ko": "종합 소비자 서비스",
+    "sector": "Consumer Discretionary",
+    "ksf_weights": {
+      "tech": 0.357,
+      "brand": 0.214,
+      "scale": 0.071,
+      "global": 0.357
+    },
+    "ksf_en": [
+      "Star talent / IP",
+      "Brand trust",
+      "Recurring revenue",
+      "Digital / AI platform",
+      "Regulatory navigation",
+      "Network density"
+    ],
+    "global_company": "Service Corporation International",
+    "korea_company": "MegaStudyEdu",
+    "global_firms": [
+      {
+        "name": "Service Corp Intl",
+        "share": 16.0
+      },
+      {
+        "name": "Carriage Services",
+        "share": 6.0
+      },
+      {
+        "name": "Park Lawn / Foundation",
+        "share": 4.0
+      }
+    ]
+  },
+  {
+    "gics": "252010",
+    "industry_en": "Household Durables",
+    "industry_ko": "내구소비재",
+    "sector": "Consumer Discretionary",
+    "ksf_weights": {
+      "tech": 0.375,
+      "brand": 0.125,
+      "scale": 0.375,
+      "global": 0.125
+    },
+    "ksf_en": [
+      "Scale & cost leadership",
+      "Land bank & pipeline control",
+      "Affordability & financing tools",
+      "Recurring service & subscription",
+      "Brand, quality & energy efficiency",
+      "Cycle & rate navigation"
+    ],
+    "global_company": "D.R. Horton",
+    "korea_company": "Coway",
+    "global_firms": [
+      {
+        "name": "D.R. Horton",
+        "share": 16.0
+      },
+      {
+        "name": "Lennar",
+        "share": 14.0
+      },
+      {
+        "name": "PulteGroup",
+        "share": 10.0
+      }
+    ]
+  },
+  {
+    "gics": "255040",
+    "industry_en": "Specialty Retail",
+    "industry_ko": "전문 소매",
+    "sector": "Consumer Discretionary",
+    "ksf_weights": {
+      "tech": 0.083,
+      "brand": 0.417,
+      "scale": 0.25,
+      "global": 0.25
+    },
+    "ksf_en": [
+      "Sourcing scale & private label",
+      "Omnichannel & fulfillment",
+      "Assortment depth",
+      "Pro / B2B mix",
+      "Inventory & markdown discipline",
+      "Loyalty & services"
+    ],
+    "global_company": "Home Depot",
+    "korea_company": "Lotte Hi-Mart",
+    "global_firms": [
+      {
+        "name": "Home Depot",
+        "share": 7.0
+      },
+      {
+        "name": "Lowe's",
+        "share": 5.0
+      },
+      {
+        "name": "TJX",
+        "share": 3.0
+      }
+    ]
+  },
+  {
+    "gics": "252030",
+    "industry_en": "Textiles, Apparel & Luxury Goods",
+    "industry_ko": "섬유·의류·명품",
+    "sector": "Consumer Discretionary",
+    "ksf_weights": {
+      "tech": 0.3,
+      "brand": 0.3,
+      "scale": 0.1,
+      "global": 0.3
+    },
+    "ksf_en": [
+      "Brand desirability",
+      "Vertical integration",
+      "DTC & digital",
+      "Sourcing agility",
+      "Geographic diversity",
+      "Circularity readiness"
+    ],
+    "global_company": "LVMH",
+    "korea_company": "Youngone",
+    "global_firms": [
+      {
+        "name": "LVMH",
+        "share": 15.0
+      },
+      {
+        "name": "Nike",
+        "share": 8.0
+      },
+      {
+        "name": "Inditex",
+        "share": 7.0
+      }
+    ]
+  },
+  {
+    "gics": "302010",
+    "industry_en": "Beverages",
+    "industry_ko": "음료",
+    "sector": "Consumer Staples",
+    "ksf_weights": {
+      "tech": 0.312,
+      "brand": 0.312,
+      "scale": 0.062,
+      "global": 0.312
+    },
+    "ksf_en": [
+      "Brand portfolio depth",
+      "Distribution & cold chain",
+      "Health innovation",
+      "Pricing power (RGM)",
+      "Regulatory speed",
+      "Consumer data"
+    ],
+    "global_company": "Coca-Cola",
+    "korea_company": "Lotte Chilsung",
+    "global_firms": [
+      {
+        "name": "Coca-Cola",
+        "share": 33.0
+      },
+      {
+        "name": "PepsiCo",
+        "share": 23.0
+      },
+      {
+        "name": "AB InBev",
+        "share": 17.0
+      }
+    ]
+  },
+  {
+    "gics": "301010",
+    "industry_en": "Consumer Staples Distribution & Retail",
+    "industry_ko": "필수소비재 유통·소매",
+    "sector": "Consumer Staples",
+    "ksf_weights": {
+      "tech": 0.3,
+      "brand": 0.1,
+      "scale": 0.3,
+      "global": 0.3
+    },
+    "ksf_en": [
+      "Scale & buying power",
+      "Omnichannel fulfillment",
+      "Private-label penetration",
+      "Membership ecosystem",
+      "Last-mile & cold chain",
+      "Retail media monetization"
+    ],
+    "global_company": "Walmart",
+    "korea_company": "Emart",
+    "global_firms": [
+      {
+        "name": "Walmart",
+        "share": 5.0
+      },
+      {
+        "name": "Costco",
+        "share": 2.0
+      },
+      {
+        "name": "Kroger",
+        "share": 1.0
+      }
+    ]
+  },
+  {
+    "gics": "302020",
+    "industry_en": "Food Products",
+    "industry_ko": "식품",
+    "sector": "Consumer Staples",
+    "ksf_weights": {
+      "tech": 0.1,
+      "brand": 0.3,
+      "scale": 0.3,
+      "global": 0.3
+    },
+    "ksf_en": [
+      "Brand pricing power",
+      "Commodity hedging",
+      "Reformulation",
+      "Portfolio focus / M&A",
+      "Distribution scale",
+      "Export growth"
+    ],
+    "global_company": "Nestlé",
+    "korea_company": "CJ CheilJedang",
+    "global_firms": [
+      {
+        "name": "Nestlé",
+        "share": 4.0
+      },
+      {
+        "name": "PepsiCo",
+        "share": 3.0
+      },
+      {
+        "name": "Mondelez",
+        "share": 2.0
+      }
+    ]
+  },
+  {
+    "gics": "303010",
+    "industry_en": "Household Products",
+    "industry_ko": "생활용품",
+    "sector": "Consumer Staples",
+    "ksf_weights": {
+      "tech": 0.357,
+      "brand": 0.214,
+      "scale": 0.214,
+      "global": 0.214
+    },
+    "ksf_en": [
+      "Brand equity",
+      "R&D / reformulation",
+      "Cost & scale efficiency",
+      "Distribution breadth",
+      "Premiumization & innovation",
+      "Sustainability credentials"
+    ],
+    "global_company": "Procter & Gamble",
+    "korea_company": "LG H&H",
+    "global_firms": [
+      {
+        "name": "P&amp;G",
+        "share": 13.0
+      },
+      {
+        "name": "Unilever",
+        "share": 7.0
+      },
+      {
+        "name": "Reckitt",
+        "share": 5.0
+      }
+    ]
+  },
+  {
+    "gics": "303020",
+    "industry_en": "Personal Care Products",
+    "industry_ko": "퍼스널케어 제품",
+    "sector": "Consumer Staples",
+    "ksf_weights": {
+      "tech": 0.312,
+      "brand": 0.188,
+      "scale": 0.062,
+      "global": 0.438
+    },
+    "ksf_en": [
+      "Brand equity",
+      "Formulation & R&D",
+      "Distribution & channel mix",
+      "Digital & influencer marketing",
+      "Geographic & channel diversification",
+      "Regulatory & safety compliance"
+    ],
+    "global_company": "L'Oréal",
+    "korea_company": "Amorepacific",
+    "global_firms": [
+      {
+        "name": "L'Oréal",
+        "share": 13.0
+      },
+      {
+        "name": "Unilever",
+        "share": 9.0
+      },
+      {
+        "name": "P&G",
+        "share": 6.0
+      }
+    ]
+  },
+  {
+    "gics": "302030",
+    "industry_en": "Tobacco",
+    "industry_ko": "담배",
+    "sector": "Consumer Staples",
+    "ksf_weights": {
+      "tech": 0.214,
+      "brand": 0.357,
+      "scale": 0.071,
+      "global": 0.357
+    },
+    "ksf_en": [
+      "Pricing power",
+      "Smoke-free pivot",
+      "R&D & substantiation",
+      "Global brands",
+      "Geographic spread",
+      "Regulatory navigation"
+    ],
+    "global_company": "Philip Morris International",
+    "korea_company": "KT&G",
+    "global_firms": [
+      {
+        "name": "China National Tobacco",
+        "share": 44.0
+      },
+      {
+        "name": "Philip Morris Intl",
+        "share": 14.0
+      },
+      {
+        "name": "BAT",
+        "share": 9.0
+      }
+    ]
+  },
+  {
+    "gics": "101010",
+    "industry_en": "Energy Equipment & Services",
+    "industry_ko": "에너지 장비 및 서비스",
+    "sector": "Energy",
+    "ksf_weights": {
+      "tech": 0.25,
+      "brand": 0.25,
+      "scale": 0.25,
+      "global": 0.25
+    },
+    "ksf_en": [
+      "Technology & IP intensity",
+      "Opex-linked recurring revenue",
+      "International & offshore breadth",
+      "Scale & consolidation discipline",
+      "NOC relationships & local content",
+      "New-market optionality"
+    ],
+    "global_company": "SLB",
+    "korea_company": "Hanwha Ocean (proxy)",
+    "global_firms": [
+      {
+        "name": "SLB",
+        "share": 12.0
+      },
+      {
+        "name": "Baker Hughes",
+        "share": 9.0
+      },
+      {
+        "name": "Halliburton",
+        "share": 7.0
+      }
+    ]
+  },
+  {
+    "gics": "101020",
+    "industry_en": "Oil, Gas & Consumable Fuels",
+    "industry_ko": "석유·가스·소비연료",
+    "sector": "Energy",
+    "ksf_weights": {
+      "tech": 0.375,
+      "brand": 0.125,
+      "scale": 0.375,
+      "global": 0.125
+    },
+    "ksf_en": [
+      "Low cost per barrel",
+      "Reserve replacement",
+      "Refining complexity & integration",
+      "Trading & price-risk management",
+      "Capital & shareholder discipline",
+      "Decarbonization & transition readiness"
+    ],
+    "global_company": "Saudi Aramco",
+    "korea_company": "SK Innovation",
+    "global_firms": [
+      {
+        "name": "United States미국",
+        "share": 16.0
+      },
+      {
+        "name": "Russia러시아",
+        "share": 11.7
+      },
+      {
+        "name": "Saudi Arabia사우디아라비아",
+        "share": 11.3
+      }
+    ]
+  },
+  {
+    "gics": "401010",
+    "industry_en": "Banks",
+    "industry_ko": "은행",
+    "sector": "Financials",
+    "ksf_weights": {
+      "tech": 0.375,
+      "brand": 0.125,
+      "scale": 0.375,
+      "global": 0.125
+    },
+    "ksf_en": [
+      "Low-cost deposit base",
+      "Credit underwriting & risk control",
+      "Capital strength (CET1)",
+      "Fee & wealth income",
+      "Digital & technology scale",
+      "Shareholder-return discipline"
+    ],
+    "global_company": "JPMorgan Chase",
+    "korea_company": "KB Financial Group",
+    "global_firms": [
+      {
+        "name": "ICBC",
+        "share": 27.0
+      },
+      {
+        "name": "Agricultural Bank of China중국농업은행",
+        "share": 24.0
+      },
+      {
+        "name": "China Construction Bank중국건설은행",
+        "share": 23.0
+      }
+    ]
+  },
+  {
+    "gics": "402030",
+    "industry_en": "Capital Markets",
+    "industry_ko": "자본시장",
+    "sector": "Financials",
+    "ksf_weights": {
+      "tech": 0.417,
+      "brand": 0.083,
+      "scale": 0.25,
+      "global": 0.25
+    },
+    "ksf_en": [
+      "Scale & distribution",
+      "Private-markets capability",
+      "Technology & AI",
+      "Capital & compliance",
+      "Talent",
+      "Ecosystem cross-sell"
+    ],
+    "global_company": "BlackRock",
+    "korea_company": "Mirae Asset",
+    "global_firms": [
+      {
+        "name": "BlackRock",
+        "share": 10.0
+      },
+      {
+        "name": "Vanguard",
+        "share": 9.0
+      },
+      {
+        "name": "Fidelity",
+        "share": 4.0
+      }
+    ]
+  },
+  {
+    "gics": "402010",
+    "industry_en": "Financial Services",
+    "industry_ko": "금융 서비스",
+    "sector": "Financials",
+    "ksf_weights": {
+      "tech": 0.25,
+      "brand": 0.25,
+      "scale": 0.25,
+      "global": 0.25
+    },
+    "ksf_en": [
+      "Network scale & the two-sided moat",
+      "Trust, security & fraud control",
+      "Cross-border & FX economics",
+      "Value-added services & data",
+      "Regulatory navigation",
+      "Fintech & new-rail partnerships"
+    ],
+    "global_company": "Visa",
+    "korea_company": "Samsung Card",
+    "global_firms": [
+      {
+        "name": "Visa",
+        "share": 52.0
+      },
+      {
+        "name": "Mastercard",
+        "share": 22.0
+      },
+      {
+        "name": "American Express",
+        "share": 15.0
+      }
+    ]
+  },
+  {
+    "gics": "403010",
+    "industry_en": "Insurance",
+    "industry_ko": "보험",
+    "sector": "Financials",
+    "ksf_weights": {
+      "tech": 0.375,
+      "brand": 0.125,
+      "scale": 0.125,
+      "global": 0.375
+    },
+    "ksf_en": [
+      "Underwriting discipline",
+      "Investment / ALM skill",
+      "Capital strength",
+      "Distribution reach",
+      "Data / AI",
+      "Cat & reinsurance management"
+    ],
+    "global_company": "Allianz",
+    "korea_company": "Samsung Life",
+    "global_firms": [
+      {
+        "name": "Allianz",
+        "share": 3.0
+      },
+      {
+        "name": "Ping An",
+        "share": 2.0
+      },
+      {
+        "name": "China Life",
+        "share": 2.0
+      }
+    ]
+  },
+  {
+    "gics": "402040",
+    "industry_en": "Mortgage REITs",
+    "industry_ko": "모기지 리츠",
+    "sector": "Financials",
+    "ksf_weights": {
+      "tech": 0.167,
+      "brand": 0.167,
+      "scale": 0.167,
+      "global": 0.5
+    },
+    "ksf_en": [
+      "Interest-rate hedging",
+      "Book-value protection",
+      "Funding access",
+      "Spread management",
+      "Leverage discipline",
+      "Dividend sustainability"
+    ],
+    "global_company": "Annaly Capital",
+    "korea_company": "KHFC (proxy)",
+    "global_firms": [
+      {
+        "name": "Annaly",
+        "share": 20.0
+      },
+      {
+        "name": "AGNC",
+        "share": 15.0
+      },
+      {
+        "name": "Starwood",
+        "share": 10.0
+      }
+    ]
+  },
+  {
+    "gics": "351010",
+    "industry_en": "Health Care Equipment & Supplies",
+    "industry_ko": "의료기기 및 용품",
+    "sector": "Health Care",
+    "ksf_weights": {
+      "tech": 0.357,
+      "brand": 0.071,
+      "scale": 0.357,
+      "global": 0.214
+    },
+    "ksf_en": [
+      "Clinical evidence & regulatory speed",
+      "Innovation in high-growth categories",
+      "Recurring consumables & service",
+      "Hospital relationships & GPO scale",
+      "Tariff-resilient supply chains",
+      "Software, AI & data integration"
+    ],
+    "global_company": "Medtronic",
+    "korea_company": "Osstem Implant",
+    "global_firms": [
+      {
+        "name": "Medtronic",
+        "share": 5.0
+      },
+      {
+        "name": "J&J MedTech",
+        "share": 5.0
+      },
+      {
+        "name": "Stryker",
+        "share": 4.0
+      }
+    ]
+  },
+  {
+    "gics": "351020",
+    "industry_en": "Health Care Providers & Services",
+    "industry_ko": "헬스케어 제공·서비스",
+    "sector": "Health Care",
+    "ksf_weights": {
+      "tech": 0.214,
+      "brand": 0.214,
+      "scale": 0.357,
+      "global": 0.214
+    },
+    "ksf_en": [
+      "Medical-cost & risk pricing",
+      "Scale & covered lives",
+      "Vertical integration",
+      "Regulatory & government relations",
+      "Data & claims technology",
+      "Distribution efficiency"
+    ],
+    "global_company": "UnitedHealth Group",
+    "korea_company": "SD Biosensor (proxy)",
+    "global_firms": [
+      {
+        "name": "UnitedHealth",
+        "share": 16.0
+      },
+      {
+        "name": "Elevance",
+        "share": 12.0
+      },
+      {
+        "name": "CVS/Aetna",
+        "share": 12.0
+      }
+    ]
+  },
+  {
+    "gics": "351030",
+    "industry_en": "Health Care Technology",
+    "industry_ko": "헬스케어 기술",
+    "sector": "Health Care",
+    "ksf_weights": {
+      "tech": 0.3,
+      "brand": 0.3,
+      "scale": 0.1,
+      "global": 0.3
+    },
+    "ksf_en": [
+      "Owning the system of record",
+      "Regulatory & clearance speed",
+      "Data scale & quality",
+      "Workflow integration",
+      "Reimbursement pathway",
+      "Trust, security & compliance"
+    ],
+    "global_company": "Veeva Systems",
+    "korea_company": "Lunit",
+    "global_firms": [
+      {
+        "name": "Epic Systems",
+        "share": 44.0
+      },
+      {
+        "name": "Oracle Health (Cerner)",
+        "share": 22.0
+      },
+      {
+        "name": "MEDITECH",
+        "share": 15.0
+      }
+    ]
+  },
+  {
+    "gics": "352030",
+    "industry_en": "Life Sciences Tools & Services",
+    "industry_ko": "생명과학 도구 및 서비스",
+    "sector": "Health Care",
+    "ksf_weights": {
+      "tech": 0.417,
+      "brand": 0.083,
+      "scale": 0.25,
+      "global": 0.25
+    },
+    "ksf_en": [
+      "Recurring consumables pull-through",
+      "Manufacturing scale & capacity",
+      "Regulatory & quality track record",
+      "Innovation & M&A engine",
+      "End-to-end breadth",
+      "Geographic supply resilience"
+    ],
+    "global_company": "Thermo Fisher Scientific",
+    "korea_company": "Samsung Biologics",
+    "global_firms": [
+      {
+        "name": "Thermo Fisher",
+        "share": 33.0
+      },
+      {
+        "name": "Danaher",
+        "share": 18.0
+      },
+      {
+        "name": "Agilent",
+        "share": 13.0
+      }
+    ]
+  },
+  {
+    "gics": "201010",
+    "industry_en": "Aerospace & Defense",
+    "industry_ko": "항공우주·방위",
+    "sector": "Industrials",
+    "ksf_weights": {
+      "tech": 0.125,
+      "brand": 0.125,
+      "scale": 0.375,
+      "global": 0.375
+    },
+    "ksf_en": [
+      "Funded backlog",
+      "Sustainment franchise",
+      "Export & offsets",
+      "Supply-chain resilience",
+      "Government relationships",
+      "Production scale-up"
+    ],
+    "global_company": "Lockheed Martin",
+    "korea_company": "Hanwha Aerospace",
+    "global_firms": [
+      {
+        "name": "Lockheed Martin",
+        "share": 34.0
+      },
+      {
+        "name": "RTX",
+        "share": 20.0
+      },
+      {
+        "name": "Northrop Grumman",
+        "share": 17.0
+      }
+    ]
+  },
+  {
+    "gics": "203010",
+    "industry_en": "Air Freight & Logistics",
+    "industry_ko": "항공화물·물류",
+    "sector": "Industrials",
+    "ksf_weights": {
+      "tech": 0.188,
+      "brand": 0.188,
+      "scale": 0.438,
+      "global": 0.188
+    },
+    "ksf_en": [
+      "Network density & hub scale",
+      "Capacity flexibility",
+      "Customs & trade-compliance capability",
+      "Premium vertical mix",
+      "Fuel & SAF cost management",
+      "Digital pricing & visibility"
+    ],
+    "global_company": "FedEx",
+    "korea_company": "CJ Logistics",
+    "global_firms": [
+      {
+        "name": "FedEx",
+        "share": 7.0
+      },
+      {
+        "name": "Qatar Airways",
+        "share": 6.0
+      },
+      {
+        "name": "UPS",
+        "share": 6.0
+      }
+    ]
+  },
+  {
+    "gics": "201020",
+    "industry_en": "Building Products",
+    "industry_ko": "건축자재",
+    "sector": "Industrials",
+    "ksf_weights": {
+      "tech": 0.214,
+      "brand": 0.357,
+      "scale": 0.214,
+      "global": 0.214
+    },
+    "ksf_en": [
+      "Scale & low-cost manufacturing",
+      "Distribution access",
+      "Brand & high-spec mix",
+      "Decarbonization leadership",
+      "Renovation & infra exposure",
+      "Pricing discipline"
+    ],
+    "global_company": "Saint-Gobain",
+    "korea_company": "KCC",
+    "global_firms": [
+      {
+        "name": "Saint-Gobain",
+        "share": 5.0
+      },
+      {
+        "name": "CRH",
+        "share": 4.0
+      },
+      {
+        "name": "Holcim",
+        "share": 3.0
+      }
+    ]
+  },
+  {
+    "gics": "202010",
+    "industry_en": "Commercial Services & Supplies",
+    "industry_ko": "상업 서비스·용품",
+    "sector": "Industrials",
+    "ksf_weights": {
+      "tech": 0.25,
+      "brand": 0.25,
+      "scale": 0.083,
+      "global": 0.417
+    },
+    "ksf_en": [
+      "Route / network density",
+      "Pricing discipline",
+      "Scarce disposal assets",
+      "Contract retention",
+      "Compliance expertise",
+      "Labor productivity / automation"
+    ],
+    "global_company": "Waste Management",
+    "korea_company": "S-1 Corporation",
+    "global_firms": [
+      {
+        "name": "Waste Management",
+        "share": 7.0
+      },
+      {
+        "name": "Republic Services",
+        "share": 6.0
+      },
+      {
+        "name": "Veolia",
+        "share": 5.0
+      }
+    ]
+  },
+  {
+    "gics": "201030",
+    "industry_en": "Construction & Engineering",
+    "industry_ko": "건설·엔지니어링",
+    "sector": "Industrials",
+    "ksf_weights": {
+      "tech": 0.5,
+      "brand": 0.1,
+      "scale": 0.1,
+      "global": 0.3
+    },
+    "ksf_en": [
+      "Project & risk management",
+      "Engineering & design depth",
+      "Backlog & order quality",
+      "Balance sheet & financing",
+      "Safety & compliance",
+      "Overseas & sector diversification"
+    ],
+    "global_company": "China State Construction Engineering",
+    "korea_company": "Hyundai E&C",
+    "global_firms": [
+      {
+        "name": "CSCEC",
+        "share": 2.0
+      },
+      {
+        "name": "China Railway Grp중국중철",
+        "share": 1.3
+      },
+      {
+        "name": "CRCC",
+        "share": 1.1
+      }
+    ]
+  },
+  {
+    "gics": "201040",
+    "industry_en": "Electrical Equipment",
+    "industry_ko": "전기장비",
+    "sector": "Industrials",
+    "ksf_weights": {
+      "tech": 0.375,
+      "brand": 0.125,
+      "scale": 0.125,
+      "global": 0.375
+    },
+    "ksf_en": [
+      "Lead-time compression",
+      "Local production",
+      "Software integration",
+      "UHV capability",
+      "Service network",
+      "Supply resilience"
+    ],
+    "global_company": "Schneider Electric",
+    "korea_company": "Hyosung Heavy",
+    "global_firms": [
+      {
+        "name": "Schneider",
+        "share": 12.0
+      },
+      {
+        "name": "Siemens Energy",
+        "share": 11.0
+      },
+      {
+        "name": "ABB",
+        "share": 9.0
+      }
+    ]
+  },
+  {
+    "gics": "201050",
+    "industry_en": "Industrial Conglomerates",
+    "industry_ko": "복합기업(산업재)",
+    "sector": "Industrials",
+    "ksf_weights": {
+      "tech": 0.375,
+      "brand": 0.375,
+      "scale": 0.125,
+      "global": 0.125
+    },
+    "ksf_en": [
+      "Diversification",
+      "Software monetization",
+      "Capital discipline",
+      "Supply-chain resilience",
+      "Long-cycle pipeline",
+      "Governance trust"
+    ],
+    "global_company": "Siemens AG",
+    "korea_company": "Samsung C&T",
+    "global_firms": [
+      {
+        "name": "Siemens",
+        "share": 28.0
+      },
+      {
+        "name": "Hitachi",
+        "share": 24.0
+      },
+      {
+        "name": "Honeywell",
+        "share": 13.0
+      }
+    ]
+  },
+  {
+    "gics": "201060",
+    "industry_en": "Machinery",
+    "industry_ko": "기계",
+    "sector": "Industrials",
+    "ksf_weights": {
+      "tech": 0.125,
+      "brand": 0.125,
+      "scale": 0.125,
+      "global": 0.625
+    },
+    "ksf_en": [
+      "Dealer network",
+      "Aftermarket attach",
+      "Powertrain tech",
+      "Local footprint",
+      "Backlog management",
+      "Power-gen exposure"
+    ],
+    "global_company": "Caterpillar",
+    "korea_company": "Doosan Bobcat",
+    "global_firms": [
+      {
+        "name": "Caterpillar",
+        "share": 16.0
+      },
+      {
+        "name": "Komatsu",
+        "share": 11.0
+      },
+      {
+        "name": "XCMG",
+        "share": 6.0
+      }
+    ]
+  },
+  {
+    "gics": "203030",
+    "industry_en": "Marine Transportation",
+    "industry_ko": "해상운송",
+    "sector": "Industrials",
+    "ksf_weights": {
+      "tech": 0.214,
+      "brand": 0.071,
+      "scale": 0.5,
+      "global": 0.214
+    },
+    "ksf_en": [
+      "Fleet scale & low slot cost",
+      "Alliance & network coverage",
+      "Fuel & decarbonization strategy",
+      "Capacity discipline through the cycle",
+      "Balance-sheet strength",
+      "End-to-end logistics integration"
+    ],
+    "global_company": "MSC",
+    "korea_company": "HMM",
+    "global_firms": [
+      {
+        "name": "MSC",
+        "share": 22.0
+      },
+      {
+        "name": "Maersk",
+        "share": 14.0
+      },
+      {
+        "name": "CMA CGM",
+        "share": 13.0
+      }
+    ]
+  },
+  {
+    "gics": "203020",
+    "industry_en": "Passenger Airlines",
+    "industry_ko": "여객 항공",
+    "sector": "Industrials",
+    "ksf_weights": {
+      "tech": 0.214,
+      "brand": 0.214,
+      "scale": 0.357,
+      "global": 0.214
+    },
+    "ksf_en": [
+      "Fuel & cost discipline",
+      "Hub slots & network",
+      "Loyalty & premium revenue",
+      "Capacity discipline",
+      "Safety & reliability",
+      "Fleet & decarbonization"
+    ],
+    "global_company": "Delta Air Lines",
+    "korea_company": "Korean Air",
+    "global_firms": [
+      {
+        "name": "Delta",
+        "share": 21.0
+      },
+      {
+        "name": "United",
+        "share": 20.0
+      },
+      {
+        "name": "American",
+        "share": 19.0
+      }
+    ]
+  },
+  {
+    "gics": "202020",
+    "industry_en": "Professional Services",
+    "industry_ko": "전문 서비스",
+    "sector": "Industrials",
+    "ksf_weights": {
+      "tech": 0.417,
+      "brand": 0.25,
+      "scale": 0.25,
+      "global": 0.083
+    },
+    "ksf_en": [
+      "Proprietary data & IP",
+      "Recurring, embedded software",
+      "Scale & client base",
+      "AI-enabled productivity",
+      "Talent & expertise depth",
+      "Trust & compliance"
+    ],
+    "global_company": "ADP",
+    "korea_company": "Saramin",
+    "global_firms": [
+      {
+        "name": "ADP",
+        "share": 4.0
+      },
+      {
+        "name": "Randstad",
+        "share": 3.5
+      },
+      {
+        "name": "Adecco",
+        "share": 3.0
+      }
+    ]
+  },
+  {
+    "gics": "201070",
+    "industry_en": "Trading Companies & Distributors",
+    "industry_ko": "종합상사·유통",
+    "sector": "Industrials",
+    "ksf_weights": {
+      "tech": 0.25,
+      "brand": 0.083,
+      "scale": 0.25,
+      "global": 0.417
+    },
+    "ksf_en": [
+      "Network breadth",
+      "Logistics excellence",
+      "Digital platforms",
+      "Upstream asset access",
+      "Capital discipline",
+      "Diversification"
+    ],
+    "global_company": "Mitsubishi Corporation",
+    "korea_company": "POSCO International",
+    "global_firms": [
+      {
+        "name": "W.W. Grainger",
+        "share": 5.0
+      },
+      {
+        "name": "Ferguson",
+        "share": 4.0
+      },
+      {
+        "name": "Fastenal",
+        "share": 3.0
+      }
+    ]
+  },
+  {
+    "gics": "452010",
+    "industry_en": "Communications Equipment",
+    "industry_ko": "통신장비",
+    "sector": "Information Technology",
+    "ksf_weights": {
+      "tech": 0.5,
+      "brand": 0.214,
+      "scale": 0.214,
+      "global": 0.071
+    },
+    "ksf_en": [
+      "R&D & standards leadership",
+      "Silicon & supply security",
+      "Software & recurring revenue",
+      "AI data-center exposure",
+      "Trust & geopolitical fit",
+      "Carrier & hyperscaler relationships"
+    ],
+    "global_company": "Cisco Systems",
+    "korea_company": "Samsung Electronics",
+    "global_firms": [
+      {
+        "name": "Huawei",
+        "share": 31.0
+      },
+      {
+        "name": "Nokia",
+        "share": 13.0
+      },
+      {
+        "name": "Ericsson",
+        "share": 12.0
+      }
+    ]
+  },
+  {
+    "gics": "452030",
+    "industry_en": "Electronic Equipment, Instruments & Components",
+    "industry_ko": "전자장비·계측·부품",
+    "sector": "Information Technology",
+    "ksf_weights": {
+      "tech": 0.417,
+      "brand": 0.25,
+      "scale": 0.25,
+      "global": 0.083
+    },
+    "ksf_en": [
+      "Miniaturization",
+      "Key-customer ties",
+      "AI/datacenter exposure",
+      "Scale & cost",
+      "Automation",
+      "Supply-chain resilience"
+    ],
+    "global_company": "Hon Hai (Foxconn)",
+    "korea_company": "LG Innotek",
+    "global_firms": [
+      {
+        "name": "Foxconn",
+        "share": 39.0
+      },
+      {
+        "name": "Quanta",
+        "share": 8.0
+      },
+      {
+        "name": "Pegatron",
+        "share": 6.0
+      }
+    ]
+  },
+  {
+    "gics": "451020",
+    "industry_en": "IT Services",
+    "industry_ko": "IT 서비스",
+    "sector": "Information Technology",
+    "ksf_weights": {
+      "tech": 0.25,
+      "brand": 0.25,
+      "scale": 0.417,
+      "global": 0.083
+    },
+    "ksf_en": [
+      "AI delivery capability",
+      "Platform partnerships",
+      "Large-deal origination",
+      "Talent & utilization",
+      "Outcome pricing",
+      "Global delivery scale"
+    ],
+    "global_company": "Accenture",
+    "korea_company": "Samsung SDS",
+    "global_firms": [
+      {
+        "name": "Accenture",
+        "share": 4.0
+      },
+      {
+        "name": "TCS",
+        "share": 2.0
+      },
+      {
+        "name": "IBM Consulting",
+        "share": 2.0
+      }
+    ]
+  },
+  {
+    "gics": "453010",
+    "industry_en": "Semiconductors & Semiconductor Equipment",
+    "industry_ko": "반도체·반도체장비",
+    "sector": "Information Technology",
+    "ksf_weights": {
+      "tech": 0.357,
+      "brand": 0.071,
+      "scale": 0.214,
+      "global": 0.357
+    },
+    "ksf_en": [
+      "Node leadership",
+      "Capex & cash",
+      "Secured AI demand",
+      "Yield & packaging",
+      "EUV & materials access",
+      "Export-control navigation"
+    ],
+    "global_company": "NVIDIA",
+    "korea_company": "Samsung Electronics",
+    "global_firms": [
+      {
+        "name": "NVIDIA",
+        "share": 16.0
+      },
+      {
+        "name": "Samsung",
+        "share": 9.0
+      },
+      {
+        "name": "SK hynix",
+        "share": 8.0
+      }
+    ]
+  },
+  {
+    "gics": "451030",
+    "industry_en": "Software",
+    "industry_ko": "소프트웨어",
+    "sector": "Information Technology",
+    "ksf_weights": {
+      "tech": 0.25,
+      "brand": 0.25,
+      "scale": 0.417,
+      "global": 0.083
+    },
+    "ksf_en": [
+      "AI differentiation",
+      "Net revenue retention",
+      "Platform / ecosystem lock-in",
+      "Cloud cost discipline",
+      "Enterprise trust",
+      "Distribution scale"
+    ],
+    "global_company": "Microsoft",
+    "korea_company": "Samsung SDS",
+    "global_firms": [
+      {
+        "name": "Microsoft",
+        "share": 11.0
+      },
+      {
+        "name": "Oracle",
+        "share": 5.0
+      },
+      {
+        "name": "SAP",
+        "share": 3.0
+      }
+    ]
+  },
+  {
+    "gics": "452020",
+    "industry_en": "Technology Hardware, Storage & Peripherals",
+    "industry_ko": "기술 하드웨어·스토리지·주변기기",
+    "sector": "Information Technology",
+    "ksf_weights": {
+      "tech": 0.417,
+      "brand": 0.25,
+      "scale": 0.25,
+      "global": 0.083
+    },
+    "ksf_en": [
+      "In-house silicon",
+      "Component security",
+      "Ecosystem & services",
+      "Premium brand & ASP",
+      "On-device AI",
+      "Scale manufacturing"
+    ],
+    "global_company": "Apple",
+    "korea_company": "Samsung Electronics",
+    "global_firms": [
+      {
+        "name": "Apple",
+        "share": 20.0
+      },
+      {
+        "name": "Samsung",
+        "share": 19.0
+      },
+      {
+        "name": "Xiaomi",
+        "share": 13.0
+      }
+    ]
+  },
+  {
+    "gics": "151010",
+    "industry_en": "Chemicals",
+    "industry_ko": "화학",
+    "sector": "Materials",
+    "ksf_weights": {
+      "tech": 0.5,
+      "brand": 0.214,
+      "scale": 0.214,
+      "global": 0.071
+    },
+    "ksf_en": [
+      "Feedstock cost & integration",
+      "Scale & low-cost position",
+      "Specialty / high-value mix",
+      "R&D & product innovation",
+      "Safety, ESG & decarbonization",
+      "Capital & portfolio discipline"
+    ],
+    "global_company": "BASF SE",
+    "korea_company": "LG Chem",
+    "global_firms": [
+      {
+        "name": "BASF",
+        "share": 29.0
+      },
+      {
+        "name": "Dow",
+        "share": 24.0
+      },
+      {
+        "name": "Sinopec",
+        "share": 18.0
+      }
+    ]
+  },
+  {
+    "gics": "151030",
+    "industry_en": "Containers & Packaging",
+    "industry_ko": "용기·포장",
+    "sector": "Materials",
+    "ksf_weights": {
+      "tech": 0.214,
+      "brand": 0.214,
+      "scale": 0.357,
+      "global": 0.214
+    },
+    "ksf_en": [
+      "Scale & integration",
+      "Recyclable portfolio",
+      "Customer contracts",
+      "Geographic spread",
+      "Operational efficiency",
+      "Lightweight innovation"
+    ],
+    "global_company": "Smurfit WestRock",
+    "korea_company": "Dongwon Systems",
+    "global_firms": [
+      {
+        "name": "Smurfit WestRock",
+        "share": 36.0
+      },
+      {
+        "name": "Amcor",
+        "share": 25.0
+      },
+      {
+        "name": "Ball",
+        "share": 15.0
+      }
+    ]
+  },
+  {
+    "gics": "151040",
+    "industry_en": "Metals & Mining",
+    "industry_ko": "금속·광업",
+    "sector": "Materials",
+    "ksf_weights": {
+      "tech": 0.25,
+      "brand": 0.25,
+      "scale": 0.417,
+      "global": 0.083
+    },
+    "ksf_en": [
+      "Low-cost ore access",
+      "Balance-sheet strength",
+      "Operational scale",
+      "Permitting & social license",
+      "Transition-metal mix",
+      "Decarbonization"
+    ],
+    "global_company": "BHP Group",
+    "korea_company": "Korea Zinc",
+    "global_firms": [
+      {
+        "name": "Rio Tinto",
+        "share": 22.0
+      },
+      {
+        "name": "BHP",
+        "share": 20.0
+      },
+      {
+        "name": "Vale",
+        "share": 15.0
+      }
+    ]
+  },
+  {
+    "gics": "151050",
+    "industry_en": "Paper & Forest Products",
+    "industry_ko": "제지·임산물",
+    "sector": "Materials",
+    "ksf_weights": {
+      "tech": 0.083,
+      "brand": 0.417,
+      "scale": 0.417,
+      "global": 0.083
+    },
+    "ksf_en": [
+      "Low-cost fiber & energy",
+      "Capacity discipline",
+      "Packaging/specialty mix",
+      "Sustainability credentials",
+      "Customer proximity",
+      "Balance-sheet strength"
+    ],
+    "global_company": "Smurfit WestRock",
+    "korea_company": "Hansol Paper",
+    "global_firms": [
+      {
+        "name": "Smurfit WestRock",
+        "share": 11.0
+      },
+      {
+        "name": "International Paper",
+        "share": 8.0
+      },
+      {
+        "name": "Mondi",
+        "share": 4.0
+      }
+    ]
+  },
+  {
+    "gics": "601010",
+    "industry_en": "Diversified REITs",
+    "industry_ko": "종합 리츠",
+    "sector": "Real Estate",
+    "ksf_weights": {
+      "tech": 0.125,
+      "brand": 0.125,
+      "scale": 0.625,
+      "global": 0.125
+    },
+    "ksf_en": [
+      "Low cost of capital",
+      "Diversification",
+      "High occupancy / long WALT",
+      "Capital recycling",
+      "Scale & deal flow",
+      "Sustainable dividend"
+    ],
+    "global_company": "W.P. Carey",
+    "korea_company": "SK REIT",
+    "global_firms": [
+      {
+        "name": "W.P. Carey",
+        "share": 30.0
+      },
+      {
+        "name": "Stockland",
+        "share": 20.0
+      },
+      {
+        "name": "Mirvac",
+        "share": 13.0
+      }
+    ]
+  },
+  {
+    "gics": "601030",
+    "industry_en": "Hotel & Resort REITs",
+    "industry_ko": "호텔·리조트 리츠",
+    "sector": "Real Estate",
+    "ksf_weights": {
+      "tech": 0.1,
+      "brand": 0.3,
+      "scale": 0.5,
+      "global": 0.1
+    },
+    "ksf_en": [
+      "Low cost of capital",
+      "Locations & brands",
+      "RevPAR / ADR growth",
+      "Capital recycling",
+      "Operating-cost discipline",
+      "Balance-sheet strength"
+    ],
+    "global_company": "Host Hotels & Resorts",
+    "korea_company": "Hotel Shilla (proxy)",
+    "global_firms": [
+      {
+        "name": "Host Hotels",
+        "share": 54.0
+      },
+      {
+        "name": "Ryman Hospitality",
+        "share": 24.0
+      },
+      {
+        "name": "Apple Hospitality",
+        "share": 11.0
+      }
+    ]
+  },
+  {
+    "gics": "601025",
+    "industry_en": "Industrial REITs",
+    "industry_ko": "산업·물류 리츠",
+    "sector": "Real Estate",
+    "ksf_weights": {
+      "tech": 0.3,
+      "brand": 0.1,
+      "scale": 0.5,
+      "global": 0.1
+    },
+    "ksf_en": [
+      "Infill land",
+      "Mark-to-market upside",
+      "Low cost of capital",
+      "Scale & diversification",
+      "Power/data-center optionality",
+      "Occupancy & tenant credit"
+    ],
+    "global_company": "Prologis",
+    "korea_company": "ESR Kendall Square REIT",
+    "global_firms": [
+      {
+        "name": "Prologis",
+        "share": 38.0
+      },
+      {
+        "name": "Goodman Group",
+        "share": 15.0
+      },
+      {
+        "name": "SEGRO",
+        "share": 5.0
+      }
+    ]
+  },
+  {
+    "gics": "601040",
+    "industry_en": "Office REITs",
+    "industry_ko": "오피스 리츠",
+    "sector": "Real Estate",
+    "ksf_weights": {
+      "tech": 0.5,
+      "brand": 0.1,
+      "scale": 0.3,
+      "global": 0.1
+    },
+    "ksf_en": [
+      "Asset quality & location",
+      "Balance-sheet & refinancing strength",
+      "Occupancy & tenant retention",
+      "Cost of capital",
+      "Sustainability / decarbonization",
+      "Development & redevelopment skill"
+    ],
+    "global_company": "BXP (Boston Properties)",
+    "korea_company": "Shinhan Alpha REIT",
+    "global_firms": [
+      {
+        "name": "BXP",
+        "share": 27.0
+      },
+      {
+        "name": "Vornado",
+        "share": 18.0
+      },
+      {
+        "name": "Cousins",
+        "share": 11.0
+      }
+    ]
+  },
+  {
+    "gics": "601060",
+    "industry_en": "Residential REITs",
+    "industry_ko": "주거용 리츠",
+    "sector": "Real Estate",
+    "ksf_weights": {
+      "tech": 0.1,
+      "brand": 0.1,
+      "scale": 0.5,
+      "global": 0.3
+    },
+    "ksf_en": [
+      "Low cost of capital",
+      "Supply-constrained markets",
+      "High occupancy & renewal retention",
+      "Operating-expense discipline",
+      "Scale & capital recycling",
+      "Regulatory & rate navigation"
+    ],
+    "global_company": "AvalonBay Communities",
+    "korea_company": "SK REIT (proxy)",
+    "global_firms": [
+      {
+        "name": "AvalonBay",
+        "share": 14.0
+      },
+      {
+        "name": "Equity Residential",
+        "share": 13.0
+      },
+      {
+        "name": "Invitation Homes",
+        "share": 9.0
+      }
+    ]
+  },
+  {
+    "gics": "601070",
+    "industry_en": "Retail REITs",
+    "industry_ko": "리테일 리츠",
+    "sector": "Real Estate",
+    "ksf_weights": {
+      "tech": 0.083,
+      "brand": 0.417,
+      "scale": 0.417,
+      "global": 0.083
+    },
+    "ksf_en": [
+      "Prime, scarce locations",
+      "Low cost of capital",
+      "Tenant mix & leasing power",
+      "Lease structure & rent escalators",
+      "Scale & capital recycling",
+      "Omnichannel & experience adaptation"
+    ],
+    "global_company": "Simon Property Group",
+    "korea_company": "Lotte REIT",
+    "global_firms": [
+      {
+        "name": "Simon Property",
+        "share": 27.0
+      },
+      {
+        "name": "Realty Income",
+        "share": 22.0
+      },
+      {
+        "name": "Regency Centers",
+        "share": 11.0
+      }
+    ]
+  },
+  {
+    "gics": "551010",
+    "industry_en": "Electric Utilities",
+    "industry_ko": "전력 유틸리티",
+    "sector": "Utilities",
+    "ksf_weights": {
+      "tech": 0.214,
+      "brand": 0.214,
+      "scale": 0.357,
+      "global": 0.214
+    },
+    "ksf_en": [
+      "Constructive regulatory relationships",
+      "Low cost of capital",
+      "Rate-base & capex execution",
+      "Generation mix & fuel management",
+      "Grid reliability & load growth capture",
+      "Policy & decarbonization navigation"
+    ],
+    "global_company": "NextEra Energy",
+    "korea_company": "KEPCO",
+    "global_firms": [
+      {
+        "name": "NextEra Energy",
+        "share": 18.0
+      },
+      {
+        "name": "Iberdrola",
+        "share": 14.0
+      },
+      {
+        "name": "Enel",
+        "share": 10.0
+      }
+    ]
+  },
+  {
+    "gics": "551050",
+    "industry_en": "Independent Power & Renewable Electricity Producers",
+    "industry_ko": "민자·재생에너지 발전",
+    "sector": "Utilities",
+    "ksf_weights": {
+      "tech": 0.25,
+      "brand": 0.083,
+      "scale": 0.417,
+      "global": 0.25
+    },
+    "ksf_en": [
+      "Low-cost capital",
+      "Development pipeline",
+      "PPA contracting",
+      "Grid access",
+      "Project execution",
+      "Datacenter capture"
+    ],
+    "global_company": "NextEra Energy",
+    "korea_company": "KEPCO (proxy)",
+    "global_firms": [
+      {
+        "name": "NextEra",
+        "share": 38.0
+      },
+      {
+        "name": "Iberdrola",
+        "share": 29.0
+      },
+      {
+        "name": "Brookfield Ren.",
+        "share": 10.0
+      }
+    ]
+  },
+  {
+    "gics": "551040",
+    "industry_en": "Water Utilities",
+    "industry_ko": "수도 유틸리티",
+    "sector": "Utilities",
+    "ksf_weights": {
+      "tech": 0.25,
+      "brand": 0.083,
+      "scale": 0.417,
+      "global": 0.25
+    },
+    "ksf_en": [
+      "Rate-base expansion",
+      "Regulatory execution",
+      "Operational efficiency",
+      "PFAS & contaminant compliance",
+      "M&A & municipal acquisition",
+      "Smart-water technology"
+    ],
+    "global_company": "American Water Works",
+    "korea_company": "K-water (proxy)",
+    "global_firms": [
+      {
+        "name": "Veolia (water)",
+        "share": 55.0
+      },
+      {
+        "name": "American Water",
+        "share": 14.0
+      },
+      {
+        "name": "Severn Trent",
+        "share": 8.0
+      }
+    ]
+  }
+]
