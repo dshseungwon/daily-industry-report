@@ -361,37 +361,37 @@
   },
   {
     "gics": "252010",
-    "industry_en": "Household Durables",
-    "industry_ko": "내구소비재",
+    "industry_en": "Leisure Products",
+    "industry_ko": "레저용품",
     "sector": "Consumer Discretionary",
     "ksf_weights": {
-      "tech": 0.375,
-      "brand": 0.125,
-      "scale": 0.375,
-      "global": 0.125
+      "tech": 0.7,
+      "brand": 0.1,
+      "scale": 0.1,
+      "global": 0.1
     },
     "ksf_en": [
-      "Scale & cost leadership",
-      "Land bank & pipeline control",
-      "Affordability & financing tools",
-      "Recurring service & subscription",
-      "Brand, quality & energy efficiency",
-      "Cycle & rate navigation"
+      "Owned IP & brand strength",
+      "Supply-chain flexibility",
+      "Continuous product innovation",
+      "Licensing & media tie-ins",
+      "Retail & e-commerce reach",
+      "Safety, compliance & quality"
     ],
-    "global_company": "D.R. Horton",
-    "korea_company": "Coway",
+    "global_company": "LEGO Group",
+    "korea_company": "Youngone",
     "global_firms": [
       {
-        "name": "D.R. Horton",
+        "name": "LEGO",
+        "share": 43.0
+      },
+      {
+        "name": "Mattel",
+        "share": 18.0
+      },
+      {
+        "name": "Hasbro",
         "share": 16.0
-      },
-      {
-        "name": "Lennar",
-        "share": 14.0
-      },
-      {
-        "name": "PulteGroup",
-        "share": 10.0
       }
     ]
   },
@@ -828,6 +828,42 @@
     ]
   },
   {
+    "gics": "402020",
+    "industry_en": "Consumer Finance",
+    "industry_ko": "소비자금융",
+    "sector": "Financials",
+    "ksf_weights": {
+      "tech": 0.062,
+      "brand": 0.312,
+      "scale": 0.312,
+      "global": 0.312
+    },
+    "ksf_en": [
+      "Funding cost & access",
+      "Underwriting & risk pricing",
+      "Premium spending base",
+      "Rewards & merchant network",
+      "Scale & operating efficiency",
+      "Regulatory & data compliance"
+    ],
+    "global_company": "American Express",
+    "korea_company": "Shinhan Card",
+    "global_firms": [
+      {
+        "name": "JPMorgan Chase",
+        "share": 32.0
+      },
+      {
+        "name": "American Express",
+        "share": 28.0
+      },
+      {
+        "name": "Citi",
+        "share": 15.0
+      }
+    ]
+  },
+  {
     "gics": "402010",
     "industry_en": "Financial Services",
     "industry_ko": "금융 서비스",
@@ -932,6 +968,42 @@
       {
         "name": "Starwood",
         "share": 10.0
+      }
+    ]
+  },
+  {
+    "gics": "352010",
+    "industry_en": "Biotechnology",
+    "industry_ko": "바이오테크",
+    "sector": "Health Care",
+    "ksf_weights": {
+      "tech": 0.3,
+      "brand": 0.1,
+      "scale": 0.3,
+      "global": 0.3
+    },
+    "ksf_en": [
+      "R&D productivity & pipeline",
+      "Intellectual property & exclusivity",
+      "Capital & balance-sheet strength",
+      "Manufacturing & supply scale",
+      "Regulatory & market access",
+      "Business development & M&A"
+    ],
+    "global_company": "Amgen",
+    "korea_company": "Samsung Biologics",
+    "global_firms": [
+      {
+        "name": "Amgen",
+        "share": 36.0
+      },
+      {
+        "name": "Gilead",
+        "share": 29.0
+      },
+      {
+        "name": "Regeneron",
+        "share": 14.0
       }
     ]
   },
@@ -1292,6 +1364,42 @@
       {
         "name": "ABB",
         "share": 9.0
+      }
+    ]
+  },
+  {
+    "gics": "203040",
+    "industry_en": "Ground Transportation",
+    "industry_ko": "육상운송",
+    "sector": "Industrials",
+    "ksf_weights": {
+      "tech": 0.214,
+      "brand": 0.071,
+      "scale": 0.357,
+      "global": 0.357
+    },
+    "ksf_en": [
+      "Network density & route coverage",
+      "Operating efficiency & asset utilization",
+      "Scale & cost leadership",
+      "Service reliability & transit time",
+      "Technology & data",
+      "Regulatory, safety & labor management"
+    ],
+    "global_company": "Union Pacific",
+    "korea_company": "CJ Logistics",
+    "global_firms": [
+      {
+        "name": "Union Pacific",
+        "share": 34.0
+      },
+      {
+        "name": "CSX",
+        "share": 19.0
+      },
+      {
+        "name": "CPKC",
+        "share": 17.0
       }
     ]
   },
@@ -1764,6 +1872,42 @@
     ]
   },
   {
+    "gics": "151020",
+    "industry_en": "Construction Materials",
+    "industry_ko": "건축자재",
+    "sector": "Materials",
+    "ksf_weights": {
+      "tech": 0.214,
+      "brand": 0.214,
+      "scale": 0.5,
+      "global": 0.071
+    },
+    "ksf_en": [
+      "Logistics & proximity to market",
+      "Energy & fuel cost management",
+      "Vertical integration",
+      "Scale & reserve / permit ownership",
+      "Pricing discipline",
+      "Decarbonization technology"
+    ],
+    "global_company": "CRH plc",
+    "korea_company": "Ssangyong C&E",
+    "global_firms": [
+      {
+        "name": "CRH",
+        "share": 31.0
+      },
+      {
+        "name": "Holcim",
+        "share": 26.0
+      },
+      {
+        "name": "Heidelberg",
+        "share": 20.0
+      }
+    ]
+  },
+  {
     "gics": "151030",
     "industry_en": "Containers & Packaging",
     "industry_ko": "용기·포장",
@@ -2088,6 +2232,42 @@
     ]
   },
   {
+    "gics": "601080",
+    "industry_en": "Specialized REITs",
+    "industry_ko": "특수 리츠",
+    "sector": "Real Estate",
+    "ksf_weights": {
+      "tech": 0.375,
+      "brand": 0.125,
+      "scale": 0.375,
+      "global": 0.125
+    },
+    "ksf_en": [
+      "Low cost of capital",
+      "Scarce, irreplaceable assets",
+      "Power access for data centers",
+      "Long leases & tenant credit",
+      "Disciplined leverage",
+      "Exposure to structural demand"
+    ],
+    "global_company": "American Tower",
+    "korea_company": "SK REIT",
+    "global_firms": [
+      {
+        "name": "Equinix",
+        "share": 29.0
+      },
+      {
+        "name": "American Tower",
+        "share": 25.0
+      },
+      {
+        "name": "Digital Realty",
+        "share": 20.0
+      }
+    ]
+  },
+  {
     "gics": "551010",
     "industry_en": "Electric Utilities",
     "industry_ko": "전력 유틸리티",
@@ -2120,6 +2300,42 @@
       {
         "name": "Enel",
         "share": 10.0
+      }
+    ]
+  },
+  {
+    "gics": "551020",
+    "industry_en": "Gas Utilities",
+    "industry_ko": "가스 유틸리티",
+    "sector": "Utilities",
+    "ksf_weights": {
+      "tech": 0.188,
+      "brand": 0.062,
+      "scale": 0.688,
+      "global": 0.062
+    },
+    "ksf_en": [
+      "Constructive regulation & rate-case execution",
+      "Disciplined safety & replacement capex",
+      "Commodity-cost & FX risk management",
+      "Balance-sheet strength & low cost of capital",
+      "Decarbonization & transition strategy",
+      "Operational safety & system integrity"
+    ],
+    "global_company": "Atmos Energy",
+    "korea_company": "Korea Gas Corp. (KOGAS)",
+    "global_firms": [
+      {
+        "name": "Atmos Energy",
+        "share": 42.0
+      },
+      {
+        "name": "Tokyo Gas",
+        "share": 20.0
+      },
+      {
+        "name": "Italgas",
+        "share": 16.0
       }
     ]
   },
