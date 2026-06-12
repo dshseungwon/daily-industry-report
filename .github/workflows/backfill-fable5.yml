@@ -1,0 +1,73 @@
+name: Backfill on Fable5 (one-off)
+
+# Regenerates EVERY already-published report (dated folders <= 2026-06-10) on the Fable5
+# model, date by date, committing after each date so a timeout never loses finished work.
+# If no Fable alias is available it ABORTS (does NOT fall back to opus). reports.json and
+# index.html are left untouched, so this never conflicts with the daily run.
+
+on:
+  workflow_dispatch: {}
+
+concurrency:
+  group: backfill-fable5
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Pick Fable model (abort if unavailable)
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          MODEL=""
+          for m in fable5 fable-5 fable; do
+            if claude -p "Reply with: ok" --model "$m" --dangerously-skip-permissions >/dev/null 2>&1; then
+              MODEL="$m"; break
+            fi
+          done
+          if [ -z "$MODEL" ]; then
+            echo "::error::No Fable model alias available (tried fable5, fable-5, fable). Aborting; NOT falling back to opus."
+            exit 1
+          fi
+          echo "MODEL=$MODEL" >> "$GITHUB_ENV"
+          echo "Backfilling on model: $MODEL"
+
+      - name: Regenerate every backlog date on Fable5
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          git config user.name "Daily Industry Report Bot"
+          git config user.email "daily-industry-report@users.noreply.github.com"
+          for D in $(ls reports | grep -E '^2026-[0-9]{2}-[0-9]{2}$' | sort); do
+            if [ "$D" \> "2026-06-10" ]; then echo "skip $D (outside backlog)"; continue; fi
+            echo "::group::Backfill $D on $MODEL"
+            export TARGET_DATE="$D"
+            if ! claude -p "$(cat prompts/backfill-fable5.md)" --model "$MODEL" --dangerously-skip-permissions --verbose; then
+              echo "::warning::$D failed on $MODEL; leaving it unchanged."
+              git checkout -- . 2>/dev/null || true
+              echo "::endgroup::"; continue
+            fi
+            git add -A "reports/$D"
+            if git diff --cached --quiet; then
+              echo "no changes for $D"
+            else
+              git commit -m "Backfill $D on $MODEL (Fable5)"
+              git pull --rebase origin main || true
+              git push || { git pull --rebase origin main && git push; }
+            fi
+            echo "::endgroup::"
+          done
+          echo "Backfill complete on $MODEL."
