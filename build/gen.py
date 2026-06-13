@@ -348,3 +348,11 @@ for d in REPORTS:
 
 open("/sessions/gracious-magical-pascal/mnt/outputs/today.json", "w", encoding="utf-8").write(json.dumps(landing, ensure_ascii=False, indent=2))
 print("wrote /sessions/gracious-magical-pascal/mnt/outputs/today.json with", len(landing), "entries")
+
+# 게임(산업 패권) 데이터 갱신 — 클린 D딕트에서 ksf·실 글로벌/한국 점유율·시장규모를 추출해
+# 레포 루트 game_data.json에 gics 단위로 누적(매일 7개씩 커버리지 증가).
+try:
+    import game_data
+    game_data.main()
+except Exception as e:
+    print("game_data skipped:", e)
