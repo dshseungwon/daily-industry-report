@@ -53,10 +53,11 @@ jobs:
             --dangerously-skip-permissions \
             --verbose
 
-      - name: Build game_data.json (Industry Hegemon)
+      - name: Build game_data.json (Industry Hegemon game data)
         run: |
-          pip install beautifulsoup4
-          python3 build/game_data.py
+          # 발행된 HTML에서 게임용 실데이터(KSF·글로벌/한국 점유율)를 추출 → game_data.json.
+          # stdlib만 사용(의존성 없음). 다음 'Commit & push'의 git add -A 가 함께 게시(Pages 루트).
+          python3 build/game_data.py || echo "game_data update skipped (non-fatal)"
 
       - name: Commit & push
         run: |

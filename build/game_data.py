@@ -1,145 +1,168 @@
 # -*- coding: utf-8 -*-
 """
-game_data.py — 리포트 구조화 데이터(D 딕트) → 게임 시나리오용 깨끗한 game_data.json.
+game_data.py — 발행된 리포트 HTML → 게임(산업 패권)용 game_data.json.
 
-산업 패권(industry-hegemon) 게임이 쓰는 산업별 실데이터를 추출한다:
-  - ksf_weights: 리포트의 KSF 요인들을 게임 4역량(tech/brand/scale/global)으로 분류·정규화
-  - global_firms: pie_global(실제 글로벌 점유율)에서 'Others' 제외, 이름 정제
-  - korea_firms:  pie_korea(실제 한국 점유율)에서 'Others' 제외, 이름 정제
-  - market(최신 시장 규모)·cagr
-HTML 파싱이 아니라 D 딕트(클린 소스)에서 뽑으므로 기업명에 국가·쓰레기가 안 섞인다.
-기존 game_data.json(dict, gics 키)이 있으면 gics 단위로 '병합'(누적) — 매일 7개씩 커버리지가 는다.
+매일 GitHub Action이 reports/<date>/*.html 를 발행한다. 이 스크립트는 reports.json(전체
+이력 메타)에서 gics별 최신 리포트를 골라 그 HTML에서 게임이 쓰는 실데이터를 뽑는다:
+  - ksf_weights : KSF 6요인을 게임 4역량(tech/brand/scale/global)으로 분류·정규화
+  - global_firms: 글로벌 점유율 파이(legend)에서 회사·% (Others 제외, 'English한글' 정제, 국가 제외)
+  - korea_firms : 한국 점유율 파이에서 동일 처리
+  - cagr        : 있으면 성장률 라벨
+stdlib만 사용(정규식). 외부 의존성 없음 → CI에서 그대로 동작.
 
-실행: python3 build/game_data.py   (산출: 레포 루트 game_data.json, dict[gics])
-파이프라인 연동: 일일 빌드(gen.py) 끝에서 자동 호출.
+연동: 일일 워크플로의 'Generate' 단계 뒤(‘Commit & push’ 전)에 `python3 build/game_data.py`를
+호출하면 game_data.json이 갱신되고, git add -A 가 함께 커밋·게시한다(GitHub Pages).
+게임 레포는 이 game_data.json(레포 루트 = Pages 루트)을 가져다 쓴다.
+
+실행: python3 build/game_data.py   →   레포 루트 game_data.json (dict[gics])
 """
 import json, os, re, html
 
-from reports_data import REPORTS
-
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAPS = ["tech", "brand", "scale", "global"]
 
-# KSF 영문 요인명 → 게임 4역량 분류 키워드. CHECK_ORDER 순으로 가장 먼저 매칭되는 cap.
-# (brand/scale/global을 tech보다 먼저 봐서, 'high-spec'·'performance' 같은 모호어가 tech로 쏠리는 것 완화)
+# KSF 영문 요인명 → 4역량. CHECK_ORDER 순으로 첫 매칭(brand/scale/global을 tech보다 먼저).
 CHECK_ORDER = ["brand", "scale", "global", "tech"]
 KEYWORDS = {
     "brand":  ["brand", "premium", "high-spec", "marketing", "design", "loyalty", "trust", "reputation",
                "customer experience", "content", "franchise", "membership", "luxury"],
     "scale":  ["scale", "low-cost", "low cost", "cost", "manufactur", "capacity", "volume",
                "production", "pricing", "throughput", "yield", "operational", "utiliz", "fleet", "density",
-               "efficiency", "efficient"],
+               "efficiency", "efficient", "vertical integ"],
     "global": ["global", "international", "distribution", "network", "geograph", "export",
                "supply chain", "supply-chain", "footprint", "reach", "regulat", "compliance",
-               "diversif", "logistics", "channel", "access", "infra"],
+               "diversif", "logistic", "channel", "access", "infra", "proximity"],
     "tech":   ["r&d", "rnd", "research", "technolog", "innovat", "ai", "chip", "semiconductor",
                "software", "patent", "decarbon", "sustainab", "digital", "data", "automation",
-               "engineering", "clinical", "ip", "spec", "performance", "advanced", "quality"],
+               "engineering", "clinical", " ip", "spec", "performance", "advanced", "quality", "fuel"],
 }
 
+COUNTRY_EN = {"united states", "china", "russia", "saudi arabia", "india", "iran", "iraq", "canada",
+              "brazil", "japan", "germany", "united arab emirates", "kuwait", "norway", "mexico",
+              "qatar", "nigeria", "australia", "south korea", "united kingdom", "france", "indonesia"}
+COUNTRY_KO = {"미국", "중국", "러시아", "사우디아라비아", "사우디", "인도", "이란", "이라크", "캐나다",
+              "브라질", "일본", "독일", "아랍에미리트", "쿠웨이트", "노르웨이", "멕시코", "카타르",
+              "나이지리아", "호주", "한국", "영국", "프랑스", "인도네시아"}
 
-def classify(factor_en: str) -> str:
-    s = html.unescape(factor_en or "").lower()
+
+def strip_tags(s):
+    return html.unescape(re.sub(r"<[^>]+>", "", s)).strip()
+
+
+def classify(factor_en):
+    s = factor_en.lower()
     for cap in CHECK_ORDER:
         for kw in KEYWORDS[cap]:
             if kw in s:
                 return cap
-    return ""   # 미분류
+    return ""
 
 
-def ksf_weights(ksf_list) -> dict:
-    """KSF 요인들을 순위 가중(앞일수록 중요)으로 4역량에 누적·정규화."""
+def ksf_weights(titles):
     raw = {c: 0.0 for c in CAPS}
-    n = len(ksf_list) or 1
-    for i, item in enumerate(ksf_list):
-        en = item[0] if isinstance(item, (list, tuple)) else str(item)
-        cap = classify(en)
-        w = (n - i)            # 순위 가중: 1순위 = n, 마지막 = 1
+    n = len(titles) or 1
+    for i, t in enumerate(titles):
+        cap = classify(t)
         if cap:
-            raw[cap] += w
+            raw[cap] += (n - i)        # 순위 가중(앞일수록 중요)
     total = sum(raw.values())
     if total <= 0:
-        return {c: 0.25 for c in CAPS}                 # 분류 실패 → 균등(게임에서 '준비중' 처리)
+        return {c: 0.25 for c in CAPS}
     return {c: round(raw[c] / total, 4) for c in CAPS}
 
 
-def clean_name(raw: str):
-    """'English한글' 분리. (en, ko) 반환. 게임 측에서도 방어하지만 여기서 1차 정제."""
+def clean_name(raw):
     s = html.unescape((raw or "").strip())
     m = re.match(r"^([^가-힣]+?)\s*([가-힣].*)$", s)
-    if m:
-        return m.group(1).strip(), m.group(2).strip()
-    return s, None
+    en, ko = (m.group(1).strip(), m.group(2).strip()) if m else (s, None)
+    is_country = en.lower() in COUNTRY_EN or (ko in COUNTRY_KO) or (not en and (ko in COUNTRY_KO))
+    return en, ko, is_country
 
 
-def firms_from_pie(pie):
-    """pie [(name, share), ...] → [{name, ko?, share}] (Others 제외)."""
+def firms(pairs):
     out = []
-    for entry in (pie or []):
-        if not isinstance(entry, (list, tuple)) or len(entry) < 2:
-            continue
-        name, share = entry[0], entry[1]
-        en, ko = clean_name(name)
-        if not en or en.lower() in ("others", "other", "etc"):
+    for name, share in pairs:
+        en, ko, is_country = clean_name(name)
+        low = en.lower()
+        if (not en or is_country or low in ("others", "other", "etc", "n/a")
+                or low.startswith("rest of") or low.startswith("other ") or "remaining" in low):
             continue
         rec = {"name": en, "share": share}
         if ko:
             rec["ko"] = ko
         out.append(rec)
-    return out
+    return out[:5]
 
 
-def latest_market(cols):
-    """cols [(label, value_T, year)] → 최신(현재년 추정) 규모(조달러)와 연도 라벨."""
-    if not cols:
-        return None
-    actual = [c for c in cols if not str(c[2]).endswith("E")]   # 'E'(추정) 아닌 최근 = 현재
-    pick = actual[-1] if actual else cols[-1]
-    return {"label": pick[0], "trillion_usd": pick[1], "year": str(pick[2])}
-
-
-def build_entry(D: dict) -> dict:
-    return {
-        "gics": D.get("gics", ""),
-        "industry_en": html.unescape(D.get("industry_en", "")),
-        "industry_ko": D.get("industry_ko", ""),
-        "sector": D.get("sector_en", ""),
-        "sector_ko": D.get("sector_ko", ""),
-        "global_company": html.unescape(D.get("global_company", "")),
-        "korea_company": html.unescape(D.get("korea_company", "")),
-        "headline_ko": D.get("headline_ko", ""),
-        "ksf_weights": ksf_weights(D.get("ksf", [])),
-        "global_firms": firms_from_pie(D.get("pie_global")),
-        "korea_firms": firms_from_pie(D.get("pie_korea")),
-        "market": latest_market(D.get("cols")),
-        "cagr": D.get("cagr", ""),
-    }
+def parse_html(s):
+    # KSF 요인 제목: 각 .kc 의 첫 <b><span class="en">제목</span>
+    titles = []
+    for kc in re.findall(r'<div class="kc">(.*?)</div>\s*</div>', s, re.S):
+        m = re.search(r'<b>\s*<span class="en">(.*?)</span>', kc, re.S)
+        if m:
+            titles.append(strip_tags(m.group(1)))
+    # 파이: <div class="pieblock"> 단위로 split. lg-item 은 파이에만 등장(다른 곳 없음).
+    glob, kor = [], []
+    for chunk in s.split('<div class="pieblock">')[1:]:
+        tm = re.search(r'pie-title[^>]*>\s*<span class="en">(.*?)</span>', chunk, re.S)
+        title = strip_tags(tm.group(1)) if tm else ""
+        pairs = []
+        for it in re.findall(r'<div class="lg-item">(.*?)</div>', chunk, re.S):
+            nm = re.search(r'</span>\s*(.*?)\s*<b>\s*~?\s*([\d.]+)\s*%', it, re.S)
+            if nm:
+                pairs.append((strip_tags(nm.group(1)), float(nm.group(2))))
+        tl = title.lower()
+        if "korea" in tl or "한국" in title:
+            kor = pairs
+        elif glob:
+            kor = kor or pairs
+        else:
+            glob = pairs
+    return titles, glob, kor
 
 
 def main():
-    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    out_path = os.path.join(root, "game_data.json")
+    reports = json.load(open(os.path.join(ROOT, "reports.json"), encoding="utf-8"))
+    latest = {}
+    for e in reports:                                  # gics별 최신 날짜만
+        if e["gics"] not in latest or e["date"] > latest[e["gics"]]["date"]:
+            latest[e["gics"]] = e
 
     data = {}
-    if os.path.exists(out_path):                      # 기존 dict 위에 병합(누적). list(구버전)·깨진 파일이면 새로.
+    if os.path.exists(os.path.join(ROOT, "game_data.json")):
         try:
-            with open(out_path, encoding="utf-8") as f:
-                loaded = json.load(f)
+            loaded = json.load(open(os.path.join(ROOT, "game_data.json"), encoding="utf-8"))
             if isinstance(loaded, dict):
-                data = loaded
+                data = loaded                          # 기존 위에 병합(파싱 실패한 날 보존)
         except Exception:
             data = {}
 
-    added = 0
-    for D in REPORTS:
-        g = D.get("gics")
-        if not g:
+    ok = 0
+    for gics, e in latest.items():
+        path = os.path.join(ROOT, e["file"])
+        if not os.path.exists(path):
             continue
-        data[g] = build_entry(D)
-        added += 1
+        titles, glob, kor = parse_html(open(path, encoding="utf-8").read())
+        if len(titles) < 3 and not glob:
+            continue                                   # 정보 부족 → 건너뜀(기존 유지)
+        data[gics] = {
+            "gics": gics,
+            "industry_en": e.get("industry_en", ""),
+            "industry_ko": e.get("industry_ko", ""),
+            "sector": e.get("sector", ""),
+            "global_company": e.get("global_company", ""),
+            "korea_company": e.get("korea_company", ""),
+            "headline_ko": e.get("headline_ko", ""),
+            "ksf_weights": ksf_weights(titles),
+            "global_firms": firms(glob),
+            "korea_firms": firms(kor),
+            "cagr": "",
+        }
+        ok += 1
 
-    with open(out_path, "w", encoding="utf-8") as f:
+    with open(os.path.join(ROOT, "game_data.json"), "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2, sort_keys=True)
-    print(f"game_data.json: {added}개 갱신, 총 {len(data)}개 산업 → {out_path}")
+    print(f"game_data.json: {ok}개 파싱 성공, 총 {len(data)}개 산업")
 
 
 if __name__ == "__main__":
