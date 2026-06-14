@@ -277,38 +277,51 @@
     "global_company": "BHP Group",
     "global_firms": [
       {
-        "name": "Rio Tinto",
-        "share": 22.0
-      },
-      {
         "name": "BHP",
-        "share": 20.0
+        "share": 34.0
       },
       {
-        "name": "Vale",
+        "name": "Rio Tinto",
+        "share": 25.0
+      },
+      {
+        "name": "Freeport-McMoRan",
         "share": 15.0
       },
       {
         "name": "Glencore",
-        "share": 11.0
+        "share": 13.0
+      },
+      {
+        "name": "Agnico Eagle",
+        "share": 13.0
       }
     ],
-    "headline_ko": "구리 슈퍼사이클과 사상 최고치 금값이 광업의 수익 구조를 다시 짜고 있습니다.",
+    "headline_ko": "BHP는 사상 최고치의 구리·금 가격과 저비용 광체로 번창하는 반면, 철광석을 매입하는 포스코홀딩스의 철강 마진은 약한 업황에 눌려 있습니다.",
     "industry_en": "Metals & Mining",
     "industry_ko": "금속·광업",
-    "korea_company": "Korea Zinc",
+    "korea_company": "POSCO Holdings",
     "korea_firms": [
       {
-        "name": "Korea Zinc",
+        "name": "포스코홀딩스",
         "share": 48.0
       },
       {
-        "name": "LS MnM",
-        "share": 44.0
+        "name": "고려아연",
+        "share": 42.0
       },
       {
-        "name": "Young Poong",
-        "share": 5.0
+        "name": "현대제철",
+        "share": 6.0
+      },
+      {
+        "ko": "스틸",
+        "name": "KG",
+        "share": 3.0
+      },
+      {
+        "name": "동국제강",
+        "share": 1.0
       }
     ],
     "ksf_weights": {
@@ -531,48 +544,62 @@
   "201040": {
     "cagr": "",
     "gics": "201040",
-    "global_company": "Schneider Electric",
+    "global_company": "ABB",
     "global_firms": [
       {
-        "name": "Schneider",
-        "share": 12.0
-      },
-      {
-        "name": "Siemens Energy",
-        "share": 11.0
-      },
-      {
-        "name": "ABB",
-        "share": 9.0
+        "name": "Schneider Electric",
+        "share": 38.0
       },
       {
         "name": "Eaton",
-        "share": 7.0
+        "share": 16.0
+      },
+      {
+        "name": "Hitachi Energy",
+        "share": 15.0
+      },
+      {
+        "name": "ABB (Electrification)",
+        "share": 14.0
+      },
+      {
+        "name": "GE Vernova",
+        "share": 17.0
       }
     ],
-    "headline_ko": "AI 데이터센터와 전력망 투자가 변압기를 가장 희소한 자산으로 만들었습니다.",
+    "headline_ko": "전력기기는 연 약 6% 성장하는 약 1조 7,500억 달러 규모의 시장으로, AI 전력·전력망 슈퍼사이클을 타고 변압기 납기가 2년을 넘어선 것으로 파악됩니다.",
     "industry_en": "Electrical Equipment",
-    "industry_ko": "전기장비",
-    "korea_company": "Hyosung Heavy",
+    "industry_ko": "전력기기",
+    "korea_company": "HD Hyundai Electric",
     "korea_firms": [
       {
-        "name": "Hyosung Heavy",
-        "share": 35.0
+        "name": "효성중공업",
+        "share": 31.0
       },
       {
-        "name": "LS Electric",
-        "share": 29.0
+        "ko": "일렉트릭",
+        "name": "LS",
+        "share": 26.0
       },
       {
-        "name": "HD Hyundai Electric",
-        "share": 21.0
+        "ko": "현대일렉트릭",
+        "name": "HD",
+        "share": 18.0
+      },
+      {
+        "name": "대한전선",
+        "share": 17.0
+      },
+      {
+        "name": "일진전기",
+        "share": 8.0
       }
     ],
     "ksf_weights": {
-      "brand": 0.0,
-      "global": 0.1818,
-      "scale": 0.4545,
-      "tech": 0.3636
+      "brand": 0.0714,
+      "global": 0.0,
+      "scale": 0.4286,
+      "tech": 0.5
     },
     "sector": "Industrials"
   },
@@ -1276,44 +1303,60 @@
   "253010": {
     "cagr": "",
     "gics": "253010",
-    "global_company": "Service Corporation International",
+    "global_company": "Marriott International",
     "global_firms": [
       {
-        "name": "Service Corp Intl",
-        "share": 16.0
+        "name": "Marriott",
+        "share": 40.0
       },
       {
-        "name": "Carriage Services",
-        "share": 6.0
+        "name": "Hilton",
+        "share": 29.0
       },
       {
-        "name": "Park Lawn / Foundation",
-        "share": 4.0
+        "name": "Las Vegas Sands",
+        "share": 13.0
+      },
+      {
+        "name": "Oriental Land",
+        "share": 10.0
+      },
+      {
+        "name": "IHG",
+        "share": 8.0
       }
     ],
-    "headline_ko": "AI 튜터링과 인구 감소가 교육·소비자 서비스를 함께 재편하고 있습니다.",
-    "industry_en": "Diversified Consumer Services",
-    "industry_ko": "종합 소비자 서비스",
-    "korea_company": "MegaStudyEdu",
+    "headline_ko": "약 5조 5,000억 달러 규모의 글로벌 환대 시장이 연 약 6% 성장하는 가운데 Marriott가 선두에 있고, 호텔신라가 한국의 호텔·여행소매를 이끌고 있습니다.",
+    "industry_en": "Hotels, Restaurants & Leisure",
+    "industry_ko": "호텔·레스토랑·레저",
+    "korea_company": "Hotel Shilla",
     "korea_firms": [
       {
-        "name": "MegaStudyEdu",
-        "share": 47.0
+        "name": "강원랜드",
+        "share": 45.0
       },
       {
-        "name": "Daesung",
-        "share": 23.0
+        "name": "호텔신라",
+        "share": 26.0
       },
       {
-        "name": "Etoos",
+        "name": "파라다이스",
         "share": 14.0
+      },
+      {
+        "name": "그랜드코리아레저",
+        "share": 8.0
+      },
+      {
+        "name": "롯데관광개발",
+        "share": 7.0
       }
     ],
     "ksf_weights": {
-      "brand": 0.2941,
-      "global": 0.1176,
-      "scale": 0.0588,
-      "tech": 0.5294
+      "brand": 0.6667,
+      "global": 0.0,
+      "scale": 0.3333,
+      "tech": 0.0
     },
     "sector": "Consumer Discretionary"
   },
@@ -1472,44 +1515,54 @@
     "global_firms": [
       {
         "name": "Walmart",
-        "share": 5.0
+        "share": 41.0
       },
       {
         "name": "Costco",
-        "share": 2.0
+        "share": 23.0
+      },
+      {
+        "name": "Schwarz (Lidl)",
+        "share": 16.0
       },
       {
         "name": "Kroger",
-        "share": 1.0
+        "share": 12.0
       },
       {
-        "name": "Amazon grocery",
-        "share": 0.4
+        "name": "Ahold Delhaize",
+        "share": 8.0
       }
     ],
-    "headline_ko": "얇은 식료품 마진의 성패가 이제 데이터·멤버십·이커머스에 달려 있습니다.",
+    "headline_ko": "Walmart가 규모와 리테일 미디어로 약 12조 7,000억 달러 규모의 식품·식료품 시장을 이끄는 가운데, 이마트가 실적을 반등시키며 한국 최대 필수소비재 소매기업으로 자리하고 있습니다.",
     "industry_en": "Consumer Staples Distribution & Retail",
     "industry_ko": "필수소비재 유통·소매",
-    "korea_company": "Emart",
+    "korea_company": "E-Mart",
     "korea_firms": [
       {
-        "name": "Emart",
+        "ko": "리테일)",
+        "name": "CU (BGF",
+        "share": 33.0
+      },
+      {
+        "ko": "리테일)",
+        "name": "GS25 (GS",
+        "share": 33.0
+      },
+      {
+        "name": "세븐일레븐",
         "share": 21.0
       },
       {
-        "name": "BGF Retail (CU)",
-        "share": 7.0
-      },
-      {
-        "name": "GS Retail (GS25)",
-        "share": 6.0
+        "name": "이마트24",
+        "share": 9.0
       }
     ],
     "ksf_weights": {
-      "brand": 0.1765,
-      "global": 0.2941,
-      "scale": 0.3529,
-      "tech": 0.1765
+      "brand": 0.1176,
+      "global": 0.1765,
+      "scale": 0.7059,
+      "tech": 0.0
     },
     "sector": "Consumer Staples"
   },
@@ -2254,38 +2307,59 @@
     "global_company": "Annaly Capital",
     "global_firms": [
       {
-        "name": "Annaly",
-        "share": 20.0
+        "name": "Annaly (NLY)",
+        "share": 38.0
       },
       {
-        "name": "AGNC",
+        "name": "AGNC Investment",
+        "share": 28.0
+      },
+      {
+        "name": "Starwood Property",
         "share": 15.0
       },
       {
-        "name": "Starwood",
-        "share": 10.0
+        "name": "Rithm Capital",
+        "share": 12.0
       },
       {
-        "name": "Rithm",
-        "share": 4.0
+        "name": "Blackstone Mortgage",
+        "share": 7.0
       }
     ],
-    "headline_ko": "연준의 금리 인하가 수익률 곡선을 가파르게 하며 레버리지 스프레드 사업을 끌어올리고 있습니다.",
+    "headline_ko": "약 780억 달러 규모의 미국 모기지 리츠 시장을 Annaly가 주도하며 연준 완화 사이클을 타는 가운데, 한국에는 사실상 모기지 리츠가 없어 SK리츠가 가장 가까운 상장 대안으로 평가됩니다.",
     "industry_en": "Mortgage REITs",
     "industry_ko": "모기지 리츠",
-    "korea_company": "KHFC (proxy)",
+    "korea_company": "SK REIT",
     "korea_firms": [
       {
-        "ko": "발행, 대용)",
-        "name": "KHFC (MBS issuer, proxy)KHFC(MBS",
-        "share": 100.0
+        "ko": "리츠",
+        "name": "SK",
+        "share": 30.0
+      },
+      {
+        "name": "롯데리츠",
+        "share": 26.0
+      },
+      {
+        "ko": "켄달스퀘어리츠",
+        "name": "ESR",
+        "share": 20.0
+      },
+      {
+        "name": "신한알파리츠",
+        "share": 13.0
+      },
+      {
+        "name": "제이알글로벌리츠",
+        "share": 11.0
       }
     ],
     "ksf_weights": {
       "brand": 0.0,
-      "global": 0.8,
+      "global": 1.0,
       "scale": 0.0,
-      "tech": 0.2
+      "tech": 0.0
     },
     "sector": "Financials"
   },
@@ -2509,29 +2583,43 @@
         "share": 13.0
       },
       {
+        "name": "vivo",
+        "share": 8.0
+      },
+      {
         "name": "OPPO",
-        "share": 9.0
+        "share": 8.0
       }
     ],
-    "headline_ko": "AI발 메모리 부족이 반도체를 수익의 중심으로, 완제품을 희생양으로 만들었습니다.",
+    "headline_ko": "AI가 견인하는 메모리·스토리지 슈퍼사이클이 약 2조 1,400억 달러 규모의 IT 디바이스 시장을 재편하는 가운데, Apple이 최고 가치의 하드웨어 기업, 삼성전자가 한국 1위로 파악됩니다.",
     "industry_en": "Technology Hardware, Storage & Peripherals",
     "industry_ko": "기술 하드웨어·스토리지·주변기기",
     "korea_company": "Samsung Electronics",
     "korea_firms": [
       {
-        "name": "Samsung",
-        "share": 81.0
+        "name": "삼성전자",
+        "share": 56.0
       },
       {
-        "name": "Apple",
-        "share": 18.0
+        "ko": "하이닉스",
+        "name": "SK",
+        "share": 41.0
+      },
+      {
+        "name": "삼성전기",
+        "share": 2.0
+      },
+      {
+        "ko": "이노텍",
+        "name": "LG",
+        "share": 1.0
       }
     ],
     "ksf_weights": {
-      "brand": 0.5,
-      "global": 0.0,
-      "scale": 0.1667,
-      "tech": 0.3333
+      "brand": 0.2778,
+      "global": 0.3333,
+      "scale": 0.2222,
+      "tech": 0.1667
     },
     "sector": "Information Technology"
   },
@@ -3015,43 +3103,52 @@
     "global_company": "American Water Works",
     "global_firms": [
       {
-        "name": "Veolia (water)",
-        "share": 55.0
+        "name": "Veolia",
+        "share": 30.0
       },
       {
-        "name": "American Water",
-        "share": 14.0
+        "name": "American Water Works",
+        "share": 25.0
       },
       {
-        "name": "Severn Trent",
-        "share": 8.0
+        "name": "SABESP",
+        "share": 19.0
       },
       {
         "name": "United Utilities",
-        "share": 7.0
-      }
-    ],
-    "headline_ko": "규제 대상인 수도 독점 사업은 요금기저가 늘어나는 만큼만 성장할 수 있습니다.",
-    "industry_en": "Water Utilities",
-    "industry_ko": "수도 유틸리티",
-    "korea_company": "K-water (proxy)",
-    "korea_firms": [
-      {
-        "ko": "광역 공급)",
-        "name": "K-water (bulk supply)K-water(",
-        "share": 38.0
+        "share": 13.0
       },
       {
-        "ko": "지자체 소매",
-        "name": "Municipal retail",
-        "share": 62.0
+        "name": "Severn Trent",
+        "share": 13.0
+      }
+    ],
+    "headline_ko": "물 유틸리티는 PFAS·납관·하수 규제가 부르는 한 세대에 한 번의 투자 물결에 직면해 있으며, American Water Works가 글로벌 선두, 국영 K-water가 한국을 주도하는 것으로 파악됩니다.",
+    "industry_en": "Water Utilities",
+    "industry_ko": "물 유틸리티",
+    "korea_company": "K-water",
+    "korea_firms": [
+      {
+        "ko": "광역, bulk)K-water(광역상수도)",
+        "name": "K-water (",
+        "share": 48.0
+      },
+      {
+        "ko": "서울·수도권 지방상수도",
+        "name": "Seoul & metro municipal",
+        "share": 30.0
+      },
+      {
+        "ko": "소규모·농어촌 시설",
+        "name": "Small / rural systems",
+        "share": 7.0
       }
     ],
     "ksf_weights": {
       "brand": 0.0,
-      "global": 0.6154,
-      "scale": 0.3077,
-      "tech": 0.0769
+      "global": 0.5238,
+      "scale": 0.4286,
+      "tech": 0.0476
     },
     "sector": "Utilities"
   },
