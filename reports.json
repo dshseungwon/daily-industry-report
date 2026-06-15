@@ -29,6 +29,20 @@
   },
   {
     "date": "2026-06-15",
+    "gics": "203050",
+    "sector": "Industrials",
+    "set_index": 1,
+    "industry_en": "Transportation Infrastructure",
+    "industry_ko": "교통 인프라",
+    "global_company": "Aena",
+    "korea_company": "맥쿼리한국인프라투융자 (MKIF)",
+    "file": "reports/2026-06-15/industry-report_2026-06-15_203050_transportation-infrastructure.html",
+    "headline_en": "Transportation infrastructure is a regulated-monopoly concession business where profit comes from holding long-dated, inflation-linked rights on essential assets, and where interest rates and tariff resets decide returns.",
+    "headline_ko": "교통 인프라는 필수 자산의 장기·물가연동 양허권을 보유하는 데서 이익이 나오는 규제 독점 양허 사업이며, 수익률은 경쟁이 아니라 금리와 요금 재산정이 좌우합니다.",
+    "accent": "#2e6b8f"
+  },
+  {
+    "date": "2026-06-15",
     "gics": "253010",
     "sector": "Consumer Discretionary",
     "set_index": 3,
@@ -54,6 +68,20 @@
     "headline_en": "Walmart leads a ~$12.7 trillion food and grocery market on scale and retail media, while E-Mart turns around as Korea's largest staples retailer.",
     "headline_ko": "Walmart가 규모와 리테일 미디어로 약 12조 7,000억 달러 규모의 식품·식료품 시장을 이끄는 가운데, 이마트가 실적을 반등시키며 한국 최대 필수소비재 소매기업으로 자리하고 있습니다.",
     "accent": "#2e8b57"
+  },
+  {
+    "date": "2026-06-15",
+    "gics": "352020",
+    "sector": "Health Care",
+    "set_index": 1,
+    "industry_en": "Pharmaceuticals",
+    "industry_ko": "제약",
+    "global_company": "Eli Lilly",
+    "korea_company": "유한양행",
+    "file": "reports/2026-06-15/industry-report_2026-06-15_352020_pharmaceuticals.html",
+    "headline_en": "A drug market where a GLP-1 super-cycle meets a tightening pricing vise, led globally by Eli Lilly and in Korea by Yuhan.",
+    "headline_ko": "GLP-1 슈퍼사이클과 조여드는 약가 압박이 맞물린 의약품 시장으로, 글로벌은 일라이 릴리가, 한국은 유한양행이 이끄는 것으로 파악됩니다.",
+    "accent": "#1f9d6b"
   },
   {
     "date": "2026-06-15",
@@ -85,6 +113,20 @@
   },
   {
     "date": "2026-06-15",
+    "gics": "551030",
+    "sector": "Utilities",
+    "set_index": 1,
+    "industry_en": "Multi-Utilities",
+    "industry_ko": "복합 유틸리티",
+    "global_company": "National Grid",
+    "korea_company": "한국지역난방공사 (proxy)",
+    "file": "reports/2026-06-15/industry-report_2026-06-15_551030_multi-utilities.html",
+    "headline_en": "Multi-utilities are a regulated, rate-base-growth business riding a capex super-cycle driven by AI data-centre load and electrification, with National Grid the global scale leader.",
+    "headline_ko": "복합 유틸리티는 요금기저 성장에 기반한 규제 산업으로, AI 데이터센터 부하와 전기화가 이끄는 자본 슈퍼사이클을 맞고 있으며, National Grid가 글로벌 규모 선도 기업입니다.",
+    "accent": "#b07400"
+  },
+  {
+    "date": "2026-06-15",
     "gics": "551040",
     "sector": "Utilities",
     "set_index": 7,
@@ -96,6 +138,20 @@
     "headline_en": "Water utilities face a generational compliance-capex wave from PFAS, lead-pipe and wastewater rules, with American Water Works the global leader and state-owned K-water dominating Korea.",
     "headline_ko": "물 유틸리티는 PFAS·납관·하수 규제가 부르는 한 세대에 한 번의 투자 물결에 직면해 있으며, American Water Works가 글로벌 선두, 국영 K-water가 한국을 주도하는 것으로 파악됩니다.",
     "accent": "#1f9aa7"
+  },
+  {
+    "date": "2026-06-15",
+    "gics": "602010",
+    "sector": "Real Estate",
+    "set_index": 1,
+    "industry_en": "Real Estate Management & Development",
+    "industry_ko": "부동산 관리·개발",
+    "global_company": "Sun Hung Kai Properties",
+    "korea_company": "SK디앤디 (SK D&D)",
+    "file": "reports/2026-06-15/industry-report_2026-06-15_602010_real-estate-management-and-development.html",
+    "headline_en": "Rate cuts are reviving Hong Kong and Asian property even as China crisis and Korea PF overhang reshape who can build, rewarding landbank-rich, low-geared developers like Sun Hung Kai.",
+    "headline_ko": "금리 인하가 홍콩과 아시아 부동산을 되살리는 가운데 중국 위기와 한국 PF 부실이 건설 주체를 재편하면서, 선훙카이처럼 토지가 풍부하고 차입이 낮은 디벨로퍼가 유리한 국면입니다.",
+    "accent": "#8a6d3b"
   },
   {
     "date": "2026-06-13",
@@ -127,14 +183,14 @@
   },
   {
     "date": "2026-06-13",
-    "gics": "252010",
+    "gics": "252020",
     "sector": "Consumer Discretionary",
     "set_index": 3,
     "industry_en": "Leisure Products",
     "industry_ko": "레저용품",
     "global_company": "LEGO Group",
     "korea_company": "Youngone",
-    "file": "reports/2026-06-13/industry-report_2026-06-13_252010_leisure-products.html",
+    "file": "reports/2026-06-13/industry-report_2026-06-13_252020_leisure-products.html",
     "headline_en": "LEGO extends its lead in a slow-growing toy market while tariffs and new toy-safety rules raise costs.",
     "headline_ko": "완만한 성장의 완구 시장에서 LEGO가 선두를 넓히는 가운데 관세와 새 완구 안전 규제가 비용을 끌어올리고 있습니다.",
     "accent": "#c0392b"
@@ -222,6 +278,20 @@
     "headline_en": "Ocean shipping rebounds on Red Sea diversions while a record orderbook looms.",
     "headline_ko": "홍해 우회로 해상운임이 반등했으나, 역대급 수주잔고가 공급 과잉 위험으로 남아 있습니다.",
     "accent": "#0c6b8c"
+  },
+  {
+    "date": "2026-06-12",
+    "gics": "252010",
+    "sector": "Consumer Discretionary",
+    "set_index": 3,
+    "industry_en": "Household Durables",
+    "industry_ko": "내구소비재",
+    "global_company": "D.R. Horton",
+    "korea_company": "Coway",
+    "file": "reports/2026-06-12/industry-report_2026-06-12_252010_household-durables.html",
+    "headline_en": "Scale leader D.R. Horton tops durables as high mortgage rates squeeze homebuilders.",
+    "headline_ko": "규모 선두 D.R. Horton이 내구재 1위이나, 높은 모기지 금리가 주택건설사를 압박하고 있습니다.",
+    "accent": "#c27d3a"
   },
   {
     "date": "2026-06-12",
@@ -460,6 +530,20 @@
     "headline_en": "Entertainment's profit pool is consolidating around scaled streaming platforms and franchise owners — Netflix pivots to ads, live and games as Paramount–WBD resets Hollywood, while Korea's gaming and K-pop leaders post record revenue on dangerously concentrated IP.",
     "headline_ko": "엔터테인먼트의 이익은 대형 스트리밍 플랫폼과 IP 보유 기업으로 쏠리고 있습니다. 넷플릭스는 광고·라이브·게임으로 무게를 옮기고 파라마운트-WBD 합병이 할리우드를 재편하는 가운데, 한국의 게임·K팝 선두 기업들은 소수 IP에 기댄 채 사상 최대 매출을 올렸습니다.",
     "accent": "#7c3aed"
+  },
+  {
+    "date": "2026-06-10",
+    "gics": "601050",
+    "sector": "Real Estate",
+    "set_index": 7,
+    "industry_en": "Health Care REITs",
+    "industry_ko": "헬스케어 리츠",
+    "global_company": "Welltower",
+    "korea_company": "LH Dongtan Healthcare REIT (proxy)",
+    "file": "reports/2026-06-10/industry-report_2026-06-10_601050_health-care-reits.html",
+    "headline_en": "Record-low new supply colliding with the surging 80-plus population has handed health care REITs their strongest occupancy and earnings cycle on record.",
+    "headline_ko": "역대 최저 수준의 신규 공급과 급증하는 80세 이상 인구가 맞물리며, 헬스케어 리츠는 사상 최고의 입주율과 실적 사이클을 맞고 있습니다.",
+    "accent": "#0E7C66"
   },
   {
     "date": "2026-06-09",
@@ -785,6 +869,20 @@
   },
   {
     "date": "2026-06-06",
+    "gics": "253020",
+    "sector": "Consumer Discretionary",
+    "set_index": 3,
+    "industry_en": "Diversified Consumer Services",
+    "industry_ko": "종합 소비자 서비스",
+    "global_company": "Service Corporation International",
+    "korea_company": "MegaStudyEdu",
+    "file": "reports/2026-06-06/industry-report_2026-06-06_253020_diversified-consumer-services.html",
+    "headline_en": "AI tutoring and demographic decline reshape education and consumer services.",
+    "headline_ko": "AI 튜터링과 인구 감소가 교육·소비자 서비스를 함께 재편하고 있습니다.",
+    "accent": "navy"
+  },
+  {
+    "date": "2026-06-06",
     "gics": "302020",
     "sector": "Consumer Staples",
     "set_index": 4,
@@ -886,7 +984,7 @@
     "gics": "551050",
     "sector": "Utilities",
     "set_index": 7,
-    "industry_en": "Independent Power & Renewable Electricity Producers",
+    "industry_en": "Independent Power and Renewable Electricity Producers",
     "industry_ko": "민자·재생에너지 발전",
     "global_company": "NextEra Energy",
     "korea_company": "KEPCO (proxy)",
