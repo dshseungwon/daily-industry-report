@@ -121,6 +121,43 @@ def parse_html(s):
     return titles, glob, kor
 
 
+def _to_trillion(num_s, unit):
+    num = float(num_s.replace(",", ""))
+    return num if unit.lower() in ("t", "trillion") else num / 1000.0   # B → T
+
+
+def parse_size_cagr(s):
+    """section#size 에서 총 시장규모(trillion_usd)·CAGR·기준연도 추출. 실패 시 (None, "")."""
+    sec = re.search(r'<section id="size">(.*?)</section>', s, re.S)
+    block = sec.group(1) if sec else s
+    trillion, label, year = None, "", ""
+    # 1) colchart 기준연도(첫 col-val) — 모든 리포트가 공통으로 그리는 시장규모 시계열(가장 일관적)
+    cols = re.findall(r'col-val">\s*~?\$?\s*([\d.,]+)\s*(trillion|billion|[TB])', block, re.I)
+    if cols:
+        trillion = _to_trillion(cols[0][0], cols[0][1]); label = "$" + cols[0][0] + cols[0][1].upper()[0]
+        ym = re.search(r'col-lab">\s*(\d{4})', block); year = ym.group(1) if ym else ""
+    if trillion is None:                               # 2) h2 영문 $figure
+        h2en = re.search(r'<h2>.*?<span class="en">(.*?)</span>', block, re.S)
+        en = strip_tags(h2en.group(1)) if h2en else ""
+        m = re.search(r'(?:US)?\$\s*([\d.,]+)\s*(trillion|billion|[BT])\b', en, re.I) \
+            or re.search(r'([\d.,]+)\s*(trillion|billion)\b', en, re.I)
+        if m:
+            trillion = _to_trillion(m.group(1), m.group(2)); label = m.group(0).strip()
+    if trillion is None:                               # 3) 한국어 폴백: X조/억 달러
+        h2ko = re.search(r'<h2>.*?<span class="ko">(.*?)</span>', block, re.S)
+        ko = strip_tags(h2ko.group(1)) if h2ko else ""
+        mk, ma = re.search(r'([\d.,]+)\s*조\s*달러', ko), re.search(r'([\d.,]+)\s*억\s*달러', ko)
+        if mk:
+            trillion = float(mk.group(1).replace(",", "")); label = mk.group(0).strip()
+        elif ma:
+            trillion = float(ma.group(1).replace(",", "")) / 10000.0; label = ma.group(0).strip()
+    # CAGR: .cagr-badge 의 <span class="n">~13%</span>
+    cm = re.search(r'cagr-badge.*?<span class="n">\s*(.*?)\s*</span>', block, re.S)
+    cagr = strip_tags(cm.group(1)) if cm else ""
+    market = {"label": label, "trillion_usd": round(trillion, 4), "year": year} if trillion else None
+    return market, cagr
+
+
 def main():
     reports = json.load(open(os.path.join(ROOT, "reports.json"), encoding="utf-8"))
     latest = {}
@@ -142,9 +179,11 @@ def main():
         path = os.path.join(ROOT, e["file"])
         if not os.path.exists(path):
             continue
-        titles, glob, kor = parse_html(open(path, encoding="utf-8").read())
+        raw = open(path, encoding="utf-8").read()
+        titles, glob, kor = parse_html(raw)
         if len(titles) < 3 and not glob:
             continue                                   # 정보 부족 → 건너뜀(기존 유지)
+        market, cagr = parse_size_cagr(raw)
         data[gics] = {
             "gics": gics,
             "industry_en": e.get("industry_en", ""),
@@ -156,8 +195,10 @@ def main():
             "ksf_weights": ksf_weights(titles),
             "global_firms": firms(glob),
             "korea_firms": firms(kor),
-            "cagr": "",
+            "cagr": cagr,
         }
+        if market:
+            data[gics]["market"] = market
         ok += 1
 
     with open(os.path.join(ROOT, "game_data.json"), "w", encoding="utf-8") as f:

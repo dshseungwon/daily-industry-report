@@ -1,6 +1,6 @@
 {
   "101010": {
-    "cagr": "",
+    "cagr": "≈5.8%",
     "gics": "101010",
     "global_company": "SLB",
     "global_firms": [
@@ -56,10 +56,15 @@
       "scale": 0.2,
       "tech": 0.4
     },
+    "market": {
+      "label": "$126B",
+      "trillion_usd": 0.126,
+      "year": "2025"
+    },
     "sector": "Energy"
   },
   "101020": {
-    "cagr": "",
+    "cagr": "~5.4%",
     "gics": "101020",
     "global_company": "Saudi Aramco",
     "global_firms": [],
@@ -95,10 +100,15 @@
       "scale": 0.8571,
       "tech": 0.1429
     },
+    "market": {
+      "label": "$8.34T",
+      "trillion_usd": 8.34,
+      "year": "2025"
+    },
     "sector": "Energy"
   },
   "151010": {
-    "cagr": "",
+    "cagr": "~5.0%",
     "gics": "151010",
     "global_company": "BASF SE",
     "global_firms": [
@@ -156,10 +166,15 @@
       "scale": 0.55,
       "tech": 0.45
     },
+    "market": {
+      "label": "$0.98T",
+      "trillion_usd": 0.98,
+      "year": "2024"
+    },
     "sector": "Materials"
   },
   "151020": {
-    "cagr": "",
+    "cagr": "~3.3%",
     "gics": "151020",
     "global_company": "CRH plc",
     "global_firms": [
@@ -216,10 +231,15 @@
       "scale": 0.6667,
       "tech": 0.0476
     },
+    "market": {
+      "label": "$385B",
+      "trillion_usd": 0.385,
+      "year": "2024"
+    },
     "sector": "Materials"
   },
   "151030": {
-    "cagr": "",
+    "cagr": "≈3.4%",
     "gics": "151030",
     "global_company": "Smurfit WestRock",
     "global_firms": [
@@ -269,10 +289,15 @@
       "scale": 0.6667,
       "tech": 0.0833
     },
+    "market": {
+      "label": "$1.18T",
+      "trillion_usd": 1.18,
+      "year": "2024"
+    },
     "sector": "Materials"
   },
   "151040": {
-    "cagr": "",
+    "cagr": "~6.3%",
     "gics": "151040",
     "global_company": "BHP Group",
     "global_firms": [
@@ -330,10 +355,15 @@
       "scale": 0.9091,
       "tech": 0.0909
     },
+    "market": {
+      "label": "$1.94T",
+      "trillion_usd": 1.94,
+      "year": "2024"
+    },
     "sector": "Materials"
   },
   "151050": {
-    "cagr": "",
+    "cagr": "≈1.7%",
     "gics": "151050",
     "global_company": "Smurfit WestRock",
     "global_firms": [
@@ -378,10 +408,15 @@
       "scale": 0.55,
       "tech": 0.35
     },
+    "market": {
+      "label": "$345B",
+      "trillion_usd": 0.345,
+      "year": "2024"
+    },
     "sector": "Materials"
   },
   "201010": {
-    "cagr": "",
+    "cagr": "≈6%",
     "gics": "201010",
     "global_company": "Lockheed Martin",
     "global_firms": [
@@ -434,10 +469,15 @@
       "scale": 0.0769,
       "tech": 0.0
     },
+    "market": {
+      "label": "$885B",
+      "trillion_usd": 0.885,
+      "year": "2024"
+    },
     "sector": "Industrials"
   },
   "201020": {
-    "cagr": "",
+    "cagr": "≈3.9%",
     "gics": "201020",
     "global_company": "Saint-Gobain",
     "global_firms": [
@@ -482,10 +522,15 @@
       "scale": 0.3333,
       "tech": 0.1429
     },
+    "market": {
+      "label": "$1.37T",
+      "trillion_usd": 1.37,
+      "year": "2024"
+    },
     "sector": "Industrials"
   },
   "201030": {
-    "cagr": "",
+    "cagr": "≈5.6%",
     "gics": "201030",
     "global_company": "China State Construction Engineering",
     "global_firms": [
@@ -539,10 +584,15 @@
       "scale": 0.0,
       "tech": 0.3333
     },
+    "market": {
+      "label": "$15.8T",
+      "trillion_usd": 15.8,
+      "year": "2024"
+    },
     "sector": "Industrials"
   },
   "201040": {
-    "cagr": "",
+    "cagr": "~6.1%",
     "gics": "201040",
     "global_company": "ABB",
     "global_firms": [
@@ -601,10 +651,15 @@
       "scale": 0.4286,
       "tech": 0.5
     },
+    "market": {
+      "label": "$1.66T",
+      "trillion_usd": 1.66,
+      "year": "2024"
+    },
     "sector": "Industrials"
   },
   "201050": {
-    "cagr": "",
+    "cagr": "≈0.7%",
     "gics": "201050",
     "global_company": "Siemens AG",
     "global_firms": [
@@ -649,10 +704,15 @@
       "scale": 0.0,
       "tech": 0.3333
     },
+    "market": {
+      "label": "$2.40T",
+      "trillion_usd": 2.4,
+      "year": "2024"
+    },
     "sector": "Industrials"
   },
   "201060": {
-    "cagr": "",
+    "cagr": "≈6%",
     "gics": "201060",
     "global_company": "Caterpillar",
     "global_firms": [
@@ -693,10 +753,15 @@
       "scale": 0.0,
       "tech": 0.3077
     },
+    "market": {
+      "label": "$157B",
+      "trillion_usd": 0.157,
+      "year": "2024"
+    },
     "sector": "Industrials"
   },
   "201070": {
-    "cagr": "",
+    "cagr": "≈4.4%",
     "gics": "201070",
     "global_company": "Mitsubishi Corporation",
     "global_firms": [
@@ -741,10 +806,15 @@
       "scale": 0.0,
       "tech": 0.2105
     },
+    "market": {
+      "label": "$72B",
+      "trillion_usd": 0.072,
+      "year": "2024"
+    },
     "sector": "Industrials"
   },
   "202010": {
-    "cagr": "",
+    "cagr": "≈6%",
     "gics": "202010",
     "global_company": "Waste Management",
     "global_firms": [
@@ -789,10 +859,15 @@
       "scale": 0.7857,
       "tech": 0.0714
     },
+    "market": {
+      "label": "$1.22T",
+      "trillion_usd": 1.22,
+      "year": "2024"
+    },
     "sector": "Industrials"
   },
   "202020": {
-    "cagr": "",
+    "cagr": "≈6.2%",
     "gics": "202020",
     "global_company": "ADP",
     "global_firms": [
@@ -837,10 +912,15 @@
       "scale": 0.2105,
       "tech": 0.7368
     },
+    "market": {
+      "label": "$6.00T",
+      "trillion_usd": 6.0,
+      "year": "2024"
+    },
     "sector": "Industrials"
   },
   "203010": {
-    "cagr": "",
+    "cagr": "≈5%",
     "gics": "203010",
     "global_company": "FedEx",
     "global_firms": [
@@ -897,10 +977,15 @@
       "scale": 0.6667,
       "tech": 0.0
     },
+    "market": {
+      "label": "$319B",
+      "trillion_usd": 0.319,
+      "year": "2024"
+    },
     "sector": "Industrials"
   },
   "203020": {
-    "cagr": "",
+    "cagr": "≈4.5%",
     "gics": "203020",
     "global_company": "Delta Air Lines",
     "global_firms": [
@@ -951,10 +1036,15 @@
       "scale": 0.5263,
       "tech": 0.0
     },
+    "market": {
+      "label": "$0.83T",
+      "trillion_usd": 0.83,
+      "year": "2024"
+    },
     "sector": "Industrials"
   },
   "203030": {
-    "cagr": "",
+    "cagr": "~5.4%",
     "gics": "203030",
     "global_company": "MSC",
     "global_firms": [
@@ -1012,10 +1102,15 @@
       "scale": 0.4737,
       "tech": 0.2105
     },
+    "market": {
+      "label": "$600B",
+      "trillion_usd": 0.6,
+      "year": "2025"
+    },
     "sector": "Industrials"
   },
   "203040": {
-    "cagr": "",
+    "cagr": "~5.0%",
     "gics": "203040",
     "global_company": "Union Pacific",
     "global_firms": [
@@ -1073,10 +1168,80 @@
       "scale": 0.8333,
       "tech": 0.1111
     },
+    "market": {
+      "label": "$4.25T",
+      "trillion_usd": 4.25,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "203050": {
+    "cagr": "~5%",
+    "gics": "203050",
+    "global_company": "Aena",
+    "global_firms": [
+      {
+        "name": "Aena",
+        "share": 32.0
+      },
+      {
+        "name": "Transurban",
+        "share": 19.0
+      },
+      {
+        "name": "Ferrovial",
+        "share": 17.0
+      },
+      {
+        "name": "ADP (Aéroports de Paris)",
+        "share": 17.0
+      },
+      {
+        "name": "Getlink",
+        "share": 15.0
+      }
+    ],
+    "headline_ko": "교통 인프라는 필수 자산의 장기·물가연동 양허권을 보유하는 데서 이익이 나오는 규제 독점 양허 사업이며, 수익률은 경쟁이 아니라 금리와 요금 재산정이 좌우합니다.",
+    "industry_en": "Transportation Infrastructure",
+    "industry_ko": "교통 인프라",
+    "korea_company": "맥쿼리한국인프라투융자 (MKIF)",
+    "korea_firms": [
+      {
+        "name": "맥쿼리한국인프라투융자",
+        "share": 62.0
+      },
+      {
+        "name": "한국공항",
+        "share": 20.0
+      },
+      {
+        "name": "제이트로닉스/티웨이홀딩스 계열",
+        "share": 10.0
+      },
+      {
+        "name": "기타 SOC 펀드",
+        "share": 6.0
+      },
+      {
+        "name": "기타",
+        "share": 2.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.5556,
+      "scale": 0.4444,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$3.48T",
+      "trillion_usd": 3.48,
+      "year": "2024"
+    },
     "sector": "Industrials"
   },
   "251010": {
-    "cagr": "",
+    "cagr": "≈6.6%",
     "gics": "251010",
     "global_company": "Bosch (Mobility)",
     "global_firms": [
@@ -1133,10 +1298,15 @@
       "scale": 0.2,
       "tech": 0.25
     },
+    "market": {
+      "label": "$542B",
+      "trillion_usd": 0.542,
+      "year": "2024"
+    },
     "sector": "Consumer Discretionary"
   },
   "251020": {
-    "cagr": "",
+    "cagr": "≈5.7%",
     "gics": "251020",
     "global_company": "Tesla",
     "global_firms": [
@@ -1190,11 +1360,75 @@
       "scale": 0.4,
       "tech": 0.2667
     },
+    "market": {
+      "label": "$4.30T",
+      "trillion_usd": 4.3,
+      "year": "2024"
+    },
     "sector": "Consumer Discretionary"
   },
   "252010": {
-    "cagr": "",
+    "cagr": "~4.5%",
     "gics": "252010",
+    "global_company": "D.R. Horton",
+    "global_firms": [
+      {
+        "name": "D.R. Horton",
+        "share": 16.0
+      },
+      {
+        "name": "Lennar",
+        "share": 14.0
+      },
+      {
+        "name": "PulteGroup",
+        "share": 10.0
+      },
+      {
+        "name": "NVR",
+        "share": 7.0
+      }
+    ],
+    "headline_ko": "규모 선두 D.R. Horton이 내구재 1위이나, 높은 모기지 금리가 주택건설사를 압박하고 있습니다.",
+    "industry_en": "Household Durables",
+    "industry_ko": "내구소비재",
+    "korea_company": "Coway",
+    "korea_firms": [
+      {
+        "name": "코웨이 (Coway)",
+        "share": 35.0
+      },
+      {
+        "ko": "매직",
+        "name": "SK",
+        "share": 18.0
+      },
+      {
+        "ko": "전자",
+        "name": "LG",
+        "share": 13.0
+      },
+      {
+        "name": "청호나이스",
+        "share": 10.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.25,
+      "global": 0.0,
+      "scale": 0.75,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$1.35T",
+      "trillion_usd": 1.35,
+      "year": "2025"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "252020": {
+    "cagr": "~2.24%",
+    "gics": "252020",
     "global_company": "LEGO Group",
     "global_firms": [
       {
@@ -1250,10 +1484,15 @@
       "scale": 0.0,
       "tech": 0.2222
     },
+    "market": {
+      "label": "$290B",
+      "trillion_usd": 0.29,
+      "year": "2025"
+    },
     "sector": "Consumer Discretionary"
   },
   "252030": {
-    "cagr": "",
+    "cagr": "≈4.1%",
     "gics": "252030",
     "global_company": "LVMH",
     "global_firms": [
@@ -1298,10 +1537,15 @@
       "scale": 0.2941,
       "tech": 0.2353
     },
+    "market": {
+      "label": "$1.77T",
+      "trillion_usd": 1.77,
+      "year": "2024"
+    },
     "sector": "Consumer Discretionary"
   },
   "253010": {
-    "cagr": "",
+    "cagr": "~6%",
     "gics": "253010",
     "global_company": "Marriott International",
     "global_firms": [
@@ -1358,10 +1602,64 @@
       "scale": 0.3333,
       "tech": 0.0
     },
+    "market": {
+      "label": "$5.21T",
+      "trillion_usd": 5.21,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "253020": {
+    "cagr": "≈6.9%",
+    "gics": "253020",
+    "global_company": "Service Corporation International",
+    "global_firms": [
+      {
+        "name": "Service Corp Intl",
+        "share": 16.0
+      },
+      {
+        "name": "Carriage Services",
+        "share": 6.0
+      },
+      {
+        "name": "Park Lawn / Foundation",
+        "share": 4.0
+      }
+    ],
+    "headline_ko": "AI 튜터링과 인구 감소가 교육·소비자 서비스를 함께 재편하고 있습니다.",
+    "industry_en": "Diversified Consumer Services",
+    "industry_ko": "종합 소비자 서비스",
+    "korea_company": "MegaStudyEdu",
+    "korea_firms": [
+      {
+        "name": "MegaStudyEdu",
+        "share": 47.0
+      },
+      {
+        "name": "Daesung",
+        "share": 23.0
+      },
+      {
+        "name": "Etoos",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2941,
+      "global": 0.1176,
+      "scale": 0.0588,
+      "tech": 0.5294
+    },
+    "market": {
+      "label": "$3.49T",
+      "trillion_usd": 3.49,
+      "year": "2024"
+    },
     "sector": "Consumer Discretionary"
   },
   "255010": {
-    "cagr": "",
+    "cagr": "≈4.7%",
     "gics": "255010",
     "global_company": "Genuine Parts Company",
     "global_firms": [
@@ -1402,10 +1700,15 @@
       "scale": 0.75,
       "tech": 0.25
     },
+    "market": {
+      "label": "$257B",
+      "trillion_usd": 0.257,
+      "year": "2024"
+    },
     "sector": "Consumer Discretionary"
   },
   "255030": {
-    "cagr": "",
+    "cagr": "≈8–9%",
     "gics": "255030",
     "global_company": "Amazon",
     "global_firms": [
@@ -1454,10 +1757,15 @@
       "scale": 0.0769,
       "tech": 0.3077
     },
+    "market": {
+      "label": "$6.1T",
+      "trillion_usd": 6.1,
+      "year": "2024"
+    },
     "sector": "Consumer Discretionary"
   },
   "255040": {
-    "cagr": "",
+    "cagr": "≈6%",
     "gics": "255040",
     "global_company": "Home Depot",
     "global_firms": [
@@ -1506,10 +1814,15 @@
       "scale": 0.5,
       "tech": 0.0
     },
+    "market": {
+      "label": "$2.05T",
+      "trillion_usd": 2.05,
+      "year": "2024"
+    },
     "sector": "Consumer Discretionary"
   },
   "301010": {
-    "cagr": "",
+    "cagr": "~3.2%",
     "gics": "301010",
     "global_company": "Walmart",
     "global_firms": [
@@ -1564,10 +1877,15 @@
       "scale": 0.7059,
       "tech": 0.0
     },
+    "market": {
+      "label": "$12.3T",
+      "trillion_usd": 12.3,
+      "year": "2024"
+    },
     "sector": "Consumer Staples"
   },
   "302010": {
-    "cagr": "",
+    "cagr": "≈1.7%",
     "gics": "302010",
     "global_company": "Coca-Cola",
     "global_firms": [
@@ -1612,10 +1930,15 @@
       "scale": 0.1429,
       "tech": 0.2381
     },
+    "market": {
+      "label": "$1.80T",
+      "trillion_usd": 1.8,
+      "year": "2024"
+    },
     "sector": "Consumer Staples"
   },
   "302020": {
-    "cagr": "",
+    "cagr": "≈6%",
     "gics": "302020",
     "global_company": "Nestlé",
     "global_firms": [
@@ -1664,10 +1987,15 @@
       "scale": 0.2222,
       "tech": 0.0
     },
+    "market": {
+      "label": "$2.58T",
+      "trillion_usd": 2.58,
+      "year": "2024"
+    },
     "sector": "Consumer Staples"
   },
   "302030": {
-    "cagr": "",
+    "cagr": "≈2.6%",
     "gics": "302030",
     "global_company": "Philip Morris International",
     "global_firms": [
@@ -1712,10 +2040,15 @@
       "scale": 0.375,
       "tech": 0.25
     },
+    "market": {
+      "label": "$915B",
+      "trillion_usd": 0.915,
+      "year": "2024"
+    },
     "sector": "Consumer Staples"
   },
   "303010": {
-    "cagr": "",
+    "cagr": "≈5%",
     "gics": "303010",
     "global_company": "Procter & Gamble",
     "global_firms": [
@@ -1760,10 +2093,15 @@
       "scale": 0.1905,
       "tech": 0.2857
     },
+    "market": {
+      "label": "$193B",
+      "trillion_usd": 0.193,
+      "year": "2024"
+    },
     "sector": "Consumer Staples"
   },
   "303020": {
-    "cagr": "",
+    "cagr": "≈4.4%",
     "gics": "303020",
     "global_company": "L'Oréal",
     "global_firms": [
@@ -1808,10 +2146,15 @@
       "scale": 0.0,
       "tech": 0.2381
     },
+    "market": {
+      "label": "$558B",
+      "trillion_usd": 0.558,
+      "year": "2024"
+    },
     "sector": "Consumer Staples"
   },
   "351010": {
-    "cagr": "",
+    "cagr": "≈5.9%",
     "gics": "351010",
     "global_company": "Medtronic",
     "global_firms": [
@@ -1864,10 +2207,15 @@
       "scale": 0.1765,
       "tech": 0.3529
     },
+    "market": {
+      "label": "$640B",
+      "trillion_usd": 0.64,
+      "year": "2024"
+    },
     "sector": "Health Care"
   },
   "351020": {
-    "cagr": "",
+    "cagr": "~5.8%",
     "gics": "351020",
     "global_company": "UnitedHealth Group",
     "global_firms": [
@@ -1912,10 +2260,15 @@
       "scale": 0.7619,
       "tech": 0.0952
     },
+    "market": {
+      "label": "$5.3T",
+      "trillion_usd": 5.3,
+      "year": "2024"
+    },
     "sector": "Health Care"
   },
   "351030": {
-    "cagr": "",
+    "cagr": "~16%",
     "gics": "351030",
     "global_company": "Veeva Systems",
     "global_firms": [
@@ -1968,10 +2321,15 @@
       "scale": 0.4,
       "tech": 0.0
     },
+    "market": {
+      "label": "$870B",
+      "trillion_usd": 0.87,
+      "year": "2025"
+    },
     "sector": "Health Care"
   },
   "352010": {
-    "cagr": "",
+    "cagr": "~13.9%",
     "gics": "352010",
     "global_company": "Amgen",
     "global_firms": [
@@ -2029,10 +2387,81 @@
       "scale": 0.2727,
       "tech": 0.5455
     },
+    "market": {
+      "label": "$1.55T",
+      "trillion_usd": 1.55,
+      "year": "2024"
+    },
+    "sector": "Health Care"
+  },
+  "352020": {
+    "cagr": "~6.3%",
+    "gics": "352020",
+    "global_company": "Eli Lilly",
+    "global_firms": [
+      {
+        "name": "Eli Lilly",
+        "share": 41.0
+      },
+      {
+        "name": "Johnson & Johnson",
+        "share": 21.0
+      },
+      {
+        "name": "AbbVie",
+        "share": 17.0
+      },
+      {
+        "name": "AstraZeneca",
+        "share": 12.0
+      },
+      {
+        "name": "Merck",
+        "share": 9.0
+      }
+    ],
+    "headline_ko": "GLP-1 슈퍼사이클과 조여드는 약가 압박이 맞물린 의약품 시장으로, 글로벌은 일라이 릴리가, 한국은 유한양행이 이끄는 것으로 파악됩니다.",
+    "industry_en": "Pharmaceuticals",
+    "industry_ko": "제약",
+    "korea_company": "유한양행",
+    "korea_firms": [
+      {
+        "name": "유한양행",
+        "share": 33.0
+      },
+      {
+        "name": "한미약품",
+        "share": 27.0
+      },
+      {
+        "ko": "녹십자",
+        "name": "GC",
+        "share": 20.0
+      },
+      {
+        "name": "종근당",
+        "share": 12.0
+      },
+      {
+        "name": "대웅제약",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.25,
+      "global": 0.0,
+      "scale": 0.35,
+      "tech": 0.4
+    },
+    "market": {
+      "label": "$1.67T",
+      "trillion_usd": 1.67,
+      "year": "2024"
+    },
     "sector": "Health Care"
   },
   "352030": {
-    "cagr": "",
+    "cagr": "≈6.9%",
     "gics": "352030",
     "global_company": "Thermo Fisher Scientific",
     "global_firms": [
@@ -2077,10 +2506,15 @@
       "scale": 0.3846,
       "tech": 0.2308
     },
+    "market": {
+      "label": "$153.8B",
+      "trillion_usd": 0.1538,
+      "year": "2025"
+    },
     "sector": "Health Care"
   },
   "401010": {
-    "cagr": "",
+    "cagr": "≈5.5%",
     "gics": "401010",
     "global_company": "JPMorgan Chase",
     "global_firms": [
@@ -2139,10 +2573,15 @@
       "scale": 1.0,
       "tech": 0.0
     },
+    "market": {
+      "label": "$8.7T",
+      "trillion_usd": 8.7,
+      "year": "2025"
+    },
     "sector": "Financials"
   },
   "402010": {
-    "cagr": "",
+    "cagr": "~16–21%",
     "gics": "402010",
     "global_company": "Visa",
     "global_firms": [
@@ -2190,10 +2629,15 @@
       "scale": 0.3529,
       "tech": 0.2353
     },
+    "market": {
+      "label": "$135B",
+      "trillion_usd": 0.135,
+      "year": "2025"
+    },
     "sector": "Financials"
   },
   "402020": {
-    "cagr": "",
+    "cagr": "~8.7%",
     "gics": "402020",
     "global_company": "American Express",
     "global_firms": [
@@ -2251,10 +2695,15 @@
       "scale": 0.619,
       "tech": 0.0
     },
+    "market": {
+      "label": "$678B",
+      "trillion_usd": 0.678,
+      "year": "2025"
+    },
     "sector": "Financials"
   },
   "402030": {
-    "cagr": "",
+    "cagr": "≈6.2%",
     "gics": "402030",
     "global_company": "BlackRock",
     "global_firms": [
@@ -2299,10 +2748,15 @@
       "scale": 0.4615,
       "tech": 0.3077
     },
+    "market": {
+      "label": "$135T",
+      "trillion_usd": 135.0,
+      "year": "2024"
+    },
     "sector": "Financials"
   },
   "402040": {
-    "cagr": "",
+    "cagr": "~3–4%",
     "gics": "402040",
     "global_company": "Annaly Capital",
     "global_firms": [
@@ -2361,10 +2815,15 @@
       "scale": 0.0,
       "tech": 0.0
     },
+    "market": {
+      "label": "$73B",
+      "trillion_usd": 0.073,
+      "year": "2024"
+    },
     "sector": "Financials"
   },
   "403010": {
-    "cagr": "",
+    "cagr": "≈2.3%",
     "gics": "403010",
     "global_company": "Allianz",
     "global_firms": [
@@ -2409,10 +2868,15 @@
       "scale": 0.0,
       "tech": 0.4
     },
+    "market": {
+      "label": "$7.3T",
+      "trillion_usd": 7.3,
+      "year": "2024"
+    },
     "sector": "Financials"
   },
   "451020": {
-    "cagr": "",
+    "cagr": "≈8%",
     "gics": "451020",
     "global_company": "Accenture",
     "global_firms": [
@@ -2457,10 +2921,15 @@
       "scale": 0.5,
       "tech": 0.5
     },
+    "market": {
+      "label": "$1.85T",
+      "trillion_usd": 1.85,
+      "year": "2024"
+    },
     "sector": "Information Technology"
   },
   "451030": {
-    "cagr": "",
+    "cagr": "≈13–14%",
     "gics": "451030",
     "global_company": "Microsoft",
     "global_firms": [
@@ -2509,10 +2978,15 @@
       "scale": 0.3333,
       "tech": 0.5
     },
+    "market": {
+      "label": "$1.08T",
+      "trillion_usd": 1.08,
+      "year": "2024"
+    },
     "sector": "Information Technology"
   },
   "452010": {
-    "cagr": "",
+    "cagr": "≈7.5%",
     "gics": "452010",
     "global_company": "Cisco Systems",
     "global_firms": [
@@ -2563,10 +3037,15 @@
       "scale": 0.0625,
       "tech": 0.8125
     },
+    "market": {
+      "label": "$317B",
+      "trillion_usd": 0.317,
+      "year": "2024"
+    },
     "sector": "Information Technology"
   },
   "452020": {
-    "cagr": "",
+    "cagr": "~9.4%",
     "gics": "452020",
     "global_company": "Apple",
     "global_firms": [
@@ -2621,10 +3100,15 @@
       "scale": 0.2222,
       "tech": 0.1667
     },
+    "market": {
+      "label": "$1.95T",
+      "trillion_usd": 1.95,
+      "year": "2024"
+    },
     "sector": "Information Technology"
   },
   "452030": {
-    "cagr": "",
+    "cagr": "≈6.3%",
     "gics": "452030",
     "global_company": "Hon Hai (Foxconn)",
     "global_firms": [
@@ -2675,10 +3159,15 @@
       "scale": 0.3,
       "tech": 0.6
     },
+    "market": {
+      "label": "$628B",
+      "trillion_usd": 0.628,
+      "year": "2024"
+    },
     "sector": "Information Technology"
   },
   "453010": {
-    "cagr": "",
+    "cagr": "≈16–18%",
     "gics": "453010",
     "global_company": "NVIDIA",
     "global_firms": [
@@ -2719,10 +3208,15 @@
       "scale": 0.3,
       "tech": 0.4
     },
+    "market": {
+      "label": "$631B",
+      "trillion_usd": 0.631,
+      "year": "2024"
+    },
     "sector": "Information Technology"
   },
   "501010": {
-    "cagr": "",
+    "cagr": "≈6.5%",
     "gics": "501010",
     "global_company": "Deutsche Telekom",
     "global_firms": [
@@ -2767,10 +3261,15 @@
       "scale": 0.0833,
       "tech": 0.25
     },
+    "market": {
+      "label": "$2.04T",
+      "trillion_usd": 2.04,
+      "year": "2024"
+    },
     "sector": "Communication Services"
   },
   "501020": {
-    "cagr": "",
+    "cagr": "≈7.5%",
     "gics": "501020",
     "global_company": "China Mobile",
     "global_firms": [
@@ -2819,10 +3318,15 @@
       "scale": 0.3571,
       "tech": 0.0
     },
+    "market": {
+      "label": "$1.28T",
+      "trillion_usd": 1.28,
+      "year": "2024"
+    },
     "sector": "Communication Services"
   },
   "502010": {
-    "cagr": "",
+    "cagr": "≈8.5%",
     "gics": "502010",
     "global_company": "Omnicom",
     "global_firms": [
@@ -2871,10 +3375,15 @@
       "scale": 0.1905,
       "tech": 0.5714
     },
+    "market": {
+      "label": "$1.09T",
+      "trillion_usd": 1.09,
+      "year": "2024"
+    },
     "sector": "Communication Services"
   },
   "502020": {
-    "cagr": "",
+    "cagr": "≈3.7%",
     "gics": "502020",
     "global_company": "Netflix",
     "global_firms": [
@@ -2923,10 +3432,15 @@
       "scale": 0.3571,
       "tech": 0.0
     },
+    "market": {
+      "label": "$2.9T",
+      "trillion_usd": 2.9,
+      "year": "2024"
+    },
     "sector": "Communication Services"
   },
   "502030": {
-    "cagr": "",
+    "cagr": "≈6–8%",
     "gics": "502030",
     "global_company": "Alphabet (Google)",
     "global_firms": [
@@ -2975,10 +3489,15 @@
       "scale": 0.375,
       "tech": 0.5625
     },
+    "market": {
+      "label": "$655B",
+      "trillion_usd": 0.655,
+      "year": "2024"
+    },
     "sector": "Communication Services"
   },
   "551010": {
-    "cagr": "",
+    "cagr": "~3.0%",
     "gics": "551010",
     "global_company": "NextEra Energy",
     "global_firms": [
@@ -3035,10 +3554,15 @@
       "scale": 0.3333,
       "tech": 0.2667
     },
+    "market": {
+      "label": "$1.49T",
+      "trillion_usd": 1.49,
+      "year": "2025"
+    },
     "sector": "Utilities"
   },
   "551020": {
-    "cagr": "",
+    "cagr": "~2.8%",
     "gics": "551020",
     "global_company": "Atmos Energy",
     "global_firms": [
@@ -3095,10 +3619,75 @@
       "scale": 0.5,
       "tech": 0.125
     },
+    "market": {
+      "label": "$372B",
+      "trillion_usd": 0.372,
+      "year": "2024"
+    },
+    "sector": "Utilities"
+  },
+  "551030": {
+    "cagr": "~5.5%",
+    "gics": "551030",
+    "global_company": "National Grid",
+    "global_firms": [
+      {
+        "name": "National Grid",
+        "share": 30.0
+      },
+      {
+        "name": "Sempra",
+        "share": 21.0
+      },
+      {
+        "name": "Dominion Energy",
+        "share": 20.0
+      },
+      {
+        "name": "WEC Energy",
+        "share": 16.0
+      },
+      {
+        "name": "DTE Energy",
+        "share": 13.0
+      }
+    ],
+    "headline_ko": "복합 유틸리티는 요금기저 성장에 기반한 규제 산업으로, AI 데이터센터 부하와 전기화가 이끄는 자본 슈퍼사이클을 맞고 있으며, National Grid가 글로벌 규모 선도 기업입니다.",
+    "industry_en": "Multi-Utilities",
+    "industry_ko": "복합 유틸리티",
+    "korea_company": "한국지역난방공사 (proxy)",
+    "korea_firms": [
+      {
+        "ko": "한국전력(전기)",
+        "name": "KEPCO (electric)",
+        "share": 70.0
+      },
+      {
+        "ko": "한국가스공사(가스)",
+        "name": "KOGAS (gas)",
+        "share": 20.0
+      },
+      {
+        "ko": "지역난방공사(전기+열)",
+        "name": "KDHC (elec+heat)",
+        "share": 7.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.5789,
+      "scale": 0.3684,
+      "tech": 0.0526
+    },
+    "market": {
+      "label": "$6.66T",
+      "trillion_usd": 6.66,
+      "year": "2024"
+    },
     "sector": "Utilities"
   },
   "551040": {
-    "cagr": "",
+    "cagr": "~6.5%",
     "gics": "551040",
     "global_company": "American Water Works",
     "global_firms": [
@@ -3150,10 +3739,15 @@
       "scale": 0.4286,
       "tech": 0.0476
     },
+    "market": {
+      "label": "$348B",
+      "trillion_usd": 0.348,
+      "year": "2024"
+    },
     "sector": "Utilities"
   },
   "551050": {
-    "cagr": "",
+    "cagr": "≈15%",
     "gics": "551050",
     "global_company": "NextEra Energy",
     "global_firms": [
@@ -3175,7 +3769,7 @@
       }
     ],
     "headline_ko": "AI 데이터센터가 청정 전력의 최종 매수자로 떠오르고 있습니다.",
-    "industry_en": "Independent Power & Renewable Electricity Producers",
+    "industry_en": "Independent Power and Renewable Electricity Producers",
     "industry_ko": "민자·재생에너지 발전",
     "korea_company": "KEPCO (proxy)",
     "korea_firms": [
@@ -3202,7 +3796,7 @@
     "sector": "Utilities"
   },
   "601010": {
-    "cagr": "",
+    "cagr": "≈3%",
     "gics": "601010",
     "global_company": "W.P. Carey",
     "global_firms": [
@@ -3247,10 +3841,15 @@
       "scale": 0.5714,
       "tech": 0.0714
     },
+    "market": {
+      "label": "$2.2T",
+      "trillion_usd": 2.2,
+      "year": "2024"
+    },
     "sector": "Real Estate"
   },
   "601025": {
-    "cagr": "",
+    "cagr": "≈6%",
     "gics": "601025",
     "global_company": "Prologis",
     "global_firms": [
@@ -3291,10 +3890,15 @@
       "scale": 0.7778,
       "tech": 0.2222
     },
+    "market": {
+      "label": "$1.20T",
+      "trillion_usd": 1.2,
+      "year": "2024"
+    },
     "sector": "Real Estate"
   },
   "601030": {
-    "cagr": "",
+    "cagr": "≈8%",
     "gics": "601030",
     "global_company": "Host Hotels & Resorts",
     "global_firms": [
@@ -3331,10 +3935,15 @@
       "scale": 0.6154,
       "tech": 0.0
     },
+    "market": {
+      "label": "$1.65T",
+      "trillion_usd": 1.65,
+      "year": "2024"
+    },
     "sector": "Real Estate"
   },
   "601040": {
-    "cagr": "",
+    "cagr": "≈9%",
     "gics": "601040",
     "global_company": "BXP (Boston Properties)",
     "global_firms": [
@@ -3386,10 +3995,71 @@
       "scale": 0.2727,
       "tech": 0.7273
     },
+    "market": {
+      "label": "$42B",
+      "trillion_usd": 0.042,
+      "year": "2023"
+    },
+    "sector": "Real Estate"
+  },
+  "601050": {
+    "cagr": "≈4.5%",
+    "gics": "601050",
+    "global_company": "Welltower",
+    "global_firms": [
+      {
+        "name": "Welltower",
+        "share": 57.0
+      },
+      {
+        "name": "Ventas",
+        "share": 16.0
+      },
+      {
+        "name": "Healthpeak",
+        "share": 6.0
+      },
+      {
+        "name": "Omega Healthcare",
+        "share": 5.0
+      },
+      {
+        "ko": "기타(AHR, CareTrust 등)",
+        "name": "Others (AHR, CareTrust, etc.)",
+        "share": 16.0
+      }
+    ],
+    "headline_ko": "역대 최저 수준의 신규 공급과 급증하는 80세 이상 인구가 맞물리며, 헬스케어 리츠는 사상 최고의 입주율과 실적 사이클을 맞고 있습니다.",
+    "industry_en": "Health Care REITs",
+    "industry_ko": "헬스케어 리츠",
+    "korea_company": "LH Dongtan Healthcare REIT (proxy)",
+    "korea_firms": [
+      {
+        "ko": "시니어 주거 세대(2,550)",
+        "name": "Senior housing units (2,550)",
+        "share": 74.0
+      },
+      {
+        "ko": "오피스텔(874실)",
+        "name": "Officetel units (874)",
+        "share": 26.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.6667,
+      "tech": 0.3333
+    },
+    "market": {
+      "label": "$944B",
+      "trillion_usd": 0.944,
+      "year": "2025"
+    },
     "sector": "Real Estate"
   },
   "601060": {
-    "cagr": "",
+    "cagr": "~2.3–3.1%",
     "gics": "601060",
     "global_company": "AvalonBay Communities",
     "global_firms": [
@@ -3444,10 +4114,15 @@
       "scale": 0.5714,
       "tech": 0.3571
     },
+    "market": {
+      "label": "US$193B",
+      "trillion_usd": 0.193,
+      "year": ""
+    },
     "sector": "Real Estate"
   },
   "601070": {
-    "cagr": "",
+    "cagr": "~4.0–5.1%",
     "gics": "601070",
     "global_company": "Simon Property Group",
     "global_firms": [
@@ -3502,10 +4177,15 @@
       "scale": 0.875,
       "tech": 0.0
     },
+    "market": {
+      "label": "US$213B",
+      "trillion_usd": 0.213,
+      "year": ""
+    },
     "sector": "Real Estate"
   },
   "601080": {
-    "cagr": "",
+    "cagr": "~13%",
     "gics": "601080",
     "global_company": "American Tower",
     "global_firms": [
@@ -3563,6 +4243,78 @@
       "global": 0.4,
       "scale": 0.6,
       "tech": 0.0
+    },
+    "market": {
+      "label": "$76.9B",
+      "trillion_usd": 0.0769,
+      "year": "2025"
+    },
+    "sector": "Real Estate"
+  },
+  "602010": {
+    "cagr": "~7.1%",
+    "gics": "602010",
+    "global_company": "Sun Hung Kai Properties",
+    "global_firms": [
+      {
+        "name": "Sun Hung Kai",
+        "share": 28.0
+      },
+      {
+        "name": "CBRE Group",
+        "share": 23.0
+      },
+      {
+        "name": "Mitsubishi Estate",
+        "share": 17.0
+      },
+      {
+        "name": "Mitsui Fudosan",
+        "share": 16.0
+      },
+      {
+        "name": "JLL",
+        "share": 16.0
+      }
+    ],
+    "headline_ko": "금리 인하가 홍콩과 아시아 부동산을 되살리는 가운데 중국 위기와 한국 PF 부실이 건설 주체를 재편하면서, 선훙카이처럼 토지가 풍부하고 차입이 낮은 디벨로퍼가 유리한 국면입니다.",
+    "industry_en": "Real Estate Management & Development",
+    "industry_ko": "부동산 관리·개발",
+    "korea_company": "SK디앤디 (SK D&D)",
+    "korea_firms": [
+      {
+        "ko": "디앤디",
+        "name": "SK",
+        "share": 40.0
+      },
+      {
+        "name": "한국자산신탁",
+        "share": 30.0
+      },
+      {
+        "name": "한국토지신탁",
+        "share": 18.0
+      },
+      {
+        "ko": "리츠",
+        "name": "SK",
+        "share": 9.0
+      },
+      {
+        "name": "기타",
+        "share": 3.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.4545,
+      "scale": 0.5455,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$4.05T",
+      "trillion_usd": 4.05,
+      "year": "2024"
     },
     "sector": "Real Estate"
   }
