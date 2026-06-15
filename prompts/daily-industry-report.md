@@ -26,18 +26,55 @@ drawn as a NUMBERED ARROW-CONNECTED FLOW with a PROFIT-POOL bar; Five Forces chi
 and per-company strategy blocks using a 4-step SCQA DIAGNOSIS (Situation, Complication,
 Question, Answer) plus 1-3 tailored strategy tracks.
 
-STEP 1 — Pick today's 7 GICS industries with the LANE rotation (one per lane -> 7
-different list positions; do NOT use a consecutive day*7 block). Compute today's date in Korea time
-with `TZ=Asia/Seoul date +%F` and run:
+STEP 1 — Pick today's 7 GICS industries with COVERAGE-AWARE rotation. Sweep every
+industry exactly once per lap, spread across sectors, tracking progress in rotation.json
+so nothing is skipped or over-repeated. When a lap completes it starts the next lap; once
+the 74 GICS Industries (Phase 1) are fully covered AND a subindustries.json file exists in
+the repo root, it advances to Phase 2 (GICS Sub-Industries). Run:
 
 python3 - <<'PY'
-from datetime import date, datetime
-from zoneinfo import ZoneInfo
-industries = ["Energy Equipment & Services","Oil, Gas & Consumable Fuels","Chemicals","Construction Materials","Containers & Packaging","Metals & Mining","Paper & Forest Products","Aerospace & Defense","Building Products","Construction & Engineering","Electrical Equipment","Industrial Conglomerates","Machinery","Trading Companies & Distributors","Commercial Services & Supplies","Professional Services","Air Freight & Logistics","Passenger Airlines","Marine Transportation","Ground Transportation","Transportation Infrastructure","Automobile Components","Automobiles","Household Durables","Leisure Products","Textiles, Apparel & Luxury Goods","Hotels, Restaurants & Leisure","Diversified Consumer Services","Distributors","Broadline Retail","Specialty Retail","Consumer Staples Distribution & Retail","Beverages","Food Products","Tobacco","Household Products","Personal Care Products","Health Care Equipment & Supplies","Health Care Providers & Services","Health Care Technology","Biotechnology","Pharmaceuticals","Life Sciences Tools & Services","Banks","Financial Services","Consumer Finance","Capital Markets","Mortgage REITs","Insurance","IT Services","Software","Communications Equipment","Technology Hardware, Storage & Peripherals","Electronic Equipment, Instruments & Components","Semiconductors & Semiconductor Equipment","Diversified Telecommunication Services","Wireless Telecommunication Services","Media","Entertainment","Interactive Media & Services","Electric Utilities","Gas Utilities","Multi-Utilities","Water Utilities","Independent Power and Renewable Electricity Producers","Diversified REITs","Industrial REITs","Hotel & Resort REITs","Office REITs","Health Care REITs","Residential REITs","Retail REITs","Specialized REITs","Real Estate Management & Development"]
-N=len(industries); PER=7; day=(datetime.now(ZoneInfo("Asia/Seoul")).date()-date(2026,1,1)).days
-for l in range(PER):
-    s=(l*N)//PER; e=((l+1)*N)//PER; i=s+(day%(e-s)); print(l+1, i, "|", industries[i])
+import json, os
+from collections import OrderedDict
+SECTOR={"10":"Energy","15":"Materials","20":"Industrials","25":"Consumer Discretionary","30":"Consumer Staples","35":"Health Care","40":"Financials","45":"Information Technology","50":"Communication Services","55":"Utilities","60":"Real Estate"}
+L1=[("101010","Energy Equipment & Services"),("101020","Oil, Gas & Consumable Fuels"),("151010","Chemicals"),("151020","Construction Materials"),("151030","Containers & Packaging"),("151040","Metals & Mining"),("151050","Paper & Forest Products"),("201010","Aerospace & Defense"),("201020","Building Products"),("201030","Construction & Engineering"),("201040","Electrical Equipment"),("201050","Industrial Conglomerates"),("201060","Machinery"),("201070","Trading Companies & Distributors"),("202010","Commercial Services & Supplies"),("202020","Professional Services"),("203010","Air Freight & Logistics"),("203020","Passenger Airlines"),("203030","Marine Transportation"),("203040","Ground Transportation"),("203050","Transportation Infrastructure"),("251010","Automobile Components"),("251020","Automobiles"),("252010","Household Durables"),("252020","Leisure Products"),("252030","Textiles, Apparel & Luxury Goods"),("253010","Hotels, Restaurants & Leisure"),("253020","Diversified Consumer Services"),("255010","Distributors"),("255030","Broadline Retail"),("255040","Specialty Retail"),("301010","Consumer Staples Distribution & Retail"),("302010","Beverages"),("302020","Food Products"),("302030","Tobacco"),("303010","Household Products"),("303020","Personal Care Products"),("351010","Health Care Equipment & Supplies"),("351020","Health Care Providers & Services"),("351030","Health Care Technology"),("352010","Biotechnology"),("352020","Pharmaceuticals"),("352030","Life Sciences Tools & Services"),("401010","Banks"),("402010","Financial Services"),("402020","Consumer Finance"),("402030","Capital Markets"),("402040","Mortgage REITs"),("403010","Insurance"),("451020","IT Services"),("451030","Software"),("452010","Communications Equipment"),("452020","Technology Hardware, Storage & Peripherals"),("452030","Electronic Equipment, Instruments & Components"),("453010","Semiconductors & Semiconductor Equipment"),("501010","Diversified Telecommunication Services"),("501020","Wireless Telecommunication Services"),("502010","Media"),("502020","Entertainment"),("502030","Interactive Media & Services"),("551010","Electric Utilities"),("551020","Gas Utilities"),("551030","Multi-Utilities"),("551040","Water Utilities"),("551050","Independent Power and Renewable Electricity Producers"),("601010","Diversified REITs"),("601025","Industrial REITs"),("601030","Hotel & Resort REITs"),("601040","Office REITs"),("601050","Health Care REITs"),("601060","Residential REITs"),("601070","Retail REITs"),("601080","Specialized REITs"),("602010","Real Estate Management & Development")]
+def load(p,d):
+    try: return json.load(open(p))
+    except Exception: return d
+def universe(phase):
+    if phase>=2 and os.path.exists("subindustries.json"):
+        return [(str(c),n) for c,n in load("subindustries.json",[])]
+    return L1
+reps=load("reports.json",[])
+state=load("rotation.json",None)
+if state is None:
+    covered=set(str(r.get("gics")) for r in reps if r.get("gics"))
+    state={"phase":1,"covered":[c for c,_ in L1 if c in covered]}
+phase=int(state.get("phase",1)); covered=set(state.get("covered",[]))
+univ=universe(phase); uncovered=[(c,n) for c,n in univ if c not in covered]
+if not uncovered:
+    if phase==1 and os.path.exists("subindustries.json"): phase=2
+    covered=set(); univ=universe(phase); uncovered=[(c,n) for c,n in univ]
+def spread_pick(items, k):
+    bysec=OrderedDict()
+    for c,n in items: bysec.setdefault(SECTOR.get(c[:2],"?"),[]).append((c,n))
+    out=[]; secs=list(bysec.keys()); i=0
+    while len(out)<k and any(bysec[s] for s in secs):
+        s=secs[i%len(secs)]
+        if bysec[s]: out.append(bysec[s].pop(0))
+        i+=1
+    return out
+pick=spread_pick(uncovered,7)
+if len(pick)<7:  # lap nearly done -> top up from a fresh lap
+    used=set(c for c,_ in pick)|covered
+    pick+=spread_pick([(c,n) for c,n in universe(phase) if c not in used],7-len(pick))
+for c,_ in pick: covered.add(c)
+json.dump({"phase":phase,"covered":sorted(covered)}, open("rotation.json","w"), ensure_ascii=False)
+for k,(c,n) in enumerate(pick): print(k+1, c, "|", n, "|", SECTOR.get(c[:2],"?"))
 PY
+
+This prints up to 7 `(k, gics_code, industry, sector)` rows and writes rotation.json (it is
+committed with the reports in STEP 6). Use these as today's industries; the GICS code shown
+is the report's code.
 
 For EACH industry do STEPS 2-4.
 
