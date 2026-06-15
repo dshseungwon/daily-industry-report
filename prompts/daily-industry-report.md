@@ -168,7 +168,7 @@ MECE: "Macro forces & the latest RULES" = laws/bills/regulations ONLY (dated);
 demand, prices). No item may appear in both.
 
 Structure (analysis dominant; players secondary): (1) Header — brand "The Industry
-Brief", industry, date, "GICS day-set k of 7", GICS sector + code; (2) Executive summary (≤3 sentences, the single most important points only); (3) Definition & value chain (numbered arrow flow + profit-pool bar); (4)
+Brief", industry, date, "GICS day-set k of 7", and the GICS taxonomy breadcrumb (STEP 4A); (2) Executive summary (≤3 sentences, the single most important points only); (3) Definition & value chain (numbered arrow flow + profit-pool bar); (4)
 Market size & growth (CAGR badge + zoomed column chart); (5) Market share (global +
 Korea pies summing to 100%); (6) Competitive positioning (2x2 SVG with Global #1 navy,
 Korea #1 red, 2-3 peers = 4 plotted points, one-line takeaway); (7) Porter's Five
@@ -186,6 +186,39 @@ strategy tracks, and 3 action-plan cards (현재->목표 / From->To); (12) KPIs 
 Sources footer. Filename:
 industry-report_<YYYY-MM-DD>_<GICScode>_<IndustrySlug>.html. Save all 7 into
 reports/<YYYY-MM-DD>/ (create the folder).
+
+STEP 4A — GICS TAXONOMY BREADCRUMB (REQUIRED in the hero of EVERY report). The
+template you copy already contains the CSS (<style id="gics-tax-css">) and a
+<div class="gics-tax"> breadcrumb in the hero. KEEP the CSS verbatim and REPLACE the
+breadcrumb items for today's code. Render the FULL GICS path as labeled items separated
+by the chevron span, with ONLY the current level marked class="gt-i cur":
+- Phase 1 (6-digit industry code): 3 levels — Sector (code[:2]) > Industry Group
+  (code[:4]) > Industry (code[:6], CURRENT).
+- Phase 2 (8-digit sub-industry code): 4 levels — Sector (code[:2]) > Industry Group
+  (code[:4]) > Industry (code[:6]) > Sub-Industry (code[:8], CURRENT). The parent
+  Industry name (code[:6]) comes from the L1 list in STEP 1; the Sub-Industry name
+  (code, name) from subindustries.json.
+Each item HTML (bilingual; add " cur" to class only for the current level):
+<span class="gt-i cur"><span class="gt-c">CODE</span><span class="gt-n"><span class="en">EN</span><span class="ko">KO</span></span><span class="gt-l"><span class="en">LEVEL_EN</span><span class="ko">LEVEL_KO</span></span></span>
+Lead with <span class="gt-h"><span class="en">GICS</span><span class="ko">GICS 분류</span></span>
+and put <span class="gt-a" aria-hidden="true">&#8250;</span> between items. Level labels:
+Sector/섹터, Industry Group/산업군, Industry/산업, Sub-Industry/세부산업. The old
+"GICS · sector · code" pill is REPLACED by this breadcrumb (keep the date and Players pills).
+SECTOR (code[:2]) EN|KO: 10 Energy|에너지; 15 Materials|소재; 20 Industrials|산업재;
+25 Consumer Discretionary|경기소비재; 30 Consumer Staples|필수소비재; 35 Health Care|헬스케어;
+40 Financials|금융; 45 Information Technology|정보기술; 50 Communication Services|커뮤니케이션 서비스;
+55 Utilities|유틸리티; 60 Real Estate|부동산.
+INDUSTRY GROUP (code[:4]) EN|KO: 1010 Energy|에너지; 1510 Materials|소재; 2010 Capital Goods|자본재;
+2020 Commercial & Professional Services|상업·전문 서비스; 2030 Transportation|운송;
+2510 Automobiles & Components|자동차·부품; 2520 Consumer Durables & Apparel|내구소비재·의류;
+2530 Consumer Services|소비자 서비스; 2550 Consumer Discretionary Distribution & Retail|경기소비재 유통·소매;
+3010 Consumer Staples Distribution & Retail|필수소비재 유통·소매; 3020 Food, Beverage & Tobacco|식품·음료·담배;
+3030 Household & Personal Products|가정·개인 용품; 3510 Health Care Equipment & Services|헬스케어 장비·서비스;
+3520 Pharmaceuticals, Biotechnology & Life Sciences|제약·바이오·생명과학; 4010 Banks|은행;
+4020 Financial Services|금융 서비스; 4030 Insurance|보험; 4510 Software & Services|소프트웨어·서비스;
+4520 Technology Hardware & Equipment|기술 하드웨어·장비; 4530 Semiconductors & Semiconductor Equipment|반도체·반도체 장비;
+5010 Telecommunication Services|통신 서비스; 5020 Media & Entertainment|미디어·엔터테인먼트; 5510 Utilities|유틸리티;
+6010 Equity Real Estate Investment Trusts (REITs)|리츠(REITs); 6020 Real Estate Management & Development|부동산 관리·개발.
 
 STEP 5 — Build the 7 landing entries: for each industry an object {date, gics, sector,
 set_index, industry_en, industry_ko, global_company, korea_company, file, headline_en,
