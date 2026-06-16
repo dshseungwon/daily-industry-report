@@ -128,6 +128,63 @@
     },
     "sector": "Energy"
   },
+  "10101020": {
+    "cagr": "~3%",
+    "gics": "10101020",
+    "global_company": "SLB (Schlumberger)",
+    "global_firms": [
+      {
+        "name": "SLB (Schlumberger)",
+        "share": 25.0
+      },
+      {
+        "name": "Halliburton",
+        "share": 17.0
+      },
+      {
+        "name": "Baker Hughes",
+        "share": 11.0
+      },
+      {
+        "name": "Weatherford / COSL",
+        "share": 8.0
+      },
+      {
+        "name": "Others (fragmented)",
+        "share": 39.0
+      }
+    ],
+    "headline_ko": "저성장·경기순환형 유전 서비스 시장에서 SLB가 규모와 디지털로 앞서고, 한국은 주로 해양 설비 건조로 참여하고 있습니다.",
+    "industry_en": "Oil & Gas Equipment & Services",
+    "industry_ko": "석유·가스 장비·서비스",
+    "korea_company": "Samsung Heavy Industries",
+    "korea_firms": [
+      {
+        "name": "HD Hyundai (group)",
+        "share": 40.0
+      },
+      {
+        "name": "Samsung Heavy Industries",
+        "share": 30.0
+      },
+      {
+        "name": "Hanwha Ocean",
+        "share": 30.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.25,
+      "scale": 0.35,
+      "tech": 0.4
+    },
+    "market": {
+      "label": "$142B",
+      "trillion_usd": 0.142,
+      "year": "2024"
+    },
+    "sector": "Energy"
+  },
   "101020": {
     "cagr": "~5.4%",
     "gics": "101020",
@@ -295,6 +352,67 @@
     "market": {
       "label": "$814B",
       "trillion_usd": 0.814,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
+  "15101020": {
+    "cagr": "~6.6%",
+    "gics": "15101020",
+    "global_company": "BASF",
+    "global_firms": [
+      {
+        "name": "BASF",
+        "share": 26.0
+      },
+      {
+        "name": "Sinopec (chem.)",
+        "share": 23.0
+      },
+      {
+        "name": "Dow",
+        "share": 21.0
+      },
+      {
+        "name": "SABIC",
+        "share": 18.0
+      },
+      {
+        "name": "LyondellBasell",
+        "share": 12.0
+      }
+    ],
+    "headline_ko": "글로벌 화학은 중국 공급과잉과 약한 마진에 직면해 있으며, BASF는 구조조정에 나서고 LG화학은 석유화학 부진을 흡수하고 있습니다.",
+    "industry_en": "Diversified Chemicals",
+    "industry_ko": "종합화학",
+    "korea_company": "LG Chem",
+    "korea_firms": [
+      {
+        "name": "LG Chem",
+        "share": 44.0
+      },
+      {
+        "name": "Lotte Chemical",
+        "share": 22.0
+      },
+      {
+        "name": "Hanwha Solutions",
+        "share": 18.0
+      },
+      {
+        "name": "Kumho Petrochemical",
+        "share": 16.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.6667,
+      "tech": 0.3333
+    },
+    "market": {
+      "label": "$5.00T",
+      "trillion_usd": 5.0,
       "year": "2024"
     },
     "sector": "Materials"
@@ -716,6 +834,67 @@
     "market": {
       "label": "$1.37T",
       "trillion_usd": 1.37,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20102010": {
+    "cagr": "~5.9%",
+    "gics": "20102010",
+    "global_company": "Trane Technologies",
+    "global_firms": [
+      {
+        "name": "Trane Technologies",
+        "share": 32.0
+      },
+      {
+        "name": "Johnson Controls",
+        "share": 27.0
+      },
+      {
+        "name": "Carrier Global",
+        "share": 18.0
+      },
+      {
+        "name": "Daikin / Saint-Gobain",
+        "share": 13.0
+      },
+      {
+        "name": "Assa Abloy & others",
+        "share": 10.0
+      }
+    ],
+    "headline_ko": "건축자재는 전기화와 데이터센터 냉방 수요에 올라타고 있으며, 트레인이 가치로 앞서고 KCC가 한국 자재 시장을 떠받치고 있습니다.",
+    "industry_en": "Building Products",
+    "industry_ko": "건축자재",
+    "korea_company": "KCC Corporation",
+    "korea_firms": [
+      {
+        "name": "KCC Corporation",
+        "share": 38.0
+      },
+      {
+        "name": "Poongsan",
+        "share": 25.0
+      },
+      {
+        "name": "LX Hausys",
+        "share": 21.0
+      },
+      {
+        "name": "Hanssem & others",
+        "share": 16.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.3077,
+      "global": 0.0,
+      "scale": 0.6923,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$26.9B",
+      "trillion_usd": 0.0269,
       "year": "2024"
     },
     "sector": "Industrials"
@@ -1562,6 +1741,63 @@
     },
     "sector": "Consumer Discretionary"
   },
+  "25101020": {
+    "cagr": "~4.33%",
+    "gics": "25101020",
+    "global_company": "Michelin",
+    "global_firms": [
+      {
+        "name": "Michelin",
+        "share": 27.0
+      },
+      {
+        "name": "Bridgestone",
+        "share": 23.0
+      },
+      {
+        "name": "Goodyear",
+        "share": 22.0
+      },
+      {
+        "name": "Continental",
+        "share": 16.0
+      },
+      {
+        "name": "Hankook",
+        "share": 12.0
+      }
+    ],
+    "headline_ko": "프리미엄화와 EV 적합 타이어가 마진을 끌어올리는 가운데 미쉐린이 시장가치로 앞서고 한국타이어가 한국 1위를 지키고 있으며, 미국 관세 부담이 상존합니다.",
+    "industry_en": "Tires & Rubber",
+    "industry_ko": "타이어·고무",
+    "korea_company": "Hankook Tire & Technology",
+    "korea_firms": [
+      {
+        "name": "Hankook Tire",
+        "share": 56.0
+      },
+      {
+        "name": "Kumho Tire",
+        "share": 26.0
+      },
+      {
+        "name": "Nexen Tire",
+        "share": 18.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.3333,
+      "global": 0.0556,
+      "scale": 0.3889,
+      "tech": 0.2222
+    },
+    "market": {
+      "label": "$174B",
+      "trillion_usd": 0.174,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
   "251020": {
     "cagr": "≈5.7%",
     "gics": "251020",
@@ -2194,6 +2430,63 @@
     },
     "sector": "Consumer Staples"
   },
+  "30101020": {
+    "cagr": "~7.2%",
+    "gics": "30101020",
+    "global_company": "Sysco",
+    "global_firms": [
+      {
+        "name": "Sysco",
+        "share": 41.0
+      },
+      {
+        "name": "Performance Food Group",
+        "share": 32.0
+      },
+      {
+        "name": "US Foods",
+        "share": 19.0
+      },
+      {
+        "name": "Others (top tier)",
+        "share": 8.0
+      }
+    ],
+    "headline_ko": "저마진·규모·물류 사업으로, 시스코가 글로벌을 주도하고 CJ프레시웨이가 훨씬 덜 통합된 한국 시장을 이끌고 있습니다.",
+    "industry_en": "Food Distributors",
+    "industry_ko": "식품 유통",
+    "korea_company": "CJ Freshway",
+    "korea_firms": [
+      {
+        "name": "CJ Freshway",
+        "share": 38.0
+      },
+      {
+        "name": "Hyundai Greenfood",
+        "share": 24.0
+      },
+      {
+        "name": "Shinsegae / SSG & Lotte",
+        "share": 20.0
+      },
+      {
+        "name": "Pulmuone & others",
+        "share": 18.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0714,
+      "scale": 0.6429,
+      "tech": 0.2857
+    },
+    "market": {
+      "label": "$1.03T",
+      "trillion_usd": 1.03,
+      "year": "2024"
+    },
+    "sector": "Consumer Staples"
+  },
   "302010": {
     "cagr": "≈1.7%",
     "gics": "302010",
@@ -2585,6 +2878,63 @@
     "market": {
       "label": "$623B",
       "trillion_usd": 0.623,
+      "year": "2024"
+    },
+    "sector": "Health Care"
+  },
+  "35101020": {
+    "cagr": "~14.3%",
+    "gics": "35101020",
+    "global_company": "Becton Dickinson",
+    "global_firms": [
+      {
+        "name": "Becton Dickinson (BD)",
+        "share": 33.0
+      },
+      {
+        "name": "Cardinal Health (Medical)",
+        "share": 23.0
+      },
+      {
+        "name": "Medline",
+        "share": 17.0
+      },
+      {
+        "name": "Alcon / Cooper (lenses)",
+        "share": 15.0
+      },
+      {
+        "name": "Dentsply / others",
+        "share": 12.0
+      }
+    ],
+    "headline_ko": "일회용 의료 소모품 수요가 꾸준한 가운데 Becton Dickinson(BD)이 글로벌을 주도하고, 한국의 아이센스가 혈당·CGM 소모품에서 성장하고 있습니다.",
+    "industry_en": "Health Care Supplies",
+    "industry_ko": "헬스케어 용품",
+    "korea_company": "i-SENS",
+    "korea_firms": [
+      {
+        "name": "Dentium",
+        "share": 30.0
+      },
+      {
+        "name": "i-SENS",
+        "share": 28.0
+      },
+      {
+        "name": "Seegene (consumables)",
+        "share": 20.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.5625,
+      "scale": 0.375,
+      "tech": 0.0625
+    },
+    "market": {
+      "label": "$502B",
+      "trillion_usd": 0.502,
       "year": "2024"
     },
     "sector": "Health Care"
@@ -3014,6 +3364,63 @@
       "label": "$7.95T",
       "trillion_usd": 7.95,
       "year": "2024"
+    },
+    "sector": "Financials"
+  },
+  "40101015": {
+    "cagr": "~11.1%",
+    "gics": "40101015",
+    "global_company": "U.S. Bancorp",
+    "global_firms": [
+      {
+        "name": "U.S. Bancorp",
+        "share": 30.0
+      },
+      {
+        "name": "PNC Financial",
+        "share": 23.0
+      },
+      {
+        "name": "Capital One",
+        "share": 18.0
+      },
+      {
+        "name": "Truist Financial",
+        "share": 16.0
+      },
+      {
+        "name": "Fifth Third",
+        "share": 13.0
+      }
+    ],
+    "headline_ko": "지방은행은 2023년 위기 이후 안정을 찾고 있으며 통합과 상업용 부동산(CRE)이 핵심 주제로, U.S. Bancorp가 수수료로 앞서고 BNK금융지주가 한국 지방은행 1위를 지키고 있습니다.",
+    "industry_en": "Regional Banks",
+    "industry_ko": "지방은행",
+    "korea_company": "BNK Financial Group",
+    "korea_firms": [
+      {
+        "name": "BNK Financial",
+        "share": 42.0
+      },
+      {
+        "name": "JB Financial",
+        "share": 31.0
+      },
+      {
+        "name": "iM Financial (DGB)",
+        "share": 27.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1818,
+      "scale": 0.8182,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$455B",
+      "trillion_usd": 0.455,
+      "year": "2023"
     },
     "sector": "Financials"
   },
