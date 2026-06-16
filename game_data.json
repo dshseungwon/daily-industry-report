@@ -63,6 +63,71 @@
     },
     "sector": "Energy"
   },
+  "10101010": {
+    "cagr": "~6.5%",
+    "gics": "10101010",
+    "global_company": "ADNOC Drilling",
+    "global_firms": [
+      {
+        "name": "ADNOC Drilling",
+        "share": 52.0
+      },
+      {
+        "name": "Transocean+Valaris",
+        "share": 23.0
+      },
+      {
+        "name": "Helmerich & Payne",
+        "share": 13.0
+      },
+      {
+        "name": "Patterson-UTI",
+        "share": 8.0
+      },
+      {
+        "name": "Nabors / Precision",
+        "share": 4.0
+      }
+    ],
+    "headline_ko": "OPEC+ 증산 전환이 해양 일일 용선료를 누르는 가운데 ADNOC Drilling이 시추 시장을 주도합니다.",
+    "industry_en": "Oil & Gas Drilling",
+    "industry_ko": "석유·가스 시추",
+    "korea_company": "Samsung Heavy Industries (proxy)",
+    "korea_firms": [
+      {
+        "ko": "삼성중공업(드릴십)",
+        "name": "Samsung Heavy (drillships)",
+        "share": 46.0
+      },
+      {
+        "ko": "현대중공업(설비/해양)",
+        "name": "HD Hyundai Heavy (rigs/offshore)HD",
+        "share": 32.0
+      },
+      {
+        "ko": "한화오션(해양)",
+        "name": "Hanwha Ocean (offshore)",
+        "share": 15.0
+      },
+      {
+        "ko": "포스코인터내셔널(E&P 프록시)",
+        "name": "POSCO Int'l (E&P proxy)",
+        "share": 7.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.5,
+      "global": 0.0,
+      "scale": 0.5,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$85B",
+      "trillion_usd": 0.085,
+      "year": "2024"
+    },
+    "sector": "Energy"
+  },
   "101020": {
     "cagr": "~5.4%",
     "gics": "101020",
@@ -169,6 +234,67 @@
     "market": {
       "label": "$0.98T",
       "trillion_usd": 0.98,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
+  "15101010": {
+    "cagr": "~6.0%",
+    "gics": "15101010",
+    "global_company": "BASF",
+    "global_firms": [
+      {
+        "name": "Sinopec",
+        "share": 53.0
+      },
+      {
+        "name": "BASF",
+        "share": 15.0
+      },
+      {
+        "name": "Dow",
+        "share": 12.0
+      },
+      {
+        "name": "SABIC",
+        "share": 11.0
+      },
+      {
+        "name": "LyondellBasell",
+        "share": 9.0
+      }
+    ],
+    "headline_ko": "중국발 공급 과잉이 구조조정을 부르면서 범용 화학은 깊은 다운사이클에 놓여 있습니다.",
+    "industry_en": "Commodity Chemicals",
+    "industry_ko": "범용 화학",
+    "korea_company": "Lotte Chemical",
+    "korea_firms": [
+      {
+        "name": "롯데케미칼",
+        "share": 36.0
+      },
+      {
+        "name": "한화솔루션",
+        "share": 26.0
+      },
+      {
+        "name": "금호석유화학",
+        "share": 18.0
+      },
+      {
+        "name": "대한유화(KPIC)",
+        "share": 12.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0476,
+      "scale": 0.7619,
+      "tech": 0.1905
+    },
+    "market": {
+      "label": "$814B",
+      "trillion_usd": 0.814,
       "year": "2024"
     },
     "sector": "Materials"
@@ -473,6 +599,71 @@
       "label": "$885B",
       "trillion_usd": 0.885,
       "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20101010": {
+    "cagr": "~7.1%",
+    "gics": "20101010",
+    "global_company": "GE Aerospace",
+    "global_firms": [
+      {
+        "name": "GE Aerospace",
+        "share": 32.0
+      },
+      {
+        "name": "RTX",
+        "share": 24.0
+      },
+      {
+        "name": "Boeing",
+        "share": 17.0
+      },
+      {
+        "name": "Lockheed Martin",
+        "share": 16.0
+      },
+      {
+        "name": "Northrop Grumman",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "재무장 슈퍼사이클이 항공우주·방위 수주잔고와 기업가치를 사상 최고로 끌어올렸습니다.",
+    "industry_en": "Aerospace & Defense",
+    "industry_ko": "항공우주·방위",
+    "korea_company": "Hanwha Aerospace",
+    "korea_firms": [
+      {
+        "name": "한화에어로스페이스",
+        "share": 55.0
+      },
+      {
+        "name": "LIG Nex1",
+        "share": 16.0
+      },
+      {
+        "name": "한국항공우주산업(KAI)",
+        "share": 11.0
+      },
+      {
+        "name": "현대로템",
+        "share": 10.0
+      },
+      {
+        "name": "한화시스템",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1875,
+      "scale": 0.4375,
+      "tech": 0.375
+    },
+    "market": {
+      "label": "$847B",
+      "trillion_usd": 0.847,
+      "year": "2025"
     },
     "sector": "Industrials"
   },
@@ -1305,6 +1496,72 @@
     },
     "sector": "Consumer Discretionary"
   },
+  "25101010": {
+    "cagr": "~2.8%",
+    "gics": "25101010",
+    "global_company": "Bosch",
+    "global_firms": [
+      {
+        "name": "Bosch",
+        "share": 27.0
+      },
+      {
+        "name": "Denso",
+        "share": 22.0
+      },
+      {
+        "name": "Magna",
+        "share": 18.0
+      },
+      {
+        "name": "Hyundai Mobis",
+        "share": 17.0
+      },
+      {
+        "name": "ZF",
+        "share": 16.0
+      }
+    ],
+    "headline_ko": "강한 완성차 구매력과 멈춰선 전기차 전환이 자동차 부품 협력사를 구조조정으로 내몰고 있습니다.",
+    "industry_en": "Automotive Parts & Equipment",
+    "industry_ko": "자동차 부품·장비",
+    "korea_company": "Hyundai Mobis",
+    "korea_firms": [
+      {
+        "name": "현대모비스",
+        "share": 62.0
+      },
+      {
+        "name": "한온시스템",
+        "share": 14.0
+      },
+      {
+        "name": "현대위아",
+        "share": 12.0
+      },
+      {
+        "ko": "만도",
+        "name": "HL",
+        "share": 8.0
+      },
+      {
+        "name": "에스엘",
+        "share": 4.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.3,
+      "global": 0.1,
+      "scale": 0.25,
+      "tech": 0.35
+    },
+    "market": {
+      "label": "$2.02T",
+      "trillion_usd": 2.02,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
   "251020": {
     "cagr": "≈5.7%",
     "gics": "251020",
@@ -1884,6 +2141,59 @@
     },
     "sector": "Consumer Staples"
   },
+  "30101010": {
+    "cagr": "~10.1%",
+    "gics": "30101010",
+    "global_company": "CVS Health",
+    "global_firms": [
+      {
+        "name": "CVS Health",
+        "share": 36.0
+      },
+      {
+        "name": "Walgreens",
+        "share": 27.0
+      },
+      {
+        "name": "Cigna/Express Scripts",
+        "share": 15.0
+      },
+      {
+        "name": "Walmart",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "CVS가 저마진 미국 약국 구조조정을 주도하는 한편, 한국은 기업형 약국 체인을 전면 금지하고 있습니다.",
+    "industry_en": "Drug Retail",
+    "industry_ko": "의약품 소매",
+    "korea_company": "GeoYoung (proxy)",
+    "korea_firms": [
+      {
+        "name": "지오영",
+        "share": 50.0
+      },
+      {
+        "name": "백제약품 외",
+        "share": 22.0
+      },
+      {
+        "name": "지역 도매",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1176,
+      "scale": 0.7059,
+      "tech": 0.1765
+    },
+    "market": {
+      "label": "$0.76T",
+      "trillion_usd": 0.76,
+      "year": "2024"
+    },
+    "sector": "Consumer Staples"
+  },
   "302010": {
     "cagr": "≈1.7%",
     "gics": "302010",
@@ -2210,6 +2520,71 @@
     "market": {
       "label": "$640B",
       "trillion_usd": 0.64,
+      "year": "2024"
+    },
+    "sector": "Health Care"
+  },
+  "35101010": {
+    "cagr": "~9%",
+    "gics": "35101010",
+    "global_company": "Intuitive Surgical",
+    "global_firms": [
+      {
+        "name": "Intuitive Surgical",
+        "share": 29.0
+      },
+      {
+        "name": "Stryker",
+        "share": 24.0
+      },
+      {
+        "name": "Medtronic",
+        "share": 20.0
+      },
+      {
+        "name": "Boston Scientific",
+        "share": 14.0
+      },
+      {
+        "name": "Edwards Lifesciences",
+        "share": 13.0
+      }
+    ],
+    "headline_ko": "하드웨어 자체가 아니라 설치 기반의 반복 매출이 의료기기 이익을 좌우합니다.",
+    "industry_en": "Health Care Equipment",
+    "industry_ko": "헬스케어 장비",
+    "korea_company": "Classys",
+    "korea_firms": [
+      {
+        "name": "클래시스",
+        "share": 40.0
+      },
+      {
+        "name": "루닛",
+        "share": 20.0
+      },
+      {
+        "name": "덴티움",
+        "share": 17.0
+      },
+      {
+        "name": "에스디바이오센서",
+        "share": 13.0
+      },
+      {
+        "name": "제이시스메디칼",
+        "share": 10.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.4667,
+      "scale": 0.2667,
+      "tech": 0.2667
+    },
+    "market": {
+      "label": "$623B",
+      "trillion_usd": 0.623,
       "year": "2024"
     },
     "sector": "Health Care"
@@ -2577,6 +2952,68 @@
       "label": "$8.7T",
       "trillion_usd": 8.7,
       "year": "2025"
+    },
+    "sector": "Financials"
+  },
+  "40101010": {
+    "cagr": "~6.2%",
+    "gics": "40101010",
+    "global_company": "JPMorgan Chase",
+    "global_firms": [
+      {
+        "name": "JPMorgan Chase",
+        "share": 44.0
+      },
+      {
+        "name": "Bank of America",
+        "share": 18.0
+      },
+      {
+        "name": "HSBC",
+        "share": 15.0
+      },
+      {
+        "name": "RBC",
+        "share": 13.0
+      },
+      {
+        "name": "Mitsubishi UFJ",
+        "share": 10.0
+      }
+    ],
+    "headline_ko": "기록적인 은행 이익이 금리 인하, 미국 자본규제 완화, 한국 밸류업 주주환원과 맞물리고 있습니다.",
+    "industry_en": "Diversified Banks",
+    "industry_ko": "종합은행",
+    "korea_company": "KB Financial Group",
+    "korea_firms": [
+      {
+        "ko": "금융지주",
+        "name": "KB",
+        "share": 37.0
+      },
+      {
+        "name": "신한지주",
+        "share": 28.0
+      },
+      {
+        "name": "하나금융지주",
+        "share": 20.0
+      },
+      {
+        "name": "우리금융지주",
+        "share": 15.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.3125,
+      "scale": 0.6875,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$7.95T",
+      "trillion_usd": 7.95,
+      "year": "2024"
     },
     "sector": "Financials"
   },
