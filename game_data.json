@@ -229,6 +229,61 @@
     },
     "sector": "Energy"
   },
+  "10102010": {
+    "cagr": "~5.0%",
+    "gics": "10102010",
+    "global_company": "Saudi Aramco",
+    "global_firms": [
+      {
+        "name": "Saudi Aramco",
+        "share": 53.0
+      },
+      {
+        "name": "ExxonMobil",
+        "share": 18.0
+      },
+      {
+        "name": "Chevron",
+        "share": 11.0
+      },
+      {
+        "name": "Shell",
+        "share": 9.0
+      },
+      {
+        "name": "TotalEnergies",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "종합 석유·가스는 상류 생산과 하류 정제를 아우르며, 시가총액 기준 사우디 아람코가 세계 1위이고 한국에는 완전 통합 메이저가 없어 SK이노베이션이 가장 가까운 프록시로 파악됩니다.",
+    "industry_en": "Integrated Oil & Gas",
+    "industry_ko": "종합 석유·가스",
+    "korea_company": "SK Innovation (proxy)",
+    "korea_firms": [
+      {
+        "ko": "이노베이션(통합 프록시)",
+        "name": "SK Innovation (integrated proxy)SK",
+        "share": 59.0
+      },
+      {
+        "ko": "에쓰오일(정유, 아람코 지배)",
+        "name": "S-Oil (refining, Aramco-controlled)",
+        "share": 41.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1818,
+      "scale": 0.8182,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$7.9T",
+      "trillion_usd": 7.9,
+      "year": "2024"
+    },
+    "sector": "Energy"
+  },
   "151010": {
     "cagr": "~5.0%",
     "gics": "151010",
@@ -413,6 +468,71 @@
     "market": {
       "label": "$5.00T",
       "trillion_usd": 5.0,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
+  "15101030": {
+    "cagr": "~2.7%",
+    "gics": "15101030",
+    "global_company": "Nutrien",
+    "global_firms": [
+      {
+        "name": "Nutrien",
+        "share": 20.0
+      },
+      {
+        "name": "Belaruskali",
+        "share": 14.0
+      },
+      {
+        "name": "Uralkali",
+        "share": 14.0
+      },
+      {
+        "name": "Mosaic",
+        "share": 12.0
+      },
+      {
+        "name": "K+S / ICL",
+        "share": 12.0
+      }
+    ],
+    "headline_ko": "비료와 작물보호제는 규모와 칼륨비료 우위를 중심으로 통합되고 있으며, 글로벌 상장사 중 뉴트리엔이 1위, 한국 비료 시장은 남해화학이 선도하고 있습니다.",
+    "industry_en": "Fertilizers & Agricultural Chemicals",
+    "industry_ko": "비료·농약",
+    "korea_company": "Namhae Chemical",
+    "korea_firms": [
+      {
+        "ko": "팜한농",
+        "name": "Farm Hannong",
+        "share": 25.0
+      },
+      {
+        "ko": "경농",
+        "name": "Kyung Nong",
+        "share": 18.0
+      },
+      {
+        "ko": "동방아그로",
+        "name": "Dongbang Agro",
+        "share": 15.0
+      },
+      {
+        "ko": "한국삼공",
+        "name": "Hankook Samgong",
+        "share": 12.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.25,
+      "scale": 0.55,
+      "tech": 0.2
+    },
+    "market": {
+      "label": "$221B",
+      "trillion_usd": 0.221,
       "year": "2024"
     },
     "sector": "Materials"
@@ -958,6 +1078,66 @@
       "label": "$15.8T",
       "trillion_usd": 15.8,
       "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20103010": {
+    "cagr": "~5.6%",
+    "gics": "20103010",
+    "global_company": "China State Construction (CSCEC)",
+    "global_firms": [
+      {
+        "name": "CSCEC",
+        "share": 14.0
+      },
+      {
+        "name": "VINCI",
+        "share": 8.0
+      },
+      {
+        "name": "Bouygues / ACS",
+        "share": 6.0
+      }
+    ],
+    "headline_ko": "글로벌 건설 시장은 약 15조 8,000억 달러 규모로 중국 국영 건설사가 우위에 있으며, 매출 기준 중국건축공정총공사(CSCEC)가 세계 1위, 한국은 삼성물산이 선도하고 있습니다.",
+    "industry_en": "Construction & Engineering",
+    "industry_ko": "건설·엔지니어링",
+    "korea_company": "Samsung C&T",
+    "korea_firms": [
+      {
+        "ko": "현대건설(현대엔지니어링 포함)",
+        "name": "Hyundai E&C (incl. Hyundai Eng.)",
+        "share": 10.0
+      },
+      {
+        "ko": "삼성물산(건설)",
+        "name": "Samsung C&T (construction)",
+        "share": 5.0
+      },
+      {
+        "name": "GS E&C",
+        "share": 4.0
+      },
+      {
+        "name": "Daewoo E&C",
+        "share": 3.0
+      },
+      {
+        "ko": "기타(긴 꼬리)",
+        "name": "Others (long tail)",
+        "share": 78.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0625,
+      "scale": 0.4375,
+      "tech": 0.5
+    },
+    "market": {
+      "label": "$14.9T",
+      "trillion_usd": 14.9,
+      "year": "2023"
     },
     "sector": "Industrials"
   },
@@ -1860,6 +2040,80 @@
     },
     "sector": "Consumer Discretionary"
   },
+  "25102010": {
+    "cagr": "~5.6%",
+    "gics": "25102010",
+    "global_company": "Toyota",
+    "global_firms": [
+      {
+        "ko": "토요타",
+        "name": "Toyota",
+        "share": 11.0
+      },
+      {
+        "ko": "폭스바겐",
+        "name": "Volkswagen",
+        "share": 9.0
+      },
+      {
+        "ko": "현대·기아",
+        "name": "Hyundai-Kia",
+        "share": 7.0
+      },
+      {
+        "name": "GMGM",
+        "share": 6.0
+      },
+      {
+        "ko": "스텔란티스",
+        "name": "Stellantis",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "완성차업체는 관세와 고르지 않은 전기차 전환에 직면해 있으며, 판매 대수 기준 도요타가 세계 1위, 현대자동차가 한국과 세계 3위 그룹을 이끌고 있습니다.",
+    "industry_en": "Automobile Manufacturers",
+    "industry_ko": "완성차 제조",
+    "korea_company": "Hyundai Motor",
+    "korea_firms": [
+      {
+        "ko": "현대자동차",
+        "name": "Hyundai",
+        "share": 35.5
+      },
+      {
+        "ko": "기아",
+        "name": "Kia",
+        "share": 32.0
+      },
+      {
+        "ko": "제네시스",
+        "name": "Genesis",
+        "share": 7.1
+      },
+      {
+        "ko": "수입차(BMW·벤츠 등)",
+        "name": "Imports (BMW, MB, etc.)",
+        "share": 7.4
+      },
+      {
+        "ko": "기타(르노·KGM·GM)",
+        "name": "Others (Renault, KGM, GM)",
+        "share": 18.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2381,
+      "global": 0.1429,
+      "scale": 0.381,
+      "tech": 0.2381
+    },
+    "market": {
+      "label": "US$2.7 trillion",
+      "trillion_usd": 2.7,
+      "year": ""
+    },
+    "sector": "Consumer Discretionary"
+  },
   "252010": {
     "cagr": "~4.5%",
     "gics": "252010",
@@ -2487,6 +2741,77 @@
     },
     "sector": "Consumer Staples"
   },
+  "30101030": {
+    "cagr": "~3.4%",
+    "gics": "30101030",
+    "global_company": "Walmart",
+    "global_firms": [
+      {
+        "name": "Walmart",
+        "share": 21.0
+      },
+      {
+        "name": "Costco",
+        "share": 7.0
+      },
+      {
+        "name": "Kroger",
+        "share": 9.0
+      },
+      {
+        "name": "Albertsons",
+        "share": 6.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 57.0
+      }
+    ],
+    "headline_ko": "식품 소매는 규모, 자체 브랜드(PB), 온라인 식료품을 두고 경쟁하며, 식료품 매출 기준 월마트가 세계 1위, 한국 오프라인 1위는 이마트로 파악됩니다.",
+    "industry_en": "Food Retail",
+    "industry_ko": "식품 소매",
+    "korea_company": "E-mart",
+    "korea_firms": [
+      {
+        "ko": "쿠팡(온라인)",
+        "name": "Coupang (online)",
+        "share": 15.0
+      },
+      {
+        "ko": "이마트 그룹",
+        "name": "E-mart group",
+        "share": 9.0
+      },
+      {
+        "ko": "롯데쇼핑",
+        "name": "Lotte Shopping",
+        "share": 7.0
+      },
+      {
+        "ko": "네이버·SSG 등 온라인",
+        "name": "Naver / SSG / others online",
+        "share": 6.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 63.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1176,
+      "global": 0.1765,
+      "scale": 0.6471,
+      "tech": 0.0588
+    },
+    "market": {
+      "label": "$12.4T",
+      "trillion_usd": 12.4,
+      "year": "2024"
+    },
+    "sector": "Consumer Staples"
+  },
   "302010": {
     "cagr": "≈1.7%",
     "gics": "302010",
@@ -2992,6 +3317,58 @@
     },
     "sector": "Health Care"
   },
+  "35102010": {
+    "cagr": "~6%",
+    "gics": "35102010",
+    "global_company": "McKesson",
+    "global_firms": [
+      {
+        "name": "McKessonMcKesson",
+        "share": 36.0
+      },
+      {
+        "name": "CencoraCencora",
+        "share": 32.0
+      },
+      {
+        "name": "Cardinal HealthCardinal Health",
+        "share": 22.0
+      }
+    ],
+    "headline_ko": "의약품 유통은 미국 3대 기업이 장악한 대량·초박마진 사업으로, 매출 기준 맥케슨이 세계 1위, 한국 최대 유통사는 지오영입니다.",
+    "industry_en": "Health Care Distributors",
+    "industry_ko": "헬스케어 유통",
+    "korea_company": "Geo-Young",
+    "korea_firms": [
+      {
+        "ko": "지오영)지오영",
+        "name": "Geo-Young (",
+        "share": 16.0
+      },
+      {
+        "ko": "백제약품)백제약품",
+        "name": "Baekje Pharm. (",
+        "share": 10.0
+      },
+      {
+        "ko": "영세 다수",
+        "name": "Fragmented remainder",
+        "share": 67.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.125,
+      "scale": 0.6875,
+      "tech": 0.1875
+    },
+    "market": {
+      "label": "$0.80T",
+      "trillion_usd": 0.8,
+      "year": "2024"
+    },
+    "sector": "Health Care"
+  },
   "351030": {
     "cagr": "~16%",
     "gics": "351030",
@@ -3477,6 +3854,67 @@
       "label": "$135B",
       "trillion_usd": 0.135,
       "year": "2025"
+    },
+    "sector": "Financials"
+  },
+  "40201020": {
+    "cagr": "~7.3%",
+    "gics": "40201020",
+    "global_company": "Berkshire Hathaway",
+    "global_firms": [
+      {
+        "name": "Berkshire Hathaway",
+        "share": 44.0
+      },
+      {
+        "name": "Visa",
+        "share": 25.0
+      },
+      {
+        "name": "Mastercard",
+        "share": 15.0
+      },
+      {
+        "name": "American Express",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "종합 금융은 보험·여신·시장 사업을 경기 순환에 걸쳐 결합하며, 시가총액 기준 버크셔 해서웨이가 1위, 한국 금융지주는 KB금융지주가 선도하고 있습니다.",
+    "industry_en": "Diversified Financial Services",
+    "industry_ko": "종합 금융 서비스",
+    "korea_company": "KB Financial Group",
+    "korea_firms": [
+      {
+        "ko": "금융지주",
+        "name": "KB FinancialKB",
+        "share": 33.0
+      },
+      {
+        "ko": "신한지주",
+        "name": "Shinhan Financial",
+        "share": 27.0
+      },
+      {
+        "ko": "하나금융지주",
+        "name": "Hana Financial",
+        "share": 23.0
+      },
+      {
+        "ko": "우리금융지주",
+        "name": "Woori Financial",
+        "share": 17.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.3333,
+      "global": 0.0,
+      "scale": 0.6667,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$33.6T",
+      "trillion_usd": 33.6,
+      "year": "2024"
     },
     "sector": "Financials"
   },
