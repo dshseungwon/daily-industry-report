@@ -284,6 +284,56 @@
     },
     "sector": "Energy"
   },
+  "10102020": {
+    "cagr": "~5.9%",
+    "gics": "10102020",
+    "global_company": "ConocoPhillips",
+    "global_firms": [
+      {
+        "name": "ConocoPhillips",
+        "share": 35.0
+      },
+      {
+        "name": "EOG Resources",
+        "share": 20.0
+      },
+      {
+        "name": "Diamondback Energy",
+        "share": 14.0
+      },
+      {
+        "name": "Occidental",
+        "share": 12.0
+      },
+      {
+        "name": "Devon Energy",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "순수 석유·가스 탐사·생산은 유가와 저원가 매장량에 좌우되며, 시가총액 기준 최대 독립계 생산사는 코노코필립스이고, 한국은 대형 상장 E&P가 없어 포스코인터내셔널이 가장 가까운 프록시로 파악됩니다.",
+    "industry_en": "Oil & Gas Exploration & Production",
+    "industry_ko": "석유·가스 탐사·생산",
+    "korea_company": "POSCO International (proxy)",
+    "korea_firms": [
+      {
+        "ko": "대용)",
+        "name": "POSCO International (E&P proxy)POSCO International (E&P",
+        "share": 70.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1667,
+      "scale": 0.8333,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$4.6T",
+      "trillion_usd": 4.6,
+      "year": "2024"
+    },
+    "sector": "Energy"
+  },
   "151010": {
     "cagr": "~5.0%",
     "gics": "151010",
@@ -533,6 +583,71 @@
     "market": {
       "label": "$221B",
       "trillion_usd": 0.221,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
+  "15101040": {
+    "cagr": "~5.7%",
+    "gics": "15101040",
+    "global_company": "Linde plc",
+    "global_firms": [
+      {
+        "name": "Linde",
+        "share": 30.0
+      },
+      {
+        "name": "Air Liquide",
+        "share": 23.0
+      },
+      {
+        "name": "Air Products",
+        "share": 17.0
+      },
+      {
+        "name": "Messer",
+        "share": 8.0
+      },
+      {
+        "name": "Nippon Sanso",
+        "share": 6.0
+      }
+    ],
+    "headline_ko": "산업용 가스는 3개사가 세계 시장의 약 70%를 쥔 해자 높은 과점 시장으로, 시가총액·매출 기준 글로벌 1위는 링데이며, 한국 시장은 외국계 메이저가 주도하고 상장 국내사는 원익머트리얼즈가 가장 큰 프록시인 것으로 파악됩니다.",
+    "industry_en": "Industrial Gases",
+    "industry_ko": "산업용 가스",
+    "korea_company": "Wonik Materials (proxy)",
+    "korea_firms": [
+      {
+        "ko": "에어리퀴드코리아 + DIG에어가스",
+        "name": "Air Liquide Korea + DIG Airgas",
+        "share": 30.0
+      },
+      {
+        "ko": "린데코리아",
+        "name": "Linde Korea",
+        "share": 22.0
+      },
+      {
+        "ko": "스페셜티(비상장)",
+        "name": "SK specialty (private)SK",
+        "share": 18.0
+      },
+      {
+        "ko": "원익 / TEMC / 기타",
+        "name": "Wonik / TEMC / others",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.4667,
+      "tech": 0.5333
+    },
+    "market": {
+      "label": "$109B",
+      "trillion_usd": 0.109,
       "year": "2024"
     },
     "sector": "Materials"
@@ -1204,6 +1319,63 @@
     "market": {
       "label": "$1.66T",
       "trillion_usd": 1.66,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20104010": {
+    "cagr": "~6–8%",
+    "gics": "20104010",
+    "global_company": "ABB",
+    "global_firms": [
+      {
+        "name": "ABB",
+        "share": 27.0
+      },
+      {
+        "name": "Schneider Electric",
+        "share": 24.0
+      },
+      {
+        "name": "Eaton",
+        "share": 21.0
+      },
+      {
+        "name": "Emerson",
+        "share": 11.0
+      },
+      {
+        "name": "Hitachi Energy (proxy)",
+        "share": 9.0
+      }
+    ],
+    "headline_ko": "전기장비는 AI 전력·전력망 슈퍼사이클로 사상 최대 수주잔고를 기록하고 있으며, 시가총액 기준 최대 순수 전기장비 기업은 ABB이고, 한국 변압기 3강 가운데 HD현대일렉트릭이 근소하게 선두인 것으로 파악됩니다.",
+    "industry_en": "Electrical Components & Equipment",
+    "industry_ko": "전기 부품·장비",
+    "korea_company": "HD Hyundai Electric",
+    "korea_firms": [
+      {
+        "name": "HD Hyundai Electric",
+        "share": 35.0
+      },
+      {
+        "name": "LS Electric",
+        "share": 35.0
+      },
+      {
+        "name": "Hyosung Heavy Industries",
+        "share": 30.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.6471,
+      "tech": 0.3529
+    },
+    "market": {
+      "label": "$1.57T",
+      "trillion_usd": 1.57,
       "year": "2024"
     },
     "sector": "Industrials"
@@ -2114,6 +2286,61 @@
     },
     "sector": "Consumer Discretionary"
   },
+  "25102020": {
+    "cagr": "~3.1%",
+    "gics": "25102020",
+    "global_company": "Eicher Motors (Royal Enfield)",
+    "global_firms": [
+      {
+        "name": "Honda",
+        "share": 41.0
+      },
+      {
+        "name": "Hero MotoCorp",
+        "share": 16.0
+      },
+      {
+        "name": "TVS",
+        "share": 14.0
+      },
+      {
+        "name": "Yamaha",
+        "share": 13.0
+      },
+      {
+        "name": "Bajaj",
+        "share": 10.0
+      }
+    ],
+    "headline_ko": "모터사이클 수요는 인도가 전동화를 주도하는 가운데 프리미엄 브랜드 차종과 대량 통근용으로 갈리고 있으며, 가장 가치 있는 순수 제조사는 에이셔모터스(로열 엔필드)이고, 한국은 챔피언이 없어 KR모터스가 부진한 프록시인 것으로 파악됩니다.",
+    "industry_en": "Motorcycle Manufacturers",
+    "industry_ko": "모터사이클 제조",
+    "korea_company": "KR Motors (proxy)",
+    "korea_firms": [
+      {
+        "ko": "수입·외국 브랜드(혼다, 야마하, BMW, Zontes 등)",
+        "name": "Imported / foreign brands (Honda, Yamaha, BMW, Zontes…)",
+        "share": 72.0
+      },
+      {
+        "ko": "국내 제조사(대림, KR Motors)",
+        "name": "Domestic makers (Daelim, KR Motors)",
+        "share": 28.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.3333,
+      "global": 0.3889,
+      "scale": 0.2778,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$138B",
+      "trillion_usd": 0.138,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
   "252010": {
     "cagr": "~4.5%",
     "gics": "252010",
@@ -2812,6 +3039,71 @@
     },
     "sector": "Consumer Staples"
   },
+  "30101040": {
+    "cagr": "~7.8%",
+    "gics": "30101040",
+    "global_company": "Walmart",
+    "global_firms": [
+      {
+        "name": "Walmart",
+        "share": 63.0
+      },
+      {
+        "name": "Costco",
+        "share": 28.0
+      },
+      {
+        "name": "Target",
+        "share": 4.0
+      },
+      {
+        "name": "Dollar General",
+        "share": 3.0
+      },
+      {
+        "name": "BJ's Wholesale",
+        "share": 2.0
+      }
+    ],
+    "headline_ko": "대형 종합소매는 소비자들이 절약 소비로 옮겨가는 가운데 규모·자동화·이커머스로 점유율을 늘리고 있으며, 시가총액·매출 기준 글로벌 1위는 월마트이고, 한국 대형마트 채널은 이마트가 흑자 전환과 함께 선도하는 것으로 파악됩니다.",
+    "industry_en": "Consumer Staples Merchandise Retail",
+    "industry_ko": "필수소비재 종합소매",
+    "korea_company": "E-Mart",
+    "korea_firms": [
+      {
+        "ko": "이마트",
+        "name": "E-Mart",
+        "share": 36.0
+      },
+      {
+        "ko": "롯데마트",
+        "name": "Lotte Mart",
+        "share": 32.0
+      },
+      {
+        "ko": "홈플러스",
+        "name": "Homeplus",
+        "share": 18.0
+      },
+      {
+        "ko": "코스트코 코리아 및 기타",
+        "name": "Costco Korea & others",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.125,
+      "global": 0.1875,
+      "scale": 0.6875,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$3.51T",
+      "trillion_usd": 3.51,
+      "year": "2025"
+    },
+    "sector": "Consumer Staples"
+  },
   "302010": {
     "cagr": "≈1.7%",
     "gics": "302010",
@@ -3369,6 +3661,71 @@
     },
     "sector": "Health Care"
   },
+  "35102015": {
+    "cagr": "~6.6%",
+    "gics": "35102015",
+    "global_company": "IQVIA Holdings",
+    "global_firms": [
+      {
+        "name": "IQVIA",
+        "share": 16.0
+      },
+      {
+        "name": "PPD (Thermo Fisher)",
+        "share": 8.0
+      },
+      {
+        "name": "PAREXEL",
+        "share": 8.0
+      },
+      {
+        "name": "Covance/Labcorp",
+        "share": 6.0
+      },
+      {
+        "name": "ICON",
+        "share": 6.0
+      }
+    ],
+    "headline_ko": "헬스케어 서비스는 검사·투석·CRO·진단으로 분산된 영역으로 데이터와 AI를 동력으로 삼고 있으며, 시가총액 기준 최대 적격 기업은 IQVIA이고, 한국 대형 검사기관은 비상장이라 씨젠이 가장 큰 상장 프록시인 것으로 파악됩니다.",
+    "industry_en": "Health Care Services",
+    "industry_ko": "헬스케어 서비스",
+    "korea_company": "Seegene (proxy)",
+    "korea_firms": [
+      {
+        "ko": "녹십자의료재단(비상장)",
+        "name": "GC Labs (private)GC",
+        "share": 30.0
+      },
+      {
+        "ko": "씨젠의료재단(비상장)",
+        "name": "Seegene Medical Foundation (private)",
+        "share": 22.0
+      },
+      {
+        "ko": "서울의과학연구소(비상장)",
+        "name": "SCL / Seoul Clinical Labs (private)SCL/",
+        "share": 18.0
+      },
+      {
+        "ko": "이원·삼광(비상장)",
+        "name": "EONE / Samkwang (private)",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.125,
+      "global": 0.0,
+      "scale": 0.4375,
+      "tech": 0.4375
+    },
+    "market": {
+      "label": "$116B",
+      "trillion_usd": 0.116,
+      "year": "2024"
+    },
+    "sector": "Health Care"
+  },
   "351030": {
     "cagr": "~16%",
     "gics": "351030",
@@ -3914,6 +4271,72 @@
     "market": {
       "label": "$33.6T",
       "trillion_usd": 33.6,
+      "year": "2024"
+    },
+    "sector": "Financials"
+  },
+  "40201030": {
+    "cagr": "~7.4%",
+    "gics": "40201030",
+    "global_company": "Berkshire Hathaway",
+    "global_firms": [
+      {
+        "name": "Berkshire Hathaway",
+        "share": 84.0
+      },
+      {
+        "name": "Investor AB",
+        "share": 6.0
+      },
+      {
+        "name": "Jardine Matheson",
+        "share": 4.0
+      },
+      {
+        "name": "Exor",
+        "share": 2.0
+      },
+      {
+        "name": "Industrivärden",
+        "share": 2.0
+      }
+    ],
+    "headline_ko": "복합섹터 지주회사는 보유 자산 합계 대비 할인되어 거래되며 자본 배분과 지배구조 개혁이 좌우하고, 시가총액 기준 글로벌 1위는 그레그 아벨 체제로 전환한 버크셔 해서웨이이며, 한국 최대 복합 지주는 삼성물산인 것으로 파악됩니다.",
+    "industry_en": "Multi-Sector Holdings",
+    "industry_ko": "복합섹터 지주",
+    "korea_company": "Samsung C&T",
+    "korea_firms": [
+      {
+        "ko": "삼성물산",
+        "name": "Samsung C&T",
+        "share": 52.0
+      },
+      {
+        "name": "SK Inc.SK㈜",
+        "share": 23.0
+      },
+      {
+        "name": "LG Corp",
+        "share": 10.0
+      },
+      {
+        "name": "HD Hyundai",
+        "share": 7.0
+      },
+      {
+        "name": "Hanwha",
+        "share": 5.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.4286,
+      "global": 0.5714,
+      "scale": 0.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$4.2T",
+      "trillion_usd": 4.2,
       "year": "2024"
     },
     "sector": "Financials"
