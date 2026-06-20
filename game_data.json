@@ -334,6 +334,71 @@
     },
     "sector": "Energy"
   },
+  "10102030": {
+    "cagr": "~4.3%",
+    "gics": "10102030",
+    "global_company": "Marathon Petroleum",
+    "global_firms": [
+      {
+        "name": "Sinopec (China)",
+        "share": 6.0
+      },
+      {
+        "name": "ExxonMobil",
+        "share": 5.0
+      },
+      {
+        "name": "Marathon Petroleum",
+        "share": 4.0
+      },
+      {
+        "name": "Reliance / CNPC",
+        "share": 4.0
+      },
+      {
+        "name": "Valero / Saudi Aramco",
+        "share": 4.0
+      }
+    ],
+    "headline_ko": "정제·판매업은 정제마진에 좌우되는 규모·마진 중심의 다운스트림 사업으로, 시가총액 기준 글로벌 1위 순수 상장사는 마라톤페트롤리엄이며 처리능력 기준 한국 1위는 SK이노베이션인 것으로 파악됩니다.",
+    "industry_en": "Oil & Gas Refining & Marketing",
+    "industry_ko": "석유·가스 정제·판매",
+    "korea_company": "SK Innovation",
+    "korea_firms": [
+      {
+        "ko": "에너지(SK이노베이션, 상장)",
+        "name": "SK Energy (SK Innovation, listed)SK",
+        "share": 33.0
+      },
+      {
+        "ko": "칼텍스(비상장 합작사)",
+        "name": "GS Caltex (private JV)GS",
+        "share": 27.0
+      },
+      {
+        "ko": "상장, 아람코)",
+        "name": "S-Oil (listed, Aramco)S-Oil(",
+        "share": 21.0
+      },
+      {
+        "ko": "현대오일뱅크(비상장)",
+        "name": "HD Hyundai Oilbank (private)HD",
+        "share": 19.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2857,
+      "global": 0.1429,
+      "scale": 0.5714,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$1.62T",
+      "trillion_usd": 1.62,
+      "year": "2024"
+    },
+    "sector": "Energy"
+  },
   "151010": {
     "cagr": "~5.0%",
     "gics": "151010",
@@ -649,6 +714,69 @@
       "label": "$109B",
       "trillion_usd": 0.109,
       "year": "2024"
+    },
+    "sector": "Materials"
+  },
+  "15101050": {
+    "cagr": "~4.9%",
+    "gics": "15101050",
+    "global_company": "Sherwin-Williams",
+    "global_firms": [
+      {
+        "name": "BASF",
+        "share": 9.0
+      },
+      {
+        "name": "Dow",
+        "share": 5.0
+      },
+      {
+        "name": "Evonik",
+        "share": 4.0
+      },
+      {
+        "name": "Shin-Etsu",
+        "share": 3.0
+      },
+      {
+        "name": "DSM-Firmenich",
+        "share": 3.0
+      }
+    ],
+    "headline_ko": "특수화학은 R&D와 배합, 규제 통과 역량이 마진을 가르는 고부가 배합 제품 사업으로, 시가총액 기준 글로벌 순수기업 1위는 셔윈윌리엄스이며 가장 명확한 한국 상장 대용주는 전자재료 기업 솔브레인인 것으로 파악됩니다.",
+    "industry_en": "Specialty Chemicals",
+    "industry_ko": "특수화학",
+    "korea_company": "Soulbrain",
+    "korea_firms": [
+      {
+        "ko": "화학(다각화)",
+        "name": "LG Chem (diversified)LG",
+        "share": 34.0
+      },
+      {
+        "name": "SKC",
+        "share": 22.0
+      },
+      {
+        "name": "Soulbrain",
+        "share": 16.0
+      },
+      {
+        "ko": "동진쎄미켐",
+        "name": "Dongjin Semichem",
+        "share": 12.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.25,
+      "scale": 0.45,
+      "tech": 0.3
+    },
+    "market": {
+      "label": "$885B",
+      "trillion_usd": 0.885,
+      "year": "2025"
     },
     "sector": "Materials"
   },
@@ -1376,6 +1504,67 @@
     "market": {
       "label": "$1.57T",
       "trillion_usd": 1.57,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20104020": {
+    "cagr": "~6.5%",
+    "gics": "20104020",
+    "global_company": "GE Vernova",
+    "global_firms": [
+      {
+        "name": "GE Vernova",
+        "share": 20.0
+      },
+      {
+        "name": "Siemens Energy",
+        "share": 18.0
+      },
+      {
+        "name": "Hitachi Energy",
+        "share": 14.0
+      },
+      {
+        "name": "Schneider / Eaton",
+        "share": 11.0
+      },
+      {
+        "name": "Mitsubishi / Toshiba",
+        "share": 9.0
+      }
+    ],
+    "headline_ko": "중전기기 산업은 AI 데이터센터와 전력망 확충이 변압기·터빈 공급을 압박하며 수요 슈퍼사이클에 진입했고, 시가총액 기준 글로벌 1위는 GE버노바, 한국 1위는 두산에너빌리티인 것으로 파악됩니다.",
+    "industry_en": "Heavy Electrical Equipment",
+    "industry_ko": "중전기기",
+    "korea_company": "Doosan Enerbility",
+    "korea_firms": [
+      {
+        "name": "Doosan Enerbility",
+        "share": 33.0
+      },
+      {
+        "name": "HD Hyundai Electric",
+        "share": 24.0
+      },
+      {
+        "name": "Hyosung Heavy Industries",
+        "share": 20.0
+      },
+      {
+        "name": "LS Electric",
+        "share": 13.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.2,
+      "scale": 0.8,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$28B",
+      "trillion_usd": 0.028,
       "year": "2024"
     },
     "sector": "Industrials"
@@ -2400,6 +2589,68 @@
     },
     "sector": "Consumer Discretionary"
   },
+  "25201010": {
+    "cagr": "~3.9%",
+    "gics": "25201010",
+    "global_company": "Sony Group",
+    "global_firms": [
+      {
+        "name": "Samsung (45202030)",
+        "share": 17.0
+      },
+      {
+        "name": "TCL",
+        "share": 16.0
+      },
+      {
+        "name": "Hisense",
+        "share": 10.0
+      },
+      {
+        "name": "LG Electronics",
+        "share": 9.0
+      },
+      {
+        "name": "Xiaomi",
+        "share": 6.0
+      }
+    ],
+    "headline_ko": "가전·전자제품 기업들은 프리미엄 등급과 반복 서비스로 범용 하드웨어 마진에서 벗어나고 있으며, 시가총액 기준 글로벌 1위는 소니(애플·삼성전자는 기술 하드웨어로 분류), 한국 상장 1위는 LG전자인 것으로 파악됩니다.",
+    "industry_en": "Consumer Electronics",
+    "industry_ko": "가전·전자제품",
+    "korea_company": "LG Electronics",
+    "korea_firms": [
+      {
+        "name": "LG Electronics",
+        "share": 32.0
+      },
+      {
+        "name": "Samsung (45202030)",
+        "share": 28.0
+      },
+      {
+        "ko": "수입(Bosch, Electrolux)",
+        "name": "Imported (Bosch, Electrolux)",
+        "share": 12.0
+      },
+      {
+        "name": "Winia / Coway",
+        "share": 12.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.4286,
+      "global": 0.1429,
+      "scale": 0.2857,
+      "tech": 0.1429
+    },
+    "market": {
+      "label": "$820B",
+      "trillion_usd": 0.82,
+      "year": "2025"
+    },
+    "sector": "Consumer Discretionary"
+  },
   "252020": {
     "cagr": "~2.24%",
     "gics": "252020",
@@ -3157,6 +3408,71 @@
     },
     "sector": "Consumer Staples"
   },
+  "30201010": {
+    "cagr": "~4.9%",
+    "gics": "30201010",
+    "global_company": "AB InBev",
+    "global_firms": [
+      {
+        "name": "AB InBev",
+        "share": 26.0
+      },
+      {
+        "name": "Heineken",
+        "share": 12.0
+      },
+      {
+        "name": "China Res. SnowChina Res. Snow",
+        "share": 11.0
+      },
+      {
+        "name": "Carlsberg",
+        "share": 7.0
+      },
+      {
+        "name": "Molson Coors",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "양조업은 물량이 정체되고 가치가 프리미엄·무알코올로 이동하는 가운데 글로벌 규모와 유통, 프리미엄화가 좌우하며, 물량·시가총액 기준 글로벌 1위는 AB인베브, 한국 최대 상장 양조·주류사는 하이트진로인 것으로 파악됩니다.",
+    "industry_en": "Brewers",
+    "industry_ko": "맥주",
+    "korea_company": "HiteJinro",
+    "korea_firms": [
+      {
+        "ko": "오비맥주 / Cass(AB인베브, 비상장)",
+        "name": "Oriental Brewery / Cass (AB InBev, unlisted)",
+        "share": 47.0
+      },
+      {
+        "ko": "하이트진로 / Terra(상장)",
+        "name": "HiteJinro / Terra (listed)",
+        "share": 29.0
+      },
+      {
+        "ko": "롯데칠성음료 / Kloud",
+        "name": "Lotte Chilsung / Kloud",
+        "share": 15.0
+      },
+      {
+        "ko": "수입 & 기타",
+        "name": "Imports & others",
+        "share": 9.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2381,
+      "global": 0.1905,
+      "scale": 0.381,
+      "tech": 0.1905
+    },
+    "market": {
+      "label": "$840B",
+      "trillion_usd": 0.84,
+      "year": "2024"
+    },
+    "sector": "Consumer Staples"
+  },
   "302020": {
     "cagr": "≈6%",
     "gics": "302020",
@@ -3722,6 +4038,72 @@
     "market": {
       "label": "$116B",
       "trillion_usd": 0.116,
+      "year": "2024"
+    },
+    "sector": "Health Care"
+  },
+  "35102020": {
+    "cagr": "~4.5%",
+    "gics": "35102020",
+    "global_company": "HCA Healthcare",
+    "global_firms": [
+      {
+        "name": "HCA Healthcare",
+        "share": 49.0
+      },
+      {
+        "name": "Tenet Healthcare",
+        "share": 14.0
+      },
+      {
+        "name": "CHS",
+        "share": 8.0
+      },
+      {
+        "name": "UHS",
+        "share": 7.0
+      },
+      {
+        "ko": "기타(파편화)",
+        "name": "Others (fragmented)",
+        "share": 22.0
+      }
+    ],
+    "headline_ko": "병원 운영업은 지불자 수가와 규모에 좌우되며, 매출·시가총액 기준 글로벌 1위 상장 병원 운영사는 HCA 헬스케어인 반면, 한국은 영리병원이 제한돼 대형 상장 순수기업이 없어 가장 가까운 상장 대용주는 차바이오텍인 것으로 파악됩니다.",
+    "industry_en": "Health Care Facilities",
+    "industry_ko": "의료시설",
+    "korea_company": "CHA Bio (proxy)",
+    "korea_firms": [
+      {
+        "ko": "서울아산병원(비영리)",
+        "name": "Asan Medical Center (non-profit)",
+        "share": 28.0
+      },
+      {
+        "ko": "삼성서울병원(비영리)",
+        "name": "Samsung Medical Center (non-profit)",
+        "share": 25.0
+      },
+      {
+        "ko": "서울대병원(공공)",
+        "name": "Seoul Nat'l University Hospital (public)",
+        "share": 22.0
+      },
+      {
+        "ko": "세브란스 / 연세(비영리)",
+        "name": "Severance / Yonsei (non-profit)",
+        "share": 13.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.6667,
+      "tech": 0.3333
+    },
+    "market": {
+      "label": "$4.4T",
+      "trillion_usd": 4.4,
       "year": "2024"
     },
     "sector": "Health Care"
@@ -4338,6 +4720,76 @@
       "label": "$4.2T",
       "trillion_usd": 4.2,
       "year": "2024"
+    },
+    "sector": "Financials"
+  },
+  "40201040": {
+    "cagr": "~9.9%",
+    "gics": "40201040",
+    "global_company": "AerCap",
+    "global_firms": [
+      {
+        "name": "AerCap",
+        "share": 12.0
+      },
+      {
+        "name": "SMBC Aviation Capital",
+        "share": 7.0
+      },
+      {
+        "name": "Avolon",
+        "share": 6.0
+      },
+      {
+        "name": "Air Lease Corp",
+        "share": 5.0
+      },
+      {
+        "name": "BOC Aviation",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "전문 금융은 비은행 대출·리스를 아우르며, 가장 명확히 부합하는 상장 부문인 항공기 리스에서 시가총액 기준 글로벌 1위는 AerCap입니다. 한국은 대형 상장 순수기업이 없어 가장 가까운 대용주는 한국캐피탈인 것으로 파악됩니다.",
+    "industry_en": "Specialized Finance",
+    "industry_ko": "전문 금융",
+    "korea_company": "Korea Capital (proxy)",
+    "korea_firms": [
+      {
+        "ko": "현대캐피탈(비상장)",
+        "name": "Hyundai Capital (private)",
+        "share": 24.0
+      },
+      {
+        "ko": "캐피탈(비상장)",
+        "name": "KB Capital (private)KB",
+        "share": 18.0
+      },
+      {
+        "ko": "신한캐피탈(비상장)",
+        "name": "Shinhan Capital (private)",
+        "share": 14.0
+      },
+      {
+        "ko": "우리/하나캐피탈(비상장)",
+        "name": "Woori / Hana Capital (private)",
+        "share": 12.0
+      },
+      {
+        "ko": "한국캐피탈(상장) 포함 기타",
+        "name": "Others incl. Korea Capital (listed)",
+        "share": 32.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.2667,
+      "scale": 0.7333,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$209B",
+      "trillion_usd": 0.209,
+      "year": "2025"
     },
     "sector": "Financials"
   },
