@@ -75,14 +75,19 @@ def clean_name(raw):
     s = html.unescape((raw or "").strip())
     m = re.match(r"^([^가-힣]+?)\s*([가-힣].*)$", s)
     en, ko = (m.group(1).strip(), m.group(2).strip()) if m else (s, None)
+    country = None
+    cm = re.search(r"\(([^)]+)\)\s*$", en)          # 영문명 끝의 (HQ 국가) 추출 → 게임 본국 배정용
+    if cm:
+        country = cm.group(1).strip()
+        en = en[:cm.start()].strip()
     is_country = en.lower() in COUNTRY_EN or (ko in COUNTRY_KO) or (not en and (ko in COUNTRY_KO))
-    return en, ko, is_country
+    return en, ko, is_country, country
 
 
 def firms(pairs):
     out = []
     for name, share in pairs:
-        en, ko, is_country = clean_name(name)
+        en, ko, is_country, country = clean_name(name)
         low = en.lower()
         if (not en or is_country or low in ("others", "other", "etc", "n/a")
                 or low.startswith("rest of") or low.startswith("other ") or "remaining" in low):
@@ -90,6 +95,8 @@ def firms(pairs):
         rec = {"name": en, "share": share}
         if ko:
             rec["ko"] = ko
+        if country:
+            rec["country"] = country
         out.append(rec)
     return out[:5]
 

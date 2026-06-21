@@ -161,7 +161,10 @@ string as <span class="en">…</span><span class="ko">…</span>; ENGLISH DEFAUL
 (<html lang="en">, <body class="lang-en">, script calls setLang('en')). Market size =
 vertical COLUMN chart with a zoomed baseline (note the zoom honestly in the caption);
 market share = two PIE charts (CSS conic-gradient, global + Korea, each summing to
-100%, with legends). Mobile-first, card-based, accordions, sticky top bar with language
+100%, with legends). In each pie LEGEND, append the company's HQ country in parentheses
+after its English name, e.g. "Siemens Energy (Germany)지멘스 에너지" / "Toyota (Japan)도요타"
+(use the country's common English name; this feeds the game's home-country mapping).
+Mobile-first, card-based, accordions, sticky top bar with language
 toggle + section chips, reveal-on-scroll, prefers-reduced-motion. Keep two sections
 MECE: "Macro forces & the latest RULES" = laws/bills/regulations ONLY (dated);
 "What's moving the industry now" = market/competitive events ONLY (earnings, deals,

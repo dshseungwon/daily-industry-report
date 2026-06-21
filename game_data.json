@@ -19,11 +19,6 @@
       {
         "name": "Weatherford",
         "share": 2.0
-      },
-      {
-        "ko": "기타 (NOV, 테크닙FMC, 시추사, 국영석유사 계열)",
-        "name": "Others (NOV, TechnipFMC, drillers, NOC arms)",
-        "share": 70.0
       }
     ],
     "headline_ko": "에너지 장비·서비스 업계는 투자 정체 구간을 인수합병으로 돌파하고 있습니다. 시추 용선료가 바닥을 다지는 사이 SLB, 베이커휴즈, 사이펨7은 생산·LNG·디지털에서 성장을 사들이고 있는 것으로 파악됩니다.",
@@ -43,11 +38,6 @@
       {
         "name": "HD Hyundai",
         "share": 20.0
-      },
-      {
-        "ko": "기타 (SK오션플랜트 등)",
-        "name": "Others (SK Oceanplant etc.)",
-        "share": 10.0
       }
     ],
     "ksf_weights": {
@@ -95,8 +85,9 @@
     "korea_company": "Samsung Heavy Industries (proxy)",
     "korea_firms": [
       {
+        "country": "drillships",
         "ko": "삼성중공업(드릴십)",
-        "name": "Samsung Heavy (drillships)",
+        "name": "Samsung Heavy",
         "share": 46.0
       },
       {
@@ -105,13 +96,15 @@
         "share": 32.0
       },
       {
+        "country": "offshore",
         "ko": "한화오션(해양)",
-        "name": "Hanwha Ocean (offshore)",
+        "name": "Hanwha Ocean",
         "share": 15.0
       },
       {
+        "country": "E&P proxy",
         "ko": "포스코인터내셔널(E&P 프록시)",
-        "name": "POSCO Int'l (E&P proxy)",
+        "name": "POSCO Int'l",
         "share": 7.0
       }
     ],
@@ -134,7 +127,8 @@
     "global_company": "SLB (Schlumberger)",
     "global_firms": [
       {
-        "name": "SLB (Schlumberger)",
+        "country": "Schlumberger",
+        "name": "SLB",
         "share": 25.0
       },
       {
@@ -148,10 +142,6 @@
       {
         "name": "Weatherford / COSL",
         "share": 8.0
-      },
-      {
-        "name": "Others (fragmented)",
-        "share": 39.0
       }
     ],
     "headline_ko": "저성장·경기순환형 유전 서비스 시장에서 SLB가 규모와 디지털로 앞서고, 한국은 주로 해양 설비 건조로 참여하고 있습니다.",
@@ -160,7 +150,8 @@
     "korea_company": "Samsung Heavy Industries",
     "korea_firms": [
       {
-        "name": "HD Hyundai (group)",
+        "country": "group",
+        "name": "HD Hyundai",
         "share": 40.0
       },
       {
@@ -266,8 +257,9 @@
         "share": 59.0
       },
       {
+        "country": "refining, Aramco-controlled",
         "ko": "에쓰오일(정유, 아람코 지배)",
-        "name": "S-Oil (refining, Aramco-controlled)",
+        "name": "S-Oil",
         "share": 41.0
       }
     ],
@@ -340,7 +332,8 @@
     "global_company": "Marathon Petroleum",
     "global_firms": [
       {
-        "name": "Sinopec (China)",
+        "country": "China",
+        "name": "Sinopec",
         "share": 6.0
       },
       {
@@ -509,7 +502,8 @@
         "share": 18.0
       },
       {
-        "name": "대한유화(KPIC)",
+        "country": "KPIC",
+        "name": "대한유화",
         "share": 12.0
       }
     ],
@@ -536,7 +530,8 @@
         "share": 26.0
       },
       {
-        "name": "Sinopec (chem.)",
+        "country": "chem.",
+        "name": "Sinopec",
         "share": 23.0
       },
       {
@@ -1123,7 +1118,8 @@
         "share": 16.0
       },
       {
-        "name": "한국항공우주산업(KAI)",
+        "country": "KAI",
+        "name": "한국항공우주산업",
         "share": 11.0
       },
       {
@@ -1348,13 +1344,15 @@
     "korea_company": "Samsung C&T",
     "korea_firms": [
       {
+        "country": "incl. Hyundai Eng.",
         "ko": "현대건설(현대엔지니어링 포함)",
-        "name": "Hyundai E&C (incl. Hyundai Eng.)",
+        "name": "Hyundai E&C",
         "share": 10.0
       },
       {
+        "country": "construction",
         "ko": "삼성물산(건설)",
-        "name": "Samsung C&T (construction)",
+        "name": "Samsung C&T",
         "share": 5.0
       },
       {
@@ -1364,11 +1362,6 @@
       {
         "name": "Daewoo E&C",
         "share": 3.0
-      },
-      {
-        "ko": "기타(긴 꼬리)",
-        "name": "Others (long tail)",
-        "share": 78.0
       }
     ],
     "ksf_weights": {
@@ -1402,7 +1395,8 @@
         "share": 15.0
       },
       {
-        "name": "ABB (Electrification)",
+        "country": "Electrification",
+        "name": "ABB",
         "share": 14.0
       },
       {
@@ -1473,7 +1467,8 @@
         "share": 11.0
       },
       {
-        "name": "Hitachi Energy (proxy)",
+        "country": "proxy",
+        "name": "Hitachi Energy",
         "share": 9.0
       }
     ],
@@ -1689,7 +1684,8 @@
         "share": 3.0
       },
       {
-        "name": "Würth (industrial)",
+        "country": "industrial",
+        "name": "Würth",
         "share": 3.0
       }
     ],
@@ -1703,7 +1699,8 @@
         "share": 57.0
       },
       {
-        "name": "Samsung C&T (Trading)",
+        "country": "Trading",
+        "name": "Samsung C&T",
         "share": 28.0
       },
       {
@@ -1809,7 +1806,8 @@
         "share": 34.0
       },
       {
-        "name": "JobKorea (PE-owned)",
+        "country": "PE-owned",
+        "name": "JobKorea",
         "share": 24.0
       },
       {
@@ -1862,7 +1860,8 @@
     "korea_company": "CJ Logistics",
     "korea_firms": [
       {
-        "name": "Coupang (captive)",
+        "country": "captive",
+        "name": "Coupang",
         "share": 37.6
       },
       {
@@ -1915,11 +1914,6 @@
       {
         "name": "Emirates",
         "share": 14.0
-      },
-      {
-        "ko": "기타(상위 그룹)",
-        "name": "Others (top groups)",
-        "share": 26.0
       }
     ],
     "headline_ko": "여객 항공은 사상 최대 수송량을 회복했으나, 2026년 6월 항공유 가격 급등으로 IATA의 2026년 이익 전망이 230억 달러로 반토막 났습니다. 시가총액 기준 글로벌 1위는 델타항공이며, 대한항공은 아시아나 인수를 마무리하며 통합 단일 항공사로 나아가고 있습니다.",
@@ -2104,7 +2098,8 @@
         "share": 17.0
       },
       {
-        "name": "ADP (Aéroports de Paris)",
+        "country": "Aéroports de Paris",
+        "name": "ADP",
         "share": 17.0
       },
       {
@@ -2452,14 +2447,10 @@
         "share": 7.1
       },
       {
+        "country": "BMW, MB, etc.",
         "ko": "수입차(BMW·벤츠 등)",
-        "name": "Imports (BMW, MB, etc.)",
+        "name": "Imports",
         "share": 7.4
-      },
-      {
-        "ko": "기타(르노·KGM·GM)",
-        "name": "Others (Renault, KGM, GM)",
-        "share": 18.0
       }
     ],
     "ksf_weights": {
@@ -2507,13 +2498,15 @@
     "korea_company": "KR Motors (proxy)",
     "korea_firms": [
       {
+        "country": "Honda, Yamaha, BMW, Zontes…",
         "ko": "수입·외국 브랜드(혼다, 야마하, BMW, Zontes 등)",
-        "name": "Imported / foreign brands (Honda, Yamaha, BMW, Zontes…)",
+        "name": "Imported / foreign brands",
         "share": 72.0
       },
       {
+        "country": "Daelim, KR Motors",
         "ko": "국내 제조사(대림, KR Motors)",
-        "name": "Domestic makers (Daelim, KR Motors)",
+        "name": "Domestic makers",
         "share": 28.0
       }
     ],
@@ -2558,7 +2551,8 @@
     "korea_company": "Coway",
     "korea_firms": [
       {
-        "name": "코웨이 (Coway)",
+        "country": "Coway",
+        "name": "코웨이",
         "share": 35.0
       },
       {
@@ -2595,7 +2589,8 @@
     "global_company": "Sony Group",
     "global_firms": [
       {
-        "name": "Samsung (45202030)",
+        "country": "45202030",
+        "name": "Samsung",
         "share": 17.0
       },
       {
@@ -2625,12 +2620,14 @@
         "share": 32.0
       },
       {
-        "name": "Samsung (45202030)",
+        "country": "45202030",
+        "name": "Samsung",
         "share": 28.0
       },
       {
+        "country": "Bosch, Electrolux",
         "ko": "수입(Bosch, Electrolux)",
-        "name": "Imported (Bosch, Electrolux)",
+        "name": "Imported",
         "share": 12.0
       },
       {
@@ -2889,7 +2886,8 @@
     "global_company": "Genuine Parts Company",
     "global_firms": [
       {
-        "name": "Genuine Parts (NAPA)",
+        "country": "NAPA",
+        "name": "Genuine Parts",
         "share": 9.0
       },
       {
@@ -3027,10 +3025,6 @@
       {
         "name": "E-Land/Electro Mart",
         "share": 15.0
-      },
-      {
-        "name": "Others (online etc.)",
-        "share": 27.0
       }
     ],
     "ksf_weights": {
@@ -3060,7 +3054,8 @@
         "share": 23.0
       },
       {
-        "name": "Schwarz (Lidl)",
+        "country": "Lidl",
+        "name": "Schwarz",
         "share": 16.0
       },
       {
@@ -3178,10 +3173,6 @@
       {
         "name": "US Foods",
         "share": 19.0
-      },
-      {
-        "name": "Others (top tier)",
-        "share": 8.0
       }
     ],
     "headline_ko": "저마진·규모·물류 사업으로, 시스코가 글로벌을 주도하고 CJ프레시웨이가 훨씬 덜 통합된 한국 시장을 이끌고 있습니다.",
@@ -3252,8 +3243,9 @@
     "korea_company": "E-mart",
     "korea_firms": [
       {
+        "country": "online",
         "ko": "쿠팡(온라인)",
-        "name": "Coupang (online)",
+        "name": "Coupang",
         "share": 15.0
       },
       {
@@ -3440,13 +3432,15 @@
     "korea_company": "HiteJinro",
     "korea_firms": [
       {
+        "country": "AB InBev, unlisted",
         "ko": "오비맥주 / Cass(AB인베브, 비상장)",
-        "name": "Oriental Brewery / Cass (AB InBev, unlisted)",
+        "name": "Oriental Brewery / Cass",
         "share": 47.0
       },
       {
+        "country": "listed",
         "ko": "하이트진로 / Terra(상장)",
-        "name": "HiteJinro / Terra (listed)",
+        "name": "HiteJinro / Terra",
         "share": 29.0
       },
       {
@@ -3707,7 +3701,8 @@
         "share": 4.0
       },
       {
-        "name": "Abbott (devices)",
+        "country": "devices",
+        "name": "Abbott",
         "share": 3.0
       },
       {
@@ -3821,11 +3816,13 @@
     "global_company": "Becton Dickinson",
     "global_firms": [
       {
-        "name": "Becton Dickinson (BD)",
+        "country": "BD",
+        "name": "Becton Dickinson",
         "share": 33.0
       },
       {
-        "name": "Cardinal Health (Medical)",
+        "country": "Medical",
+        "name": "Cardinal Health",
         "share": 23.0
       },
       {
@@ -3833,7 +3830,8 @@
         "share": 17.0
       },
       {
-        "name": "Alcon / Cooper (lenses)",
+        "country": "lenses",
+        "name": "Alcon / Cooper",
         "share": 15.0
       },
       {
@@ -3855,7 +3853,8 @@
         "share": 28.0
       },
       {
-        "name": "Seegene (consumables)",
+        "country": "consumables",
+        "name": "Seegene",
         "share": 20.0
       }
     ],
@@ -3987,7 +3986,8 @@
         "share": 16.0
       },
       {
-        "name": "PPD (Thermo Fisher)",
+        "country": "Thermo Fisher",
+        "name": "PPD",
         "share": 8.0
       },
       {
@@ -4014,8 +4014,9 @@
         "share": 30.0
       },
       {
+        "country": "private",
         "ko": "씨젠의료재단(비상장)",
-        "name": "Seegene Medical Foundation (private)",
+        "name": "Seegene Medical Foundation",
         "share": 22.0
       },
       {
@@ -4024,8 +4025,9 @@
         "share": 18.0
       },
       {
+        "country": "private",
         "ko": "이원·삼광(비상장)",
-        "name": "EONE / Samkwang (private)",
+        "name": "EONE / Samkwang",
         "share": 14.0
       }
     ],
@@ -4062,11 +4064,6 @@
       {
         "name": "UHS",
         "share": 7.0
-      },
-      {
-        "ko": "기타(파편화)",
-        "name": "Others (fragmented)",
-        "share": 22.0
       }
     ],
     "headline_ko": "병원 운영업은 지불자 수가와 규모에 좌우되며, 매출·시가총액 기준 글로벌 1위 상장 병원 운영사는 HCA 헬스케어인 반면, 한국은 영리병원이 제한돼 대형 상장 순수기업이 없어 가장 가까운 상장 대용주는 차바이오텍인 것으로 파악됩니다.",
@@ -4075,23 +4072,27 @@
     "korea_company": "CHA Bio (proxy)",
     "korea_firms": [
       {
+        "country": "non-profit",
         "ko": "서울아산병원(비영리)",
-        "name": "Asan Medical Center (non-profit)",
+        "name": "Asan Medical Center",
         "share": 28.0
       },
       {
+        "country": "non-profit",
         "ko": "삼성서울병원(비영리)",
-        "name": "Samsung Medical Center (non-profit)",
+        "name": "Samsung Medical Center",
         "share": 25.0
       },
       {
+        "country": "public",
         "ko": "서울대병원(공공)",
-        "name": "Seoul Nat'l University Hospital (public)",
+        "name": "Seoul Nat'l University Hospital",
         "share": 22.0
       },
       {
+        "country": "non-profit",
         "ko": "세브란스 / 연세(비영리)",
-        "name": "Severance / Yonsei (non-profit)",
+        "name": "Severance / Yonsei",
         "share": 13.0
       }
     ],
@@ -4118,7 +4119,8 @@
         "share": 44.0
       },
       {
-        "name": "Oracle Health (Cerner)",
+        "country": "Cerner",
+        "name": "Oracle Health",
         "share": 22.0
       },
       {
@@ -4126,12 +4128,9 @@
         "share": 15.0
       },
       {
-        "name": "TruBridge (CPSI)",
+        "country": "CPSI",
+        "name": "TruBridge",
         "share": 8.0
-      },
-      {
-        "name": "Others (Altera…)",
-        "share": 11.0
       }
     ],
     "headline_ko": "헬스케어 기술은 AI와 상호운용성 규제 속에서 연 약 16% 성장하며 가치 구조를 재편하고 있습니다.",
@@ -4140,7 +4139,8 @@
     "korea_company": "Lunit",
     "korea_firms": [
       {
-        "name": "유비케어(UbCare)",
+        "country": "UbCare",
+        "name": "유비케어",
         "share": 45.0
       },
       {
@@ -4523,7 +4523,8 @@
         "share": 31.0
       },
       {
-        "name": "iM Financial (DGB)",
+        "country": "DGB",
+        "name": "iM Financial",
         "share": 27.0
       }
     ],
@@ -4568,13 +4569,15 @@
     "korea_company": "Samsung Card",
     "korea_firms": [
       {
+        "country": "KakaoPay, NaverPay",
         "ko": "전자금융업자 (카카오페이·네이버페이)",
-        "name": "E-finance firms (KakaoPay, NaverPay)",
+        "name": "E-finance firms",
         "share": 55.0
       },
       {
+        "country": "Samsung Pay",
         "ko": "휴대폰 제조사 (삼성페이)",
-        "name": "Phone makers (Samsung Pay)",
+        "name": "Phone makers",
         "share": 24.0
       },
       {
@@ -4755,8 +4758,9 @@
     "korea_company": "Korea Capital (proxy)",
     "korea_firms": [
       {
+        "country": "private",
         "ko": "현대캐피탈(비상장)",
-        "name": "Hyundai Capital (private)",
+        "name": "Hyundai Capital",
         "share": 24.0
       },
       {
@@ -4765,18 +4769,21 @@
         "share": 18.0
       },
       {
+        "country": "private",
         "ko": "신한캐피탈(비상장)",
-        "name": "Shinhan Capital (private)",
+        "name": "Shinhan Capital",
         "share": 14.0
       },
       {
+        "country": "private",
         "ko": "우리/하나캐피탈(비상장)",
-        "name": "Woori / Hana Capital (private)",
+        "name": "Woori / Hana Capital",
         "share": 12.0
       },
       {
+        "country": "listed",
         "ko": "한국캐피탈(상장) 포함 기타",
-        "name": "Others incl. Korea Capital (listed)",
+        "name": "Others incl. Korea Capital",
         "share": 32.0
       }
     ],
@@ -4918,7 +4925,8 @@
     "global_company": "Annaly Capital",
     "global_firms": [
       {
-        "name": "Annaly (NLY)",
+        "country": "NLY",
+        "name": "Annaly",
         "share": 38.0
       },
       {
@@ -4997,7 +5005,8 @@
         "share": 2.0
       },
       {
-        "name": "Berkshire (ins.)",
+        "country": "ins.",
+        "name": "Berkshire",
         "share": 2.0
       }
     ],
@@ -5162,11 +5171,6 @@
       {
         "name": "ZTE",
         "share": 10.0
-      },
-      {
-        "ko": "기타(시스코·시에나…)",
-        "name": "Others (Cisco, Ciena…)",
-        "share": 34.0
       }
     ],
     "headline_ko": "AI 데이터센터 네트워킹은 호황인 반면 통신사 RAN은 정체돼 있고 지정학이 장비업체 지형을 재편하는 가운데, 매출은 시스코가, 통신사 점유율은 화웨이가 선두입니다.",
@@ -5179,8 +5183,9 @@
         "share": 45.0
       },
       {
+        "country": "Ericsson/Nokia",
         "ko": "외산(에릭슨·노키아)",
-        "name": "Foreign (Ericsson/Nokia)",
+        "name": "Foreign",
         "share": 18.0
       },
       {
@@ -5488,7 +5493,8 @@
     "global_company": "Omnicom",
     "global_firms": [
       {
-        "name": "Omnicom (incl. IPG)",
+        "country": "incl. IPG",
+        "name": "Omnicom",
         "share": 30.0
       },
       {
@@ -5502,10 +5508,6 @@
       {
         "name": "Dentsu",
         "share": 11.0
-      },
-      {
-        "name": "Others (Havas, etc.)",
-        "share": 16.0
       }
     ],
     "headline_ko": "광고 시장은 1조 달러를 넘어섰으나 성장은 모두 디지털에 쏠리고, 옴니콤-IPG 합병으로 규모가 통합되며 이제 데이터와 AI가 마진을 가릅니다.",
@@ -5673,10 +5675,6 @@
       {
         "name": "Constellation",
         "share": 10.0
-      },
-      {
-        "name": "Others (Southern, Duke…)",
-        "share": 48.0
       }
     ],
     "headline_ko": "데이터센터 수요가 전력 유틸리티를 되살리며, NextEra와 Dominion이 초대형 합병에 나섰습니다.",
@@ -5685,8 +5683,9 @@
     "korea_company": "KEPCO",
     "korea_firms": [
       {
+        "country": "KHNP",
         "ko": "원자력(한수원)",
-        "name": "Nuclear (KHNP)",
+        "name": "Nuclear",
         "share": 32.0
       },
       {
@@ -5815,18 +5814,21 @@
     "korea_company": "한국지역난방공사 (proxy)",
     "korea_firms": [
       {
+        "country": "electric",
         "ko": "한국전력(전기)",
-        "name": "KEPCO (electric)",
+        "name": "KEPCO",
         "share": 70.0
       },
       {
+        "country": "gas",
         "ko": "한국가스공사(가스)",
-        "name": "KOGAS (gas)",
+        "name": "KOGAS",
         "share": 20.0
       },
       {
+        "country": "elec+heat",
         "ko": "지역난방공사(전기+열)",
-        "name": "KDHC (elec+heat)",
+        "name": "KDHC",
         "share": 7.0
       }
     ],
@@ -6179,11 +6181,6 @@
       {
         "name": "Omega Healthcare",
         "share": 5.0
-      },
-      {
-        "ko": "기타(AHR, CareTrust 등)",
-        "name": "Others (AHR, CareTrust, etc.)",
-        "share": 16.0
       }
     ],
     "headline_ko": "역대 최저 수준의 신규 공급과 급증하는 80세 이상 인구가 맞물리며, 헬스케어 리츠는 사상 최고의 입주율과 실적 사이클을 맞고 있습니다.",
@@ -6192,13 +6189,15 @@
     "korea_company": "LH Dongtan Healthcare REIT (proxy)",
     "korea_firms": [
       {
+        "country": "2,550",
         "ko": "시니어 주거 세대(2,550)",
-        "name": "Senior housing units (2,550)",
+        "name": "Senior housing units",
         "share": 74.0
       },
       {
+        "country": "874",
         "ko": "오피스텔(874실)",
-        "name": "Officetel units (874)",
+        "name": "Officetel units",
         "share": 26.0
       }
     ],
@@ -6235,10 +6234,6 @@
       {
         "name": "Sun Communities",
         "share": 8.0
-      },
-      {
-        "name": "Others (MAA, Essex…)",
-        "share": 56.0
       }
     ],
     "headline_ko": "미국 주거용 리츠는 임대료 상승이 바닥을 다지고 금리 인하가 시작되는 가운데 사상 최대 공급 물량을 소화하고 있습니다. 약 690억 달러 규모로 에쿼티 레지덴셜과 합병을 앞둔 아발론베이가 시가총액 1위이며, 한국에는 순수 주거용 리츠가 없어 SK리츠가 가장 가까운 상장 대용 기업으로 남아 있습니다.",
@@ -6298,10 +6293,6 @@
       {
         "name": "Kimco Realty",
         "share": 8.0
-      },
-      {
-        "name": "Others (Federal Realty…)",
-        "share": 32.0
       }
     ],
     "headline_ko": "공급 부족이 우량 리테일 리츠를 끌어올리며, Simon과 순임대 선두 기업이 재평가되고 있습니다.",
@@ -6315,7 +6306,8 @@
         "share": 17.0
       },
       {
-        "name": "롯데리츠 (리테일)",
+        "country": "리테일",
+        "name": "롯데리츠",
         "share": 11.0
       },
       {
