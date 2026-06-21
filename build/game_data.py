@@ -37,9 +37,11 @@ KEYWORDS = {
                "engineering", "clinical", " ip", "spec", "performance", "advanced", "quality", "fuel"],
 }
 
-COUNTRY_EN = {"united states", "china", "russia", "saudi arabia", "india", "iran", "iraq", "canada",
-              "brazil", "japan", "germany", "united arab emirates", "kuwait", "norway", "mexico",
-              "qatar", "nigeria", "australia", "south korea", "united kingdom", "france", "indonesia"}
+COUNTRY_EN = {"united states", "usa", "u.s.", "us", "china", "russia", "saudi arabia", "india", "iran", "iraq", "canada",
+              "brazil", "japan", "germany", "united arab emirates", "uae", "kuwait", "norway", "mexico",
+              "qatar", "nigeria", "australia", "south korea", "korea", "united kingdom", "uk", "britain", "france", "indonesia",
+              "netherlands", "switzerland", "sweden", "taiwan", "italy", "spain", "belgium", "denmark", "ireland",
+              "singapore", "hong kong", "finland", "austria", "south africa", "israel", "turkey", "thailand", "vietnam", "malaysia"}
 COUNTRY_KO = {"미국", "중국", "러시아", "사우디아라비아", "사우디", "인도", "이란", "이라크", "캐나다",
               "브라질", "일본", "독일", "아랍에미리트", "쿠웨이트", "노르웨이", "멕시코", "카타르",
               "나이지리아", "호주", "한국", "영국", "프랑스", "인도네시아"}
@@ -77,7 +79,7 @@ def clean_name(raw):
     en, ko = (m.group(1).strip(), m.group(2).strip()) if m else (s, None)
     country = None
     cm = re.search(r"\(([^)]+)\)\s*$", en)          # 영문명 끝의 (HQ 국가) 추출 → 게임 본국 배정용
-    if cm:
+    if cm and cm.group(1).strip().lower() in COUNTRY_EN:   # 실제 국가일 때만(티커·약칭 괄호 오인 방지)
         country = cm.group(1).strip()
         en = en[:cm.start()].strip()
     is_country = en.lower() in COUNTRY_EN or (ko in COUNTRY_KO) or (not en and (ko in COUNTRY_KO))
