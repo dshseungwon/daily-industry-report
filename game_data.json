@@ -399,6 +399,60 @@
     },
     "sector": "Energy"
   },
+  "10102040": {
+    "cagr": "~7.5%",
+    "gics": "10102040",
+    "global_company": "Enbridge",
+    "global_firms": [
+      {
+        "name": "Enbridge",
+        "share": 24.0
+      },
+      {
+        "name": "Williams",
+        "share": 17.0
+      },
+      {
+        "name": "Enterprise Products",
+        "share": 14.0
+      },
+      {
+        "name": "Kinder Morgan",
+        "share": 13.0
+      },
+      {
+        "name": "Energy Transfer",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "미드스트림 석유·가스 저장·운송은 통행료형 인프라 사업으로 2025년 약 2,310억 달러 규모이며 연 7.5%가량 성장하는 것으로 파악됩니다. 시가총액 기준 글로벌 1위는 엔브리지(약 1,180억 달러)이며, 한국에서는 한국가스공사(KOGAS)가 가스 저장·공급을 사실상 독점하고 있습니다.",
+    "industry_en": "Oil & Gas Storage & Transportation",
+    "industry_ko": "석유·가스 저장·운송",
+    "korea_company": "Korea Gas Corporation (KOGAS)",
+    "korea_firms": [
+      {
+        "name": "KOGAS",
+        "share": 92.0
+      },
+      {
+        "ko": "직수입사(POSCO, GS, SK, 발전사)",
+        "name": "Direct importers (POSCO, GS, SK, power gencos)",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.5833,
+      "scale": 0.4167,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$231B",
+      "trillion_usd": 0.231,
+      "year": "2025"
+    },
+    "sector": "Energy"
+  },
   "151010": {
     "cagr": "~5.0%",
     "gics": "151010",
@@ -841,6 +895,74 @@
     "market": {
       "label": "$385B",
       "trillion_usd": 0.385,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
+  "15102010": {
+    "cagr": "~5.1%",
+    "gics": "15102010",
+    "global_company": "CRH plc",
+    "global_firms": [
+      {
+        "name": "CNBM (China)",
+        "share": 13.0
+      },
+      {
+        "name": "Anhui Conch (China)",
+        "share": 7.0
+      },
+      {
+        "name": "Holcim",
+        "share": 6.0
+      },
+      {
+        "name": "Heidelberg Materials",
+        "share": 5.0
+      },
+      {
+        "name": "CRH / Cemex / UltraTech",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "건축자재는 지역성이 강하고 에너지 집약적인 시멘트·골재 사업으로, 글로벌 시멘트 시장은 2025년 약 4,250억 달러 규모이며 연 5%가량 성장하는 것으로 파악됩니다. 시가총액 기준 글로벌 1위는 CRH(약 740억 달러)이며, 쌍용C&E가 2024년 비상장 전환된 이후 한국의 대표 상장 기업은 한일시멘트인 것으로 파악됩니다.",
+    "industry_en": "Construction Materials",
+    "industry_ko": "건축자재",
+    "korea_company": "Hanil Cement (proxy)",
+    "korea_firms": [
+      {
+        "ko": "쌍용C&E (비상장/상장폐지)",
+        "name": "Ssangyong C&E (private/delisted)",
+        "share": 26.0
+      },
+      {
+        "ko": "한일시멘트 (상장)",
+        "name": "Hanil Cement (listed)",
+        "share": 23.0
+      },
+      {
+        "name": "Asia Cement",
+        "share": 15.0
+      },
+      {
+        "name": "Sampyo / Sungshin",
+        "share": 14.0
+      },
+      {
+        "ko": "기타 (한라, 고려시멘트 등)",
+        "name": "Others (Halla, Kosep, etc.)",
+        "share": 22.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.9524,
+      "tech": 0.0476
+    },
+    "market": {
+      "label": "$407B",
+      "trillion_usd": 0.407,
       "year": "2024"
     },
     "sector": "Materials"
@@ -1619,6 +1741,73 @@
       "label": "$2.40T",
       "trillion_usd": 2.4,
       "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20105010": {
+    "cagr": "~3–4%",
+    "gics": "20105010",
+    "global_company": "Siemens AG",
+    "global_firms": [
+      {
+        "name": "Siemens AG",
+        "share": 36.0
+      },
+      {
+        "name": "Honeywell",
+        "share": 22.0
+      },
+      {
+        "name": "3M",
+        "share": 13.0
+      },
+      {
+        "name": "Emerson",
+        "share": 11.0
+      },
+      {
+        "name": "ABB / others",
+        "share": 8.0
+      }
+    ],
+    "headline_ko": "복합 산업기업은 다각화된 다사업 그룹으로, GE와 허니웰이 사업을 분리하며 축소되는 범주인 것으로 파악됩니다. 시가총액 기준 글로벌 1위는 지멘스(약 2,160억 유로, 약 2,420억 달러)이며, 한국 최대 다각화 그룹은 삼성물산(약 79조 원)입니다.",
+    "industry_en": "Industrial Conglomerates",
+    "industry_ko": "복합 산업기업",
+    "korea_company": "Samsung C&T",
+    "korea_firms": [
+      {
+        "ko": "삼성물산)",
+        "name": "Samsung C&T (",
+        "share": 34.0
+      },
+      {
+        "name": "SK Inc (SK㈜)",
+        "share": 22.0
+      },
+      {
+        "name": "LG Corp (LG)",
+        "share": 16.0
+      },
+      {
+        "name": "HD Hyundai / Hanwha",
+        "share": 14.0
+      },
+      {
+        "ko": "두산 외",
+        "name": "Doosan / others",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1429,
+      "global": 0.2857,
+      "scale": 0.0,
+      "tech": 0.5714
+    },
+    "market": {
+      "label": "$520B",
+      "trillion_usd": 0.52,
+      "year": "2023"
     },
     "sector": "Industrials"
   },
@@ -2651,6 +2840,75 @@
     },
     "sector": "Consumer Discretionary"
   },
+  "25201020": {
+    "cagr": "~7%",
+    "gics": "25201020",
+    "global_company": "IKEA",
+    "global_firms": [
+      {
+        "name": "IKEA",
+        "share": 6.0
+      },
+      {
+        "name": "Williams-Sonoma",
+        "share": 3.0
+      },
+      {
+        "name": "Ashley Furniture",
+        "share": 2.0
+      },
+      {
+        "name": "Wayfair",
+        "share": 1.5
+      },
+      {
+        "name": "Man Wah / others (top tier)",
+        "share": 1.5
+      }
+    ],
+    "headline_ko": "가정용 가구는 2025년 약 7,860억 달러 규모의 글로벌 가구 시장으로 연 7%가량 성장하는 것으로 파악됩니다. 매출 기준 세계 최대 가구 소매업체는 이케아(비상장, 약 446억 유로)이며, 한국 1위 가구·인테리어 브랜드는 한샘인 것으로 파악됩니다.",
+    "industry_en": "Home Furnishings",
+    "industry_ko": "가정용 가구·생활용품",
+    "korea_company": "Hanssem",
+    "korea_firms": [
+      {
+        "name": "Hanssem",
+        "share": 30.0
+      },
+      {
+        "ko": "현대리바트",
+        "name": "Hyundai Livart",
+        "share": 28.0
+      },
+      {
+        "ko": "에이스침대 / 시디즈",
+        "name": "Ace Bed / Sidiz",
+        "share": 12.0
+      },
+      {
+        "ko": "일룸 / 에넥스",
+        "name": "Iloom / Enex",
+        "share": 10.0
+      },
+      {
+        "ko": "기타(파편화)",
+        "name": "Others (fragmented)",
+        "share": 20.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2778,
+      "global": 0.0,
+      "scale": 0.7222,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$786B",
+      "trillion_usd": 0.786,
+      "year": "2025"
+    },
+    "sector": "Consumer Discretionary"
+  },
   "252020": {
     "cagr": "~2.24%",
     "gics": "252020",
@@ -3473,6 +3731,70 @@
     },
     "sector": "Consumer Staples"
   },
+  "30201020": {
+    "cagr": "~3.6%",
+    "gics": "30201020",
+    "global_company": "Kweichow Moutai",
+    "global_firms": [
+      {
+        "name": "Kweichow Moutai",
+        "share": 14.0
+      },
+      {
+        "name": "Diageo",
+        "share": 12.0
+      },
+      {
+        "name": "Pernod Ricard",
+        "share": 6.0
+      },
+      {
+        "name": "Wuliangye",
+        "share": 4.0
+      },
+      {
+        "name": "Brown-Forman / Bacardi",
+        "share": 4.0
+      }
+    ],
+    "headline_ko": "증류주·와인은 2025년 약 6,400억 달러 규모의 글로벌 증류주 시장으로, 수요 부진 속에 연 3.5%가량 성장하는 것으로 파악됩니다. 시가총액 기준 글로벌 1위는 구이저우 마오타이(약 2,320억 달러)이며, 한국 소주·맥주 시장은 하이트진로가 선도하고 있습니다.",
+    "industry_en": "Distillers & Vintners",
+    "industry_ko": "증류주·와인",
+    "korea_company": "HiteJinro",
+    "korea_firms": [
+      {
+        "name": "HiteJinro",
+        "share": 50.0
+      },
+      {
+        "ko": "롯데칠성(처음처럼)",
+        "name": "Lotte Chilsung (Chum Churum)",
+        "share": 20.0
+      },
+      {
+        "ko": "무학(좋은데이)",
+        "name": "Muhak (Joeun Day)",
+        "share": 12.0
+      },
+      {
+        "ko": "지역 업체(보해, 대선)",
+        "name": "Regional makers (Bohae, Daesun)",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.5625,
+      "global": 0.4375,
+      "scale": 0.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$642B",
+      "trillion_usd": 0.642,
+      "year": "2025"
+    },
+    "sector": "Consumer Staples"
+  },
   "302020": {
     "cagr": "≈6%",
     "gics": "302020",
@@ -4104,6 +4426,71 @@
     "market": {
       "label": "$4.4T",
       "trillion_usd": 4.4,
+      "year": "2024"
+    },
+    "sector": "Health Care"
+  },
+  "35102030": {
+    "cagr": "~6.1%",
+    "gics": "35102030",
+    "global_company": "UnitedHealth Group",
+    "global_firms": [
+      {
+        "name": "UnitedHealth",
+        "share": 28.0
+      },
+      {
+        "name": "Humana",
+        "share": 18.0
+      },
+      {
+        "name": "CVS / Aetna",
+        "share": 12.0
+      },
+      {
+        "name": "Kaiser",
+        "share": 6.0
+      },
+      {
+        "name": "Elevance",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "관리형 의료는 사실상 미국 중심 산업으로 2025년 약 4조 달러 규모인 것으로 파악됩니다. 세계 최대 건강보험사는 유나이티드헬스 그룹(시가총액 약 3,650억 달러)으로, 2025년 큰 폭의 주가 조정을 겪은 바 있습니다. 한국은 단일 보험자인 국민건강보험공단(NHIS) 중심이며, 가장 가까운 상장 민간 대용 기업은 삼성화재인 것으로 파악됩니다.",
+    "industry_en": "Managed Health Care",
+    "industry_ko": "관리형 의료",
+    "korea_company": "NHIS (Samsung Fire proxy)",
+    "korea_firms": [
+      {
+        "ko": "국민건강보험공단 — 공공 단일보험",
+        "name": "NHIS — public single-payer",
+        "share": 88.0
+      },
+      {
+        "ko": "의료급여(공공)",
+        "name": "Medical Aid (public)",
+        "share": 6.0
+      },
+      {
+        "ko": "실손)민간 실손 보충",
+        "name": "Private indemnity top-up (",
+        "share": 3.0
+      },
+      {
+        "ko": "본인부담·기타",
+        "name": "Out-of-pocket / other",
+        "share": 3.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1111,
+      "scale": 0.8333,
+      "tech": 0.0556
+    },
+    "market": {
+      "label": "$3.9T",
+      "trillion_usd": 3.9,
       "year": "2024"
     },
     "sector": "Health Care"
@@ -4790,6 +5177,71 @@
       "label": "$209B",
       "trillion_usd": 0.209,
       "year": "2025"
+    },
+    "sector": "Financials"
+  },
+  "40201050": {
+    "cagr": "~+8%",
+    "gics": "40201050",
+    "global_company": "Rocket Companies",
+    "global_firms": [
+      {
+        "name": "UWM",
+        "share": 8.0
+      },
+      {
+        "name": "Rocket (pre-deals)",
+        "share": 6.0
+      },
+      {
+        "name": "PennyMac",
+        "share": 4.0
+      },
+      {
+        "name": "Mr. Cooper",
+        "share": 3.0
+      },
+      {
+        "name": "Freedom / others top-10",
+        "share": 3.0
+      }
+    ],
+    "headline_ko": "상업·주택 모기지 금융은 금리에 따라 크게 출렁이는 산업으로, 미국 단독주택 대출 취급은 2025년 약 2조 달러에서 2026년 8% 늘어날 것으로 보입니다. 시가총액 기준 글로벌 상장 1위는 Mr. Cooper와 Redfin을 인수한 Rocket Companies(약 360억 달러)이며, 한국의 사실상 선도 기관은 공기업인 한국주택금융공사인 것으로 파악됩니다.",
+    "industry_en": "Commercial & Residential Mortgage Finance",
+    "industry_ko": "상업·주택 모기지 금융",
+    "korea_company": "Korea Housing Finance Corp",
+    "korea_firms": [
+      {
+        "ko": "한국주택금융공사 / HF (공기업)",
+        "name": "Korea Housing Finance Corp / HF (public)",
+        "share": 46.0
+      },
+      {
+        "ko": "은행 모기지 잔액(KB·신한 등)",
+        "name": "Bank mortgage books (KB, Shinhan, etc.)",
+        "share": 24.0
+      },
+      {
+        "ko": "보증",
+        "name": "HUG / SGI guaranteesHUG / SGI",
+        "share": 14.0
+      },
+      {
+        "ko": "보험사·비은행권",
+        "name": "Insurers & non-banks",
+        "share": 9.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$4.4T",
+      "trillion_usd": 4.4,
+      "year": "2021"
     },
     "sector": "Financials"
   },
