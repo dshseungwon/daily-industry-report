@@ -453,6 +453,61 @@
     },
     "sector": "Energy"
   },
+  "10102050": {
+    "cagr": "~2.6%",
+    "gics": "10102050",
+    "global_company": "China Shenhua Energy",
+    "global_firms": [
+      {
+        "name": "China Shenhua",
+        "share": 42.0
+      },
+      {
+        "name": "Glencore (coal)",
+        "share": 19.0
+      },
+      {
+        "name": "Coal India",
+        "share": 10.0
+      },
+      {
+        "name": "China Coal Energy",
+        "share": 7.0
+      },
+      {
+        "name": "BHP / Yancoal",
+        "share": 6.0
+      }
+    ],
+    "headline_ko": "중국선화에너지는 사상 최대 아시아 수요에 힘입어 석탄-발전 통합 모델을 유지하는 반면, 사실상 국내 생산이 없는 한국은 포스코인터내셔널 같은 수입사에 의존하고 있습니다.",
+    "industry_en": "Coal & Consumable Fuels",
+    "industry_ko": "석탄·소비성 연료",
+    "korea_company": "POSCO International (proxy)",
+    "korea_firms": [
+      {
+        "ko": "수입 석탄(발전 + 제철)",
+        "name": "Imported coal (power + steel)",
+        "share": 98.0
+      },
+      {
+        "ko": "국내 무연탄(극소량)",
+        "name": "Domestic anthracite (tiny)",
+        "share": 2.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.2778,
+      "scale": 0.5556,
+      "tech": 0.1667
+    },
+    "market": {
+      "label": "$1,045B",
+      "trillion_usd": 1.045,
+      "year": "2024"
+    },
+    "sector": "Energy"
+  },
   "151010": {
     "cagr": "~5.0%",
     "gics": "151010",
@@ -1021,6 +1076,67 @@
     "market": {
       "label": "$1.18T",
       "trillion_usd": 1.18,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
+  "15103010": {
+    "cagr": "~7.1%",
+    "gics": "15103010",
+    "global_company": "Ball Corporation",
+    "global_firms": [
+      {
+        "name": "Ball",
+        "share": 30.0
+      },
+      {
+        "name": "Crown",
+        "share": 23.0
+      },
+      {
+        "name": "Ardagh / AMP",
+        "share": 14.0
+      },
+      {
+        "name": "Canpack",
+        "share": 10.0
+      }
+    ],
+    "headline_ko": "볼(Ball)은 EU 포장 규제가 강화되는 가운데 알루미늄 캔으로의 전환을 주도하고, 동원시스템즈는 캔·유리·플라스틱을 아우르며 한국 경질 용기 시장을 떠받치고 있습니다.",
+    "industry_en": "Metal, Glass & Plastic Containers",
+    "industry_ko": "금속·유리·플라스틱 용기",
+    "korea_company": "Dongwon Systems",
+    "korea_firms": [
+      {
+        "ko": "동원시스템즈",
+        "name": "Dongwon Systems",
+        "share": 34.0
+      },
+      {
+        "ko": "솔루션(유리)",
+        "name": "SGC Solutions (glass)SGC",
+        "share": 20.0
+      },
+      {
+        "ko": "롯데알미늄 / 롯데칠성",
+        "name": "Lotte Aluminium / Lotte Chilsung",
+        "share": 15.0
+      },
+      {
+        "ko": "소망글라스",
+        "name": "Somang Glass",
+        "share": 11.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1905,
+      "global": 0.1905,
+      "scale": 0.619,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$515B",
+      "trillion_usd": 0.515,
       "year": "2024"
     },
     "sector": "Materials"
@@ -1856,6 +1972,71 @@
     "market": {
       "label": "$157B",
       "trillion_usd": 0.157,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20106010": {
+    "cagr": "~6.6%",
+    "gics": "20106010",
+    "global_company": "Caterpillar",
+    "global_firms": [
+      {
+        "name": "Caterpillar",
+        "share": 15.0
+      },
+      {
+        "name": "Komatsu",
+        "share": 11.0
+      },
+      {
+        "name": "XCMG",
+        "share": 6.0
+      },
+      {
+        "name": "John Deere",
+        "share": 5.0
+      },
+      {
+        "name": "Sany",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "캐터필러는 중국 수요 부진에도 규모와 딜러망으로 명확한 글로벌 1위를 지키고, 두산밥캣은 HD현대건설기계 합병이 판도를 바꾸는 가운데 매출 기준 한국 1위를 유지하고 있습니다.",
+    "industry_en": "Construction Machinery & Heavy Transportation Equipment",
+    "industry_ko": "건설기계·대형 운송장비",
+    "korea_company": "Doosan Bobcat",
+    "korea_firms": [
+      {
+        "ko": "두산밥캣",
+        "name": "Doosan Bobcat",
+        "share": 50.0
+      },
+      {
+        "ko": "현대건설기계(현대 + 디벨론)",
+        "name": "HD Construction Equipment (Hyundai + Develon)HD",
+        "share": 31.0
+      },
+      {
+        "ko": "현대에버다임 / 기타",
+        "name": "Hyundai Everdigm / others",
+        "share": 10.0
+      },
+      {
+        "ko": "중소·어태치먼트 제조사",
+        "name": "Smaller / attachment makers",
+        "share": 9.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.5625,
+      "scale": 0.25,
+      "tech": 0.1875
+    },
+    "market": {
+      "label": "$237B",
+      "trillion_usd": 0.237,
       "year": "2024"
     },
     "sector": "Industrials"
@@ -2909,6 +3090,71 @@
     },
     "sector": "Consumer Discretionary"
   },
+  "25201030": {
+    "cagr": "~5.4%",
+    "gics": "25201030",
+    "global_company": "D.R. Horton",
+    "global_firms": [
+      {
+        "name": "D.R. Horton",
+        "share": 11.0
+      },
+      {
+        "name": "Lennar",
+        "share": 8.0
+      },
+      {
+        "name": "PulteGroup",
+        "share": 5.0
+      },
+      {
+        "name": "NVR",
+        "share": 4.0
+      },
+      {
+        "name": "D.R. Horton peers (top 10)",
+        "share": 4.0
+      }
+    ],
+    "headline_ko": "D.R.호턴은 높은 모기지 금리에 맞서 규모와 인센티브로 물량을 방어하고, 현대건설은 대출 규제 강화로 수요가 식는 가운데서도 한국 주택 수주 1위를 이어가고 있습니다.",
+    "industry_en": "Homebuilding",
+    "industry_ko": "주택건설",
+    "korea_company": "Hyundai E&C (proxy)",
+    "korea_firms": [
+      {
+        "ko": "현대건설(힐스테이트)",
+        "name": "Hyundai E&C (Hillstate)",
+        "share": 12.0
+      },
+      {
+        "ko": "삼성물산(래미안)",
+        "name": "Samsung C&T (Raemian)",
+        "share": 10.0
+      },
+      {
+        "ko": "건설(자이)",
+        "name": "GS E&C (Xi)GS",
+        "share": 9.0
+      },
+      {
+        "ko": "이앤씨/대우건설",
+        "name": "DL E&C / DaewooDL",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1538,
+      "scale": 0.8462,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$4.3T",
+      "trillion_usd": 4.3,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
   "252020": {
     "cagr": "~2.24%",
     "gics": "252020",
@@ -3795,6 +4041,61 @@
     },
     "sector": "Consumer Staples"
   },
+  "30201030": {
+    "cagr": "~7.5–8.6%",
+    "gics": "30201030",
+    "global_company": "The Coca-Cola Company",
+    "global_firms": [
+      {
+        "name": "Coca-Cola",
+        "share": 48.0
+      },
+      {
+        "name": "PepsiCo",
+        "share": 24.0
+      },
+      {
+        "name": "Keurig Dr Pepper",
+        "share": 16.0
+      }
+    ],
+    "headline_ko": "코카콜라는 가격 인상과 제로슈거 성장에 힘입어 원액 중심의 자산경량 모델로 업계 최고 수준의 마진을 내고, 롯데칠성음료는 제로 라인업을 앞세워 한국 음료 시장의 약 5분의 1을 점유하고 있습니다.",
+    "industry_en": "Soft Drinks & Non-alcoholic Beverages",
+    "industry_ko": "청량음료·무알코올 음료",
+    "korea_company": "Lotte Chilsung Beverage",
+    "korea_firms": [
+      {
+        "name": "Lotte Chilsung",
+        "share": 20.0
+      },
+      {
+        "name": "Dongseo Food",
+        "share": 10.0
+      },
+      {
+        "ko": "생활건강 코카콜라음료",
+        "name": "Coca-Cola Beverage (LG)LG",
+        "share": 10.0
+      },
+      {
+        "ko": "매일유업 · 동아오츠카",
+        "name": "Maeil · Dong-A Otsuka",
+        "share": 6.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.3333,
+      "global": 0.3333,
+      "scale": 0.1111,
+      "tech": 0.2222
+    },
+    "market": {
+      "label": "$1.30T",
+      "trillion_usd": 1.3,
+      "year": "2024"
+    },
+    "sector": "Consumer Staples"
+  },
   "302020": {
     "cagr": "≈6%",
     "gics": "302020",
@@ -4556,6 +4857,63 @@
     },
     "sector": "Health Care"
   },
+  "35103010": {
+    "cagr": "~16%",
+    "gics": "35103010",
+    "global_company": "Veeva Systems",
+    "global_firms": [
+      {
+        "name": "Veeva Systems",
+        "share": 80.0
+      },
+      {
+        "name": "Salesforce Life Sciences",
+        "share": 8.0
+      },
+      {
+        "name": "IQVIA / OCE",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "베바시스템즈는 세일즈포스의 재진입 속에 생명과학 CRM의 약 80%를 지키고 있고, 루닛은 암 검진 소프트웨어 성장에 힘입어 한국 상장 의료 AI 분야를 선도하고 있습니다.",
+    "industry_en": "Health Care Technology",
+    "industry_ko": "헬스케어 기술",
+    "korea_company": "Lunit",
+    "korea_firms": [
+      {
+        "ko": "루닛",
+        "name": "Lunit",
+        "share": 38.0
+      },
+      {
+        "ko": "뷰노",
+        "name": "VUNO",
+        "share": 22.0
+      },
+      {
+        "ko": "코어라인·제이엘케이·기타",
+        "name": "Coreline / JLK / others",
+        "share": 14.0
+      },
+      {
+        "ko": "병원 자체 개발·기타",
+        "name": "Hospital in-house / other",
+        "share": 26.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.3636,
+      "global": 0.0,
+      "scale": 0.0,
+      "tech": 0.6364
+    },
+    "market": {
+      "label": "$745B",
+      "trillion_usd": 0.745,
+      "year": "2024"
+    },
+    "sector": "Health Care"
+  },
   "352010": {
     "cagr": "~13.9%",
     "gics": "352010",
@@ -5242,6 +5600,67 @@
       "label": "$4.4T",
       "trillion_usd": 4.4,
       "year": "2021"
+    },
+    "sector": "Financials"
+  },
+  "40201060": {
+    "cagr": "~16–25%",
+    "gics": "40201060",
+    "global_company": "Visa",
+    "global_firms": [
+      {
+        "name": "UnionPay",
+        "share": 35.0
+      },
+      {
+        "name": "Visa",
+        "share": 32.0
+      },
+      {
+        "name": "Mastercard",
+        "share": 21.0
+      },
+      {
+        "name": "Amex",
+        "share": 7.0
+      },
+      {
+        "ko": "기타",
+        "name": "JCB / Discover / othersJCB / Discover /",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "비자는 스테이블코인과 인터체인지 법안이 부상하는 가운데서도 글로벌 네트워크와 가격 결정력으로 가장 가치 높은 결제 기업 자리를 지키고, 카카오페이는 네이버페이의 그룹 내 결제액에 이어 한국 상장 간편결제 기업을 선도하고 있습니다.",
+    "industry_en": "Transaction & Payment Processing Services",
+    "industry_ko": "거래·결제 처리 서비스",
+    "korea_company": "Kakao Pay",
+    "korea_firms": [
+      {
+        "ko": "네이버페이(56.5조 원)",
+        "name": "Naver Pay (₩56.5T)",
+        "share": 52.0
+      },
+      {
+        "ko": "카카오페이(37.8조 원)",
+        "name": "Kakao Pay (₩37.8T)",
+        "share": 35.0
+      },
+      {
+        "ko": "토스페이(12조 원)",
+        "name": "Toss Pay (₩12T)",
+        "share": 11.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2941,
+      "global": 0.1765,
+      "scale": 0.3529,
+      "tech": 0.1765
+    },
+    "market": {
+      "label": "$120B",
+      "trillion_usd": 0.12,
+      "year": "2025"
     },
     "sector": "Financials"
   },
