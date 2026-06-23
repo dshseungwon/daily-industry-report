@@ -1141,6 +1141,68 @@
     },
     "sector": "Materials"
   },
+  "15103020": {
+    "cagr": "~3–4%",
+    "gics": "15103020",
+    "global_company": "Smurfit WestRock",
+    "global_firms": [
+      {
+        "name": "Smurfit WestRock",
+        "share": 8.0
+      },
+      {
+        "name": "International Paper",
+        "share": 6.0
+      },
+      {
+        "name": "Nine Dragons / PCA",
+        "share": 4.0
+      },
+      {
+        "name": "DS Smith / Mondi",
+        "share": 4.0
+      },
+      {
+        "ko": "기타(파편화)",
+        "name": "Others (fragmented)",
+        "share": 78.0
+      }
+    ],
+    "headline_ko": "스머핏 웨스트록은 FY2025 매출 약 310억 달러로 통합이 진행 중인 글로벌 포장 시장을 이끌고 있으며, 한국은 상장된 순수 대형 기업이 없어 재생원료·플라스틱 폐기물 규제가 강화되는 가운데 한솔제지가 가장 가까운 대용 기업으로 파악됩니다.",
+    "industry_en": "Paper & Plastic Packaging Products & Materials",
+    "industry_ko": "종이·플라스틱 포장재",
+    "korea_company": "Hansol Paper (proxy)",
+    "korea_firms": [
+      {
+        "name": "Taerim",
+        "share": 28.0
+      },
+      {
+        "name": "Asia Paper",
+        "share": 19.0
+      },
+      {
+        "name": "Shindaeyang",
+        "share": 17.0
+      },
+      {
+        "name": "Sambo",
+        "share": 13.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2222,
+      "global": 0.0556,
+      "scale": 0.6111,
+      "tech": 0.1111
+    },
+    "market": {
+      "label": "$1.20T",
+      "trillion_usd": 1.2,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
   "151040": {
     "cagr": "~6.3%",
     "gics": "151040",
@@ -2037,6 +2099,71 @@
     "market": {
       "label": "$237B",
       "trillion_usd": 0.237,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20106015": {
+    "cagr": "~5–7.7%",
+    "gics": "20106015",
+    "global_company": "Deere & Company",
+    "global_firms": [
+      {
+        "name": "Deere (John Deere)",
+        "share": 20.0
+      },
+      {
+        "name": "CNH Industrial",
+        "share": 15.0
+      },
+      {
+        "name": "Kubota",
+        "share": 12.0
+      },
+      {
+        "name": "AGCO",
+        "share": 10.0
+      },
+      {
+        "ko": "기타",
+        "name": "CLAAS / Mahindra / othersCLAAS / Mahindra /",
+        "share": 43.0
+      }
+    ],
+    "headline_ko": "존 디어(Deere)는 농기계 경기 둔화로 FY2025 매출이 457억 달러로 줄었음에도 명백한 글로벌 1위를 지키고 있으며, 한국에서는 대동이 TYM·LS엠트론과의 박빙의 트랙터 경쟁에서 선두를 달리고 있습니다.",
+    "industry_en": "Agricultural & Farm Machinery",
+    "industry_ko": "농기계",
+    "korea_company": "Daedong",
+    "korea_firms": [
+      {
+        "ko": "대동)",
+        "name": "Daedong (",
+        "share": 33.0
+      },
+      {
+        "ko": "엠트론)",
+        "name": "LS Mtron (LS",
+        "share": 31.0
+      },
+      {
+        "name": "TYM",
+        "share": 31.0
+      },
+      {
+        "ko": "아시아 테크 / 기타",
+        "name": "Asia Tech / others",
+        "share": 5.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0714,
+      "global": 0.0,
+      "scale": 0.5714,
+      "tech": 0.3571
+    },
+    "market": {
+      "label": "$170B",
+      "trillion_usd": 0.17,
       "year": "2024"
     },
     "sector": "Industrials"
@@ -3155,6 +3282,69 @@
     },
     "sector": "Consumer Discretionary"
   },
+  "25201040": {
+    "cagr": "~5–7%",
+    "gics": "25201040",
+    "global_company": "Midea Group",
+    "global_firms": [
+      {
+        "name": "Midea",
+        "share": 30.0
+      },
+      {
+        "name": "Haier",
+        "share": 21.0
+      },
+      {
+        "name": "LG (HS)",
+        "share": 12.0
+      },
+      {
+        "name": "Whirlpool",
+        "share": 10.0
+      },
+      {
+        "name": "BSH (Bosch)",
+        "share": 8.0
+      }
+    ],
+    "headline_ko": "미데아는 FY2025 매출 약 4,565억 위안으로 매출·시가총액 기준 글로벌 가전 1위이며, LG전자는 생활가전 부문이 2026년 1분기 사상 최대 실적을 내며 미국 관세와 효율 규제가 시장을 재편하는 가운데 한국 1위를 지키고 있습니다.",
+    "industry_en": "Household Appliances",
+    "industry_ko": "가전제품",
+    "korea_company": "LG Electronics",
+    "korea_firms": [
+      {
+        "name": "LG Electronics",
+        "share": 30.0
+      },
+      {
+        "name": "Samsung",
+        "share": 26.0
+      },
+      {
+        "ko": "코웨이 & 기타(렌탈)",
+        "name": "Coway & others (rental)",
+        "share": 14.0
+      },
+      {
+        "ko": "기타·수입품",
+        "name": "Others / imports",
+        "share": 30.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2632,
+      "global": 0.0526,
+      "scale": 0.5263,
+      "tech": 0.1579
+    },
+    "market": {
+      "label": "$561B",
+      "trillion_usd": 0.561,
+      "year": "2025"
+    },
+    "sector": "Consumer Discretionary"
+  },
   "252020": {
     "cagr": "~2.24%",
     "gics": "252020",
@@ -4153,6 +4343,77 @@
     },
     "sector": "Consumer Staples"
   },
+  "30202010": {
+    "cagr": "~3.6%",
+    "gics": "30202010",
+    "global_company": "Cargill",
+    "global_firms": [
+      {
+        "name": "Cargill",
+        "share": 18.0
+      },
+      {
+        "name": "ADM",
+        "share": 15.0
+      },
+      {
+        "ko": "벙기(+비테라)",
+        "name": "Bunge (+Viterra)",
+        "share": 15.0
+      },
+      {
+        "ko": "루이드레퓌스",
+        "name": "Louis Dreyfus",
+        "share": 12.0
+      },
+      {
+        "ko": "등",
+        "name": "COFCO & othersCOFCO",
+        "share": 40.0
+      }
+    ],
+    "headline_ko": "비상장 기업 카길은 매출 약 1,540억 달러로 세계 최대 농산물 기업 자리를 지키고 있으며, 벙기-비테라 합병과 EU 산림파괴 규정이 글로벌 교역을 재편하는 가운데 CJ제일제당이 국내 최대 상장 기업으로 파악됩니다.",
+    "industry_en": "Agricultural Products & Services",
+    "industry_ko": "농산물·서비스",
+    "korea_company": "CJ CheilJedang",
+    "korea_firms": [
+      {
+        "ko": "농협사료(회원조합 포함)",
+        "name": "Nonghyup Feed (incl. members)",
+        "share": 31.0
+      },
+      {
+        "name": "Harim",
+        "share": 21.0
+      },
+      {
+        "name": "EASYBIO",
+        "share": 8.0
+      },
+      {
+        "ko": "카길애그리퓨리나",
+        "name": "Cargill Agri Purina",
+        "share": 8.0
+      },
+      {
+        "ko": "기타(CJ 등)",
+        "name": "Others (CJ & others)",
+        "share": 32.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.25,
+      "scale": 0.75,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$1.54T",
+      "trillion_usd": 1.54,
+      "year": "2024"
+    },
+    "sector": "Consumer Staples"
+  },
   "302030": {
     "cagr": "≈2.6%",
     "gics": "302030",
@@ -4980,6 +5241,67 @@
     },
     "sector": "Health Care"
   },
+  "35201010": {
+    "cagr": "~9–14%",
+    "gics": "35201010",
+    "global_company": "Amgen",
+    "global_firms": [
+      {
+        "name": "Amgen",
+        "share": 33.0
+      },
+      {
+        "name": "Gilead",
+        "share": 28.0
+      },
+      {
+        "name": "Regeneron",
+        "share": 14.0
+      },
+      {
+        "name": "Vertex",
+        "share": 12.0
+      },
+      {
+        "ko": "기타",
+        "name": "Moderna / BioNTech / othersModerna / BioNTech /",
+        "share": 13.0
+      }
+    ],
+    "headline_ko": "암젠(Amgen)은 시가총액 약 1,870억 달러로 최대 순수 바이오텍이며, 미국의 약가 협상과 BIOSECURE 법이 업계를 재편하는 가운데 삼성바이오로직스가 FY2025 매출 30% 성장을 바탕으로 위탁생산 기업으로서 한국을 선도하고 있습니다.",
+    "industry_en": "Biotechnology",
+    "industry_ko": "바이오테크놀로지",
+    "korea_company": "Samsung Biologics",
+    "korea_firms": [
+      {
+        "ko": "삼성바이오로직스(약 59조 원)",
+        "name": "Samsung Biologics (~₩59T)",
+        "share": 54.0
+      },
+      {
+        "ko": "셀트리온(약 35조 원)",
+        "name": "Celltrion (~₩35T)",
+        "share": 32.0
+      },
+      {
+        "ko": "바이오팜(약 7조 원)",
+        "name": "SK Biopharm (~₩7T)SK",
+        "share": 6.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0909,
+      "scale": 0.4545,
+      "tech": 0.4545
+    },
+    "market": {
+      "label": "$1.77T",
+      "trillion_usd": 1.77,
+      "year": "2025"
+    },
+    "sector": "Health Care"
+  },
   "352020": {
     "cagr": "~6.3%",
     "gics": "352020",
@@ -5730,6 +6052,77 @@
     },
     "sector": "Financials"
   },
+  "40202010": {
+    "cagr": "~7–9%",
+    "gics": "40202010",
+    "global_company": "American Express",
+    "global_firms": [
+      {
+        "name": "JPMorgan Chase",
+        "share": 30.0
+      },
+      {
+        "name": "American Express",
+        "share": 26.0
+      },
+      {
+        "name": "Citi",
+        "share": 14.0
+      },
+      {
+        "name": "Capital One",
+        "share": 14.0
+      },
+      {
+        "ko": "기타(상위 5개 ≈ 69%)",
+        "name": "BofA / others (top-5 ≈ 69%)BofA ·",
+        "share": 16.0
+      }
+    ],
+    "headline_ko": "아메리칸 익스프레스는 FY2025 매출 722억 달러로 시가총액 기준 글로벌 소비자금융 1위이며, 미국의 연체 수수료 규정이 무산되고 한국이 가계부채 한도를 강화하는 가운데 삼성카드가 국내 최대 상장 카드사 자리를 지키고 있습니다.",
+    "industry_en": "Consumer Finance",
+    "industry_ko": "소비자 금융",
+    "korea_company": "Samsung Card",
+    "korea_firms": [
+      {
+        "ko": "신한카드",
+        "name": "Shinhan Card",
+        "share": 22.0
+      },
+      {
+        "ko": "삼성카드",
+        "name": "Samsung Card",
+        "share": 18.0
+      },
+      {
+        "ko": "국민카드",
+        "name": "KB Kookmin CardKB",
+        "share": 18.0
+      },
+      {
+        "ko": "현대카드",
+        "name": "Hyundai Card",
+        "share": 15.0
+      },
+      {
+        "ko": "롯데 · 우리 · 하나 · BC",
+        "name": "Lotte / Woori / Hana / BC",
+        "share": 27.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2,
+      "global": 0.1333,
+      "scale": 0.6,
+      "tech": 0.0667
+    },
+    "market": {
+      "label": "$910B",
+      "trillion_usd": 0.91,
+      "year": "2025"
+    },
+    "sector": "Financials"
+  },
   "402030": {
     "cagr": "≈6.2%",
     "gics": "402030",
@@ -5953,6 +6346,68 @@
       "label": "$1.85T",
       "trillion_usd": 1.85,
       "year": "2024"
+    },
+    "sector": "Information Technology"
+  },
+  "45102010": {
+    "cagr": "~13%",
+    "gics": "45102010",
+    "global_company": "Accenture",
+    "global_firms": [
+      {
+        "name": "Accenture",
+        "share": 30.0
+      },
+      {
+        "name": "TCS",
+        "share": 20.0
+      },
+      {
+        "name": "IBM Consulting",
+        "share": 14.0
+      },
+      {
+        "ko": "인포시스 / 코그니전트",
+        "name": "Infosys / Cognizant",
+        "share": 12.0
+      },
+      {
+        "ko": "기타",
+        "name": "Capgemini / othersCapgemini /",
+        "share": 24.0
+      }
+    ],
+    "headline_ko": "액센추어는 매출 약 721억 달러로 세계 최대 IT 서비스 기업 자리를 지키고 있으나 올해 주가가 50% 넘게 하락하며 TCS에 시가총액을 잠시 추월당했고, 생성형 AI 수요와 H-1B 변화가 업계를 재편하는 가운데 삼성SDS가 한국을 선도하고 있습니다.",
+    "industry_en": "IT Consulting & Other Services",
+    "industry_ko": "IT 컨설팅·기타 서비스",
+    "korea_company": "Samsung SDS",
+    "korea_firms": [
+      {
+        "ko": "삼성SDS(13.9조 원)",
+        "name": "Samsung SDS (₩13.9T)",
+        "share": 44.0
+      },
+      {
+        "ko": "약 6.0조 원)",
+        "name": "LG CNS (~₩6.0T)LG CNS(",
+        "share": 21.0
+      },
+      {
+        "ko": "현대오토에버(약 4.4조 원)",
+        "name": "Hyundai AutoEver (~₩4.4T)",
+        "share": 15.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2353,
+      "global": 0.2941,
+      "scale": 0.4706,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$112B",
+      "trillion_usd": 0.112,
+      "year": "2025"
     },
     "sector": "Information Technology"
   },
