@@ -1326,6 +1326,72 @@
     },
     "sector": "Materials"
   },
+  "15104020": {
+    "cagr": "~5–6%",
+    "gics": "15104020",
+    "global_company": "BHP Group",
+    "global_firms": [
+      {
+        "name": "BHP",
+        "share": 31.0
+      },
+      {
+        "name": "Rio Tinto",
+        "share": 25.0
+      },
+      {
+        "name": "Glencore",
+        "share": 10.0
+      },
+      {
+        "name": "Vale",
+        "share": 10.0
+      },
+      {
+        "ko": "기타(프리포트, 앵글로, 테크 등)",
+        "name": "Others (Freeport, Anglo, Teck…)",
+        "share": 24.0
+      }
+    ],
+    "headline_ko": "BHP가 시가총액 약 2,060억 달러(2026년 6월, FY2025 매출 513억 달러)로 최대 종합 광산기업에 자리하고, 고려아연이 2025년 매출 16조 5,900억 원(37.6% 증가)으로 한국 비철금속 분야를 이끄는 것으로 파악됩니다. 약 1조 1,900억 달러 규모의 금속·광업 시장이 연 5%가량 성장하는 가운데, 구리 가격 사상 최고치와 2026년 제로 수준의 구리 제련수수료, 앵글로·텍 합병, EU CRMA·CBAM 규제가 공급 구도를 바꾸고 있습니다.",
+    "industry_en": "Diversified Metals & Mining",
+    "industry_ko": "종합 금속·광업",
+    "korea_company": "Korea Zinc",
+    "korea_firms": [
+      {
+        "ko": "고려아연(16조 5,900억 원)",
+        "name": "Korea Zinc (₩16.59T)",
+        "share": 46.0
+      },
+      {
+        "ko": "조 1,200억 원)",
+        "name": "LS MnM (₩12.12T)LS MnM(12",
+        "share": 34.0
+      },
+      {
+        "ko": "풍산(3조 5,000억 원)",
+        "name": "Poongsan (₩3.5T)",
+        "share": 10.0
+      },
+      {
+        "ko": "영풍(2조 9,100억 원)",
+        "name": "Young Poong (₩2.91T)",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$1.17T",
+      "trillion_usd": 1.17,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
   "151050": {
     "cagr": "≈1.7%",
     "gics": "151050",
@@ -2336,6 +2402,68 @@
     "market": {
       "label": "$72B",
       "trillion_usd": 0.072,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20107010": {
+    "cagr": "~6.6%",
+    "gics": "20107010",
+    "global_company": "Mitsubishi Corporation",
+    "global_firms": [
+      {
+        "name": "Mitsubishi (¥16.1T)",
+        "share": 30.0
+      },
+      {
+        "name": "Itochu (¥12.7T)",
+        "share": 23.0
+      },
+      {
+        "name": "Mitsui (¥12.6T)",
+        "share": 23.0
+      },
+      {
+        "ko": "마루베니(465억 달러)",
+        "name": "Marubeni ($46.5B)",
+        "share": 14.0
+      },
+      {
+        "ko": "스미토모상사(451억 달러)",
+        "name": "Sumitomo ($45.1B)",
+        "share": 10.0
+      }
+    ],
+    "headline_ko": "미쓰비시상사가 매출과 시가총액 기준 세계 최대 종합상사(2026년 6월 약 16조 1,000억 엔, 1,000억 달러)에 자리하고, 포스코인터내셔널이 FY2025 매출 32조 4,000억 원, 시가총액 약 8조 2,500억 원으로 한국 종합상사를 이끄는 것으로 파악됩니다. 약 60조 달러 규모의 글로벌 도매 시장이 연 6.6%가량 성장하는 가운데, 버크셔해서웨이가 5대 종합상사 지분을 모두 10% 위로 끌어올렸고, 상사들은 자원에서 에너지·전기차 공급망으로 무게중심을 옮기고 있습니다.",
+    "industry_en": "Trading Companies & Distributors",
+    "industry_ko": "무역회사·판매업체",
+    "korea_company": "POSCO International",
+    "korea_firms": [
+      {
+        "ko": "포스코인터내셔널(32조 4,000억 원)",
+        "name": "POSCO International (₩32.4T)",
+        "share": 55.0
+      },
+      {
+        "ko": "인터내셔널(16조 7,000억 원)",
+        "name": "LX International (₩16.7T)LX",
+        "share": 28.0
+      },
+      {
+        "ko": "현대코퍼레이션(7조 6,000억 원)",
+        "name": "Hyundai Corp (₩7.6T)",
+        "share": 13.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.3333,
+      "scale": 0.6667,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$56.4T",
+      "trillion_usd": 56.4,
       "year": "2024"
     },
     "sector": "Industrials"
@@ -3596,6 +3724,66 @@
     },
     "sector": "Consumer Discretionary"
   },
+  "25202010": {
+    "cagr": "~3.3%",
+    "gics": "25202010",
+    "global_company": "Brunswick",
+    "global_firms": [
+      {
+        "name": "Polaris (~$7.1B)",
+        "share": 28.0
+      },
+      {
+        "name": "BRP (~$6B)",
+        "share": 25.0
+      },
+      {
+        "name": "Brunswick (~$5.4B)",
+        "share": 20.0
+      },
+      {
+        "name": "Yamaha Marine / HondaYamaha Marine / Honda",
+        "share": 11.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 16.0
+      }
+    ],
+    "headline_ko": "브런즈윅이 시가총액 약 54억 달러(2025년 매출 53억 6,000만 달러)로 가장 가치 있는 레저용품 순수 사업자에 자리하며 매출 1위 폴라리스를 앞서는 것으로 파악됩니다. 한국에는 글로벌급 제조사가 없어 스크린골프 기업 골프존이 가장 가까운 상장 대안(2025년 매출 4,830억 원, 시가총액 약 2,300억 원)으로 파악됩니다. 약 960억 달러 규모의 스포츠·레저 시장이 연 3.3%가량 성장하는 가운데, 확대된 미국 232조 관세가 레저보트·파워스포츠 마진을 압박하고 있습니다.",
+    "industry_en": "Leisure Products",
+    "industry_ko": "레저용품",
+    "korea_company": "Golfzon",
+    "korea_firms": [
+      {
+        "ko": "골프존 (4,830억 원)",
+        "name": "Golfzon (₩483B)",
+        "share": 60.0
+      },
+      {
+        "name": "Kakao VX",
+        "share": 25.0
+      },
+      {
+        "ko": "지역 / 독립 브랜드",
+        "name": "Regional / independent brands",
+        "share": 15.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2941,
+      "global": 0.2353,
+      "scale": 0.1176,
+      "tech": 0.3529
+    },
+    "market": {
+      "label": "$93B",
+      "trillion_usd": 0.093,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
   "252030": {
     "cagr": "≈4.1%",
     "gics": "252030",
@@ -4715,6 +4903,64 @@
     },
     "sector": "Consumer Staples"
   },
+  "30203010": {
+    "cagr": "~2.7%",
+    "gics": "30203010",
+    "global_company": "Philip Morris International",
+    "global_firms": [
+      {
+        "name": "Philip Morris Intl",
+        "share": 30.0
+      },
+      {
+        "name": "British American Tobacco",
+        "share": 23.0
+      },
+      {
+        "name": "Japan Tobacco",
+        "share": 18.0
+      },
+      {
+        "name": "Altria / Imperial",
+        "share": 13.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 16.0
+      }
+    ],
+    "headline_ko": "필립모리스 인터내셔널(PMI)이 시가총액 약 2,780억 달러(2026년 6월, 2025년 매출 406억 달러, 비연소 제품 비중 41.5%)로 최대 담배기업에 자리하고, KT&G가 2025년 매출 6조 5,800억 원, 시가총액 약 110억 달러로 한국 시장을 이끄는 것으로 파악됩니다. 약 9,300억 달러 시장이 연 2.7%가량의 저성장에 그치는 가운데, 아이코스가 말보로를 추월했고 규제 초점은 철회된 미국 멘솔 금지에서 니코틴 파우치·전자담배 과세로 옮겨가고 있습니다.",
+    "industry_en": "Tobacco",
+    "industry_ko": "담배",
+    "korea_company": "KT&G",
+    "korea_firms": [
+      {
+        "name": "KT&G",
+        "share": 64.0
+      },
+      {
+        "name": "Philip Morris Korea",
+        "share": 18.0
+      },
+      {
+        "name": "BAT Korea",
+        "share": 12.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.3333,
+      "global": 0.4667,
+      "scale": 0.0,
+      "tech": 0.2
+    },
+    "market": {
+      "label": "$905B",
+      "trillion_usd": 0.905,
+      "year": "2024"
+    },
+    "sector": "Consumer Staples"
+  },
   "303010": {
     "cagr": "≈5%",
     "gics": "303010",
@@ -5731,6 +5977,67 @@
     },
     "sector": "Health Care"
   },
+  "35203010": {
+    "cagr": "~10–12%",
+    "gics": "35203010",
+    "global_company": "Thermo Fisher Scientific",
+    "global_firms": [
+      {
+        "name": "Thermo Fisher",
+        "share": 21.0
+      },
+      {
+        "name": "Danaher",
+        "share": 16.0
+      },
+      {
+        "name": "Merck KGaA / Roche Dx",
+        "share": 14.0
+      },
+      {
+        "name": "Agilent / Sartorius / Waters",
+        "share": 16.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 33.0
+      }
+    ],
+    "headline_ko": "써모피셔 사이언티픽이 매출과 시가총액 기준 생명과학 도구 시장을 압도(약 1,770억 달러, FY2025 매출 446억 달러)하고, 규모가 작은 한국 도구 시장은 씨젠이 가장 가까운 대안(FY2025 매출 4,740억 원, 시가총액 약 1조 3,400억 원)으로 선두를 맡고 있는 것으로 파악됩니다. 약 1,650억~1,850억 달러 시장이 바이오공정 회복에 힘입어 연 10~12% 성장하는 가운데, 철회된 FDA LDT 규정과 EU IVDR, 중국의 약가 인하가 수요 구도를 바꾸고 있습니다.",
+    "industry_en": "Life Sciences Tools & Services",
+    "industry_ko": "생명과학 도구·서비스",
+    "korea_company": "Seegene",
+    "korea_firms": [
+      {
+        "ko": "씨젠(4,740억 원)",
+        "name": "Seegene (₩474B)",
+        "share": 49.0
+      },
+      {
+        "ko": "바이오니아(2,940억 원)",
+        "name": "Bioneer (₩294B)",
+        "share": 34.0
+      },
+      {
+        "ko": "마크로젠(1,450억 원)",
+        "name": "Macrogen (₩145B)",
+        "share": 17.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.4,
+      "scale": 0.2667,
+      "tech": 0.3333
+    },
+    "market": {
+      "label": "$168B",
+      "trillion_usd": 0.168,
+      "year": "2024"
+    },
+    "sector": "Health Care"
+  },
   "401010": {
     "cagr": "≈5.5%",
     "gics": "401010",
@@ -6551,6 +6858,68 @@
     },
     "sector": "Financials"
   },
+  "40203020": {
+    "cagr": "~11%",
+    "gics": "40203020",
+    "global_company": "Morgan Stanley",
+    "global_firms": [
+      {
+        "name": "JPMorgan (context)",
+        "share": 28.0
+      },
+      {
+        "name": "Goldman Sachs",
+        "share": 21.0
+      },
+      {
+        "name": "Morgan Stanley / BofA",
+        "share": 18.0
+      },
+      {
+        "ko": "씨티 / 바클레이즈",
+        "name": "Citi / Barclays",
+        "share": 15.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 18.0
+      }
+    ],
+    "headline_ko": "모건스탠리가 시가총액 기준 최대 순수 투자은행·증권사(2026년 6월 약 3,400억 달러, 2025년 순영업수익 706억 달러)에 자리하고, 2025년 IB 수수료는 골드만삭스가 93억 4,000만 달러로 1위를 차지한 것으로 파악됩니다. 미래에셋증권은 시가총액 기준 한국 최대 증권사(2025년 영업이익 1조 9,200억 원, 61% 증가)로 파악됩니다. 약 1,070억 달러 규모의 글로벌 수수료 풀이 4조 8,000억 달러 규모의 M&A 회복에 힘입어 반등하는 가운데, 바젤Ⅲ와 T+1 결제, 한국 공매도 금지 해제가 규칙을 다시 짜고 있습니다.",
+    "industry_en": "Investment Banking & Brokerage",
+    "industry_ko": "투자은행·중개",
+    "korea_company": "Mirae Asset Securities",
+    "korea_firms": [
+      {
+        "ko": "미래에셋증권",
+        "name": "Mirae Asset Securities",
+        "share": 26.0
+      },
+      {
+        "ko": "한국투자 / 삼성",
+        "name": "Korea Investment / Samsung",
+        "share": 22.0
+      },
+      {
+        "ko": "키움",
+        "name": "KB / NH / KiwoomKB / NH /",
+        "share": 20.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.4,
+      "scale": 0.6,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$90B",
+      "trillion_usd": 0.09,
+      "year": "2023"
+    },
+    "sector": "Financials"
+  },
   "402040": {
     "cagr": "~3–4%",
     "gics": "402040",
@@ -6895,6 +7264,74 @@
     "market": {
       "label": "$1.08T",
       "trillion_usd": 1.08,
+      "year": "2024"
+    },
+    "sector": "Information Technology"
+  },
+  "45103010": {
+    "cagr": "~12%",
+    "gics": "45103010",
+    "global_company": "SAP",
+    "global_firms": [
+      {
+        "name": "SAP",
+        "share": 22.0
+      },
+      {
+        "name": "Salesforce",
+        "share": 21.0
+      },
+      {
+        "ko": "오라클 / 마이크로소프트",
+        "name": "Oracle / Microsoft",
+        "share": 13.0
+      },
+      {
+        "ko": "인튜이트 / 어도비 / 서비스나우",
+        "name": "Intuit / Adobe / ServiceNow",
+        "share": 11.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 33.0
+      }
+    ],
+    "headline_ko": "SAP가 시가총액 약 1,750억 달러(2026년 6월, FY2025 클라우드 매출 210억 유로, 23% 증가)로 최대 애플리케이션 소프트웨어 기업에 자리하고, 더존비즈온이 2025년 매출 4,460억 원, EQT의 9억 3,000만 달러 투자 이후 시가총액 약 3조 5,000억 원으로 한국 시장을 이끄는 것으로 파악됩니다. 약 4,080억 달러 규모의 SaaS 시장이 연 12%가량 성장하는 가운데, 세일즈포스 Agentforce·마이크로소프트 Copilot 같은 AI 에이전트와 EU AI법, 구글의 320억 달러 Wiz 인수가 판도를 바꾸고 있습니다.",
+    "industry_en": "Application Software",
+    "industry_ko": "애플리케이션 소프트웨어",
+    "korea_company": "Douzone Bizon",
+    "korea_firms": [
+      {
+        "ko": "코리아 (대기업)",
+        "name": "SAP Korea (large enterprise)SAP",
+        "share": 30.0
+      },
+      {
+        "ko": "더존비즈온 (중소기업 ERP)",
+        "name": "Douzone Bizon (SME ERP)",
+        "share": 28.0
+      },
+      {
+        "ko": "한글과컴퓨터 / 영경 / 기타",
+        "name": "Hancom / Yeong Kyung / others",
+        "share": 16.0
+      },
+      {
+        "ko": "글로벌 SaaS (세일즈포스, MS 등)",
+        "name": "Global SaaS (Salesforce, MS, etc.)",
+        "share": 26.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1667,
+      "global": 0.0,
+      "scale": 0.4167,
+      "tech": 0.4167
+    },
+    "market": {
+      "label": "$399B",
+      "trillion_usd": 0.399,
       "year": "2024"
     },
     "sector": "Information Technology"
