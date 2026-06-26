@@ -1392,6 +1392,61 @@
     },
     "sector": "Materials"
   },
+  "15104025": {
+    "cagr": "~5%",
+    "gics": "15104025",
+    "global_company": "Freeport-McMoRan",
+    "global_firms": [
+      {
+        "ko": "칠레",
+        "name": "Chile",
+        "share": 23.0
+      },
+      {
+        "ko": "콩고민주공화국",
+        "name": "DR Congo",
+        "share": 14.0
+      },
+      {
+        "ko": "페루",
+        "name": "Peru",
+        "share": 12.0
+      },
+      {
+        "ko": "미국 및 기타 전체",
+        "name": "USA & rest of world",
+        "share": 43.0
+      }
+    ],
+    "headline_ko": "프리포트맥모란이 시가총액 약 890억 달러(2026년 6월, 2025년 생산량 약 163만 톤)로 상장 순수 구리 광산업체 1위에 자리하고, 한국은 의미 있는 구리 광산이 없어 최대 제련업체 LS MnM이 가장 가까운 대용 기업으로 온산 제련소가 국내 정련구리의 약 95%를 생산하는 것으로 파악됩니다. 약 2,500억~3,050억 달러 규모의 시장이 연 5%가량 성장하는 가운데, 구리는 2026년 1월 LME에서 사상 최고치인 톤당 약 1만 4,527.50달러를 기록했고 미국의 50% 232조 관세와 그라스버그 차질이 맞물린 바 있습니다.",
+    "industry_en": "Copper",
+    "industry_ko": "구리",
+    "korea_company": "LS MnM (proxy)",
+    "korea_firms": [
+      {
+        "ko": "온산 제련소)",
+        "name": "LS MnM (Onsan smelter)LS MnM (",
+        "share": 95.0
+      },
+      {
+        "ko": "고려아연 (재활용 구리)",
+        "name": "Korea Zinc (recycled copper)",
+        "share": 5.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.2143,
+      "scale": 0.7143,
+      "tech": 0.0714
+    },
+    "market": {
+      "label": "$248B",
+      "trillion_usd": 0.248,
+      "year": "2025"
+    },
+    "sector": "Materials"
+  },
   "151050": {
     "cagr": "≈1.7%",
     "gics": "151050",
@@ -2517,6 +2572,66 @@
     "market": {
       "label": "$1.22T",
       "trillion_usd": 1.22,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20201010": {
+    "cagr": "~2.2%",
+    "gics": "20201010",
+    "global_company": "Toppan Holdings",
+    "global_firms": [
+      {
+        "ko": "아시아·태평양",
+        "name": "Asia-Pacific",
+        "share": 38.0
+      },
+      {
+        "ko": "북미",
+        "name": "North America",
+        "share": 33.0
+      },
+      {
+        "ko": "유럽",
+        "name": "Europe",
+        "share": 21.0
+      }
+    ],
+    "headline_ko": "도판홀딩스가 매출 기준 세계 최대 인쇄 기업(2025 회계연도 매출 약 1조 8,100억 엔, 2026년 6월 시가총액 약 1조 4,600억 엔)으로 자리하고, 한국은 대형 상장 순수 기업이 없어 비상장 타라티피에스가 가장 가까운 대용 기업인 것으로 파악됩니다. 약 8,680억 달러 규모의 글로벌 인쇄 시장은 연 2.2%가량 성장에 그치는 가운데, 패키징 인쇄가 약 6.8%로 복리 성장하는 반면 광고·출판 인쇄는 감소하고 EU 포장규정이 잉크와 소재를 재편하고 있습니다.",
+    "industry_en": "Commercial Printing",
+    "industry_ko": "상업 인쇄",
+    "korea_company": "Tara TPS (proxy)",
+    "korea_firms": [
+      {
+        "ko": "한국조폐공사 (보안 인쇄)",
+        "name": "KOMSCO (security print)",
+        "share": 18.0
+      },
+      {
+        "ko": "중견 인쇄·패키징 기업",
+        "name": "Mid-size print/packaging firms",
+        "share": 17.0
+      },
+      {
+        "ko": "대형 상업 인쇄사 (타라티피에스 등)",
+        "name": "Larger commercial printers (Tara TPS etc.)",
+        "share": 17.0
+      },
+      {
+        "ko": "약 1만 8,000개 영세 업체 (10인 미만)",
+        "name": "~18,000 micro-shops (<10 staff)",
+        "share": 48.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.6,
+      "tech": 0.4
+    },
+    "market": {
+      "label": "$874B",
+      "trillion_usd": 0.874,
       "year": "2024"
     },
     "sector": "Industrials"
@@ -3837,6 +3952,78 @@
     },
     "sector": "Consumer Discretionary"
   },
+  "25203010": {
+    "cagr": "~6.8%",
+    "gics": "25203010",
+    "global_company": "LVMH",
+    "global_firms": [
+      {
+        "name": "LVMH",
+        "share": 40.0
+      },
+      {
+        "ko": "인디텍스 (자라)",
+        "name": "Inditex (Zara)",
+        "share": 20.0
+      },
+      {
+        "name": "Hermès",
+        "share": 8.0
+      },
+      {
+        "name": "Kering",
+        "share": 7.0
+      },
+      {
+        "ko": "기타 전체 (나이키, 샤넬, 리치몬트…)",
+        "name": "All others (Nike, Chanel, Richemont…)",
+        "share": 25.0
+      }
+    ],
+    "headline_ko": "LVMH가 세계 최대 의류·명품 그룹(2025 회계연도 매출 808억 유로, 2026년 6월 시가총액 약 2,550억 유로)으로 자리하고, F&F가 시가총액 약 2조 8,000억 원, 2024 회계연도 매출 약 1조 8,900억 원으로 한국 브랜드 의류 기업을 이끄는 것으로 파악됩니다. 약 3,900억 달러 규모의 명품 시장은 2030년까지 연 6.8%가량 복리 성장할 것으로 보이나, 2025년 개인 명품 소비는 약 2% 감소했고 무신사 같은 플랫폼이 한국 패션을 재편하고 있습니다.",
+    "industry_en": "Apparel, Accessories & Luxury Goods",
+    "industry_ko": "의류·액세서리·명품",
+    "korea_company": "F&F",
+    "korea_firms": [
+      {
+        "ko": "디스커버리)",
+        "name": "F&F (MLB, Discovery)F&F (MLB,",
+        "share": 27.0
+      },
+      {
+        "ko": "삼성물산 패션부문",
+        "name": "Samsung C&T Fashion",
+        "share": 22.0
+      },
+      {
+        "ko": "무신사 (플랫폼 GMV 주도)",
+        "name": "Musinsa (platform GMV-led)",
+        "share": 21.0
+      },
+      {
+        "ko": "한섬 (현대백화점)",
+        "name": "Handsome (Hyundai)",
+        "share": 14.0
+      },
+      {
+        "ko": "신세계인터내셔날 / 기타",
+        "name": "Shinsegae Intl / others",
+        "share": 16.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.375,
+      "global": 0.375,
+      "scale": 0.25,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$390B",
+      "trillion_usd": 0.39,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
   "253010": {
     "cagr": "~6%",
     "gics": "253010",
@@ -5010,6 +5197,75 @@
     "market": {
       "label": "$193B",
       "trillion_usd": 0.193,
+      "year": "2024"
+    },
+    "sector": "Consumer Staples"
+  },
+  "30301010": {
+    "cagr": "~4.7%",
+    "gics": "30301010",
+    "global_company": "Procter & Gamble",
+    "global_firms": [
+      {
+        "name": "P&G",
+        "share": 33.0
+      },
+      {
+        "ko": "유니레버",
+        "name": "Unilever",
+        "share": 22.0
+      },
+      {
+        "ko": "콜게이트 / 레킷",
+        "name": "Colgate / Reckitt",
+        "share": 15.0
+      },
+      {
+        "ko": "헨켈 / 카오 / 클로락스",
+        "name": "Henkel / Kao / Clorox",
+        "share": 15.0
+      },
+      {
+        "ko": "기타 전체 / 자체 브랜드",
+        "name": "All others / private label",
+        "share": 15.0
+      }
+    ],
+    "headline_ko": "프록터앤드갬블이 세계 최대 가정용품 기업(2026년 6월 시가총액 약 3,470억 달러, 2025 회계연도 순매출 843억 달러)으로 자리하고, LG생활건강이 시가총액 약 3조 5,000억 원, 2025년 매출 6조 3,600억 원(6.7% 감소)으로 한국을 이끄는 것으로 파악됩니다. 약 2,370억~2,820억 달러 규모의 세정용품 시장이 연 4.7%가량 성장하는 가운데, 관세가 투입 비용을 끌어올리고 자체 브랜드가 사상 최고를 기록했으며 킴벌리클라크의 487억 달러 켄뷰 인수가 판도를 바꾸고 있습니다.",
+    "industry_en": "Household Products",
+    "industry_ko": "가정용품",
+    "korea_company": "LG Household & Health Care",
+    "korea_firms": [
+      {
+        "ko": "생활건강",
+        "name": "LG H&HLG",
+        "share": 30.0
+      },
+      {
+        "ko": "유한킴벌리 (화장지/위생)",
+        "name": "Yuhan-Kimberly (tissue/hygiene)",
+        "share": 17.0
+      },
+      {
+        "ko": "애경 / 헨켈 / P&G 코리아",
+        "name": "Aekyung / Henkel / P&G Korea",
+        "share": 13.0
+      },
+      {
+        "ko": "기타 전체 / 자체 브랜드",
+        "name": "All others / private label",
+        "share": 40.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.4762,
+      "global": 0.2857,
+      "scale": 0.2381,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$237B",
+      "trillion_usd": 0.237,
       "year": "2024"
     },
     "sector": "Consumer Staples"
@@ -6920,6 +7176,78 @@
     },
     "sector": "Financials"
   },
+  "40203030": {
+    "cagr": "~+11%",
+    "gics": "40203030",
+    "global_company": "UBS Group",
+    "global_firms": [
+      {
+        "name": "JPMorgan",
+        "share": 9.0
+      },
+      {
+        "name": "Goldman Sachs",
+        "share": 8.0
+      },
+      {
+        "ko": "모건스탠리",
+        "name": "BofA / Morgan StanleyBofA /",
+        "share": 6.0
+      },
+      {
+        "name": "Citi",
+        "share": 5.0
+      },
+      {
+        "ko": "도이체방크",
+        "name": "UBS / Deutsche BankUBS /",
+        "share": 2.0
+      }
+    ],
+    "headline_ko": "UBS그룹이 시가총액 약 1,620억 달러(2026년 6월, 2025 회계연도 순이익 78억 달러로 53% 증가, 운용자산 7조 달러)로 최대 종합 자본시장 기업에 자리하고, 한국에서는 한국금융지주(시가총액 약 11조 4,000억 원)가 가장 가까운 대용 기업인 것으로 파악됩니다. 글로벌 투자은행 수수료 풀은 2025년 약 1,000억 달러에 이르렀고 M&A는 약 4조 8,000억 달러로 반등했으며, 코스피는 밸류업 랠리 속에 2026년 약 두 배로 상승한 바 있습니다.",
+    "industry_en": "Diversified Capital Markets",
+    "industry_ko": "종합 자본시장",
+    "korea_company": "Korea Investment Holdings (proxy)",
+    "korea_firms": [
+      {
+        "ko": "한국투자증권",
+        "name": "Korea Inv. & Securities",
+        "share": 21.0
+      },
+      {
+        "ko": "미래에셋증권",
+        "name": "Mirae Asset Securities",
+        "share": 17.0
+      },
+      {
+        "ko": "삼성 / NH",
+        "name": "Samsung / NH",
+        "share": 12.0
+      },
+      {
+        "ko": "키움 / 메리츠",
+        "name": "KB / Kiwoom / MeritzKB /",
+        "share": 10.0
+      },
+      {
+        "ko": "기타 증권사 (총 61개사)",
+        "name": "All other firms (61 total)",
+        "share": 40.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.4167,
+      "scale": 0.5833,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$93B",
+      "trillion_usd": 0.093,
+      "year": "2023"
+    },
+    "sector": "Financials"
+  },
   "402040": {
     "cagr": "~3–4%",
     "gics": "402040",
@@ -7336,6 +7664,76 @@
     },
     "sector": "Information Technology"
   },
+  "45103020": {
+    "cagr": "~11.5%",
+    "gics": "45103020",
+    "global_company": "Microsoft",
+    "global_firms": [
+      {
+        "ko": "팔로알토네트웍스",
+        "name": "Palo Alto Networks",
+        "share": 10.0
+      },
+      {
+        "ko": "포티넷",
+        "name": "Fortinet",
+        "share": 7.0
+      },
+      {
+        "ko": "마이크로소프트 / 시스코",
+        "name": "Microsoft / Cisco",
+        "share": 7.0
+      },
+      {
+        "ko": "크라우드스트라이크",
+        "name": "CrowdStrike",
+        "share": 5.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 71.0
+      }
+    ],
+    "headline_ko": "마이크로소프트가 세계 최대 시스템 소프트웨어 기업(2026년 6월 시가총액 약 2조 7,700억 달러, 2025 회계연도 매출 2,817억 달러)으로 자리하고, 안랩이 시가총액 약 4,910억 원, 2025년 매출 약 2,680억 원으로 한국 시스템 보안 기업을 이끄는 것으로 파악됩니다. 약 4,840억 달러 규모의 기업 인프라 소프트웨어 시장이 2028년까지 약 11.5%로 7,740억 달러를 향해 복리 성장하는 가운데, AI 클라우드 데이터베이스, 사이버보안 통합(팔로알토-사이버아크), EU와 한국의 AI 규제가 판도를 바꾸고 있습니다.",
+    "industry_en": "Systems Software",
+    "industry_ko": "시스템 소프트웨어",
+    "korea_company": "AhnLab",
+    "korea_firms": [
+      {
+        "ko": "안랩 (엔드포인트 / 백신)",
+        "name": "AhnLab (endpoint / AV)",
+        "share": 24.0
+      },
+      {
+        "ko": "시큐아이 / 윈스 (네트워크)",
+        "name": "SecuI / Wins (network)",
+        "share": 15.0
+      },
+      {
+        "ko": "이글루 / 오픈베이스 / 기타",
+        "name": "IGLOO / OpenBase / others",
+        "share": 11.0
+      },
+      {
+        "ko": "롱테일 및 글로벌 벤더",
+        "name": "Long tail & global vendors",
+        "share": 50.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.25,
+      "global": 0.3125,
+      "scale": 0.4375,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$484B",
+      "trillion_usd": 0.484,
+      "year": "2024"
+    },
+    "sector": "Information Technology"
+  },
   "452010": {
     "cagr": "≈7.5%",
     "gics": "452010",
@@ -7615,6 +8013,74 @@
     "market": {
       "label": "$2.04T",
       "trillion_usd": 2.04,
+      "year": "2024"
+    },
+    "sector": "Communication Services"
+  },
+  "50101010": {
+    "cagr": "~11–14%",
+    "gics": "50101010",
+    "global_company": "Lumen Technologies",
+    "global_firms": [
+      {
+        "ko": "루멘 (Level 3)",
+        "name": "Lumen (Level 3)",
+        "share": 38.0
+      },
+      {
+        "ko": "자요 / 콜트 / GTT",
+        "name": "Zayo / Colt / GTT",
+        "share": 22.0
+      },
+      {
+        "ko": "텔레콤 이탈리아 스파클 / 기타 도매",
+        "name": "Telecom Italia Sparkle / other wholesale",
+        "share": 13.0
+      },
+      {
+        "name": "Cogent",
+        "share": 9.0
+      },
+      {
+        "ko": "기타 전체 (지역)",
+        "name": "All others (regional)",
+        "share": 18.0
+      }
+    ],
+    "headline_ko": "루멘테크놀로지스가 광섬유 전송 매출 기준 최대 대체 통신사업자(2026년 6월 시가총액 약 84억 달러, 2025 회계연도 매출 124억 달러, AI 연결 수주잔고 약 130억 달러)로 자리하고, 한국에서는 상장사 세종텔레콤(시가총액 약 540억 원)이 가장 가까운 대용 기업인 것으로 파악됩니다. AI 인프라 구축으로 광섬유와 데이터센터 연결 수요가 급증하는 가운데, 해당 부문은 약 100억~110억 달러에서 2030년까지 260억~320억 달러로 성장할 것으로 보입니다.",
+    "industry_en": "Alternative Carriers",
+    "industry_ko": "대체 통신사업자",
+    "korea_company": "Sejong Telecom (proxy)",
+    "korea_firms": [
+      {
+        "ko": "기존 강자)",
+        "name": "KT (incumbent)KT (",
+        "share": 41.0
+      },
+      {
+        "ko": "브로드밴드 (SKT 자회사)",
+        "name": "SK Broadband (SKT subsidiary)SK",
+        "share": 29.0
+      },
+      {
+        "name": "LG U+",
+        "share": 21.0
+      },
+      {
+        "ko": "세종텔레콤 등 독립계",
+        "name": "Independents incl. Sejong Telecom",
+        "share": 9.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.4286,
+      "scale": 0.5714,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$10B",
+      "trillion_usd": 0.01,
       "year": "2024"
     },
     "sector": "Communication Services"
