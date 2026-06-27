@@ -71,7 +71,7 @@ function card(r){
   const href=r.file&&r.file!=="#"?esc(r.file):null;
   const inner=`
       <div class="card-top">
-        <span class="gics">GICS ${esc(r.gics||"")}</span>
+        <span class="gics">${r.special?"SPECIAL REPORT":"GICS "+esc(r.gics||"")}</span>
         <span class="sector">${esc(r.sector||"")}</span>
       </div>
       <h3 class="ind"><span class="en">${esc(r.industry_en)}</span><span class="ko">${esc(r.industry_ko)}</span></h3>
