@@ -162,7 +162,7 @@ string as <span class="en">…</span><span class="ko">…</span>; ENGLISH DEFAUL
 vertical COLUMN chart with a zoomed baseline (note the zoom honestly in the caption);
 market share = two PIE charts (CSS conic-gradient, global + Korea, each summing to
 100%, with legends). Mobile-first, card-based, accordions, sticky top bar with language
-toggle + section chips, reveal-on-scroll, prefers-reduced-motion. Keep two sections
+toggle + section chips (the top bar MUST also start with a .nav-home gold pill link, href="../../index.html", labelled All/전체, that returns to the landing index), reveal-on-scroll, prefers-reduced-motion. Keep two sections
 MECE: "Macro forces & the latest RULES" = laws/bills/regulations ONLY (dated);
 "What's moving the industry now" = market/competitive events ONLY (earnings, deals,
 demand, prices). No item may appear in both.
