@@ -58,6 +58,8 @@ function daysSinceEpoch(iso){return Math.round((new Date(iso+"T00:00:00Z")-new D
 let reports=[];
 try{reports=JSON.parse(fs.readFileSync(path.join(ROOT,"reports.json"),"utf8"))||[];}catch(e){reports=[];}
 reports=reports.filter(r=>r&&r.date&&r.file);
+const specials=reports.filter(r=>r.special);
+reports=reports.filter(r=>!r.special);
 
 // group by date desc, set_index asc
 const byDate={};
@@ -106,6 +108,16 @@ const legDates=dates.filter(d=>legDate(d));
 const daySections=curDates.map(dayHtml).join("\n");
 const legacySections=legDates.map(dayHtml).join("\n");
 const legCount=legDates.reduce((a,d)=>a+byDate[d].length,0);
+const specialHtml = specials.length ? `
+    <section class="day special-sec">
+      <div class="day-head">
+        <span class="day-date"><span class="en">Special Reports</span><span class="ko">스페셜 리포트</span></span>
+        <span class="day-meta">${specials.length} <span class="en">special</span><span class="ko">개</span></span>
+      </div>
+      <div class="grid">
+${specials.map(card).join("\n")}
+      </div>
+    </section>` : "";
 const legacyHtml = legacySections ? `
     <div style="margin:24px 0 4px;text-align:center;">
       <button id="legacy-toggle" aria-expanded="false" style="background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-size:13.5px;font-weight:700;color:var(--ink);box-shadow:var(--shadow);cursor:pointer;">
@@ -141,7 +153,7 @@ ${items.map(i=>`        <div class="up">${esc(i)}</div>`).join("\n")}
     </section>`;
 }
 
-const totalReports=reports.length, totalDays=dates.length;
+const totalReports=reports.length+specials.length, totalDays=dates.length;
 const lastUpdEn=dates.length?fmtDate(dates[0]):"", lastUpdKo=dates.length?fmtDateKo(dates[0]):"";
 
 const html=`<!DOCTYPE html>
@@ -231,6 +243,7 @@ const html=`<!DOCTYPE html>
   </div></div>
 
   <div class="wrap" id="content">
+${specialHtml}
 ${daySections || '    <p class="empty"><span class="en">No reports yet. The first batch publishes after the next scheduled run.</span><span class="ko">아직 리포트가 없습니다. 다음 예약 실행 후 첫 묶음이 게시됩니다.</span></p>'}
     <p class="empty" id="noresult" style="display:none"><span class="en">No matches.</span><span class="ko">검색 결과가 없습니다.</span></p>
 ${upHtml}
