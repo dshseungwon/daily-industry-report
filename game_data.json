@@ -1447,6 +1447,76 @@
     },
     "sector": "Materials"
   },
+  "15104030": {
+    "cagr": "~6.5%",
+    "gics": "15104030",
+    "global_company": "Newmont",
+    "global_firms": [
+      {
+        "ko": "뉴몬트",
+        "name": "Newmont",
+        "share": 5.1
+      },
+      {
+        "ko": "애그니코이글",
+        "name": "Agnico Eagle",
+        "share": 3.0
+      },
+      {
+        "ko": "배릭마이닝",
+        "name": "Barrick Mining",
+        "share": 2.8
+      },
+      {
+        "ko": "앵글로골드아샨티",
+        "name": "AngloGold Ashanti",
+        "share": 2.7
+      },
+      {
+        "ko": "골드필즈",
+        "name": "Gold Fields",
+        "share": 2.1
+      }
+    ],
+    "headline_ko": "4,000달러를 넘어선 기록적 금값이 뉴몬트를 비롯한 채굴 기업의 실적을 끌어올리고 있습니다.",
+    "industry_en": "Gold",
+    "industry_ko": "금",
+    "korea_company": "Korea Zinc (proxy)",
+    "korea_firms": [
+      {
+        "ko": "고려아연 (금·은 부산물)",
+        "name": "Korea Zinc (gold/silver by-product)",
+        "share": 50.0
+      },
+      {
+        "ko": "비상장, LS 계열)",
+        "name": "LS MnM (unlisted, via LS Corp)LS MnM (",
+        "share": 28.0
+      },
+      {
+        "ko": "영풍",
+        "name": "Young Poong",
+        "share": 10.0
+      },
+      {
+        "ko": "기타 및 수입",
+        "name": "Others & imports",
+        "share": 12.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "5,550억 달러",
+      "trillion_usd": 0.555,
+      "year": ""
+    },
+    "sector": "Materials"
+  },
   "151050": {
     "cagr": "≈1.7%",
     "gics": "151050",
@@ -2633,6 +2703,76 @@
       "label": "$874B",
       "trillion_usd": 0.874,
       "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20201050": {
+    "cagr": "~5.5–6%",
+    "gics": "20201050",
+    "global_company": "Waste Management",
+    "global_firms": [
+      {
+        "ko": "웨이스트 매니지먼트 (WM)",
+        "name": "Waste Management (WM)",
+        "share": 34.0
+      },
+      {
+        "ko": "리퍼블릭 서비시스",
+        "name": "Republic Services",
+        "share": 25.0
+      },
+      {
+        "ko": "웨이스트 커넥션스",
+        "name": "Waste Connections",
+        "share": 13.0
+      },
+      {
+        "ko": "인바이런멘털",
+        "name": "GFL EnvironmentalGFL",
+        "share": 6.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 22.0
+      }
+    ],
+    "headline_ko": "PFAS와 순환경제 규제가 강화되며 폐기물·시설 서비스의 통합이 이어지고 있습니다.",
+    "industry_en": "Environmental & Facilities Services",
+    "industry_ko": "환경·시설 서비스",
+    "korea_company": "S-1 Corporation",
+    "korea_firms": [
+      {
+        "ko": "에코비트, 리뉴어스)사모펀드 보유 (에코비트·리뉴어스)",
+        "name": "Private equity-owned (",
+        "share": 30.0
+      },
+      {
+        "ko": "에스원·삼성물산)상장 FM 대용 (에스원·삼성물산)",
+        "name": "Listed FM proxy (",
+        "share": 18.0
+      },
+      {
+        "ko": "인선이엔티·와이엔텍)상장 폐기물 (인선이엔티·와이엔텍)",
+        "name": "Listed waste (",
+        "share": 12.0
+      },
+      {
+        "ko": "지역·지자체 사업자 롱테일",
+        "name": "Long tail of regional & municipal operators",
+        "share": 40.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0833,
+      "scale": 0.75,
+      "tech": 0.1667
+    },
+    "market": {
+      "label": "$1.50T",
+      "trillion_usd": 1.5,
+      "year": "2025"
     },
     "sector": "Industrials"
   },
@@ -4024,6 +4164,76 @@
     },
     "sector": "Consumer Discretionary"
   },
+  "25203020": {
+    "cagr": "~4.3%",
+    "gics": "25203020",
+    "global_company": "Nike",
+    "global_firms": [
+      {
+        "ko": "나이키",
+        "name": "Nike",
+        "share": 9.7
+      },
+      {
+        "ko": "아디다스",
+        "name": "adidas",
+        "share": 5.4
+      },
+      {
+        "ko": "푸마",
+        "name": "Puma",
+        "share": 2.0
+      },
+      {
+        "ko": "스케처스",
+        "name": "Skechers",
+        "share": 1.9
+      },
+      {
+        "ko": "뉴발란스",
+        "name": "New Balance",
+        "share": 1.6
+      }
+    ],
+    "headline_ko": "나이키의 부진과 온·호카의 부상이 신발 시장 지형을 다시 그리고 있습니다.",
+    "industry_en": "Footwear",
+    "industry_ko": "신발",
+    "korea_company": "Fila Holdings",
+    "korea_firms": [
+      {
+        "ko": "휠라/미스토홀딩스 (브랜드 보유사)",
+        "name": "Fila/Misto Holdings (brand owner)",
+        "share": 35.0
+      },
+      {
+        "ko": "창신 (나이키 OEM, 비상장)",
+        "name": "Changshin (Nike OEM, unlisted)",
+        "share": 18.0
+      },
+      {
+        "ko": "태광실업 (나이키 OEM, 비상장)",
+        "name": "Taekwang (Nike OEM, unlisted)",
+        "share": 16.0
+      },
+      {
+        "ko": "화승엔터프라이즈 (아디다스 OEM)",
+        "name": "Hwaseung Enterprise (adidas OEM)",
+        "share": 13.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.619,
+      "global": 0.381,
+      "scale": 0.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$457B",
+      "trillion_usd": 0.457,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
   "253010": {
     "cagr": "~6%",
     "gics": "253010",
@@ -5320,6 +5530,66 @@
       "label": "$558B",
       "trillion_usd": 0.558,
       "year": "2024"
+    },
+    "sector": "Consumer Staples"
+  },
+  "30302010": {
+    "cagr": "~7.7%",
+    "gics": "30302010",
+    "global_company": "L'Oréal",
+    "global_firms": [
+      {
+        "ko": "로레알",
+        "name": "L'Oréal",
+        "share": 8.0
+      },
+      {
+        "ko": "유니레버",
+        "name": "Unilever",
+        "share": 4.5
+      },
+      {
+        "ko": "프록터 앤드 갬블",
+        "name": "Procter & Gamble",
+        "share": 2.5
+      },
+      {
+        "ko": "에스티 로더",
+        "name": "Estée Lauder",
+        "share": 2.3
+      },
+      {
+        "ko": "바이어스도르프",
+        "name": "Beiersdorf",
+        "share": 1.4
+      }
+    ],
+    "headline_ko": "K뷰티 수출이 급증하는 가운데 로레알이 꾸준히 성장하는 뷰티 시장을 이끌고 있습니다.",
+    "industry_en": "Personal Care Products",
+    "industry_ko": "개인용품",
+    "korea_company": "Amorepacific",
+    "korea_firms": [
+      {
+        "ko": "아모레퍼시픽 (화장품)",
+        "name": "Amorepacific (cosmetics)",
+        "share": 64.0
+      },
+      {
+        "ko": "생활건강 (뷰티 부문)",
+        "name": "LG H&H (beauty segment)LG",
+        "share": 36.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.4286,
+      "global": 0.3333,
+      "scale": 0.0,
+      "tech": 0.2381
+    },
+    "market": {
+      "label": "$519B",
+      "trillion_usd": 0.519,
+      "year": "2022"
     },
     "sector": "Consumer Staples"
   },
@@ -7248,6 +7518,61 @@
     },
     "sector": "Financials"
   },
+  "40203040": {
+    "cagr": "~11.2%",
+    "gics": "40203040",
+    "global_company": "S&P Global",
+    "global_firms": [
+      {
+        "name": "S&P GlobalS&P Global",
+        "share": 21.0
+      },
+      {
+        "name": "CME GroupCME Group",
+        "share": 16.0
+      },
+      {
+        "name": "ICEICE",
+        "share": 14.0
+      },
+      {
+        "name": "Moody'sMoody's",
+        "share": 14.0
+      },
+      {
+        "name": "LSEGLSEG",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "데이터와 지수가 거래소 이익을 견인하는 가운데 한국거래소가 밸류업 개혁을 추진하고 있습니다.",
+    "industry_en": "Financial Exchanges & Data",
+    "industry_ko": "금융거래소·데이터",
+    "korea_company": "Korea Exchange (KRX)",
+    "korea_firms": [
+      {
+        "ko": "한국거래소(KRX) — 유일한 국가 거래소",
+        "name": "Korea Exchange (KRX) — sole national exchange",
+        "share": 90.0
+      },
+      {
+        "ko": "넥스트레이드) — ATS, capped at 15%넥스트레이드(NXT) — ATS, 15% 상한",
+        "name": "NXT (",
+        "share": 10.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.5,
+      "global": 0.4286,
+      "scale": 0.0,
+      "tech": 0.0714
+    },
+    "market": {
+      "label": "$10.0B",
+      "trillion_usd": 0.01,
+      "year": "2022"
+    },
+    "sector": "Financials"
+  },
   "402040": {
     "cagr": "~3–4%",
     "gics": "402040",
@@ -7793,6 +8118,74 @@
     },
     "sector": "Information Technology"
   },
+  "45201020": {
+    "cagr": "~8%",
+    "gics": "45201020",
+    "global_company": "Cisco",
+    "global_firms": [
+      {
+        "ko": "화웨이",
+        "name": "Huawei",
+        "share": 31.0
+      },
+      {
+        "ko": "노키아",
+        "name": "Nokia",
+        "share": 13.0
+      },
+      {
+        "ko": "에릭슨",
+        "name": "Ericsson",
+        "share": 12.0
+      },
+      {
+        "name": "ZTEZTE",
+        "share": 10.0
+      },
+      {
+        "ko": "삼성 / 시스코",
+        "name": "Samsung / Cisco",
+        "share": 7.0
+      }
+    ],
+    "headline_ko": "AI 데이터센터 네트워킹이 시스코를 되살리는 한편 전통 RAN 시장은 정체에 머물러 있습니다.",
+    "industry_en": "Communications Equipment",
+    "industry_ko": "통신장비",
+    "korea_company": "Samsung Electronics (Networks)",
+    "korea_firms": [
+      {
+        "ko": "삼성전자 네트워크사업부",
+        "name": "Samsung Electronics Networks",
+        "share": 62.0
+      },
+      {
+        "ko": "다산네트웍스",
+        "name": "DASAN Networks",
+        "share": 11.0
+      },
+      {
+        "ko": "쏠리드",
+        "name": "SOLiD",
+        "share": 6.0
+      },
+      {
+        "name": "RFHIC / KMW (RF)RFHIC / KMW (RF)",
+        "share": 3.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0476,
+      "global": 0.6667,
+      "scale": 0.2857,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$41.8B",
+      "trillion_usd": 0.0418,
+      "year": "2024"
+    },
+    "sector": "Information Technology"
+  },
   "452020": {
     "cagr": "~9.4%",
     "gics": "452020",
@@ -8082,6 +8475,69 @@
       "label": "$10B",
       "trillion_usd": 0.01,
       "year": "2024"
+    },
+    "sector": "Communication Services"
+  },
+  "50101020": {
+    "cagr": "~6.6%",
+    "gics": "50101020",
+    "global_company": "China Mobile",
+    "global_firms": [
+      {
+        "ko": "차이나모바일",
+        "name": "China Mobile",
+        "share": 23.0
+      },
+      {
+        "ko": "버라이즌",
+        "name": "Verizon",
+        "share": 21.0
+      },
+      {
+        "ko": "모바일 US",
+        "name": "T-Mobile UST-",
+        "share": 20.0
+      },
+      {
+        "name": "AT&TAT&T",
+        "share": 16.0
+      },
+      {
+        "ko": "도이치텔레콤 외",
+        "name": "Deutsche Telekom & others",
+        "share": 20.0
+      }
+    ],
+    "headline_ko": "SKT 데이터 유출과 단통법 폐지가 통신 시장을 재편하고 있습니다.",
+    "industry_en": "Integrated Telecommunication Services",
+    "industry_ko": "통합 통신 서비스",
+    "korea_company": "KT",
+    "korea_firms": [
+      {
+        "ko": "텔레콤",
+        "name": "SK TelecomSK",
+        "share": 47.0
+      },
+      {
+        "name": "KTKT",
+        "share": 29.0
+      },
+      {
+        "ko": "유플러스",
+        "name": "LG UplusLG",
+        "share": 24.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1538,
+      "global": 0.5385,
+      "scale": 0.0,
+      "tech": 0.3077
+    },
+    "market": {
+      "label": "$2.10T",
+      "trillion_usd": 2.1,
+      "year": "2025"
     },
     "sector": "Communication Services"
   },
