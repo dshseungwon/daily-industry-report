@@ -26,6 +26,8 @@ drawn as a NUMBERED ARROW-CONNECTED FLOW with a PROFIT-POOL bar; Five Forces chi
 and per-company strategy blocks using a 4-step SCQA DIAGNOSIS (Situation, Complication,
 Question, Answer) plus 1-3 tailored strategy tracks.
 
+DATE: "today" means the Asia/Seoul (KST) date. Compute it with `TZ=Asia/Seoul date +%Y-%m-%d` and use that exact value for the reports/<date>/ folder, every report's date field, and reports.json. Do NOT use UTC.
+
 STEP 1 — Pick today's 7 GICS industries with COVERAGE-AWARE rotation. Sweep every
 industry exactly once per lap, spread across sectors, tracking progress in rotation.json
 so nothing is skipped or over-repeated. When a lap completes it starts the next lap; once

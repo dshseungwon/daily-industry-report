@@ -23,6 +23,8 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     timeout-minutes: 90   # our own cap. GitHub's hard limit is 6h; this kills a stuck run sooner.
+    env:
+      TZ: Asia/Seoul   # report DATES use Korea time, matching the commit message (fixes UTC date lag)
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
