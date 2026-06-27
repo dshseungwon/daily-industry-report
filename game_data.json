@@ -1517,6 +1517,66 @@
     },
     "sector": "Materials"
   },
+  "15104040": {
+    "cagr": "~4.5%",
+    "gics": "15104040",
+    "global_company": "Fresnillo",
+    "global_firms": [
+      {
+        "ko": "프레스니요 (멕시코)",
+        "name": "Fresnillo plc (Mexico)",
+        "share": 7.0
+      },
+      {
+        "ko": "폴스카미에치 (폴란드)",
+        "name": "KGHM Polska Miedź (Poland)KGHM",
+        "share": 5.0
+      },
+      {
+        "ko": "뉴몬트 (페냐스키토)",
+        "name": "Newmont (Peñasquito)",
+        "share": 4.0
+      },
+      {
+        "ko": "팬아메리칸실버",
+        "name": "Pan American Silver",
+        "share": 3.0
+      },
+      {
+        "ko": "글렌코어",
+        "name": "Glencore",
+        "share": 2.0
+      }
+    ],
+    "headline_ko": "은·백금족 금속·다이아몬드: 기록적 은 공급 부족, 전기차발 백금족 수요 재편, 랩그로운 다이아몬드 붕괴가 가격 수용형 산업을 다시 그리고 있습니다.",
+    "industry_en": "Precious Metals & Minerals",
+    "industry_ko": "귀금속·광물",
+    "korea_company": "Korea Zinc",
+    "korea_firms": [
+      {
+        "ko": "고려아연 (010130, 부산물 정련)",
+        "name": "Korea Zinc (010130, by-product refining)",
+        "share": 9.0
+      },
+      {
+        "ko": "구리 제련 부산물)",
+        "name": "LS MnM (copper-smelter by-product)LS MnM (",
+        "share": 4.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$22B",
+      "trillion_usd": 0.022,
+      "year": "2021"
+    },
+    "sector": "Materials"
+  },
   "151050": {
     "cagr": "≈1.7%",
     "gics": "151050",
@@ -2773,6 +2833,74 @@
       "label": "$1.50T",
       "trillion_usd": 1.5,
       "year": "2025"
+    },
+    "sector": "Industrials"
+  },
+  "20201060": {
+    "cagr": "~1.3%",
+    "gics": "20201060",
+    "global_company": "ODP",
+    "global_firms": [
+      {
+        "ko": "비상장)",
+        "name": "Staples (private)Staples(",
+        "share": 18.0
+      },
+      {
+        "ko": "오피스디포(2025년 12월 이후 비상장)",
+        "name": "ODP / Office Depot (private since Dec 2025)ODP·",
+        "share": 16.0
+      },
+      {
+        "name": "Amazon BusinessAmazon Business",
+        "share": 12.0
+      },
+      {
+        "name": "LyrecoLyreco",
+        "share": 6.0
+      },
+      {
+        "ko": "기타(딜러·지역·온라인)",
+        "name": "All others (dealers, regional, online)",
+        "share": 48.0
+      }
+    ],
+    "headline_ko": "디지털 대체가 구조적으로 진행되는 저성장 성숙 시장으로, 마지막 대형 상장 유통사가 비상장으로 전환되고 Amazon Business가 경쟁 구도를 재편하고 있는 것으로 파악됩니다.",
+    "industry_en": "Office Services & Supplies",
+    "industry_ko": "사무용 서비스·용품",
+    "korea_company": "iMarketKorea",
+    "korea_firms": [
+      {
+        "ko": "서브원(비상장)",
+        "name": "Serveone (private)",
+        "share": 30.0
+      },
+      {
+        "ko": "아이마켓코리아(KOSPI 122900)",
+        "name": "iMarketKorea (KOSPI 122900)",
+        "share": 29.0
+      },
+      {
+        "ko": "엔투비(포스코)",
+        "name": "eNtoB (POSCO)",
+        "share": 10.0
+      },
+      {
+        "ko": "기타(오피스디포 코리아 포함)",
+        "name": "All others (incl. Office Depot Korea)",
+        "share": 31.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.5455,
+      "tech": 0.4545
+    },
+    "market": {
+      "label": "$67B",
+      "trillion_usd": 0.067,
+      "year": "2021"
     },
     "sector": "Industrials"
   },
@@ -4230,6 +4358,66 @@
     "market": {
       "label": "$457B",
       "trillion_usd": 0.457,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25203030": {
+    "cagr": "~5.1%",
+    "gics": "25203030",
+    "global_company": "Toray",
+    "global_firms": [
+      {
+        "ko": "합계)",
+        "name": "EU (collective)EU(",
+        "share": 25.0
+      },
+      {
+        "ko": "기타",
+        "name": "All others",
+        "share": 24.0
+      }
+    ],
+    "headline_ko": "섬유 제조는 2025년 기준 약 7,600억 달러 규모의 범용 기반 산업으로, 교섭력은 구매자가 쥐고 있으며 부가가치는 첨단섬유 상단과 브랜드 하단으로 빠져나가고 있는 것으로 파악됩니다.",
+    "industry_en": "Textiles",
+    "industry_ko": "섬유",
+    "korea_company": "Hyosung TNC",
+    "korea_firms": [
+      {
+        "ko": "효성티앤씨",
+        "name": "Hyosung TNC",
+        "share": 33.0
+      },
+      {
+        "ko": "코오롱인더스트리",
+        "name": "Kolon Industries",
+        "share": 21.0
+      },
+      {
+        "ko": "효성첨단소재",
+        "name": "HS Hyosung Adv. MaterialsHS",
+        "share": 14.0
+      },
+      {
+        "ko": "태광 외",
+        "name": "Taekwang & others",
+        "share": 17.0
+      },
+      {
+        "ko": "기타",
+        "name": "All others",
+        "share": 15.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1429,
+      "scale": 0.5238,
+      "tech": 0.3333
+    },
+    "market": {
+      "label": "$724B",
+      "trillion_usd": 0.724,
       "year": "2024"
     },
     "sector": "Consumer Discretionary"
@@ -7640,6 +7828,81 @@
     },
     "sector": "Financials"
   },
+  "40204010": {
+    "cagr": "~3.1%",
+    "gics": "40204010",
+    "global_company": "Annaly",
+    "global_firms": [
+      {
+        "ko": "애널리 캐피털 (NLY)",
+        "name": "Annaly Capital (NLY)",
+        "share": 24.0
+      },
+      {
+        "ko": "인베스트먼트 (AGNC)",
+        "name": "AGNC Investment (AGNC)AGNC",
+        "share": 18.0
+      },
+      {
+        "ko": "스타우드 프로퍼티 트러스트 (STWD)",
+        "name": "Starwood Property Trust (STWD)",
+        "share": 9.0
+      },
+      {
+        "ko": "리듬 캐피털 (RITM)",
+        "name": "Rithm Capital (RITM)",
+        "share": 8.0
+      },
+      {
+        "ko": "기타 (약 36개 종목)",
+        "name": "All others (~36 names)",
+        "share": 41.0
+      }
+    ],
+    "headline_ko": "모기지 리츠는 금리 인하 흐름에 힘입어 2025년 사상 최고의 한 해를 보냈으나, 연준의 2026년 6월 매파적 동결로 이 사업 모델의 핵심인 스프레드 리스크가 다시 부각되었습니다.",
+    "industry_en": "Mortgage REITs",
+    "industry_ko": "모기지 리츠",
+    "korea_company": "Korea Housing Finance (proxy)",
+    "korea_firms": [
+      {
+        "ko": "리츠 (395400)",
+        "name": "SK REIT (395400)SK",
+        "share": 17.0
+      },
+      {
+        "ko": "롯데리츠 (330590)",
+        "name": "Lotte REIT (330590)",
+        "share": 12.0
+      },
+      {
+        "ko": "켄달스퀘어리츠 (365550)",
+        "name": "ESR Kendall Square REIT (365550)ESR",
+        "share": 11.0
+      },
+      {
+        "ko": "신한알파리츠 (293940)",
+        "name": "Shinhan Alpha REIT (293940)",
+        "share": 7.0
+      },
+      {
+        "ko": "리츠 (~21 names)기타 상장 리츠 (약 21개 종목)",
+        "name": "All other listed",
+        "share": 53.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$58B",
+      "trillion_usd": 0.058,
+      "year": "2021"
+    },
+    "sector": "Financials"
+  },
   "403010": {
     "cagr": "≈2.3%",
     "gics": "403010",
@@ -8249,6 +8512,81 @@
     },
     "sector": "Information Technology"
   },
+  "45202030": {
+    "cagr": "~6.1%",
+    "gics": "45202030",
+    "global_company": "Apple",
+    "global_firms": [
+      {
+        "ko": "애플",
+        "name": "Apple",
+        "share": 20.0
+      },
+      {
+        "ko": "삼성",
+        "name": "Samsung",
+        "share": 19.0
+      },
+      {
+        "ko": "샤오미",
+        "name": "Xiaomi",
+        "share": 13.0
+      },
+      {
+        "ko": "비보",
+        "name": "vivo",
+        "share": 8.0
+      },
+      {
+        "ko": "오포",
+        "name": "OPPO",
+        "share": 8.0
+      }
+    ],
+    "headline_ko": "AI 수요가 하드웨어 산업의 판도를 바꾸고 있습니다. 애플이 이익을 주도하는 가운데, 메모리 슈퍼사이클이 한국 삼성전자에 가격 결정력을 안겨주고 있습니다.",
+    "industry_en": "Technology Hardware, Storage & Peripherals",
+    "industry_ko": "기술 하드웨어·스토리지·주변기기",
+    "korea_company": "Samsung Electronics",
+    "korea_firms": [
+      {
+        "ko": "삼성 (한국)",
+        "name": "Samsung (Korea)",
+        "share": 28.0
+      },
+      {
+        "ko": "그룹 (한국, SK하이닉스+솔리다임)",
+        "name": "SK Group (Korea, SK hynix+Solidigm)SK",
+        "share": 22.0
+      },
+      {
+        "ko": "키오시아 (일본)",
+        "name": "Kioxia (Japan)",
+        "share": 16.0
+      },
+      {
+        "ko": "마이크론 (미국)",
+        "name": "Micron (US)",
+        "share": 14.0
+      },
+      {
+        "ko": "샌디스크 (미국)",
+        "name": "SanDisk (US)",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.3333,
+      "scale": 0.1667,
+      "tech": 0.5
+    },
+    "market": {
+      "label": "7,400억 달러",
+      "trillion_usd": 0.74,
+      "year": ""
+    },
+    "sector": "Information Technology"
+  },
   "452030": {
     "cagr": "≈6.3%",
     "gics": "452030",
@@ -8598,6 +8936,75 @@
     },
     "sector": "Communication Services"
   },
+  "50102010": {
+    "cagr": "~2.7%",
+    "gics": "50102010",
+    "global_company": "China Mobile",
+    "global_firms": [
+      {
+        "ko": "차이나모바일",
+        "name": "China Mobile",
+        "share": 12.0
+      },
+      {
+        "ko": "바르티 에어텔(그룹)",
+        "name": "Bharti Airtel (group)",
+        "share": 7.0
+      },
+      {
+        "ko": "릴라이언스 지오",
+        "name": "Reliance Jio",
+        "share": 5.0
+      },
+      {
+        "ko": "차이나텔레콤",
+        "name": "China Telecom",
+        "share": 5.0
+      },
+      {
+        "ko": "차이나유니콤",
+        "name": "China Unicom",
+        "share": 4.0
+      }
+    ],
+    "headline_ko": "포화된 데다 자본 집약적인 이동통신 시장은 규모와 주파수를 갖춘 사업자에게 보상하지만, 2025년 SK텔레콤 유심 해킹 사태는 신뢰가 무너지면 가입자가 얼마나 빠르게 이탈하는지를 보여줬습니다.",
+    "industry_en": "Wireless Telecommunication Services",
+    "industry_ko": "무선 통신 서비스",
+    "korea_company": "SK Telecom",
+    "korea_firms": [
+      {
+        "ko": "텔레콤",
+        "name": "SK TelecomSK",
+        "share": 39.0
+      },
+      {
+        "name": "KTKT",
+        "share": 23.0
+      },
+      {
+        "ko": "유플러스",
+        "name": "LG U+LG",
+        "share": 20.0
+      },
+      {
+        "ko": "알뜰폰)알뜰폰(MVNO)",
+        "name": "MVNO (",
+        "share": 18.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1111,
+      "global": 0.2778,
+      "scale": 0.2222,
+      "tech": 0.3889
+    },
+    "market": {
+      "label": "$1.08T",
+      "trillion_usd": 1.08,
+      "year": "2022"
+    },
+    "sector": "Communication Services"
+  },
   "502010": {
     "cagr": "≈8.5%",
     "gics": "502010",
@@ -8831,6 +9238,71 @@
       "label": "$1.49T",
       "trillion_usd": 1.49,
       "year": "2025"
+    },
+    "sector": "Utilities"
+  },
+  "55101010": {
+    "cagr": "~7.9%",
+    "gics": "55101010",
+    "global_company": "NextEra Energy",
+    "global_firms": [
+      {
+        "ko": "스테이트그리드 (중국, 비상장)",
+        "name": "State Grid (China, unlisted)",
+        "share": 20.0
+      },
+      {
+        "ko": "프랑스)",
+        "name": "EDF (France)EDF (",
+        "share": 5.0
+      },
+      {
+        "ko": "중국남방전력망",
+        "name": "China Southern Power Grid",
+        "share": 4.0
+      },
+      {
+        "ko": "에넬 (이탈리아)",
+        "name": "Enel (Italy)",
+        "share": 3.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 68.0
+      }
+    ],
+    "headline_ko": "AI 데이터센터 수요가 20년간 정체됐던 전력 수요 성장을 되살리면서, 규제 기반 전력망 투자가 산업의 핵심 이익 엔진으로 부상하고 있습니다.",
+    "industry_en": "Electric Utilities",
+    "industry_ko": "전기 유틸리티",
+    "korea_company": "KEPCO",
+    "korea_firms": [
+      {
+        "ko": "한전 발전 자회사 (한수원 포함)",
+        "name": "KEPCO group GENCOs (incl. KHNP)",
+        "share": 60.0
+      },
+      {
+        "ko": "민간 발전사업자 (IPP)",
+        "name": "Independent power producers (IPPs)",
+        "share": 34.0
+      },
+      {
+        "ko": "한전 송배전 (독점)",
+        "name": "KEPCO transmission & distribution (monopoly)",
+        "share": 6.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.5,
+      "scale": 0.3571,
+      "tech": 0.1429
+    },
+    "market": {
+      "label": "$2.30T",
+      "trillion_usd": 2.3,
+      "year": "2022"
     },
     "sector": "Utilities"
   },

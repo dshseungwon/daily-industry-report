@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Textiles — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+
+<style>
+  .cagr-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+  .cagr-badge{display:inline-flex;align-items:baseline;gap:5px;background:#eaf2fb;color:var(--blue);
+    border:1px solid #cfe2f5;border-radius:999px;padding:6px 13px;font-weight:800;font-size:13px;}
+  .cagr-badge .n{font-size:16px;}
+  .cagr-badge.alt{background:#fff6e6;color:#b07400;border-color:#ffe2a6;}
+  /* SCQA diagnosis (Situation · Complication · Question · Answer) */
+  .scqa{margin:12px 0 2px;}
+  .scqa-row{display:flex;gap:12px;position:relative;padding-bottom:14px;}
+  .scqa-row:last-child{padding-bottom:0;}
+  .scqa-row::before{content:"";position:absolute;left:14px;top:30px;bottom:-2px;width:2px;background:var(--line);}
+  .scqa-row:last-child::before{display:none;}
+  .scqa-k{flex:none;width:30px;height:30px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 2px 6px rgba(14,42,71,.18);}
+  .scqa-row.s .scqa-k{background:#5b6b8c;}
+  .scqa-row.c .scqa-k{background:var(--hi);}
+  .scqa-row.q .scqa-k{background:var(--blue);}
+  .scqa-row.a .scqa-k{background:var(--lo);}
+  .scqa-bd{flex:1;padding-top:1px;}
+  .scqa-lab{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;}
+  .scqa-row.a .scqa-lab{color:var(--lo);}
+  .scqa-bd p{margin:0;font-size:13.3px;color:var(--ink);line-height:1.55;}
+  .scqa-row.q .scqa-bd p{font-style:italic;color:#16406a;}
+  .scqa-row.a .scqa-bd p{font-weight:600;}
+  .scqa .formula{margin-top:8px;}
+  .scqa-cap{font-size:11.5px;color:var(--mute);font-style:italic;margin:10px 0 0;}
+  /* MECE issue tree (rendered together with SCQA) */
+  .tree{margin:9px 0 2px;}
+  .tree .root{background:linear-gradient(120deg,#16406a,#0e2a47);color:#fff;border-radius:11px;
+    padding:11px 14px;font-size:13.4px;font-weight:700;border-left:4px solid var(--gold);}
+  .tree .branches{display:grid;gap:9px;margin-top:10px;}
+  .tree .branch{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;padding:10px 13px;background:#f7fafd;}
+  .tree .branch>b{font-size:13.1px;display:block;margin-bottom:5px;color:var(--ink);}
+  .tree .leaf{font-size:12.6px;color:var(--mute);padding-left:15px;position:relative;margin:4px 0;line-height:1.5;}
+  .tree .leaf::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .tree .leaf.lever{color:var(--ink);font-weight:600;}
+  .tree .leaf.lever::before{background:var(--gold);width:8px;height:8px;left:1px;top:7px;}
+  .tree .lever-tag{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#b07400;background:#fff6e6;border-radius:5px;padding:1px 5px;margin-right:5px;}
+  .tree-cap{display:none;}
+  @media(min-width:680px){.tree .branches{grid-template-columns:1fr 1fr 1fr;}}
+  /* value chain — connected flow diagram */
+  .vchain{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:6px 0 4px;}
+  .vc-step{position:relative;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:11px;padding:11px 13px 11px 40px;flex:1;}
+  .vc-step .vc-n{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;
+    background:var(--blue);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .vc-step:last-of-type{border-left-color:var(--gold);}
+  .vc-step:last-of-type .vc-n{background:var(--gold);color:var(--navy);}
+  .vc-step b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc-step .d{font-size:12.3px;color:var(--mute);}
+  .vc-arrow{align-self:center;color:var(--gold);font-weight:900;font-size:16px;line-height:1;
+    transform:rotate(90deg);padding:5px 0;}
+  @media(min-width:720px){
+    .vchain{flex-direction:row;align-items:stretch;flex-wrap:nowrap;}
+    .vc-step{padding:11px 11px 11px 12px;min-width:0;}
+    .vc-step .vc-n{position:static;margin-bottom:6px;}
+    .vc-arrow{transform:none;padding:0 3px;display:flex;align-items:center;}
+  }
+  /* variable 1-3 strategy tracks */
+  .track.t3{background:#10355a;border:1px solid rgba(255,184,28,.45);}
+  .track-grid.n1{grid-template-columns:1fr;}
+  @media(min-width:680px){
+    .track-grid.n2{grid-template-columns:1fr 1fr;}
+    .track-grid.n3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  /* profit pool */
+  .pool{display:flex;flex-direction:column;gap:8px;margin:6px 0 2px;}
+  .pool-row{display:flex;align-items:center;gap:10px;}
+  .pool-row .pn{flex:1.1;font-size:12.6px;color:var(--ink);min-width:0;}
+  .pool-row .ptrack{flex:1.5;height:9px;border-radius:5px;background:#eef2f7;overflow:hidden;}
+  .pool-row .pfill{display:block;height:100%;border-radius:5px;}
+  .pool-row .pfill.hi{width:92%;background:var(--gold);}
+  .pool-row .pfill.med{width:55%;background:var(--blue);}
+  .pool-row .pfill.lo{width:22%;background:#c9d4e3;}
+  .pool-row .pv{flex:none;width:58px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .pool-row .pv.hi{color:#b07400;}.pool-row .pv.med{color:var(--blue);}.pool-row .pv.lo{color:var(--mute);}
+  /* KPI watchlist */
+  .kpis{display:grid;grid-template-columns:1fr;gap:11px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);padding:13px 15px;border-left:4px solid var(--blue);}
+  .kpi .kt{font-size:12.5px;font-weight:800;color:var(--ink);}
+  .kpi .kv{font-size:clamp(17px,4.6vw,21px);font-weight:800;color:var(--blue);margin:3px 0 4px;line-height:1.1;}
+  .kpi .kw{font-size:12.3px;color:var(--mute);}
+  /* scenarios */
+  .scen{display:grid;grid-template-columns:1fr;gap:11px;}
+  .sc{border-radius:13px;padding:14px 16px;color:#fff;box-shadow:var(--shadow);}
+  .sc.bull{background:linear-gradient(125deg,#1f9d6b,#14633f);}
+  .sc.base{background:linear-gradient(125deg,#16406a,#0e2a47);}
+  .sc.bear{background:linear-gradient(125deg,#b1402f,#7d2418);}
+  .sc .sh{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .sc .sd{font-size:13.6px;font-weight:800;margin:4px 0 6px;}
+  .sc p{margin:0;font-size:12.8px;color:#eef4fb;}
+  /* positioning 2x2 */
+  .posmap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;}
+  .posmap svg{width:100%;height:auto;display:block;overflow:visible;}
+  .pos-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 2px;font-size:12px;color:var(--ink);}
+  .pos-legend .pl-i{display:flex;align-items:center;gap:6px;}
+  .pos-legend .pl-d{width:11px;height:11px;border-radius:50%;}
+  @media(min-width:680px){.kpis{grid-template-columns:1fr 1fr;}.scen{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+
+<style id="gics-tax-css">
+.gics-tax{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:2px 0 14px;}
+.gics-tax .gt-h{display:flex;align-items:center;font-size:10.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--gold);padding-right:2px;}
+.gics-tax .gt-i{display:flex;flex-direction:column;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(207,226,245,.22);border-radius:10px;padding:5px 11px;}
+.gics-tax .gt-i.cur{background:rgba(255,184,28,.16);border-color:var(--gold);}
+.gics-tax .gt-c{font-size:10px;font-weight:700;color:#9fc3e8;font-variant-numeric:tabular-nums;letter-spacing:.5px;}
+.gics-tax .gt-i.cur .gt-c{color:var(--gold);}
+.gics-tax .gt-n{font-size:13px;font-weight:700;color:#fff;line-height:1.2;}
+.gics-tax .gt-l{font-size:9.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#8fb0d4;margin-top:1px;}
+.gics-tax .gt-a{display:flex;align-items:center;color:#6f93bb;font-weight:900;font-size:13px;}
+@media(max-width:520px){.gics-tax .gt-l{display:none;}.gics-tax .gt-n{font-size:12px;}.gics-tax .gt-i{padding:4px 9px;}}
+</style>
+
+<style id="nav-home-css">.nav-home{flex:none;display:inline-flex;align-items:center;gap:5px;color:var(--navy);background:var(--gold);border-radius:999px;padding:6px 11px;font-size:12.5px;font-weight:800;text-decoration:none;white-space:nowrap;}.nav-home svg{width:15px;height:15px;}.nav-home:hover{filter:brightness(.95);}</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+      <a class="nav-home" href="../../index.html" aria-label="All reports"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.7 12 4l9 6.7"></path><path d="M5 9.6V20h14V9.6"></path></svg><span class="en">All</span><span class="ko">전체</span></a>
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Textiles</span><span class="ko">섬유</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="positioning"><span class="en">Positioning</span><span class="ko">포지셔닝</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5가지 경쟁요인</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">주요 기업</span></button><button class="chip" data-go="scenarios"><span class="en">Scenarios</span><span class="ko">시나리오</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">English</span></button>
+  </div>
+</div>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 3 of 7</span><span class="ko">산업 브리프 · GICS 7개 세트 중 3번째</span></p>
+    <h1><span class="en">Textiles</span><span class="ko">섬유</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석 및 경쟁 구조</span></p>
+    <div class="gics-tax" aria-label="GICS classification"><span class="gt-h"><span class="en">GICS</span><span class="ko">GICS 분류</span></span><span class="gt-i"><span class="gt-c">25</span><span class="gt-n"><span class="en">Consumer Discretionary</span><span class="ko">경기소비재</span></span><span class="gt-l"><span class="en">Sector</span><span class="ko">섹터</span></span></span><span class="gt-a" aria-hidden="true">&#8250;</span><span class="gt-i"><span class="gt-c">2520</span><span class="gt-n"><span class="en">Consumer Durables &amp; Apparel</span><span class="ko">내구소비재·의류</span></span><span class="gt-l"><span class="en">Industry Group</span><span class="ko">산업군</span></span></span><span class="gt-a" aria-hidden="true">&#8250;</span><span class="gt-i"><span class="gt-c">252030</span><span class="gt-n"><span class="en">Textiles, Apparel &amp; Luxury Goods</span><span class="ko">섬유·의류·명품</span></span><span class="gt-l"><span class="en">Industry</span><span class="ko">산업</span></span></span><span class="gt-a" aria-hidden="true">&#8250;</span><span class="gt-i cur"><span class="gt-c">25203030</span><span class="gt-n"><span class="en">Textiles</span><span class="ko">섬유</span></span><span class="gt-l"><span class="en">Sub-Industry</span><span class="ko">세부산업</span></span></span></div>
+      <div class="pill-row">
+      <span class="pill">2026-06-28</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">주요 기업</span>: <span class="en">Toray Industries · Hyosung TNC / Shenzhou International, Indorama Ventures (peers)</span><span class="ko">도레이 · 효성티앤씨 / 션저우인터내셔널, 인도라마벤처스 (비교군)</span></span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">The global textile market is ~$760B (2025) growing ~5.1% a year, but profit is thin in the middle of the chain — spinning and weaving net only 1–3% while brands and technical-fiber leaders capture the most. China holds ~43% of textile exports (2024), Korea under 1%, so Korean makers compete on niche leadership rather than scale. Toray is the global #1 fiber/materials maker (~$10.3B cap, Jun 2026) and Hyosung TNC is Korea's #1 with the world's largest spandex share (~32%, 2025).</span><span class="ko">글로벌 섬유 시장은 2025년 기준 약 7,600억 달러로 연 5.1% 성장하고 있으나, 가치사슬 중간 단계의 수익성은 매우 얇은 것으로 파악됩니다. 실제로 방적·제직의 순이익률은 1~3%에 그치는 반면, 브랜드와 첨단섬유 선도기업이 대부분의 이익을 가져가고 있습니다. 중국이 섬유 수출의 약 43%(2024년)를 차지하고 한국은 1% 미만에 불과한 만큼, 국내 기업은 규모가 아닌 틈새 1위 전략으로 대응하고 있는 바, 도레이가 글로벌 1위 소재기업(시가총액 약 103억 달러, 2026년 6월), 효성티앤씨가 스판덱스 세계 1위(약 32%, 2025년)인 한국 1위입니다.</span></p>
+    </div>
+  </section>
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">Margins are squeezed in the spinning–weaving middle; raw fiber and finished branding hold the leverage.</span><span class="ko">방적·제직 중간 단계의 이익은 압착되고, 원료 섬유와 최종 브랜드 단계가 교섭력을 쥐고 있는 구조로 파악됩니다.</span></h2>
+      <div class="vchain"><div class="vc-step"><span class="vc-n">1</span><b><span class="en">Raw material / feedstock</span><span class="ko">원료·기초소재</span></b><span class="d"><span class="en">Natural fibers (cotton ~38% of fiber use) and petrochemical-based synthetics (polyester, nylon)</span><span class="ko">천연섬유(면이 섬유 사용량의 약 38%)와 석유화학 기반 합성섬유(폴리에스터·나일론)</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">2</span><b><span class="en">Spinning</span><span class="ko">방적</span></b><span class="d"><span class="en">Fiber converted to yarn; capital-intensive, ~1% net margin (ICRA)</span><span class="ko">섬유를 실로 전환하는 단계로 자본집약적이며 순이익률 약 1%(ICRA)</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">3</span><b><span class="en">Fabric formation</span><span class="ko">제직·편직</span></b><span class="d"><span class="en">Weaving and knitting into fabric; ~3% net margin, China ~70% of textile exports</span><span class="ko">제직·편직으로 원단을 만드는 단계로 순이익률 약 3%, 중국이 섬유 수출의 약 70% 차지</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">4</span><b><span class="en">Dyeing &amp; finishing</span><span class="ko">염색·가공</span></b><span class="d"><span class="en">Dyeing, printing and technical finishes; finishing ≈31% of fabric cost</span><span class="ko">염색·날염·기능성 가공 단계로 가공비가 원단 원가의 약 31% 차지</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">5</span><b><span class="en">Distribution / end-use</span><span class="ko">유통·최종수요</span></b><span class="d"><span class="en">To apparel makers, technical-textile users (auto, medical), and retail — captures the largest profit</span><span class="ko">의류업체·산업용 섬유 수요처(자동차·의료)·유통으로 연결되며 최대 이익을 가져가는 단계</span></span></div></div>
+      <div class="pool"><div class="pool-row"><span class="pn"><span class="en">Branding / retail / distribution</span><span class="ko">브랜드·유통</span></span><span class="ptrack"><span class="pfill hi" style="width:100%"></span></span><span class="pv hi">~40%</span></div><div class="pool-row"><span class="pn"><span class="en">Technical / specialty fibers</span><span class="ko">첨단·특수섬유</span></span><span class="ptrack"><span class="pfill hi" style="width:63%"></span></span><span class="pv hi">~25%</span></div><div class="pool-row"><span class="pn"><span class="en">Raw fiber / feedstock</span><span class="ko">원료 섬유</span></span><span class="ptrack"><span class="pfill med" style="width:45%"></span></span><span class="pv med">~18%</span></div><div class="pool-row"><span class="pn"><span class="en">Dyeing &amp; finishing</span><span class="ko">염색·가공</span></span><span class="ptrack"><span class="pfill lo" style="width:25%"></span></span><span class="pv lo">~10%</span></div><div class="pool-row"><span class="pn"><span class="en">Spinning &amp; weaving</span><span class="ko">방적·제직</span></span><span class="ptrack"><span class="pfill lo" style="width:18%"></span></span><span class="pv lo">~7%</span></div></div>
+      <p class="cap"><span class="en">Profit is concentrated at the branded/retail end and in technical fibers; commodity spinning and weaving net only 1–3% (ICRA, 2024–25). Estimated profit-pool split — directional, not audited.</span><span class="ko">이익은 브랜드·유통 단계와 첨단섬유에 집중되어 있으며, 범용 방적·제직의 순이익률은 1~3%에 그치는 것으로 파악됩니다(ICRA, 2024~25년). 이익 풀 배분은 추정치로 방향성을 보여드리는 수치입니다.</span></p>
+    </div>
+  </section>
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A ~$760B market (2025) compounding near 5% a year toward ~$974B by 2030.</span><span class="ko">2025년 약 7,600억 달러 규모로 연 5% 가까이 성장해 2030년 약 9,740억 달러에 이를 것으로 보입니다.</span></h2>
+      <div class="cagr-wrap"><span class="cagr-badge"><span class="en">CAGR</span><span class="ko">연평균 성장률(CAGR)</span><span class="n">~5.1%</span></span><span class="mute" style="font-size:12.5px"><span class="en">Market value $760.3B (2025) → $974.4B (2030), 5.09% CAGR per Mordor Intelligence (pure-textile scope, 2025).</span><span class="ko">시장 규모 7,603억 달러(2025년) → 9,744억 달러(2030년), 연평균 성장률(CAGR) 5.09% (Mordor Intelligence, 순수 섬유 기준, 2025년).</span></span></div>
+      <div class="colchart"><div class="col"><div class="col-val">~$724B</div><div class="col-bar" data-h="64"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">~$760B</div><div class="col-bar" data-h="72"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">~$799B</div><div class="col-bar" data-h="81"></div><div class="col-lab">2026e</div></div><div class="col"><div class="col-val">~$882B</div><div class="col-bar" data-h="91"></div><div class="col-lab">2028e</div></div><div class="col"><div class="col-val">~$974B</div><div class="col-bar" data-h="100"></div><div class="col-lab">2030e</div></div></div>
+      <p class="cap"><span class="en">Mordor Intelligence pure-textile series; bars are zoomed (baseline ~$700B, not zero) so the ~5% trend is visible. Broader scopes that include apparel run ~$2.1T (Precedence, 2025).</span><span class="ko">Mordor Intelligence 순수 섬유 기준 시계열이며, 막대는 기준선을 약 7,000억 달러로 확대(0이 아님)하여 약 5% 추세가 보이도록 표시했습니다. 의류를 포함한 넓은 기준으로는 약 2조 1,000억 달러(Precedence, 2025년) 수준입니다.</span></p>
+    </div>
+  </section>
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share</span><span class="ko">시장점유율</span></p>
+      <h2><span class="en">China dominates with ~43% of textile exports; Korea under 1% but #1 in spandex and tire cord niches.</span><span class="ko">중국이 섬유 수출의 약 43%로 압도적이며, 한국은 1% 미만이나 스판덱스·타이어코드 틈새에서는 세계 1위로 파악됩니다.</span></h2>
+      <div class="pies reveal">
+        <div class="pieblock"><div class="pie-title"><span class="en">Global textile exports by origin, 2024</span><span class="ko">국가별 섬유 수출 점유율, 2024년</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0% 43%,#117aca 43% 68%,#5aa9e6 68% 73%,#9fb1c9 73% 76%,#cfe0f0 76% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span><span class="en">China</span><span class="ko">중국</span><b>~43%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span><span class="en">EU (collective)</span><span class="ko">EU(합계)</span><b>~25%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span><span class="en">India</span><span class="ko">인도</span><b>~5%</b></div><div class="lg-item"><span class="lg-dot" style="background:#9fb1c9"></span><span class="en">USA</span><span class="ko">미국</span><b>~3%</b></div><div class="lg-item"><span class="lg-dot" style="background:#cfe0f0"></span><span class="en">All others</span><span class="ko">기타</span><b>~24%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea textile makers by revenue, FY2024</span><span class="ko">국내 섬유 기업 매출 비중, 2024 회계연도</span></div><div class="pie" style="background:conic-gradient(#0047a0 0% 33%,#1f6fc0 33% 54%,#5aa9e6 54% 68%,#9fb1c9 68% 85%,#cfe0f0 85% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span><span class="en">Hyosung TNC</span><span class="ko">효성티앤씨</span><b>~33%</b></div><div class="lg-item"><span class="lg-dot" style="background:#1f6fc0"></span><span class="en">Kolon Industries</span><span class="ko">코오롱인더스트리</span><b>~21%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span><span class="en">HS Hyosung Adv. Materials</span><span class="ko">HS효성첨단소재</span><b>~14%</b></div><div class="lg-item"><span class="lg-dot" style="background:#9fb1c9"></span><span class="en">Taekwang &amp; others</span><span class="ko">태광 외</span><b>~17%</b></div><div class="lg-item"><span class="lg-dot" style="background:#cfe0f0"></span><span class="en">All others</span><span class="ko">기타</span><b>~15%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">Global share = WTO/Shenglu textile trade by value-added (2024); China ~43.3%. Korea holds ~0.9% of global textile exports (2023) yet ~32% of world spandex and ~45% of tire cord. Korea pie = approximate FY2024 revenue weighting among listed makers.</span><span class="ko">글로벌 점유율은 WTO·Shenglu 부가가치 기준 섬유 교역(2024년)으로 중국 약 43.3%입니다. 한국은 글로벌 섬유 수출의 약 0.9%(2023년)에 불과하나 세계 스판덱스의 약 32%, 타이어코드의 약 45%를 점유하고 있습니다. 국내 비중은 상장 기업의 2024 회계연도 매출 기준 추정치입니다.</span></p>
+    </div>
+  </section>
+  <section id="positioning">
+    <p class="kicker"><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></p>
+    <h2><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></h2>
+    <div class="posmap reveal"><svg viewBox="0 0 340 290" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="60" y="18" width="262" height="214" fill="#f7fafd" stroke="#e6ebf4" stroke-width="1.5" rx="8"/><line x1="60" y1="125" x2="322" y2="125" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><line x1="191" y1="18" x2="191" y2="232" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><circle cx="250" cy="120" r="7" fill="var(--navy)"/><text x="250" y="111" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Toray</text><circle cx="110" cy="70" r="7" fill="var(--krred)"/><text x="110" y="61" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Hyosung TNC</text><circle cx="200" cy="50" r="5.5" fill="#9fb1c9"/><text x="200" y="41" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Shenzhou</text><circle cx="290" cy="175" r="5.5" fill="#9fb1c9"/><text x="282" y="190" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Indorama</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="en">Scale (revenue / market cap) →</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="ko">규모(매출·시가총액) →</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="en">Textile focus (pure-play) →</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="ko">섬유 집중도(전업) →</text></svg><div class="pos-legend"><span class="pl-i"><span class="pl-d" style="background:var(--navy)"></span><span class="en">Global #1 (Toray)</span><span class="ko">글로벌 1위 (도레이)</span></span><span class="pl-i"><span class="pl-d" style="background:var(--krred)"></span><span class="en">Korea #1 (Hyosung TNC)</span><span class="ko">한국 1위 (효성티앤씨)</span></span><span class="pl-i"><span class="pl-d" style="background:#9fb1c9"></span><span class="en">Peers</span><span class="ko">동종 기업</span></span></div><p class="cap"><span class="en">Takeaway: Toray is large but diversified; Shenzhou and Hyosung TNC are the most textile-focused; Indorama is large but a loss-making chemicals play.</span><span class="ko">시사점: 도레이는 규모는 크나 다각화되어 있고, 션저우와 효성티앤씨가 가장 섬유에 집중되어 있으며, 인도라마는 규모는 크지만 적자 상태의 화학 사업이라는 점입니다.</span></p></div>
+  </section>
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Capital and technology barriers are low at the commodity spinning and cut-make end, letting low-wage countries (Ethiopia, Myanmar, Bangladesh) enter continuously. Barriers rise sharply for technical textiles and carbon fiber, where scale and IP protect incumbents.</span><span class="ko">범용 방적·봉제 단계는 자본·기술 장벽이 낮아 저임금 국가(에티오피아·미얀마·방글라데시)의 진입이 계속되고 있습니다. 다만 첨단섬유와 탄소섬유 영역은 규모와 지식재산이 진입을 막아 장벽이 가파르게 높아지는 것으로 파악됩니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Fiber, dye and chemical inputs are largely commoditized with many global suppliers, limiting their leverage. The exception is concentrated textile-machinery makers (Germany, Switzerland, Japan) and proprietary specialty chemicals, which do hold pricing power.</span><span class="ko">섬유·염료·화학 원료는 대부분 범용재로 공급처가 많아 교섭력이 제한적입니다. 다만 독일·스위스·일본에 집중된 섬유기계 업체와 독점 특수화학 업체는 가격 결정력을 보유하고 있는 점이 예외입니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Concentrated global brands and retailers dictate price and terms to thousands of interchangeable mills and can switch suppliers easily. This is the defining dynamic of the industry — manufacturers face constant cost-down pressure.</span><span class="ko">소수의 글로벌 브랜드·유통업체가 수천 개의 대체 가능한 공장에 가격과 조건을 좌우하며 공급처를 쉽게 바꿀 수 있습니다. 실제로 이는 산업을 규정하는 핵심 동학으로, 제조사는 끊임없는 원가 인하 압력에 직면해 있는 것으로 파악됩니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">There is no functional substitute for textiles in clothing or most technical uses, keeping the threat low. Only minor risk comes from plastic films in select industrial applications and from digital/virtual fashion in a small niche.</span><span class="ko">의류와 대부분의 산업용 용도에서 섬유를 대체할 기능적 대안이 없어 위협은 낮은 것으로 파악됩니다. 일부 산업용 용도의 플라스틱 필름과 좁은 틈새의 디지털·가상 패션 정도가 제한적 위험 요인입니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">경쟁 강도</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">A fragmented Asian manufacturing base — about 70% of exports concentrated in Asia — produces commodity goods and competes intensely on price. Differentiation through technical or luxury fabrics relieves this only partially.</span><span class="ko">수출의 약 70%가 아시아에 집중된 파편화된 제조 기반이 범용 제품을 두고 치열한 가격 경쟁을 벌이고 있습니다. 첨단·고급 원단을 통한 차별화는 이를 부분적으로만 완화하고 있는 것으로 파악됩니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: a buyer-dominated, rivalry-heavy commodity industry. The only durable escapes are scale plus vertical integration, or moving into protected technical-textile niches.</span><span class="ko">종합하면, 구매자 우위에 경쟁이 치열한 범용 산업입니다. 지속 가능한 탈출구는 규모와 수직계열화, 또는 진입장벽이 있는 첨단섬유 틈새로의 이동뿐인 것으로 파악됩니다.</span></p>
+  </section>
+  <section id="reg">
+    <p class="kicker"><span class="en">Macro forces &amp; the latest RULES</span><span class="ko">거시 요인 및 최신 규제</span></p>
+    <h2><span class="en">Regulation &amp; policy</span><span class="ko">규제·정책</span></h2>
+    <p class="hint"><span class="en">Dated laws and rules only — recent market events are in the next section.</span><span class="ko">날짜가 명시된 법·규정만 다룹니다. 최근 시장 이벤트는 다음 섹션에 정리되어 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Oct 2025</span><span class="ac-title"><span class="en">EU mandatory textile EPR enters into force (revised Waste Framework Directive)</span><span class="ko">EU 의무 섬유 EPR 발효 (개정 폐기물기본지침)</span></span></div><div class="ac-body"><p class="why"><span class="en">The revised Waste Framework Directive entered into force 16 Oct 2025, making Extended Producer Responsibility schemes for textiles mandatory across all member states; producers (including non-EU online sellers) must finance collection, sorting and recycling, with fees eco-modulated by durability. Why it matters: end-of-life cost becomes a per-product fee borne up the value chain, rewarding recyclable, durable fiber and fabric design.</span><span class="ko">개정 폐기물기본지침이 2025년 10월 16일 발효되어 전 회원국에서 섬유 생산자책임재활용(EPR) 제도가 의무화되었으며, 역외 온라인 판매자를 포함한 생산자는 수거·선별·재활용 비용을 부담하고 수수료는 내구성에 따라 차등 부과됩니다. 시사점: 폐기 비용이 제품당 수수료로 전환되어 가치사슬 상단이 부담하게 되며, 재활용·고내구 섬유 설계에 유리해진다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Apr 2025</span><span class="ac-title"><span class="en">EU ESPR 2025–2030 working plan names textiles a priority group</span><span class="ko">EU ESPR 2025~2030 작업계획, 섬유를 우선 품목으로 지정</span></span></div><div class="ac-body"><p class="why"><span class="en">The Commission's first Ecodesign for Sustainable Products Regulation working plan, published 16 Apr 2025, designates textiles as a first-wave priority, with a textile delegated act targeted for ~2027 setting durability, recyclability and recycled-content rules plus a ban on destroying unsold textiles. Why it matters: binding minimum design standards will apply to fibers, yarns and fabrics sold in the EU.</span><span class="ko">2025년 4월 16일 발표된 EU 에코디자인규정(ESPR) 첫 작업계획은 섬유를 1차 우선 품목으로 지정했으며, 2027년경 채택될 섬유 위임법은 내구성·재활용성·재생원료 기준과 미판매 섬유 폐기 금지를 규정할 예정입니다. 시사점: EU에서 판매되는 섬유·실·원단에 구속력 있는 최소 설계 기준이 적용된다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Aug 2025</span><span class="ac-title"><span class="en">ECHA expands REACH PFAS restriction to technical textiles</span><span class="ko">ECHA, REACH PFAS 규제를 산업용 섬유로 확대</span></span></div><div class="ac-body"><p class="why"><span class="en">ECHA published its revised REACH PFAS restriction proposal on 20 Aug 2025, expanding scope to eight more sectors including technical textiles and proposing a ban with use-specific transition periods of up to ~13.5 years. Why it matters: it directly targets fluorinated finishes and membranes used in waterproof and protective fabrics, forcing reformulation.</span><span class="ko">ECHA는 2025년 8월 20일 개정 REACH PFAS 규제안을 발표해 산업용 섬유를 포함한 8개 분야로 적용 범위를 확대하고 최대 약 13.5년의 용도별 유예기간을 둔 금지를 제안했습니다. 시사점: 방수·보호 원단에 쓰이는 불소계 가공·멤브레인을 직접 겨냥해 소재 재설계가 불가피해진다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jun 2024</span><span class="ac-title"><span class="en">EU Digital Product Passport established under ESPR (textile rules via 2027 act)</span><span class="ko">EU 디지털제품여권(DPP), ESPR로 도입 (섬유는 2027년 위임법)</span></span></div><div class="ac-body"><p class="why"><span class="en">The Digital Product Passport was established when ESPR was approved in June 2024; textile-specific DPP data requirements arrive in the 2027 delegated act, with mandatory compliance likely no earlier than 2028. Why it matters: makers must capture and digitally carry composition, recycled content and supply-chain traceability per product or batch.</span><span class="ko">디지털제품여권은 2024년 6월 ESPR 승인과 함께 도입되었으며, 섬유 전용 DPP 데이터 요건은 2027년 위임법으로 마련되어 이르면 2028년 의무화될 전망입니다. 시사점: 제조사는 제품·배치 단위로 조성·재생원료·공급망 이력 정보를 디지털로 보유·전달해야 한다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jan 2026</span><span class="ac-title"><span class="en">France ultra-fast-fashion law: eco-modulated fees and advertising ban</span><span class="ko">프랑스 초저가 패스트패션법: 차등 부담금·광고 금지</span></span></div><div class="ac-body"><p class="why"><span class="en">France's textile EPR penalty rose to €5/product (toward €10 by 2030, capped at 50% of price) on a sustainability score, with eco-modulated fees applied since Jan 2025; an advertising ban on ultra-express fashion took effect 1 Jan 2026. Why it matters: it sets a national precedent for penalizing low-durability output and rewards higher-sustainability fabric construction. Note: the European Commission has objected that parts of the law may be incompatible with EU single-market rules, leaving full enforcement uncertain in 2026.</span><span class="ko">프랑스의 섬유 EPR 부담금은 지속가능성 점수에 따라 제품당 5유로(2030년 10유로, 가격의 50% 상한)로 올랐고 차등 부담금은 2025년 1월부터 적용되었으며, 초고속 패션 광고 금지는 2026년 1월 1일 발효되었습니다. 시사점: 저내구 제품에 불이익을 주는 국가 차원의 선례로, 고지속성 원단 설계에 유리하다는 점입니다. 다만 유럽연합 집행위원회는 이 법의 일부가 EU 단일시장 규정과 상충할 수 있다고 이의를 제기해, 2026년 현재 전면 시행 여부는 불확실한 것으로 파악됩니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Sep 2025</span><span class="ac-title"><span class="en">India PLI for textiles and PM MITRA parks advance (Dhar park launched)</span><span class="ko">인도 섬유 PLI·PM MITRA 단지 확대 (Dhar 단지 착공)</span></span></div><div class="ac-body"><p class="why"><span class="en">India's ₹10,683 cr Production Linked Incentive scheme for man-made-fiber and technical textiles runs through FY2029-30, and PM Modi laid the foundation of the Dhar (Madhya Pradesh) mega-park in September 2025, with investment MoUs over ₹27,434 cr. Why it matters: state-backed capex incentives are shifting global man-made-fiber and technical-textile capacity toward India.</span><span class="ko">인도의 1조 683억 루피 규모 생산연계인센티브(PLI)는 인조섬유·산업용 섬유를 대상으로 2029-30 회계연도까지 운영되며, 모디 총리는 2025년 9월 Dhar(마디아프라데시) 대형 단지를 착공하고 2조 7,434억 루피 이상의 투자 양해각서를 체결했습니다. 시사점: 국가 주도 투자 인센티브가 인조섬유·산업용 섬유 생산능력을 인도로 이동시키고 있다는 점입니다.</span></p></div></div></div>
+  </section>
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심 성공 요인</span></p>
+    <h2><span class="en">Key Success Factors</span><span class="ko">핵심 성공 요인</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Scale and cost efficiency</span><span class="ko">규모와 원가 효율</span></b><p><span class="en">High-volume, low-cost production is the baseline for survival in a buyer-dominated commodity market.</span><span class="ko">대량·저원가 생산은 구매자 우위의 범용 시장에서 생존을 위한 기본 조건으로 파악됩니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">Vertical integration</span><span class="ko">수직계열화</span></b><p><span class="en">Controlling fiber through finishing captures more of a thin margin and stabilizes input cost and supply.</span><span class="ko">섬유부터 가공까지 통제하면 얇은 이익을 더 많이 확보하고 원료 비용과 공급을 안정화할 수 있습니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">Technical / specialty leadership</span><span class="ko">첨단·특수섬유 선도</span></b><p><span class="en">Premium niches — spandex, tire cord, carbon fiber — earn the highest margins and resist commoditization.</span><span class="ko">스판덱스·타이어코드·탄소섬유 등 프리미엄 틈새가 가장 높은 이익을 내고 범용화에 강한 것으로 파악됩니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">Quality and consistency</span><span class="ko">품질과 균일성</span></b><p><span class="en">Meeting brand and industrial-customer specifications reliably is the precondition for repeat orders.</span><span class="ko">브랜드·산업 고객의 사양을 안정적으로 충족하는 것이 반복 수주의 전제가 됩니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">Input and geographic advantage</span><span class="ko">원료·입지 우위</span></b><p><span class="en">Access to low-cost labor, energy and fiber, and proximity to demand, determines landed cost competitiveness.</span><span class="ko">저비용 노동·에너지·섬유 확보와 수요지 근접성이 도착 원가 경쟁력을 좌우합니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Compliance and sustainability</span><span class="ko">규제 대응과 지속가능성</span></b><p><span class="en">Meeting EU EPR, ESPR and PFAS rules and proving traceability is now a condition to retain global buyers.</span><span class="ko">EU의 EPR·ESPR·PFAS 규제 충족과 이력 추적 입증은 이제 글로벌 구매자를 유지하기 위한 조건이 되었습니다.</span></p></div></div></div>
+  </section>
+  <section id="news">
+    <p class="kicker"><span class="en">What's moving the industry now</span><span class="ko">현재 산업을 움직이는 요인</span></p>
+    <h2><span class="en">Recent market events</span><span class="ko">최근 시장 동향</span></h2>
+    <p class="hint"><span class="en">Dated market events only — laws and rules are in the Regulation section.</span><span class="ko">날짜가 명시된 시장 이벤트만 다룹니다. 법·규정은 규제 섹션에 정리되어 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Apr 2026</span><span class="ac-title"><span class="en">HS Hyosung scraps tire-cord sale after Bain's bid collapses</span><span class="ko">HS효성, 베인캐피털 인수 무산으로 타이어코드 매각 철회</span></span></div><div class="ac-body"><p class="why"><span class="en">HS Hyosung Advanced Materials named Bain Capital preferred bidder for its world-leading tire-cord (steel-cord) business (~₩1.5 trillion) on 29 July 2025, but the deal collapsed: Bain reportedly cut its offer to under ₩500 billion as steel-cord profits fell, and HS Hyosung scrapped the sale, confirmed by April 2026. Why it matters: the world's #1 tire-cord asset stays in Korean hands, but the failed disposal shows how cyclical steel-cord margins and a wide bid-ask gap can stall the portfolio rotation textile makers rely on to fund higher-value materials.</span><span class="ko">HS효성첨단소재는 2025년 7월 29일 세계 1위 타이어코드(스틸코드) 사업(약 1조 5,000억 원)의 우선협상대상자로 베인캐피털을 선정한 바 있으나, 거래는 무산되었습니다. 스틸코드 수익성이 악화되며 베인이 제시 가격을 5,000억 원 미만으로 낮춘 것으로 전해지고, HS효성이 매각을 철회한 사실은 2026년 4월 확인된 것으로 파악됩니다. 시사점: 세계 1위 타이어코드 자산이 한국에 남게 되었으나, 이번 매각 무산은 순환적인 스틸코드 마진과 큰 호가 격차가 섬유 기업이 고부가 소재 투자 재원으로 삼는 포트폴리오 재편을 어떻게 지연시키는지를 보여주는 사례로 파악됩니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Feb 2025</span><span class="ac-title"><span class="en">Kolon Industries commits ₩300B to more than double para-aramid capacity</span><span class="ko">코오롱인더스트리, 3,000억 원 투자로 파라아라미드 생산능력 2배 이상 확대</span></span></div><div class="ac-body"><p class="why"><span class="en">In February 2025 Kolon committed ₩300B to roughly double para-aramid capacity from 7,500 t to 15,310 t and lift its Vietnam tire-cord plant to 57,000 t by 2027, targeting surging demand including AI data-center cabling. Why it matters: it is a clear bet that high-strength technical fibers, not commodity textiles, drive Korean growth.</span><span class="ko">코오롱은 2025년 2월 3,000억 원을 투입해 파라아라미드 생산능력을 7,500톤에서 1만 5,310톤으로 2배 이상 늘리고 베트남 타이어코드 공장을 2027년까지 5만 7,000톤으로 확대하기로 했으며, AI 데이터센터 케이블을 포함한 수요 급증을 겨냥하고 있습니다. 시사점: 범용 섬유가 아닌 고강도 산업용 섬유가 국내 성장을 견인한다는 베팅이라는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Sep 2025</span><span class="ac-title"><span class="en">Lenzing restructures with ~600 job cuts and Indonesia review</span><span class="ko">렌징, 약 600명 감원·인도네시아 사업 재검토로 구조조정</span></span></div><div class="ac-body"><p class="why"><span class="en">On 29 Sep 2025 Lenzing announced ~600 job cuts through 2027 and a strategic review of its Indonesian operation, shifting toward premium fibers and exiting low-margin commodity segments, targeting over €45M in annual savings. Why it matters: even a sustainability-fiber leader is retreating from commodity viscose, underscoring how thin mid-chain margins have become.</span><span class="ko">렌징은 2025년 9월 29일 2027년까지 약 600명 감원과 인도네시아 사업 전략 재검토를 발표하고, 프리미엄 섬유로 전환하며 저마진 범용 부문에서 철수해 연 4,500만 유로 이상의 비용 절감을 목표로 제시했습니다. 시사점: 지속가능 섬유 선도기업조차 범용 비스코스에서 후퇴하고 있어 중간 단계 이익이 얼마나 얇아졌는지를 보여준다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Aug 2025</span><span class="ac-title"><span class="en">Indorama Ventures' 1H25 EBITDA falls 21% as IVL 2.0 closes sites</span><span class="ko">인도라마벤처스, IVL 2.0 거점 정리 속 상반기 EBITDA 21% 감소</span></span></div><div class="ac-body"><p class="why"><span class="en">On 14 Aug 2025 IVL reported 1H25 adjusted EBITDA of $606M, down 21% YoY on an 8% volume drop, while its IVL 2.0 program rationalized sites in Portugal, Netherlands, Australia and Canada for $116M in fixed-cost savings. Why it matters: the world's largest PET/polyester maker is shrinking its footprint, confirming structural overcapacity in commodity fibers.</span><span class="ko">인도라마벤처스는 2025년 8월 14일 상반기 조정 EBITDA가 물량 8% 감소로 전년 대비 21% 줄어든 6억 600만 달러라고 발표했으며, IVL 2.0 프로그램으로 포르투갈·네덜란드·호주·캐나다 거점을 정리해 1억 1,600만 달러의 고정비를 절감했습니다. 시사점: 세계 최대 PET·폴리에스터 업체의 사업 축소는 범용 섬유의 구조적 공급과잉을 확인시킨다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">H2 2026</span><span class="ac-title"><span class="en">Toray lifts European carbon-fiber capacity to 6,000 t/yr with new France line</span><span class="ko">도레이, 프랑스 신규 라인으로 유럽 탄소섬유 능력 6,000톤으로 확대</span></span></div><div class="ac-body"><p class="why"><span class="en">Toray expanded its French plant from 5,000 to 6,000 t/yr, with the new line starting up in 2025 and fully operational in H2 2026 — part of raising group carbon-fiber capacity over 20% to 35,000 t/yr to serve hydrogen and CNG pressure-vessel demand. Why it matters: the global leader is doubling down on high-value carbon fiber even as commodity fiber peers retrench.</span><span class="ko">도레이는 프랑스 공장을 연 5,000톤에서 6,000톤으로 확대했으며, 신규 라인은 2025년 가동을 시작해 2026년 하반기에 완전 가동에 들어가는 등 수소·CNG 압력용기 수요에 대응해 그룹 탄소섬유 능력을 20% 이상 늘려 3만 5,000톤으로 확대하고 있습니다. 시사점: 범용 섬유 업체들이 후퇴하는 가운데 글로벌 선도기업은 고부가 탄소섬유에 집중 투자하고 있다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Aug 2025</span><span class="ac-title"><span class="en">Shenzhou International posts record 1H25 revenue, over half capacity now overseas</span><span class="ko">션저우인터내셔널, 상반기 사상 최대 매출·해외 생산능력 절반 돌파</span></span></div><div class="ac-body"><p class="why"><span class="en">For H1 2025 (reported August 2025) Shenzhou posted record revenue of RMB14,966M (+15.3% YoY) and net profit RMB3,177M (+8.4%), with a new Cambodia factory live and over 50% of sewing capacity now overseas, targeting 60% by end-2026. Why it matters: the leading vertically-integrated fabric/garment maker is de-risking from China tariffs by relocating, a template for the industry.</span><span class="ko">션저우인터내셔널은 2025년 8월 발표한 상반기 실적에서 매출 149억 6,600만 위안(전년 대비 15.3% 증가), 순이익 31억 7,700만 위안(8.4% 증가)으로 사상 최대를 기록했으며, 캄보디아 신공장 가동으로 봉제 능력의 50% 이상을 해외로 옮기고 2026년 말 60%를 목표로 하고 있습니다. 시사점: 선도적 수직계열 원단·의류 업체가 생산지 이전으로 중국 관세 위험을 줄이고 있어 업계의 본보기가 된다는 점입니다.</span></p></div></div></div>
+  </section>
+  <section id="players">
+    <p class="kicker"><span class="en">Players · strategy analysis</span><span class="ko">주요 기업 · 전략 분석</span></p>
+    <h2><span class="en">Global #1 and Korea #1, diagnosed separately</span><span class="ko">글로벌 1위와 한국 1위를 각각 진단</span></h2>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1 · by market cap &amp; fiber leadership</span><span class="ko">글로벌 1위 · 시가총액·섬유 선도 기준</span></div><h3>Toray Industries (TSE:3402)</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">Toray Industries (founded 1926, Tokyo) is a diversified advanced-materials maker built on polymer chemistry, spanning fibers &amp; textiles, performance chemicals and plastics, carbon-fiber composites, water-treatment membranes and life sciences. It is the world's largest carbon fiber maker (~13.5% share, 2023) and Japan's largest synthetic fiber producer, and its TORAYCA prepreg is used in Boeing 787 primary structures. Fibers &amp; Textiles remains its single largest segment at ~42% of sales.</span><span class="ko">도레이(1926년 도쿄 설립)는 고분자 화학을 기반으로 섬유·섬유제품, 기능성 화학·플라스틱, 탄소섬유 복합재, 수처리 멤브레인, 생명과학을 아우르는 첨단소재 종합기업입니다. 세계 최대 탄소섬유 업체(약 13.5% 점유, 2023년)이자 일본 최대 합성섬유 생산자이며, TORAYCA 프리프레그는 보잉 787 주구조에 사용되고 있습니다. 섬유·섬유제품은 매출의 약 42%로 여전히 최대 사업부로 파악됩니다.</span></p><div class="stats"><div class="stat"><div class="n">$10.3B</div><div class="l"><span class="en">Market cap (Jun 2026)</span><span class="ko">시가총액 (2026년 6월)</span></div></div><div class="stat"><div class="n">¥2,585B</div><div class="l"><span class="en">Revenue (FY Mar 2026)</span><span class="ko">매출 (2026년 3월기)</span></div></div><div class="stat"><div class="n">~5.5%</div><div class="l"><span class="en">Operating margin (FY Mar 2026)</span><span class="ko">영업이익률 (2026년 3월기)</span></div></div><div class="stat"><div class="n">47,914</div><div class="l"><span class="en">Employees (Mar 2025)</span><span class="ko">임직원 (2025년 3월)</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — leadership in high-value fiber, drag from commodity and China</span><span class="ko">진단 — 고부가 섬유 선도, 범용·중국 부진의 부담</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 최대 과제</span></span><p><span class="en">Toray is the global #1 in carbon fiber and Japan's #1 in synthetic fibers, with revenue near ¥2.59T (FY Mar 2026).</span><span class="ko">도레이는 탄소섬유 세계 1위이자 일본 합성섬유 1위로, 2026년 3월기 매출은 약 2조 5,900억 엔에 이릅니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">복합 요인 · 근본 원인</span></span><p><span class="en">But operating margin is only ~5.5%, China demand is weakening, and Q3 FY2026 carried ¥27B of impairments amid auto, electronics and tariff uncertainty.</span><span class="ko">다만 영업이익률은 약 5.5%에 그치고 중국 수요가 약화되고 있으며, 2026 회계연도 3분기에는 자동차·전자·관세 불확실성 속에 270억 엔의 손상차손이 반영되었습니다.</span></p><div class="formula">Value ≈ (high-value fiber volume × premium margin) − (commodity drag + impairments)</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설</span></span><p><span class="en">How does Toray keep margins up while commodity fiber and China weigh on results?</span><span class="ko">범용 섬유와 중국이 실적을 누르는 가운데 도레이는 어떻게 이익률을 지킬 것인가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">답변 · 방향</span></span><p><span class="en">Concentrate capital in carbon fiber and membranes (capacity +20% to 35,000 t/yr), exit or restructure commodity exposure, and lean on aerospace and hydrogen demand.</span><span class="ko">자본을 탄소섬유·멤브레인에 집중(능력 20% 확대, 3만 5,000톤)하고 범용 노출을 축소·구조조정하며 항공우주·수소 수요에 기대는 것입니다.</span></p></div></div></div></div><div class="track-grid n2"><div class="track t1"><div class="tt"><span class="en">Track 1 · High-value materials</span><span class="ko">트랙 1 · 고부가 소재</span></div><div class="tn"><span class="en">Scale carbon fiber and membranes</span><span class="ko">탄소섬유·멤브레인 증설</span></div><p><span class="en">Raise group carbon-fiber capacity over 20% to 35,000 t/yr, anchored by aerospace, hydrogen and CNG pressure-vessel demand.</span><span class="ko">항공우주·수소·CNG 압력용기 수요를 기반으로 그룹 탄소섬유 능력을 20% 이상 늘려 3만 5,000톤으로 확대하는 것입니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Portfolio discipline</span><span class="ko">트랙 2 · 포트폴리오 규율</span></div><div class="tn"><span class="en">Restructure commodity and China exposure</span><span class="ko">범용·중국 노출 구조조정</span></div><p><span class="en">Take impairments early, trim weak China subsidiaries, and shift mix toward differentiated functional fibers to protect margin.</span><span class="ko">손상을 선제 인식하고 부진한 중국 자회사를 정리하며 차별화된 기능성 섬유로 믹스를 이동해 이익률을 방어하는 것입니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">실행 계획</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Lock in aerospace and hydrogen offtake</span><span class="ko">항공우주·수소 장기공급 확보</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Cyclical merchant carbon-fiber sales</span><span class="ko">경기 민감 탄소섬유 시판 판매</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">Long-term contracts (Boeing, pressure vessels)</span><span class="ko">장기계약(보잉·압력용기)</span></div></div></div><div class="ap"><div class="apt"><span class="en">Reweight capex to specialty fibers</span><span class="ko">특수섬유로 투자 재배분</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Broad fiber capacity</span><span class="ko">범용 섬유 생산능력</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">Carbon fiber, membranes, functional textiles</span><span class="ko">탄소섬유·멤브레인·기능성 섬유</span></div></div></div><div class="ap"><div class="apt"><span class="en">Rationalize China footprint</span><span class="ko">중국 거점 합리화</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Loss-making China subsidiaries</span><span class="ko">적자 중국 자회사</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">Restructured, demand-matched capacity</span><span class="ko">구조조정·수요연동 생산능력</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1 · world's largest spandex maker</span><span class="ko">한국 1위 · 세계 최대 스판덱스 업체</span></div><h3>Hyosung TNC (298020)</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">Hyosung TNC, spun off from Hyosung Corporation in the 2018 holding-company restructuring and based in Seoul, is the world's largest spandex/elastane maker under the Creora brand (~32% global share, #1 since 2010). It also produces nylon and polyester fibers and runs a trading division in steel, chemicals and synthetic materials, with FY2024 revenue of ~₩7.78T — making it Korea's largest textile firm by revenue.</span><span class="ko">효성티앤씨는 2018년 지주사 전환으로 효성에서 분할된 서울 소재 기업으로, Creora 브랜드로 스판덱스(엘라스테인) 세계 1위(약 32% 점유, 2010년 이후 1위)를 지키고 있습니다. 나일론·폴리에스터 섬유도 생산하고 철강·화학·합성소재 무역 부문을 운영하며, 2024 회계연도 매출은 약 7조 7,800억 원으로 국내 최대 섬유 기업으로 파악됩니다.</span></p><div class="stats"><div class="stat"><div class="n">$0.74B</div><div class="l"><span class="en">Market cap (Jun 2026)</span><span class="ko">시가총액 (2026년 6월)</span></div></div><div class="stat"><div class="n">₩7.78T</div><div class="l"><span class="en">Revenue (FY2024)</span><span class="ko">매출 (2024 회계연도)</span></div></div><div class="stat"><div class="n">~3.5%</div><div class="l"><span class="en">Operating margin (FY2024)</span><span class="ko">영업이익률 (2024 회계연도)</span></div></div><div class="stat"><div class="n">~32%</div><div class="l"><span class="en">Global spandex share (2025)</span><span class="ko">세계 스판덱스 점유율 (2025년)</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — world spandex #1 under Chinese oversupply pressure</span><span class="ko">진단 — 중국 공급과잉 압박 속 스판덱스 세계 1위</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 최대 과제</span></span><p><span class="en">Hyosung TNC holds ~32% of the world spandex market under the Creora brand and is Korea's largest textile firm by revenue (~₩7.78T, FY2024).</span><span class="ko">효성티앤씨는 Creora 브랜드로 세계 스판덱스 시장의 약 32%를 점유하며 매출 기준 국내 최대 섬유 기업(약 7조 7,800억 원, 2024 회계연도)입니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">복합 요인 · 근본 원인</span></span><p><span class="en">But Chinese spandex capacity grew ~13%/yr (2020–2025) against ~8% demand, undercutting Korean pricing by an estimated 15–20% and squeezing operating margin to ~3.5%.</span><span class="ko">다만 중국 스판덱스 생산능력이 2020~2025년 연 약 13% 늘어 수요 약 8%를 웃돌면서 국내 가격을 15~20% 밑돌게 했고, 영업이익률은 약 3.5%로 압박받았습니다.</span></p><div class="formula">Value ≈ (premium spandex share × price) − (Chinese oversupply discount) + (raw-material self-sufficiency)</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설</span></span><p><span class="en">How does Hyosung TNC defend premium spandex margins against Chinese oversupply?</span><span class="ko">효성티앤씨는 중국 공급과잉에 맞서 프리미엄 스판덱스 이익을 어떻게 지킬 것인가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">답변 · 방향</span></span><p><span class="en">Internalize raw material (new ~$53M PTMG plant in Vietnam), premiumize the product mix with bio-based and recycled spandex, and ride the 2025–26 recovery as Chinese inventories fall.</span><span class="ko">원료를 내재화(베트남 PTMG 신공장 약 5,300만 달러)하고 바이오·재생 스판덱스로 믹스를 고급화하며, 중국 재고 감소에 따른 2025~26년 회복세에 올라타는 것입니다.</span></p></div></div></div></div><div class="track-grid n2"><div class="track t1"><div class="tt"><span class="en">Track 1 · Raw-material self-sufficiency</span><span class="ko">트랙 1 · 원료 내재화</span></div><div class="tn"><span class="en">Secure PTMG feedstock</span><span class="ko">PTMG 원료 확보</span></div><p><span class="en">A new ~$53M PTMG plant in Vietnam internalizes a key spandex input, cutting cost exposure to volatile feedstock markets.</span><span class="ko">베트남의 약 5,300만 달러 PTMG 신공장으로 스판덱스 핵심 원료를 내재화해 변동성 큰 원료 시장 노출을 줄이는 것입니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Premiumization</span><span class="ko">트랙 2 · 고급화</span></div><div class="tn"><span class="en">Bio-based and recycled fibers</span><span class="ko">바이오·재생 섬유</span></div><p><span class="en">Push sugarcane-based and recycled Creora and regen nylon to win sustainability-driven brand demand and escape commodity pricing.</span><span class="ko">사탕수수 기반·재생 Creora와 리젠 나일론을 확대해 지속가능성 중심 브랜드 수요를 잡고 범용 가격에서 벗어나는 것입니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">실행 계획</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Internalize spandex feedstock</span><span class="ko">스판덱스 원료 내재화</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Bought-in PTMG exposure</span><span class="ko">외부 구매 PTMG 의존</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">Captive Vietnam PTMG plant</span><span class="ko">베트남 자체 PTMG 공장</span></div></div></div><div class="ap"><div class="apt"><span class="en">Shift mix to sustainable fibers</span><span class="ko">지속가능 섬유로 믹스 이동</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Commodity spandex/nylon</span><span class="ko">범용 스판덱스·나일론</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">Bio-based and recycled Creora</span><span class="ko">바이오·재생 Creora</span></div></div></div><div class="ap"><div class="apt"><span class="en">Defend premium share in recovery</span><span class="ko">회복기 프리미엄 점유 방어</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Price war with Chinese supply</span><span class="ko">중국 물량과의 가격 경쟁</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">Differentiated, branded spandex</span><span class="ko">차별화·브랜드화 스판덱스</span></div></div></div></div></div></div>
+  </section>
+  <section id="kpi">
+    <p class="kicker"><span class="en">KPIs to watch</span><span class="ko">주시할 지표</span></p>
+    <h2><span class="en">KPIs to watch</span><span class="ko">주시할 지표</span></h2>
+    <p class="hint"><span class="en">Leading indicators with the latest reading — track these to see the industry turn before earnings confirm it.</span><span class="ko">최신 수치를 담은 선행 지표입니다. 실적이 확인하기 전에 산업의 전환을 포착하려면 이들을 주시하시기 바랍니다.</span></p>
+    <div class="kpis reveal"><div class="kpi"><div class="kt"><span class="en">Operating margin</span><span class="ko">영업이익률</span></div><div class="kv"><span class="en">3–6%</span><span class="ko">3~6%</span></div><div class="kw"><span class="en">Mid-chain textile makers run thin; watch for expansion as mix premiumizes.</span><span class="ko">중간 단계 섬유 업체의 이익률은 얇으며, 믹스 고급화에 따른 개선 여부를 주시해야 합니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Technical / specialty mix</span><span class="ko">첨단·특수섬유 비중</span></div><div class="kv"><span class="en">Rising</span><span class="ko">상승</span></div><div class="kw"><span class="en">Share of revenue from carbon fiber, aramid, spandex — the margin engine.</span><span class="ko">탄소섬유·아라미드·스판덱스가 차지하는 매출 비중으로 이익의 핵심 동력입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Capacity utilization</span><span class="ko">가동률</span></div><div class="kv"><span class="en">Key swing</span><span class="ko">핵심 변수</span></div><div class="kw"><span class="en">Commodity overcapacity (PET, viscose) drives closures; utilization signals the cycle.</span><span class="ko">PET·비스코스 등 범용 공급과잉이 폐쇄를 부르며, 가동률이 사이클을 가늠하는 지표입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">EU compliance readiness</span><span class="ko">EU 규제 대응 준비</span></div><div class="kv"><span class="en">Mandatory</span><span class="ko">필수</span></div><div class="kw"><span class="en">EPR, DPP and PFAS readiness now gates access to EU buyers and brands.</span><span class="ko">EPR·DPP·PFAS 대응 준비가 EU 구매자·브랜드 접근의 관문이 되었습니다.</span></div></div></div>
+  </section>
+  <section id="scenarios">
+    <p class="kicker"><span class="en">Scenarios — bull · base · bear</span><span class="ko">시나리오 — 낙관 · 기본 · 비관</span></p>
+    <h2><span class="en">Scenarios: bull, base, bear</span><span class="ko">시나리오: 낙관·기본·비관</span></h2>
+    <div class="scen reveal"><div class="sc bull"><div class="sh"><span class="en">Bull · upside</span><span class="ko">낙관 시나리오</span></div><div class="sd"><span class="en">Technical-fiber demand (carbon fiber, aramid, premium spandex) accelerates while Chinese commodity oversupply clears, lifting margins.</span><span class="ko">탄소섬유·아라미드·프리미엄 스판덱스 등 첨단섬유 수요가 가속되고 중국 범용 공급과잉이 해소되면서 이익률이 개선되는 시나리오입니다.</span></div><p><span class="en">Swing variable: pace of Chinese capacity rationalization and aerospace/hydrogen offtake.</span><span class="ko">핵심 변수: 중국 생산능력 합리화 속도와 항공우주·수소 장기공급입니다.</span></p></div><div class="sc base"><div class="sh"><span class="en">Base · most likely</span><span class="ko">기본 시나리오</span></div><div class="sd"><span class="en">Market compounds ~5% a year to ~$974B by 2030; commodity margins stay thin while specialty fibers and EU-compliant makers gain share.</span><span class="ko">시장이 연 약 5% 성장해 2030년 약 9,740억 달러에 이르고, 범용 이익률은 얇게 유지되는 가운데 특수섬유와 EU 규제 대응 기업이 점유를 늘리는 시나리오입니다.</span></div><p><span class="en">Swing variable: buyer cost-down pressure versus pace of premiumization.</span><span class="ko">핵심 변수: 구매자의 원가 인하 압력과 고급화 속도의 균형입니다.</span></p></div><div class="sc bear"><div class="sh"><span class="en">Bear · downside</span><span class="ko">비관 시나리오</span></div><div class="sd"><span class="en">Prolonged Chinese oversupply and weak demand deepen price wars; EU regulatory cost outruns price recovery, forcing more closures.</span><span class="ko">중국 공급과잉 장기화와 수요 부진으로 가격 경쟁이 심화되고, EU 규제 비용이 가격 회복을 앞질러 추가 폐쇄가 불가피해지는 시나리오입니다.</span></div><p><span class="en">Swing variable: feedstock and energy costs against soft end-demand.</span><span class="ko">핵심 변수: 원료·에너지 비용과 부진한 최종 수요의 충돌입니다.</span></p></div></div>
+  </section>
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크와 전망</span></p>
+      <h2><span class="en">Risks &amp; outlook</span><span class="ko">리스크와 전망</span></h2>
+      <ul class="tight"><li><span class="en">Chinese overcapacity in commodity fibers (spandex, PET, viscose) prolongs price wars and compresses margins.</span><span class="ko">범용 섬유(스판덱스·PET·비스코스)의 중국 공급과잉이 가격 경쟁을 장기화하고 이익률을 압박할 위험이 있습니다.</span></li><li><span class="en">EU regulation (EPR, ESPR, DPP, PFAS) raises compliance cost and can lock out non-compliant makers.</span><span class="ko">EU 규제(EPR·ESPR·DPP·PFAS)가 대응 비용을 높이고 미충족 기업의 시장 접근을 차단할 위험이 있습니다.</span></li><li><span class="en">Concentrated buyer power lets brands extract continuous cost-downs, keeping mid-chain margins thin.</span><span class="ko">집중된 구매자 교섭력으로 브랜드가 지속적 원가 인하를 요구해 중간 단계 이익이 얇게 유지될 위험이 있습니다.</span></li><li><span class="en">Feedstock and energy cost volatility, plus tariffs, widen the gap against low-cost Asian competitors.</span><span class="ko">원료·에너지 비용 변동성과 관세가 저비용 아시아 경쟁사 대비 격차를 키울 위험이 있습니다.</span></li></ul>
+    </div>
+  </section>
+</div>
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;"><li><a href="https://www.mordorintelligence.com/industry-reports/textile-market">Mordor Intelligence — textile market size $760.3B (2025) → $974.4B (2030), 5.09% CAGR</a></li><li><a href="https://www.precedenceresearch.com/textile-market">Precedence Research — broad-scope textile market $2,123.7B (2025), 7.35% CAGR</a></li><li><a href="https://www.grandviewresearch.com/industry-analysis/textile-market">Grand View Research — textile market size and regional split</a></li><li><a href="https://shenglufashion.com/2025/10/10/patterns-of-global-textile-and-apparel-trade-measured-by-origin-of-value-added-updated-october-2025/">Shenglu/FASH455 — China 43.3% of global textile trade by value-added (2024)</a></li><li><a href="https://euratex.eu/facts-and-key-figures/">EURATEX — EU textile sector turnover and export share (2024)</a></li><li><a href="https://www.knittingindustry.com/tracing-production-costs-in-the-primary-textile-industry/">Knitting Industry — ICRA spinning ~1% and weaving ~3% net margins; fabric cost split</a></li><li><a href="https://umbrex.com/resources/how-industries-work/manufacturing-industrial/how-the-textile-apparel-manufacturing-industry-works/">Umbrex — textile value chain, Porter's forces, KSFs and smile curve</a></li><li><a href="https://www.imarcgroup.com/south-korea-textile-market">IMARC — South Korea textile market $33.9B (2024)</a></li><li><a href="https://environment.ec.europa.eu/news/revised-waste-framework-directive-enters-force-2025-10-16_en">European Commission — revised Waste Framework Directive (mandatory textile EPR) in force 16 Oct 2025</a></li><li><a href="https://green-forum.ec.europa.eu/news/2025-2030-working-plan-2025-07-11_en">European Commission — ESPR 2025–2030 working plan naming textiles a priority (16 Apr 2025)</a></li><li><a href="https://www.echa.europa.eu/-/echa-publishes-updated-pfas-restriction-proposal">ECHA — updated REACH PFAS restriction proposal adding technical textiles (20 Aug 2025)</a></li><li><a href="https://www.reedsmith.com/our-insights/blogs/viewpoints/102l69a/always-in-season-luxury-fashion-and-the-law-france-adopts-fast-fashion-bill/">Reed Smith — France ultra-fast-fashion law, eco-modulated fees and 2026 ad ban</a></li><li><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2208051&amp;reg=6&amp;lang=1">PIB India — Ministry of Textiles year-end review 2025, PLI and PM MITRA parks</a></li><li><a href="https://www.kedglobal.com/mergers-acquisitions/newsView/ked202507290001">KED Global — Bain Capital preferred bidder for Hyosung Advanced Materials tire-cord (29 Jul 2025)</a></li><li><a href="https://www.indoramaventures.com/en/updates/press-releases/2289/indorama-ventures-reports-progress-on-ivl-20-program-to-fortify-the-business-as-industry-challenges-weigh-on-1h25-performance">Indorama Ventures — 1H25 adjusted EBITDA $606M (−21%), IVL 2.0 site rationalization (14 Aug 2025)</a></li><li><a href="https://www.compositesworld.com/news/toray-carbon-fibers-europe-starts-up-new-southwestern-france-carbon-fiber-production-unit">CompositesWorld — Toray France carbon-fiber line to 6,000 t/yr, full operation H2 2026</a></li><li><a href="https://stockanalysis.com/quote/tyo/3402/">StockAnalysis — Toray Industries market cap, revenue and employee data</a></li><li><a href="https://stockanalysis.com/quote/krx/298020/">StockAnalysis — Hyosung TNC market cap, revenue and margin data</a></li></ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Textiles (GICS 25203030) · Generated June 28, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">산업 브리프 · 섬유 (GICS 25203030) · 2026년 6월 28일 생성. 공개 출처, 반올림 적용. 정보 제공용이며 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  var saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}setLang(saved==='ko'?'ko':'en'); // default English; remembers selection
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body></html>
