@@ -168,7 +168,7 @@ MECE: "Macro forces & the latest RULES" = laws/bills/regulations ONLY (dated);
 demand, prices). No item may appear in both.
 
 Structure (analysis dominant; players secondary): (1) Header — brand "The Industry
-Brief", industry, date, "GICS day-set k of 7", and the GICS taxonomy breadcrumb (STEP 4A); (2) Executive summary (≤3 sentences, the single most important points only); (3) Definition & value chain (numbered arrow flow + profit-pool bar); (4)
+Brief", industry, date, "GICS day-set k of 7", and the GICS taxonomy breadcrumb (STEP 4A); (2) Executive summary (≤3 sentences, the single most important points only); (3) Definition & value chain (numbered arrow flow + profit-pool bar — EACH stage must show its INDICATIVE SHARE of the industry profit pool as a percentage: the .pv label reads ~NN%, the shares sum to ~100% across the listed stages, the bar width is proportional to that share, and the hi/med/lo class only tints colour by magnitude; do NOT use a generic High/Medium/Low word as the value); (4)
 Market size & growth (CAGR badge + zoomed column chart); (5) Market share (global +
 Korea pies summing to 100%); (6) Competitive positioning (2x2 SVG with Global #1 navy,
 Korea #1 red, 2-3 peers = 4 plotted points, one-line takeaway); (7) Porter's Five
