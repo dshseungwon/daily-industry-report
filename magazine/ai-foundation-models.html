@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>거대 AI 모델의 세계 · The Industry Brief</title>
+<meta name="description" content="비전공자를 위한 친절한 안내서: 파운데이션 모델, AI 비서, 그리고 OpenAI와 Claude가 경쟁하는 세계.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fcfbf7;
+    --ink:#1b1a17;
+    --mute:#6b675e;
+    --faint:#908b80;
+    --accent:#c2410c;
+    --accent-soft:#fbeee6;
+    --line:#e7e2d6;
+    --tint:#f5f1e6;
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --serif-ko:"Gowun Batang","Nanum Myeongjo",serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --sans-ko:"Apple SD Gothic Neo","Malgun Gothic","Inter",sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--sans);
+    font-size:19px;line-height:1.85;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  body.lang-ko{font-family:var(--sans-ko);}
+  svg .en,svg .ko{display:none;}
+  body.lang-en svg .en{display:inline;}
+  body.lang-ko svg .ko{display:inline;}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(194,65,12,.28);}
+  a:hover{border-bottom-color:var(--accent);}
+  .masthead{border-bottom:1px solid var(--line);background:var(--bg);
+    position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(6px);}
+  .masthead .row{max-width:920px;margin:0 auto;padding:11px 22px;
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .wordmark{font-family:var(--serif);font-weight:600;font-size:15px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink);}
+  .seclabel{font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);border:1px solid rgba(194,65,12,.35);
+    border-radius:999px;padding:3px 9px;}
+  .mh-spacer{flex:1 1 auto;}
+  .mh-meta{font-size:12px;color:var(--faint);letter-spacing:.02em;}
+  #langbtn{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.06em;
+    background:var(--ink);color:var(--bg);border:none;border-radius:999px;
+    padding:7px 14px;cursor:pointer;transition:opacity .15s;}
+  #langbtn:hover{opacity:.82;}
+  .backlink{font-size:12.5px;color:var(--mute);border:none;}
+  .backlink:hover{color:var(--accent);}
+  .col{max-width:700px;margin:0 auto;padding:0 24px;}
+  .article{padding:54px 0 30px;}
+  .eyebrow{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 22px;}
+  h1.headline{font-family:var(--serif);font-weight:500;
+    font-size:clamp(38px,8.4vw,62px);line-height:1.04;letter-spacing:-.02em;
+    margin:0 0 22px;}
+  body.lang-ko h1.headline{font-family:var(--serif-ko);font-weight:700;line-height:1.18;letter-spacing:-.01em;
+    font-size:clamp(31px,7.4vw,50px);}
+  .deck{font-family:var(--serif);font-weight:400;font-style:italic;
+    font-size:clamp(20px,3.6vw,25px);line-height:1.5;color:var(--mute);
+    margin:0 0 30px;}
+  body.lang-ko .deck{font-family:var(--serif-ko);font-style:normal;}
+  .byline{font-size:13.5px;color:var(--faint);letter-spacing:.02em;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:14px 0;margin:0 0 16px;}
+  .byline b{color:var(--ink);font-weight:600;}
+  .article p{margin:0 0 24px;}
+  body.lang-ko .article p{line-height:1.92;letter-spacing:-.003em;}
+  .lead{margin-top:34px;}
+  body.lang-en .lead::first-letter{
+    font-family:var(--serif);font-weight:500;
+    float:left;font-size:78px;line-height:.78;padding:8px 12px 0 0;color:var(--accent);}
+  body.lang-ko .lead::first-letter{
+    font-family:var(--serif-ko);font-weight:700;
+    float:left;font-size:70px;line-height:.84;padding:6px 12px 0 0;color:var(--accent);}
+  h2{font-family:var(--serif);font-weight:500;
+    font-size:clamp(26px,5vw,34px);line-height:1.16;letter-spacing:-.01em;
+    margin:52px 0 8px;}
+  body.lang-ko h2{font-family:var(--serif-ko);font-weight:700;line-height:1.32;}
+  .kicker{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 6px;display:block;}
+  h3{font-family:var(--sans);font-weight:600;font-size:18px;letter-spacing:.01em;
+    margin:34px 0 4px;}
+  hr.rule{border:none;border-top:1px solid var(--line);margin:48px auto;width:100%;}
+  .stars{text-align:center;color:var(--faint);letter-spacing:.5em;
+    font-size:14px;margin:46px 0;user-select:none;}
+  .pull{margin:42px 0;padding:6px 0 6px 26px;border-left:3px solid var(--accent);}
+  .pull p{font-family:var(--serif);font-weight:500;font-style:italic;
+    font-size:clamp(23px,4vw,29px);line-height:1.34;color:var(--ink);margin:0;}
+  body.lang-ko .pull p{font-family:var(--serif-ko);font-weight:700;font-style:normal;line-height:1.5;}
+  .callout{background:var(--tint);border:1px solid var(--line);
+    border-radius:14px;padding:22px 26px;margin:34px 0;}
+  .callout .tag{display:inline-flex;align-items:center;gap:7px;
+    font-family:var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 8px;}
+  .callout .tag::before{content:"";width:7px;height:7px;border-radius:50%;
+    background:var(--accent);display:inline-block;}
+  .callout p{font-size:17.5px;line-height:1.7;margin:0;color:var(--ink);}
+  body.lang-ko .callout p{font-size:17px;line-height:1.85;}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:30px 0;}
+  .lab{border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;background:#fff;}
+  .lab .name{font-family:var(--serif);font-weight:600;font-size:20px;margin:0 0 2px;letter-spacing:-.01em;}
+  body.lang-ko .lab .name{font-family:var(--serif-ko);font-weight:700;}
+  .lab .home{font-size:12px;color:var(--faint);margin:0 0 9px;letter-spacing:.02em;}
+  .lab .desc{font-size:14.5px;line-height:1.6;color:var(--mute);margin:0;}
+  body.lang-ko .lab .desc{font-size:14px;line-height:1.75;}
+  .lab .flag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;padding:2px 7px;border-radius:999px;margin-bottom:9px;}
+  .flag.kr{background:#fdeeee;color:#b3261e;}
+  .flag.open{background:#eaf3ec;color:#2f7d46;}
+  .flag.global{background:var(--accent-soft);color:var(--accent);}
+  figure{margin:40px 0;}
+  figure svg{width:100%;height:auto;display:block;
+    border:1px solid var(--line);border-radius:16px;background:#fff;}
+  figcaption{font-size:13px;color:var(--faint);text-align:center;margin-top:12px;
+    font-style:italic;line-height:1.5;}
+  body.lang-ko figcaption{font-style:normal;}
+  .svg-box{fill:#fdfcf8;stroke:#e7e2d6;stroke-width:1.5;}
+  .svg-box-accent{fill:var(--accent-soft);stroke:#e9c6b1;stroke-width:1.5;}
+  .svg-arrow{stroke:#c2410c;stroke-width:2;fill:none;}
+  .svg-label{font-family:var(--sans);font-size:13px;font-weight:600;fill:#1b1a17;}
+  .svg-sub{font-family:var(--sans);font-size:11px;fill:#6b675e;}
+  .svg-title{font-family:var(--sans);font-size:12px;font-weight:600;fill:#c2410c;letter-spacing:.06em;text-transform:uppercase;}
+  .svg-icon{font-size:22px;}
+  .glossary{margin:30px 0;}
+  .glossary dl{margin:0;}
+  .glossary .item{padding:18px 0;border-top:1px solid var(--line);
+    display:grid;grid-template-columns:200px 1fr;gap:20px;}
+  .glossary .item:last-child{border-bottom:1px solid var(--line);}
+  .glossary dt{font-family:var(--serif);font-weight:600;font-size:19px;margin:0;color:var(--ink);letter-spacing:-.01em;}
+  body.lang-ko .glossary dt{font-family:var(--serif-ko);font-weight:700;font-size:18px;}
+  .glossary dt .orig{display:block;font-family:var(--sans);font-size:12px;font-weight:500;color:var(--faint);letter-spacing:.02em;margin-top:2px;}
+  .glossary dd{margin:0;font-size:15.5px;line-height:1.62;color:var(--mute);}
+  body.lang-ko .glossary dd{font-size:15px;line-height:1.8;}
+  footer{border-top:1px solid var(--line);margin-top:30px;padding:38px 0 60px;}
+  footer .lab-head{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 16px;}
+  footer ol{margin:0 0 26px;padding-left:20px;}
+  footer li{font-size:13.5px;line-height:1.7;color:var(--mute);margin-bottom:7px;}
+  footer li a{word-break:break-word;}
+  .foot-note{font-size:13px;color:var(--faint);line-height:1.6;margin:0 0 18px;}
+  .foot-back{font-size:14px;}
+  @media (max-width:620px){
+    body{font-size:17.5px;}
+    .cards{grid-template-columns:1fr;}
+    .glossary .item{grid-template-columns:1fr;gap:6px;}
+    .mh-meta.hide-sm{display:none;}
+    .col{padding:0 20px;}
+  }
+</style>
+</head>
+<body class="lang-ko">
+
+<header class="masthead">
+  <div class="row">
+    <span class="wordmark">The Industry Brief</span>
+    <span class="seclabel"><span class="en">Deep Dive</span><span class="ko">딥다이브</span></span>
+    <span class="mh-spacer"></span>
+    <span class="mh-meta hide-sm">2026-06-27 &middot; <span class="en">12 min read</span><span class="ko">12분 분량</span></span>
+    <button id="langbtn" type="button" aria-label="Toggle language">
+      <span class="en">한국어</span><span class="ko">EN</span>
+    </button>
+  </div>
+</header>
+
+<div class="col">
+  <p style="margin:18px 0 0;">
+    <a class="backlink" href="../index.html">
+      <span class="en">&larr; All reports</span><span class="ko">&larr; 전체 리포트</span>
+    </a>
+  </p>
+</div>
+
+<article class="article">
+<div class="col">
+
+  <p class="eyebrow"><span class="en">Technology &middot; The AI Race</span><span class="ko">기술 &middot; AI 경쟁</span></p>
+
+  <h1 class="headline">
+    <span class="en">The Machines That Learned to Talk</span>
+    <span class="ko">말을 배운 기계들</span>
+  </h1>
+
+  <p class="deck">
+    <span class="en">A friendly field guide to foundation models, AI assistants, and the strange, fast-moving world where OpenAI and Claude compete &mdash; written for the curious non-expert.</span>
+    <span class="ko">파운데이션 모델, AI 비서, 그리고 OpenAI와 Claude가 경쟁하는 빠르고 낯선 세계로 떠나는 친절한 안내서. 전공자가 아니어도, 호기심만 있으면 충분합니다.</span>
+  </p>
+
+  <p class="byline">
+    <span class="en"><b>The Industry Brief</b> &nbsp;&middot;&nbsp; Deep Dive &nbsp;&middot;&nbsp; June 27, 2026</span>
+    <span class="ko"><b>The Industry Brief</b> &nbsp;&middot;&nbsp; 딥다이브 &nbsp;&middot;&nbsp; 2026년 6월 27일</span>
+  </p>
+
+  <p class="lead">
+    <span class="en">Sometime in the last two years, a quiet thing happened: hundreds of millions of people started talking to a computer the way they would text a clever friend. Ask it to draft an email, explain a blood test, write a poem for a retirement party, debug a stubborn spreadsheet &mdash; and it answers, in plain sentences, instantly. It feels small until you remember that for the entire history of computing before this, machines did exactly what they were told and not one word more.</span>
+    <span class="ko">지난 2년 사이, 조용하지만 거대한 일이 일어났습니다. 수억 명의 사람들이 똑똑한 친구에게 문자를 보내듯 컴퓨터에게 말을 걸기 시작한 거예요. 이메일 초안을 부탁하고, 건강검진 결과를 풀어 달라 하고, 퇴직 파티용 시 한 편을 청하고, 말 안 듣는 엑셀을 고쳐 달라고 합니다. 그러면 컴퓨터는 평범한 문장으로, 그것도 즉시 답을 내놓아요. 사소해 보이지만, 그 이전의 모든 컴퓨터 역사에서 기계는 시킨 일을 시킨 그대로만 했다는 사실을 떠올리면 이야기가 달라집니다.</span>
+  </p>
+
+  <p>
+    <span class="en">That shift is what 2025 and 2026 are really about. Not robots, not science fiction &mdash; just software that suddenly seems to understand language, and a handful of well-funded labs racing to build the smartest version of it. The numbers around the race are dizzying: ChatGPT alone is used by an estimated 800 million or more people each week, and the leading AI companies carry valuations in the tens or hundreds of billions of dollars.<sup>*</sup> But the money is the least interesting part. The interesting part is that, for the first time, a piece of software can hold a conversation.</span>
+    <span class="ko">2025년과 2026년이 진짜로 이야기하는 것은 바로 이 변화입니다. 로봇도, 공상과학도 아니에요. 그저 갑자기 언어를 이해하는 듯 보이는 소프트웨어, 그리고 그중 가장 똑똑한 버전을 만들려고 달리는 자금 넉넉한 연구소 몇 곳의 이야기입니다. 경쟁의 규모는 어지러울 정도예요. ChatGPT 하나만 해도 매주 8억 명 이상이 쓴다고 추정되고,<sup>*</sup> 선두 AI 기업들의 기업가치는 수백억에서 수천억 달러에 이릅니다. 하지만 돈은 가장 덜 흥미로운 부분이에요. 정말 흥미로운 건, 역사상 처음으로 소프트웨어가 &lsquo;대화&rsquo;를 할 수 있게 됐다는 사실입니다.</span>
+  </p>
+
+  <p>
+    <span class="en">This article is a tour of that world for someone who has not read a single research paper and does not want to. We will meet the players, peek under the hood &mdash; gently &mdash; and answer the questions a smart, busy person actually has: What is this thing? How does it know things? Can I trust it? And who, if anyone, is winning?</span>
+    <span class="ko">이 글은 논문 한 편 읽지 않았고, 앞으로도 읽고 싶지 않은 분을 위한 그 세계의 여행 안내서입니다. 주요 선수들을 만나고, 보닛 아래를 살짝&mdash;아주 부드럽게&mdash;들여다보고, 똑똑하지만 바쁜 사람이 실제로 궁금해하는 질문에 답할 거예요. 이게 대체 뭔가요? 어떻게 아는 거죠? 믿어도 되나요? 그리고 도대체 누가 이기고 있나요?</span>
+  </p>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">First, the big word</span><span class="ko">먼저, 그 거창한 단어</span></span>
+  <h2>
+    <span class="en">What even is a &ldquo;foundation model&rdquo;?</span>
+    <span class="ko">대체 &lsquo;파운데이션 모델&rsquo;이 뭔가요?</span>
+  </h2>
+
+  <p>
+    <span class="en">You will hear the phrase everywhere, so let us defuse it. A <b>foundation model</b> is one very large, general-purpose AI that has read an enormous amount of text (and increasingly images, audio, and code), and in doing so has absorbed the patterns of how language &mdash; and the world described by language &mdash; tends to fit together. It is called a &ldquo;foundation&rdquo; because it is not built for one job. It is a base layer that many different products can be built on top of: a chatbot, a coding helper, a customer-service agent, a translation tool.</span>
+    <span class="ko">이 단어는 어디서나 들리니, 먼저 긴장을 풀어 봅시다. <b>파운데이션 모델(foundation model)</b>이란, 어마어마한 양의 글(점점 더 이미지, 소리, 코드까지)을 읽으면서 언어가&mdash;그리고 언어로 묘사된 세상이&mdash;서로 어떻게 맞물리는지 그 패턴을 빨아들인, 아주 크고 범용적인 AI 하나를 말합니다. &lsquo;파운데이션(토대)&rsquo;이라 부르는 이유는, 한 가지 일만 하려고 만든 게 아니기 때문이에요. 챗봇, 코딩 도우미, 고객 상담 직원, 번역기 등 수많은 제품을 그 위에 얹어 지을 수 있는 &lsquo;기초 층&rsquo;인 셈이죠.</span>
+  </p>
+
+  <div class="callout">
+    <span class="tag"><span class="en">In plain terms</span><span class="ko">쉽게 말하면</span></span>
+    <p>
+      <span class="en">Think of a foundation model as a brilliant intern who has read most of the public internet but has never had a job. Out of the box, they know a staggering amount about everything and nothing about your specific needs. The whole industry is a contest over (a) how good that intern is, and (b) how cleverly you can put them to work.</span>
+      <span class="ko">파운데이션 모델을 &lsquo;인터넷 대부분을 읽었지만 아직 한 번도 취직해 본 적 없는 천재 인턴&rsquo;이라고 생각해 보세요. 처음 만났을 땐 모든 분야를 놀랄 만큼 많이 알지만, 정작 &lsquo;당신&rsquo;에게 필요한 구체적인 일은 하나도 모릅니다. 이 산업 전체는 결국 두 가지를 둘러싼 경쟁이에요. (a) 그 인턴이 얼마나 똑똑한가, 그리고 (b) 그를 얼마나 영리하게 부려먹느냐.</span>
+    </p>
+  </div>
+
+  <p>
+    <span class="en">The technology underneath has a name &mdash; the <i>transformer</i> &mdash; and a famous origin: a 2017 research paper from Google. But you do not need the math. What matters is the recipe, which turned out to be shockingly simple and shockingly scalable: take a huge model, feed it a huge amount of text, and have it play one endless game &mdash; <i>guess the next word</i>. Do that billions of times and something surprising emerges. To guess the next word well, the model is quietly forced to learn grammar, facts, reasoning, tone, and the rhythms of a good explanation.</span>
+    <span class="ko">그 밑에 깔린 기술에는 이름이 있어요. 바로 <i>트랜스포머(transformer)</i>이고, 2017년 구글의 한 논문에서 유명해졌습니다. 하지만 수학은 몰라도 됩니다. 중요한 건 의외로 단순하고, 의외로 잘 확장되는 그 &lsquo;레시피&rsquo;예요. 거대한 모델을 가져와, 어마어마한 양의 글을 먹이고, 끝없는 게임 하나를 시키는 겁니다. 바로 &lsquo;다음 단어 맞히기&rsquo;. 이걸 수십억 번 반복하면 놀라운 일이 벌어져요. 다음 단어를 잘 맞히려면, 모델은 자기도 모르게 문법과 사실, 추론, 말투, 그리고 좋은 설명의 리듬까지 익혀야 하거든요.</span>
+  </p>
+
+  <div class="pull">
+    <p>
+      <span class="en">To guess the next word well enough, a machine had to accidentally learn to think out loud.</span>
+      <span class="ko">다음 단어를 충분히 잘 맞히려다, 기계는 얼떨결에 &lsquo;소리 내어 생각하는 법&rsquo;을 배우고 말았습니다.</span>
+    </p>
+  </div>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">The cast</span><span class="ko">등장인물</span></span>
+  <h2>
+    <span class="en">Who is in the race</span>
+    <span class="ko">누가 이 경주에 있나</span>
+  </h2>
+
+  <p>
+    <span class="en">A small number of labs are doing most of the frontier work, each with its own personality, business model, and bet about the future. Here they are as characters &mdash; described as neutrally as I can manage, because honestly, the field is moving too fast for hero-worship.</span>
+    <span class="ko">최전선의 연구 대부분은 소수의 연구소가 맡고 있고, 저마다 성격도, 사업 모델도, 미래에 거는 베팅도 다릅니다. 이들을 등장인물처럼 소개할게요. 최대한 중립적으로요. 솔직히 이 분야는 누군가를 영웅으로 떠받들기엔 너무 빨리 움직이니까요.</span>
+  </p>
+
+  <div class="cards">
+    <div class="lab">
+      <span class="flag global"><span class="en">Global</span><span class="ko">글로벌</span></span>
+      <p class="name">OpenAI</p>
+      <p class="home">ChatGPT &middot; GPT</p>
+      <p class="desc"><span class="en">The lab that made AI mainstream. ChatGPT turned chatbots into a household habit; OpenAI tends to ship fast and set the pace the others react to. Closed models, deep ties to Microsoft.</span><span class="ko">AI를 대중화한 곳. ChatGPT로 챗봇을 일상 습관으로 만들었어요. 빠르게 출시하며 경쟁자들이 반응할 속도를 정하는 편입니다. 비공개 모델, 마이크로소프트와 깊은 협력 관계.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag global"><span class="en">Global</span><span class="ko">글로벌</span></span>
+      <p class="name">Anthropic</p>
+      <p class="home">Claude</p>
+      <p class="desc"><span class="en">Founded by former OpenAI researchers, with safety and reliability as its stated north star. Claude is widely used for writing and coding. Closed models, backed by Amazon and Google.</span><span class="ko">전 OpenAI 연구진이 세웠고, &lsquo;안전성과 신뢰성&rsquo;을 공식 지향점으로 내세웁니다. Claude는 글쓰기와 코딩에 널리 쓰여요. 비공개 모델, 아마존과 구글의 투자.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag global"><span class="en">Global</span><span class="ko">글로벌</span></span>
+      <p class="name">Google DeepMind</p>
+      <p class="home">Gemini</p>
+      <p class="desc"><span class="en">The incumbent giant. Gemini is woven into Search, Android, and Workspace, giving Google enormous distribution and its own AI chips to run it all.</span><span class="ko">기존의 거인. Gemini는 검색, 안드로이드, 워크스페이스에 녹아들어 있어 막대한 보급력을 자랑하고, 이를 돌릴 자체 AI 칩까지 갖췄습니다.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag open"><span class="en">Open weights</span><span class="ko">오픈 웨이트</span></span>
+      <p class="name">Meta</p>
+      <p class="home">Llama</p>
+      <p class="desc"><span class="en">The big &ldquo;open&rdquo; player. Meta releases the Llama models for others to download and run themselves, which made strong AI far cheaper and more widely available.</span><span class="ko">대표적인 &lsquo;오픈&rsquo; 진영. 메타는 Llama 모델을 누구나 내려받아 직접 돌릴 수 있게 공개해, 강력한 AI를 훨씬 저렴하고 폭넓게 만들었습니다.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag global"><span class="en">Global</span><span class="ko">글로벌</span></span>
+      <p class="name">xAI</p>
+      <p class="home">Grok</p>
+      <p class="desc"><span class="en">Elon Musk's entrant, tightly linked to X (formerly Twitter). Grok leans into real-time, less-filtered responses and very large computing clusters.</span><span class="ko">일론 머스크의 참가자로, X(옛 트위터)와 긴밀히 연결돼 있어요. Grok은 실시간성과 덜 걸러진 답변, 그리고 초대형 연산 클러스터를 강조합니다.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag open"><span class="en">Open weights</span><span class="ko">오픈 웨이트</span></span>
+      <p class="name">DeepSeek &middot; Mistral</p>
+      <p class="home"><span class="en">China &middot; France</span><span class="ko">중국 &middot; 프랑스</span></p>
+      <p class="desc"><span class="en">Efficiency upstarts. DeepSeek (China) shocked the field by matching top models at a fraction of the cost; Mistral (France) is Europe's leading open-weight lab.</span><span class="ko">효율성으로 떠오른 신예들. DeepSeek(중국)은 최상위 모델급 성능을 훨씬 적은 비용으로 내며 업계를 놀라게 했고, Mistral(프랑스)은 유럽을 대표하는 오픈 웨이트 연구소입니다.</span></p>
+    </div>
+  </div>
+
+  <h3>
+    <span class="en">And Korea is very much in this</span>
+    <span class="ko">그리고 한국도 분명히 이 안에 있습니다</span>
+  </h3>
+  <p>
+    <span class="en">It would be easy to read all of this as an American story, but Korea has built serious models of its own &mdash; partly because a model trained mostly on English does not fully &ldquo;think&rdquo; in Korean, and language sovereignty matters.</span>
+    <span class="ko">이 모든 걸 미국 이야기로만 읽기 쉽지만, 한국도 자체적으로 진지한 모델들을 만들어 왔습니다. 영어 위주로 학습한 모델은 한국어로 완전히 &lsquo;사고&rsquo;하지 못하기도 하고, 언어 주권이라는 문제도 걸려 있으니까요.</span>
+  </p>
+
+  <div class="cards">
+    <div class="lab">
+      <span class="flag kr"><span class="en">Korea</span><span class="ko">한국</span></span>
+      <p class="name">Naver</p>
+      <p class="home">HyperCLOVA X</p>
+      <p class="desc"><span class="en">Korea's most prominent home-grown foundation model, built to be deeply fluent in Korean language and context.</span><span class="ko">한국어와 한국적 맥락에 깊이 능통하도록 만든, 국내 대표 자체 파운데이션 모델.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag kr"><span class="en">Korea</span><span class="ko">한국</span></span>
+      <p class="name">LG AI Research</p>
+      <p class="home">EXAONE</p>
+      <p class="desc"><span class="en">LG's model family, aimed at enterprise and scientific/industrial use, with open releases of some versions.</span><span class="ko">LG의 모델 제품군. 기업용과 과학&middot;산업 분야를 겨냥하고, 일부 버전은 공개로 풀었습니다.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag kr"><span class="en">Korea</span><span class="ko">한국</span></span>
+      <p class="name">Upstage</p>
+      <p class="home">Solar</p>
+      <p class="desc"><span class="en">A nimble startup whose compact &ldquo;Solar&rdquo; models punch above their weight, popular for efficient deployment.</span><span class="ko">날렵한 스타트업. 작지만 체급 이상의 성능을 내는 &lsquo;Solar&rsquo; 모델로, 효율적인 도입처에서 인기입니다.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag kr"><span class="en">Korea</span><span class="ko">한국</span></span>
+      <p class="name">Kakao</p>
+      <p class="home">Kanana</p>
+      <p class="desc"><span class="en">Kakao is building models tied to its messaging and services ecosystem, where most of Korea already lives day-to-day.</span><span class="ko">대부분의 한국인이 일상을 보내는 메신저&middot;서비스 생태계에 묶인 모델을 개발 중입니다.</span></p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="tag"><span class="en">In plain terms</span><span class="ko">쉽게 말하면</span></span>
+    <p>
+      <span class="en">There are really two camps. <b>Closed</b> labs (OpenAI, Anthropic, Google) keep the model locked behind a website or app &mdash; you rent access. <b>Open-weight</b> labs (Meta, Mistral, DeepSeek, and some Korean releases) publish the model itself, so anyone can download it and run it privately. Closed tends to be more polished; open tends to be cheaper, more customizable, and more transparent. Neither is &ldquo;right&rdquo; &mdash; it is a genuine fork in the road.</span>
+      <span class="ko">결국 두 진영이 있습니다. <b>비공개</b> 연구소(OpenAI, Anthropic, 구글)는 모델을 웹사이트나 앱 뒤에 잠가 두고, 사용자는 접근 권한을 &lsquo;빌려&rsquo; 씁니다. <b>오픈 웨이트</b> 연구소(메타, Mistral, DeepSeek, 그리고 일부 한국 모델)는 모델 자체를 공개해, 누구나 내려받아 자기 서버에서 돌릴 수 있어요. 비공개는 대체로 더 매끈하고, 오픈은 대체로 더 싸고 자유롭게 고칠 수 있으며 투명합니다. 어느 쪽이 &lsquo;정답&rsquo;은 아니에요. 진짜 갈림길인 거죠.</span>
+    </p>
+  </div>
+
+  <div class="stars">&#10086; &nbsp; &#10086; &nbsp; &#10086;</div>
+
+  <span class="kicker"><span class="en">Under the hood</span><span class="ko">보닛 아래</span></span>
+  <h2>
+    <span class="en">How are these things actually built?</span>
+    <span class="ko">이것들은 실제로 어떻게 만들어질까요?</span>
+  </h2>
+
+  <p>
+    <span class="en">Building one of these models happens in three rough stages, and the everyday-life version is easy to picture. First, <b>pretraining</b>: the model reads a colossal pile of text and just plays &ldquo;guess the next word&rdquo; until it has soaked up the patterns of language &mdash; this is the expensive, months-long part that requires warehouses of specialized chips. Then, <b>fine-tuning</b>: it is shown lots of examples of helpful, well-formatted answers, the way you would train a new hire by showing them good past work. Finally, <b>alignment</b>: humans rate the model's responses &mdash; this one is helpful, that one is rude or wrong &mdash; and the model is nudged toward the helpful, honest, harmless end of the spectrum. Manners, basically.</span>
+    <span class="ko">이런 모델을 만드는 과정은 크게 세 단계로 나뉘고, 일상에 빗대면 그림이 쉽게 그려집니다. 첫째는 <b>사전학습(pretraining)</b>. 모델이 거대한 글더미를 읽으며 &lsquo;다음 단어 맞히기&rsquo;를 끝없이 하다 언어의 패턴을 흠뻑 빨아들이는 단계예요. 특수 칩으로 가득 찬 데이터센터가 필요하고 몇 달이 걸리는, 가장 돈이 많이 드는 부분입니다. 둘째는 <b>미세조정(fine-tuning)</b>. 도움이 되고 잘 정리된 답변 예시를 잔뜩 보여 주는 단계로, 신입에게 좋은 과거 작업물을 보여 주며 가르치는 것과 같아요. 셋째는 <b>정렬(alignment)</b>. 사람들이 모델의 답에 점수를 매기고&mdash;이건 도움이 되고, 저건 무례하거나 틀렸다&mdash;도움되고 정직하고 해롭지 않은 쪽으로 모델을 슬쩍 밀어 줍니다. 한마디로 &lsquo;예절 교육&rsquo;이죠.</span>
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg" role="img">
+      <text x="360" y="26" text-anchor="middle" class="svg-title"><tspan class="en">How a model is built</tspan><tspan class="ko">모델이 만들어지는 법</tspan></text>
+      <rect x="22" y="56" width="150" height="118" rx="16" class="svg-box"/>
+      <text x="97" y="92" text-anchor="middle" class="svg-icon">&#128218;</text>
+      <text x="97" y="128" text-anchor="middle" class="svg-label"><tspan class="en">Reads tons</tspan><tspan class="ko">엄청난 양의</tspan></text>
+      <text x="97" y="146" text-anchor="middle" class="svg-label"><tspan class="en">of text</tspan><tspan class="ko">글을 읽고</tspan></text>
+      <text x="97" y="164" text-anchor="middle" class="svg-sub"><tspan class="en">pretraining</tspan><tspan class="ko">사전학습</tspan></text>
+      <rect x="200" y="56" width="150" height="118" rx="16" class="svg-box"/>
+      <text x="275" y="92" text-anchor="middle" class="svg-icon">&#129513;</text>
+      <text x="275" y="128" text-anchor="middle" class="svg-label"><tspan class="en">Learns the</tspan><tspan class="ko">패턴을</tspan></text>
+      <text x="275" y="146" text-anchor="middle" class="svg-label"><tspan class="en">patterns</tspan><tspan class="ko">익히고</tspan></text>
+      <text x="275" y="164" text-anchor="middle" class="svg-sub"><tspan class="en">fine-tuning</tspan><tspan class="ko">미세조정</tspan></text>
+      <rect x="378" y="56" width="150" height="118" rx="16" class="svg-box"/>
+      <text x="453" y="92" text-anchor="middle" class="svg-icon">&#129309;</text>
+      <text x="453" y="128" text-anchor="middle" class="svg-label"><tspan class="en">Taught good</tspan><tspan class="ko">좋은 매너를</tspan></text>
+      <text x="453" y="146" text-anchor="middle" class="svg-label"><tspan class="en">manners</tspan><tspan class="ko">배운 뒤</tspan></text>
+      <text x="453" y="164" text-anchor="middle" class="svg-sub"><tspan class="en">alignment</tspan><tspan class="ko">정렬</tspan></text>
+      <rect x="556" y="56" width="142" height="118" rx="16" class="svg-box-accent"/>
+      <text x="627" y="92" text-anchor="middle" class="svg-icon">&#128172;</text>
+      <text x="627" y="128" text-anchor="middle" class="svg-label"><tspan class="en">Helpful</tspan><tspan class="ko">도움되는</tspan></text>
+      <text x="627" y="146" text-anchor="middle" class="svg-label"><tspan class="en">assistant</tspan><tspan class="ko">AI 비서</tspan></text>
+      <path d="M174 115 H198" class="svg-arrow" marker-end="url(#ah)"/>
+      <path d="M352 115 H376" class="svg-arrow" marker-end="url(#ah)"/>
+      <path d="M530 115 H554" class="svg-arrow" marker-end="url(#ah)"/>
+      <defs>
+        <marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto">
+          <path d="M0 0 L9 4.5 L0 9 z" fill="#c2410c"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>
+      <span class="en">From a pile of text to a polite assistant, in three stages.</span>
+      <span class="ko">글더미에서 예의 바른 AI 비서까지, 세 단계로.</span>
+    </figcaption>
+  </figure>
+
+  <div class="callout">
+    <span class="tag"><span class="en">In plain terms</span><span class="ko">쉽게 말하면</span></span>
+    <p>
+      <span class="en">Pretraining is reading the whole library. Fine-tuning is studying for a specific job. Alignment is learning to be polite and honest about it. The first stage costs a fortune; the last stage is what makes the model pleasant to talk to.</span>
+      <span class="ko">사전학습은 도서관 전체를 읽는 것, 미세조정은 특정 직무를 위해 공부하는 것, 정렬은 그 과정에서 정중하고 정직하게 구는 법을 배우는 것입니다. 첫 단계는 막대한 돈이 들고, 마지막 단계는 그 모델과 대화하는 일을 기분 좋게 만들어 주죠.</span>
+    </p>
+  </div>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">The centerpiece</span><span class="ko">이 글의 핵심</span></span>
+  <h2>
+    <span class="en">But how does it know about <em>my</em> stuff, or today's news?</span>
+    <span class="ko">그런데 <em>내</em> 자료나 오늘 뉴스는 어떻게 알죠?</span>
+  </h2>
+
+  <p>
+    <span class="en">Here is the catch that trips up newcomers. A foundation model's knowledge is frozen at the moment its training ended. It has not read your company's internal documents, your medical history, or this morning's headlines. So if you ask about something private or recent, a raw model has two bad options: admit it does not know, or &mdash; worse &mdash; confidently make something up. That confident invention has a name: a <b>hallucination</b>.</span>
+    <span class="ko">여기서 초심자들이 자주 걸려 넘어집니다. 파운데이션 모델의 지식은 학습이 끝난 그 순간에 얼어붙어 있어요. 당신 회사의 내부 문서도, 당신의 진료 기록도, 오늘 아침 헤드라인도 읽은 적이 없습니다. 그래서 사적이거나 최신인 무언가를 물으면, 날것의 모델에겐 두 가지 나쁜 선택지밖에 없어요. 모른다고 인정하거나&mdash;더 나쁘게는&mdash;자신만만하게 지어내거나. 이 자신만만한 창작에는 이름이 있습니다. 바로 <b>환각(hallucination)</b>이에요.</span>
+  </p>
+
+  <p>
+    <span class="en">The fix is the single most important idea for a non-expert to understand, and it is wonderfully intuitive. It is called <b>RAG</b> &mdash; Retrieval-Augmented Generation &mdash; and the best way to picture it is a librarian.</span>
+    <span class="ko">그 해법은 비전공자가 이해할 가치가 있는 가장 중요한 아이디어 하나인데, 놀랍도록 직관적입니다. 이름은 <b>RAG</b>&mdash;검색 증강 생성(Retrieval-Augmented Generation)&mdash;이고, 가장 좋은 비유는 &lsquo;사서&rsquo;예요.</span>
+  </p>
+
+  <div class="pull">
+    <p>
+      <span class="en">Instead of trusting the AI to remember everything, you give it a librarian and a trusted bookshelf.</span>
+      <span class="ko">AI가 모든 걸 기억하길 바라는 대신, 사서 한 명과 믿을 만한 책장 하나를 쥐여 주는 겁니다.</span>
+    </p>
+  </div>
+
+  <p>
+    <span class="en">Imagine you ask the AI a question about your company's refund policy. With RAG, the system does not rely on the model's frozen memory. Instead, your question is handed to a &ldquo;librarian&rdquo; that races off to a curated bookshelf &mdash; your real documents, today's data, whatever trusted source you have connected &mdash; and pulls out the few pages that actually answer it. Those pages are slipped to the model along with your question, and only <i>then</i> does it write its reply, grounded in what it just read. Crucially, it can cite the source, so you can check.</span>
+    <span class="ko">AI에게 회사의 환불 정책을 물었다고 해 봅시다. RAG에서는 시스템이 모델의 얼어붙은 기억에 의존하지 않아요. 대신 당신의 질문을 &lsquo;사서&rsquo;에게 넘기면, 사서가 잘 정리된 책장&mdash;당신의 진짜 문서, 오늘의 데이터, 당신이 연결해 둔 믿을 만한 출처&mdash;으로 달려가 실제로 답이 되는 몇 페이지를 뽑아 옵니다. 그 페이지들이 질문과 함께 모델에게 건네지고, 그 <i>다음에야</i> 모델은 방금 읽은 내용에 근거해 답을 씁니다. 무엇보다, 출처를 함께 댈 수 있어 당신이 직접 확인할 수 있어요.</span>
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img">
+      <text x="360" y="26" text-anchor="middle" class="svg-title"><tspan class="en">RAG, explained by a librarian</tspan><tspan class="ko">사서로 설명하는 RAG</tspan></text>
+      <rect x="24" y="118" width="124" height="76" rx="16" class="svg-box"/>
+      <text x="86" y="150" text-anchor="middle" class="svg-icon">&#128587;</text>
+      <text x="86" y="178" text-anchor="middle" class="svg-label"><tspan class="en">Your question</tspan><tspan class="ko">당신의 질문</tspan></text>
+      <rect x="196" y="118" width="140" height="76" rx="16" class="svg-box"/>
+      <text x="266" y="150" text-anchor="middle" class="svg-icon">&#128214;</text>
+      <text x="266" y="178" text-anchor="middle" class="svg-label"><tspan class="en">Librarian fetches</tspan><tspan class="ko">사서가 찾아오고</tspan></text>
+      <rect x="196" y="222" width="140" height="62" rx="14" class="svg-box-accent"/>
+      <text x="266" y="248" text-anchor="middle" class="svg-icon">&#128218;</text>
+      <text x="266" y="272" text-anchor="middle" class="svg-sub"><tspan class="en">trusted bookshelf</tspan><tspan class="ko">믿을 수 있는 책장</tspan></text>
+      <rect x="384" y="118" width="140" height="76" rx="16" class="svg-box"/>
+      <text x="454" y="150" text-anchor="middle" class="svg-icon">&#129302;</text>
+      <text x="454" y="178" text-anchor="middle" class="svg-label"><tspan class="en">AI reads pages</tspan><tspan class="ko">AI가 그걸 읽고</tspan></text>
+      <rect x="572" y="118" width="124" height="76" rx="16" class="svg-box-accent"/>
+      <text x="634" y="150" text-anchor="middle" class="svg-icon">&#9989;</text>
+      <text x="634" y="172" text-anchor="middle" class="svg-label"><tspan class="en">Answer</tspan><tspan class="ko">근거 있는 답</tspan></text>
+      <text x="634" y="188" text-anchor="middle" class="svg-sub"><tspan class="en">with sources</tspan><tspan class="ko">+ 출처</tspan></text>
+      <path d="M150 156 H194" class="svg-arrow" marker-end="url(#ah2)"/>
+      <path d="M266 196 V220" class="svg-arrow" marker-end="url(#ah2)"/>
+      <path d="M338 156 H382" class="svg-arrow" marker-end="url(#ah2)"/>
+      <path d="M526 156 H570" class="svg-arrow" marker-end="url(#ah2)"/>
+      <defs>
+        <marker id="ah2" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto">
+          <path d="M0 0 L9 4.5 L0 9 z" fill="#c2410c"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>
+      <span class="en">The question sends a librarian to a trusted shelf; the AI answers from the pages it brings back.</span>
+      <span class="ko">질문이 사서를 믿을 만한 책장으로 보내고, AI는 사서가 가져온 페이지를 근거로 답합니다.</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    <span class="en">Why does this matter so much? Because it tackles the two biggest weaknesses at once. It cuts down hallucinations &mdash; the model is reading from real pages instead of guessing &mdash; and it lets the AI work with fresh, private, or specialized knowledge it was never trained on, without the eye-watering cost of retraining the whole model. Almost every serious business AI product you will meet &mdash; a help desk that knows your account, a legal tool that cites real cases, a research assistant that links its sources &mdash; is RAG underneath.</span>
+    <span class="ko">이게 왜 그렇게 중요할까요? 가장 큰 약점 두 가지를 한 번에 잡기 때문입니다. 환각을 줄여 주고&mdash;모델이 짐작 대신 실제 페이지를 읽으니까요&mdash;학습한 적 없는 최신&middot;사적&middot;전문 지식을, 모델 전체를 다시 학습시키는 막대한 비용 없이 다룰 수 있게 해 줘요. 당신이 만나게 될 진지한 업무용 AI 제품 거의 전부&mdash;당신 계정을 아는 헬프데스크, 실제 판례를 인용하는 법률 도구, 출처를 링크해 주는 리서치 비서&mdash;가 알고 보면 RAG로 움직입니다.</span>
+  </p>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">The next step</span><span class="ko">다음 단계</span></span>
+  <h2>
+    <span class="en">When AI starts <em>doing</em> things: agents</span>
+    <span class="ko">AI가 무언가를 <em>직접 하기</em> 시작할 때: 에이전트</span>
+  </h2>
+
+  <p>
+    <span class="en">So far the AI has been a talker. The frontier of 2026 is making it a <b>doer</b>. An <b>agent</b> is an AI that can use <i>tools</i> &mdash; search the web, run code, send an email, book a meeting, query a database &mdash; and, crucially, work in a loop: try a step, look at the result, decide what to do next, repeat, until the job is done. Less &ldquo;answer my question&rdquo;, more &ldquo;handle this task for me.&rdquo;</span>
+    <span class="ko">지금까지 AI는 &lsquo;말하는 자&rsquo;였습니다. 2026년의 최전선은 이걸 &lsquo;<b>하는 자</b>&rsquo;로 만드는 일이에요. <b>에이전트(agent)</b>란 <i>도구</i>를 쓸 줄 아는 AI입니다. 웹을 검색하고, 코드를 실행하고, 이메일을 보내고, 회의를 잡고, 데이터베이스에 질의하죠. 그리고 무엇보다, &lsquo;반복 루프&rsquo;로 일합니다. 한 단계를 시도하고, 결과를 보고, 다음에 뭘 할지 정하고, 다시 반복하길 일이 끝날 때까지 이어 가요. &lsquo;내 질문에 답해 줘&rsquo;보다는, &lsquo;이 일을 대신 처리해 줘&rsquo;에 가깝습니다.</span>
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 720 210" xmlns="http://www.w3.org/2000/svg" role="img">
+      <text x="360" y="26" text-anchor="middle" class="svg-title"><tspan class="en">An agent works in a loop</tspan><tspan class="ko">에이전트는 루프로 일한다</tspan></text>
+      <rect x="60" y="74" width="150" height="74" rx="16" class="svg-box"/>
+      <text x="135" y="106" text-anchor="middle" class="svg-icon">&#129504;</text>
+      <text x="135" y="132" text-anchor="middle" class="svg-label"><tspan class="en">Think / plan</tspan><tspan class="ko">생각하고</tspan></text>
+      <rect x="285" y="74" width="150" height="74" rx="16" class="svg-box-accent"/>
+      <text x="360" y="106" text-anchor="middle" class="svg-icon">&#128296;</text>
+      <text x="360" y="132" text-anchor="middle" class="svg-label"><tspan class="en">Use a tool</tspan><tspan class="ko">도구를 쓰고</tspan></text>
+      <rect x="510" y="74" width="150" height="74" rx="16" class="svg-box"/>
+      <text x="585" y="106" text-anchor="middle" class="svg-icon">&#128064;</text>
+      <text x="585" y="132" text-anchor="middle" class="svg-label"><tspan class="en">Check result</tspan><tspan class="ko">결과를 확인</tspan></text>
+      <path d="M212 111 H283" class="svg-arrow" marker-end="url(#ah3)"/>
+      <path d="M437 111 H508" class="svg-arrow" marker-end="url(#ah3)"/>
+      <path d="M585 150 V178 H135 V150" class="svg-arrow" marker-end="url(#ah3)"/>
+      <text x="360" y="198" text-anchor="middle" class="svg-sub"><tspan class="en">repeat until the task is done</tspan><tspan class="ko">일이 끝날 때까지 반복</tspan></text>
+      <defs>
+        <marker id="ah3" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto">
+          <path d="M0 0 L9 4.5 L0 9 z" fill="#c2410c"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>
+      <span class="en">Think, act, observe &mdash; then loop. That cycle is what turns a chatbot into an assistant that gets things done.</span>
+      <span class="ko">생각하고, 행동하고, 관찰하고&mdash;다시 반복. 이 순환이 챗봇을 &lsquo;일을 끝내는 비서&rsquo;로 바꿉니다.</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    <span class="en">Agents are exciting and genuinely unfinished. Giving software the power to act in the real world raises real questions about reliability and safety &mdash; you want it to book the right flight, not an expensive wrong one. Expect this to be where a lot of the 2026&ndash;2027 progress, and a lot of the careful caution, lives.</span>
+    <span class="ko">에이전트는 흥미롭지만 솔직히 아직 미완성입니다. 소프트웨어에 현실 세계에서 행동할 힘을 주는 일은 신뢰성과 안전에 관한 진짜 질문을 불러와요. 비싼 엉뚱한 항공권이 아니라 제대로 된 항공권을 예약하길 바라니까요. 2026~2027년의 많은 진전과, 또 많은 신중함이 바로 이 지점에 머물 거라 예상합니다.</span>
+  </p>
+
+  <div class="stars">&#10086; &nbsp; &#10086; &nbsp; &#10086;</div>
+
+  <span class="kicker"><span class="en">The stakes</span><span class="ko">진짜 판돈</span></span>
+  <h2>
+    <span class="en">So who wins?</span>
+    <span class="ko">그래서, 누가 이길까요?</span>
+  </h2>
+
+  <p>
+    <span class="en">If you want a single tidy winner, the honest answer is: nobody knows, and &ldquo;winning&rdquo; may not even mean one company. But the contest is being fought on a few clear fronts, and once you see them, the headlines make more sense.</span>
+    <span class="ko">깔끔한 단일 우승자를 원한다면, 솔직한 답은 이렇습니다. 아무도 모르고, 애초에 &lsquo;승리&rsquo;가 한 회사를 뜻하지 않을 수도 있어요. 다만 이 경쟁은 몇 개의 분명한 전선에서 벌어지고 있고, 그것만 보이기 시작하면 뉴스 헤드라인이 훨씬 잘 읽힙니다.</span>
+  </p>
+
+  <p>
+    <span class="en"><b>Computing power.</b> Training frontier models needs vast clusters of specialized chips that cost billions and burn serious electricity. That is why chipmakers and data-center builders have become some of the most valuable companies on earth, and why &ldquo;who has the compute&rdquo; is half the story.</span>
+    <span class="ko"><b>연산 능력.</b> 최전선 모델을 학습시키려면 수십억 달러짜리에 막대한 전기를 먹는 특수 칩 클러스터가 필요합니다. 칩 제조사와 데이터센터 건설사가 지구상 가장 비싼 기업 축에 든 이유, 그리고 &lsquo;누가 연산력을 쥐고 있느냐&rsquo;가 이야기의 절반인 이유가 여기 있어요.</span>
+  </p>
+
+  <p>
+    <span class="en"><b>Distribution.</b> A great model nobody opens loses to a decent model already inside the app a billion people use every day. This is Google's and Meta's and Kakao's quiet advantage: they do not have to win you over &mdash; they are already on your phone.</span>
+    <span class="ko"><b>보급력(유통).</b> 아무도 열어 보지 않는 훌륭한 모델은, 이미 10억 명이 매일 쓰는 앱 안에 들어 있는 괜찮은 모델에게 집니다. 구글과 메타, 카카오의 조용한 강점이 바로 이거예요. 굳이 당신을 설득할 필요가 없습니다. 이미 당신 휴대폰 안에 들어 있으니까요.</span>
+  </p>
+
+  <p>
+    <span class="en"><b>Open vs. closed, and safety.</b> Open-weight models keep prices falling and let anyone build; closed labs argue that keeping powerful models controlled is safer. Underneath sits the genuine, unresolved question of how to make these systems reliable and hard to misuse &mdash; the part that is not a marketing slogan but an actual open problem.</span>
+    <span class="ko"><b>오픈 대 비공개, 그리고 안전.</b> 오픈 웨이트 모델은 가격을 계속 떨어뜨리고 누구나 만들 수 있게 합니다. 비공개 연구소는 강력한 모델을 통제 아래 두는 편이 더 안전하다고 주장하고요. 그 밑에는 진짜로 풀리지 않은 질문이 깔려 있어요. 이 시스템들을 어떻게 신뢰할 수 있고 악용하기 어렵게 만들 것인가&mdash;마케팅 구호가 아니라 실제로 열려 있는 난제입니다.</span>
+  </p>
+
+  <div class="callout">
+    <span class="tag"><span class="en">In plain terms</span><span class="ko">쉽게 말하면</span></span>
+    <p>
+      <span class="en">It is less a boxing match with one champion and more an ecosystem settling into layers &mdash; chipmakers, model labs, and the apps you actually use. The likeliest outcome is not one winner but a handful of strong players, with prices falling and the technology quietly seeping into everything.</span>
+      <span class="ko">한 명의 챔피언을 가리는 권투 시합이라기보다, 칩 제조사 &mdash; 모델 연구소 &mdash; 당신이 실제로 쓰는 앱이라는 층위로 자리 잡아 가는 생태계에 가깝습니다. 가장 그럴듯한 결말은 단 하나의 승자가 아니라 몇몇 강자가 공존하고, 가격은 내려가며, 기술이 모든 것에 조용히 스며드는 풍경이에요.</span>
+    </p>
+  </div>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">Bringing it home</span><span class="ko">당신의 이야기로</span></span>
+  <h2>
+    <span class="en">What it means for you</span>
+    <span class="ko">이것이 당신에게 갖는 의미</span>
+  </h2>
+
+  <p>
+    <span class="en">Strip away the hype and a few grounded takeaways remain. These tools are genuinely useful for drafting, summarizing, explaining, brainstorming, and coding &mdash; treat them as a fast, tireless, occasionally-wrong assistant, not an oracle. They make mistakes confidently, so the habit worth building is simple: <i>verify anything that matters.</i> When an AI cites a source, click it. When it does math or law or medicine, double-check.</span>
+    <span class="ko">과장을 걷어 내면 단단한 교훈 몇 가지가 남습니다. 이 도구들은 초안 쓰기, 요약, 설명, 브레인스토밍, 코딩에 진짜로 쓸모가 있어요. 단, 신탁이 아니라 &lsquo;빠르고 지치지 않지만 가끔 틀리는 비서&rsquo;로 대하세요. 이들은 틀릴 때도 자신만만하니, 들일 만한 습관은 단순합니다. <i>중요한 건 무엇이든 검증하기.</i> AI가 출처를 댈 땐 눌러서 확인하고, 수학이나 법률, 의료를 다룰 땐 한 번 더 검토하세요.</span>
+  </p>
+
+  <p>
+    <span class="en">You do not need to pick a team or learn to code. But it is worth knowing the vocabulary &mdash; foundation model, RAG, agent, hallucination &mdash; because these words are about to show up in your bank app, your doctor's office, and your kid's homework. Understanding roughly how the magic works is the difference between being swept along by it and using it on purpose.</span>
+    <span class="ko">팀을 고를 필요도, 코딩을 배울 필요도 없습니다. 하지만 어휘 정도는 알아 둘 가치가 있어요. 파운데이션 모델, RAG, 에이전트, 환각&mdash;이 단어들은 곧 당신의 은행 앱과 병원, 아이의 숙제에 나타날 테니까요. 마법이 대충 어떻게 작동하는지 이해한다는 건, 그 흐름에 휩쓸려 떠내려가는 것과 그것을 의도적으로 부려 쓰는 것 사이의 차이입니다.</span>
+  </p>
+
+  <div class="pull">
+    <p>
+      <span class="en">You do not have to understand the engine to drive well &mdash; but knowing it is an engine, not a wizard, changes how you steer.</span>
+      <span class="ko">잘 운전하려고 엔진을 다 알 필요는 없습니다. 다만 그게 마법사가 아니라 엔진이라는 걸 아는 순간, 핸들을 잡는 방식이 달라져요.</span>
+    </p>
+  </div>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">Pocket glossary</span><span class="ko">주머니 용어집</span></span>
+  <h2>
+    <span class="en">Ten words, explained kindly</span>
+    <span class="ko">친절하게 풀어 쓴 열 개의 단어</span>
+  </h2>
+
+  <div class="glossary">
+    <dl>
+      <div class="item">
+        <dt><span class="en">Foundation model</span><span class="ko">파운데이션 모델<span class="orig">foundation model</span></span></dt>
+        <dd><span class="en">A large, general AI trained on vast data that many products are built on top of. The brilliant intern who has read everything.</span><span class="ko">방대한 데이터로 학습한 크고 범용적인 AI로, 수많은 제품의 토대가 됩니다. 모든 걸 읽은 천재 인턴.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">Token</span><span class="ko">토큰<span class="orig">token</span></span></dt>
+        <dd><span class="en">A chunk of text &mdash; roughly a word or part of one &mdash; the unit a model reads and writes in. Models think in tokens, not letters.</span><span class="ko">모델이 읽고 쓰는 단위로, 대략 한 단어나 그 일부에 해당하는 텍스트 조각. 모델은 글자가 아니라 토큰으로 사고합니다.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">Training</span><span class="ko">학습(트레이닝)<span class="orig">training</span></span></dt>
+        <dd><span class="en">The expensive process of feeding a model enormous data so it learns patterns. The library-reading phase.</span><span class="ko">막대한 데이터를 먹여 모델이 패턴을 익히게 하는, 돈이 많이 드는 과정. 도서관을 통째로 읽는 단계.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">Fine-tuning</span><span class="ko">미세조정<span class="orig">fine-tuning</span></span></dt>
+        <dd><span class="en">Extra training that specializes a general model for a particular job or style. Studying for a specific role.</span><span class="ko">범용 모델을 특정 업무나 말투에 맞게 전문화하는 추가 학습. 특정 직무를 위한 공부.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">Alignment</span><span class="ko">정렬(얼라인먼트)<span class="orig">alignment</span></span></dt>
+        <dd><span class="en">Shaping a model to be helpful, honest, and safe to interact with. The manners lessons.</span><span class="ko">모델이 도움되고 정직하며 안전하게 상호작용하도록 다듬는 일. 일종의 예절 교육.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">Hallucination</span><span class="ko">환각<span class="orig">hallucination</span></span></dt>
+        <dd><span class="en">When a model confidently states something false. The reason you verify anything that matters.</span><span class="ko">모델이 틀린 내용을 자신만만하게 말하는 현상. 중요한 건 꼭 검증해야 하는 이유.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">RAG</span><span class="ko">RAG (검색 증강 생성)<span class="orig">retrieval-augmented generation</span></span></dt>
+        <dd><span class="en">Letting the AI fetch relevant pages from a trusted source before answering. The librarian trick that cuts hallucinations and adds fresh knowledge.</span><span class="ko">답하기 전에 믿을 만한 출처에서 관련 페이지를 가져오게 하는 기법. 환각을 줄이고 최신 지식을 더하는 &lsquo;사서 비법&rsquo;.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">Agent</span><span class="ko">에이전트<span class="orig">agent</span></span></dt>
+        <dd><span class="en">An AI that can use tools and work in a loop to complete multi-step tasks, not just chat. A doer, not just a talker.</span><span class="ko">대화만 하는 게 아니라 도구를 쓰고 루프로 일하며 여러 단계의 작업을 끝내는 AI. &lsquo;말하는 자&rsquo;가 아닌 &lsquo;하는 자&rsquo;.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">Open-weight</span><span class="ko">오픈 웨이트<span class="orig">open-weight</span></span></dt>
+        <dd><span class="en">A model whose internals are published so anyone can download and run it privately. Cheaper, customizable, transparent.</span><span class="ko">내부 구조가 공개되어 누구나 내려받아 직접 돌릴 수 있는 모델. 더 저렴하고, 고치기 쉽고, 투명합니다.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">Context window</span><span class="ko">컨텍스트 윈도<span class="orig">context window</span></span></dt>
+        <dd><span class="en">How much text a model can hold in mind at once &mdash; its short-term memory. Bigger windows mean it can read longer documents in one go.</span><span class="ko">모델이 한 번에 떠올릴 수 있는 텍스트의 양, 즉 단기 기억. 윈도가 클수록 더 긴 문서를 한 번에 읽을 수 있어요.</span></dd>
+      </div>
+    </dl>
+  </div>
+
+</div>
+</article>
+
+<footer>
+<div class="col">
+  <p class="lab-head"><span class="en">Sources &amp; further reading</span><span class="ko">출처 &amp; 더 읽을거리</span></p>
+  <ol>
+    <li><span class="en">Vaswani et al., &ldquo;Attention Is All You Need&rdquo; (the transformer paper, 2017).</span><span class="ko">Vaswani 외, &ldquo;Attention Is All You Need&rdquo; (트랜스포머 논문, 2017).</span> <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">arxiv.org/abs/1706.03762</a></li>
+    <li><span class="en">OpenAI &mdash; ChatGPT and the GPT model family.</span><span class="ko">OpenAI &mdash; ChatGPT 및 GPT 모델 제품군.</span> <a href="https://openai.com/chatgpt" target="_blank" rel="noopener">openai.com/chatgpt</a></li>
+    <li><span class="en">Anthropic &mdash; Claude.</span><span class="ko">Anthropic &mdash; Claude.</span> <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">anthropic.com/claude</a></li>
+    <li><span class="en">Google DeepMind &mdash; Gemini.</span><span class="ko">구글 딥마인드 &mdash; Gemini.</span> <a href="https://deepmind.google/technologies/gemini/" target="_blank" rel="noopener">deepmind.google/technologies/gemini</a></li>
+    <li><span class="en">Meta AI &mdash; Llama (open-weight models).</span><span class="ko">메타 AI &mdash; Llama (오픈 웨이트 모델).</span> <a href="https://www.llama.com/" target="_blank" rel="noopener">llama.com</a></li>
+    <li><span class="en">Lewis et al., &ldquo;Retrieval-Augmented Generation&rdquo; (the original RAG paper, 2020).</span><span class="ko">Lewis 외, &ldquo;Retrieval-Augmented Generation&rdquo; (RAG 원 논문, 2020).</span> <a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener">arxiv.org/abs/2005.11401</a></li>
+    <li><span class="en">Naver &mdash; HyperCLOVA X.</span><span class="ko">네이버 &mdash; HyperCLOVA X.</span> <a href="https://clova.ai/hyperclova" target="_blank" rel="noopener">clova.ai/hyperclova</a></li>
+    <li><span class="en">LG AI Research &mdash; EXAONE.</span><span class="ko">LG AI 연구원 &mdash; EXAONE.</span> <a href="https://www.lgresearch.ai/exaone" target="_blank" rel="noopener">lgresearch.ai/exaone</a></li>
+    <li><span class="en">Stanford HAI &mdash; AI Index Report (annual data on the field).</span><span class="ko">스탠퍼드 HAI &mdash; AI Index 리포트 (분야 연간 데이터).</span> <a href="https://hai.stanford.edu/ai-index" target="_blank" rel="noopener">hai.stanford.edu/ai-index</a></li>
+  </ol>
+  <p class="foot-note">
+    <span class="en"><sup>*</sup> Figures such as weekly user counts and company valuations are approximate, change quickly, and are best read as estimates of scale rather than exact 2026 totals. Model names and lab line-ups reflect the landscape as of mid-2026.</span>
+    <span class="ko"><sup>*</sup> 주간 사용자 수나 기업가치 같은 수치는 어림값이며 빠르게 바뀌므로, 2026년의 정확한 합계가 아니라 &lsquo;규모의 추정치&rsquo;로 읽어 주세요. 모델 이름과 연구소 구성은 2026년 중반 시점의 지형을 반영합니다.</span>
+  </p>
+  <p class="foot-back">
+    <a href="../index.html">
+      <span class="en">&larr; Back to all reports</span><span class="ko">&larr; 전체 리포트로 돌아가기</span>
+    </a>
+  </p>
+</div>
+</footer>
+
+<script>
+(function(){
+  var KEY = 'dis-lang';
+  var body = document.body;
+  function apply(lang){
+    if(lang === 'en'){
+      body.classList.remove('lang-ko');
+      body.classList.add('lang-en');
+      document.documentElement.lang = 'en';
+    } else {
+      body.classList.remove('lang-en');
+      body.classList.add('lang-ko');
+      document.documentElement.lang = 'ko';
+    }
+  }
+  var saved;
+  try { saved = localStorage.getItem(KEY); } catch(e){ saved = null; }
+  apply(saved === 'en' ? 'en' : 'ko');
+  var btn = document.getElementById('langbtn');
+  if(btn){
+    btn.addEventListener('click', function(){
+      var next = body.classList.contains('lang-ko') ? 'en' : 'ko';
+      apply(next);
+      try { localStorage.setItem(KEY, next); } catch(e){}
+    });
+  }
+})();
+</script>
+
+</body></html>
