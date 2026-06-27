@@ -170,7 +170,7 @@
     <span class="wordmark">The Industry Brief</span>
     <span class="seclabel"><span class="en">Deep Dive</span><span class="ko">딥다이브</span></span>
     <span class="mh-spacer"></span>
-    <span class="mh-meta hide-sm">2026-06-27 &middot; <span class="en">28 min read</span><span class="ko">28분 분량</span></span>
+    <span class="mh-meta hide-sm">2026-06-27 &middot; <span class="en">31 min read</span><span class="ko">31분 분량</span></span>
     <button id="langbtn" type="button" aria-label="Toggle language">
       <span class="en">한국어</span><span class="ko">EN</span>
     </button>
@@ -717,6 +717,59 @@
   <p>
     <span class="en">For a technically literate reader, the signals worth tracking are concrete: cost-per-useful-task (not per token) trending down; agent success rates on real, contamination-resistant benchmarks like SWE-bench; whether open-weight quality keeps closing the gap to closed flagships; how far context and reasoning can scale before the economics break; and whether standards like MCP make the tool ecosystem genuinely portable. Those move slower than the hype cycle &mdash; and they are what actually determines where this goes.</span>
     <span class="ko">기술을 아는 독자라면, 지켜볼 만한 신호는 의외로 구체적이다. 토큰당이 아니라 쓸모 있는 과제 하나당 비용이 떨어지고 있는가. SWE-bench처럼 실전적이고 오염에 강한 벤치마크에서 에이전트의 성공률은 어떤가. 오픈 웨이트 품질이 폐쇄형 플래그십과의 거리를 계속 좁히는가. 경제성이 깨지기 전에 컨텍스트와 추론은 어디까지 늘어날 수 있는가. MCP 같은 표준이 도구 생태계를 정말로 이리저리 옮겨 쓸 수 있게 만드는가. 이 신호들은 과장 섞인 화제 주기보다 한참 느리게 움직인다. 그리고 결국 이 판이 어디로 가는지를 진짜로 결정하는 것은, 바로 이 느린 신호들이다.</span>
+  </p>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">09 &middot; Consulting</span><span class="ko">09 &middot; 컨설팅</span></span>
+  <h2>
+    <span class="en">Why this lands squarely on consulting</span>
+    <span class="ko">이 이야기가 컨설팅에 정확히 꽂히는 이유</span>
+  </h2>
+
+  <p>
+    <span class="en">If you advise companies for a living &mdash; or pay people who do &mdash; this one is personal. Strip a consulting engagement down to its motions and you get four: gather information, make sense of it, build an argument, and package it into something a client will act on. That list is almost exactly what a foundation model plus retrieval is now good at. Which makes AI both the most direct threat to the business and its single biggest lever.</span>
+    <span class="ko">기업에 자문하는 일로 먹고살거나, 그런 사람에게 돈을 주는 쪽이라면 이건 남 얘기가 아니다. 컨설팅 프로젝트를 동작 단위로 분해하면 결국 넷으로 줄어든다. 정보를 모으고, 그걸 이해하고, 논리를 세우고, 고객이 움직이게끔 포장한다. 그런데 이 목록은 파운데이션 모델에 검색(RAG)을 붙인 물건이 지금 가장 잘하는 일과 거의 그대로 겹친다. 그래서 AI는 이 업의 가장 직접적인 위협이자, 동시에 가장 큰 지렛대다.</span>
+  </p>
+
+  <p>
+    <span class="en">Now lay the work over the pyramid. The base &mdash; desk research, market sizing, reading filings, synthesizing expert calls, cleaning data, building the first eighty slides &mdash; is the part firms historically billed armies of junior analysts for. It is also, almost line for line, what a model with the right documents in front of it now does in minutes instead of weeks. Consulting&rsquo;s surplus has always leaned on leverage: many juniors doing that base work under a few partners. AI goes straight at the base of the pyramid.</span>
+    <span class="ko">이제 그 일을 컨설팅 피라미드 위에 얹어 보자. 맨 아래층 &mdash; 데스크 리서치, 시장 규모 추정, 공시 읽기, 전문가 인터뷰 정리, 데이터 클렌징, 첫 80장짜리 슬라이드 &mdash; 은 원래 수많은 주니어를 갈아 넣어 청구하던 영역이다. 그리고 이 일은, 알맞은 문서를 앞에 둔 모델이 이제 몇 주가 아니라 몇 분 만에 거의 한 줄 한 줄 그대로 해치우는 일이기도 하다. 컨설팅의 초과이윤은 늘 레버리지에 기대 왔다. 소수의 파트너 아래 다수의 주니어가 이 바닥일을 떠받치는 구조다. AI는 그 피라미드의 밑단을 곧장 친다.</span>
+  </p>
+
+  <div class="callout">
+    <span class="tag"><span class="en">Strategy note</span><span class="ko">전략 노트</span></span>
+    <p>
+      <span class="en">This is where retrieval matters more than the chatbot. A generic model is identical for everyone; the asset a McKinsey or a BCG actually owns is proprietary &mdash; decades of engagements, benchmarks, cost curves, expert networks. Point RAG at that corpus and the model stops being commodity GPT and starts answering with the firm&rsquo;s accumulated knowledge, grounded and citable. That is the logic behind McKinsey&rsquo;s internal assistant (Lilli), BCG&rsquo;s and Bain&rsquo;s own build-outs, and the OpenAI and Anthropic enterprise alliances: the moat is no longer &ldquo;we have smart people who can Google,&rdquo; it is &ldquo;our private knowledge base, wired into an agent, answers in a way a public model cannot.&rdquo;</span>
+      <span class="ko">여기서 챗봇보다 검색(retrieval)이 더 중요하다. 범용 모델은 누구에게나 똑같다. 맥킨지나 BCG가 진짜로 소유한 자산은 따로 있다. 수십 년치 프로젝트 기록, 벤치마크, 원가 곡선, 전문가 네트워크 같은 독점 데이터다. RAG를 이 코퍼스에 겨누는 순간 모델은 흔한 GPT이기를 멈추고, 그 회사가 쌓아 온 지식으로, 근거와 출처를 달아 답하기 시작한다. 맥킨지의 내부 도구 릴리(Lilli), BCG·베인의 자체 구축, OpenAI·Anthropic과의 기업 제휴가 전부 이 논리 위에 서 있다. 이제 해자는 &lsquo;구글 잘 치는 똑똑한 사람들이 있다&rsquo;가 아니라, &lsquo;우리만의 비공개 지식 베이스를, 에이전트에 물려, 공개 모델은 못 내놓는 방식으로 답하게 한다&rsquo;다.</span>
+    </p>
+  </div>
+
+  <p>
+    <span class="en">So draw the line. What gets commoditized: first-draft research, market models, the mechanical 80% of a deck. What gets more valuable, not less: framing the actual problem, judgment under ambiguity, knowing which number matters and which is noise, the client relationship, and the trust that someone senior will own the recommendation when it reaches the board. Models are confident on demand; they carry no accountability. The last mile &mdash; turning an analysis into a decision a real organization will act on, and standing behind it &mdash; is precisely the part that does not automate.</span>
+    <span class="ko">그러니 선을 긋자. 값이 떨어지는 쪽은 분명하다. 초안 리서치, 시장 모델, 슬라이드의 기계적인 80퍼센트. 반대로 값이 오르는 쪽도 있다. 진짜 문제를 무엇으로 규정할지, 모호함 속에서 내리는 판단, 어떤 숫자가 핵심이고 어떤 게 잡음인지 가려내는 안목, 고객과의 관계, 그리고 그 권고가 이사회로 올라갈 때 누군가 윗선이 책임지고 서 줄 거라는 믿음이다. 모델은 부르면 언제든 자신만만하게 답하지만, 책임은 지지 않는다. 분석을 실제 조직이 움직일 결정으로 바꾸고 그 뒤에 이름을 거는 마지막 한 구간 &mdash; 그게 바로 자동화되지 않는 부분이다.</span>
+  </p>
+
+  <div class="pull">
+    <p>
+      <span class="en">As AI drives the price of analysis toward zero, the value moves to the one thing it cannot supply: judgment, and someone to own it.</span>
+      <span class="ko">AI가 분석의 값을 0으로 끌어내릴수록, 가치는 AI가 내줄 수 없는 단 하나로 옮겨 간다. 판단, 그리고 그것을 책임질 사람.</span>
+    </p>
+  </div>
+
+  <p>
+    <span class="en">Follow the money and the model itself bends. Billable hours assume human time equals output; flatten the pyramid and that equation breaks. Expect the shift already under way to accelerate &mdash; smaller, senior-heavy teams; value- or outcome-based pricing instead of headcount-times-rate; and &ldquo;productized&rdquo; deliverables where the engagement ends not with a deck but with an agent the client keeps running. The firm starts to look part advisory, part software vendor &mdash; a very different margin structure, and a very different thing to sell.</span>
+    <span class="ko">돈의 흐름을 따라가면 사업 모델 자체가 휜다. 시간당 청구는 &lsquo;사람의 시간 = 산출물&rsquo;이라는 가정 위에 서 있는데, 피라미드가 납작해지면 이 등식이 깨진다. 이미 시작된 변화가 더 빨라질 것이다. 팀은 작아지고 시니어 중심으로 무거워진다. 가격은 인원수×요율이 아니라 가치나 성과 기준으로 옮겨 간다. 산출물은 &lsquo;제품화&rsquo;되어, 프로젝트가 슬라이드 한 묶음이 아니라 고객이 계속 돌리는 에이전트로 끝난다. 그러면 컨설팅 회사는 자문업 반, 소프트웨어 회사 반이 된다. 마진 구조도, 파는 물건의 성격도 완전히 달라진다는 뜻이다.</span>
+  </p>
+
+  <p>
+    <span class="en">And the agent section earlier isn&rsquo;t a tangent here &mdash; it is the next step. The interesting move isn&rsquo;t a chatbot that drafts a slide; it&rsquo;s an agent that runs the workflow end to end: pull the filings, build the model, draft the memo, flag the risks, cite the sources &mdash; with a partner reviewing rather than producing. Read against everything above, a firm&rsquo;s success factors get concrete: proprietary data wired for retrieval, agent orchestration that is actually reliable (the evaluation problem again), and senior judgment at the top. The winners won&rsquo;t be the firms that &ldquo;use AI&rdquo;; they&rsquo;ll be the ones that rebuild the workflow around it and still own the part that matters.</span>
+    <span class="ko">그리고 앞에서 다룬 에이전트 이야기는 여기서 곁가지가 아니다. 바로 다음 수순이다. 흥미로운 건 슬라이드 초안을 뽑아 주는 챗봇이 아니라, 작업 전체를 처음부터 끝까지 굴리는 에이전트다. 공시를 끌어오고, 모델을 세우고, 메모 초안을 쓰고, 리스크를 짚고, 출처를 단다 &mdash; 파트너는 직접 만드는 대신 검토하는 자리로 옮겨 간다. 위에서 한 이야기에 비춰 보면, 회사의 핵심 성공 요인은 의외로 또렷해진다. 검색에 물릴 수 있게 정돈된 독점 데이터, 정말로 믿을 만한 에이전트 오케스트레이션(또 그 평가 문제다), 그리고 맨 위의 시니어 판단. 이길 회사는 &lsquo;AI를 쓰는&rsquo; 회사가 아니라, 일하는 방식을 AI 중심으로 다시 짜면서도 정작 중요한 구간은 끝까지 쥔 회사다.</span>
+  </p>
+
+  <p>
+    <span class="en">If this feels abstract, you are reading it inside an example. The publication this article sits in picks an industry every day, runs the standard strategy frameworks over it, and writes the brief &mdash; the analysis, automated. What it cannot do is decide what you should do about it. That is the whole point, and it generalizes: the skill that compounds from here isn&rsquo;t prompt tricks, it&rsquo;s problem framing, domain judgment, and orchestrating these tools well &mdash; being the person who decides which question is worth asking, and whether the answer is any good.</span>
+    <span class="ko">이 이야기가 추상적으로 들린다면, 당신은 지금 그 사례 안에서 이 글을 읽고 있는 셈이다. 이 글이 실린 매체는 매일 산업 하나를 골라 표준 전략 프레임워크를 돌리고 브리프를 써낸다. 분석은 자동화된 것이다. 다만 그 분석을 가지고 무엇을 할지는 대신 정해 주지 못한다. 핵심이 바로 거기에 있고, 이건 일반화된다. 앞으로 복리로 쌓이는 능력은 프롬프트 잔기술이 아니다. 문제를 규정하는 힘, 도메인을 아는 판단, 그리고 이 도구들을 잘 엮어 부리는 솜씨다. 어떤 질문이 던질 가치가 있는지, 돌아온 답이 쓸 만한지를 정하는 사람 &mdash; 그게 남는다.</span>
   </p>
 
   <div class="stars">&#10086; &nbsp; &#10086; &nbsp; &#10086;</div>
