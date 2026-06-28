@@ -1577,6 +1577,71 @@
     },
     "sector": "Materials"
   },
+  "15104045": {
+    "cagr": "~5.9%",
+    "gics": "15104045",
+    "global_company": "Fresnillo",
+    "global_firms": [
+      {
+        "ko": "프레스니요(멕시코)",
+        "name": "Fresnillo (Mexico)",
+        "share": 6.0
+      },
+      {
+        "ko": "폴란드)",
+        "name": "KGHM (Poland)KGHM(",
+        "share": 5.0
+      },
+      {
+        "ko": "인두스트리아스 페뇰레스(멕시코)",
+        "name": "Industrias Peñoles (Mexico)",
+        "share": 4.0
+      },
+      {
+        "ko": "팬 아메리칸 실버",
+        "name": "Pan American Silver",
+        "share": 4.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 81.0
+      }
+    ],
+    "headline_ko": "6년 연속 공급 부족과 태양광·전자 수요 급증으로 은값은 2026년 1월 명목 사상 최고 약 121달러를 찍은 뒤 급락한 바 있으며, 글로벌 광산 생산은 프레스니요가 선두인 반면 한국은 고려아연의 부산물 은에 그치는 것으로 파악됩니다.",
+    "industry_en": "Silver",
+    "industry_ko": "은",
+    "korea_company": "Korea Zinc",
+    "korea_firms": [
+      {
+        "ko": "고려아연(온산, 부산물)",
+        "name": "Korea Zinc (Onsan, by-product)",
+        "share": 80.0
+      },
+      {
+        "ko": "영풍 / 고려아연 제련",
+        "name": "Young Poong / Goryeo Zinc smelting",
+        "share": 15.0
+      },
+      {
+        "ko": "차 은 광산(유의미한 생산 없음)",
+        "name": "Primary silver mines (none material)1",
+        "share": 5.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$32B",
+      "trillion_usd": 0.032,
+      "year": "2022"
+    },
+    "sector": "Materials"
+  },
   "151050": {
     "cagr": "≈1.7%",
     "gics": "151050",
@@ -2901,6 +2966,71 @@
       "label": "$67B",
       "trillion_usd": 0.067,
       "year": "2021"
+    },
+    "sector": "Industrials"
+  },
+  "20201070": {
+    "cagr": "~5.0%",
+    "gics": "20201070",
+    "global_company": "Cintas",
+    "global_firms": [
+      {
+        "ko": "컴퍼스 그룹(영국)",
+        "name": "Compass Group (UK)",
+        "share": 4.2
+      },
+      {
+        "ko": "소덱소(프랑스)",
+        "name": "Sodexo (France)",
+        "share": 2.7
+      },
+      {
+        "ko": "아라마크(미국)",
+        "name": "Aramark (US)",
+        "share": 1.7
+      },
+      {
+        "ko": "번즐(영국)",
+        "name": "Bunzl (UK)",
+        "share": 1.6
+      },
+      {
+        "ko": "신타스 + 렌토킬",
+        "name": "ISS A/S + Cintas + RentokilISS A/S +",
+        "share": 3.0
+      }
+    ],
+    "headline_ko": "구조적 아웃소싱 흐름이 약 1조 5,000억 달러 규모의 시설·업무 지원 시장을 꾸준히 키우고 있으며, 글로벌은 노선 밀도 경제성을 앞세운 신타스가, 한국은 보안·시설관리 시장의 약 절반을 차지한 에스원이 선두인 것으로 파악됩니다.",
+    "industry_en": "Diversified Support Services",
+    "industry_ko": "다각화 지원 서비스",
+    "korea_company": "S-1 (에스원)",
+    "korea_firms": [
+      {
+        "ko": "에스원",
+        "name": "S-1 Corporation",
+        "share": 50.0
+      },
+      {
+        "ko": "캡스 / SK쉴더스",
+        "name": "ADT Caps / SK ShieldusADT",
+        "share": 28.0
+      },
+      {
+        "ko": "텔레캅",
+        "name": "KT TelecopKT",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$1.32T",
+      "trillion_usd": 1.32,
+      "year": "2022"
     },
     "sector": "Industrials"
   },
@@ -4483,6 +4613,76 @@
     "market": {
       "label": "$5.21T",
       "trillion_usd": 5.21,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25301010": {
+    "cagr": "~10%",
+    "gics": "25301010",
+    "global_company": "Las Vegas Sands",
+    "global_firms": [
+      {
+        "ko": "샌즈 차이나(LVS)",
+        "name": "Sands China (LVS)",
+        "share": 25.0
+      },
+      {
+        "ko": "갤럭시 엔터테인먼트",
+        "name": "Galaxy Entertainment",
+        "share": 19.0
+      },
+      {
+        "ko": "차이나",
+        "name": "MGM ChinaMGM",
+        "share": 16.0
+      },
+      {
+        "ko": "멜코 리조트",
+        "name": "Melco Resorts",
+        "share": 15.0
+      },
+      {
+        "ko": "홀딩스",
+        "name": "SJM HoldingsSJM",
+        "share": 14.0
+      }
+    ],
+    "headline_ko": "마카오 회복과 미국 온라인 게이밍 사상 최대 실적이 약 3,220억 달러 규모의 카지노 시장을 끌어올리고 있으며, 아시아 복합리조트는 라스베이거스 샌즈가, 한국은 2045년까지 내국인 카지노를 독점하는 강원랜드가 선두인 것으로 파악됩니다.",
+    "industry_en": "Casinos & Gaming",
+    "industry_ko": "카지노·게이밍",
+    "korea_company": "Kangwon Land (강원랜드)",
+    "korea_firms": [
+      {
+        "ko": "강원랜드(내국인 + 외국인, 내국인 독점)",
+        "name": "Kangwon Land (locals + foreigners, monopoly on locals)",
+        "share": 46.0
+      },
+      {
+        "ko": "파라다이스(외국인 전용)",
+        "name": "Paradise Co (foreigner-only)",
+        "share": 26.0
+      },
+      {
+        "ko": "세븐럭(외국인 전용)",
+        "name": "GKL / Seven Luck (foreigner-only)GKL /",
+        "share": 18.0
+      },
+      {
+        "ko": "인스파이어, 제주 및 기타 외국인 전용",
+        "name": "Inspire, Jeju & other foreigner-only",
+        "share": 10.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.6,
+      "global": 0.0,
+      "scale": 0.4,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$289B",
+      "trillion_usd": 0.289,
       "year": "2024"
     },
     "sector": "Consumer Discretionary"
@@ -7956,6 +8156,65 @@
     },
     "sector": "Financials"
   },
+  "40301010": {
+    "cagr": "~9.1%",
+    "gics": "40301010",
+    "global_company": "Marsh McLennan",
+    "global_firms": [
+      {
+        "ko": "마쉬 매클레넌",
+        "name": "Marsh McLennan",
+        "share": 25.0
+      },
+      {
+        "ko": "에이온",
+        "name": "Aon",
+        "share": 16.0
+      },
+      {
+        "ko": "갤러거",
+        "name": "Arthur J. Gallagher",
+        "share": 13.0
+      },
+      {
+        "name": "WTWWTW",
+        "share": 9.0
+      },
+      {
+        "ko": "외",
+        "name": "Brown & Brown, Hub, Acrisure & othersBrown & Brown, Hub, Acrisure",
+        "share": 37.0
+      }
+    ],
+    "headline_ko": "사모펀드가 주도하는 롤업 인수가 P&C 요율 연화 속에서도 약 3,400억 달러 규모의 중개 시장을 통합하고 있으며, 글로벌은 마쉬 매클레넌이 선두인 반면 한국에는 상장 순수 브로커가 없어 인카금융서비스가 가장 근접한 GA 대용으로 파악됩니다.",
+    "industry_en": "Insurance Brokers",
+    "industry_ko": "보험 중개",
+    "korea_company": "Inca Financial Services (인카금융서비스)",
+    "korea_firms": [
+      {
+        "ko": "인카금융서비스 (211050)",
+        "name": "Inca Financial Services (211050)",
+        "share": 60.0
+      },
+      {
+        "ko": "에이플러스에셋 (244920)",
+        "name": "A-Plus Asset (244920)",
+        "share": 40.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0714,
+      "scale": 0.4286,
+      "tech": 0.5
+    },
+    "market": {
+      "label": "$288B",
+      "trillion_usd": 0.288,
+      "year": "2023"
+    },
+    "sector": "Financials"
+  },
   "451020": {
     "cagr": "≈8%",
     "gics": "451020",
@@ -8646,6 +8905,73 @@
     },
     "sector": "Information Technology"
   },
+  "45203010": {
+    "cagr": "~5.7%",
+    "gics": "45203010",
+    "global_company": "Keysight",
+    "global_firms": [
+      {
+        "ko": "키사이트(US)",
+        "name": "Keysight Technologies (US)",
+        "share": 14.0
+      },
+      {
+        "ko": "텔레다인(르크로이, FLIR 포함)",
+        "name": "Teledyne (incl. LeCroy, FLIR)",
+        "share": 10.0
+      },
+      {
+        "name": "Emerson / NI + Rohde & SchwarzEmerson / NI + Rohde & Schwarz",
+        "share": 6.0
+      },
+      {
+        "ko": "등 상위권",
+        "name": "Fortive / Fluke, Advantest, others top-tierFortive / Fluke, Advantest",
+        "share": 5.0
+      },
+      {
+        "ko": "기타 전체(파편화)",
+        "name": "All others (fragmented)",
+        "share": 65.0
+      }
+    ],
+    "headline_ko": "AI 데이터센터·전기차·6G 시험 수요가 약 380억 달러 규모의 시험·계측 시장을 되살리고 있으며, 글로벌 전자 계측기는 키사이트가, 세계 3D 검사 시장의 30% 이상은 고영테크놀러지가 차지한 것으로 파악됩니다.",
+    "industry_en": "Electronic Equipment & Instruments",
+    "industry_ko": "전자장비·기기",
+    "korea_company": "Koh Young (고영테크놀러지)",
+    "korea_firms": [
+      {
+        "ko": "고영테크놀러지(한국)",
+        "name": "Koh Young Technology (Korea)",
+        "share": 32.0
+      },
+      {
+        "name": "Omron + Test Research (TRI)Omron + Test Research(TRI)",
+        "share": 16.0
+      },
+      {
+        "name": "Mirtec, CyberOptics, ViTroxMirtec, CyberOptics, ViTrox",
+        "share": 12.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 40.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2222,
+      "global": 0.0556,
+      "scale": 0.1111,
+      "tech": 0.6111
+    },
+    "market": {
+      "label": "$34.0B",
+      "trillion_usd": 0.034,
+      "year": "2022"
+    },
+    "sector": "Information Technology"
+  },
   "453010": {
     "cagr": "≈16–18%",
     "gics": "453010",
@@ -9062,6 +9388,65 @@
     },
     "sector": "Communication Services"
   },
+  "50201010": {
+    "cagr": "~11%",
+    "gics": "50201010",
+    "global_company": "Publicis",
+    "global_firms": [
+      {
+        "ko": "옴니콤 + IPG(합병 후)",
+        "name": "Omnicom + IPG (post-merger)",
+        "share": 40.0
+      },
+      {
+        "ko": "퍼블리시스 그룹",
+        "name": "Publicis Groupe",
+        "share": 25.0
+      },
+      {
+        "name": "WPPWPP",
+        "share": 17.0
+      },
+      {
+        "ko": "덴츠",
+        "name": "Dentsu",
+        "share": 13.0
+      },
+      {
+        "ko": "아바스",
+        "name": "Havas",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "옴니콤·인터퍼블릭 합병과 AI 기반 미디어 구매가 광고비 1조 1,000억 달러 돌파와 맞물려 대행 업계를 재편하고 있으며, 지주회사는 시가총액 기준 퍼블리시스가, 한국은 제일기획이 최대 대행사로 파악됩니다.",
+    "industry_en": "Advertising",
+    "industry_ko": "광고",
+    "korea_company": "Cheil Worldwide (제일기획)",
+    "korea_firms": [
+      {
+        "ko": "제일기획(삼성)",
+        "name": "Cheil Worldwide (Samsung)",
+        "share": 50.0
+      },
+      {
+        "ko": "이노션(현대)",
+        "name": "Innocean (Hyundai)",
+        "share": 27.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.4,
+      "tech": 0.6
+    },
+    "market": {
+      "label": "$0.81T",
+      "trillion_usd": 0.81,
+      "year": "2022"
+    },
+    "sector": "Communication Services"
+  },
   "502020": {
     "cagr": "≈3.7%",
     "gics": "502020",
@@ -9367,6 +9752,71 @@
     "market": {
       "label": "$372B",
       "trillion_usd": 0.372,
+      "year": "2024"
+    },
+    "sector": "Utilities"
+  },
+  "55102010": {
+    "cagr": "~6.4%",
+    "gics": "55102010",
+    "global_company": "Atmos Energy",
+    "global_firms": [
+      {
+        "ko": "차이나가스 홀딩스(고객 약 5,200만)",
+        "name": "China Gas Holdings (~52M cust.)",
+        "share": 33.0
+      },
+      {
+        "ko": "타운가스 / HK & China Gas(약 4,000만)",
+        "name": "Towngas / HK & China Gas (~40M)",
+        "share": 25.0
+      },
+      {
+        "ko": "에너지(약 3,300만)",
+        "name": "ENN Energy (~33M)ENN",
+        "share": 21.0
+      },
+      {
+        "ko": "앳모스 에너지(약 340만, 미국 순수 사업자 1위)",
+        "name": "Atmos Energy (~3.4M, US #1 pure-play)",
+        "share": 2.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 19.0
+      }
+    ],
+    "headline_ko": "규제 요금기반 모델과 AI 시대 발전용 가스 수요가 전기화 역풍 속에서도 약 1조 달러 규모의 가스 배관망 시장을 떠받치고 있으며, 상장 순수 사업자는 앳모스 에너지가, 한국은 국가 LNG 수입 독점기업 한국가스공사가 선두인 것으로 파악됩니다.",
+    "industry_en": "Gas Utilities",
+    "industry_ko": "가스 유틸리티",
+    "korea_company": "KOGAS (한국가스공사)",
+    "korea_firms": [
+      {
+        "ko": "도매(LNG 수입 + 수송)",
+        "name": "KOGAS wholesale (LNG import + transmission)KOGAS",
+        "share": 72.0
+      },
+      {
+        "ko": "직수입자(발전사, 산업)",
+        "name": "Direct importers (power gens, industry)",
+        "share": 23.0
+      },
+      {
+        "ko": "도시가스 소매 마진(삼천리 등)",
+        "name": "Retail city-gas margin (Samchully etc.)",
+        "share": 5.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.5385,
+      "scale": 0.3077,
+      "tech": 0.1538
+    },
+    "market": {
+      "label": "$0.91T",
+      "trillion_usd": 0.91,
       "year": "2024"
     },
     "sector": "Utilities"
