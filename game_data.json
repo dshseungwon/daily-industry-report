@@ -1642,6 +1642,76 @@
     },
     "sector": "Materials"
   },
+  "15104050": {
+    "cagr": "~4.6%",
+    "gics": "15104050",
+    "global_company": "China Baowu Steel Group",
+    "global_firms": [
+      {
+        "ko": "중국 바오우(1억 2,480만 톤)",
+        "name": "China Baowu (124.8Mt)",
+        "share": 7.0
+      },
+      {
+        "ko": "아르셀로미탈(6,340만 톤)",
+        "name": "ArcelorMittal (63.4Mt)",
+        "share": 3.0
+      },
+      {
+        "ko": "일본제철(5,780만 톤)",
+        "name": "Nippon Steel (57.8Mt)",
+        "share": 3.0
+      },
+      {
+        "ko": "포스코(3,250만 톤) + 안스틸(5,760만 톤)",
+        "name": "POSCO (32.5Mt) + Ansteel (57.6Mt)",
+        "share": 5.0
+      },
+      {
+        "ko": "기타 생산사 전체",
+        "name": "All other producers",
+        "share": 82.0
+      }
+    ],
+    "headline_ko": "중국 바오우가 공급 과잉의 분산된 철강 산업을 이끄는 가운데, 미국 50% 관세와 EU CBAM이 무역 구조를 바꾸고 그린스틸 전환을 압박하고 있으며, 포스코홀딩스가 한국 1위를 지키고 있습니다.",
+    "industry_en": "Steel",
+    "industry_ko": "철강",
+    "korea_company": "POSCO Holdings",
+    "korea_firms": [
+      {
+        "ko": "포스코(약 3,250만 톤)",
+        "name": "POSCO (~32.5Mt)",
+        "share": 52.0
+      },
+      {
+        "ko": "현대제철(약 1,900만 톤)",
+        "name": "Hyundai Steel (~19Mt)",
+        "share": 30.0
+      },
+      {
+        "ko": "동국제강 외(전기로 봉형강)",
+        "name": "Dongkuk & others (EAF long)",
+        "share": 10.0
+      },
+      {
+        "ko": "중소 제강사 / 수입 연계",
+        "name": "Smaller mills / imports-linked",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1,
+      "scale": 0.6,
+      "tech": 0.3
+    },
+    "market": {
+      "label": "$1.43T",
+      "trillion_usd": 1.43,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
   "151050": {
     "cagr": "≈1.7%",
     "gics": "151050",
@@ -3031,6 +3101,76 @@
       "label": "$1.32T",
       "trillion_usd": 1.32,
       "year": "2022"
+    },
+    "sector": "Industrials"
+  },
+  "20201080": {
+    "cagr": "~6.8%",
+    "gics": "20201080",
+    "global_company": "Allied Universal",
+    "global_firms": [
+      {
+        "ko": "얼라이드 유니버설(매출 약 230억 달러)",
+        "name": "Allied Universal (~$23B rev.)",
+        "share": 39.0
+      },
+      {
+        "ko": "시큐리타스(약 163억 달러)",
+        "name": "Securitas AB (~$16.3B)",
+        "share": 28.0
+      },
+      {
+        "ko": "가드아월드(약 49억 달러)",
+        "name": "GardaWorld (~$4.9B)",
+        "share": 8.0
+      },
+      {
+        "ko": "브링크스(약 53억 달러, 현금 수송)",
+        "name": "Brink's (~$5.3B, cash logistics)",
+        "share": 9.0
+      },
+      {
+        "ko": "약 51억 달러, 미국 경보 1위)",
+        "name": "ADT (~$5.1B, US alarm #1)ADT(",
+        "share": 9.0
+      }
+    ],
+    "headline_ko": "분산되고 인력 집약적인 경비 시장이 고착적이고 AI 주도적인 경보 관제로 옮겨가고 있으며, 글로벌은 얼라이드 유니버설이, 한국은 약 절반의 점유율을 가진 에스원이 1위를 차지하고 있습니다.",
+    "industry_en": "Security & Alarm Services",
+    "industry_ko": "보안·경보 서비스",
+    "korea_company": "S-1 (에스원)",
+    "korea_firms": [
+      {
+        "ko": "에스원)에스원",
+        "name": "S-1 Corporation (",
+        "share": 51.0
+      },
+      {
+        "ko": "쉴더스)SK쉴더스",
+        "name": "SK Shieldus (SK",
+        "share": 24.0
+      },
+      {
+        "ko": "텔레캅)KT텔레캅",
+        "name": "KT Telecop (KT",
+        "share": 12.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 13.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2,
+      "global": 0.0667,
+      "scale": 0.4667,
+      "tech": 0.2667
+    },
+    "market": {
+      "label": "$58.6B",
+      "trillion_usd": 0.0586,
+      "year": "2024"
     },
     "sector": "Industrials"
   },
@@ -4683,6 +4823,71 @@
     "market": {
       "label": "$289B",
       "trillion_usd": 0.289,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25301020": {
+    "cagr": "~7.0%",
+    "gics": "25301020",
+    "global_company": "Marriott International",
+    "global_firms": [
+      {
+        "ko": "메리어트(객실 약 171만)",
+        "name": "Marriott (~1.71M rooms)",
+        "share": 27.0
+      },
+      {
+        "ko": "힐튼(약 127만)",
+        "name": "Hilton (~1.27M)",
+        "share": 20.0
+      },
+      {
+        "ko": "약 99만)",
+        "name": "IHG (~0.99M)IHG(",
+        "share": 16.0
+      },
+      {
+        "ko": "윈덤(약 90만)",
+        "name": "Wyndham (~0.90M)",
+        "share": 14.0
+      },
+      {
+        "ko": "아코르(약 85만)",
+        "name": "Accor (~0.85M)",
+        "share": 13.0
+      }
+    ],
+    "headline_ko": "자산경량 호텔 브랜드와 견고한 크루즈 과점이 약 2조 달러 시장을 양분하는 가운데, 메리어트가 객실 수와 시가총액으로 세계를 선도하고 호텔신라가 한국을 대표하고 있습니다.",
+    "industry_en": "Hotels, Resorts & Cruise Lines",
+    "industry_ko": "호텔·리조트·크루즈",
+    "korea_company": "Hotel Shilla",
+    "korea_firms": [
+      {
+        "ko": "파라다이스 카지노(약 9,005억 원)",
+        "name": "Paradise Co casino (~₩900.5B)",
+        "share": 51.0
+      },
+      {
+        "ko": "카지노(약 4,253억 원)",
+        "name": "GKL casino (~₩425.3B)GKL",
+        "share": 24.0
+      },
+      {
+        "ko": "호텔신라 호텔·레저(약 4,400억 원)",
+        "name": "Hotel Shilla hotels & leisure (~₩440B)",
+        "share": 25.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.6471,
+      "global": 0.0588,
+      "scale": 0.1765,
+      "tech": 0.1176
+    },
+    "market": {
+      "label": "$1.96T",
+      "trillion_usd": 1.96,
       "year": "2024"
     },
     "sector": "Consumer Discretionary"
@@ -8215,6 +8420,76 @@
     },
     "sector": "Financials"
   },
+  "40301020": {
+    "cagr": "~4.0%",
+    "gics": "40301020",
+    "global_company": "AIA Group",
+    "global_firms": [
+      {
+        "ko": "차이나라이프(약 1,490억 달러)",
+        "name": "China Life (~$149B)",
+        "share": 34.0
+      },
+      {
+        "ko": "핑안(약 1,300억 달러, 종합금융)",
+        "name": "Ping An (~$130B, composite)",
+        "share": 30.0
+      },
+      {
+        "ko": "그룹(약 950억 달러, 순수 전업)",
+        "name": "AIA Group (~$95B, pure-play)AIA",
+        "share": 21.0
+      },
+      {
+        "ko": "기타(삼성생명, 푸르덴셜 plc 등)",
+        "name": "Others (Samsung Life, Prudential plc…)",
+        "share": 15.0
+      }
+    ],
+    "headline_ko": "AIA가 아시아 최대 상장 순수 생명보험사인 가운데, 삼성생명은 정체된 약 118조 원 한국 보험료 시장의 약 23%를 차지하며, IFRS 17과 K-ICS가 저축성보다 보장성에 보상하는 방향으로 산업이 재편되고 있습니다.",
+    "industry_en": "Life & Health Insurance",
+    "industry_ko": "생명·건강 보험",
+    "korea_company": "Samsung Life",
+    "korea_firms": [
+      {
+        "ko": "삼성생명(1위)",
+        "name": "Samsung Life (#1)",
+        "share": 23.0
+      },
+      {
+        "ko": "교보생명(비상장)",
+        "name": "Kyobo Life (unlisted)",
+        "share": 17.0
+      },
+      {
+        "ko": "한화생명",
+        "name": "Hanwha Life",
+        "share": 13.0
+      },
+      {
+        "ko": "농협생명",
+        "name": "NongHyup Life",
+        "share": 7.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 40.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$3.1T",
+      "trillion_usd": 3.1,
+      "year": "2024"
+    },
+    "sector": "Financials"
+  },
   "451020": {
     "cagr": "≈8%",
     "gics": "451020",
@@ -8972,6 +9247,71 @@
     },
     "sector": "Information Technology"
   },
+  "45203015": {
+    "cagr": "~7.9%",
+    "gics": "45203015",
+    "global_company": "Murata Manufacturing",
+    "global_firms": [
+      {
+        "ko": "무라타(일본)",
+        "name": "Murata (Japan)",
+        "share": 29.0
+      },
+      {
+        "ko": "삼성전기(한국)",
+        "name": "Samsung Electro-Mechanics (Korea)",
+        "share": 23.0
+      },
+      {
+        "ko": "일본)",
+        "name": "TDK (Japan)TDK(",
+        "share": 12.0
+      },
+      {
+        "ko": "타이요유덴(일본)",
+        "name": "Taiyo Yuden (Japan)",
+        "share": 9.0
+      },
+      {
+        "ko": "야게오 / KEMET(대만)",
+        "name": "Yageo / KEMET (Taiwan)",
+        "share": 8.0
+      }
+    ],
+    "headline_ko": "AI 서버와 전기차 수요가 MLCC를 10년 만의 공급 부족으로 몰아넣으며 가격 결정력이 무라타·삼성전기 과점에 넘어갔고, 삼성전기 주가는 1년 새 약 10배로 뛰었습니다.",
+    "industry_en": "Electronic Components",
+    "industry_ko": "전자부품",
+    "korea_company": "Samsung Electro-Mechanics",
+    "korea_firms": [
+      {
+        "ko": "삼성전기(11.3조 원)",
+        "name": "Samsung Electro-Mechanics (₩11.3T)",
+        "share": 38.0
+      },
+      {
+        "ko": "이노텍(약 21조 원, 광학·모듈 중심)",
+        "name": "LG Innotek (~₩21T, optics/module-led)LG",
+        "share": 48.0
+      },
+      {
+        "ko": "기타(아모텍, 이수 등)",
+        "name": "Others (Amotech, ISU, etc.)",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.4667,
+      "tech": 0.5333
+    },
+    "market": {
+      "label": "$13.9B",
+      "trillion_usd": 0.0139,
+      "year": "2024"
+    },
+    "sector": "Information Technology"
+  },
   "453010": {
     "cagr": "≈16–18%",
     "gics": "453010",
@@ -9447,6 +9787,66 @@
     },
     "sector": "Communication Services"
   },
+  "50201020": {
+    "cagr": "~4.0%",
+    "gics": "50201020",
+    "global_company": "Fox Corporation",
+    "global_firms": [
+      {
+        "ko": "컴캐스트 / NBCU(다각화, 매출 약 1,240억 달러)",
+        "name": "Comcast / NBCUniversal (diversified, ~$124B rev)",
+        "share": 60.0
+      },
+      {
+        "ko": "워너브러더스 디스커버리(약 300억 달러)",
+        "name": "Warner Bros. Discovery (~$30B)",
+        "share": 14.0
+      },
+      {
+        "ko": "파라마운트 스카이댄스(약 280억 달러)",
+        "name": "Paramount Skydance (~$28B)",
+        "share": 14.0
+      },
+      {
+        "ko": "폭스 코퍼레이션(약 160억 달러, 순수 방송 1위)",
+        "name": "Fox Corporation (~$16B, pure-play #1)",
+        "share": 8.0
+      },
+      {
+        "ko": "넥스타 / 지역국 그룹",
+        "name": "Nexstar / station groups",
+        "share": 4.0
+      }
+    ],
+    "headline_ko": "스트리밍이 전통 TV를 넘어서며 방송의 선형 광고와 유료방송 기반이 줄고 있고, 폭스가 가장 순수한 대형 방송사, SBS가 한국 유일의 주요 상장 지상파로 자리하고 있습니다.",
+    "industry_en": "Broadcasting",
+    "industry_ko": "방송",
+    "korea_company": "SBS",
+    "korea_firms": [
+      {
+        "ko": "지상파(KBS·MBC·SBS)",
+        "name": "Terrestrial (KBS, MBC, SBS)",
+        "share": 36.0
+      },
+      {
+        "ko": "중심 PP(tvN·Mnet 등)",
+        "name": "PP led by CJ ENM (tvN, Mnet etc.)CJ ENM",
+        "share": 51.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.5833,
+      "global": 0.0,
+      "scale": 0.4167,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$356B",
+      "trillion_usd": 0.356,
+      "year": "2024"
+    },
+    "sector": "Communication Services"
+  },
   "502020": {
     "cagr": "≈3.7%",
     "gics": "502020",
@@ -9877,6 +10277,71 @@
     "market": {
       "label": "$6.66T",
       "trillion_usd": 6.66,
+      "year": "2024"
+    },
+    "sector": "Utilities"
+  },
+  "55103010": {
+    "cagr": "~6.1%",
+    "gics": "55103010",
+    "global_company": "Southern Company",
+    "global_firms": [
+      {
+        "ko": "서던 컴퍼니(약 1,090억 달러)",
+        "name": "Southern Company (~$109B)",
+        "share": 31.0
+      },
+      {
+        "ko": "내셔널그리드(약 830억 달러)",
+        "name": "National Grid (~$83B)",
+        "share": 23.0
+      },
+      {
+        "ko": "엔지(약 800억 달러)",
+        "name": "Engie (~$80B)",
+        "share": 23.0
+      },
+      {
+        "ko": "셈프라 + 도미니언(약 1,230억 달러)",
+        "name": "Sempra + Dominion (~$123B)",
+        "share": 17.0
+      },
+      {
+        "ko": "및 기타",
+        "name": "E.ON & othersE.ON",
+        "share": 6.0
+      }
+    ],
+    "headline_ko": "서던 컴퍼니가 AI 데이터센터 투자 사이클을 타고 시가총액 약 1,090억 달러로 상장 복합 유틸리티를 이끄는 가운데, 한국에는 진정한 복합 유틸리티가 없어 지역난방 사업자 KDHC가 가장 가까운 대안으로 파악됩니다.",
+    "industry_en": "Multi-Utilities",
+    "industry_ko": "복합 유틸리티",
+    "korea_company": "Korea District Heating Corp (proxy)",
+    "korea_firms": [
+      {
+        "ko": "한국지역난방공사(KDHC)",
+        "name": "Korea District Heating (KDHC)",
+        "share": 51.0
+      },
+      {
+        "ko": "파워, DS파워, SK E&S",
+        "name": "GS Power, DS Power, SK E&SGS",
+        "share": 27.0
+      },
+      {
+        "ko": "지자체 및 기타 사업자",
+        "name": "Municipal & other operators",
+        "share": 22.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.4,
+      "scale": 0.2,
+      "tech": 0.4
+    },
+    "market": {
+      "label": "$6.6T",
+      "trillion_usd": 6.6,
       "year": "2024"
     },
     "sector": "Utilities"
