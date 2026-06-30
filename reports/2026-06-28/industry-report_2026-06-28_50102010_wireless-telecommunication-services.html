@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireless Telecommunication Services — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+
+<style>
+  .cagr-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+  .cagr-badge{display:inline-flex;align-items:baseline;gap:5px;background:#eaf2fb;color:var(--blue);
+    border:1px solid #cfe2f5;border-radius:999px;padding:6px 13px;font-weight:800;font-size:13px;}
+  .cagr-badge .n{font-size:16px;}
+  .cagr-badge.alt{background:#fff6e6;color:#b07400;border-color:#ffe2a6;}
+  /* SCQA diagnosis (Situation · Complication · Question · Answer) */
+  .scqa{margin:12px 0 2px;}
+  .scqa-row{display:flex;gap:12px;position:relative;padding-bottom:14px;}
+  .scqa-row:last-child{padding-bottom:0;}
+  .scqa-row::before{content:"";position:absolute;left:14px;top:30px;bottom:-2px;width:2px;background:var(--line);}
+  .scqa-row:last-child::before{display:none;}
+  .scqa-k{flex:none;width:30px;height:30px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 2px 6px rgba(14,42,71,.18);}
+  .scqa-row.s .scqa-k{background:#5b6b8c;}
+  .scqa-row.c .scqa-k{background:var(--hi);}
+  .scqa-row.q .scqa-k{background:var(--blue);}
+  .scqa-row.a .scqa-k{background:var(--lo);}
+  .scqa-bd{flex:1;padding-top:1px;}
+  .scqa-lab{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;}
+  .scqa-row.a .scqa-lab{color:var(--lo);}
+  .scqa-bd p{margin:0;font-size:13.3px;color:var(--ink);line-height:1.55;}
+  .scqa-row.q .scqa-bd p{font-style:italic;color:#16406a;}
+  .scqa-row.a .scqa-bd p{font-weight:600;}
+  .scqa .formula{margin-top:8px;}
+  .scqa-cap{font-size:11.5px;color:var(--mute);font-style:italic;margin:10px 0 0;}
+  /* MECE issue tree (rendered together with SCQA) */
+  .tree{margin:9px 0 2px;}
+  .tree .root{background:linear-gradient(120deg,#16406a,#0e2a47);color:#fff;border-radius:11px;
+    padding:11px 14px;font-size:13.4px;font-weight:700;border-left:4px solid var(--gold);}
+  .tree .branches{display:grid;gap:9px;margin-top:10px;}
+  .tree .branch{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;padding:10px 13px;background:#f7fafd;}
+  .tree .branch>b{font-size:13.1px;display:block;margin-bottom:5px;color:var(--ink);}
+  .tree .leaf{font-size:12.6px;color:var(--mute);padding-left:15px;position:relative;margin:4px 0;line-height:1.5;}
+  .tree .leaf::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .tree .leaf.lever{color:var(--ink);font-weight:600;}
+  .tree .leaf.lever::before{background:var(--gold);width:8px;height:8px;left:1px;top:7px;}
+  .tree .lever-tag{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#b07400;background:#fff6e6;border-radius:5px;padding:1px 5px;margin-right:5px;}
+  .tree-cap{display:none;}
+  @media(min-width:680px){.tree .branches{grid-template-columns:1fr 1fr 1fr;}}
+  /* value chain — connected flow diagram */
+  .vchain{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:6px 0 4px;}
+  .vc-step{position:relative;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:11px;padding:11px 13px 11px 40px;flex:1;}
+  .vc-step .vc-n{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;
+    background:var(--blue);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .vc-step:last-of-type{border-left-color:var(--gold);}
+  .vc-step:last-of-type .vc-n{background:var(--gold);color:var(--navy);}
+  .vc-step b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc-step .d{font-size:12.3px;color:var(--mute);}
+  .vc-arrow{align-self:center;color:var(--gold);font-weight:900;font-size:16px;line-height:1;
+    transform:rotate(90deg);padding:5px 0;}
+  @media(min-width:720px){
+    .vchain{flex-direction:row;align-items:stretch;flex-wrap:nowrap;}
+    .vc-step{padding:11px 11px 11px 12px;min-width:0;}
+    .vc-step .vc-n{position:static;margin-bottom:6px;}
+    .vc-arrow{transform:none;padding:0 3px;display:flex;align-items:center;}
+  }
+  /* variable 1-3 strategy tracks */
+  .track.t3{background:#10355a;border:1px solid rgba(255,184,28,.45);}
+  .track-grid.n1{grid-template-columns:1fr;}
+  @media(min-width:680px){
+    .track-grid.n2{grid-template-columns:1fr 1fr;}
+    .track-grid.n3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  /* profit pool */
+  .pool{display:flex;flex-direction:column;gap:8px;margin:6px 0 2px;}
+  .pool-row{display:flex;align-items:center;gap:10px;}
+  .pool-row .pn{flex:1.1;font-size:12.6px;color:var(--ink);min-width:0;}
+  .pool-row .ptrack{flex:1.5;height:9px;border-radius:5px;background:#eef2f7;overflow:hidden;}
+  .pool-row .pfill{display:block;height:100%;border-radius:5px;}
+  .pool-row .pfill.hi{width:92%;background:var(--gold);}
+  .pool-row .pfill.med{width:55%;background:var(--blue);}
+  .pool-row .pfill.lo{width:22%;background:#c9d4e3;}
+  .pool-row .pv{flex:none;width:58px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .pool-row .pv.hi{color:#b07400;}.pool-row .pv.med{color:var(--blue);}.pool-row .pv.lo{color:var(--mute);}
+  /* KPI watchlist */
+  .kpis{display:grid;grid-template-columns:1fr;gap:11px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);padding:13px 15px;border-left:4px solid var(--blue);}
+  .kpi .kt{font-size:12.5px;font-weight:800;color:var(--ink);}
+  .kpi .kv{font-size:clamp(17px,4.6vw,21px);font-weight:800;color:var(--blue);margin:3px 0 4px;line-height:1.1;}
+  .kpi .kw{font-size:12.3px;color:var(--mute);}
+  /* scenarios */
+  .scen{display:grid;grid-template-columns:1fr;gap:11px;}
+  .sc{border-radius:13px;padding:14px 16px;color:#fff;box-shadow:var(--shadow);}
+  .sc.bull{background:linear-gradient(125deg,#1f9d6b,#14633f);}
+  .sc.base{background:linear-gradient(125deg,#16406a,#0e2a47);}
+  .sc.bear{background:linear-gradient(125deg,#b1402f,#7d2418);}
+  .sc .sh{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .sc .sd{font-size:13.6px;font-weight:800;margin:4px 0 6px;}
+  .sc p{margin:0;font-size:12.8px;color:#eef4fb;}
+  /* positioning 2x2 */
+  .posmap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;}
+  .posmap svg{width:100%;height:auto;display:block;overflow:visible;}
+  .pos-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 2px;font-size:12px;color:var(--ink);}
+  .pos-legend .pl-i{display:flex;align-items:center;gap:6px;}
+  .pos-legend .pl-d{width:11px;height:11px;border-radius:50%;}
+  @media(min-width:680px){.kpis{grid-template-columns:1fr 1fr;}.scen{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+
+<style id="gics-tax-css">
+.gics-tax{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:2px 0 14px;}
+.gics-tax .gt-h{display:flex;align-items:center;font-size:10.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--gold);padding-right:2px;}
+.gics-tax .gt-i{display:flex;flex-direction:column;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(207,226,245,.22);border-radius:10px;padding:5px 11px;}
+.gics-tax .gt-i.cur{background:rgba(255,184,28,.16);border-color:var(--gold);}
+.gics-tax .gt-c{font-size:10px;font-weight:700;color:#9fc3e8;font-variant-numeric:tabular-nums;letter-spacing:.5px;}
+.gics-tax .gt-i.cur .gt-c{color:var(--gold);}
+.gics-tax .gt-n{font-size:13px;font-weight:700;color:#fff;line-height:1.2;}
+.gics-tax .gt-l{font-size:9.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#8fb0d4;margin-top:1px;}
+.gics-tax .gt-a{display:flex;align-items:center;color:#6f93bb;font-weight:900;font-size:13px;}
+@media(max-width:520px){.gics-tax .gt-l{display:none;}.gics-tax .gt-n{font-size:12px;}.gics-tax .gt-i{padding:4px 9px;}}
+</style>
+
+<style id="nav-home-css">.nav-home{flex:none;display:inline-flex;align-items:center;gap:5px;color:var(--navy);background:var(--gold);border-radius:999px;padding:6px 11px;font-size:12.5px;font-weight:800;text-decoration:none;white-space:nowrap;}.nav-home svg{width:15px;height:15px;}.nav-home:hover{filter:brightness(.95);}</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+      <a class="nav-home" href="../../index.html" aria-label="All reports"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.7 12 4l9 6.7"></path><path d="M5 9.6V20h14V9.6"></path></svg><span class="en">All</span><span class="ko">전체</span></a>
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Wireless Telecommunication Services</span><span class="ko">무선 통신 서비스</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="positioning"><span class="en">Positioning</span><span class="ko">포지셔닝</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5가지 경쟁요인</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">주요 기업</span></button><button class="chip" data-go="scenarios"><span class="en">Scenarios</span><span class="ko">시나리오</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">English</span></button>
+  </div>
+</div>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 6 of 7</span><span class="ko">산업 브리프 · GICS 7개 세트 중 6번째</span></p>
+    <h1><span class="en">Wireless Telecommunication Services</span><span class="ko">무선 통신 서비스</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석 및 경쟁 구조</span></p>
+    <div class="gics-tax" aria-label="GICS classification"><span class="gt-h"><span class="en">GICS</span><span class="ko">GICS 분류</span></span><span class="gt-i"><span class="gt-c">50</span><span class="gt-n"><span class="en">Communication Services</span><span class="ko">커뮤니케이션 서비스</span></span><span class="gt-l"><span class="en">Sector</span><span class="ko">섹터</span></span></span><span class="gt-a" aria-hidden="true">&#8250;</span><span class="gt-i"><span class="gt-c">5010</span><span class="gt-n"><span class="en">Telecommunication Services</span><span class="ko">통신 서비스</span></span><span class="gt-l"><span class="en">Industry Group</span><span class="ko">산업군</span></span></span><span class="gt-a" aria-hidden="true">&#8250;</span><span class="gt-i"><span class="gt-c">501020</span><span class="gt-n"><span class="en">Wireless Telecommunication Services</span><span class="ko">무선 통신 서비스</span></span><span class="gt-l"><span class="en">Industry</span><span class="ko">산업</span></span></span><span class="gt-a" aria-hidden="true">&#8250;</span><span class="gt-i cur"><span class="gt-c">50102010</span><span class="gt-n"><span class="en">Wireless Telecommunication Services</span><span class="ko">무선 통신 서비스</span></span><span class="gt-l"><span class="en">Sub-Industry</span><span class="ko">세부산업</span></span></span></div>
+      <div class="pill-row">
+      <span class="pill">2026-06-28</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">주요 기업</span>: <span class="en">China Mobile · SK Telecom / T-Mobile US, Verizon, KT, LG U+ (peers)</span><span class="ko">차이나모바일 · SK텔레콤 / T-Mobile US, 버라이즌, KT, LG유플러스 (동종업체)</span></span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">Global mobile operator revenue reached about US$1.19 trillion in 2025 (GSMA) across 8.8 billion connections, yet the market is so fragmented that the global #1 by subscribers, China Mobile (~1.009 billion mobile subscribers, market cap ~US$214 billion in June 2026), holds only ~11.5% of connections. Korea's #1, SK Telecom, slipped below a 40% mobile share for the first time since 2015 after the April 2025 USIM hacking incident exposed authentication data for ~23.2 million subscribers, drawing a record ₩134.8 billion privacy fine and a ₩1.2 trillion remediation program. The structural story is the same worldwide: saturated, price-competitive markets push operators toward consolidation, spectrum depth and AI/convergence to defend ARPU.</span><span class="ko">2025년 글로벌 이동통신 사업자 매출은 88억 회선을 기반으로 약 1조 1,900억 달러(GSMA)에 이른 것으로 파악됩니다. 다만 시장이 워낙 파편화되어 있어, 가입자 기준 글로벌 1위인 차이나모바일(이동통신 가입자 약 10억 900만 명, 2026년 6월 시가총액 약 2,140억 달러)조차 전체 회선의 약 11.5%만을 차지하는 데 그칩니다. 한국 1위 SK텔레콤은 2025년 4월 유심 해킹으로 약 2,320만 명의 인증 정보가 유출되면서 2015년 이후 처음으로 이동통신 점유율 40%가 무너졌고, 역대 최대인 134.8억 원의 개인정보 과징금과 1조 2,000억 원 규모의 보상·보안 프로그램을 부담한 바 있습니다. 시사점을 말씀드리면, 전 세계적으로 포화된 가격 경쟁 시장이 사업자를 통합·주파수 확보·AI/결합 전략으로 내몰며 ARPU 방어를 강요하고 있다는 점입니다.</span></p>
+    </div>
+  </section>
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">Profit concentrates at the ends — spectrum rent upstream and device makers downstream — while capital-heavy operators sit in the lowest-return seat.</span><span class="ko">이익은 상류의 주파수 임대료와 하류의 단말 제조사 등 양 끝에 집중되며, 자본 부담이 가장 큰 통신 사업자가 수익성이 가장 낮은 자리에 위치한 것으로 파악됩니다.</span></h2>
+      <div class="vchain"><div class="vc-step"><span class="vc-n">1</span><b><span class="en">Spectrum &amp; licensing</span><span class="ko">주파수·면허</span></b><span class="d"><span class="en">Governments auction/allocate spectrum, extracting rent before any service revenue is earned</span><span class="ko">정부가 주파수를 경매·할당하며, 서비스 매출이 발생하기 전에 임대료를 먼저 거둡니다</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">2</span><b><span class="en">Network equipment</span><span class="ko">네트워크 장비</span></b><span class="d"><span class="en">RAN oligopoly — top-5 vendors (Huawei, Ericsson, Nokia, ZTE, Samsung) hold ~96% share (2025)</span><span class="ko">RAN 과점 — 상위 5개사(화웨이·에릭슨·노키아·ZTE·삼성)가 약 96% 점유(2025년)</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">3</span><b><span class="en">Network build &amp; operations</span><span class="ko">네트워크 구축·운영</span></b><span class="d"><span class="en">Operators + towercos carry ~US$1.2T capex (2025–2030); towercos earn the best infra margins</span><span class="ko">통신사·타워코가 약 1.2조 달러 설비투자(2025~2030년) 부담, 타워코가 인프라 마진 최상위</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">4</span><b><span class="en">Service, retail &amp; MVNO</span><span class="ko">서비스·유통·알뜰폰</span></b><span class="d"><span class="en">Voice/data plans, bundling and convergence; MVNOs add reach but capture thin margins</span><span class="ko">음성·데이터 요금제, 결합·융합; 알뜰폰은 외연을 넓히나 마진은 박함</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">5</span><b><span class="en">Devices</span><span class="ko">단말기</span></b><span class="d"><span class="en">Largest single profit pool — Apple took ~46% of global smartphone revenue in 2024</span><span class="ko">단일 최대 이익 풀 — 애플이 2024년 글로벌 스마트폰 매출의 약 46% 차지</span></span></div></div>
+      <div class="pool"><div class="pool-row"><span class="pn"><span class="en">Devices (handset makers)</span><span class="ko">단말기(제조사)</span></span><span class="ptrack"><span class="pfill hi" style="width:100%"></span></span><span class="pv hi">~34%</span></div><div class="pool-row"><span class="pn"><span class="en">Network operators (MNOs)</span><span class="ko">네트워크 사업자(MNO)</span></span><span class="ptrack"><span class="pfill hi" style="width:82%"></span></span><span class="pv hi">~28%</span></div><div class="pool-row"><span class="pn"><span class="en">Equipment &amp; infra (incl. towercos)</span><span class="ko">장비·인프라(타워코 포함)</span></span><span class="ptrack"><span class="pfill med" style="width:59%"></span></span><span class="pv med">~20%</span></div><div class="pool-row"><span class="pn"><span class="en">Spectrum &amp; licensing (governments)</span><span class="ko">주파수·면허(정부)</span></span><span class="ptrack"><span class="pfill med" style="width:35%"></span></span><span class="pv med">~12%</span></div><div class="pool-row"><span class="pn"><span class="en">Retail, MVNO &amp; resellers</span><span class="ko">유통·알뜰폰·재판매</span></span><span class="ptrack"><span class="pfill lo" style="width:18%"></span></span><span class="pv lo">~6%</span></div></div>
+      <p class="cap"><span class="en">Indicative split of where industry profit accrues across the wireless value chain (2025, author estimate from GSMA capex, Dell'Oro RAN and Counterpoint device-profit data). Operators carry the most capital but earn thin, regulated returns.</span><span class="ko">무선 가치사슬에서 이익이 귀속되는 위치의 개략적 배분입니다(2025년, GSMA 설비투자·Dell'Oro RAN·카운터포인트 단말 이익 자료에 기반한 필자 추정). 통신사가 가장 많은 자본을 부담하지만 규제된 박한 수익에 그칩니다.</span></p>
+    </div>
+  </section>
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">Global mobile operator revenue reached ~US$1.19 trillion in 2025, growing at a low-single-digit pace as connection growth slows.</span><span class="ko">글로벌 이동통신 사업자 매출은 2025년 약 1조 1,900억 달러에 이르렀고, 회선 증가세 둔화 속에 한 자릿수 초반의 성장률을 보인 것으로 파악됩니다.</span></h2>
+      <div class="cagr-wrap"><span class="cagr-badge"><span class="en">CAGR</span><span class="ko">연평균 성장률(CAGR)</span><span class="n">~2.7%</span></span><span class="mute" style="font-size:12.5px"><span class="en">GSMA: mobile operator revenue US$1.19T (2025) → US$1.36T (2030), ~2.7% CAGR; total mobile economic value US$7.6T (2025). Broader wireless-services trackers report 6–8% (Market Research Future 6.6% 2025–2035; Grand View Research 7.8% 2025–2033).</span><span class="ko">GSMA: 이동통신 사업자 매출 2025년 1조 1,900억 달러 → 2030년 1조 3,600억 달러, 연평균 성장률(CAGR) 약 2.7%; 모바일 총경제가치 2025년 7조 6,000억 달러. 광의의 무선 서비스 집계는 6~8%를 제시합니다(Market Research Future 6.6%, 2025~2035년; Grand View Research 7.8%, 2025~2033년).</span></span></div>
+      <div class="colchart"><div class="col"><div class="col-val">~$1.08T</div><div class="col-bar" data-h="63"></div><div class="col-lab">2022</div></div><div class="col"><div class="col-val">~$1.10T</div><div class="col-bar" data-h="67"></div><div class="col-lab">2023</div></div><div class="col"><div class="col-val">~$1.15T</div><div class="col-bar" data-h="78"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">~$1.19T</div><div class="col-bar" data-h="88"></div><div class="col-lab">2025</div></div><div class="col"><div class="col-val">~$1.22T</div><div class="col-bar" data-h="100"></div><div class="col-lab">2026e</div></div></div>
+      <p class="cap"><span class="en">GSMA mobile operator revenue, US$ trillion. Bars are zoomed: the y-axis starts near US$1.0T (not zero) so the ~2.7% annual gradient is legible — the smallest bar is set to ~63, not 0. 2026e is implied from the 2025→2030 path.</span><span class="ko">GSMA 기준 이동통신 사업자 매출, 단위 조 달러. 막대는 확대 표시했습니다 — y축이 0이 아닌 약 1.0조 달러에서 시작하도록 기준선을 올려 약 2.7%의 연 증가 기울기가 보이도록 했으며, 가장 작은 막대는 0이 아닌 약 63으로 설정했습니다. 2026년 추정치는 2025~2030년 경로에서 도출했습니다.</span></p>
+    </div>
+  </section>
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share</span><span class="ko">시장점유율</span></p>
+      <h2><span class="en">The market is globally fragmented: even China Mobile holds only ~11.5% of connections; in Korea, SK Telecom slipped below 40% after the 2025 USIM breach.</span><span class="ko">시장은 전 세계적으로 파편화되어 있습니다 — 차이나모바일조차 회선의 약 11.5%만 차지하며, 한국에서는 SK텔레콤이 2025년 유심 사태 이후 40% 아래로 내려간 것으로 파악됩니다.</span></h2>
+      <div class="pies reveal">
+        <div class="pieblock"><div class="pie-title"><span class="en">Global mobile connections share — top operators, 2025 (GSMA base 8.8B connections)</span><span class="ko">글로벌 이동통신 회선 점유율 — 주요 사업자, 2025년 (GSMA 88억 회선 기준)</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0% 12%,#117aca 12% 19%,#5aa9e6 19% 24%,#9fb1c9 24% 29%,#cfdcec 29% 33%,#e6ebf4 33% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span><span class="en">China Mobile</span><span class="ko">차이나모바일</span><b>~12%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span><span class="en">Bharti Airtel (group)</span><span class="ko">바르티 에어텔(그룹)</span><b>~7%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span><span class="en">Reliance Jio</span><span class="ko">릴라이언스 지오</span><b>~5%</b></div><div class="lg-item"><span class="lg-dot" style="background:#9fb1c9"></span><span class="en">China Telecom</span><span class="ko">차이나텔레콤</span><b>~5%</b></div><div class="lg-item"><span class="lg-dot" style="background:#cfdcec"></span><span class="en">China Unicom</span><span class="ko">차이나유니콤</span><b>~4%</b></div><div class="lg-item"><span class="lg-dot" style="background:#e6ebf4"></span><span class="en">All others</span><span class="ko">기타 전체</span><b>~67%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea mobile subscriber share — handset lines, Jan 2026 (MSIT)</span><span class="ko">한국 이동통신 가입자 점유율 — 휴대폰 회선, 2026년 1월 (과기정통부)</span></div><div class="pie" style="background:conic-gradient(#0047a0 0% 39%,#117aca 39% 62%,#5aa9e6 62% 82%,#c8102e 82% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span><span class="en">SK Telecom</span><span class="ko">SK텔레콤</span><b>~39%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span><span class="en">KT</span><span class="ko">KT</span><b>~23%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span><span class="en">LG U+</span><span class="ko">LG유플러스</span><b>~20%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c8102e"></span><span class="en">MVNO (알뜰폰)</span><span class="ko">알뜰폰(MVNO)</span><b>~18%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">Global: GSMA 2025 base of 8.8B connections; top-5 ≈ 33%, the rest is a long tail of national operators. Korea: MSIT handset-line shares, Jan 2026 — SKT 39.0%, KT 23.3%, LG U+ 19.6%, MVNO 18.1% (record). SKT fell below 40% in May 2025 after the USIM breach.</span><span class="ko">글로벌: GSMA 2025년 88억 회선 기준, 상위 5개사 약 33%이며 나머지는 각국 사업자의 긴 꼬리입니다. 한국: 과기정통부 휴대폰 회선 점유율(2026년 1월) — SKT 39.0%, KT 23.3%, LG유플러스 19.6%, 알뜰폰 18.1%(역대 최고). SKT는 유심 사태 후 2025년 5월 40% 아래로 내려간 바 있습니다.</span></p>
+    </div>
+  </section>
+  <section id="positioning">
+    <p class="kicker"><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></p>
+    <h2><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></h2>
+    <div class="posmap reveal"><svg viewBox="0 0 340 290" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="60" y="18" width="262" height="214" fill="#f7fafd" stroke="#e6ebf4" stroke-width="1.5" rx="8"/><line x1="60" y1="125" x2="322" y2="125" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><line x1="191" y1="18" x2="191" y2="232" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><circle cx="300" cy="150" r="7" fill="var(--navy)"/><text x="300" y="141" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">China Mobile</text><circle cx="120" cy="70" r="7" fill="var(--krred)"/><text x="120" y="61" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">SK Telecom</text><circle cx="175" cy="48" r="5.5" fill="#9fb1c9"/><text x="175" y="39" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">T-Mobile US</text><circle cx="210" cy="62" r="5.5" fill="#9fb1c9"/><text x="225" y="66" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Verizon</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="en">Scale (subscribers) →</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="ko">규모(가입자) →</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="en">Premium / ARPU focus →</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="ko">프리미엄·ARPU 집중도 →</text></svg><div class="pos-legend"><span class="pl-i"><span class="pl-d" style="background:var(--navy)"></span><span class="en">Global #1</span><span class="ko">글로벌 1위</span></span><span class="pl-i"><span class="pl-d" style="background:var(--krred)"></span><span class="en">Korea #1</span><span class="ko">한국 1위</span></span><span class="pl-i"><span class="pl-d" style="background:#9fb1c9"></span><span class="en">Peers</span><span class="ko">동종 기업</span></span></div><p class="cap"><span class="en">Takeaway: China Mobile leads on sheer scale at low ARPU; US carriers and SK Telecom compete on premium, high-ARPU positioning with far smaller subscriber bases.</span><span class="ko">시사점: 차이나모바일은 낮은 ARPU에도 압도적 규모로 선두에 있는 반면, 미국 사업자와 SK텔레콤은 훨씬 작은 가입자 기반에서 프리미엄·고ARPU 포지셔닝으로 경쟁한다는 점입니다.</span></p></div>
+  </section>
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Spectrum costs, multi-billion capex and licensing are steep barriers, though asset-light MVNOs and satellite direct-to-cell (Starlink/T-Mobile, AST SpaceMobile) open niche entry.</span><span class="ko">주파수 비용·수십억 달러 설비투자·면허가 높은 장벽으로 작용합니다. 다만 자산 경량형 알뜰폰과 위성 직접연결(스타링크/T-Mobile, AST 스페이스모바일)이 틈새 진입로를 열고 있습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">RAN equipment is a tight oligopoly (top-5 ~96% share) and spectrum is a government-controlled input, but operators' scale and vendor diversification temper pricing power.</span><span class="ko">RAN 장비가 견고한 과점(상위 5개사 약 96%)이고 주파수는 정부 통제 자원입니다. 다만 통신사의 규모와 벤더 다변화가 가격 결정력을 일부 완화합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Number portability, commoditized service and price competition let consumers switch easily; the 2025 SKT breach showed how fast a trust shock can move ~840,000 subscribers.</span><span class="ko">번호이동·서비스 동질화·가격 경쟁으로 소비자 전환이 쉽습니다. 2025년 SKT 사태는 신뢰 충격이 약 84만 명을 얼마나 빠르게 이동시키는지 보여줬습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">OTT voice/messaging (WhatsApp, FaceTime), Wi-Fi calling and fixed-wireless have gutted legacy voice/SMS, and satellite direct-to-cell now substitutes coverage in remote areas.</span><span class="ko">OTT 음성·메시징(왓츠앱·페이스타임), 와이파이 통화, 고정형 무선이 기존 음성·문자를 잠식했고, 위성 직접연결이 오지의 커버리지를 대체하기 시작했습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">경쟁 강도</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Most national markets are saturated 3–4 player oligopolies fighting over flat subscriber bases via price and bundling, driving ongoing consolidation to fund 5G/AI capex.</span><span class="ko">대다수 국가 시장은 포화된 3~4개 사업자 과점으로, 정체된 가입자 기반을 두고 가격·결합으로 다투며 5G/AI 설비투자 재원 마련을 위한 통합이 이어지고 있습니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: a high-barrier industry where operators are squeezed from both sides — rent-extracting suppliers upstream, easy-switching buyers and substitutes downstream — keeping returns thin and rivalry intense.</span><span class="ko">종합하면, 진입 장벽은 높으나 통신사는 양쪽에서 압박받는 구조입니다 — 상류의 임대료 추출형 공급자, 하류의 손쉬운 전환·대체재가 수익을 박하게 만들고 경쟁을 격화시킵니다.</span></p>
+  </section>
+  <section id="reg">
+    <p class="kicker"><span class="en">Macro forces &amp; the latest RULES</span><span class="ko">거시 요인 및 최신 규제</span></p>
+    <h2><span class="en">Regulation &amp; policy</span><span class="ko">규제·정책</span></h2>
+    <p class="hint"><span class="en">Dated laws and rules only — recent market events are in the next section.</span><span class="ko">날짜가 명시된 법·규정만 다룹니다. 최근 시장 이벤트는 다음 섹션에 정리되어 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jul 2025</span><span class="ac-title"><span class="en">US — One Big Beautiful Bill Act restores FCC auction authority</span><span class="ko">미국 — One Big Beautiful Bill Act, FCC 경매 권한 복원</span></span></div><div class="ac-body"><p class="why"><span class="en">Signed July 4, 2025, it restored the FCC's lapsed auction authority through 2034 and mandated a pipeline of ≥800 MHz, with ≥100 MHz of Upper C-band to be auctioned by July 2027. Why it matters: it reopens the US spectrum supply that operators need for 5G/6G capacity.</span><span class="ko">2025년 7월 4일 서명되어 2023년 이후 정지됐던 FCC 경매 권한을 2034년까지 복원하고 800MHz 이상의 공급 파이프라인을 의무화했으며, 상부 C밴드 100MHz 이상을 2027년 7월까지 경매하도록 했습니다. 시사점: 통신사가 5G/6G 용량 확보에 필요한 미국 주파수 공급이 다시 열렸다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jan 2026</span><span class="ac-title"><span class="en">EU — Digital Networks Act proposed</span><span class="ko">EU — 디지털 네트워크법(DNA) 발의</span></span></div><div class="ac-body"><p class="why"><span class="en">Proposed Jan 21, 2026, the DNA consolidates four telecom instruments into one regulation, adds an EU-wide authorization 'single passport', and sets a copper-to-fibre switch-off by 2035; it dropped a mandatory Big Tech 'fair share' fee. Why it matters: it signals a more consolidation-friendly EU stance to fund network investment.</span><span class="ko">2026년 1월 21일 발의된 DNA는 4개 통신 규범을 단일 규정으로 통합하고 EU 단일 인허가('싱글 패스포트')를 도입하며 2035년까지 구리망 폐지를 규정했고, 빅테크 의무 '공정 분담금'은 제외했습니다. 시사점: 네트워크 투자 재원 마련을 위해 EU가 통합 친화적 기조로 이동하고 있다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jul 2025</span><span class="ac-title"><span class="en">Korea — 단통법 (handset subsidy law) repeal takes effect</span><span class="ko">한국 — 단통법(단말기유통구조개선법) 폐지 시행</span></span></div><div class="ac-body"><p class="why"><span class="en">Passed Dec 2024 and effective July 22, 2025, the repeal scrapped fixed posted subsidies and the 15% add-on cap, allowing differentiated handset deals. Why it matters: it shifts competition back toward subsidies, though the feared subsidy war has not yet materialized (average subsidy only ~₩750,000, Q3 2025).</span><span class="ko">2024년 12월 통과되어 2025년 7월 22일 시행된 폐지로 공시지원금과 15% 추가지원금 상한이 사라져 차별적 단말 판매가 가능해졌습니다. 시사점: 경쟁이 다시 보조금 중심으로 이동하나, 우려된 보조금 대란은 아직 현실화되지 않았다는 점입니다(평균 지원금 약 75만 원, 2025년 3분기).</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Dec 2025</span><span class="ac-title"><span class="en">Korea — MSIT finalizes re-allocation of 370 MHz spectrum with 5G SA mandate</span><span class="ko">한국 — 과기정통부, 370MHz 재할당 확정 및 5G SA 전환 의무화</span></span></div><div class="ac-body"><p class="why"><span class="en">On Dec 10, 2025 MSIT finalized re-allocation of all 370 MHz of 3G/LTE spectrum expiring in 2026, cutting the fee ~14.8% (to ~₩2.9–3.1 trillion) and mandating 5G Standalone (SA) conversion by end-2026. Why it matters: it locks in carriers' core spectrum but ties relief to network upgrades.</span><span class="ko">2025년 12월 10일 과기정통부는 2026년 만료되는 3G/LTE 주파수 370MHz 전체의 재할당을 확정하며 대가를 약 14.8% 인하(약 2조 9,000억~3조 1,000억 원)하고 2026년 말까지 5G 단독모드(SA) 전환을 의무화했습니다. 시사점: 핵심 주파수를 확보해 주는 대신 망 고도화를 조건으로 걸었다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Mar 2025</span><span class="ac-title"><span class="en">Korea — MVNO wholesale rates shift to self-negotiation</span><span class="ko">한국 — 알뜰폰 도매대가, 자율 협상으로 전환</span></span></div><div class="ac-body"><p class="why"><span class="en">From March 30, 2025 wholesale-rate setting moved from government pre-approval to carrier self-negotiation with notification; MSIT targeted cutting SKT's data wholesale rate by up to 52% (1.29 → 0.62 won/MB). Why it matters: it lowers MVNO input costs, intensifying 알뜰폰 competition that now holds ~18% share.</span><span class="ko">2025년 3월 30일부터 도매대가 설정이 정부 사전인가에서 사업자 자율 협상·신고 방식으로 바뀌었고, 과기정통부는 SKT 데이터 도매대가를 최대 52%(1.29→0.62원/MB) 인하하는 방안을 추진했습니다. 시사점: 알뜰폰의 원가가 낮아져 약 18% 점유율의 알뜰폰 경쟁이 더 거세진다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jan 2025</span><span class="ac-title"><span class="en">US — net neutrality (Title II) struck down by 6th Circuit</span><span class="ko">미국 — 망 중립성(Title II) 제6연방항소법원서 무효</span></span></div><div class="ac-body"><p class="why"><span class="en">On Jan 2, 2025 the 6th Circuit vacated the FCC's 2024 Open Internet Order, holding broadband is an 'information service' so the FCC lacks Title II authority — one of the first major post-Chevron rulings. Why it matters: it removes utility-style regulation, giving US carriers more pricing and traffic-management latitude.</span><span class="ko">2025년 1월 2일 제6연방항소법원은 FCC의 2024년 오픈인터넷 규정을 무효화하며 광대역은 '정보 서비스'이므로 FCC에 Title II 권한이 없다고 판단했습니다 — 셰브론 원칙 폐기 이후의 첫 주요 판결 중 하나입니다. 시사점: 공익사업식 규제가 사라져 미국 통신사의 가격·트래픽 관리 재량이 넓어졌다는 점입니다.</span></p></div></div></div>
+  </section>
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심 성공 요인</span></p>
+    <h2><span class="en">Key Success Factors</span><span class="ko">핵심 성공 요인</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Spectrum portfolio depth</span><span class="ko">주파수 포트폴리오 깊이</span></b><p><span class="en">Balanced low-/mid-/high-band holdings are the foundational, non-replicable moat that sets capacity and coverage.</span><span class="ko">저·중·고대역의 균형 있는 보유는 용량과 커버리지를 결정하는 복제 불가능한 핵심 해자입니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">Network quality &amp; 5G coverage</span><span class="ko">네트워크 품질·5G 커버리지</span></b><p><span class="en">Measurable speed, latency and coverage leadership (incl. 5G Standalone) drives premium positioning and lower churn.</span><span class="ko">측정 가능한 속도·지연·커버리지 우위(5G 단독모드 포함)가 프리미엄 포지셔닝과 낮은 해지율을 이끕니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">Capex efficiency</span><span class="ko">설비투자 효율</span></b><p><span class="en">With US$1.2T+ mobile capex due 2025–2030, vendor leverage, RAN sharing and towerco leasing decide free cash flow.</span><span class="ko">2025~2030년 1.2조 달러 이상의 설비투자를 앞두고, 벤더 협상력·RAN 공유·타워코 임대가 잉여현금흐름을 좌우합니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">ARPU &amp; churn management</span><span class="ko">ARPU·해지율 관리</span></b><p><span class="en">Defending ARPU while minimizing churn is the core P&amp;L lever in saturated, price-competitive markets.</span><span class="ko">포화된 가격 경쟁 시장에서 ARPU를 방어하면서 해지율을 낮추는 것이 손익의 핵심 지렛대입니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">Trust &amp; data security</span><span class="ko">신뢰·데이터 보안</span></b><p><span class="en">The 2025 SKT USIM breach (₩134.8B fine, ~840,000 subscribers lost) proved security failures convert directly into churn and cost.</span><span class="ko">2025년 SKT 유심 사태(과징금 134.8억 원, 약 84만 명 이탈)는 보안 실패가 곧바로 해지와 비용으로 전환됨을 입증했습니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Convergence &amp; AI monetization</span><span class="ko">융합·AI 수익화</span></b><p><span class="en">Fixed-mobile convergence, content bundles, satellite add-ons and AI services (e.g. SKT's A., AI data centers) raise stickiness and ARPU.</span><span class="ko">유무선 융합·콘텐츠 결합·위성 부가서비스·AI 사업(예: SKT의 에이닷, AI 데이터센터)이 고착도와 ARPU를 높입니다.</span></p></div></div></div>
+  </section>
+  <section id="news">
+    <p class="kicker"><span class="en">What's moving the industry now</span><span class="ko">현재 산업을 움직이는 요인</span></p>
+    <h2><span class="en">Recent market events</span><span class="ko">최근 시장 동향</span></h2>
+    <p class="hint"><span class="en">Dated market events only — laws and rules are in the Regulation section.</span><span class="ko">날짜가 명시된 시장 이벤트만 다룹니다. 법·규정은 규제 섹션에 정리되어 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Apr 2025</span><span class="ac-title"><span class="en">SK Telecom USIM hacking exposes ~23.2M subscribers</span><span class="ko">SK텔레콤 유심 해킹, 약 2,320만 명 정보 노출</span></span></div><div class="ac-body"><p class="why"><span class="en">Disclosed April 22, 2025, the breach of SKT's Home Subscriber Server leaked USIM authentication data (IMSI, keys) for ~23.2 million subscribers; SKT ran free USIM swaps, suspended sign-ups, and announced a ₩1.2 trillion remediation program. Why it matters: it was the largest telecom breach in Korean history and reset the security agenda industry-wide.</span><span class="ko">2025년 4월 22일 공개된 SKT 가입자 인증 서버(HSS) 침해로 약 2,320만 명의 유심 인증 데이터(IMSI·인증키)가 유출됐고, SKT는 무상 유심 교체·신규 가입 중단·1조 2,000억 원 보상 프로그램을 시행했습니다. 시사점: 한국 통신 역사상 최대 침해 사고로 업계 전반의 보안 의제를 다시 짰다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Aug 2025</span><span class="ac-title"><span class="en">PIPC fines SKT ₩134.8 billion — Korea's largest privacy penalty</span><span class="ko">개인정보위, SKT에 과징금 134.8억 원 — 역대 최대</span></span></div><div class="ac-body"><p class="why"><span class="en">On Aug 28, 2025 Korea's PIPC fined SKT ₩134.8 billion (~US$97 million) over the breach, the largest in its history; SKT later filed suit (Jan 2026) to overturn it, and the Consumer Dispute body recommended ₩100,000 per user. Why it matters: it sets a precedent that elevates data-security liability for all Korean carriers.</span><span class="ko">2025년 8월 28일 개인정보보호위원회는 이번 침해와 관련해 SKT에 역대 최대인 134.8억 원(약 9,700만 달러)의 과징금을 부과했고, SKT는 2026년 1월 취소 소송을 제기했으며 소비자분쟁조정위는 1인당 10만 원 배상을 권고했습니다. 시사점: 한국 모든 통신사의 데이터 보안 책임을 높이는 선례를 세웠다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Aug 2025</span><span class="ac-title"><span class="en">T-Mobile US closes UScellular acquisition (~$4.3B)</span><span class="ko">T-Mobile US, US셀룰러 인수 완료(약 43억 달러)</span></span></div><div class="ac-body"><p class="why"><span class="en">Closed Aug 1, 2025, T-Mobile absorbed UScellular's wireless operations and select spectrum, with the remaining entity rebranded Array Digital Infrastructure. Why it matters: it extends the US consolidation wave and strengthens T-Mobile's spectrum position against Verizon and AT&amp;T.</span><span class="ko">2025년 8월 1일 마무리된 거래로 T-Mobile은 US셀룰러의 무선 사업과 일부 주파수를 흡수했고, 잔존 법인은 Array Digital Infrastructure로 사명을 바꿨습니다. 시사점: 미국 통합 흐름을 이어가며 버라이즌·AT&amp;T 대비 T-Mobile의 주파수 입지를 강화한다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Sep 2025</span><span class="ac-title"><span class="en">SpaceX–EchoStar ~$17B spectrum deal for Starlink direct-to-cell</span><span class="ko">스페이스X–에코스타, 스타링크 직접연결용 약 170억 달러 주파수 거래</span></span></div><div class="ac-body"><p class="why"><span class="en">Announced Sept 8, 2025, SpaceX agreed to buy EchoStar's AWS-4/H-block spectrum (~$17B) for Starlink Direct-to-Cell; the FCC approved it in May 2026. Why it matters: it accelerates satellite-to-phone as a real substitute/complement to terrestrial coverage and pressures incumbents to add direct-to-device partnerships.</span><span class="ko">2025년 9월 8일 발표된 거래로 스페이스X는 스타링크 직접연결을 위해 에코스타의 AWS-4·H블록 주파수를 약 170억 달러에 인수하기로 했고, FCC는 2026년 5월 승인했습니다. 시사점: 위성-휴대폰 연결이 지상 커버리지의 실질적 대체·보완재로 부상하며 기존 사업자에 직접연결 제휴를 압박한다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Feb 2026</span><span class="ac-title"><span class="en">Major carrier earnings — Verizon, T-Mobile, AT&amp;T post growth</span><span class="ko">주요 통신사 실적 — 버라이즌·T-Mobile·AT&amp;T 성장</span></span></div><div class="ac-body"><p class="why"><span class="en">For Q4 2025 (reported Jan–Feb 2026) Verizon posted +616,000 postpaid phone net adds (best since 2019), T-Mobile +962,000 on revenue $24.33B (+11%), and AT&amp;T +421,000. Why it matters: US carriers are converting fiber/convergence and 5G into renewed subscriber growth despite saturation.</span><span class="ko">2025년 4분기(2026년 1~2월 발표) 버라이즌은 후불 휴대폰 순증 61만 6,000명(2019년 이후 최대), T-Mobile은 96만 2,000명에 매출 243억 3,000만 달러(+11%), AT&amp;T는 42만 1,000명을 기록했습니다. 시사점: 미국 통신사가 포화 속에서도 광케이블·융합·5G를 다시 가입자 성장으로 전환하고 있다는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jun 2026</span><span class="ac-title"><span class="en">US AWS-3 re-auction raises $3.57B; Verizon takes ~88%</span><span class="ko">미국 AWS-3 재경매 35.7억 달러 낙찰, 버라이즌 약 88% 확보</span></span></div><div class="ac-body"><p class="why"><span class="en">FCC Auction 113 (June 2–23, 2026) — the first completed US auction in ~4 years — raised $3.57 billion across 200 licenses; Verizon won ~$3.2B (88% of spend), with proceeds funding 'rip and replace' of Huawei/ZTE gear. Why it matters: it confirms mid-band spectrum scarcity and Verizon's drive to close its capacity gap.</span><span class="ko">FCC 113번 경매(2026년 6월 2~23일) — 약 4년 만에 완료된 미국 경매 — 는 200개 면허에서 35억 7,000만 달러를 모았고, 버라이즌이 약 32억 달러(낙찰액의 88%)를 확보했으며 수익은 화웨이·ZTE 장비 교체(rip and replace) 재원으로 쓰입니다. 시사점: 중대역 주파수의 희소성과 용량 격차를 좁히려는 버라이즌의 의지를 확인했다는 점입니다.</span></p></div></div></div>
+  </section>
+  <section id="players">
+    <p class="kicker"><span class="en">Players · strategy analysis</span><span class="ko">주요 기업 · 전략 분석</span></p>
+    <h2><span class="en">Global #1 and Korea #1, diagnosed separately</span><span class="ko">글로벌 1위와 한국 1위를 각각 진단</span></h2>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1 · by mobile subscribers</span><span class="ko">글로벌 1위 · 이동통신 가입자 기준</span></div><h3>China Mobile (HK:0941)</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">China Mobile is the world's largest wireless operator by subscribers — about 1.009 billion mobile customers (Q3 2025), roughly 8–10x Verizon or T-Mobile US. State-controlled and listed in Hong Kong (0941) and Shanghai (600941), it generated FY2025 operating revenue of about RMB 1.05 trillion (~US$146 billion) and net profit of RMB 137.1 billion (~US$19.9 billion). Its scale is unmatched, but a slow-growth, low-ARPU profile and a geopolitical/ADR-delisting discount keep its valuation multiple compressed.</span><span class="ko">차이나모바일은 가입자 기준 세계 최대 무선 사업자로, 이동통신 고객이 약 10억 900만 명(2025년 3분기)에 이르러 버라이즌이나 T-Mobile US의 약 8~10배입니다. 국가가 지배하며 홍콩(0941)·상하이(600941)에 상장된 이 회사는 2025 회계연도 영업수익 약 1조 500억 위안(약 1,460억 달러), 순이익 1,371억 위안(약 199억 달러)을 기록한 것으로 파악됩니다. 규모는 독보적이나, 저성장·저ARPU 구조와 지정학·ADR 상장폐지 디스카운트가 밸류에이션 배수를 눌러 왔습니다.</span></p><div class="stats"><div class="stat"><div class="n">$214B</div><div class="l"><span class="en">Market cap (Jun 2026)</span><span class="ko">시가총액 (2026년 6월)</span></div></div><div class="stat"><div class="n">~1.009B</div><div class="l"><span class="en">Mobile subscribers (Q3 2025)</span><span class="ko">이동통신 가입자 (2025년 3분기)</span></div></div><div class="stat"><div class="n">622M</div><div class="l"><span class="en">5G subscribers (~62%, Q3 2025)</span><span class="ko">5G 가입자 (약 62%, 2025년 3분기)</span></div></div><div class="stat"><div class="n">~RMB 48</div><div class="l"><span class="en">Mobile ARPU/month (2025)</span><span class="ko">이동통신 ARPU/월 (2025년)</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — turning unmatched scale into value as ARPU stagnates</span><span class="ko">진단 — ARPU 정체 속 압도적 규모를 가치로 전환하기</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 최대 과제</span></span><p><span class="en">China Mobile commands ~1.009 billion subscribers and ~62% 5G penetration on a domestic market it effectively co-controls with China Telecom and China Unicom.</span><span class="ko">차이나모바일은 차이나텔레콤·차이나유니콤과 사실상 공동 지배하는 내수 시장에서 약 10억 900만 가입자와 약 62%의 5G 보급률을 보유하고 있습니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">복합 요인 · 근본 원인</span></span><p><span class="en">Yet mobile ARPU is falling (~RMB 48, –3% YoY), net profit dipped –0.9% in 2025, and its valuation trades far below US peers despite a vastly larger base.</span><span class="ko">그러나 이동통신 ARPU는 하락 중이고(약 48위안, 전년 대비 –3%) 2025년 순이익은 –0.9% 감소했으며, 훨씬 큰 기반에도 밸류에이션은 미국 동종업체를 크게 밑돕니다.</span></p><div class="formula">Value ≈ subscribers × ARPU × margin × growth multiple</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설</span></span><p><span class="en">How does China Mobile lift the value of a near-saturated, low-ARPU base?</span><span class="ko">포화에 가깝고 ARPU가 낮은 기반의 가치를 어떻게 끌어올릴 것인가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">답변 · 방향</span></span><p><span class="en">Shift growth to digital/B2B — AI, cloud and computing services — while harvesting steady cash and returning it via dividends to lift the multiple.</span><span class="ko">성장 동력을 디지털·B2B — AI·클라우드·컴퓨팅 서비스 — 로 옮기고, 안정적 현금을 배당으로 환원해 배수를 끌어올리는 전략입니다.</span></p></div></div></div></div><div class="track-grid n2"><div class="track t1"><div class="tt"><span class="en">Track 1 · Digital / computing</span><span class="ko">트랙 1 · 디지털·컴퓨팅</span></div><div class="tn"><span class="en">Grow non-connectivity revenue</span><span class="ko">비연결 매출 성장</span></div><p><span class="en">Scale AI, cloud and computing (DICT) services to offset flat mobile ARPU and diversify the revenue base.</span><span class="ko">AI·클라우드·컴퓨팅(DICT) 서비스를 키워 정체된 이동통신 ARPU를 상쇄하고 매출 기반을 다변화합니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Cash &amp; dividend</span><span class="ko">트랙 2 · 현금·배당</span></div><div class="tn"><span class="en">Re-rate via shareholder returns</span><span class="ko">주주환원으로 재평가</span></div><p><span class="en">Use durable cash flow and rising payouts to narrow the valuation discount versus US carriers.</span><span class="ko">견조한 현금흐름과 배당 확대로 미국 사업자 대비 밸류에이션 할인을 좁힙니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">실행 계획</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Lift DICT/computing mix</span><span class="ko">DICT·컴퓨팅 비중 확대</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Connectivity-led revenue</span><span class="ko">연결 중심 매출</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">AI/cloud/computing growth engine</span><span class="ko">AI·클라우드·컴퓨팅 성장 엔진</span></div></div></div><div class="ap"><div class="apt"><span class="en">Defend ARPU</span><span class="ko">ARPU 방어</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">~RMB 48, declining</span><span class="ko">약 48위안, 하락세</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">Bundled 5G/家庭/B2B value packages</span><span class="ko">5G·가정·B2B 결합 가치 패키지</span></div></div></div><div class="ap"><div class="apt"><span class="en">Re-rate the equity</span><span class="ko">주식 재평가</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Discounted multiple</span><span class="ko">할인된 배수</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">Higher payout + A/H dual-listing flows</span><span class="ko">배당 확대 + A·H 동시상장 자금 유입</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1 · by mobile subscriber share (~39%)</span><span class="ko">한국 1위 · 이동통신 점유율 기준 (약 39%)</span></div><h3>SK Telecom (017670)</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">SK Telecom is Korea's largest mobile carrier, but its dominance was shaken in 2025: the April USIM hacking incident pushed its handset-line share below 40% (to ~39%) for the first time since 2015 and cost it roughly 840,000 subscribers. FY2025 revenue fell 4.7% to ₩17.10 trillion (~US$12.4 billion) and net income collapsed 73% to ₩375.1 billion as breach compensation, fee waivers and a record ₩134.8 billion fine bit; SKT even suspended its Q4 dividend. Q1 2026 showed early stabilization (+210,000 net adds), and SKT is pivoting hard to AI (its A. assistant, sovereign foundation models, AI data centers under SK Group with SK Hynix).</span><span class="ko">SK텔레콤은 한국 최대 이동통신 사업자이나, 2025년 그 지배력이 흔들린 바 있습니다. 4월 유심 해킹으로 휴대폰 회선 점유율이 2015년 이후 처음으로 40% 아래(약 39%)로 내려갔고 약 84만 명의 가입자를 잃었습니다. 2025 회계연도 매출은 4.7% 감소한 17조 1,000억 원(약 124억 달러), 순이익은 침해 보상·위약금 면제·역대 최대 134.8억 원 과징금 부담으로 73% 급감한 3,751억 원을 기록했으며, SKT는 4분기 배당까지 중단했습니다. 2026년 1분기에는 초기 안정화 조짐(순증 21만 명)이 나타났고, 회사는 AI(에이닷 비서, 소버린 파운데이션 모델, SK하이닉스를 둔 SK그룹 차원의 AI 데이터센터)로 강하게 전환하고 있습니다.</span></p><div class="stats"><div class="stat"><div class="n">₩20T</div><div class="l"><span class="en">Market cap (~$14.5B, Jun 2026)</span><span class="ko">시가총액 (약 145억 달러, 2026년 6월)</span></div></div><div class="stat"><div class="n">~22.4M</div><div class="l"><span class="en">Mobile subscribers (~39%, Q4 2025)</span><span class="ko">이동통신 가입자 (약 39%, 2025년 4분기)</span></div></div><div class="stat"><div class="n">17.5M</div><div class="l"><span class="en">5G subscribers (~79% of base, 2025)</span><span class="ko">5G 가입자 (기반의 약 79%, 2025년)</span></div></div><div class="stat"><div class="n">–73%</div><div class="l"><span class="en">FY2025 net income YoY</span><span class="ko">2025년 순이익 전년 대비</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — rebuilding trust while pivoting from telco to AI</span><span class="ko">진단 — 신뢰를 복구하며 통신사에서 AI로 전환하기</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 최대 과제</span></span><p><span class="en">SK Telecom held a stable ~40%+ mobile share and the premium-ARPU lead in Korea, anchored by SK Group scale and the A. AI assistant.</span><span class="ko">SK텔레콤은 SK그룹의 규모와 에이닷 AI 비서를 기반으로 한국에서 약 40% 이상의 안정적 점유율과 프리미엄 ARPU 우위를 유지해 왔습니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">복합 요인 · 근본 원인</span></span><p><span class="en">The April 2025 USIM breach broke the 40% floor, drove ~840,000 subscribers out, cut FY2025 net income 73% and triggered a ₩1.2 trillion remediation bill and a record fine.</span><span class="ko">그러나 2025년 4월 유심 사태로 40% 바닥이 무너지며 약 84만 명이 이탈했고, 2025년 순이익이 73% 감소했으며 1조 2,000억 원의 보상 부담과 역대 최대 과징금이 발생했습니다.</span></p><div class="formula">Value ≈ subscribers × ARPU × trust × AI option value</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설</span></span><p><span class="en">Can SKT restore subscriber trust while monetizing an AI transition?</span><span class="ko">SKT는 가입자 신뢰를 복구하면서 AI 전환을 수익화할 수 있는가?</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">답변 · 방향</span></span><p><span class="en">Lock in security as a differentiator, stabilize the base, then re-rate on AI data centers, sovereign models and the A. agent ecosystem.</span><span class="ko">보안을 차별화 무기로 고정해 기반을 안정시킨 뒤, AI 데이터센터·소버린 모델·에이닷 에이전트 생태계로 재평가받는 전략입니다.</span></p></div></div></div></div><div class="track-grid n2"><div class="track t1"><div class="tt"><span class="en">Track 1 · Trust recovery</span><span class="ko">트랙 1 · 신뢰 복구</span></div><div class="tn"><span class="en">Win back churned subscribers</span><span class="ko">이탈 가입자 되찾기</span></div><p><span class="en">Use security upgrades, compensation and retention offers to rebuild the base toward 40% and stem MVNO leakage.</span><span class="ko">보안 강화·보상·유지 혜택으로 기반을 40%대로 재건하고 알뜰폰 이탈을 막습니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · AI transition</span><span class="ko">트랙 2 · AI 전환</span></div><div class="tn"><span class="en">Scale AI infrastructure &amp; services</span><span class="ko">AI 인프라·서비스 확대</span></div><p><span class="en">Grow AI data centers (AIDC +35% in 2025), sovereign foundation models and the A. agent, leveraging SK Hynix HBM and the OpenAI partnership.</span><span class="ko">AI 데이터센터(AIDC 2025년 +35%), 소버린 파운데이션 모델, 에이닷 에이전트를 SK하이닉스 HBM과 OpenAI 제휴를 활용해 키웁니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">실행 계획</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Restore 40% share</span><span class="ko">40% 점유율 회복</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">~39%, post-breach</span><span class="ko">약 39%, 사태 이후</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">Stabilized base via trust &amp; retention</span><span class="ko">신뢰·유지로 안정된 기반</span></div></div></div><div class="ap"><div class="apt"><span class="en">Harden security</span><span class="ko">보안 강화</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">USIM/HSS breach exposure</span><span class="ko">유심·HSS 침해 노출</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">Security as a brand differentiator</span><span class="ko">브랜드 차별화 요소로서의 보안</span></div></div></div><div class="ap"><div class="apt"><span class="en">Monetize AI</span><span class="ko">AI 수익화</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Telco-led, low-growth revenue</span><span class="ko">통신 중심 저성장 매출</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">AIDC + sovereign models + A. agent</span><span class="ko">AIDC + 소버린 모델 + 에이닷 에이전트</span></div></div></div></div></div></div>
+  </section>
+  <section id="kpi">
+    <p class="kicker"><span class="en">KPIs to watch</span><span class="ko">주시할 지표</span></p>
+    <h2><span class="en">KPIs to watch</span><span class="ko">주시할 지표</span></h2>
+    <p class="hint"><span class="en">Leading indicators with the latest reading — track these to see the industry turn before earnings confirm it.</span><span class="ko">최신 수치를 담은 선행 지표입니다. 실적이 확인하기 전에 산업의 전환을 포착하려면 이들을 주시하시기 바랍니다.</span></p>
+    <div class="kpis reveal"><div class="kpi"><div class="kt"><span class="en">Global 5G subscriptions</span><span class="ko">글로벌 5G 가입</span></div><div class="kv"><span class="en">~2.9B (end-2025)</span><span class="ko">약 29억 (2025년 말)</span></div><div class="kw"><span class="en">About one-third of all mobile subscriptions; +151M in Q4 2025 (Ericsson).</span><span class="ko">전체 이동통신 가입의 약 3분의 1; 2025년 4분기 1억 5,100만 순증(에릭슨).</span></div></div><div class="kpi"><div class="kt"><span class="en">US postpaid phone churn</span><span class="ko">미국 후불 휴대폰 해지율</span></div><div class="kv"><span class="en">~0.9%/month</span><span class="ko">월 약 0.9%</span></div><div class="kw"><span class="en">T-Mobile 0.90%, Verizon 0.91%, AT&amp;T ~0.98% (Q3/Q4 2025) — the global low-churn benchmark.</span><span class="ko">T-Mobile 0.90%, 버라이즌 0.91%, AT&amp;T 약 0.98%(2025년 3·4분기) — 세계 최저 해지율 기준.</span></div></div><div class="kpi"><div class="kt"><span class="en">Mobile ARPU spread</span><span class="ko">이동통신 ARPU 격차</span></div><div class="kv"><span class="en">~$6.6 vs ~$150</span><span class="ko">약 6.6달러 대 약 150달러</span></div><div class="kw"><span class="en">China Mobile ~RMB 48/mo (~$6.6) vs US per-account ARPA ~$147–150 — scale vs premium models.</span><span class="ko">차이나모바일 월 약 48위안(약 6.6달러) 대 미국 계정당 ARPA 약 147~150달러 — 규모형 대 프리미엄형 모델.</span></div></div><div class="kpi"><div class="kt"><span class="en">Global net adds (unique subs)</span><span class="ko">글로벌 순증(고유 가입자)</span></div><div class="kv"><span class="en">5.83B → 6.5B</span><span class="ko">58.3억 → 65억</span></div><div class="kw"><span class="en">5.83B unique subscribers in 2025 (70.4% of population), rising toward 6.5B by 2030 (GSMA).</span><span class="ko">2025년 고유 가입자 58.3억 명(인구의 70.4%), 2030년 65억 명으로 증가 전망(GSMA).</span></div></div></div>
+  </section>
+  <section id="scenarios">
+    <p class="kicker"><span class="en">Scenarios — bull · base · bear</span><span class="ko">시나리오 — 낙관 · 기본 · 비관</span></p>
+    <h2><span class="en">Scenarios: bull, base, bear</span><span class="ko">시나리오: 낙관·기본·비관</span></h2>
+    <div class="scen reveal"><div class="sc bull"><div class="sh"><span class="en">Bull · upside</span><span class="ko">낙관 시나리오</span></div><div class="sd"><span class="en">5G/AI monetization and disciplined consolidation lift ARPU and margins; satellite partnerships add reach without heavy capex.</span><span class="ko">5G·AI 수익화와 절제된 통합이 ARPU와 마진을 높이고, 위성 제휴가 과도한 설비투자 없이 외연을 넓힙니다.</span></div><p><span class="en">Swing variable: ARPU recovery + capex discipline.</span><span class="ko">핵심 변수: ARPU 회복 + 설비투자 절제.</span></p></div><div class="sc base"><div class="sh"><span class="en">Base · most likely</span><span class="ko">기본 시나리오</span></div><div class="sd"><span class="en">Operator revenue grows ~2.7% CAGR to 2030 on flat subscriber bases; capex stays heavy and returns thin amid intense rivalry.</span><span class="ko">가입자 기반 정체 속 사업자 매출이 2030년까지 연 약 2.7% 성장하나, 치열한 경쟁 속에 설비투자는 높고 수익은 박하게 유지됩니다.</span></div><p><span class="en">Swing variable: spectrum/5G capex pace.</span><span class="ko">핵심 변수: 주파수·5G 설비투자 속도.</span></p></div><div class="sc bear"><div class="sh"><span class="en">Bear · downside</span><span class="ko">비관 시나리오</span></div><div class="sd"><span class="en">Substitutes (OTT, satellite) and price wars erode ARPU; security/regulatory shocks (à la SKT) accelerate churn and compensation costs.</span><span class="ko">대체재(OTT·위성)와 가격 경쟁이 ARPU를 잠식하고, SKT 사례와 같은 보안·규제 충격이 해지와 보상 비용을 가속합니다.</span></div><p><span class="en">Swing variable: trust shocks + substitute adoption.</span><span class="ko">핵심 변수: 신뢰 충격 + 대체재 확산.</span></p></div></div>
+  </section>
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크와 전망</span></p>
+      <h2><span class="en">Risks &amp; outlook</span><span class="ko">리스크와 전망</span></h2>
+      <ul class="tight"><li><span class="en">Security &amp; data-breach liability — the 2025 SKT USIM incident (₩134.8B fine, ~840,000 subscribers lost) shows breaches convert directly into churn, compensation and regulatory penalties.</span><span class="ko">보안·데이터 침해 책임 — 2025년 SKT 유심 사태(과징금 134.8억 원, 약 84만 명 이탈)는 침해가 곧바로 해지·보상·규제 제재로 전환됨을 보여줍니다.</span></li><li><span class="en">Persistent capex burden — US$1.2T+ mobile capex due 2025–2030 against saturated, price-competitive markets keeps free cash flow and valuation multiples under pressure.</span><span class="ko">지속되는 설비투자 부담 — 포화·가격 경쟁 시장을 상대로 2025~2030년 1.2조 달러 이상의 이동통신 설비투자가 잉여현금흐름과 밸류에이션 배수를 압박합니다.</span></li><li><span class="en">Substitution &amp; disintermediation — OTT voice/messaging, Wi-Fi and satellite direct-to-cell erode legacy revenue and risk relegating operators to commodity connectivity.</span><span class="ko">대체·탈중개화 — OTT 음성·메시징, 와이파이, 위성 직접연결이 기존 매출을 잠식하고 통신사를 범용 연결로 격하시킬 위험이 있습니다.</span></li><li><span class="en">Regulatory &amp; geopolitical exposure — spectrum costs, network-fee disputes, subsidy/MVNO rules and (for China Mobile) ADR/geopolitical discounts add policy-driven volatility.</span><span class="ko">규제·지정학 노출 — 주파수 비용, 망 사용료 분쟁, 보조금·알뜰폰 규제, 그리고 차이나모바일의 경우 ADR·지정학 디스카운트가 정책발 변동성을 더합니다.</span></li></ul>
+    </div>
+  </section>
+</div>
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;"><li><a href="https://www.gsma.com/solutions-and-impact/connectivity-for-good/mobile-economy/">GSMA Mobile Economy — global operator revenue, connections, 5G and economic value</a></li><li><a href="https://www.marketresearchfuture.com/reports/wireless-telecommunication-service-market-1884">Market Research Future — wireless telecom services market size and 6.6% CAGR (2025–2035)</a></li><li><a href="https://www.grandviewresearch.com/industry-analysis/global-telecom-services-market">Grand View Research — telecom services market size and wireless-segment CAGR</a></li><li><a href="https://www.mordorintelligence.com/industry-reports/telecom-services-market">Mordor Intelligence — total telecom market size and 5.23% CAGR (2025–2030)</a></li><li><a href="https://www.marbridgeconsulting.com/marbridgedaily/archive/article/115213/chinas_three_main_telcos_report_q3_2025_subscriber_totals">Marbridge — China Mobile/Telecom/Unicom Q3 2025 subscriber totals</a></li><li><a href="https://telecomlead.com/5g/china-mobile-reports-stable-revenue-growth-in-2025-as-ai-and-computing-services-accelerate-expansion-125288">TelecomLead — China Mobile FY2025 revenue, net profit and 5G</a></li><li><a href="https://stockanalysis.com/quote/hkg/0941/market-cap/">StockAnalysis — China Mobile (HK:0941) market cap, June 2026</a></li><li><a href="https://telecomlead.com/5g/t-mobile-att-and-verizon-q3-2025-results-comparison-of-revenue-arpu-capex-subscribers-5g-and-fiber-strategy-123293">TelecomLead — Verizon/T-Mobile/AT&amp;T Q3 2025 revenue, ARPU, churn comparison</a></li><li><a href="https://www.t-mobile.com/news/business/t-mobile-q4-2025-earnings">T-Mobile — Q4 2025 earnings (subscribers, revenue, UScellular)</a></li><li><a href="https://www.ericsson.com/en/press-releases/2025/11/ericsson-mobility-report-differentiated-connectivity-services-gaining-momentum">Ericsson Mobility Report (Nov 2025) — global 5G subscriptions ~2.9B</a></li><li><a href="https://www.fierce-network.com/wireless/delloro-says-huawei-and-ericsson-have-nearly-two-thirds-ran-market-share">Fierce Network / Dell'Oro — RAN equipment vendor concentration (~96% top-5)</a></li><li><a href="https://counterpointresearch.com/en/insights/global-smartphone-revenues-q3-2025">Counterpoint Research — Apple ~46% of global smartphone revenue (2024)</a></li><li><a href="https://techcrunch.com/2025/05/08/a-timeline-of-south-korean-telco-giant-skts-data-breach/">TechCrunch — timeline of the 2025 SK Telecom USIM data breach</a></li><li><a href="https://www.koreaherald.com/article/10563945">Korea Herald — PIPC ₩134.8 billion fine against SK Telecom</a></li><li><a href="https://commsrisk.com/sk-telecom-loses-840000-mobile-users-after-privacy-breach-changes-ceo/">Commsrisk — SKT loses ~840,000 mobile users after the breach; CEO change</a></li><li><a href="https://www.investing.com/news/company-news/sk-telecom-fy2025-slides-73-profit-plunge-as-ai-investments-take-center-stage-93CH-4486819">Investing.com — SK Telecom FY2025 revenue and 73% profit plunge</a></li><li><a href="https://www.koreatimes.co.kr/economy/20250721/scheduled-removal-of-handset-subsidy-ban-expected-to-reshape-telecom-industry">Korea Times — 단통법 repeal effective July 2025 and market effect</a></li><li><a href="https://www.fcc.gov/auction/113">FCC — Auction 113 (AWS-3 re-auction, June 2026) results and licenses</a></li></ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Wireless Telecommunication Services (GICS 50102010) · Generated June 28, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">산업 브리프 · 무선 통신 서비스 (GICS 50102010) · 2026년 6월 28일 생성. 공개 출처, 반올림 적용. 정보 제공용이며 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  var saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}setLang(saved==='ko'?'ko':'en'); // default English; remembers selection
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body></html>

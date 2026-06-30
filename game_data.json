@@ -400,6 +400,115 @@
     },
     "sector": "Energy"
   },
+  "10102040": {
+    "cagr": "~7.5%",
+    "gics": "10102040",
+    "global_company": "Enbridge",
+    "global_firms": [
+      {
+        "name": "Enbridge",
+        "share": 24.0
+      },
+      {
+        "name": "Williams",
+        "share": 17.0
+      },
+      {
+        "name": "Enterprise Products",
+        "share": 14.0
+      },
+      {
+        "name": "Kinder Morgan",
+        "share": 13.0
+      },
+      {
+        "name": "Energy Transfer",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "미드스트림 석유·가스 저장·운송은 통행료형 인프라 사업으로 2025년 약 2,310억 달러 규모이며 연 7.5%가량 성장하는 것으로 파악됩니다. 시가총액 기준 글로벌 1위는 엔브리지(약 1,180억 달러)이며, 한국에서는 한국가스공사(KOGAS)가 가스 저장·공급을 사실상 독점하고 있습니다.",
+    "industry_en": "Oil & Gas Storage & Transportation",
+    "industry_ko": "석유·가스 저장·운송",
+    "korea_company": "Korea Gas Corporation (KOGAS)",
+    "korea_firms": [
+      {
+        "name": "KOGAS",
+        "share": 92.0
+      },
+      {
+        "ko": "직수입사(POSCO, GS, SK, 발전사)",
+        "name": "Direct importers (POSCO, GS, SK, power gencos)",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.5833,
+      "scale": 0.4167,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$231B",
+      "trillion_usd": 0.231,
+      "year": "2025"
+    },
+    "sector": "Energy"
+  },
+  "10102050": {
+    "cagr": "~2.6%",
+    "gics": "10102050",
+    "global_company": "China Shenhua Energy",
+    "global_firms": [
+      {
+        "name": "China Shenhua",
+        "share": 42.0
+      },
+      {
+        "name": "Glencore (coal)",
+        "share": 19.0
+      },
+      {
+        "name": "Coal India",
+        "share": 10.0
+      },
+      {
+        "name": "China Coal Energy",
+        "share": 7.0
+      },
+      {
+        "name": "BHP / Yancoal",
+        "share": 6.0
+      }
+    ],
+    "headline_ko": "중국선화에너지는 사상 최대 아시아 수요에 힘입어 석탄-발전 통합 모델을 유지하는 반면, 사실상 국내 생산이 없는 한국은 포스코인터내셔널 같은 수입사에 의존하고 있습니다.",
+    "industry_en": "Coal & Consumable Fuels",
+    "industry_ko": "석탄·소비성 연료",
+    "korea_company": "POSCO International (proxy)",
+    "korea_firms": [
+      {
+        "ko": "수입 석탄(발전 + 제철)",
+        "name": "Imported coal (power + steel)",
+        "share": 98.0
+      },
+      {
+        "ko": "국내 무연탄(극소량)",
+        "name": "Domestic anthracite (tiny)",
+        "share": 2.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.2778,
+      "scale": 0.5556,
+      "tech": 0.1667
+    },
+    "market": {
+      "label": "$1,045B",
+      "trillion_usd": 1.045,
+      "year": "2024"
+    },
+    "sector": "Energy"
+  },
   "151010": {
     "cagr": "~5.0%",
     "gics": "151010",
@@ -846,6 +955,74 @@
     },
     "sector": "Materials"
   },
+  "15102010": {
+    "cagr": "~5.1%",
+    "gics": "15102010",
+    "global_company": "CRH plc",
+    "global_firms": [
+      {
+        "name": "CNBM (China)",
+        "share": 13.0
+      },
+      {
+        "name": "Anhui Conch (China)",
+        "share": 7.0
+      },
+      {
+        "name": "Holcim",
+        "share": 6.0
+      },
+      {
+        "name": "Heidelberg Materials",
+        "share": 5.0
+      },
+      {
+        "name": "CRH / Cemex / UltraTech",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "건축자재는 지역성이 강하고 에너지 집약적인 시멘트·골재 사업으로, 글로벌 시멘트 시장은 2025년 약 4,250억 달러 규모이며 연 5%가량 성장하는 것으로 파악됩니다. 시가총액 기준 글로벌 1위는 CRH(약 740억 달러)이며, 쌍용C&E가 2024년 비상장 전환된 이후 한국의 대표 상장 기업은 한일시멘트인 것으로 파악됩니다.",
+    "industry_en": "Construction Materials",
+    "industry_ko": "건축자재",
+    "korea_company": "Hanil Cement (proxy)",
+    "korea_firms": [
+      {
+        "ko": "쌍용C&E (비상장/상장폐지)",
+        "name": "Ssangyong C&E (private/delisted)",
+        "share": 26.0
+      },
+      {
+        "ko": "한일시멘트 (상장)",
+        "name": "Hanil Cement (listed)",
+        "share": 23.0
+      },
+      {
+        "name": "Asia Cement",
+        "share": 15.0
+      },
+      {
+        "name": "Sampyo / Sungshin",
+        "share": 14.0
+      },
+      {
+        "ko": "기타 (한라, 고려시멘트 등)",
+        "name": "Others (Halla, Kosep, etc.)",
+        "share": 22.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.9524,
+      "tech": 0.0476
+    },
+    "market": {
+      "label": "$407B",
+      "trillion_usd": 0.407,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
   "151030": {
     "cagr": "≈3.4%",
     "gics": "151030",
@@ -900,6 +1077,129 @@
     "market": {
       "label": "$1.18T",
       "trillion_usd": 1.18,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
+  "15103010": {
+    "cagr": "~7.1%",
+    "gics": "15103010",
+    "global_company": "Ball Corporation",
+    "global_firms": [
+      {
+        "name": "Ball",
+        "share": 30.0
+      },
+      {
+        "name": "Crown",
+        "share": 23.0
+      },
+      {
+        "name": "Ardagh / AMP",
+        "share": 14.0
+      },
+      {
+        "name": "Canpack",
+        "share": 10.0
+      }
+    ],
+    "headline_ko": "볼(Ball)은 EU 포장 규제가 강화되는 가운데 알루미늄 캔으로의 전환을 주도하고, 동원시스템즈는 캔·유리·플라스틱을 아우르며 한국 경질 용기 시장을 떠받치고 있습니다.",
+    "industry_en": "Metal, Glass & Plastic Containers",
+    "industry_ko": "금속·유리·플라스틱 용기",
+    "korea_company": "Dongwon Systems",
+    "korea_firms": [
+      {
+        "ko": "동원시스템즈",
+        "name": "Dongwon Systems",
+        "share": 34.0
+      },
+      {
+        "ko": "솔루션(유리)",
+        "name": "SGC Solutions (glass)SGC",
+        "share": 20.0
+      },
+      {
+        "ko": "롯데알미늄 / 롯데칠성",
+        "name": "Lotte Aluminium / Lotte Chilsung",
+        "share": 15.0
+      },
+      {
+        "ko": "소망글라스",
+        "name": "Somang Glass",
+        "share": 11.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1905,
+      "global": 0.1905,
+      "scale": 0.619,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$515B",
+      "trillion_usd": 0.515,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
+  "15103020": {
+    "cagr": "~3–4%",
+    "gics": "15103020",
+    "global_company": "Smurfit WestRock",
+    "global_firms": [
+      {
+        "name": "Smurfit WestRock",
+        "share": 8.0
+      },
+      {
+        "name": "International Paper",
+        "share": 6.0
+      },
+      {
+        "name": "Nine Dragons / PCA",
+        "share": 4.0
+      },
+      {
+        "name": "DS Smith / Mondi",
+        "share": 4.0
+      },
+      {
+        "ko": "기타(파편화)",
+        "name": "Others (fragmented)",
+        "share": 78.0
+      }
+    ],
+    "headline_ko": "스머핏 웨스트록은 FY2025 매출 약 310억 달러로 통합이 진행 중인 글로벌 포장 시장을 이끌고 있으며, 한국은 상장된 순수 대형 기업이 없어 재생원료·플라스틱 폐기물 규제가 강화되는 가운데 한솔제지가 가장 가까운 대용 기업으로 파악됩니다.",
+    "industry_en": "Paper & Plastic Packaging Products & Materials",
+    "industry_ko": "종이·플라스틱 포장재",
+    "korea_company": "Hansol Paper (proxy)",
+    "korea_firms": [
+      {
+        "name": "Taerim",
+        "share": 28.0
+      },
+      {
+        "name": "Asia Paper",
+        "share": 19.0
+      },
+      {
+        "name": "Shindaeyang",
+        "share": 17.0
+      },
+      {
+        "name": "Sambo",
+        "share": 13.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2222,
+      "global": 0.0556,
+      "scale": 0.6111,
+      "tech": 0.1111
+    },
+    "market": {
+      "label": "$1.20T",
+      "trillion_usd": 1.2,
       "year": "2024"
     },
     "sector": "Materials"
@@ -966,6 +1266,449 @@
     "market": {
       "label": "$1.94T",
       "trillion_usd": 1.94,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
+  "15104010": {
+    "cagr": "~6%",
+    "gics": "15104010",
+    "global_company": "China Hongqiao Group",
+    "global_firms": [
+      {
+        "ko": "약 670만 톤)",
+        "name": "China Hongqiao (~6.7Mt)China Hongqiao(",
+        "share": 9.0
+      },
+      {
+        "name": "ChalcoChalco",
+        "share": 8.0
+      },
+      {
+        "name": "Rusal",
+        "share": 5.0
+      },
+      {
+        "ko": "리오 틴토 / Alcoa",
+        "name": "Rio Tinto / Alcoa",
+        "share": 6.0
+      }
+    ],
+    "headline_ko": "중국 훙차오가 약 670만 톤(2025년) 생산으로 세계 최대 1차 알루미늄 생산기업 자리를 지키며 시가총액은 약 420억 달러로 파악됩니다. 한국은 1차 제련소가 없어 노벨리스코리아의 울산 압연 사업이 가장 가까운 대안으로 거론되며, 약 1,910억 달러 시장이 연 6.2%가량 성장하는 가운데 미국 232조 50% 관세와 EU CBAM이 교역 구조를 바꾸고 있습니다.",
+    "industry_en": "Aluminum",
+    "industry_ko": "알루미늄",
+    "korea_company": "Novelis Korea (proxy)",
+    "korea_firms": [
+      {
+        "name": "Novelis Korea / Ulsan AluminumNovelis Korea / Ulsan Aluminum",
+        "share": 35.0
+      },
+      {
+        "ko": "롯데알미늄",
+        "name": "Lotte Aluminium",
+        "share": 17.0
+      },
+      {
+        "ko": "동원시스템즈 / 조일알미늄",
+        "name": "Dongwon Systems / Choil",
+        "share": 13.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.6923,
+      "scale": 0.3077,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$191B",
+      "trillion_usd": 0.191,
+      "year": "2025"
+    },
+    "sector": "Materials"
+  },
+  "15104020": {
+    "cagr": "~5–6%",
+    "gics": "15104020",
+    "global_company": "BHP Group",
+    "global_firms": [
+      {
+        "name": "BHP",
+        "share": 31.0
+      },
+      {
+        "name": "Rio Tinto",
+        "share": 25.0
+      },
+      {
+        "name": "Glencore",
+        "share": 10.0
+      },
+      {
+        "name": "Vale",
+        "share": 10.0
+      },
+      {
+        "ko": "기타(프리포트, 앵글로, 테크 등)",
+        "name": "Others (Freeport, Anglo, Teck…)",
+        "share": 24.0
+      }
+    ],
+    "headline_ko": "BHP가 시가총액 약 2,060억 달러(2026년 6월, FY2025 매출 513억 달러)로 최대 종합 광산기업에 자리하고, 고려아연이 2025년 매출 16조 5,900억 원(37.6% 증가)으로 한국 비철금속 분야를 이끄는 것으로 파악됩니다. 약 1조 1,900억 달러 규모의 금속·광업 시장이 연 5%가량 성장하는 가운데, 구리 가격 사상 최고치와 2026년 제로 수준의 구리 제련수수료, 앵글로·텍 합병, EU CRMA·CBAM 규제가 공급 구도를 바꾸고 있습니다.",
+    "industry_en": "Diversified Metals & Mining",
+    "industry_ko": "종합 금속·광업",
+    "korea_company": "Korea Zinc",
+    "korea_firms": [
+      {
+        "ko": "고려아연(16조 5,900억 원)",
+        "name": "Korea Zinc (₩16.59T)",
+        "share": 46.0
+      },
+      {
+        "ko": "조 1,200억 원)",
+        "name": "LS MnM (₩12.12T)LS MnM(12",
+        "share": 34.0
+      },
+      {
+        "ko": "풍산(3조 5,000억 원)",
+        "name": "Poongsan (₩3.5T)",
+        "share": 10.0
+      },
+      {
+        "ko": "영풍(2조 9,100억 원)",
+        "name": "Young Poong (₩2.91T)",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$1.17T",
+      "trillion_usd": 1.17,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
+  "15104025": {
+    "cagr": "~5%",
+    "gics": "15104025",
+    "global_company": "Freeport-McMoRan",
+    "global_firms": [
+      {
+        "ko": "칠레",
+        "name": "Chile",
+        "share": 23.0
+      },
+      {
+        "ko": "콩고민주공화국",
+        "name": "DR Congo",
+        "share": 14.0
+      },
+      {
+        "ko": "페루",
+        "name": "Peru",
+        "share": 12.0
+      },
+      {
+        "ko": "미국 및 기타 전체",
+        "name": "USA & rest of world",
+        "share": 43.0
+      }
+    ],
+    "headline_ko": "프리포트맥모란이 시가총액 약 890억 달러(2026년 6월, 2025년 생산량 약 163만 톤)로 상장 순수 구리 광산업체 1위에 자리하고, 한국은 의미 있는 구리 광산이 없어 최대 제련업체 LS MnM이 가장 가까운 대용 기업으로 온산 제련소가 국내 정련구리의 약 95%를 생산하는 것으로 파악됩니다. 약 2,500억~3,050억 달러 규모의 시장이 연 5%가량 성장하는 가운데, 구리는 2026년 1월 LME에서 사상 최고치인 톤당 약 1만 4,527.50달러를 기록했고 미국의 50% 232조 관세와 그라스버그 차질이 맞물린 바 있습니다.",
+    "industry_en": "Copper",
+    "industry_ko": "구리",
+    "korea_company": "LS MnM (proxy)",
+    "korea_firms": [
+      {
+        "ko": "온산 제련소)",
+        "name": "LS MnM (Onsan smelter)LS MnM (",
+        "share": 95.0
+      },
+      {
+        "ko": "고려아연 (재활용 구리)",
+        "name": "Korea Zinc (recycled copper)",
+        "share": 5.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.2143,
+      "scale": 0.7143,
+      "tech": 0.0714
+    },
+    "market": {
+      "label": "$248B",
+      "trillion_usd": 0.248,
+      "year": "2025"
+    },
+    "sector": "Materials"
+  },
+  "15104030": {
+    "cagr": "~6.5%",
+    "gics": "15104030",
+    "global_company": "Newmont",
+    "global_firms": [
+      {
+        "ko": "뉴몬트",
+        "name": "Newmont",
+        "share": 5.1
+      },
+      {
+        "ko": "애그니코이글",
+        "name": "Agnico Eagle",
+        "share": 3.0
+      },
+      {
+        "ko": "배릭마이닝",
+        "name": "Barrick Mining",
+        "share": 2.8
+      },
+      {
+        "ko": "앵글로골드아샨티",
+        "name": "AngloGold Ashanti",
+        "share": 2.7
+      },
+      {
+        "ko": "골드필즈",
+        "name": "Gold Fields",
+        "share": 2.1
+      }
+    ],
+    "headline_ko": "4,000달러를 넘어선 기록적 금값이 뉴몬트를 비롯한 채굴 기업의 실적을 끌어올리고 있습니다.",
+    "industry_en": "Gold",
+    "industry_ko": "금",
+    "korea_company": "Korea Zinc (proxy)",
+    "korea_firms": [
+      {
+        "ko": "고려아연 (금·은 부산물)",
+        "name": "Korea Zinc (gold/silver by-product)",
+        "share": 50.0
+      },
+      {
+        "ko": "비상장, LS 계열)",
+        "name": "LS MnM (unlisted, via LS Corp)LS MnM (",
+        "share": 28.0
+      },
+      {
+        "ko": "영풍",
+        "name": "Young Poong",
+        "share": 10.0
+      },
+      {
+        "ko": "기타 및 수입",
+        "name": "Others & imports",
+        "share": 12.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "5,550억 달러",
+      "trillion_usd": 0.555,
+      "year": ""
+    },
+    "sector": "Materials"
+  },
+  "15104040": {
+    "cagr": "~4.5%",
+    "gics": "15104040",
+    "global_company": "Fresnillo",
+    "global_firms": [
+      {
+        "ko": "프레스니요 (멕시코)",
+        "name": "Fresnillo plc (Mexico)",
+        "share": 7.0
+      },
+      {
+        "ko": "폴스카미에치 (폴란드)",
+        "name": "KGHM Polska Miedź (Poland)KGHM",
+        "share": 5.0
+      },
+      {
+        "ko": "뉴몬트 (페냐스키토)",
+        "name": "Newmont (Peñasquito)",
+        "share": 4.0
+      },
+      {
+        "ko": "팬아메리칸실버",
+        "name": "Pan American Silver",
+        "share": 3.0
+      },
+      {
+        "ko": "글렌코어",
+        "name": "Glencore",
+        "share": 2.0
+      }
+    ],
+    "headline_ko": "은·백금족 금속·다이아몬드: 기록적 은 공급 부족, 전기차발 백금족 수요 재편, 랩그로운 다이아몬드 붕괴가 가격 수용형 산업을 다시 그리고 있습니다.",
+    "industry_en": "Precious Metals & Minerals",
+    "industry_ko": "귀금속·광물",
+    "korea_company": "Korea Zinc",
+    "korea_firms": [
+      {
+        "ko": "고려아연 (010130, 부산물 정련)",
+        "name": "Korea Zinc (010130, by-product refining)",
+        "share": 9.0
+      },
+      {
+        "ko": "구리 제련 부산물)",
+        "name": "LS MnM (copper-smelter by-product)LS MnM (",
+        "share": 4.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$22B",
+      "trillion_usd": 0.022,
+      "year": "2021"
+    },
+    "sector": "Materials"
+  },
+  "15104045": {
+    "cagr": "~5.9%",
+    "gics": "15104045",
+    "global_company": "Fresnillo",
+    "global_firms": [
+      {
+        "ko": "프레스니요(멕시코)",
+        "name": "Fresnillo (Mexico)",
+        "share": 6.0
+      },
+      {
+        "ko": "폴란드)",
+        "name": "KGHM (Poland)KGHM(",
+        "share": 5.0
+      },
+      {
+        "ko": "인두스트리아스 페뇰레스(멕시코)",
+        "name": "Industrias Peñoles (Mexico)",
+        "share": 4.0
+      },
+      {
+        "ko": "팬 아메리칸 실버",
+        "name": "Pan American Silver",
+        "share": 4.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 81.0
+      }
+    ],
+    "headline_ko": "6년 연속 공급 부족과 태양광·전자 수요 급증으로 은값은 2026년 1월 명목 사상 최고 약 121달러를 찍은 뒤 급락한 바 있으며, 글로벌 광산 생산은 프레스니요가 선두인 반면 한국은 고려아연의 부산물 은에 그치는 것으로 파악됩니다.",
+    "industry_en": "Silver",
+    "industry_ko": "은",
+    "korea_company": "Korea Zinc",
+    "korea_firms": [
+      {
+        "ko": "고려아연(온산, 부산물)",
+        "name": "Korea Zinc (Onsan, by-product)",
+        "share": 80.0
+      },
+      {
+        "ko": "영풍 / 고려아연 제련",
+        "name": "Young Poong / Goryeo Zinc smelting",
+        "share": 15.0
+      },
+      {
+        "ko": "차 은 광산(유의미한 생산 없음)",
+        "name": "Primary silver mines (none material)1",
+        "share": 5.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$32B",
+      "trillion_usd": 0.032,
+      "year": "2022"
+    },
+    "sector": "Materials"
+  },
+  "15104050": {
+    "cagr": "~4.6%",
+    "gics": "15104050",
+    "global_company": "China Baowu Steel Group",
+    "global_firms": [
+      {
+        "ko": "중국 바오우(1억 2,480만 톤)",
+        "name": "China Baowu (124.8Mt)",
+        "share": 7.0
+      },
+      {
+        "ko": "아르셀로미탈(6,340만 톤)",
+        "name": "ArcelorMittal (63.4Mt)",
+        "share": 3.0
+      },
+      {
+        "ko": "일본제철(5,780만 톤)",
+        "name": "Nippon Steel (57.8Mt)",
+        "share": 3.0
+      },
+      {
+        "ko": "포스코(3,250만 톤) + 안스틸(5,760만 톤)",
+        "name": "POSCO (32.5Mt) + Ansteel (57.6Mt)",
+        "share": 5.0
+      },
+      {
+        "ko": "기타 생산사 전체",
+        "name": "All other producers",
+        "share": 82.0
+      }
+    ],
+    "headline_ko": "중국 바오우가 공급 과잉의 분산된 철강 산업을 이끄는 가운데, 미국 50% 관세와 EU CBAM이 무역 구조를 바꾸고 그린스틸 전환을 압박하고 있으며, 포스코홀딩스가 한국 1위를 지키고 있습니다.",
+    "industry_en": "Steel",
+    "industry_ko": "철강",
+    "korea_company": "POSCO Holdings",
+    "korea_firms": [
+      {
+        "ko": "포스코(약 3,250만 톤)",
+        "name": "POSCO (~32.5Mt)",
+        "share": 52.0
+      },
+      {
+        "ko": "현대제철(약 1,900만 톤)",
+        "name": "Hyundai Steel (~19Mt)",
+        "share": 30.0
+      },
+      {
+        "ko": "동국제강 외(전기로 봉형강)",
+        "name": "Dongkuk & others (EAF long)",
+        "share": 10.0
+      },
+      {
+        "ko": "중소 제강사 / 수입 연계",
+        "name": "Smaller mills / imports-linked",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1,
+      "scale": 0.6,
+      "tech": 0.3
+    },
+    "market": {
+      "label": "$1.43T",
+      "trillion_usd": 1.43,
       "year": "2024"
     },
     "sector": "Materials"
@@ -1623,6 +2366,73 @@
     },
     "sector": "Industrials"
   },
+  "20105010": {
+    "cagr": "~3–4%",
+    "gics": "20105010",
+    "global_company": "Siemens AG",
+    "global_firms": [
+      {
+        "name": "Siemens AG",
+        "share": 36.0
+      },
+      {
+        "name": "Honeywell",
+        "share": 22.0
+      },
+      {
+        "name": "3M",
+        "share": 13.0
+      },
+      {
+        "name": "Emerson",
+        "share": 11.0
+      },
+      {
+        "name": "ABB / others",
+        "share": 8.0
+      }
+    ],
+    "headline_ko": "복합 산업기업은 다각화된 다사업 그룹으로, GE와 허니웰이 사업을 분리하며 축소되는 범주인 것으로 파악됩니다. 시가총액 기준 글로벌 1위는 지멘스(약 2,160억 유로, 약 2,420억 달러)이며, 한국 최대 다각화 그룹은 삼성물산(약 79조 원)입니다.",
+    "industry_en": "Industrial Conglomerates",
+    "industry_ko": "복합 산업기업",
+    "korea_company": "Samsung C&T",
+    "korea_firms": [
+      {
+        "ko": "삼성물산)",
+        "name": "Samsung C&T (",
+        "share": 34.0
+      },
+      {
+        "name": "SK Inc (SK㈜)",
+        "share": 22.0
+      },
+      {
+        "name": "LG Corp (LG)",
+        "share": 16.0
+      },
+      {
+        "name": "HD Hyundai / Hanwha",
+        "share": 14.0
+      },
+      {
+        "ko": "두산 외",
+        "name": "Doosan / others",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1429,
+      "global": 0.2857,
+      "scale": 0.0,
+      "tech": 0.5714
+    },
+    "market": {
+      "label": "$520B",
+      "trillion_usd": 0.52,
+      "year": "2023"
+    },
+    "sector": "Industrials"
+  },
   "201060": {
     "cagr": "≈6%",
     "gics": "201060",
@@ -1669,6 +2479,198 @@
       "label": "$157B",
       "trillion_usd": 0.157,
       "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20106010": {
+    "cagr": "~6.6%",
+    "gics": "20106010",
+    "global_company": "Caterpillar",
+    "global_firms": [
+      {
+        "name": "Caterpillar",
+        "share": 15.0
+      },
+      {
+        "name": "Komatsu",
+        "share": 11.0
+      },
+      {
+        "name": "XCMG",
+        "share": 6.0
+      },
+      {
+        "name": "John Deere",
+        "share": 5.0
+      },
+      {
+        "name": "Sany",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "캐터필러는 중국 수요 부진에도 규모와 딜러망으로 명확한 글로벌 1위를 지키고, 두산밥캣은 HD현대건설기계 합병이 판도를 바꾸는 가운데 매출 기준 한국 1위를 유지하고 있습니다.",
+    "industry_en": "Construction Machinery & Heavy Transportation Equipment",
+    "industry_ko": "건설기계·대형 운송장비",
+    "korea_company": "Doosan Bobcat",
+    "korea_firms": [
+      {
+        "ko": "두산밥캣",
+        "name": "Doosan Bobcat",
+        "share": 50.0
+      },
+      {
+        "ko": "현대건설기계(현대 + 디벨론)",
+        "name": "HD Construction Equipment (Hyundai + Develon)HD",
+        "share": 31.0
+      },
+      {
+        "ko": "현대에버다임 / 기타",
+        "name": "Hyundai Everdigm / others",
+        "share": 10.0
+      },
+      {
+        "ko": "중소·어태치먼트 제조사",
+        "name": "Smaller / attachment makers",
+        "share": 9.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.5625,
+      "scale": 0.25,
+      "tech": 0.1875
+    },
+    "market": {
+      "label": "$237B",
+      "trillion_usd": 0.237,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20106015": {
+    "cagr": "~5–7.7%",
+    "gics": "20106015",
+    "global_company": "Deere & Company",
+    "global_firms": [
+      {
+        "name": "Deere (John Deere)",
+        "share": 20.0
+      },
+      {
+        "name": "CNH Industrial",
+        "share": 15.0
+      },
+      {
+        "name": "Kubota",
+        "share": 12.0
+      },
+      {
+        "name": "AGCO",
+        "share": 10.0
+      },
+      {
+        "ko": "기타",
+        "name": "CLAAS / Mahindra / othersCLAAS / Mahindra /",
+        "share": 43.0
+      }
+    ],
+    "headline_ko": "존 디어(Deere)는 농기계 경기 둔화로 FY2025 매출이 457억 달러로 줄었음에도 명백한 글로벌 1위를 지키고 있으며, 한국에서는 대동이 TYM·LS엠트론과의 박빙의 트랙터 경쟁에서 선두를 달리고 있습니다.",
+    "industry_en": "Agricultural & Farm Machinery",
+    "industry_ko": "농기계",
+    "korea_company": "Daedong",
+    "korea_firms": [
+      {
+        "ko": "대동)",
+        "name": "Daedong (",
+        "share": 33.0
+      },
+      {
+        "ko": "엠트론)",
+        "name": "LS Mtron (LS",
+        "share": 31.0
+      },
+      {
+        "name": "TYM",
+        "share": 31.0
+      },
+      {
+        "ko": "아시아 테크 / 기타",
+        "name": "Asia Tech / others",
+        "share": 5.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0714,
+      "global": 0.0,
+      "scale": 0.5714,
+      "tech": 0.3571
+    },
+    "market": {
+      "label": "$170B",
+      "trillion_usd": 0.17,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20106020": {
+    "cagr": "~5%",
+    "gics": "20106020",
+    "global_company": "Parker Hannifin",
+    "global_firms": [
+      {
+        "name": "Parker Hannifin",
+        "share": 26.0
+      },
+      {
+        "name": "Atlas Copco",
+        "share": 22.0
+      },
+      {
+        "name": "Ingersoll Rand",
+        "share": 16.0
+      },
+      {
+        "ko": "도버 / 플로서브",
+        "name": "Dover / Flowserve",
+        "share": 14.0
+      },
+      {
+        "ko": "산드빅 / 기타",
+        "name": "SKF / Sandvik / othersSKF /",
+        "share": 22.0
+      }
+    ],
+    "headline_ko": "파커 하니핀이 모션·유체 제어 기계 분야 최대 순수 사업자로 자리하며(2025 회계연도 매출 약 199억 달러, 시가총액 약 1,240억 달러), 두산밥캣이 한국 상장 기계 기업을 선도하는 것으로 파악됩니다(2025년 매출 약 8.8조 원). 약 7,450억 달러 시장이 연 4.6%가량 성장하는 가운데 EU 기계규정(2027년 1월)과 관세가 수요 구조를 재편하고 있습니다.",
+    "industry_en": "Industrial Machinery & Supplies & Components",
+    "industry_ko": "산업 기계·부품·소모품",
+    "korea_company": "Doosan Bobcat",
+    "korea_firms": [
+      {
+        "ko": "두산밥캣(8.8조 원)",
+        "name": "Doosan Bobcat (₩8.8T)",
+        "share": 40.0
+      },
+      {
+        "ko": "일렉트릭(약 4.9조 원)",
+        "name": "LS Electric (~₩4.9T)LS",
+        "share": 22.0
+      },
+      {
+        "ko": "한화파워시스템(약 4조 원)",
+        "name": "Hanwha Power Systems (~₩4T)",
+        "share": 18.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.3077,
+      "scale": 0.6154,
+      "tech": 0.0769
+    },
+    "market": {
+      "label": "$745B",
+      "trillion_usd": 0.745,
+      "year": "2025"
     },
     "sector": "Industrials"
   },
@@ -1725,6 +2727,68 @@
     },
     "sector": "Industrials"
   },
+  "20107010": {
+    "cagr": "~6.6%",
+    "gics": "20107010",
+    "global_company": "Mitsubishi Corporation",
+    "global_firms": [
+      {
+        "name": "Mitsubishi (¥16.1T)",
+        "share": 30.0
+      },
+      {
+        "name": "Itochu (¥12.7T)",
+        "share": 23.0
+      },
+      {
+        "name": "Mitsui (¥12.6T)",
+        "share": 23.0
+      },
+      {
+        "ko": "마루베니(465억 달러)",
+        "name": "Marubeni ($46.5B)",
+        "share": 14.0
+      },
+      {
+        "ko": "스미토모상사(451억 달러)",
+        "name": "Sumitomo ($45.1B)",
+        "share": 10.0
+      }
+    ],
+    "headline_ko": "미쓰비시상사가 매출과 시가총액 기준 세계 최대 종합상사(2026년 6월 약 16조 1,000억 엔, 1,000억 달러)에 자리하고, 포스코인터내셔널이 FY2025 매출 32조 4,000억 원, 시가총액 약 8조 2,500억 원으로 한국 종합상사를 이끄는 것으로 파악됩니다. 약 60조 달러 규모의 글로벌 도매 시장이 연 6.6%가량 성장하는 가운데, 버크셔해서웨이가 5대 종합상사 지분을 모두 10% 위로 끌어올렸고, 상사들은 자원에서 에너지·전기차 공급망으로 무게중심을 옮기고 있습니다.",
+    "industry_en": "Trading Companies & Distributors",
+    "industry_ko": "무역회사·판매업체",
+    "korea_company": "POSCO International",
+    "korea_firms": [
+      {
+        "ko": "포스코인터내셔널(32조 4,000억 원)",
+        "name": "POSCO International (₩32.4T)",
+        "share": 55.0
+      },
+      {
+        "ko": "인터내셔널(16조 7,000억 원)",
+        "name": "LX International (₩16.7T)LX",
+        "share": 28.0
+      },
+      {
+        "ko": "현대코퍼레이션(7조 6,000억 원)",
+        "name": "Hyundai Corp (₩7.6T)",
+        "share": 13.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.3333,
+      "scale": 0.6667,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$56.4T",
+      "trillion_usd": 56.4,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
   "202010": {
     "cagr": "≈6%",
     "gics": "202010",
@@ -1774,6 +2838,339 @@
     "market": {
       "label": "$1.22T",
       "trillion_usd": 1.22,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20201010": {
+    "cagr": "~2.2%",
+    "gics": "20201010",
+    "global_company": "Toppan Holdings",
+    "global_firms": [
+      {
+        "ko": "아시아·태평양",
+        "name": "Asia-Pacific",
+        "share": 38.0
+      },
+      {
+        "ko": "북미",
+        "name": "North America",
+        "share": 33.0
+      },
+      {
+        "ko": "유럽",
+        "name": "Europe",
+        "share": 21.0
+      }
+    ],
+    "headline_ko": "도판홀딩스가 매출 기준 세계 최대 인쇄 기업(2025 회계연도 매출 약 1조 8,100억 엔, 2026년 6월 시가총액 약 1조 4,600억 엔)으로 자리하고, 한국은 대형 상장 순수 기업이 없어 비상장 타라티피에스가 가장 가까운 대용 기업인 것으로 파악됩니다. 약 8,680억 달러 규모의 글로벌 인쇄 시장은 연 2.2%가량 성장에 그치는 가운데, 패키징 인쇄가 약 6.8%로 복리 성장하는 반면 광고·출판 인쇄는 감소하고 EU 포장규정이 잉크와 소재를 재편하고 있습니다.",
+    "industry_en": "Commercial Printing",
+    "industry_ko": "상업 인쇄",
+    "korea_company": "Tara TPS (proxy)",
+    "korea_firms": [
+      {
+        "ko": "한국조폐공사 (보안 인쇄)",
+        "name": "KOMSCO (security print)",
+        "share": 18.0
+      },
+      {
+        "ko": "중견 인쇄·패키징 기업",
+        "name": "Mid-size print/packaging firms",
+        "share": 17.0
+      },
+      {
+        "ko": "대형 상업 인쇄사 (타라티피에스 등)",
+        "name": "Larger commercial printers (Tara TPS etc.)",
+        "share": 17.0
+      },
+      {
+        "ko": "약 1만 8,000개 영세 업체 (10인 미만)",
+        "name": "~18,000 micro-shops (<10 staff)",
+        "share": 48.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.6,
+      "tech": 0.4
+    },
+    "market": {
+      "label": "$874B",
+      "trillion_usd": 0.874,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20201050": {
+    "cagr": "~5.5–6%",
+    "gics": "20201050",
+    "global_company": "Waste Management",
+    "global_firms": [
+      {
+        "ko": "웨이스트 매니지먼트 (WM)",
+        "name": "Waste Management (WM)",
+        "share": 34.0
+      },
+      {
+        "ko": "리퍼블릭 서비시스",
+        "name": "Republic Services",
+        "share": 25.0
+      },
+      {
+        "ko": "웨이스트 커넥션스",
+        "name": "Waste Connections",
+        "share": 13.0
+      },
+      {
+        "ko": "인바이런멘털",
+        "name": "GFL EnvironmentalGFL",
+        "share": 6.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 22.0
+      }
+    ],
+    "headline_ko": "PFAS와 순환경제 규제가 강화되며 폐기물·시설 서비스의 통합이 이어지고 있습니다.",
+    "industry_en": "Environmental & Facilities Services",
+    "industry_ko": "환경·시설 서비스",
+    "korea_company": "S-1 Corporation",
+    "korea_firms": [
+      {
+        "ko": "에코비트, 리뉴어스)사모펀드 보유 (에코비트·리뉴어스)",
+        "name": "Private equity-owned (",
+        "share": 30.0
+      },
+      {
+        "ko": "에스원·삼성물산)상장 FM 대용 (에스원·삼성물산)",
+        "name": "Listed FM proxy (",
+        "share": 18.0
+      },
+      {
+        "ko": "인선이엔티·와이엔텍)상장 폐기물 (인선이엔티·와이엔텍)",
+        "name": "Listed waste (",
+        "share": 12.0
+      },
+      {
+        "ko": "지역·지자체 사업자 롱테일",
+        "name": "Long tail of regional & municipal operators",
+        "share": 40.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0833,
+      "scale": 0.75,
+      "tech": 0.1667
+    },
+    "market": {
+      "label": "$1.50T",
+      "trillion_usd": 1.5,
+      "year": "2025"
+    },
+    "sector": "Industrials"
+  },
+  "20201060": {
+    "cagr": "~1.3%",
+    "gics": "20201060",
+    "global_company": "ODP",
+    "global_firms": [
+      {
+        "ko": "비상장)",
+        "name": "Staples (private)Staples(",
+        "share": 18.0
+      },
+      {
+        "ko": "오피스디포(2025년 12월 이후 비상장)",
+        "name": "ODP / Office Depot (private since Dec 2025)ODP·",
+        "share": 16.0
+      },
+      {
+        "name": "Amazon BusinessAmazon Business",
+        "share": 12.0
+      },
+      {
+        "name": "LyrecoLyreco",
+        "share": 6.0
+      },
+      {
+        "ko": "기타(딜러·지역·온라인)",
+        "name": "All others (dealers, regional, online)",
+        "share": 48.0
+      }
+    ],
+    "headline_ko": "디지털 대체가 구조적으로 진행되는 저성장 성숙 시장으로, 마지막 대형 상장 유통사가 비상장으로 전환되고 Amazon Business가 경쟁 구도를 재편하고 있는 것으로 파악됩니다.",
+    "industry_en": "Office Services & Supplies",
+    "industry_ko": "사무용 서비스·용품",
+    "korea_company": "iMarketKorea",
+    "korea_firms": [
+      {
+        "ko": "서브원(비상장)",
+        "name": "Serveone (private)",
+        "share": 30.0
+      },
+      {
+        "ko": "아이마켓코리아(KOSPI 122900)",
+        "name": "iMarketKorea (KOSPI 122900)",
+        "share": 29.0
+      },
+      {
+        "ko": "엔투비(포스코)",
+        "name": "eNtoB (POSCO)",
+        "share": 10.0
+      },
+      {
+        "ko": "기타(오피스디포 코리아 포함)",
+        "name": "All others (incl. Office Depot Korea)",
+        "share": 31.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.5455,
+      "tech": 0.4545
+    },
+    "market": {
+      "label": "$67B",
+      "trillion_usd": 0.067,
+      "year": "2021"
+    },
+    "sector": "Industrials"
+  },
+  "20201070": {
+    "cagr": "~5.0%",
+    "gics": "20201070",
+    "global_company": "Cintas",
+    "global_firms": [
+      {
+        "ko": "컴퍼스 그룹(영국)",
+        "name": "Compass Group (UK)",
+        "share": 4.2
+      },
+      {
+        "ko": "소덱소(프랑스)",
+        "name": "Sodexo (France)",
+        "share": 2.7
+      },
+      {
+        "ko": "아라마크(미국)",
+        "name": "Aramark (US)",
+        "share": 1.7
+      },
+      {
+        "ko": "번즐(영국)",
+        "name": "Bunzl (UK)",
+        "share": 1.6
+      },
+      {
+        "ko": "신타스 + 렌토킬",
+        "name": "ISS A/S + Cintas + RentokilISS A/S +",
+        "share": 3.0
+      }
+    ],
+    "headline_ko": "구조적 아웃소싱 흐름이 약 1조 5,000억 달러 규모의 시설·업무 지원 시장을 꾸준히 키우고 있으며, 글로벌은 노선 밀도 경제성을 앞세운 신타스가, 한국은 보안·시설관리 시장의 약 절반을 차지한 에스원이 선두인 것으로 파악됩니다.",
+    "industry_en": "Diversified Support Services",
+    "industry_ko": "다각화 지원 서비스",
+    "korea_company": "S-1 (에스원)",
+    "korea_firms": [
+      {
+        "ko": "에스원",
+        "name": "S-1 Corporation",
+        "share": 50.0
+      },
+      {
+        "ko": "캡스 / SK쉴더스",
+        "name": "ADT Caps / SK ShieldusADT",
+        "share": 28.0
+      },
+      {
+        "ko": "텔레캅",
+        "name": "KT TelecopKT",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$1.32T",
+      "trillion_usd": 1.32,
+      "year": "2022"
+    },
+    "sector": "Industrials"
+  },
+  "20201080": {
+    "cagr": "~6.8%",
+    "gics": "20201080",
+    "global_company": "Allied Universal",
+    "global_firms": [
+      {
+        "ko": "얼라이드 유니버설(매출 약 230억 달러)",
+        "name": "Allied Universal (~$23B rev.)",
+        "share": 39.0
+      },
+      {
+        "ko": "시큐리타스(약 163억 달러)",
+        "name": "Securitas AB (~$16.3B)",
+        "share": 28.0
+      },
+      {
+        "ko": "가드아월드(약 49억 달러)",
+        "name": "GardaWorld (~$4.9B)",
+        "share": 8.0
+      },
+      {
+        "ko": "브링크스(약 53억 달러, 현금 수송)",
+        "name": "Brink's (~$5.3B, cash logistics)",
+        "share": 9.0
+      },
+      {
+        "ko": "약 51억 달러, 미국 경보 1위)",
+        "name": "ADT (~$5.1B, US alarm #1)ADT(",
+        "share": 9.0
+      }
+    ],
+    "headline_ko": "분산되고 인력 집약적인 경비 시장이 고착적이고 AI 주도적인 경보 관제로 옮겨가고 있으며, 글로벌은 얼라이드 유니버설이, 한국은 약 절반의 점유율을 가진 에스원이 1위를 차지하고 있습니다.",
+    "industry_en": "Security & Alarm Services",
+    "industry_ko": "보안·경보 서비스",
+    "korea_company": "S-1 (에스원)",
+    "korea_firms": [
+      {
+        "ko": "에스원)에스원",
+        "name": "S-1 Corporation (",
+        "share": 51.0
+      },
+      {
+        "ko": "쉴더스)SK쉴더스",
+        "name": "SK Shieldus (SK",
+        "share": 24.0
+      },
+      {
+        "ko": "텔레캅)KT텔레캅",
+        "name": "KT Telecop (KT",
+        "share": 12.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 13.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2,
+      "global": 0.0667,
+      "scale": 0.4667,
+      "tech": 0.2667
+    },
+    "market": {
+      "label": "$58.6B",
+      "trillion_usd": 0.0586,
       "year": "2024"
     },
     "sector": "Industrials"
@@ -2652,6 +4049,270 @@
     },
     "sector": "Consumer Discretionary"
   },
+  "25201020": {
+    "cagr": "~7%",
+    "gics": "25201020",
+    "global_company": "IKEA",
+    "global_firms": [
+      {
+        "name": "IKEA",
+        "share": 6.0
+      },
+      {
+        "name": "Williams-Sonoma",
+        "share": 3.0
+      },
+      {
+        "name": "Ashley Furniture",
+        "share": 2.0
+      },
+      {
+        "name": "Wayfair",
+        "share": 1.5
+      },
+      {
+        "name": "Man Wah / others (top tier)",
+        "share": 1.5
+      }
+    ],
+    "headline_ko": "가정용 가구는 2025년 약 7,860억 달러 규모의 글로벌 가구 시장으로 연 7%가량 성장하는 것으로 파악됩니다. 매출 기준 세계 최대 가구 소매업체는 이케아(비상장, 약 446억 유로)이며, 한국 1위 가구·인테리어 브랜드는 한샘인 것으로 파악됩니다.",
+    "industry_en": "Home Furnishings",
+    "industry_ko": "가정용 가구·생활용품",
+    "korea_company": "Hanssem",
+    "korea_firms": [
+      {
+        "name": "Hanssem",
+        "share": 30.0
+      },
+      {
+        "ko": "현대리바트",
+        "name": "Hyundai Livart",
+        "share": 28.0
+      },
+      {
+        "ko": "에이스침대 / 시디즈",
+        "name": "Ace Bed / Sidiz",
+        "share": 12.0
+      },
+      {
+        "ko": "일룸 / 에넥스",
+        "name": "Iloom / Enex",
+        "share": 10.0
+      },
+      {
+        "ko": "기타(파편화)",
+        "name": "Others (fragmented)",
+        "share": 20.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2778,
+      "global": 0.0,
+      "scale": 0.7222,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$786B",
+      "trillion_usd": 0.786,
+      "year": "2025"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25201030": {
+    "cagr": "~5.4%",
+    "gics": "25201030",
+    "global_company": "D.R. Horton",
+    "global_firms": [
+      {
+        "name": "D.R. Horton",
+        "share": 11.0
+      },
+      {
+        "name": "Lennar",
+        "share": 8.0
+      },
+      {
+        "name": "PulteGroup",
+        "share": 5.0
+      },
+      {
+        "name": "NVR",
+        "share": 4.0
+      },
+      {
+        "name": "D.R. Horton peers (top 10)",
+        "share": 4.0
+      }
+    ],
+    "headline_ko": "D.R.호턴은 높은 모기지 금리에 맞서 규모와 인센티브로 물량을 방어하고, 현대건설은 대출 규제 강화로 수요가 식는 가운데서도 한국 주택 수주 1위를 이어가고 있습니다.",
+    "industry_en": "Homebuilding",
+    "industry_ko": "주택건설",
+    "korea_company": "Hyundai E&C (proxy)",
+    "korea_firms": [
+      {
+        "ko": "현대건설(힐스테이트)",
+        "name": "Hyundai E&C (Hillstate)",
+        "share": 12.0
+      },
+      {
+        "ko": "삼성물산(래미안)",
+        "name": "Samsung C&T (Raemian)",
+        "share": 10.0
+      },
+      {
+        "ko": "건설(자이)",
+        "name": "GS E&C (Xi)GS",
+        "share": 9.0
+      },
+      {
+        "ko": "이앤씨/대우건설",
+        "name": "DL E&C / DaewooDL",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1538,
+      "scale": 0.8462,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$4.3T",
+      "trillion_usd": 4.3,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25201040": {
+    "cagr": "~5–7%",
+    "gics": "25201040",
+    "global_company": "Midea Group",
+    "global_firms": [
+      {
+        "name": "Midea",
+        "share": 30.0
+      },
+      {
+        "name": "Haier",
+        "share": 21.0
+      },
+      {
+        "name": "LG (HS)",
+        "share": 12.0
+      },
+      {
+        "name": "Whirlpool",
+        "share": 10.0
+      },
+      {
+        "name": "BSH (Bosch)",
+        "share": 8.0
+      }
+    ],
+    "headline_ko": "미데아는 FY2025 매출 약 4,565억 위안으로 매출·시가총액 기준 글로벌 가전 1위이며, LG전자는 생활가전 부문이 2026년 1분기 사상 최대 실적을 내며 미국 관세와 효율 규제가 시장을 재편하는 가운데 한국 1위를 지키고 있습니다.",
+    "industry_en": "Household Appliances",
+    "industry_ko": "가전제품",
+    "korea_company": "LG Electronics",
+    "korea_firms": [
+      {
+        "name": "LG Electronics",
+        "share": 30.0
+      },
+      {
+        "name": "Samsung",
+        "share": 26.0
+      },
+      {
+        "ko": "코웨이 & 기타(렌탈)",
+        "name": "Coway & others (rental)",
+        "share": 14.0
+      },
+      {
+        "ko": "기타·수입품",
+        "name": "Others / imports",
+        "share": 30.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2632,
+      "global": 0.0526,
+      "scale": 0.5263,
+      "tech": 0.1579
+    },
+    "market": {
+      "label": "$561B",
+      "trillion_usd": 0.561,
+      "year": "2025"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25201050": {
+    "cagr": "~4–5%",
+    "gics": "25201050",
+    "global_company": "SharkNinja",
+    "global_firms": [
+      {
+        "name": "Groupe SEB",
+        "share": 30.0
+      },
+      {
+        "name": "Newell Brands",
+        "share": 22.0
+      },
+      {
+        "name": "SharkNinja",
+        "share": 18.0
+      },
+      {
+        "ko": "윌리엄스-소노마",
+        "name": "Meyer / Williams-SonomaMeyer /",
+        "share": 12.0
+      },
+      {
+        "ko": "기타",
+        "name": "Helen of Troy / TTK / othersHelen of Troy / TTK /",
+        "share": 18.0
+      }
+    ],
+    "headline_ko": "샤크닌자가 성장과 밸류에이션 양면에서 업계를 선도하며(2025년 매출 15.7% 증가한 약 64억 달러, 시가총액 약 180억~190억 달러), 매출 기준 최대는 여전히 그룹 SEB인 것으로 파악됩니다. 한국 락앤락은 2024년 상장폐지 이후 비상장 상태이며, 약 730억 달러 주방용품 시장이 연 4~5%가량 성장하는 가운데 PFAS 조리기구 규제와 미국 50% 관세가 변수로 작용하고 있습니다.",
+    "industry_en": "Housewares & Specialties",
+    "industry_ko": "생활용품·특수용품",
+    "korea_company": "Lock&Lock (private)",
+    "korea_firms": [
+      {
+        "ko": "락앤락(0.47조 원)",
+        "name": "Lock&Lock (₩0.47T)",
+        "share": 38.0
+      },
+      {
+        "ko": "네오플램",
+        "name": "Neoflam",
+        "share": 22.0
+      },
+      {
+        "ko": "해피콜 / 키친아트",
+        "name": "Happycall / Kitchen Art",
+        "share": 18.0
+      },
+      {
+        "ko": "기타 / 수입",
+        "name": "Others / imports",
+        "share": 22.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.25,
+      "global": 0.45,
+      "scale": 0.0,
+      "tech": 0.3
+    },
+    "market": {
+      "label": "$73B",
+      "trillion_usd": 0.073,
+      "year": "2025"
+    },
+    "sector": "Consumer Discretionary"
+  },
   "252020": {
     "cagr": "~2.24%",
     "gics": "252020",
@@ -2717,6 +4378,66 @@
     },
     "sector": "Consumer Discretionary"
   },
+  "25202010": {
+    "cagr": "~3.3%",
+    "gics": "25202010",
+    "global_company": "Brunswick",
+    "global_firms": [
+      {
+        "name": "Polaris (~$7.1B)",
+        "share": 28.0
+      },
+      {
+        "name": "BRP (~$6B)",
+        "share": 25.0
+      },
+      {
+        "name": "Brunswick (~$5.4B)",
+        "share": 20.0
+      },
+      {
+        "name": "Yamaha Marine / HondaYamaha Marine / Honda",
+        "share": 11.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 16.0
+      }
+    ],
+    "headline_ko": "브런즈윅이 시가총액 약 54억 달러(2025년 매출 53억 6,000만 달러)로 가장 가치 있는 레저용품 순수 사업자에 자리하며 매출 1위 폴라리스를 앞서는 것으로 파악됩니다. 한국에는 글로벌급 제조사가 없어 스크린골프 기업 골프존이 가장 가까운 상장 대안(2025년 매출 4,830억 원, 시가총액 약 2,300억 원)으로 파악됩니다. 약 960억 달러 규모의 스포츠·레저 시장이 연 3.3%가량 성장하는 가운데, 확대된 미국 232조 관세가 레저보트·파워스포츠 마진을 압박하고 있습니다.",
+    "industry_en": "Leisure Products",
+    "industry_ko": "레저용품",
+    "korea_company": "Golfzon",
+    "korea_firms": [
+      {
+        "ko": "골프존 (4,830억 원)",
+        "name": "Golfzon (₩483B)",
+        "share": 60.0
+      },
+      {
+        "name": "Kakao VX",
+        "share": 25.0
+      },
+      {
+        "ko": "지역 / 독립 브랜드",
+        "name": "Regional / independent brands",
+        "share": 15.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2941,
+      "global": 0.2353,
+      "scale": 0.1176,
+      "tech": 0.3529
+    },
+    "market": {
+      "label": "$93B",
+      "trillion_usd": 0.093,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
   "252030": {
     "cagr": "≈4.1%",
     "gics": "252030",
@@ -2766,6 +4487,208 @@
     "market": {
       "label": "$1.77T",
       "trillion_usd": 1.77,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25203010": {
+    "cagr": "~6.8%",
+    "gics": "25203010",
+    "global_company": "LVMH",
+    "global_firms": [
+      {
+        "name": "LVMH",
+        "share": 40.0
+      },
+      {
+        "ko": "인디텍스 (자라)",
+        "name": "Inditex (Zara)",
+        "share": 20.0
+      },
+      {
+        "name": "Hermès",
+        "share": 8.0
+      },
+      {
+        "name": "Kering",
+        "share": 7.0
+      },
+      {
+        "ko": "기타 전체 (나이키, 샤넬, 리치몬트…)",
+        "name": "All others (Nike, Chanel, Richemont…)",
+        "share": 25.0
+      }
+    ],
+    "headline_ko": "LVMH가 세계 최대 의류·명품 그룹(2025 회계연도 매출 808억 유로, 2026년 6월 시가총액 약 2,550억 유로)으로 자리하고, F&F가 시가총액 약 2조 8,000억 원, 2024 회계연도 매출 약 1조 8,900억 원으로 한국 브랜드 의류 기업을 이끄는 것으로 파악됩니다. 약 3,900억 달러 규모의 명품 시장은 2030년까지 연 6.8%가량 복리 성장할 것으로 보이나, 2025년 개인 명품 소비는 약 2% 감소했고 무신사 같은 플랫폼이 한국 패션을 재편하고 있습니다.",
+    "industry_en": "Apparel, Accessories & Luxury Goods",
+    "industry_ko": "의류·액세서리·명품",
+    "korea_company": "F&F",
+    "korea_firms": [
+      {
+        "ko": "디스커버리)",
+        "name": "F&F (MLB, Discovery)F&F (MLB,",
+        "share": 27.0
+      },
+      {
+        "ko": "삼성물산 패션부문",
+        "name": "Samsung C&T Fashion",
+        "share": 22.0
+      },
+      {
+        "ko": "무신사 (플랫폼 GMV 주도)",
+        "name": "Musinsa (platform GMV-led)",
+        "share": 21.0
+      },
+      {
+        "ko": "한섬 (현대백화점)",
+        "name": "Handsome (Hyundai)",
+        "share": 14.0
+      },
+      {
+        "ko": "신세계인터내셔날 / 기타",
+        "name": "Shinsegae Intl / others",
+        "share": 16.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.375,
+      "global": 0.375,
+      "scale": 0.25,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$390B",
+      "trillion_usd": 0.39,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25203020": {
+    "cagr": "~4.3%",
+    "gics": "25203020",
+    "global_company": "Nike",
+    "global_firms": [
+      {
+        "ko": "나이키",
+        "name": "Nike",
+        "share": 9.7
+      },
+      {
+        "ko": "아디다스",
+        "name": "adidas",
+        "share": 5.4
+      },
+      {
+        "ko": "푸마",
+        "name": "Puma",
+        "share": 2.0
+      },
+      {
+        "ko": "스케처스",
+        "name": "Skechers",
+        "share": 1.9
+      },
+      {
+        "ko": "뉴발란스",
+        "name": "New Balance",
+        "share": 1.6
+      }
+    ],
+    "headline_ko": "나이키의 부진과 온·호카의 부상이 신발 시장 지형을 다시 그리고 있습니다.",
+    "industry_en": "Footwear",
+    "industry_ko": "신발",
+    "korea_company": "Fila Holdings",
+    "korea_firms": [
+      {
+        "ko": "휠라/미스토홀딩스 (브랜드 보유사)",
+        "name": "Fila/Misto Holdings (brand owner)",
+        "share": 35.0
+      },
+      {
+        "ko": "창신 (나이키 OEM, 비상장)",
+        "name": "Changshin (Nike OEM, unlisted)",
+        "share": 18.0
+      },
+      {
+        "ko": "태광실업 (나이키 OEM, 비상장)",
+        "name": "Taekwang (Nike OEM, unlisted)",
+        "share": 16.0
+      },
+      {
+        "ko": "화승엔터프라이즈 (아디다스 OEM)",
+        "name": "Hwaseung Enterprise (adidas OEM)",
+        "share": 13.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.619,
+      "global": 0.381,
+      "scale": 0.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$457B",
+      "trillion_usd": 0.457,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25203030": {
+    "cagr": "~5.1%",
+    "gics": "25203030",
+    "global_company": "Toray",
+    "global_firms": [
+      {
+        "ko": "합계)",
+        "name": "EU (collective)EU(",
+        "share": 25.0
+      },
+      {
+        "ko": "기타",
+        "name": "All others",
+        "share": 24.0
+      }
+    ],
+    "headline_ko": "섬유 제조는 2025년 기준 약 7,600억 달러 규모의 범용 기반 산업으로, 교섭력은 구매자가 쥐고 있으며 부가가치는 첨단섬유 상단과 브랜드 하단으로 빠져나가고 있는 것으로 파악됩니다.",
+    "industry_en": "Textiles",
+    "industry_ko": "섬유",
+    "korea_company": "Hyosung TNC",
+    "korea_firms": [
+      {
+        "ko": "효성티앤씨",
+        "name": "Hyosung TNC",
+        "share": 33.0
+      },
+      {
+        "ko": "코오롱인더스트리",
+        "name": "Kolon Industries",
+        "share": 21.0
+      },
+      {
+        "ko": "효성첨단소재",
+        "name": "HS Hyosung Adv. MaterialsHS",
+        "share": 14.0
+      },
+      {
+        "ko": "태광 외",
+        "name": "Taekwang & others",
+        "share": 17.0
+      },
+      {
+        "ko": "기타",
+        "name": "All others",
+        "share": 15.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1429,
+      "scale": 0.5238,
+      "tech": 0.3333
+    },
+    "market": {
+      "label": "$724B",
+      "trillion_usd": 0.724,
       "year": "2024"
     },
     "sector": "Consumer Discretionary"
@@ -2831,6 +4754,141 @@
     "market": {
       "label": "$5.21T",
       "trillion_usd": 5.21,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25301010": {
+    "cagr": "~10%",
+    "gics": "25301010",
+    "global_company": "Las Vegas Sands",
+    "global_firms": [
+      {
+        "ko": "샌즈 차이나(LVS)",
+        "name": "Sands China (LVS)",
+        "share": 25.0
+      },
+      {
+        "ko": "갤럭시 엔터테인먼트",
+        "name": "Galaxy Entertainment",
+        "share": 19.0
+      },
+      {
+        "ko": "차이나",
+        "name": "MGM ChinaMGM",
+        "share": 16.0
+      },
+      {
+        "ko": "멜코 리조트",
+        "name": "Melco Resorts",
+        "share": 15.0
+      },
+      {
+        "ko": "홀딩스",
+        "name": "SJM HoldingsSJM",
+        "share": 14.0
+      }
+    ],
+    "headline_ko": "마카오 회복과 미국 온라인 게이밍 사상 최대 실적이 약 3,220억 달러 규모의 카지노 시장을 끌어올리고 있으며, 아시아 복합리조트는 라스베이거스 샌즈가, 한국은 2045년까지 내국인 카지노를 독점하는 강원랜드가 선두인 것으로 파악됩니다.",
+    "industry_en": "Casinos & Gaming",
+    "industry_ko": "카지노·게이밍",
+    "korea_company": "Kangwon Land (강원랜드)",
+    "korea_firms": [
+      {
+        "ko": "강원랜드(내국인 + 외국인, 내국인 독점)",
+        "name": "Kangwon Land (locals + foreigners, monopoly on locals)",
+        "share": 46.0
+      },
+      {
+        "ko": "파라다이스(외국인 전용)",
+        "name": "Paradise Co (foreigner-only)",
+        "share": 26.0
+      },
+      {
+        "ko": "세븐럭(외국인 전용)",
+        "name": "GKL / Seven Luck (foreigner-only)GKL /",
+        "share": 18.0
+      },
+      {
+        "ko": "인스파이어, 제주 및 기타 외국인 전용",
+        "name": "Inspire, Jeju & other foreigner-only",
+        "share": 10.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.6,
+      "global": 0.0,
+      "scale": 0.4,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$289B",
+      "trillion_usd": 0.289,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25301020": {
+    "cagr": "~7.0%",
+    "gics": "25301020",
+    "global_company": "Marriott International",
+    "global_firms": [
+      {
+        "ko": "메리어트(객실 약 171만)",
+        "name": "Marriott (~1.71M rooms)",
+        "share": 27.0
+      },
+      {
+        "ko": "힐튼(약 127만)",
+        "name": "Hilton (~1.27M)",
+        "share": 20.0
+      },
+      {
+        "ko": "약 99만)",
+        "name": "IHG (~0.99M)IHG(",
+        "share": 16.0
+      },
+      {
+        "ko": "윈덤(약 90만)",
+        "name": "Wyndham (~0.90M)",
+        "share": 14.0
+      },
+      {
+        "ko": "아코르(약 85만)",
+        "name": "Accor (~0.85M)",
+        "share": 13.0
+      }
+    ],
+    "headline_ko": "자산경량 호텔 브랜드와 견고한 크루즈 과점이 약 2조 달러 시장을 양분하는 가운데, 메리어트가 객실 수와 시가총액으로 세계를 선도하고 호텔신라가 한국을 대표하고 있습니다.",
+    "industry_en": "Hotels, Resorts & Cruise Lines",
+    "industry_ko": "호텔·리조트·크루즈",
+    "korea_company": "Hotel Shilla",
+    "korea_firms": [
+      {
+        "ko": "파라다이스 카지노(약 9,005억 원)",
+        "name": "Paradise Co casino (~₩900.5B)",
+        "share": 51.0
+      },
+      {
+        "ko": "카지노(약 4,253억 원)",
+        "name": "GKL casino (~₩425.3B)GKL",
+        "share": 24.0
+      },
+      {
+        "ko": "호텔신라 호텔·레저(약 4,400억 원)",
+        "name": "Hotel Shilla hotels & leisure (~₩440B)",
+        "share": 25.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.6471,
+      "global": 0.0588,
+      "scale": 0.1765,
+      "tech": 0.1176
+    },
+    "market": {
+      "label": "$1.96T",
+      "trillion_usd": 1.96,
       "year": "2024"
     },
     "sector": "Consumer Discretionary"
@@ -3474,6 +5532,125 @@
     },
     "sector": "Consumer Staples"
   },
+  "30201020": {
+    "cagr": "~3.6%",
+    "gics": "30201020",
+    "global_company": "Kweichow Moutai",
+    "global_firms": [
+      {
+        "name": "Kweichow Moutai",
+        "share": 14.0
+      },
+      {
+        "name": "Diageo",
+        "share": 12.0
+      },
+      {
+        "name": "Pernod Ricard",
+        "share": 6.0
+      },
+      {
+        "name": "Wuliangye",
+        "share": 4.0
+      },
+      {
+        "name": "Brown-Forman / Bacardi",
+        "share": 4.0
+      }
+    ],
+    "headline_ko": "증류주·와인은 2025년 약 6,400억 달러 규모의 글로벌 증류주 시장으로, 수요 부진 속에 연 3.5%가량 성장하는 것으로 파악됩니다. 시가총액 기준 글로벌 1위는 구이저우 마오타이(약 2,320억 달러)이며, 한국 소주·맥주 시장은 하이트진로가 선도하고 있습니다.",
+    "industry_en": "Distillers & Vintners",
+    "industry_ko": "증류주·와인",
+    "korea_company": "HiteJinro",
+    "korea_firms": [
+      {
+        "name": "HiteJinro",
+        "share": 50.0
+      },
+      {
+        "ko": "롯데칠성(처음처럼)",
+        "name": "Lotte Chilsung (Chum Churum)",
+        "share": 20.0
+      },
+      {
+        "ko": "무학(좋은데이)",
+        "name": "Muhak (Joeun Day)",
+        "share": 12.0
+      },
+      {
+        "ko": "지역 업체(보해, 대선)",
+        "name": "Regional makers (Bohae, Daesun)",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.5625,
+      "global": 0.4375,
+      "scale": 0.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$642B",
+      "trillion_usd": 0.642,
+      "year": "2025"
+    },
+    "sector": "Consumer Staples"
+  },
+  "30201030": {
+    "cagr": "~7.5–8.6%",
+    "gics": "30201030",
+    "global_company": "The Coca-Cola Company",
+    "global_firms": [
+      {
+        "name": "Coca-Cola",
+        "share": 48.0
+      },
+      {
+        "name": "PepsiCo",
+        "share": 24.0
+      },
+      {
+        "name": "Keurig Dr Pepper",
+        "share": 16.0
+      }
+    ],
+    "headline_ko": "코카콜라는 가격 인상과 제로슈거 성장에 힘입어 원액 중심의 자산경량 모델로 업계 최고 수준의 마진을 내고, 롯데칠성음료는 제로 라인업을 앞세워 한국 음료 시장의 약 5분의 1을 점유하고 있습니다.",
+    "industry_en": "Soft Drinks & Non-alcoholic Beverages",
+    "industry_ko": "청량음료·무알코올 음료",
+    "korea_company": "Lotte Chilsung Beverage",
+    "korea_firms": [
+      {
+        "name": "Lotte Chilsung",
+        "share": 20.0
+      },
+      {
+        "name": "Dongseo Food",
+        "share": 10.0
+      },
+      {
+        "ko": "생활건강 코카콜라음료",
+        "name": "Coca-Cola Beverage (LG)LG",
+        "share": 10.0
+      },
+      {
+        "ko": "매일유업 · 동아오츠카",
+        "name": "Maeil · Dong-A Otsuka",
+        "share": 6.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.3333,
+      "global": 0.3333,
+      "scale": 0.1111,
+      "tech": 0.2222
+    },
+    "market": {
+      "label": "$1.30T",
+      "trillion_usd": 1.3,
+      "year": "2024"
+    },
+    "sector": "Consumer Staples"
+  },
   "302020": {
     "cagr": "≈6%",
     "gics": "302020",
@@ -3531,6 +5708,139 @@
     },
     "sector": "Consumer Staples"
   },
+  "30202010": {
+    "cagr": "~3.6%",
+    "gics": "30202010",
+    "global_company": "Cargill",
+    "global_firms": [
+      {
+        "name": "Cargill",
+        "share": 18.0
+      },
+      {
+        "name": "ADM",
+        "share": 15.0
+      },
+      {
+        "ko": "벙기(+비테라)",
+        "name": "Bunge (+Viterra)",
+        "share": 15.0
+      },
+      {
+        "ko": "루이드레퓌스",
+        "name": "Louis Dreyfus",
+        "share": 12.0
+      },
+      {
+        "ko": "등",
+        "name": "COFCO & othersCOFCO",
+        "share": 40.0
+      }
+    ],
+    "headline_ko": "비상장 기업 카길은 매출 약 1,540억 달러로 세계 최대 농산물 기업 자리를 지키고 있으며, 벙기-비테라 합병과 EU 산림파괴 규정이 글로벌 교역을 재편하는 가운데 CJ제일제당이 국내 최대 상장 기업으로 파악됩니다.",
+    "industry_en": "Agricultural Products & Services",
+    "industry_ko": "농산물·서비스",
+    "korea_company": "CJ CheilJedang",
+    "korea_firms": [
+      {
+        "ko": "농협사료(회원조합 포함)",
+        "name": "Nonghyup Feed (incl. members)",
+        "share": 31.0
+      },
+      {
+        "name": "Harim",
+        "share": 21.0
+      },
+      {
+        "name": "EASYBIO",
+        "share": 8.0
+      },
+      {
+        "ko": "카길애그리퓨리나",
+        "name": "Cargill Agri Purina",
+        "share": 8.0
+      },
+      {
+        "ko": "기타(CJ 등)",
+        "name": "Others (CJ & others)",
+        "share": 32.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.25,
+      "scale": 0.75,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$1.54T",
+      "trillion_usd": 1.54,
+      "year": "2024"
+    },
+    "sector": "Consumer Staples"
+  },
+  "30202030": {
+    "cagr": "~6.1%",
+    "gics": "30202030",
+    "global_company": "Nestlé",
+    "global_firms": [
+      {
+        "name": "Nestlé",
+        "share": 30.0
+      },
+      {
+        "name": "PepsiCo",
+        "share": 18.0
+      },
+      {
+        "name": "JBS / Tyson",
+        "share": 16.0
+      },
+      {
+        "ko": "몬델리즈 / 다논",
+        "name": "Mondelez / Danone",
+        "share": 14.0
+      },
+      {
+        "ko": "크래프트 하인즈 / 기타",
+        "name": "Kraft Heinz / others",
+        "share": 22.0
+      }
+    ],
+    "headline_ko": "네슬레가 2025년 매출 895억 스위스프랑(약 1,110억 달러), 시가총액 약 2,580억 달러로 세계 최대 포장식품 기업 자리를 지키고, CJ제일제당이 2025년 매출 17.75조 원으로 한국을 선도하는 것으로 파악됩니다. 약 3조 3,000억 달러 시장이 연 6.1%가량 성장하는 가운데 GLP-1 수요와 FDA 색소 퇴출, EU 산림파괴 규정이 시장을 바꾸고 있습니다.",
+    "industry_en": "Packaged Foods & Meats",
+    "industry_ko": "포장식품·육류",
+    "korea_company": "CJ CheilJedang",
+    "korea_firms": [
+      {
+        "ko": "제일제당(17.8조 원)",
+        "name": "CJ CheilJedang (₩17.8T)CJ",
+        "share": 46.0
+      },
+      {
+        "ko": "동원 / 롯데웰푸드(각 약 4.5조 원)",
+        "name": "Dongwon / Lotte Wellfood (~₩4.5T ea.)",
+        "share": 18.0
+      },
+      {
+        "ko": "대상(약 4.1조 원)",
+        "name": "Daesang (~₩4.1T)",
+        "share": 16.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.3529,
+      "global": 0.3529,
+      "scale": 0.2941,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$3.3T",
+      "trillion_usd": 3.3,
+      "year": "2024"
+    },
+    "sector": "Consumer Staples"
+  },
   "302030": {
     "cagr": "≈2.6%",
     "gics": "302030",
@@ -3580,6 +5890,64 @@
     "market": {
       "label": "$915B",
       "trillion_usd": 0.915,
+      "year": "2024"
+    },
+    "sector": "Consumer Staples"
+  },
+  "30203010": {
+    "cagr": "~2.7%",
+    "gics": "30203010",
+    "global_company": "Philip Morris International",
+    "global_firms": [
+      {
+        "name": "Philip Morris Intl",
+        "share": 30.0
+      },
+      {
+        "name": "British American Tobacco",
+        "share": 23.0
+      },
+      {
+        "name": "Japan Tobacco",
+        "share": 18.0
+      },
+      {
+        "name": "Altria / Imperial",
+        "share": 13.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 16.0
+      }
+    ],
+    "headline_ko": "필립모리스 인터내셔널(PMI)이 시가총액 약 2,780억 달러(2026년 6월, 2025년 매출 406억 달러, 비연소 제품 비중 41.5%)로 최대 담배기업에 자리하고, KT&G가 2025년 매출 6조 5,800억 원, 시가총액 약 110억 달러로 한국 시장을 이끄는 것으로 파악됩니다. 약 9,300억 달러 시장이 연 2.7%가량의 저성장에 그치는 가운데, 아이코스가 말보로를 추월했고 규제 초점은 철회된 미국 멘솔 금지에서 니코틴 파우치·전자담배 과세로 옮겨가고 있습니다.",
+    "industry_en": "Tobacco",
+    "industry_ko": "담배",
+    "korea_company": "KT&G",
+    "korea_firms": [
+      {
+        "name": "KT&G",
+        "share": 64.0
+      },
+      {
+        "name": "Philip Morris Korea",
+        "share": 18.0
+      },
+      {
+        "name": "BAT Korea",
+        "share": 12.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.3333,
+      "global": 0.4667,
+      "scale": 0.0,
+      "tech": 0.2
+    },
+    "market": {
+      "label": "$905B",
+      "trillion_usd": 0.905,
       "year": "2024"
     },
     "sector": "Consumer Staples"
@@ -3637,6 +6005,75 @@
     },
     "sector": "Consumer Staples"
   },
+  "30301010": {
+    "cagr": "~4.7%",
+    "gics": "30301010",
+    "global_company": "Procter & Gamble",
+    "global_firms": [
+      {
+        "name": "P&G",
+        "share": 33.0
+      },
+      {
+        "ko": "유니레버",
+        "name": "Unilever",
+        "share": 22.0
+      },
+      {
+        "ko": "콜게이트 / 레킷",
+        "name": "Colgate / Reckitt",
+        "share": 15.0
+      },
+      {
+        "ko": "헨켈 / 카오 / 클로락스",
+        "name": "Henkel / Kao / Clorox",
+        "share": 15.0
+      },
+      {
+        "ko": "기타 전체 / 자체 브랜드",
+        "name": "All others / private label",
+        "share": 15.0
+      }
+    ],
+    "headline_ko": "프록터앤드갬블이 세계 최대 가정용품 기업(2026년 6월 시가총액 약 3,470억 달러, 2025 회계연도 순매출 843억 달러)으로 자리하고, LG생활건강이 시가총액 약 3조 5,000억 원, 2025년 매출 6조 3,600억 원(6.7% 감소)으로 한국을 이끄는 것으로 파악됩니다. 약 2,370억~2,820억 달러 규모의 세정용품 시장이 연 4.7%가량 성장하는 가운데, 관세가 투입 비용을 끌어올리고 자체 브랜드가 사상 최고를 기록했으며 킴벌리클라크의 487억 달러 켄뷰 인수가 판도를 바꾸고 있습니다.",
+    "industry_en": "Household Products",
+    "industry_ko": "가정용품",
+    "korea_company": "LG Household & Health Care",
+    "korea_firms": [
+      {
+        "ko": "생활건강",
+        "name": "LG H&HLG",
+        "share": 30.0
+      },
+      {
+        "ko": "유한킴벌리 (화장지/위생)",
+        "name": "Yuhan-Kimberly (tissue/hygiene)",
+        "share": 17.0
+      },
+      {
+        "ko": "애경 / 헨켈 / P&G 코리아",
+        "name": "Aekyung / Henkel / P&G Korea",
+        "share": 13.0
+      },
+      {
+        "ko": "기타 전체 / 자체 브랜드",
+        "name": "All others / private label",
+        "share": 40.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.4762,
+      "global": 0.2857,
+      "scale": 0.2381,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$237B",
+      "trillion_usd": 0.237,
+      "year": "2024"
+    },
+    "sector": "Consumer Staples"
+  },
   "303020": {
     "cagr": "≈4.4%",
     "gics": "303020",
@@ -3687,6 +6124,66 @@
       "label": "$558B",
       "trillion_usd": 0.558,
       "year": "2024"
+    },
+    "sector": "Consumer Staples"
+  },
+  "30302010": {
+    "cagr": "~7.7%",
+    "gics": "30302010",
+    "global_company": "L'Oréal",
+    "global_firms": [
+      {
+        "ko": "로레알",
+        "name": "L'Oréal",
+        "share": 8.0
+      },
+      {
+        "ko": "유니레버",
+        "name": "Unilever",
+        "share": 4.5
+      },
+      {
+        "ko": "프록터 앤드 갬블",
+        "name": "Procter & Gamble",
+        "share": 2.5
+      },
+      {
+        "ko": "에스티 로더",
+        "name": "Estée Lauder",
+        "share": 2.3
+      },
+      {
+        "ko": "바이어스도르프",
+        "name": "Beiersdorf",
+        "share": 1.4
+      }
+    ],
+    "headline_ko": "K뷰티 수출이 급증하는 가운데 로레알이 꾸준히 성장하는 뷰티 시장을 이끌고 있습니다.",
+    "industry_en": "Personal Care Products",
+    "industry_ko": "개인용품",
+    "korea_company": "Amorepacific",
+    "korea_firms": [
+      {
+        "ko": "아모레퍼시픽 (화장품)",
+        "name": "Amorepacific (cosmetics)",
+        "share": 64.0
+      },
+      {
+        "ko": "생활건강 (뷰티 부문)",
+        "name": "LG H&H (beauty segment)LG",
+        "share": 36.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.4286,
+      "global": 0.3333,
+      "scale": 0.0,
+      "tech": 0.2381
+    },
+    "market": {
+      "label": "$519B",
+      "trillion_usd": 0.519,
+      "year": "2022"
     },
     "sector": "Consumer Staples"
   },
@@ -4109,6 +6606,71 @@
     },
     "sector": "Health Care"
   },
+  "35102030": {
+    "cagr": "~6.1%",
+    "gics": "35102030",
+    "global_company": "UnitedHealth Group",
+    "global_firms": [
+      {
+        "name": "UnitedHealth",
+        "share": 28.0
+      },
+      {
+        "name": "Humana",
+        "share": 18.0
+      },
+      {
+        "name": "CVS / Aetna",
+        "share": 12.0
+      },
+      {
+        "name": "Kaiser",
+        "share": 6.0
+      },
+      {
+        "name": "Elevance",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "관리형 의료는 사실상 미국 중심 산업으로 2025년 약 4조 달러 규모인 것으로 파악됩니다. 세계 최대 건강보험사는 유나이티드헬스 그룹(시가총액 약 3,650억 달러)으로, 2025년 큰 폭의 주가 조정을 겪은 바 있습니다. 한국은 단일 보험자인 국민건강보험공단(NHIS) 중심이며, 가장 가까운 상장 민간 대용 기업은 삼성화재인 것으로 파악됩니다.",
+    "industry_en": "Managed Health Care",
+    "industry_ko": "관리형 의료",
+    "korea_company": "NHIS (Samsung Fire proxy)",
+    "korea_firms": [
+      {
+        "ko": "국민건강보험공단 — 공공 단일보험",
+        "name": "NHIS — public single-payer",
+        "share": 88.0
+      },
+      {
+        "ko": "의료급여(공공)",
+        "name": "Medical Aid (public)",
+        "share": 6.0
+      },
+      {
+        "ko": "실손)민간 실손 보충",
+        "name": "Private indemnity top-up (",
+        "share": 3.0
+      },
+      {
+        "ko": "본인부담·기타",
+        "name": "Out-of-pocket / other",
+        "share": 3.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1111,
+      "scale": 0.8333,
+      "tech": 0.0556
+    },
+    "market": {
+      "label": "$3.9T",
+      "trillion_usd": 3.9,
+      "year": "2024"
+    },
+    "sector": "Health Care"
+  },
   "351030": {
     "cagr": "~16%",
     "gics": "351030",
@@ -4167,6 +6729,63 @@
       "label": "$870B",
       "trillion_usd": 0.87,
       "year": "2025"
+    },
+    "sector": "Health Care"
+  },
+  "35103010": {
+    "cagr": "~16%",
+    "gics": "35103010",
+    "global_company": "Veeva Systems",
+    "global_firms": [
+      {
+        "name": "Veeva Systems",
+        "share": 80.0
+      },
+      {
+        "name": "Salesforce Life Sciences",
+        "share": 8.0
+      },
+      {
+        "name": "IQVIA / OCE",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "베바시스템즈는 세일즈포스의 재진입 속에 생명과학 CRM의 약 80%를 지키고 있고, 루닛은 암 검진 소프트웨어 성장에 힘입어 한국 상장 의료 AI 분야를 선도하고 있습니다.",
+    "industry_en": "Health Care Technology",
+    "industry_ko": "헬스케어 기술",
+    "korea_company": "Lunit",
+    "korea_firms": [
+      {
+        "ko": "루닛",
+        "name": "Lunit",
+        "share": 38.0
+      },
+      {
+        "ko": "뷰노",
+        "name": "VUNO",
+        "share": 22.0
+      },
+      {
+        "ko": "코어라인·제이엘케이·기타",
+        "name": "Coreline / JLK / others",
+        "share": 14.0
+      },
+      {
+        "ko": "병원 자체 개발·기타",
+        "name": "Hospital in-house / other",
+        "share": 26.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.3636,
+      "global": 0.0,
+      "scale": 0.0,
+      "tech": 0.6364
+    },
+    "market": {
+      "label": "$745B",
+      "trillion_usd": 0.745,
+      "year": "2024"
     },
     "sector": "Health Care"
   },
@@ -4236,6 +6855,67 @@
     },
     "sector": "Health Care"
   },
+  "35201010": {
+    "cagr": "~9–14%",
+    "gics": "35201010",
+    "global_company": "Amgen",
+    "global_firms": [
+      {
+        "name": "Amgen",
+        "share": 33.0
+      },
+      {
+        "name": "Gilead",
+        "share": 28.0
+      },
+      {
+        "name": "Regeneron",
+        "share": 14.0
+      },
+      {
+        "name": "Vertex",
+        "share": 12.0
+      },
+      {
+        "ko": "기타",
+        "name": "Moderna / BioNTech / othersModerna / BioNTech /",
+        "share": 13.0
+      }
+    ],
+    "headline_ko": "암젠(Amgen)은 시가총액 약 1,870억 달러로 최대 순수 바이오텍이며, 미국의 약가 협상과 BIOSECURE 법이 업계를 재편하는 가운데 삼성바이오로직스가 FY2025 매출 30% 성장을 바탕으로 위탁생산 기업으로서 한국을 선도하고 있습니다.",
+    "industry_en": "Biotechnology",
+    "industry_ko": "바이오테크놀로지",
+    "korea_company": "Samsung Biologics",
+    "korea_firms": [
+      {
+        "ko": "삼성바이오로직스(약 59조 원)",
+        "name": "Samsung Biologics (~₩59T)",
+        "share": 54.0
+      },
+      {
+        "ko": "셀트리온(약 35조 원)",
+        "name": "Celltrion (~₩35T)",
+        "share": 32.0
+      },
+      {
+        "ko": "바이오팜(약 7조 원)",
+        "name": "SK Biopharm (~₩7T)SK",
+        "share": 6.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0909,
+      "scale": 0.4545,
+      "tech": 0.4545
+    },
+    "market": {
+      "label": "$1.77T",
+      "trillion_usd": 1.77,
+      "year": "2025"
+    },
+    "sector": "Health Care"
+  },
   "352020": {
     "cagr": "~6.3%",
     "gics": "352020",
@@ -4302,6 +6982,68 @@
     },
     "sector": "Health Care"
   },
+  "35202010": {
+    "cagr": "~6%",
+    "gics": "35202010",
+    "global_company": "Eli Lilly",
+    "global_firms": [
+      {
+        "name": "J&J / Merck",
+        "share": 25.0
+      },
+      {
+        "name": "Pfizer / Roche",
+        "share": 19.0
+      },
+      {
+        "name": "AbbVie / AstraZeneca",
+        "share": 17.0
+      },
+      {
+        "ko": "노바티스 / 사노피 / 릴리",
+        "name": "Novartis / Sanofi / Lilly",
+        "share": 15.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 24.0
+      }
+    ],
+    "headline_ko": "일라이 릴리가 GLP-1 제품군을 앞세워 시가총액 약 1조 400억 달러로 세계 최고가 제약사(제약사 최초 1조 달러 돌파)에 올랐고, 유한양행이 매출 기준 한국 전통 제약을 선도하는 것으로 파악됩니다(2025년 2.19조 원). 약 1조 7,000억~1조 8,000억 달러 시장이 연 6%가량 성장하는 가운데 IRA 약가 협상과 최혜국 약가 압박이 변수로 작용하고 있습니다.",
+    "industry_en": "Pharmaceuticals",
+    "industry_ko": "제약",
+    "korea_company": "Yuhan",
+    "korea_firms": [
+      {
+        "ko": "유한양행(2.19조 원)",
+        "name": "Yuhan (₩2.19T)",
+        "share": 31.0
+      },
+      {
+        "ko": "녹십자(1.99조 원)",
+        "name": "GC / Green Cross (₩1.99T)GC",
+        "share": 22.0
+      },
+      {
+        "ko": "종근당 / 대웅제약 / 한미약품",
+        "name": "Chong Kun Dang / Daewoong / Hanmi",
+        "share": 18.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2632,
+      "global": 0.2105,
+      "scale": 0.2105,
+      "tech": 0.3158
+    },
+    "market": {
+      "label": "$1.70T",
+      "trillion_usd": 1.7,
+      "year": "2024"
+    },
+    "sector": "Health Care"
+  },
   "352030": {
     "cagr": "≈6.9%",
     "gics": "352030",
@@ -4352,6 +7094,67 @@
       "label": "$153.8B",
       "trillion_usd": 0.1538,
       "year": "2025"
+    },
+    "sector": "Health Care"
+  },
+  "35203010": {
+    "cagr": "~10–12%",
+    "gics": "35203010",
+    "global_company": "Thermo Fisher Scientific",
+    "global_firms": [
+      {
+        "name": "Thermo Fisher",
+        "share": 21.0
+      },
+      {
+        "name": "Danaher",
+        "share": 16.0
+      },
+      {
+        "name": "Merck KGaA / Roche Dx",
+        "share": 14.0
+      },
+      {
+        "name": "Agilent / Sartorius / Waters",
+        "share": 16.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 33.0
+      }
+    ],
+    "headline_ko": "써모피셔 사이언티픽이 매출과 시가총액 기준 생명과학 도구 시장을 압도(약 1,770억 달러, FY2025 매출 446억 달러)하고, 규모가 작은 한국 도구 시장은 씨젠이 가장 가까운 대안(FY2025 매출 4,740억 원, 시가총액 약 1조 3,400억 원)으로 선두를 맡고 있는 것으로 파악됩니다. 약 1,650억~1,850억 달러 시장이 바이오공정 회복에 힘입어 연 10~12% 성장하는 가운데, 철회된 FDA LDT 규정과 EU IVDR, 중국의 약가 인하가 수요 구도를 바꾸고 있습니다.",
+    "industry_en": "Life Sciences Tools & Services",
+    "industry_ko": "생명과학 도구·서비스",
+    "korea_company": "Seegene",
+    "korea_firms": [
+      {
+        "ko": "씨젠(4,740억 원)",
+        "name": "Seegene (₩474B)",
+        "share": 49.0
+      },
+      {
+        "ko": "바이오니아(2,940억 원)",
+        "name": "Bioneer (₩294B)",
+        "share": 34.0
+      },
+      {
+        "ko": "마크로젠(1,450억 원)",
+        "name": "Macrogen (₩145B)",
+        "share": 17.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.4,
+      "scale": 0.2667,
+      "tech": 0.3333
+    },
+    "market": {
+      "label": "$168B",
+      "trillion_usd": 0.168,
+      "year": "2024"
     },
     "sector": "Health Care"
   },
@@ -4794,6 +7597,132 @@
     },
     "sector": "Financials"
   },
+  "40201050": {
+    "cagr": "~+8%",
+    "gics": "40201050",
+    "global_company": "Rocket Companies",
+    "global_firms": [
+      {
+        "name": "UWM",
+        "share": 8.0
+      },
+      {
+        "name": "Rocket (pre-deals)",
+        "share": 6.0
+      },
+      {
+        "name": "PennyMac",
+        "share": 4.0
+      },
+      {
+        "name": "Mr. Cooper",
+        "share": 3.0
+      },
+      {
+        "name": "Freedom / others top-10",
+        "share": 3.0
+      }
+    ],
+    "headline_ko": "상업·주택 모기지 금융은 금리에 따라 크게 출렁이는 산업으로, 미국 단독주택 대출 취급은 2025년 약 2조 달러에서 2026년 8% 늘어날 것으로 보입니다. 시가총액 기준 글로벌 상장 1위는 Mr. Cooper와 Redfin을 인수한 Rocket Companies(약 360억 달러)이며, 한국의 사실상 선도 기관은 공기업인 한국주택금융공사인 것으로 파악됩니다.",
+    "industry_en": "Commercial & Residential Mortgage Finance",
+    "industry_ko": "상업·주택 모기지 금융",
+    "korea_company": "Korea Housing Finance Corp",
+    "korea_firms": [
+      {
+        "ko": "한국주택금융공사 / HF (공기업)",
+        "name": "Korea Housing Finance Corp / HF (public)",
+        "share": 46.0
+      },
+      {
+        "ko": "은행 모기지 잔액(KB·신한 등)",
+        "name": "Bank mortgage books (KB, Shinhan, etc.)",
+        "share": 24.0
+      },
+      {
+        "ko": "보증",
+        "name": "HUG / SGI guaranteesHUG / SGI",
+        "share": 14.0
+      },
+      {
+        "ko": "보험사·비은행권",
+        "name": "Insurers & non-banks",
+        "share": 9.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$4.4T",
+      "trillion_usd": 4.4,
+      "year": "2021"
+    },
+    "sector": "Financials"
+  },
+  "40201060": {
+    "cagr": "~16–25%",
+    "gics": "40201060",
+    "global_company": "Visa",
+    "global_firms": [
+      {
+        "name": "UnionPay",
+        "share": 35.0
+      },
+      {
+        "name": "Visa",
+        "share": 32.0
+      },
+      {
+        "name": "Mastercard",
+        "share": 21.0
+      },
+      {
+        "name": "Amex",
+        "share": 7.0
+      },
+      {
+        "ko": "기타",
+        "name": "JCB / Discover / othersJCB / Discover /",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "비자는 스테이블코인과 인터체인지 법안이 부상하는 가운데서도 글로벌 네트워크와 가격 결정력으로 가장 가치 높은 결제 기업 자리를 지키고, 카카오페이는 네이버페이의 그룹 내 결제액에 이어 한국 상장 간편결제 기업을 선도하고 있습니다.",
+    "industry_en": "Transaction & Payment Processing Services",
+    "industry_ko": "거래·결제 처리 서비스",
+    "korea_company": "Kakao Pay",
+    "korea_firms": [
+      {
+        "ko": "네이버페이(56.5조 원)",
+        "name": "Naver Pay (₩56.5T)",
+        "share": 52.0
+      },
+      {
+        "ko": "카카오페이(37.8조 원)",
+        "name": "Kakao Pay (₩37.8T)",
+        "share": 35.0
+      },
+      {
+        "ko": "토스페이(12조 원)",
+        "name": "Toss Pay (₩12T)",
+        "share": 11.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2941,
+      "global": 0.1765,
+      "scale": 0.3529,
+      "tech": 0.1765
+    },
+    "market": {
+      "label": "$120B",
+      "trillion_usd": 0.12,
+      "year": "2025"
+    },
+    "sector": "Financials"
+  },
   "402020": {
     "cagr": "~8.7%",
     "gics": "402020",
@@ -4860,6 +7789,77 @@
     },
     "sector": "Financials"
   },
+  "40202010": {
+    "cagr": "~7–9%",
+    "gics": "40202010",
+    "global_company": "American Express",
+    "global_firms": [
+      {
+        "name": "JPMorgan Chase",
+        "share": 30.0
+      },
+      {
+        "name": "American Express",
+        "share": 26.0
+      },
+      {
+        "name": "Citi",
+        "share": 14.0
+      },
+      {
+        "name": "Capital One",
+        "share": 14.0
+      },
+      {
+        "ko": "기타(상위 5개 ≈ 69%)",
+        "name": "BofA / others (top-5 ≈ 69%)BofA ·",
+        "share": 16.0
+      }
+    ],
+    "headline_ko": "아메리칸 익스프레스는 FY2025 매출 722억 달러로 시가총액 기준 글로벌 소비자금융 1위이며, 미국의 연체 수수료 규정이 무산되고 한국이 가계부채 한도를 강화하는 가운데 삼성카드가 국내 최대 상장 카드사 자리를 지키고 있습니다.",
+    "industry_en": "Consumer Finance",
+    "industry_ko": "소비자 금융",
+    "korea_company": "Samsung Card",
+    "korea_firms": [
+      {
+        "ko": "신한카드",
+        "name": "Shinhan Card",
+        "share": 22.0
+      },
+      {
+        "ko": "삼성카드",
+        "name": "Samsung Card",
+        "share": 18.0
+      },
+      {
+        "ko": "국민카드",
+        "name": "KB Kookmin CardKB",
+        "share": 18.0
+      },
+      {
+        "ko": "현대카드",
+        "name": "Hyundai Card",
+        "share": 15.0
+      },
+      {
+        "ko": "롯데 · 우리 · 하나 · BC",
+        "name": "Lotte / Woori / Hana / BC",
+        "share": 27.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2,
+      "global": 0.1333,
+      "scale": 0.6,
+      "tech": 0.0667
+    },
+    "market": {
+      "label": "$910B",
+      "trillion_usd": 0.91,
+      "year": "2025"
+    },
+    "sector": "Financials"
+  },
   "402030": {
     "cagr": "≈6.2%",
     "gics": "402030",
@@ -4910,6 +7910,260 @@
       "label": "$135T",
       "trillion_usd": 135.0,
       "year": "2024"
+    },
+    "sector": "Financials"
+  },
+  "40203010": {
+    "cagr": "~6.2%",
+    "gics": "40203010",
+    "global_company": "BlackRock",
+    "global_firms": [
+      {
+        "ko": "블랙록(~13조 9,000억 달러)",
+        "name": "BlackRock (~$13.9T)",
+        "share": 33.0
+      },
+      {
+        "ko": "뱅가드(~10조 달러, 비상장)",
+        "name": "Vanguard (~$10T, private)",
+        "share": 20.0
+      },
+      {
+        "ko": "피델리티 / 스테이트스트리트",
+        "name": "Fidelity / State Street",
+        "share": 13.0
+      },
+      {
+        "ko": "캐피털그룹 / 아문디",
+        "name": "Capital Group / Amundi",
+        "share": 12.0
+      },
+      {
+        "ko": "기타(상위권)",
+        "name": "Others (top tier)",
+        "share": 22.0
+      }
+    ],
+    "headline_ko": "블랙록이 운용자산 약 13조 9,000억 달러(2026년 3월 기준), 시가총액 약 1,700억 달러로 세계 최대 자산운용사 자리를 지키고, 미래에셋이 글로벌 운용자산 450조 원 이상으로 한국을 선도하는 것으로 파악됩니다. 약 139조 달러 글로벌 운용자산이 연 6.2%가량 성장하는 가운데 수수료 인하 압력과 ETF 자금 유입, 사모 시장 M&A가 수익 구조를 재편하고 있습니다.",
+    "industry_en": "Asset Management & Custody Banks",
+    "industry_ko": "자산운용·수탁은행",
+    "korea_company": "Mirae Asset",
+    "korea_firms": [
+      {
+        "ko": "미래에셋(글로벌 ~3,210억 달러)",
+        "name": "Mirae Asset (global ~$321B)",
+        "share": 30.0
+      },
+      {
+        "ko": "삼성자산운용(KODEX ETF 1위)",
+        "name": "Samsung Asset Mgmt (KODEX ETF leader)",
+        "share": 26.0
+      },
+      {
+        "ko": "한화 / 신한",
+        "name": "KB / Hanwha / ShinhanKB /",
+        "share": 16.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0625,
+      "global": 0.25,
+      "scale": 0.375,
+      "tech": 0.3125
+    },
+    "market": {
+      "label": "$128T",
+      "trillion_usd": 128.0,
+      "year": "2023"
+    },
+    "sector": "Financials"
+  },
+  "40203020": {
+    "cagr": "~11%",
+    "gics": "40203020",
+    "global_company": "Morgan Stanley",
+    "global_firms": [
+      {
+        "name": "JPMorgan (context)",
+        "share": 28.0
+      },
+      {
+        "name": "Goldman Sachs",
+        "share": 21.0
+      },
+      {
+        "name": "Morgan Stanley / BofA",
+        "share": 18.0
+      },
+      {
+        "ko": "씨티 / 바클레이즈",
+        "name": "Citi / Barclays",
+        "share": 15.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 18.0
+      }
+    ],
+    "headline_ko": "모건스탠리가 시가총액 기준 최대 순수 투자은행·증권사(2026년 6월 약 3,400억 달러, 2025년 순영업수익 706억 달러)에 자리하고, 2025년 IB 수수료는 골드만삭스가 93억 4,000만 달러로 1위를 차지한 것으로 파악됩니다. 미래에셋증권은 시가총액 기준 한국 최대 증권사(2025년 영업이익 1조 9,200억 원, 61% 증가)로 파악됩니다. 약 1,070억 달러 규모의 글로벌 수수료 풀이 4조 8,000억 달러 규모의 M&A 회복에 힘입어 반등하는 가운데, 바젤Ⅲ와 T+1 결제, 한국 공매도 금지 해제가 규칙을 다시 짜고 있습니다.",
+    "industry_en": "Investment Banking & Brokerage",
+    "industry_ko": "투자은행·중개",
+    "korea_company": "Mirae Asset Securities",
+    "korea_firms": [
+      {
+        "ko": "미래에셋증권",
+        "name": "Mirae Asset Securities",
+        "share": 26.0
+      },
+      {
+        "ko": "한국투자 / 삼성",
+        "name": "Korea Investment / Samsung",
+        "share": 22.0
+      },
+      {
+        "ko": "키움",
+        "name": "KB / NH / KiwoomKB / NH /",
+        "share": 20.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.4,
+      "scale": 0.6,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$90B",
+      "trillion_usd": 0.09,
+      "year": "2023"
+    },
+    "sector": "Financials"
+  },
+  "40203030": {
+    "cagr": "~+11%",
+    "gics": "40203030",
+    "global_company": "UBS Group",
+    "global_firms": [
+      {
+        "name": "JPMorgan",
+        "share": 9.0
+      },
+      {
+        "name": "Goldman Sachs",
+        "share": 8.0
+      },
+      {
+        "ko": "모건스탠리",
+        "name": "BofA / Morgan StanleyBofA /",
+        "share": 6.0
+      },
+      {
+        "name": "Citi",
+        "share": 5.0
+      },
+      {
+        "ko": "도이체방크",
+        "name": "UBS / Deutsche BankUBS /",
+        "share": 2.0
+      }
+    ],
+    "headline_ko": "UBS그룹이 시가총액 약 1,620억 달러(2026년 6월, 2025 회계연도 순이익 78억 달러로 53% 증가, 운용자산 7조 달러)로 최대 종합 자본시장 기업에 자리하고, 한국에서는 한국금융지주(시가총액 약 11조 4,000억 원)가 가장 가까운 대용 기업인 것으로 파악됩니다. 글로벌 투자은행 수수료 풀은 2025년 약 1,000억 달러에 이르렀고 M&A는 약 4조 8,000억 달러로 반등했으며, 코스피는 밸류업 랠리 속에 2026년 약 두 배로 상승한 바 있습니다.",
+    "industry_en": "Diversified Capital Markets",
+    "industry_ko": "종합 자본시장",
+    "korea_company": "Korea Investment Holdings (proxy)",
+    "korea_firms": [
+      {
+        "ko": "한국투자증권",
+        "name": "Korea Inv. & Securities",
+        "share": 21.0
+      },
+      {
+        "ko": "미래에셋증권",
+        "name": "Mirae Asset Securities",
+        "share": 17.0
+      },
+      {
+        "ko": "삼성 / NH",
+        "name": "Samsung / NH",
+        "share": 12.0
+      },
+      {
+        "ko": "키움 / 메리츠",
+        "name": "KB / Kiwoom / MeritzKB /",
+        "share": 10.0
+      },
+      {
+        "ko": "기타 증권사 (총 61개사)",
+        "name": "All other firms (61 total)",
+        "share": 40.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.4167,
+      "scale": 0.5833,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$93B",
+      "trillion_usd": 0.093,
+      "year": "2023"
+    },
+    "sector": "Financials"
+  },
+  "40203040": {
+    "cagr": "~11.2%",
+    "gics": "40203040",
+    "global_company": "S&P Global",
+    "global_firms": [
+      {
+        "name": "S&P GlobalS&P Global",
+        "share": 21.0
+      },
+      {
+        "name": "CME GroupCME Group",
+        "share": 16.0
+      },
+      {
+        "name": "ICEICE",
+        "share": 14.0
+      },
+      {
+        "name": "Moody'sMoody's",
+        "share": 14.0
+      },
+      {
+        "name": "LSEGLSEG",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "데이터와 지수가 거래소 이익을 견인하는 가운데 한국거래소가 밸류업 개혁을 추진하고 있습니다.",
+    "industry_en": "Financial Exchanges & Data",
+    "industry_ko": "금융거래소·데이터",
+    "korea_company": "Korea Exchange (KRX)",
+    "korea_firms": [
+      {
+        "ko": "한국거래소(KRX) — 유일한 국가 거래소",
+        "name": "Korea Exchange (KRX) — sole national exchange",
+        "share": 90.0
+      },
+      {
+        "ko": "넥스트레이드) — ATS, capped at 15%넥스트레이드(NXT) — ATS, 15% 상한",
+        "name": "NXT (",
+        "share": 10.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.5,
+      "global": 0.4286,
+      "scale": 0.0,
+      "tech": 0.0714
+    },
+    "market": {
+      "label": "$10.0B",
+      "trillion_usd": 0.01,
+      "year": "2022"
     },
     "sector": "Financials"
   },
@@ -4980,6 +8234,81 @@
     },
     "sector": "Financials"
   },
+  "40204010": {
+    "cagr": "~3.1%",
+    "gics": "40204010",
+    "global_company": "Annaly",
+    "global_firms": [
+      {
+        "ko": "애널리 캐피털 (NLY)",
+        "name": "Annaly Capital (NLY)",
+        "share": 24.0
+      },
+      {
+        "ko": "인베스트먼트 (AGNC)",
+        "name": "AGNC Investment (AGNC)AGNC",
+        "share": 18.0
+      },
+      {
+        "ko": "스타우드 프로퍼티 트러스트 (STWD)",
+        "name": "Starwood Property Trust (STWD)",
+        "share": 9.0
+      },
+      {
+        "ko": "리듬 캐피털 (RITM)",
+        "name": "Rithm Capital (RITM)",
+        "share": 8.0
+      },
+      {
+        "ko": "기타 (약 36개 종목)",
+        "name": "All others (~36 names)",
+        "share": 41.0
+      }
+    ],
+    "headline_ko": "모기지 리츠는 금리 인하 흐름에 힘입어 2025년 사상 최고의 한 해를 보냈으나, 연준의 2026년 6월 매파적 동결로 이 사업 모델의 핵심인 스프레드 리스크가 다시 부각되었습니다.",
+    "industry_en": "Mortgage REITs",
+    "industry_ko": "모기지 리츠",
+    "korea_company": "Korea Housing Finance (proxy)",
+    "korea_firms": [
+      {
+        "ko": "리츠 (395400)",
+        "name": "SK REIT (395400)SK",
+        "share": 17.0
+      },
+      {
+        "ko": "롯데리츠 (330590)",
+        "name": "Lotte REIT (330590)",
+        "share": 12.0
+      },
+      {
+        "ko": "켄달스퀘어리츠 (365550)",
+        "name": "ESR Kendall Square REIT (365550)ESR",
+        "share": 11.0
+      },
+      {
+        "ko": "신한알파리츠 (293940)",
+        "name": "Shinhan Alpha REIT (293940)",
+        "share": 7.0
+      },
+      {
+        "ko": "리츠 (~21 names)기타 상장 리츠 (약 21개 종목)",
+        "name": "All other listed",
+        "share": 53.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$58B",
+      "trillion_usd": 0.058,
+      "year": "2021"
+    },
+    "sector": "Financials"
+  },
   "403010": {
     "cagr": "≈2.3%",
     "gics": "403010",
@@ -5029,6 +8358,135 @@
     "market": {
       "label": "$7.3T",
       "trillion_usd": 7.3,
+      "year": "2024"
+    },
+    "sector": "Financials"
+  },
+  "40301010": {
+    "cagr": "~9.1%",
+    "gics": "40301010",
+    "global_company": "Marsh McLennan",
+    "global_firms": [
+      {
+        "ko": "마쉬 매클레넌",
+        "name": "Marsh McLennan",
+        "share": 25.0
+      },
+      {
+        "ko": "에이온",
+        "name": "Aon",
+        "share": 16.0
+      },
+      {
+        "ko": "갤러거",
+        "name": "Arthur J. Gallagher",
+        "share": 13.0
+      },
+      {
+        "name": "WTWWTW",
+        "share": 9.0
+      },
+      {
+        "ko": "외",
+        "name": "Brown & Brown, Hub, Acrisure & othersBrown & Brown, Hub, Acrisure",
+        "share": 37.0
+      }
+    ],
+    "headline_ko": "사모펀드가 주도하는 롤업 인수가 P&C 요율 연화 속에서도 약 3,400억 달러 규모의 중개 시장을 통합하고 있으며, 글로벌은 마쉬 매클레넌이 선두인 반면 한국에는 상장 순수 브로커가 없어 인카금융서비스가 가장 근접한 GA 대용으로 파악됩니다.",
+    "industry_en": "Insurance Brokers",
+    "industry_ko": "보험 중개",
+    "korea_company": "Inca Financial Services (인카금융서비스)",
+    "korea_firms": [
+      {
+        "ko": "인카금융서비스 (211050)",
+        "name": "Inca Financial Services (211050)",
+        "share": 60.0
+      },
+      {
+        "ko": "에이플러스에셋 (244920)",
+        "name": "A-Plus Asset (244920)",
+        "share": 40.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0714,
+      "scale": 0.4286,
+      "tech": 0.5
+    },
+    "market": {
+      "label": "$288B",
+      "trillion_usd": 0.288,
+      "year": "2023"
+    },
+    "sector": "Financials"
+  },
+  "40301020": {
+    "cagr": "~4.0%",
+    "gics": "40301020",
+    "global_company": "AIA Group",
+    "global_firms": [
+      {
+        "ko": "차이나라이프(약 1,490억 달러)",
+        "name": "China Life (~$149B)",
+        "share": 34.0
+      },
+      {
+        "ko": "핑안(약 1,300억 달러, 종합금융)",
+        "name": "Ping An (~$130B, composite)",
+        "share": 30.0
+      },
+      {
+        "ko": "그룹(약 950억 달러, 순수 전업)",
+        "name": "AIA Group (~$95B, pure-play)AIA",
+        "share": 21.0
+      },
+      {
+        "ko": "기타(삼성생명, 푸르덴셜 plc 등)",
+        "name": "Others (Samsung Life, Prudential plc…)",
+        "share": 15.0
+      }
+    ],
+    "headline_ko": "AIA가 아시아 최대 상장 순수 생명보험사인 가운데, 삼성생명은 정체된 약 118조 원 한국 보험료 시장의 약 23%를 차지하며, IFRS 17과 K-ICS가 저축성보다 보장성에 보상하는 방향으로 산업이 재편되고 있습니다.",
+    "industry_en": "Life & Health Insurance",
+    "industry_ko": "생명·건강 보험",
+    "korea_company": "Samsung Life",
+    "korea_firms": [
+      {
+        "ko": "삼성생명(1위)",
+        "name": "Samsung Life (#1)",
+        "share": 23.0
+      },
+      {
+        "ko": "교보생명(비상장)",
+        "name": "Kyobo Life (unlisted)",
+        "share": 17.0
+      },
+      {
+        "ko": "한화생명",
+        "name": "Hanwha Life",
+        "share": 13.0
+      },
+      {
+        "ko": "농협생명",
+        "name": "NongHyup Life",
+        "share": 7.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 40.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$3.1T",
+      "trillion_usd": 3.1,
       "year": "2024"
     },
     "sector": "Financials"
@@ -5083,6 +8541,124 @@
       "label": "$1.85T",
       "trillion_usd": 1.85,
       "year": "2024"
+    },
+    "sector": "Information Technology"
+  },
+  "45102010": {
+    "cagr": "~13%",
+    "gics": "45102010",
+    "global_company": "Accenture",
+    "global_firms": [
+      {
+        "name": "Accenture",
+        "share": 30.0
+      },
+      {
+        "name": "TCS",
+        "share": 20.0
+      },
+      {
+        "name": "IBM Consulting",
+        "share": 14.0
+      },
+      {
+        "ko": "인포시스 / 코그니전트",
+        "name": "Infosys / Cognizant",
+        "share": 12.0
+      },
+      {
+        "ko": "기타",
+        "name": "Capgemini / othersCapgemini /",
+        "share": 24.0
+      }
+    ],
+    "headline_ko": "액센추어는 매출 약 721억 달러로 세계 최대 IT 서비스 기업 자리를 지키고 있으나 올해 주가가 50% 넘게 하락하며 TCS에 시가총액을 잠시 추월당했고, 생성형 AI 수요와 H-1B 변화가 업계를 재편하는 가운데 삼성SDS가 한국을 선도하고 있습니다.",
+    "industry_en": "IT Consulting & Other Services",
+    "industry_ko": "IT 컨설팅·기타 서비스",
+    "korea_company": "Samsung SDS",
+    "korea_firms": [
+      {
+        "ko": "삼성SDS(13.9조 원)",
+        "name": "Samsung SDS (₩13.9T)",
+        "share": 44.0
+      },
+      {
+        "ko": "약 6.0조 원)",
+        "name": "LG CNS (~₩6.0T)LG CNS(",
+        "share": 21.0
+      },
+      {
+        "ko": "현대오토에버(약 4.4조 원)",
+        "name": "Hyundai AutoEver (~₩4.4T)",
+        "share": 15.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2353,
+      "global": 0.2941,
+      "scale": 0.4706,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$112B",
+      "trillion_usd": 0.112,
+      "year": "2025"
+    },
+    "sector": "Information Technology"
+  },
+  "45102030": {
+    "cagr": "~9.5%",
+    "gics": "45102030",
+    "global_company": "Cloudflare",
+    "global_firms": [
+      {
+        "name": "Cloudflare",
+        "share": 33.0
+      },
+      {
+        "name": "Akamai",
+        "share": 23.0
+      },
+      {
+        "name": "Amazon CloudFrontAmazon CloudFront",
+        "share": 14.0
+      },
+      {
+        "name": "Fastly / Google / MicrosoftFastly / Google / Microsoft",
+        "share": 12.0
+      }
+    ],
+    "headline_ko": "클라우드플레어가 시가총액 약 870억 달러(2025년 매출 21억 7,000만 달러, 30% 증가)로 세부산업 최대 순수 사업자에 자리하고, 가비아가 2025년 매출 약 3,357억 원으로 한국 상장 인터넷 인프라 기업을 선도하는 것으로 파악됩니다. 약 270억~280억 달러 CDN 시장이 연 9.5%가량 성장하는 가운데 AI 엣지 수요와 EU NIS2 지침, AI 크롤러 수익화가 판도를 바꾸고 있습니다.",
+    "industry_en": "Internet Services & Infrastructure",
+    "industry_ko": "인터넷 서비스·인프라",
+    "korea_company": "Gabia",
+    "korea_firms": [
+      {
+        "ko": "가비아(약 3,357억 원)",
+        "name": "Gabia (~₩336B)",
+        "share": 42.0
+      },
+      {
+        "ko": "카페24(약 3,000억 원)",
+        "name": "Cafe24 (~₩300B)",
+        "share": 22.0
+      },
+      {
+        "ko": "약 1,400억 원)",
+        "name": "KINX (~₩140B)KINX(",
+        "share": 18.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.3571,
+      "global": 0.5714,
+      "scale": 0.0,
+      "tech": 0.0714
+    },
+    "market": {
+      "label": "$27B",
+      "trillion_usd": 0.027,
+      "year": "2025"
     },
     "sector": "Information Technology"
   },
@@ -5143,6 +8719,144 @@
     },
     "sector": "Information Technology"
   },
+  "45103010": {
+    "cagr": "~12%",
+    "gics": "45103010",
+    "global_company": "SAP",
+    "global_firms": [
+      {
+        "name": "SAP",
+        "share": 22.0
+      },
+      {
+        "name": "Salesforce",
+        "share": 21.0
+      },
+      {
+        "ko": "오라클 / 마이크로소프트",
+        "name": "Oracle / Microsoft",
+        "share": 13.0
+      },
+      {
+        "ko": "인튜이트 / 어도비 / 서비스나우",
+        "name": "Intuit / Adobe / ServiceNow",
+        "share": 11.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 33.0
+      }
+    ],
+    "headline_ko": "SAP가 시가총액 약 1,750억 달러(2026년 6월, FY2025 클라우드 매출 210억 유로, 23% 증가)로 최대 애플리케이션 소프트웨어 기업에 자리하고, 더존비즈온이 2025년 매출 4,460억 원, EQT의 9억 3,000만 달러 투자 이후 시가총액 약 3조 5,000억 원으로 한국 시장을 이끄는 것으로 파악됩니다. 약 4,080억 달러 규모의 SaaS 시장이 연 12%가량 성장하는 가운데, 세일즈포스 Agentforce·마이크로소프트 Copilot 같은 AI 에이전트와 EU AI법, 구글의 320억 달러 Wiz 인수가 판도를 바꾸고 있습니다.",
+    "industry_en": "Application Software",
+    "industry_ko": "애플리케이션 소프트웨어",
+    "korea_company": "Douzone Bizon",
+    "korea_firms": [
+      {
+        "ko": "코리아 (대기업)",
+        "name": "SAP Korea (large enterprise)SAP",
+        "share": 30.0
+      },
+      {
+        "ko": "더존비즈온 (중소기업 ERP)",
+        "name": "Douzone Bizon (SME ERP)",
+        "share": 28.0
+      },
+      {
+        "ko": "한글과컴퓨터 / 영경 / 기타",
+        "name": "Hancom / Yeong Kyung / others",
+        "share": 16.0
+      },
+      {
+        "ko": "글로벌 SaaS (세일즈포스, MS 등)",
+        "name": "Global SaaS (Salesforce, MS, etc.)",
+        "share": 26.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1667,
+      "global": 0.0,
+      "scale": 0.4167,
+      "tech": 0.4167
+    },
+    "market": {
+      "label": "$399B",
+      "trillion_usd": 0.399,
+      "year": "2024"
+    },
+    "sector": "Information Technology"
+  },
+  "45103020": {
+    "cagr": "~11.5%",
+    "gics": "45103020",
+    "global_company": "Microsoft",
+    "global_firms": [
+      {
+        "ko": "팔로알토네트웍스",
+        "name": "Palo Alto Networks",
+        "share": 10.0
+      },
+      {
+        "ko": "포티넷",
+        "name": "Fortinet",
+        "share": 7.0
+      },
+      {
+        "ko": "마이크로소프트 / 시스코",
+        "name": "Microsoft / Cisco",
+        "share": 7.0
+      },
+      {
+        "ko": "크라우드스트라이크",
+        "name": "CrowdStrike",
+        "share": 5.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 71.0
+      }
+    ],
+    "headline_ko": "마이크로소프트가 세계 최대 시스템 소프트웨어 기업(2026년 6월 시가총액 약 2조 7,700억 달러, 2025 회계연도 매출 2,817억 달러)으로 자리하고, 안랩이 시가총액 약 4,910억 원, 2025년 매출 약 2,680억 원으로 한국 시스템 보안 기업을 이끄는 것으로 파악됩니다. 약 4,840억 달러 규모의 기업 인프라 소프트웨어 시장이 2028년까지 약 11.5%로 7,740억 달러를 향해 복리 성장하는 가운데, AI 클라우드 데이터베이스, 사이버보안 통합(팔로알토-사이버아크), EU와 한국의 AI 규제가 판도를 바꾸고 있습니다.",
+    "industry_en": "Systems Software",
+    "industry_ko": "시스템 소프트웨어",
+    "korea_company": "AhnLab",
+    "korea_firms": [
+      {
+        "ko": "안랩 (엔드포인트 / 백신)",
+        "name": "AhnLab (endpoint / AV)",
+        "share": 24.0
+      },
+      {
+        "ko": "시큐아이 / 윈스 (네트워크)",
+        "name": "SecuI / Wins (network)",
+        "share": 15.0
+      },
+      {
+        "ko": "이글루 / 오픈베이스 / 기타",
+        "name": "IGLOO / OpenBase / others",
+        "share": 11.0
+      },
+      {
+        "ko": "롱테일 및 글로벌 벤더",
+        "name": "Long tail & global vendors",
+        "share": 50.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.25,
+      "global": 0.3125,
+      "scale": 0.4375,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$484B",
+      "trillion_usd": 0.484,
+      "year": "2024"
+    },
+    "sector": "Information Technology"
+  },
   "452010": {
     "cagr": "≈7.5%",
     "gics": "452010",
@@ -5198,6 +8912,74 @@
     "market": {
       "label": "$317B",
       "trillion_usd": 0.317,
+      "year": "2024"
+    },
+    "sector": "Information Technology"
+  },
+  "45201020": {
+    "cagr": "~8%",
+    "gics": "45201020",
+    "global_company": "Cisco",
+    "global_firms": [
+      {
+        "ko": "화웨이",
+        "name": "Huawei",
+        "share": 31.0
+      },
+      {
+        "ko": "노키아",
+        "name": "Nokia",
+        "share": 13.0
+      },
+      {
+        "ko": "에릭슨",
+        "name": "Ericsson",
+        "share": 12.0
+      },
+      {
+        "name": "ZTEZTE",
+        "share": 10.0
+      },
+      {
+        "ko": "삼성 / 시스코",
+        "name": "Samsung / Cisco",
+        "share": 7.0
+      }
+    ],
+    "headline_ko": "AI 데이터센터 네트워킹이 시스코를 되살리는 한편 전통 RAN 시장은 정체에 머물러 있습니다.",
+    "industry_en": "Communications Equipment",
+    "industry_ko": "통신장비",
+    "korea_company": "Samsung Electronics (Networks)",
+    "korea_firms": [
+      {
+        "ko": "삼성전자 네트워크사업부",
+        "name": "Samsung Electronics Networks",
+        "share": 62.0
+      },
+      {
+        "ko": "다산네트웍스",
+        "name": "DASAN Networks",
+        "share": 11.0
+      },
+      {
+        "ko": "쏠리드",
+        "name": "SOLiD",
+        "share": 6.0
+      },
+      {
+        "name": "RFHIC / KMW (RF)RFHIC / KMW (RF)",
+        "share": 3.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0476,
+      "global": 0.6667,
+      "scale": 0.2857,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$41.8B",
+      "trillion_usd": 0.0418,
       "year": "2024"
     },
     "sector": "Information Technology"
@@ -5265,6 +9047,81 @@
     },
     "sector": "Information Technology"
   },
+  "45202030": {
+    "cagr": "~6.1%",
+    "gics": "45202030",
+    "global_company": "Apple",
+    "global_firms": [
+      {
+        "ko": "애플",
+        "name": "Apple",
+        "share": 20.0
+      },
+      {
+        "ko": "삼성",
+        "name": "Samsung",
+        "share": 19.0
+      },
+      {
+        "ko": "샤오미",
+        "name": "Xiaomi",
+        "share": 13.0
+      },
+      {
+        "ko": "비보",
+        "name": "vivo",
+        "share": 8.0
+      },
+      {
+        "ko": "오포",
+        "name": "OPPO",
+        "share": 8.0
+      }
+    ],
+    "headline_ko": "AI 수요가 하드웨어 산업의 판도를 바꾸고 있습니다. 애플이 이익을 주도하는 가운데, 메모리 슈퍼사이클이 한국 삼성전자에 가격 결정력을 안겨주고 있습니다.",
+    "industry_en": "Technology Hardware, Storage & Peripherals",
+    "industry_ko": "기술 하드웨어·스토리지·주변기기",
+    "korea_company": "Samsung Electronics",
+    "korea_firms": [
+      {
+        "ko": "삼성 (한국)",
+        "name": "Samsung (Korea)",
+        "share": 28.0
+      },
+      {
+        "ko": "그룹 (한국, SK하이닉스+솔리다임)",
+        "name": "SK Group (Korea, SK hynix+Solidigm)SK",
+        "share": 22.0
+      },
+      {
+        "ko": "키오시아 (일본)",
+        "name": "Kioxia (Japan)",
+        "share": 16.0
+      },
+      {
+        "ko": "마이크론 (미국)",
+        "name": "Micron (US)",
+        "share": 14.0
+      },
+      {
+        "ko": "샌디스크 (미국)",
+        "name": "SanDisk (US)",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.3333,
+      "scale": 0.1667,
+      "tech": 0.5
+    },
+    "market": {
+      "label": "7,400억 달러",
+      "trillion_usd": 0.74,
+      "year": ""
+    },
+    "sector": "Information Technology"
+  },
   "452030": {
     "cagr": "≈6.3%",
     "gics": "452030",
@@ -5320,6 +9177,138 @@
     "market": {
       "label": "$628B",
       "trillion_usd": 0.628,
+      "year": "2024"
+    },
+    "sector": "Information Technology"
+  },
+  "45203010": {
+    "cagr": "~5.7%",
+    "gics": "45203010",
+    "global_company": "Keysight",
+    "global_firms": [
+      {
+        "ko": "키사이트(US)",
+        "name": "Keysight Technologies (US)",
+        "share": 14.0
+      },
+      {
+        "ko": "텔레다인(르크로이, FLIR 포함)",
+        "name": "Teledyne (incl. LeCroy, FLIR)",
+        "share": 10.0
+      },
+      {
+        "name": "Emerson / NI + Rohde & SchwarzEmerson / NI + Rohde & Schwarz",
+        "share": 6.0
+      },
+      {
+        "ko": "등 상위권",
+        "name": "Fortive / Fluke, Advantest, others top-tierFortive / Fluke, Advantest",
+        "share": 5.0
+      },
+      {
+        "ko": "기타 전체(파편화)",
+        "name": "All others (fragmented)",
+        "share": 65.0
+      }
+    ],
+    "headline_ko": "AI 데이터센터·전기차·6G 시험 수요가 약 380억 달러 규모의 시험·계측 시장을 되살리고 있으며, 글로벌 전자 계측기는 키사이트가, 세계 3D 검사 시장의 30% 이상은 고영테크놀러지가 차지한 것으로 파악됩니다.",
+    "industry_en": "Electronic Equipment & Instruments",
+    "industry_ko": "전자장비·기기",
+    "korea_company": "Koh Young (고영테크놀러지)",
+    "korea_firms": [
+      {
+        "ko": "고영테크놀러지(한국)",
+        "name": "Koh Young Technology (Korea)",
+        "share": 32.0
+      },
+      {
+        "name": "Omron + Test Research (TRI)Omron + Test Research(TRI)",
+        "share": 16.0
+      },
+      {
+        "name": "Mirtec, CyberOptics, ViTroxMirtec, CyberOptics, ViTrox",
+        "share": 12.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 40.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2222,
+      "global": 0.0556,
+      "scale": 0.1111,
+      "tech": 0.6111
+    },
+    "market": {
+      "label": "$34.0B",
+      "trillion_usd": 0.034,
+      "year": "2022"
+    },
+    "sector": "Information Technology"
+  },
+  "45203015": {
+    "cagr": "~7.9%",
+    "gics": "45203015",
+    "global_company": "Murata Manufacturing",
+    "global_firms": [
+      {
+        "ko": "무라타(일본)",
+        "name": "Murata (Japan)",
+        "share": 29.0
+      },
+      {
+        "ko": "삼성전기(한국)",
+        "name": "Samsung Electro-Mechanics (Korea)",
+        "share": 23.0
+      },
+      {
+        "ko": "일본)",
+        "name": "TDK (Japan)TDK(",
+        "share": 12.0
+      },
+      {
+        "ko": "타이요유덴(일본)",
+        "name": "Taiyo Yuden (Japan)",
+        "share": 9.0
+      },
+      {
+        "ko": "야게오 / KEMET(대만)",
+        "name": "Yageo / KEMET (Taiwan)",
+        "share": 8.0
+      }
+    ],
+    "headline_ko": "AI 서버와 전기차 수요가 MLCC를 10년 만의 공급 부족으로 몰아넣으며 가격 결정력이 무라타·삼성전기 과점에 넘어갔고, 삼성전기 주가는 1년 새 약 10배로 뛰었습니다.",
+    "industry_en": "Electronic Components",
+    "industry_ko": "전자부품",
+    "korea_company": "Samsung Electro-Mechanics",
+    "korea_firms": [
+      {
+        "ko": "삼성전기(11.3조 원)",
+        "name": "Samsung Electro-Mechanics (₩11.3T)",
+        "share": 38.0
+      },
+      {
+        "ko": "이노텍(약 21조 원, 광학·모듈 중심)",
+        "name": "LG Innotek (~₩21T, optics/module-led)LG",
+        "share": 48.0
+      },
+      {
+        "ko": "기타(아모텍, 이수 등)",
+        "name": "Others (Amotech, ISU, etc.)",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.4667,
+      "tech": 0.5333
+    },
+    "market": {
+      "label": "$13.9B",
+      "trillion_usd": 0.0139,
       "year": "2024"
     },
     "sector": "Information Technology"
@@ -5426,6 +9415,137 @@
     },
     "sector": "Communication Services"
   },
+  "50101010": {
+    "cagr": "~11–14%",
+    "gics": "50101010",
+    "global_company": "Lumen Technologies",
+    "global_firms": [
+      {
+        "ko": "루멘 (Level 3)",
+        "name": "Lumen (Level 3)",
+        "share": 38.0
+      },
+      {
+        "ko": "자요 / 콜트 / GTT",
+        "name": "Zayo / Colt / GTT",
+        "share": 22.0
+      },
+      {
+        "ko": "텔레콤 이탈리아 스파클 / 기타 도매",
+        "name": "Telecom Italia Sparkle / other wholesale",
+        "share": 13.0
+      },
+      {
+        "name": "Cogent",
+        "share": 9.0
+      },
+      {
+        "ko": "기타 전체 (지역)",
+        "name": "All others (regional)",
+        "share": 18.0
+      }
+    ],
+    "headline_ko": "루멘테크놀로지스가 광섬유 전송 매출 기준 최대 대체 통신사업자(2026년 6월 시가총액 약 84억 달러, 2025 회계연도 매출 124억 달러, AI 연결 수주잔고 약 130억 달러)로 자리하고, 한국에서는 상장사 세종텔레콤(시가총액 약 540억 원)이 가장 가까운 대용 기업인 것으로 파악됩니다. AI 인프라 구축으로 광섬유와 데이터센터 연결 수요가 급증하는 가운데, 해당 부문은 약 100억~110억 달러에서 2030년까지 260억~320억 달러로 성장할 것으로 보입니다.",
+    "industry_en": "Alternative Carriers",
+    "industry_ko": "대체 통신사업자",
+    "korea_company": "Sejong Telecom (proxy)",
+    "korea_firms": [
+      {
+        "ko": "기존 강자)",
+        "name": "KT (incumbent)KT (",
+        "share": 41.0
+      },
+      {
+        "ko": "브로드밴드 (SKT 자회사)",
+        "name": "SK Broadband (SKT subsidiary)SK",
+        "share": 29.0
+      },
+      {
+        "name": "LG U+",
+        "share": 21.0
+      },
+      {
+        "ko": "세종텔레콤 등 독립계",
+        "name": "Independents incl. Sejong Telecom",
+        "share": 9.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.4286,
+      "scale": 0.5714,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$10B",
+      "trillion_usd": 0.01,
+      "year": "2024"
+    },
+    "sector": "Communication Services"
+  },
+  "50101020": {
+    "cagr": "~6.6%",
+    "gics": "50101020",
+    "global_company": "China Mobile",
+    "global_firms": [
+      {
+        "ko": "차이나모바일",
+        "name": "China Mobile",
+        "share": 23.0
+      },
+      {
+        "ko": "버라이즌",
+        "name": "Verizon",
+        "share": 21.0
+      },
+      {
+        "ko": "모바일 US",
+        "name": "T-Mobile UST-",
+        "share": 20.0
+      },
+      {
+        "name": "AT&TAT&T",
+        "share": 16.0
+      },
+      {
+        "ko": "도이치텔레콤 외",
+        "name": "Deutsche Telekom & others",
+        "share": 20.0
+      }
+    ],
+    "headline_ko": "SKT 데이터 유출과 단통법 폐지가 통신 시장을 재편하고 있습니다.",
+    "industry_en": "Integrated Telecommunication Services",
+    "industry_ko": "통합 통신 서비스",
+    "korea_company": "KT",
+    "korea_firms": [
+      {
+        "ko": "텔레콤",
+        "name": "SK TelecomSK",
+        "share": 47.0
+      },
+      {
+        "name": "KTKT",
+        "share": 29.0
+      },
+      {
+        "ko": "유플러스",
+        "name": "LG UplusLG",
+        "share": 24.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1538,
+      "global": 0.5385,
+      "scale": 0.0,
+      "tech": 0.3077
+    },
+    "market": {
+      "label": "$2.10T",
+      "trillion_usd": 2.1,
+      "year": "2025"
+    },
+    "sector": "Communication Services"
+  },
   "501020": {
     "cagr": "≈7.5%",
     "gics": "501020",
@@ -5483,6 +9603,75 @@
     },
     "sector": "Communication Services"
   },
+  "50102010": {
+    "cagr": "~2.7%",
+    "gics": "50102010",
+    "global_company": "China Mobile",
+    "global_firms": [
+      {
+        "ko": "차이나모바일",
+        "name": "China Mobile",
+        "share": 12.0
+      },
+      {
+        "ko": "바르티 에어텔(그룹)",
+        "name": "Bharti Airtel (group)",
+        "share": 7.0
+      },
+      {
+        "ko": "릴라이언스 지오",
+        "name": "Reliance Jio",
+        "share": 5.0
+      },
+      {
+        "ko": "차이나텔레콤",
+        "name": "China Telecom",
+        "share": 5.0
+      },
+      {
+        "ko": "차이나유니콤",
+        "name": "China Unicom",
+        "share": 4.0
+      }
+    ],
+    "headline_ko": "포화된 데다 자본 집약적인 이동통신 시장은 규모와 주파수를 갖춘 사업자에게 보상하지만, 2025년 SK텔레콤 유심 해킹 사태는 신뢰가 무너지면 가입자가 얼마나 빠르게 이탈하는지를 보여줬습니다.",
+    "industry_en": "Wireless Telecommunication Services",
+    "industry_ko": "무선 통신 서비스",
+    "korea_company": "SK Telecom",
+    "korea_firms": [
+      {
+        "ko": "텔레콤",
+        "name": "SK TelecomSK",
+        "share": 39.0
+      },
+      {
+        "name": "KTKT",
+        "share": 23.0
+      },
+      {
+        "ko": "유플러스",
+        "name": "LG U+LG",
+        "share": 20.0
+      },
+      {
+        "ko": "알뜰폰)알뜰폰(MVNO)",
+        "name": "MVNO (",
+        "share": 18.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1111,
+      "global": 0.2778,
+      "scale": 0.2222,
+      "tech": 0.3889
+    },
+    "market": {
+      "label": "$1.08T",
+      "trillion_usd": 1.08,
+      "year": "2022"
+    },
+    "sector": "Communication Services"
+  },
   "502010": {
     "cagr": "≈8.5%",
     "gics": "502010",
@@ -5536,6 +9725,125 @@
     "market": {
       "label": "$1.09T",
       "trillion_usd": 1.09,
+      "year": "2024"
+    },
+    "sector": "Communication Services"
+  },
+  "50201010": {
+    "cagr": "~11%",
+    "gics": "50201010",
+    "global_company": "Publicis",
+    "global_firms": [
+      {
+        "ko": "옴니콤 + IPG(합병 후)",
+        "name": "Omnicom + IPG (post-merger)",
+        "share": 40.0
+      },
+      {
+        "ko": "퍼블리시스 그룹",
+        "name": "Publicis Groupe",
+        "share": 25.0
+      },
+      {
+        "name": "WPPWPP",
+        "share": 17.0
+      },
+      {
+        "ko": "덴츠",
+        "name": "Dentsu",
+        "share": 13.0
+      },
+      {
+        "ko": "아바스",
+        "name": "Havas",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "옴니콤·인터퍼블릭 합병과 AI 기반 미디어 구매가 광고비 1조 1,000억 달러 돌파와 맞물려 대행 업계를 재편하고 있으며, 지주회사는 시가총액 기준 퍼블리시스가, 한국은 제일기획이 최대 대행사로 파악됩니다.",
+    "industry_en": "Advertising",
+    "industry_ko": "광고",
+    "korea_company": "Cheil Worldwide (제일기획)",
+    "korea_firms": [
+      {
+        "ko": "제일기획(삼성)",
+        "name": "Cheil Worldwide (Samsung)",
+        "share": 50.0
+      },
+      {
+        "ko": "이노션(현대)",
+        "name": "Innocean (Hyundai)",
+        "share": 27.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.4,
+      "tech": 0.6
+    },
+    "market": {
+      "label": "$0.81T",
+      "trillion_usd": 0.81,
+      "year": "2022"
+    },
+    "sector": "Communication Services"
+  },
+  "50201020": {
+    "cagr": "~4.0%",
+    "gics": "50201020",
+    "global_company": "Fox Corporation",
+    "global_firms": [
+      {
+        "ko": "컴캐스트 / NBCU(다각화, 매출 약 1,240억 달러)",
+        "name": "Comcast / NBCUniversal (diversified, ~$124B rev)",
+        "share": 60.0
+      },
+      {
+        "ko": "워너브러더스 디스커버리(약 300억 달러)",
+        "name": "Warner Bros. Discovery (~$30B)",
+        "share": 14.0
+      },
+      {
+        "ko": "파라마운트 스카이댄스(약 280억 달러)",
+        "name": "Paramount Skydance (~$28B)",
+        "share": 14.0
+      },
+      {
+        "ko": "폭스 코퍼레이션(약 160억 달러, 순수 방송 1위)",
+        "name": "Fox Corporation (~$16B, pure-play #1)",
+        "share": 8.0
+      },
+      {
+        "ko": "넥스타 / 지역국 그룹",
+        "name": "Nexstar / station groups",
+        "share": 4.0
+      }
+    ],
+    "headline_ko": "스트리밍이 전통 TV를 넘어서며 방송의 선형 광고와 유료방송 기반이 줄고 있고, 폭스가 가장 순수한 대형 방송사, SBS가 한국 유일의 주요 상장 지상파로 자리하고 있습니다.",
+    "industry_en": "Broadcasting",
+    "industry_ko": "방송",
+    "korea_company": "SBS",
+    "korea_firms": [
+      {
+        "ko": "지상파(KBS·MBC·SBS)",
+        "name": "Terrestrial (KBS, MBC, SBS)",
+        "share": 36.0
+      },
+      {
+        "ko": "중심 PP(tvN·Mnet 등)",
+        "name": "PP led by CJ ENM (tvN, Mnet etc.)CJ ENM",
+        "share": 51.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.5833,
+      "global": 0.0,
+      "scale": 0.4167,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$356B",
+      "trillion_usd": 0.356,
       "year": "2024"
     },
     "sector": "Communication Services"
@@ -5719,6 +10027,71 @@
     },
     "sector": "Utilities"
   },
+  "55101010": {
+    "cagr": "~7.9%",
+    "gics": "55101010",
+    "global_company": "NextEra Energy",
+    "global_firms": [
+      {
+        "ko": "스테이트그리드 (중국, 비상장)",
+        "name": "State Grid (China, unlisted)",
+        "share": 20.0
+      },
+      {
+        "ko": "프랑스)",
+        "name": "EDF (France)EDF (",
+        "share": 5.0
+      },
+      {
+        "ko": "중국남방전력망",
+        "name": "China Southern Power Grid",
+        "share": 4.0
+      },
+      {
+        "ko": "에넬 (이탈리아)",
+        "name": "Enel (Italy)",
+        "share": 3.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 68.0
+      }
+    ],
+    "headline_ko": "AI 데이터센터 수요가 20년간 정체됐던 전력 수요 성장을 되살리면서, 규제 기반 전력망 투자가 산업의 핵심 이익 엔진으로 부상하고 있습니다.",
+    "industry_en": "Electric Utilities",
+    "industry_ko": "전기 유틸리티",
+    "korea_company": "KEPCO",
+    "korea_firms": [
+      {
+        "ko": "한전 발전 자회사 (한수원 포함)",
+        "name": "KEPCO group GENCOs (incl. KHNP)",
+        "share": 60.0
+      },
+      {
+        "ko": "민간 발전사업자 (IPP)",
+        "name": "Independent power producers (IPPs)",
+        "share": 34.0
+      },
+      {
+        "ko": "한전 송배전 (독점)",
+        "name": "KEPCO transmission & distribution (monopoly)",
+        "share": 6.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.5,
+      "scale": 0.3571,
+      "tech": 0.1429
+    },
+    "market": {
+      "label": "$2.30T",
+      "trillion_usd": 2.3,
+      "year": "2022"
+    },
+    "sector": "Utilities"
+  },
   "551020": {
     "cagr": "~2.8%",
     "gics": "551020",
@@ -5784,6 +10157,71 @@
     },
     "sector": "Utilities"
   },
+  "55102010": {
+    "cagr": "~6.4%",
+    "gics": "55102010",
+    "global_company": "Atmos Energy",
+    "global_firms": [
+      {
+        "ko": "차이나가스 홀딩스(고객 약 5,200만)",
+        "name": "China Gas Holdings (~52M cust.)",
+        "share": 33.0
+      },
+      {
+        "ko": "타운가스 / HK & China Gas(약 4,000만)",
+        "name": "Towngas / HK & China Gas (~40M)",
+        "share": 25.0
+      },
+      {
+        "ko": "에너지(약 3,300만)",
+        "name": "ENN Energy (~33M)ENN",
+        "share": 21.0
+      },
+      {
+        "ko": "앳모스 에너지(약 340만, 미국 순수 사업자 1위)",
+        "name": "Atmos Energy (~3.4M, US #1 pure-play)",
+        "share": 2.0
+      },
+      {
+        "ko": "기타 전체",
+        "name": "All others",
+        "share": 19.0
+      }
+    ],
+    "headline_ko": "규제 요금기반 모델과 AI 시대 발전용 가스 수요가 전기화 역풍 속에서도 약 1조 달러 규모의 가스 배관망 시장을 떠받치고 있으며, 상장 순수 사업자는 앳모스 에너지가, 한국은 국가 LNG 수입 독점기업 한국가스공사가 선두인 것으로 파악됩니다.",
+    "industry_en": "Gas Utilities",
+    "industry_ko": "가스 유틸리티",
+    "korea_company": "KOGAS (한국가스공사)",
+    "korea_firms": [
+      {
+        "ko": "도매(LNG 수입 + 수송)",
+        "name": "KOGAS wholesale (LNG import + transmission)KOGAS",
+        "share": 72.0
+      },
+      {
+        "ko": "직수입자(발전사, 산업)",
+        "name": "Direct importers (power gens, industry)",
+        "share": 23.0
+      },
+      {
+        "ko": "도시가스 소매 마진(삼천리 등)",
+        "name": "Retail city-gas margin (Samchully etc.)",
+        "share": 5.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.5385,
+      "scale": 0.3077,
+      "tech": 0.1538
+    },
+    "market": {
+      "label": "$0.91T",
+      "trillion_usd": 0.91,
+      "year": "2024"
+    },
+    "sector": "Utilities"
+  },
   "551030": {
     "cagr": "~5.5%",
     "gics": "551030",
@@ -5840,6 +10278,71 @@
     "market": {
       "label": "$6.66T",
       "trillion_usd": 6.66,
+      "year": "2024"
+    },
+    "sector": "Utilities"
+  },
+  "55103010": {
+    "cagr": "~6.1%",
+    "gics": "55103010",
+    "global_company": "Southern Company",
+    "global_firms": [
+      {
+        "ko": "서던 컴퍼니(약 1,090억 달러)",
+        "name": "Southern Company (~$109B)",
+        "share": 31.0
+      },
+      {
+        "ko": "내셔널그리드(약 830억 달러)",
+        "name": "National Grid (~$83B)",
+        "share": 23.0
+      },
+      {
+        "ko": "엔지(약 800억 달러)",
+        "name": "Engie (~$80B)",
+        "share": 23.0
+      },
+      {
+        "ko": "셈프라 + 도미니언(약 1,230억 달러)",
+        "name": "Sempra + Dominion (~$123B)",
+        "share": 17.0
+      },
+      {
+        "ko": "및 기타",
+        "name": "E.ON & othersE.ON",
+        "share": 6.0
+      }
+    ],
+    "headline_ko": "서던 컴퍼니가 AI 데이터센터 투자 사이클을 타고 시가총액 약 1,090억 달러로 상장 복합 유틸리티를 이끄는 가운데, 한국에는 진정한 복합 유틸리티가 없어 지역난방 사업자 KDHC가 가장 가까운 대안으로 파악됩니다.",
+    "industry_en": "Multi-Utilities",
+    "industry_ko": "복합 유틸리티",
+    "korea_company": "Korea District Heating Corp (proxy)",
+    "korea_firms": [
+      {
+        "ko": "한국지역난방공사(KDHC)",
+        "name": "Korea District Heating (KDHC)",
+        "share": 51.0
+      },
+      {
+        "ko": "파워, DS파워, SK E&S",
+        "name": "GS Power, DS Power, SK E&SGS",
+        "share": 27.0
+      },
+      {
+        "ko": "지자체 및 기타 사업자",
+        "name": "Municipal & other operators",
+        "share": 22.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.4,
+      "scale": 0.2,
+      "tech": 0.4
+    },
+    "market": {
+      "label": "$6.6T",
+      "trillion_usd": 6.6,
       "year": "2024"
     },
     "sector": "Utilities"

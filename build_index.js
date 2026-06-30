@@ -58,6 +58,8 @@ function daysSinceEpoch(iso){return Math.round((new Date(iso+"T00:00:00Z")-new D
 let reports=[];
 try{reports=JSON.parse(fs.readFileSync(path.join(ROOT,"reports.json"),"utf8"))||[];}catch(e){reports=[];}
 reports=reports.filter(r=>r&&r.date&&r.file);
+const specials=reports.filter(r=>r.special);
+reports=reports.filter(r=>!r.special);
 
 // group by date desc, set_index asc
 const byDate={};
@@ -71,7 +73,7 @@ function card(r){
   const href=r.file&&r.file!=="#"?esc(r.file):null;
   const inner=`
       <div class="card-top">
-        <span class="gics">GICS ${esc(r.gics||"")}</span>
+        <span class="gics">${r.special?"SPECIAL REPORT":"GICS "+esc(r.gics||"")}</span>
         <span class="sector">${esc(r.sector||"")}</span>
       </div>
       <h3 class="ind"><span class="en">${esc(r.industry_en)}</span><span class="ko">${esc(r.industry_ko)}</span></h3>
@@ -86,19 +88,48 @@ function card(r){
     : `<div class="rcard sample reveal" style="--accent:${accent}" data-search="${search}">${inner}</div>`;
 }
 
-const daySections=dates.map(d=>{
+function dayHtml(d){
   const cards=byDate[d].map(card).join("\n");
   return `
     <section class="day">
       <div class="day-head">
         <span class="day-date"><span class="en">${esc(fmtDate(d))}</span><span class="ko">${esc(fmtDateKo(d))}</span></span>
-        <span class="day-meta">${byDate[d].length} <span class="en">industries</span><span class="ko">개 산업</span></span>
+        <span class="day-meta">${byDate[d].length} <span class="en">reports</span><span class="ko">개</span></span>
       </div>
       <div class="grid">
 ${cards}
       </div>
     </section>`;
-}).join("\n");
+}
+const isPhase1=r=>/^\d{6}$/.test(String(r.gics||""));
+const legDate=d=>byDate[d].every(isPhase1);
+const curDates=dates.filter(d=>!legDate(d));
+const legDates=dates.filter(d=>legDate(d));
+const daySections=curDates.map(dayHtml).join("\n");
+const legacySections=legDates.map(dayHtml).join("\n");
+const legCount=legDates.reduce((a,d)=>a+byDate[d].length,0);
+const specialHtml = specials.length ? `
+    <section class="day special-sec">
+      <div class="day-head">
+        <span class="day-date"><span class="en">Special Reports</span><span class="ko">스페셜 리포트</span></span>
+        <span class="day-meta">${specials.length} <span class="en">special</span><span class="ko">개</span></span>
+      </div>
+      <div class="grid">
+${specials.map(card).join("\n")}
+      </div>
+    </section>` : "";
+const legacyHtml = legacySections ? `
+    <div style="margin:24px 0 4px;text-align:center;">
+      <button id="legacy-toggle" aria-expanded="false" style="background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-size:13.5px;font-weight:700;color:var(--ink);box-shadow:var(--shadow);cursor:pointer;">
+        <span class="en">Earlier industry-level reports</span><span class="ko">이전 산업 단위 리포트</span>
+        <span style="color:var(--mute);font-weight:800;"> · ${legCount}</span>
+        <span id="lt-chev" style="display:inline-block;transition:transform .25s;">&#9662;</span>
+      </button>
+    </div>
+    <div id="legacy" hidden>
+      <p class="empty" style="margin:6px 0 2px;"><span class="en">These analyse the broader GICS industry (Phase 1). The daily series now drills into GICS sub-industries.</span><span class="ko">아래는 상위 GICS 산업 단위(Phase 1) 분석입니다. 현재 데일리 시리즈는 GICS 세부산업으로 더 깊이 들어가고 있습니다.</span></p>
+${legacySections}
+    </div>` : "";
 
 // up next: next day's 7-industry set after the most recent published day
 let upHtml="";
@@ -122,7 +153,7 @@ ${items.map(i=>`        <div class="up">${esc(i)}</div>`).join("\n")}
     </section>`;
 }
 
-const totalReports=reports.length, totalDays=dates.length;
+const totalReports=reports.length+specials.length, totalDays=dates.length;
 const lastUpdEn=dates.length?fmtDate(dates[0]):"", lastUpdKo=dates.length?fmtDateKo(dates[0]):"";
 
 const html=`<!DOCTYPE html>
@@ -212,9 +243,11 @@ const html=`<!DOCTYPE html>
   </div></div>
 
   <div class="wrap" id="content">
+${specialHtml}
 ${daySections || '    <p class="empty"><span class="en">No reports yet. The first batch publishes after the next scheduled run.</span><span class="ko">아직 리포트가 없습니다. 다음 예약 실행 후 첫 묶음이 게시됩니다.</span></p>'}
     <p class="empty" id="noresult" style="display:none"><span class="en">No matches.</span><span class="ko">검색 결과가 없습니다.</span></p>
 ${upHtml}
+${legacyHtml}
   </div>
 
   <footer><div class="wrap">
@@ -234,6 +267,8 @@ ${upHtml}
       cards.forEach(function(c){var m=!t||(c.getAttribute('data-search')||'').indexOf(t)>-1;c.style.display=m?'':'none';if(m)shown++;});
       nores.style.display=(cards.length&&shown===0)?'':'none';
     });
+    var lt=document.getElementById('legacy-toggle'),lg=document.getElementById('legacy'),ch=document.getElementById('lt-chev');
+    if(lt&&lg)lt.addEventListener('click',function(){var h=lg.hasAttribute('hidden');if(h){lg.removeAttribute('hidden');lt.setAttribute('aria-expanded','true');if(ch)ch.style.transform='rotate(180deg)';lg.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});}else{lg.setAttribute('hidden','');lt.setAttribute('aria-expanded','false');if(ch)ch.style.transform='';}});
     var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
     if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});}
     else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.08});

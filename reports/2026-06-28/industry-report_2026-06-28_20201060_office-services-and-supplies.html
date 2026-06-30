@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Office Services &amp; Supplies — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+
+<style>
+  .cagr-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+  .cagr-badge{display:inline-flex;align-items:baseline;gap:5px;background:#eaf2fb;color:var(--blue);
+    border:1px solid #cfe2f5;border-radius:999px;padding:6px 13px;font-weight:800;font-size:13px;}
+  .cagr-badge .n{font-size:16px;}
+  .cagr-badge.alt{background:#fff6e6;color:#b07400;border-color:#ffe2a6;}
+  /* SCQA diagnosis (Situation · Complication · Question · Answer) */
+  .scqa{margin:12px 0 2px;}
+  .scqa-row{display:flex;gap:12px;position:relative;padding-bottom:14px;}
+  .scqa-row:last-child{padding-bottom:0;}
+  .scqa-row::before{content:"";position:absolute;left:14px;top:30px;bottom:-2px;width:2px;background:var(--line);}
+  .scqa-row:last-child::before{display:none;}
+  .scqa-k{flex:none;width:30px;height:30px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 2px 6px rgba(14,42,71,.18);}
+  .scqa-row.s .scqa-k{background:#5b6b8c;}
+  .scqa-row.c .scqa-k{background:var(--hi);}
+  .scqa-row.q .scqa-k{background:var(--blue);}
+  .scqa-row.a .scqa-k{background:var(--lo);}
+  .scqa-bd{flex:1;padding-top:1px;}
+  .scqa-lab{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;}
+  .scqa-row.a .scqa-lab{color:var(--lo);}
+  .scqa-bd p{margin:0;font-size:13.3px;color:var(--ink);line-height:1.55;}
+  .scqa-row.q .scqa-bd p{font-style:italic;color:#16406a;}
+  .scqa-row.a .scqa-bd p{font-weight:600;}
+  .scqa .formula{margin-top:8px;}
+  .scqa-cap{font-size:11.5px;color:var(--mute);font-style:italic;margin:10px 0 0;}
+  /* MECE issue tree (rendered together with SCQA) */
+  .tree{margin:9px 0 2px;}
+  .tree .root{background:linear-gradient(120deg,#16406a,#0e2a47);color:#fff;border-radius:11px;
+    padding:11px 14px;font-size:13.4px;font-weight:700;border-left:4px solid var(--gold);}
+  .tree .branches{display:grid;gap:9px;margin-top:10px;}
+  .tree .branch{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;padding:10px 13px;background:#f7fafd;}
+  .tree .branch>b{font-size:13.1px;display:block;margin-bottom:5px;color:var(--ink);}
+  .tree .leaf{font-size:12.6px;color:var(--mute);padding-left:15px;position:relative;margin:4px 0;line-height:1.5;}
+  .tree .leaf::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .tree .leaf.lever{color:var(--ink);font-weight:600;}
+  .tree .leaf.lever::before{background:var(--gold);width:8px;height:8px;left:1px;top:7px;}
+  .tree .lever-tag{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#b07400;background:#fff6e6;border-radius:5px;padding:1px 5px;margin-right:5px;}
+  .tree-cap{display:none;}
+  @media(min-width:680px){.tree .branches{grid-template-columns:1fr 1fr 1fr;}}
+  /* value chain — connected flow diagram */
+  .vchain{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:6px 0 4px;}
+  .vc-step{position:relative;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:11px;padding:11px 13px 11px 40px;flex:1;}
+  .vc-step .vc-n{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;
+    background:var(--blue);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .vc-step:last-of-type{border-left-color:var(--gold);}
+  .vc-step:last-of-type .vc-n{background:var(--gold);color:var(--navy);}
+  .vc-step b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc-step .d{font-size:12.3px;color:var(--mute);}
+  .vc-arrow{align-self:center;color:var(--gold);font-weight:900;font-size:16px;line-height:1;
+    transform:rotate(90deg);padding:5px 0;}
+  @media(min-width:720px){
+    .vchain{flex-direction:row;align-items:stretch;flex-wrap:nowrap;}
+    .vc-step{padding:11px 11px 11px 12px;min-width:0;}
+    .vc-step .vc-n{position:static;margin-bottom:6px;}
+    .vc-arrow{transform:none;padding:0 3px;display:flex;align-items:center;}
+  }
+  /* variable 1-3 strategy tracks */
+  .track.t3{background:#10355a;border:1px solid rgba(255,184,28,.45);}
+  .track-grid.n1{grid-template-columns:1fr;}
+  @media(min-width:680px){
+    .track-grid.n2{grid-template-columns:1fr 1fr;}
+    .track-grid.n3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  /* profit pool */
+  .pool{display:flex;flex-direction:column;gap:8px;margin:6px 0 2px;}
+  .pool-row{display:flex;align-items:center;gap:10px;}
+  .pool-row .pn{flex:1.1;font-size:12.6px;color:var(--ink);min-width:0;}
+  .pool-row .ptrack{flex:1.5;height:9px;border-radius:5px;background:#eef2f7;overflow:hidden;}
+  .pool-row .pfill{display:block;height:100%;border-radius:5px;}
+  .pool-row .pfill.hi{width:92%;background:var(--gold);}
+  .pool-row .pfill.med{width:55%;background:var(--blue);}
+  .pool-row .pfill.lo{width:22%;background:#c9d4e3;}
+  .pool-row .pv{flex:none;width:58px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .pool-row .pv.hi{color:#b07400;}.pool-row .pv.med{color:var(--blue);}.pool-row .pv.lo{color:var(--mute);}
+  /* KPI watchlist */
+  .kpis{display:grid;grid-template-columns:1fr;gap:11px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);padding:13px 15px;border-left:4px solid var(--blue);}
+  .kpi .kt{font-size:12.5px;font-weight:800;color:var(--ink);}
+  .kpi .kv{font-size:clamp(17px,4.6vw,21px);font-weight:800;color:var(--blue);margin:3px 0 4px;line-height:1.1;}
+  .kpi .kw{font-size:12.3px;color:var(--mute);}
+  /* scenarios */
+  .scen{display:grid;grid-template-columns:1fr;gap:11px;}
+  .sc{border-radius:13px;padding:14px 16px;color:#fff;box-shadow:var(--shadow);}
+  .sc.bull{background:linear-gradient(125deg,#1f9d6b,#14633f);}
+  .sc.base{background:linear-gradient(125deg,#16406a,#0e2a47);}
+  .sc.bear{background:linear-gradient(125deg,#b1402f,#7d2418);}
+  .sc .sh{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .sc .sd{font-size:13.6px;font-weight:800;margin:4px 0 6px;}
+  .sc p{margin:0;font-size:12.8px;color:#eef4fb;}
+  /* positioning 2x2 */
+  .posmap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;}
+  .posmap svg{width:100%;height:auto;display:block;overflow:visible;}
+  .pos-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 2px;font-size:12px;color:var(--ink);}
+  .pos-legend .pl-i{display:flex;align-items:center;gap:6px;}
+  .pos-legend .pl-d{width:11px;height:11px;border-radius:50%;}
+  @media(min-width:680px){.kpis{grid-template-columns:1fr 1fr;}.scen{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+
+<style id="gics-tax-css">
+.gics-tax{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:2px 0 14px;}
+.gics-tax .gt-h{display:flex;align-items:center;font-size:10.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--gold);padding-right:2px;}
+.gics-tax .gt-i{display:flex;flex-direction:column;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(207,226,245,.22);border-radius:10px;padding:5px 11px;}
+.gics-tax .gt-i.cur{background:rgba(255,184,28,.16);border-color:var(--gold);}
+.gics-tax .gt-c{font-size:10px;font-weight:700;color:#9fc3e8;font-variant-numeric:tabular-nums;letter-spacing:.5px;}
+.gics-tax .gt-i.cur .gt-c{color:var(--gold);}
+.gics-tax .gt-n{font-size:13px;font-weight:700;color:#fff;line-height:1.2;}
+.gics-tax .gt-l{font-size:9.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#8fb0d4;margin-top:1px;}
+.gics-tax .gt-a{display:flex;align-items:center;color:#6f93bb;font-weight:900;font-size:13px;}
+@media(max-width:520px){.gics-tax .gt-l{display:none;}.gics-tax .gt-n{font-size:12px;}.gics-tax .gt-i{padding:4px 9px;}}
+</style>
+
+<style id="nav-home-css">.nav-home{flex:none;display:inline-flex;align-items:center;gap:5px;color:var(--navy);background:var(--gold);border-radius:999px;padding:6px 11px;font-size:12.5px;font-weight:800;text-decoration:none;white-space:nowrap;}.nav-home svg{width:15px;height:15px;}.nav-home:hover{filter:brightness(.95);}</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+      <a class="nav-home" href="../../index.html" aria-label="All reports"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.7 12 4l9 6.7"></path><path d="M5 9.6V20h14V9.6"></path></svg><span class="en">All</span><span class="ko">전체</span></a>
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Office Services &amp; Supplies</span><span class="ko">사무용 서비스·용품</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="positioning"><span class="en">Positioning</span><span class="ko">포지셔닝</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5가지 경쟁요인</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">주요 기업</span></button><button class="chip" data-go="scenarios"><span class="en">Scenarios</span><span class="ko">시나리오</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">English</span></button>
+  </div>
+</div>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 2 of 7</span><span class="ko">산업 브리프 · GICS 7개 세트 중 2번째</span></p>
+    <h1><span class="en">Office Services &amp; Supplies</span><span class="ko">사무용 서비스·용품</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석 및 경쟁 구조</span></p>
+    <div class="gics-tax" aria-label="GICS classification"><span class="gt-h"><span class="en">GICS</span><span class="ko">GICS 분류</span></span><span class="gt-i"><span class="gt-c">20</span><span class="gt-n"><span class="en">Industrials</span><span class="ko">산업재</span></span><span class="gt-l"><span class="en">Sector</span><span class="ko">섹터</span></span></span><span class="gt-a" aria-hidden="true">&#8250;</span><span class="gt-i"><span class="gt-c">2020</span><span class="gt-n"><span class="en">Commercial &amp; Professional Services</span><span class="ko">상업·전문 서비스</span></span><span class="gt-l"><span class="en">Industry Group</span><span class="ko">산업군</span></span></span><span class="gt-a" aria-hidden="true">&#8250;</span><span class="gt-i"><span class="gt-c">202010</span><span class="gt-n"><span class="en">Commercial Services &amp; Supplies</span><span class="ko">상업 서비스·용품</span></span><span class="gt-l"><span class="en">Industry</span><span class="ko">산업</span></span></span><span class="gt-a" aria-hidden="true">&#8250;</span><span class="gt-i cur"><span class="gt-c">20201060</span><span class="gt-n"><span class="en">Office Services &amp; Supplies</span><span class="ko">사무용 서비스·용품</span></span><span class="gt-l"><span class="en">Sub-Industry</span><span class="ko">세부산업</span></span></span></div>
+      <div class="pill-row">
+      <span class="pill">2026-06-28</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">주요 기업</span>: <span class="en">ODP Corp. · iMarketKorea / ACCO Brands, Pitney Bowes (peers)</span><span class="ko">ODP · 아이마켓코리아 / ACCO Brands, Pitney Bowes (비교기업)</span></span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">The global office supplies market is roughly $70–80B and growing only ~1–2% a year as paperless workflows, hybrid work and Amazon Business erode the core; managed print services (~$50B, ~8% CAGR) is the rare growth pocket. Consolidation has been brutal — ODP, the largest dedicated office-supplies distributor, was taken private by Atlas Holdings on December 10, 2025, leaving no large listed pure-play, while Staples (~$8B revenue) is also private. In Korea there is no listed pure-play either; iMarketKorea (KOSPI 122900), a ~₩3.05T B2B distribution/e-procurement firm, is the closest listed proxy, with Office Depot Korea and Serveone the privately held category leaders.</span><span class="ko">글로벌 사무용품 시장은 약 700억~800억 달러 규모이나, 종이 없는 업무 방식과 하이브리드 근무, Amazon Business가 핵심 수요를 잠식하면서 연 1~2% 성장에 그치는 것으로 파악됩니다. 다만 관리형 인쇄 서비스(약 500억 달러, 연평균 성장률 약 8%)는 드문 성장 영역입니다. 실제로 통합이 격렬하게 진행되어 최대 사무용품 전문 유통사인 ODP가 2025년 12월 10일 Atlas Holdings에 인수되며 비상장으로 전환된 바 있고, 한국에는 순수 상장 전문기업이 없어 매출 약 3.05조 원의 B2B 유통·전자조달 기업인 아이마켓코리아(KOSPI 122900)를 가장 가까운 상장 대용기업으로 제시하며 실제 카테고리 1위인 오피스디포 코리아와 서브원은 비상장임을 말씀드립니다.</span></p>
+    </div>
+  </section>
+  <section id="chain">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+      <h2><span class="en">Value migrates from product margin to logistics scale and recurring B2B contracts.</span><span class="ko">가치는 제품 마진에서 물류 규모와 반복형 B2B 계약으로 이동하고 있는 것으로 파악됩니다.</span></h2>
+      <div class="vchain"><div class="vc-step"><span class="vc-n">1</span><b><span class="en">Manufacturing &amp; sourcing</span><span class="ko">제조·소싱</span></b><span class="d"><span class="en">Paper mills, writing-instrument and toner OEMs, furniture and breakroom makers; upstream concentration (≈6 North American uncoated-freesheet producers) lifts input costs.</span><span class="ko">제지 공장, 필기구·토너 OEM, 가구·휴게실 용품 제조사로 구성됩니다. 북미 비도공지 생산사가 약 6곳에 불과해 상류 집중도가 높고, 이에 따라 투입 비용이 상승하는 구조로 파악됩니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">2</span><b><span class="en">Wholesale &amp; private label</span><span class="ko">도매·자체 브랜드</span></b><span class="d"><span class="en">Master distributors (e.g. S.P. Richards/Essendant) and dealers' own private-label lines that defend gross margin against branded suppliers.</span><span class="ko">마스터 유통사(예: Essendant)와 딜러 자체 브랜드(PB) 라인이 브랜드 공급사에 맞서 매출총이익률을 방어하는 단계로 파악됩니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">3</span><b><span class="en">Distribution &amp; fulfillment</span><span class="ko">유통·물류</span></b><span class="d"><span class="en">Distribution centers, truck fleets and next-day delivery — now the primary moat and itself a revenue line (ODP's Veyer external sales +64% YoY in Q3 2025).</span><span class="ko">물류센터, 차량 운영, 익일 배송이 핵심 해자이자 그 자체로 매출원이 된 단계입니다. 실제로 ODP의 Veyer 외부 매출은 2025년 3분기 전년 대비 64% 증가한 바 있습니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">4</span><b><span class="en">Sales channel: B2B contract &amp; retail</span><span class="ko">판매 채널: B2B 계약·소매</span></b><span class="d"><span class="en">Recurring B2B contracts and GPO/public-sector awards (resilient) versus declining retail stores and e-commerce punchout catalogs.</span><span class="ko">반복형 B2B 계약과 공동구매기구(GPO)·공공부문 수주(견조)가, 감소하는 소매 매장 및 전자조달 카탈로그와 대비되는 단계로 파악됩니다.</span></span></div><div class="vc-arrow" aria-hidden="true">&#10148;</div><div class="vc-step"><span class="vc-n">5</span><b><span class="en">Services &amp; adjacencies</span><span class="ko">서비스·인접 영역</span></b><span class="d"><span class="en">Managed print, jan-san/cleaning, breakroom, packaging and 3PL — higher-margin recurring services where the pool is actually growing.</span><span class="ko">관리형 인쇄, 청소·위생, 휴게실, 포장, 3자 물류(3PL) 등 고마진 반복형 서비스 영역으로, 이익 풀이 실제로 성장하고 있는 단계입니다.</span></span></div></div>
+      <div class="pool"><div class="pool-row"><span class="pn"><span class="en">Services (managed print, jan-san, breakroom)</span><span class="ko">서비스(관리형 인쇄·청소·휴게실)</span></span><span class="ptrack"><span class="pfill hi" style="width:100%"></span></span><span class="pv hi">~34%</span></div><div class="pool-row"><span class="pn"><span class="en">Distribution &amp; logistics (incl. 3PL)</span><span class="ko">유통·물류(3PL 포함)</span></span><span class="ptrack"><span class="pfill hi" style="width:76%"></span></span><span class="pv hi">~26%</span></div><div class="pool-row"><span class="pn"><span class="en">B2B contract supply</span><span class="ko">B2B 계약 공급</span></span><span class="ptrack"><span class="pfill med" style="width:59%"></span></span><span class="pv med">~20%</span></div><div class="pool-row"><span class="pn"><span class="en">Product manufacturing &amp; brands</span><span class="ko">제품 제조·브랜드</span></span><span class="ptrack"><span class="pfill med" style="width:35%"></span></span><span class="pv med">~12%</span></div><div class="pool-row"><span class="pn"><span class="en">Retail / consumer storefronts</span><span class="ko">소매·소비자 매장</span></span><span class="ptrack"><span class="pfill lo" style="width:24%"></span></span><span class="pv lo">~8%</span></div></div>
+      <p class="cap"><span class="en">Profit concentrates in recurring services and logistics; retail product margin is the smallest, fastest-shrinking pool. Shares are directional estimates from segment disclosures (ODP, ACCO, Pitney Bowes), 2024–2025.</span><span class="ko">이익은 반복형 서비스와 물류에 집중되고, 소매 제품 마진이 가장 작고 가장 빠르게 축소되는 풀로 파악됩니다. 비중은 ODP·ACCO·Pitney Bowes의 부문 공시(2024~2025년)에 근거한 방향성 추정치입니다.</span></p>
+    </div>
+  </section>
+  <section id="size">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+      <h2><span class="en">A ~$70–80B core growing ~1–2%, with managed print the only meaningful growth engine.</span><span class="ko">핵심 시장은 약 700억~800억 달러 규모로 연 1~2% 성장에 그치며, 관리형 인쇄가 유일하게 유의미한 성장 동력으로 파악됩니다.</span></h2>
+      <div class="cagr-wrap"><span class="cagr-badge"><span class="en">CAGR</span><span class="ko">연평균 성장률(CAGR)</span><span class="n">~1.3%</span></span><span class="mute" style="font-size:12.5px"><span class="en">Office supplies market $70.58B (2024) → $79.28B (2033), CAGR 1.3% (2025–2033), Grand View Research. Adjacent managed print services ~$49.8B (2025) at ~8.4% CAGR (Precedence Research).</span><span class="ko">사무용품 시장은 2024년 705억 8,000만 달러에서 2033년 792억 8,000만 달러로 연평균 성장률(CAGR) 1.3%(2025~2033년, Grand View Research)입니다. 인접 영역인 관리형 인쇄 서비스는 2025년 약 498억 달러 규모로 CAGR 약 8.4%(Precedence Research)로 파악됩니다.</span></span></div>
+      <div class="colchart"><div class="col"><div class="col-val">~$67B</div><div class="col-bar" data-h="62"></div><div class="col-lab">2021</div></div><div class="col"><div class="col-val">~$69B</div><div class="col-bar" data-h="72"></div><div class="col-lab">2022</div></div><div class="col"><div class="col-val">~$70B</div><div class="col-bar" data-h="80"></div><div class="col-lab">2023</div></div><div class="col"><div class="col-val">~$70.6B</div><div class="col-bar" data-h="86"></div><div class="col-lab">2024</div></div><div class="col"><div class="col-val">~$79.3B</div><div class="col-bar" data-h="100"></div><div class="col-lab">2033E</div></div></div>
+      <p class="cap"><span class="en">Office supplies market value, Grand View Research (2024 base, 2033 forecast). Bars use a zoomed baseline (smallest ≈62, not 0) to make the ~1.3% CAGR visible; the absolute spread is modest.</span><span class="ko">사무용품 시장 가치 기준이며, Grand View Research(2024년 기준, 2033년 전망)입니다. 막대는 약 1.3%의 CAGR을 보이게 하기 위해 확대된 기준선(최소값 약 62, 0 아님)을 사용했으며, 다만 절대 격차는 크지 않은 점을 말씀드립니다.</span></p>
+    </div>
+  </section>
+  <section id="share">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Market share</span><span class="ko">시장점유율</span></p>
+      <h2><span class="en">A fragmented market with no published per-company global shares; estimates are directional only.</span><span class="ko">기업별 글로벌 점유율이 공표되지 않은 파편화된 시장으로, 추정치는 방향성 참고용임을 말씀드립니다.</span></h2>
+      <div class="pies reveal">
+        <div class="pieblock"><div class="pie-title"><span class="en">Global office supplies — directional revenue share, 2025</span><span class="ko">글로벌 사무용품 — 매출 기준 방향성 점유율, 2025년</span></div><div class="pie" style="background:conic-gradient(#0e2a47 0% 18%,#117aca 18% 34%,#5aa9e6 34% 46%,#9fb1c9 46% 52%,#c9d4e3 52% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0e2a47"></span><span class="en">Staples (private)</span><span class="ko">Staples(비상장)</span><b>~18%</b></div><div class="lg-item"><span class="lg-dot" style="background:#117aca"></span><span class="en">ODP / Office Depot (private since Dec 2025)</span><span class="ko">ODP·오피스디포(2025년 12월 이후 비상장)</span><b>~16%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span><span class="en">Amazon Business</span><span class="ko">Amazon Business</span><b>~12%</b></div><div class="lg-item"><span class="lg-dot" style="background:#9fb1c9"></span><span class="en">Lyreco</span><span class="ko">Lyreco</span><b>~6%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">All others (dealers, regional, online)</span><span class="ko">기타(딜러·지역·온라인)</span><b>~48%</b></div></div></div>
+        <div class="pieblock"><div class="pie-title"><span class="en">Korea B2B supply / e-procurement (MRO) — revenue share, 2025</span><span class="ko">한국 B2B 공급·전자조달(MRO) — 매출 기준 점유율, 2025년</span></div><div class="pie" style="background:conic-gradient(#0047a0 0% 30%,#c8102e 30% 59%,#5aa9e6 59% 69%,#c9d4e3 69% 100%)"></div><div class="legend"><div class="lg-item"><span class="lg-dot" style="background:#0047a0"></span><span class="en">Serveone (private)</span><span class="ko">서브원(비상장)</span><b>~30%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c8102e"></span><span class="en">iMarketKorea (KOSPI 122900)</span><span class="ko">아이마켓코리아(KOSPI 122900)</span><b>~29%</b></div><div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span><span class="en">eNtoB (POSCO)</span><span class="ko">엔투비(포스코)</span><b>~10%</b></div><div class="lg-item"><span class="lg-dot" style="background:#c9d4e3"></span><span class="en">All others (incl. Office Depot Korea)</span><span class="ko">기타(오피스디포 코리아 포함)</span><b>~31%</b></div></div></div>
+      </div>
+      <p class="cap"><span class="en">No analyst publishes reliable per-company global office-supplies shares; the global pie is a directional read from revenue estimates (Staples/Lyreco/Amazon Business are private or undisclosed). The Korea pie uses the adjacent B2B/MRO distribution market, the closest measurable proxy. 2025.</span><span class="ko">기업별 글로벌 사무용품 점유율을 신뢰성 있게 공표하는 기관은 없어, 글로벌 도표는 매출 추정치에 근거한 방향성 자료입니다(Staples·Lyreco·Amazon Business는 비상장 또는 비공개). 한국 도표는 측정 가능한 가장 가까운 대용 시장인 인접 B2B·MRO 유통 시장을 사용했습니다. 2025년 기준입니다.</span></p>
+    </div>
+  </section>
+  <section id="positioning">
+    <p class="kicker"><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></p>
+    <h2><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></h2>
+    <div class="posmap reveal"><svg viewBox="0 0 340 290" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="60" y="18" width="262" height="214" fill="#f7fafd" stroke="#e6ebf4" stroke-width="1.5" rx="8"/><line x1="60" y1="125" x2="322" y2="125" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><line x1="191" y1="18" x2="191" y2="232" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 4"/><circle cx="288" cy="62" r="7" fill="var(--navy)"/><text x="288" y="53" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">ODP</text><circle cx="120" cy="120" r="7" fill="var(--krred)"/><text x="120" y="136" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">iMarketKorea</text><circle cx="300" cy="150" r="5.5" fill="#9fb1c9"/><text x="300" y="141" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Staples</text><circle cx="150" cy="70" r="5.5" fill="#9fb1c9"/><text x="150" y="61" text-anchor="middle" font-size="10.5" font-weight="700" fill="#13314f">Pitney Bowes</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="en">Scale (revenue) →</text><text x="191" y="254" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" class="ko">규모(매출) →</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="en">Services &amp; logistics focus →</text><text x="14" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6b8c" transform="rotate(-90 14 125)" class="ko">서비스·물류 집중도 →</text></svg><div class="pos-legend"><span class="pl-i"><span class="pl-d" style="background:var(--navy)"></span><span class="en">Global #1</span><span class="ko">글로벌 1위</span></span><span class="pl-i"><span class="pl-d" style="background:var(--krred)"></span><span class="en">Korea #1 (proxy)</span><span class="ko">한국 1위(대용)</span></span><span class="pl-i"><span class="pl-d" style="background:#9fb1c9"></span><span class="en">Peers</span><span class="ko">동종 기업</span></span></div><p class="cap"><span class="en">Takeaway: ODP and Staples both have scale but Staples leans more retail; the survivors are pivoting toward services and logistics, where Pitney Bowes is concentrated. iMarketKorea wins on B2B distribution focus but at far smaller scale.</span><span class="ko">시사점: ODP와 Staples 모두 규모를 갖췄으나 Staples는 소매 비중이 더 높습니다. 생존 기업은 서비스·물류로 전환 중이며, Pitney Bowes가 이 영역에 집중되어 있습니다. 아이마켓코리아는 B2B 유통 집중도에서 앞서나, 다만 규모는 훨씬 작은 것으로 파악됩니다.</span></p></div>
+  </section>
+  <section id="forces">
+    <p class="kicker"><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Porter's Five Forces</span><span class="ko">포터의 5가지 경쟁요인</span></h2>
+    <div class="forces reveal"><div class="force"><div class="force-top"><b><span class="en">Threat of new entrants</span><span class="ko">신규 진입 위협</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Low from startups (W.B. Mason runs 60+ DCs and 1,000+ trucks; the pool is shrinking and low-margin), but high from one scaled disruptor: Amazon Business reached $35B+ annualized GMV and 8M organizations by Aug 2025, serving 97 of the Fortune 100.</span><span class="ko">신생 기업 입장에서는 낮습니다. W.B. Mason은 60개 이상의 물류센터와 1,000대 이상의 차량을 운영하며, 이익 풀은 축소되고 저마진입니다. 다만 규모화된 단일 파괴자에게는 높습니다. Amazon Business는 2025년 8월 기준 연환산 거래액 350억 달러 이상, 거래 조직 800만 곳, 포춘 100대 기업 중 97곳을 확보한 바 있습니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Rising upstream: ~6 North American uncoated-freesheet producers cut capacity to defend price (International Paper closed Georgetown, SC end-2024; 5–7% price hikes April 2024). Print OEMs run razor-and-blade margins (≥60% on cartridges). Private label is the main counterweight.</span><span class="ko">상류로 갈수록 상승하는 것으로 파악됩니다. 북미 비도공지 생산사 약 6곳이 가격 방어를 위해 생산능력을 감축했습니다(International Paper는 2024년 말 사우스캐롤라이나 조지타운 공장을 폐쇄, 2024년 4월 5~7% 인상). 인쇄 OEM은 면도기-면도날 방식으로 토너 마진이 60% 이상입니다. 자체 브랜드(PB)가 주된 상쇄 수단입니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Commoditized, price-sensitive products with low switching costs; US office supplies sales fell ~5% to $11.5B in 2024 (Circana). GPOs (Sourcewell 50,000+ members; OMNIA) aggregate demand, and punchout catalogs plus Amazon Business give buyers instant price comparison.</span><span class="ko">전환 비용이 낮은 범용·가격 민감 제품입니다. 미국 사무용품 매출은 2024년 약 5% 감소한 115억 달러로 파악됩니다(Circana). 공동구매기구(Sourcewell 회원 5만 곳 이상, OMNIA)가 수요를 집약하고, 전자조달 카탈로그와 Amazon Business가 구매자에게 즉각적 가격 비교를 제공합니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Threat of substitutes</span><span class="ko">대체재 위협</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">The defining, structural force. US printing-writing paper shipments fell 14% YoY (Oct 2025, AF&amp;PA); USPS First-Class Mail dropped ~50% FY2008–2023; IDC projects a 25–30% permanent print-volume cut by 2030; e-signatures exceed 80% adoption and hybrid work caps office demand.</span><span class="ko">이 산업을 규정하는 구조적 요인입니다. 미국 인쇄·필기용지 출하는 2025년 10월 전년 대비 14% 감소했습니다(AF&amp;PA). USPS 일반우편은 2008~2023 회계연도에 약 50% 감소했고, IDC는 2030년까지 인쇄량이 25~30% 영구 감소할 것으로 전망합니다. 전자서명 도입률은 80%를 넘었고 하이브리드 근무가 사무 수요를 제약하는 것으로 파악됩니다.</span></p></div><div class="force"><div class="force-top"><b><span class="en">Competitive rivalry</span><span class="ko">경쟁 강도</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Very high in a shrinking pool: ODP FY2024 revenue fell ~10% to ~$7.0B and stores fell to 822 by Q3 2025; the 2016 Staples–Office Depot merger was blocked by the FTC; ODP was taken private by Atlas Holdings in December 2025.</span><span class="ko">축소되는 시장에서 매우 높습니다. ODP의 2024 회계연도 매출은 약 10% 감소한 약 70억 달러였고, 매장은 2025년 3분기 822개로 줄었습니다. 2016년 Staples-Office Depot 합병은 미국 연방거래위원회(FTC)에 의해 무산된 바 있으며, ODP는 2025년 12월 Atlas Holdings에 인수되어 비상장으로 전환되었습니다.</span></p></div></div>
+    <p class="cap"><span class="en">Net: profitability is squeezed from both ends — structural demand decline plus Amazon Business — forcing consolidation and a pivot to B2B contracts, logistics and higher-margin services.</span><span class="ko">종합하면, 구조적 수요 감소와 Amazon Business가 양방향에서 수익성을 압박해 통합을 강제하고, B2B 계약·물류·고마진 서비스로의 전환을 촉발하고 있는 것으로 파악됩니다.</span></p>
+  </section>
+  <section id="reg">
+    <p class="kicker"><span class="en">Macro forces &amp; the latest RULES</span><span class="ko">거시 요인 및 최신 규제</span></p>
+    <h2><span class="en">Regulation &amp; policy</span><span class="ko">규제·정책</span></h2>
+    <p class="hint"><span class="en">Dated laws and rules only — recent market events are in the next section.</span><span class="ko">날짜가 명시된 법·규정만 다룹니다. 최근 시장 이벤트는 다음 섹션에 정리되어 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">May 2026</span><span class="ac-title"><span class="en">California SB 54 EPR for packaging &amp; paper takes effect</span><span class="ko">캘리포니아 SB 54 포장·종이 EPR 시행</span></span></div><div class="ac-body"><p class="why"><span class="en">Final extended-producer-responsibility regulations became effective May 1, 2026, with producer registration due June 1, 2026, shifting recycling costs onto producers of paper and packaged office goods. Why it matters: it raises landed cost and compliance burden for paper-heavy and packaged supplies sold into California.</span><span class="ko">최종 생산자책임재활용(EPR) 규정이 2026년 5월 1일 발효되었고 생산자 등록은 2026년 6월 1일까지 완료해야 하며, 이에 따라 종이·포장 사무용품 생산자에게 재활용 비용이 전가됩니다. 시사점: 캘리포니아에 판매되는 종이 중심·포장 용품의 도착원가와 규제 준수 부담이 높아지는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Aug 2026</span><span class="ac-title"><span class="en">EU Packaging &amp; Packaging Waste Regulation (PPWR) applies</span><span class="ko">EU 포장·포장폐기물 규정(PPWR) 적용</span></span></div><div class="ac-body"><p class="why"><span class="en">Regulation (EU) 2025/40 entered into force Feb 11, 2025 and applies from Aug 12, 2026, imposing recycled-content and recyclability requirements on packaging. Why it matters: distributors selling into the EU must reformulate packaging and document recycled content across catalogs.</span><span class="ko">규정 (EU) 2025/40은 2025년 2월 11일 발효되어 2026년 8월 12일부터 적용되며, 포장에 재활용 함량·재활용 가능성 요건을 부과합니다. 시사점: EU에 판매하는 유통사는 포장을 재설계하고 전 카탈로그에 걸쳐 재활용 함량을 입증해야 하는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Dec 2025</span><span class="ac-title"><span class="en">EU Deforestation Regulation (EUDR) postponed again</span><span class="ko">EU 산림파괴방지규정(EUDR) 재차 연기</span></span></div><div class="ac-body"><p class="why"><span class="en">The Council signed off a targeted revision on Dec 18, 2025, postponing large-operator compliance to Dec 30, 2026 and removing printed products such as books and newspapers from scope. Why it matters: it eases near-term diligence on paper-derived goods but keeps wood-pulp supply chains under future scrutiny.</span><span class="ko">이사회는 2025년 12월 18일 표적 개정안을 승인해 대규모 사업자의 준수 시점을 2026년 12월 30일로 연기하고 도서·신문 등 인쇄물을 적용 범위에서 제외했습니다. 시사점: 종이 파생 제품에 대한 단기 실사 부담은 완화되나, 다만 목재 펄프 공급망은 향후 감시 대상으로 남는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jul 2026</span><span class="ac-title"><span class="en">USPS mailing-services price increase</span><span class="ko">USPS 우편 서비스 요금 인상</span></span></div><div class="ac-body"><p class="why"><span class="en">New prices took effect July 12, 2026 — the Forever stamp rose from 78¢ to 82¢, an ~4.8% overall increase following the July 2025 hike. Why it matters: it directly raises mailing costs and pressures mail-equipment and postage vendors such as Pitney Bowes.</span><span class="ko">신규 요금이 2026년 7월 12일 발효되어 Forever 우표가 78센트에서 82센트로 올랐으며, 이는 2025년 7월 인상에 이은 전체 약 4.8% 인상입니다. 시사점: 우편 비용이 직접 상승해 Pitney Bowes 등 우편장비·우편요금 사업자에 압박이 가해지는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jan 2026</span><span class="ac-title"><span class="en">US Section 301 China tariff increases</span><span class="ko">미국 무역법 301조 대중국 관세 인상</span></span></div><div class="ac-body"><p class="why"><span class="en">Scheduled Section 301 increases took effect Jan 1, 2025 and Jan 1, 2026, with 178 exclusions extended to Nov 10, 2026; rates of 7.5–100% hit office, IT and electronics categories. Why it matters: it raises sourcing costs for imported office products and accelerates supply-chain reshoring decisions.</span><span class="ko">예정된 301조 인상이 2025년 1월 1일과 2026년 1월 1일 발효되었고 178개 제외 품목은 2026년 11월 10일까지 연장되었으며, 사무·IT·전자 품목에 7.5~100%의 관세율이 적용됩니다. 시사점: 수입 사무용품의 소싱 비용이 상승하고 공급망 재배치 의사결정이 가속화되는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">May 2025</span><span class="ac-title"><span class="en">Washington State packaging &amp; paper EPR law signed</span><span class="ko">워싱턴주 포장·종이 EPR 법 서명</span></span></div><div class="ac-body"><p class="why"><span class="en">Signed May 17, 2025, the law requires producers to join a producer responsibility organization by Jan 1, 2026 and register by March 1, 2026. Why it matters: it adds another state-level EPR regime, raising the patchwork compliance load on national office-supply distributors.</span><span class="ko">2025년 5월 17일 서명된 이 법은 생산자가 2026년 1월 1일까지 생산자책임기구(PRO)에 가입하고 2026년 3월 1일까지 등록하도록 요구합니다. 시사점: 또 하나의 주 단위 EPR 체계가 추가되어 전국 단위 사무용품 유통사의 분절적 규제 준수 부담이 커지는 점입니다.</span></p></div></div></div>
+  </section>
+  <section id="ksf">
+    <p class="kicker"><span class="en">Key Success Factors</span><span class="ko">핵심 성공 요인</span></p>
+    <h2><span class="en">Key Success Factors</span><span class="ko">핵심 성공 요인</span></h2>
+    <div class="ksf reveal"><div class="kc"><span class="kn">1</span><div><b><span class="en">Scale &amp; logistics</span><span class="ko">규모·물류</span></b><p><span class="en">Distribution density is the primary moat and now a revenue line — ODP's Veyer external sales grew +64% YoY in Q3 2025 off a small base.</span><span class="ko">물류 밀도가 핵심 해자이자 매출원이 된 것으로 파악됩니다. ODP의 Veyer 외부 매출은 2025년 3분기 작은 기반에서 전년 대비 64% 성장한 바 있습니다.</span></p></div></div><div class="kc"><span class="kn">2</span><div><b><span class="en">B2B contract relationships</span><span class="ko">B2B 계약 관계</span></b><p><span class="en">Recurring contracts and GPO/public-sector awards are resilient versus retail — B2B is ~52% of Staples' sales and anchors revenue.</span><span class="ko">반복형 계약과 공동구매기구·공공부문 수주는 소매 대비 견조합니다. B2B는 Staples 매출의 약 52%로 매출의 닻 역할을 합니다.</span></p></div></div><div class="kc"><span class="kn">3</span><div><b><span class="en">E-commerce &amp; digital platforms</span><span class="ko">전자상거래·디지털 플랫폼</span></b><p><span class="en">Roughly a quarter of office-supplies revenue is now online and rising; weak digital execution cedes ground directly to Amazon Business.</span><span class="ko">사무용품 매출의 약 4분의 1이 온라인으로 전환되며 증가하고 있습니다. 디지털 실행력이 약하면 Amazon Business에 직접 점유율을 내주게 됩니다.</span></p></div></div><div class="kc"><span class="kn">4</span><div><b><span class="en">Product breadth &amp; single-source replenishment</span><span class="ko">제품 폭·단일 공급 보충</span></b><p><span class="en">Single-source breadth — supplies, furniture, tech, breakroom and jan-san — raises wallet share and switching costs per account.</span><span class="ko">용품·가구·IT·휴게실·청소위생을 아우르는 단일 공급 폭은 계정별 지갑 점유율과 전환 비용을 높이는 요인으로 파악됩니다.</span></p></div></div><div class="kc"><span class="kn">5</span><div><b><span class="en">Private-label margin defense</span><span class="ko">자체 브랜드 마진 방어</span></b><p><span class="en">Own-brand lines are the main counterweight to concentrated paper and OEM suppliers, protecting gross margin in a low-margin pool.</span><span class="ko">자체 브랜드 라인은 집중된 제지·OEM 공급사에 맞서는 주된 상쇄 수단으로, 저마진 시장에서 매출총이익률을 보호합니다.</span></p></div></div><div class="kc"><span class="kn">6</span><div><b><span class="en">Adjacent services &amp; sustainability credentials</span><span class="ko">인접 서비스·지속가능성 자격</span></b><p><span class="en">Managed print (&gt;50% gross margin), jan-san, breakroom and packaging are the growing pool, and ESG/sustainability credentials are increasingly required to win corporate and government contracts.</span><span class="ko">관리형 인쇄(매출총이익률 50% 이상)·청소위생·휴게실·포장이 성장하는 이익 풀이며, 기업·정부 계약 수주를 위해 ESG·지속가능성 자격이 갈수록 필수가 되고 있는 것으로 파악됩니다.</span></p></div></div></div>
+  </section>
+  <section id="news">
+    <p class="kicker"><span class="en">What's moving the industry now</span><span class="ko">현재 산업을 움직이는 요인</span></p>
+    <h2><span class="en">Recent market events</span><span class="ko">최근 시장 동향</span></h2>
+    <p class="hint"><span class="en">Dated market events only — laws and rules are in the Regulation section.</span><span class="ko">날짜가 명시된 시장 이벤트만 다룹니다. 법·규정은 규제 섹션에 정리되어 있습니다.</span></p>
+    <div class="acc" data-accordion><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Dec 2025</span><span class="ac-title"><span class="en">ODP taken private by Atlas Holdings; delisted from NASDAQ</span><span class="ko">ODP, Atlas Holdings에 인수·나스닥 상장폐지</span></span></div><div class="ac-body"><p class="why"><span class="en">Agreed Sept 22, 2025 at $28/share (~$1B, ~34% premium), the deal closed and ODP delisted Dec 10, 2025; Craig Gunckel was named CEO. Why it matters: the largest dedicated office-supplies distributor left the public market, leaving no large listed pure-play.</span><span class="ko">2025년 9월 22일 주당 28달러(약 10억 달러, 약 34% 프리미엄)에 합의된 거래가 종결되어 ODP는 2025년 12월 10일 상장폐지되었고, Craig Gunckel이 CEO로 선임되었습니다. 시사점: 최대 사무용품 전문 유통사가 공개 시장을 떠나, 대형 순수 상장 기업이 사라진 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Jul 2025</span><span class="ac-title"><span class="en">Xerox completes $1.5B acquisition of Lexmark</span><span class="ko">Xerox, 15억 달러 규모 Lexmark 인수 완료</span></span></div><div class="ac-body"><p class="why"><span class="en">Closed July 1, 2025, the deal makes Xerox a leader in managed print services and lifted FY2025 revenue to ~$7.0B (+12.9%). Why it matters: it consolidates the rare growth pocket — print services — under one scaled vendor.</span><span class="ko">2025년 7월 1일 종결된 이 거래로 Xerox는 관리형 인쇄 서비스 선두로 올라섰고 2025 회계연도 매출이 약 70억 달러(+12.9%)로 늘었습니다. 시사점: 드문 성장 영역인 인쇄 서비스가 규모화된 단일 공급사로 통합되는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">May 2025</span><span class="ac-title"><span class="en">Pitney Bowes appoints activist Kurt Wolf as CEO</span><span class="ko">Pitney Bowes, 행동주의 투자자 Kurt Wolf를 CEO로 선임</span></span></div><div class="ac-body"><p class="why"><span class="en">Kurt Wolf of Hestia Capital became CEO effective May 21, 2025, accelerating a cost-cut and capital-return agenda. Why it matters: activist control signals that mailing-equipment incumbents will manage decline aggressively for cash.</span><span class="ko">Hestia Capital의 Kurt Wolf가 2025년 5월 21일자로 CEO에 취임해 비용 절감·주주 환원 의제를 가속했습니다. 시사점: 행동주의 측의 경영권 장악은 우편장비 기존 기업이 현금 확보를 위해 쇠퇴를 공격적으로 관리할 것임을 시사합니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Feb 2026</span><span class="ac-title"><span class="en">Pitney Bowes reports FY2025 results</span><span class="ko">Pitney Bowes, 2025 회계연도 실적 발표</span></span></div><div class="ac-body"><p class="why"><span class="en">FY2025 revenue fell to $1.89B (from $2.03B) but income from continuing operations rose to $144.7M on cost cuts. Why it matters: it shows the playbook — shrinking top line, rising margin — that survivors in mature segments are running.</span><span class="ko">2025 회계연도 매출은 18억 9,000만 달러로 감소(전년 20억 3,000만 달러)했으나, 비용 절감으로 계속영업이익은 1억 4,470만 달러로 증가했습니다. 시사점: 매출 축소·마진 상승이라는, 성숙 영역 생존 기업의 전형적 전략을 보여주는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Nov 2025</span><span class="ac-title"><span class="en">ODP Q3 2025: retail sales fall, more stores closed</span><span class="ko">ODP 2025년 3분기: 소매 매출 감소·매장 추가 폐점</span></span></div><div class="ac-body"><p class="why"><span class="en">Office Depot retail sales fell ~13% YoY to $749M and the store count dropped to 822 (63 fewer YoY). Why it matters: it quantifies the structural retail decline that drove the take-private decision.</span><span class="ko">오피스디포 소매 매출은 전년 대비 약 13% 감소한 7억 4,900만 달러였고 매장 수는 822개로(전년 대비 63개 감소) 줄었습니다. 시사점: 비상장 전환 결정을 이끈 구조적 소매 쇠퇴를 수치로 확인시키는 점입니다.</span></p></div></div><div class="ac"><div class="ac-head" tabindex="0" role="button" aria-expanded="false"><span class="ac-badge">Mar 2026</span><span class="ac-title"><span class="en">ACCO Brands FY2025: sales fall, restructuring continues</span><span class="ko">ACCO Brands 2025 회계연도: 매출 감소·구조조정 지속</span></span></div><div class="ac-body"><p class="why"><span class="en">Full-year net sales fell to $1.525B (from $1.67B) as ACCO pursued restructuring targeting ~$100M of annualized savings by end-2026. Why it matters: the largest listed pure-play office-products manufacturer is shrinking and cutting, underscoring sector pressure.</span><span class="ko">연간 순매출은 15억 2,500만 달러로 감소(전년 16억 7,000만 달러)했으며, ACCO는 2026년 말까지 연환산 약 1억 달러 절감을 목표로 구조조정을 추진했습니다. 시사점: 최대 상장 순수 사무제품 제조사가 축소·감축하고 있어 산업 압박을 방증하는 점입니다.</span></p></div></div></div>
+  </section>
+  <section id="players">
+    <p class="kicker"><span class="en">Players · strategy analysis</span><span class="ko">주요 기업 · 전략 분석</span></p>
+    <h2><span class="en">Global #1 and Korea #1, diagnosed separately</span><span class="ko">글로벌 1위와 한국 1위를 각각 진단</span></h2>
+    <div class="gl"><div class="leader-band"><span class="flagdot">🌐</span><div><div class="tag"><span class="en">Global #1 · by revenue among dedicated office-supplies distributors</span><span class="ko">글로벌 1위 · 사무용품 전문 유통사 매출 기준</span></div><h3>ODP Corporation (NASDAQ: ODP, delisted Dec 2025)</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">ODP — parent of Office Depot, OfficeMax, ODP Business Solutions and the Veyer supply-chain arm — was the largest dedicated office-supplies distributor and the last large listed pure-play, until Atlas Holdings took it private on December 10, 2025. FY2024 revenue was ~$7.0B; Staples (~$8B) is larger but has been private since 2017.</span><span class="ko">ODP는 오피스디포, OfficeMax, ODP Business Solutions, 물류 부문 Veyer의 모회사로서 최대 사무용품 전문 유통사이자 마지막 대형 순수 상장 기업이었으나, 2025년 12월 10일 Atlas Holdings에 의해 비상장으로 전환된 바 있습니다. 2024 회계연도 매출은 약 70억 달러였으며, Staples(약 80억 달러)가 더 크나 2017년 이후 비상장 상태입니다.</span></p><div class="stats"><div class="stat"><div class="n">Private</div><div class="l"><span class="en">Market cap (Jun 2026)</span><span class="ko">시가총액 (2026년 6월)</span></div></div><div class="stat"><div class="n">~$7.0B</div><div class="l"><span class="en">Revenue (FY2024)</span><span class="ko">매출 (2024 회계연도)</span></div></div><div class="stat"><div class="n">~2.3%</div><div class="l"><span class="en">Operating margin (FY2024)</span><span class="ko">영업이익률 (2024 회계연도)</span></div></div><div class="stat"><div class="n">822</div><div class="l"><span class="en">Retail stores (Q3 2025)</span><span class="ko">소매 매장 수 (2025년 3분기)</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — managing a structural retail decline while building a B2B and logistics franchise</span><span class="ko">진단 — 구조적 소매 쇠퇴를 관리하며 B2B·물류 사업을 구축</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 최대 과제</span></span><p><span class="en">ODP is the largest dedicated office-supplies distributor, anchored by a ~$3.6B B2B division and a fast-growing Veyer logistics arm.</span><span class="ko">ODP는 약 36억 달러 규모 B2B 부문과 빠르게 성장하는 Veyer 물류 부문을 축으로 한 최대 사무용품 전문 유통사로 파악됩니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">복합 요인 · 근본 원인</span></span><p><span class="en">Core demand is in structural decline — FY2024 revenue −10%, retail −13% YoY in Q3 2025 — and Amazon Business is taking the digital channel.</span><span class="ko">핵심 수요가 구조적으로 감소하고 있습니다. 2024 회계연도 매출은 10% 줄었고 소매는 2025년 3분기 전년 대비 13% 감소했으며, Amazon Business가 디지털 채널을 잠식하고 있습니다.</span></p><div class="formula">Value ≈ B2B contract base × logistics utilization × services attach − retail fixed cost</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설</span></span><p><span class="en">Can ODP grow B2B, logistics and services fast enough to outrun the retail and core-product decline?</span><span class="ko">ODP가 소매·핵심제품 감소를 앞지를 만큼 B2B·물류·서비스를 빠르게 키울 수 있는가 하는 점입니다.</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">답변 · 방향</span></span><p><span class="en">Under Atlas, refocus on two core businesses — Office Depot/OfficeMax and ODP Business Solutions — while monetizing Veyer externally and expanding higher-margin adjacencies (hospitality, jan-san, breakroom).</span><span class="ko">Atlas 체제에서 오피스디포·OfficeMax와 ODP Business Solutions 두 핵심 사업에 재집중하는 한편, Veyer를 외부 매출로 수익화하고 고마진 인접 영역(접객·청소위생·휴게실)을 확장하는 것이 답으로 파악됩니다.</span></p></div></div></div></div><div class="track-grid n2"><div class="track t1"><div class="tt"><span class="en">Track 1 · B2B &amp; logistics</span><span class="ko">트랙 1 · B2B·물류</span></div><div class="tn"><span class="en">Monetize Veyer and grow contract supply</span><span class="ko">Veyer 수익화·계약 공급 성장</span></div><p><span class="en">Sell the ~7M sq ft distribution network as 3PL — Veyer external revenue +64% YoY in Q3 2025 — and deepen GPO and public-sector contract wins.</span><span class="ko">약 700만 제곱피트 물류망을 3PL로 외부 판매하고(Veyer 외부 매출 2025년 3분기 전년 대비 64% 증가), 공동구매기구·공공부문 계약 수주를 심화하는 트랙입니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Adjacencies</span><span class="ko">트랙 2 · 인접 영역</span></div><div class="tn"><span class="en">Push into hospitality and jan-san supply</span><span class="ko">접객·청소위생 공급 확대</span></div><p><span class="en">Target the $16B+ hospitality operating-supplies market — ~1,600 hotel properties onboarded through Q3 2025 — and grow breakroom and cleaning categories to 45% of B2B sales.</span><span class="ko">160억 달러 이상의 접객 운영용품 시장을 겨냥해(2025년 3분기까지 호텔 약 1,600곳 온보딩) 휴게실·청소 카테고리를 B2B 매출의 45%까지 키우는 트랙입니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">실행 계획</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Run Project Core cost program to harvest cash</span><span class="ko">Project Core 비용 프로그램으로 현금 확보</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">~2.3% operating margin, declining top line</span><span class="ko">영업이익률 약 2.3%, 매출 감소</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">~$380M EBITDA improvement, &gt;$1.3B total value</span><span class="ko">EBITDA 약 3억 8,000만 달러 개선, 총 13억 달러 이상 가치</span></div></div></div><div class="ap"><div class="apt"><span class="en">Optimize retail footprint, not exit it</span><span class="ko">소매 철수가 아닌 매장 최적화</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">822 stores, ~13% retail decline</span><span class="ko">매장 822개, 소매 약 13% 감소</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">Leaner profitable footprint feeding omnichannel</span><span class="ko">옴니채널을 뒷받침하는 경량·흑자 매장망</span></div></div></div><div class="ap"><div class="apt"><span class="en">Scale Veyer as an external 3PL business</span><span class="ko">Veyer를 외부 3PL 사업으로 확장</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Mostly intercompany logistics</span><span class="ko">대부분 그룹 내부 물류</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">Third-party logistics revenue line (+64% YoY)</span><span class="ko">3자 물류 매출원(전년 대비 +64%)</span></div></div></div></div></div></div>
+    <div class="kr" style="margin-top:14px"><div class="leader-band"><span class="flagdot">🇰🇷</span><div><div class="tag"><span class="en">Korea #1 · closest listed proxy (B2B distribution incl. office supplies)</span><span class="ko">한국 1위 · 가장 가까운 상장 대용기업(사무용품 포함 B2B 유통)</span></div><h3>iMarketKorea (KOSPI 122900)</h3></div></div><div class="leader-wrap reveal"><p class="mute" style="margin-top:0"><span class="en">Korea has no listed pure-play office-supplies distributor — the category leaders Office Depot Korea and Serveone are private. The closest listed proxy is iMarketKorea, a ~₩3.05T (FY2025) B2B distribution and e-procurement firm whose B2B mall spans office supplies through industrial materials; it is Korea's #2 MRO player behind private Serveone. We name it as a proxy, not as a pure-play match.</span><span class="ko">한국에는 순수 사무용품 상장 유통사가 없으며, 카테고리 1위인 오피스디포 코리아와 서브원은 비상장임을 말씀드립니다. 가장 가까운 상장 대용기업은 아이마켓코리아로, 사무용품부터 산업재까지 아우르는 B2B몰을 운영하는 매출 약 3.05조 원(2025 회계연도)의 B2B 유통·전자조달 기업입니다. 비상장 서브원에 이은 한국 2위 MRO 사업자로, 순수 일치 기업이 아닌 대용기업으로 제시합니다.</span></p><div class="stats"><div class="stat"><div class="n">~₩238B</div><div class="l"><span class="en">Market cap (Jun 2026)</span><span class="ko">시가총액 (2026년 6월)</span></div></div><div class="stat"><div class="n">~₩3.05T</div><div class="l"><span class="en">Revenue (FY2025)</span><span class="ko">매출 (2025 회계연도)</span></div></div><div class="stat"><div class="n">~₩20.9B</div><div class="l"><span class="en">Net income (FY2025)</span><span class="ko">순이익 (2025 회계연도)</span></div></div><div class="stat"><div class="n">#2</div><div class="l"><span class="en">Korea MRO rank (behind Serveone)</span><span class="ko">한국 MRO 순위 (서브원 다음)</span></div></div></div><div class="diag"><div class="dh"><span class="en">Diagnosis — a scaled B2B procurement platform diversifying beyond thin-margin MRO</span><span class="ko">진단 — 박한 마진의 MRO를 넘어 다각화하는 규모화된 B2B 조달 플랫폼</span></div><div class="scqa"><div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation · biggest problem</span><span class="ko">상황 · 최대 과제</span></span><p><span class="en">iMarketKorea runs a ₩3T-scale B2B e-procurement platform across MRO, industrial materials, IT and pharma/medical logistics, with office supplies one explicit category.</span><span class="ko">아이마켓코리아는 MRO, 산업재, IT, 제약·의료 물류를 아우르는 3조 원 규모 B2B 전자조달 플랫폼을 운영하며, 사무용품은 그중 명시된 한 카테고리로 파악됩니다.</span></p></div></div><div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication · root cause</span><span class="ko">복합 요인 · 근본 원인</span></span><p><span class="en">Revenue fell from ₩3.32T (FY2024) to ₩3.05T (FY2025) and operating profit roughly halved to ~₩20B, reflecting thin distribution margins and weak industrial demand.</span><span class="ko">매출은 3.32조 원(2024 회계연도)에서 3.05조 원(2025 회계연도)으로 줄었고 영업이익은 약 200억 원으로 반토막 났는데, 이는 박한 유통 마진과 부진한 산업 수요를 반영합니다.</span></p><div class="formula">Value ≈ platform GMV × take rate × category mix − working-capital drag</div></div></div><div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question · hypothesis</span><span class="ko">질문 · 가설</span></span><p><span class="en">Can iMarketKorea lift take rate by shifting mix toward higher-value categories and digital procurement services?</span><span class="ko">아이마켓코리아가 고부가 카테고리와 디지털 조달 서비스로 믹스를 전환해 수취율을 높일 수 있는가 하는 점입니다.</span></p></div></div><div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer · direction</span><span class="ko">답변 · 방향</span></span><p><span class="en">Lean on platform scale and Gradient-group demand, expand pharma/medical and IT logistics, and digitize procurement to defend margin against price-led MRO competition.</span><span class="ko">플랫폼 규모와 그래디언트 그룹 수요를 활용하고 제약·의료 및 IT 물류를 확장하며, 조달을 디지털화해 가격 중심 MRO 경쟁에 맞서 마진을 방어하는 것이 답으로 파악됩니다.</span></p></div></div></div></div><div class="track-grid n2"><div class="track t1"><div class="tt"><span class="en">Track 1 · Mix &amp; take rate</span><span class="ko">트랙 1 · 믹스·수취율</span></div><div class="tn"><span class="en">Shift toward higher-value categories</span><span class="ko">고부가 카테고리로 전환</span></div><p><span class="en">Grow pharma/medical logistics and IT/specialty categories that carry better margins than commodity MRO and office consumables.</span><span class="ko">범용 MRO·사무 소모품보다 마진이 나은 제약·의료 물류와 IT·특수 카테고리를 키우는 트랙입니다.</span></p></div><div class="track t2"><div class="tt"><span class="en">Track 2 · Digital procurement</span><span class="ko">트랙 2 · 디지털 조달</span></div><div class="tn"><span class="en">Monetize the B2B platform as a service</span><span class="ko">B2B 플랫폼의 서비스 수익화</span></div><p><span class="en">Turn the e-procurement mall and data into subscription/analytics revenue, raising switching costs for corporate buyers.</span><span class="ko">전자조달 몰과 데이터를 구독·분석 매출로 전환해 기업 구매자의 전환 비용을 높이는 트랙입니다.</span></p></div></div><div class="subh"><span class="en">Action plans</span><span class="ko">실행 계획</span></div><div class="ap-grid"><div class="ap"><div class="apt"><span class="en">Defend margin against price-led MRO rivals</span><span class="ko">가격 중심 MRO 경쟁사에 맞서 마진 방어</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Operating profit roughly halved in FY2025</span><span class="ko">2025 회계연도 영업이익 약 반감</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">Stabilized take rate via category mix shift</span><span class="ko">카테고리 믹스 전환으로 수취율 안정화</span></div></div></div><div class="ap"><div class="apt"><span class="en">Leverage Gradient-group captive demand</span><span class="ko">그래디언트 그룹 내부 수요 활용</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Cyclical, demand-led revenue swings</span><span class="ko">경기·수요에 따른 매출 변동</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">Anchor volume plus external-account growth</span><span class="ko">기반 물량 확보와 외부 고객 성장</span></div></div></div><div class="ap"><div class="apt"><span class="en">Digitize the e-procurement platform</span><span class="ko">전자조달 플랫폼 디지털화</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">From</span><span class="ko">현재</span></small><span class="en">Commodity distribution, thin margin</span><span class="ko">범용 유통, 박한 마진</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">To</span><span class="ko">지향</span></small><span class="en">Data and service revenue with stickier accounts</span><span class="ko">데이터·서비스 매출과 고착도 높은 고객</span></div></div></div></div></div></div>
+  </section>
+  <section id="kpi">
+    <p class="kicker"><span class="en">KPIs to watch</span><span class="ko">주시할 지표</span></p>
+    <h2><span class="en">KPIs to watch</span><span class="ko">주시할 지표</span></h2>
+    <p class="hint"><span class="en">Leading indicators with the latest reading — track these to see the industry turn before earnings confirm it.</span><span class="ko">최신 수치를 담은 선행 지표입니다. 실적이 확인하기 전에 산업의 전환을 포착하려면 이들을 주시하시기 바랍니다.</span></p>
+    <div class="kpis reveal"><div class="kpi"><div class="kt"><span class="en">US printing-writing paper shipments</span><span class="ko">미국 인쇄·필기용지 출하</span></div><div class="kv"><span class="en">−14% YoY</span><span class="ko">전년 대비 −14%</span></div><div class="kw"><span class="en">Oct 2025 (AF&amp;PA) — the clearest gauge of structural substitution.</span><span class="ko">2025년 10월(AF&amp;PA) — 구조적 대체를 보여주는 가장 명확한 지표입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Amazon Business annualized GMV</span><span class="ko">Amazon Business 연환산 거래액</span></div><div class="kv"><span class="en">$35B+</span><span class="ko">350억 달러 이상</span></div><div class="kw"><span class="en">Aug 2025 — 8M organizations; the dominant disruptor's scale.</span><span class="ko">2025년 8월 — 거래 조직 800만 곳으로, 지배적 파괴자의 규모입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">Managed print services CAGR</span><span class="ko">관리형 인쇄 서비스 CAGR</span></div><div class="kv"><span class="en">~8.4%</span><span class="ko">약 8.4%</span></div><div class="kw"><span class="en">2026–2035 (Precedence Research) — the rare growth pocket.</span><span class="ko">2026~2035년(Precedence Research) — 드문 성장 영역입니다.</span></div></div><div class="kpi"><div class="kt"><span class="en">ODP retail store count</span><span class="ko">ODP 소매 매장 수</span></div><div class="kv"><span class="en">822</span><span class="ko">822개</span></div><div class="kw"><span class="en">Q3 2025, down from ~2,053 at the 2013 merger — the pace of retail rationalization.</span><span class="ko">2025년 3분기, 2013년 합병 당시 약 2,053개에서 감소 — 소매 합리화 속도입니다.</span></div></div></div>
+  </section>
+  <section id="scenarios">
+    <p class="kicker"><span class="en">Scenarios — bull · base · bear</span><span class="ko">시나리오 — 낙관 · 기본 · 비관</span></p>
+    <h2><span class="en">Scenarios: bull, base, bear</span><span class="ko">시나리오: 낙관·기본·비관</span></h2>
+    <div class="scen reveal"><div class="sc bull"><div class="sh"><span class="en">Bull · upside</span><span class="ko">낙관 시나리오</span></div><div class="sd"><span class="en">Services and logistics outrun the core decline</span><span class="ko">서비스·물류가 핵심 감소를 앞지름</span></div><p><span class="en">Swing variable: managed print, jan-san and 3PL grow fast enough that survivors expand margin even as paper and retail shrink; consolidation lets them hold price.</span><span class="ko">변동 변수: 관리형 인쇄·청소위생·3PL이 충분히 빠르게 성장해, 종이·소매가 줄어도 생존 기업이 마진을 확대하고 통합 덕에 가격을 방어하는 경우입니다.</span></p></div><div class="sc base"><div class="sh"><span class="en">Base · most likely</span><span class="ko">기본 시나리오</span></div><div class="sd"><span class="en">Slow decline managed for cash</span><span class="ko">완만한 쇠퇴를 현금 위주로 관리</span></div><p><span class="en">Swing variable: ~1–2% core growth with structural substitution offset by services attach and cost cuts; private owners run incumbents for steady cash, not growth.</span><span class="ko">변동 변수: 핵심 시장이 연 1~2% 성장하는 가운데 구조적 대체를 서비스 부착과 비용 절감으로 상쇄하고, 비상장 소유주가 기존 기업을 성장이 아닌 안정적 현금 창출 목적으로 운영하는 경우입니다.</span></p></div><div class="sc bear"><div class="sh"><span class="en">Bear · downside</span><span class="ko">비관 시나리오</span></div><div class="sd"><span class="en">Amazon and paperless accelerate the squeeze</span><span class="ko">Amazon·페이퍼리스가 압박 가속</span></div><p><span class="en">Swing variable: Amazon Business and faster paperless adoption compress price and volume together, tariffs lift input costs, and weaker dealers exit or are absorbed.</span><span class="ko">변동 변수: Amazon Business와 빨라진 페이퍼리스 전환이 가격과 물량을 동시에 압박하고, 관세가 투입 비용을 높이며, 취약 딜러가 퇴출되거나 흡수되는 경우입니다.</span></p></div></div>
+  </section>
+  <section id="risks">
+    <div class="card reveal">
+      <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크와 전망</span></p>
+      <h2><span class="en">Risks &amp; outlook</span><span class="ko">리스크와 전망</span></h2>
+      <ul class="tight"><li><span class="en">Structural digital substitution: paperless workflows, e-signatures and hybrid work permanently shrink core paper and supplies demand (IDC: 25–30% print-volume cut by 2030).</span><span class="ko">구조적 디지털 대체: 종이 없는 업무, 전자서명, 하이브리드 근무가 핵심 종이·용품 수요를 영구 축소시킵니다(IDC: 2030년까지 인쇄량 25~30% 감소).</span></li><li><span class="en">Amazon Business disintermediation: $35B+ GMV and instant price comparison erode dealer margin and account loyalty.</span><span class="ko">Amazon Business의 중간상 배제: 350억 달러 이상 거래액과 즉각적 가격 비교가 딜러 마진과 고객 충성도를 잠식합니다.</span></li><li><span class="en">Input-cost and tariff pressure: concentrated paper mills plus Section 301 China tariffs (7.5–100%) and EPR compliance raise landed costs.</span><span class="ko">투입 비용·관세 압박: 집중된 제지 공장에 더해 무역법 301조 대중국 관세(7.5~100%)와 EPR 준수가 도착원가를 높입니다.</span></li><li><span class="en">Consolidation and private ownership reduce transparency and pricing discipline, with thin margins leaving little room for shocks.</span><span class="ko">통합과 비상장 전환이 투명성과 가격 규율을 약화시키고, 박한 마진은 충격을 흡수할 여력을 거의 남기지 않습니다.</span></li></ul>
+    </div>
+  </section>
+</div>
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul style="list-style:none;padding:0;margin:0;"><li><a href="https://www.grandviewresearch.com/industry-analysis/office-supplies-market-report">Grand View Research — global office supplies market $70.58B (2024) → $79.28B (2033), CAGR 1.3%</a></li><li><a href="https://www.fortunebusinessinsights.com/office-supplies-market-106626">Fortune Business Insights — alternative office supplies market sizing (2025)</a></li><li><a href="https://www.precedenceresearch.com/managed-print-services-market">Precedence Research — managed print services ~$49.8B (2025), CAGR ~8.4% (2026–2035)</a></li><li><a href="https://www.grandviewresearch.com/industry-analysis/managed-print-services-mps-market">Grand View Research — managed print services market size and growth</a></li><li><a href="https://www.businesswire.com/news/home/20250820416115/en/">BusinessWire — Amazon Business $35B+ annualized GMV, 8M organizations (Aug 2025)</a></li><li><a href="https://www.afandpa.org/news/2025/afpa-releases-october-2025-printing-writing-monthly-report">AF&amp;PA — US printing-writing paper shipments −14% YoY (Oct 2025)</a></li><li><a href="https://www.circana.com/post/u-s-office-supplies-industry-faces-continued-challenges-but-shows-signs-of-retail-stabilization-for">Circana — US office supplies sales −5% to $11.5B (2024)</a></li><li><a href="https://www.atlasholdingsllc.com/news/atlas-holdings-completes-acquisition-of-the-odp-corporation-craig-gunckel-named-chief-executive-officer/">Atlas Holdings — completes ODP acquisition, Craig Gunckel named CEO (Dec 2025)</a></li><li><a href="https://investor.officedepot.com/news-releases/news-release-details/odp-corporation-be-acquired-atlas-holdings-all-cash-transaction/">ODP IR — to be acquired by Atlas Holdings, $28/share (Sept 2025)</a></li><li><a href="https://www.businesswire.com/news/home/20250226935130/en/">BusinessWire — ODP Q4 and full-year 2024 results (revenue ~$7.0B)</a></li><li><a href="https://www.businesswire.com/news/home/20251105156942/en/">BusinessWire — ODP Q3 2025 results, store count 822</a></li><li><a href="https://www.willkie.com/news/2025/07/xerox-completes-the-acquisition-of-lexmark">Willkie — Xerox completes $1.5B acquisition of Lexmark (Jul 2025)</a></li><li><a href="https://www.businesswire.com/news/home/20260217119288/en/">BusinessWire — Pitney Bowes FY2025 results ($1.89B revenue)</a></li><li><a href="https://ir.accobrands.com/news/news-details/2026/ACCO-Brands-Reports-Fourth-Quarter-and-Full-Year-Results-and-Provides-Outlook-for-2026/default.aspx">ACCO Brands IR — FY2025 results ($1.525B net sales), 2026 outlook</a></li><li><a href="https://markets.hankyung.com/stock/122900/financial-summary">Hankyung — iMarketKorea (KOSPI 122900) FY2024/FY2025 financials</a></li><li><a href="https://www.consilium.europa.eu/en/press/press-releases/2025/12/18/deforestation-council-signs-off-targeted-revision-to-simplify-and-postpone-the-regulation/">Council of the EU — EUDR targeted revision and postponement (Dec 2025)</a></li><li><a href="https://www.hklaw.com/en/insights/publications/2026/05/californias-final-epr-regulations-now-in-effect">Holland &amp; Knight — California SB 54 EPR final regulations in effect (May 2026)</a></li><li><a href="https://about.usps.com/newsroom/national-releases/2026/0409-usps-recommends-new-prices-for-july.htm">USPS — new mailing-services prices effective July 12, 2026</a></li></ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Office Services &amp; Supplies (GICS 20201060) · Generated June 28, 2026. Public sources, rounded; informational only, not investment advice.</span><span class="ko">산업 브리프 · 사무용 서비스·용품 (GICS 20201060) · 2026년 6월 28일 생성. 공개 출처, 반올림 적용. 정보 제공용이며 투자 자문이 아닙니다.</span></p>
+  </div>
+</footer>
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  var saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}setLang(saved==='ko'?'ko':'en'); // default English; remembers selection
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body></html>

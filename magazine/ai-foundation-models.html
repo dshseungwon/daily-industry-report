@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>파운데이션 모델, 내부에서 본 풍경 · The Industry Brief</title>
+<meta name="description" content="CS 학부 졸업생을 위한 깊이 있는 안내서: 트랜스포머 아키텍처, 사전학습과 사후학습, RAG, 에이전트, 그리고 2026년 프런티어 모델 경쟁 지형.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fcfbf7;
+    --ink:#1b1a17;
+    --mute:#6b675e;
+    --faint:#908b80;
+    --accent:#c2410c;
+    --accent-soft:#fbeee6;
+    --line:#e7e2d6;
+    --tint:#f5f1e6;
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --serif-ko:"Gowun Batang","Nanum Myeongjo",serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --sans-ko:"Apple SD Gothic Neo","Malgun Gothic","Inter",sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--sans);
+    font-size:19px;line-height:1.85;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  body.lang-ko{font-family:var(--sans-ko);}
+  svg .en,svg .ko{display:none;}
+  body.lang-en svg .en{display:inline;}
+  body.lang-ko svg .ko{display:inline;}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(194,65,12,.28);}
+  a:hover{border-bottom-color:var(--accent);}
+  .masthead{border-bottom:1px solid var(--line);background:var(--bg);
+    position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(6px);}
+  .masthead .row{max-width:920px;margin:0 auto;padding:11px 22px;
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .wordmark{font-family:var(--serif);font-weight:600;font-size:15px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink);}
+  .seclabel{font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);border:1px solid rgba(194,65,12,.35);
+    border-radius:999px;padding:3px 9px;}
+  .mh-spacer{flex:1 1 auto;}
+  .mh-meta{font-size:12px;color:var(--faint);letter-spacing:.02em;}
+  #langbtn{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.06em;
+    background:var(--ink);color:var(--bg);border:none;border-radius:999px;
+    padding:7px 14px;cursor:pointer;transition:opacity .15s;}
+  #langbtn:hover{opacity:.82;}
+  .backlink{font-size:12.5px;color:var(--mute);border:none;}
+  .backlink:hover{color:var(--accent);}
+  .col{max-width:700px;margin:0 auto;padding:0 24px;}
+  .article{padding:54px 0 30px;}
+  .eyebrow{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 22px;}
+  h1.headline{font-family:var(--serif);font-weight:500;
+    font-size:clamp(38px,8.4vw,62px);line-height:1.04;letter-spacing:-.02em;
+    margin:0 0 22px;}
+  body.lang-ko h1.headline{font-family:var(--serif-ko);font-weight:700;line-height:1.18;letter-spacing:-.01em;
+    font-size:clamp(31px,7.4vw,50px);}
+  .deck{font-family:var(--serif);font-weight:400;font-style:italic;
+    font-size:clamp(20px,3.6vw,25px);line-height:1.5;color:var(--mute);
+    margin:0 0 30px;}
+  body.lang-ko .deck{font-family:var(--serif-ko);font-style:normal;}
+  .byline{font-size:13.5px;color:var(--faint);letter-spacing:.02em;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:14px 0;margin:0 0 16px;}
+  .byline b{color:var(--ink);font-weight:600;}
+  .article p{margin:0 0 24px;}
+  body.lang-ko .article p{line-height:1.92;letter-spacing:-.003em;}
+  .lead{margin-top:34px;}
+  body.lang-en .lead::first-letter{
+    font-family:var(--serif);font-weight:500;
+    float:left;font-size:78px;line-height:.78;padding:8px 12px 0 0;color:var(--accent);}
+  body.lang-ko .lead::first-letter{
+    font-family:var(--serif-ko);font-weight:700;
+    float:left;font-size:70px;line-height:.84;padding:6px 12px 0 0;color:var(--accent);}
+  h2{font-family:var(--serif);font-weight:500;
+    font-size:clamp(26px,5vw,34px);line-height:1.16;letter-spacing:-.01em;
+    margin:52px 0 8px;}
+  body.lang-ko h2{font-family:var(--serif-ko);font-weight:700;line-height:1.32;}
+  .kicker{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 6px;display:block;}
+  h3{font-family:var(--sans);font-weight:600;font-size:18px;letter-spacing:.01em;
+    margin:34px 0 4px;}
+  hr.rule{border:none;border-top:1px solid var(--line);margin:48px auto;width:100%;}
+  .stars{text-align:center;color:var(--faint);letter-spacing:.5em;
+    font-size:14px;margin:46px 0;user-select:none;}
+  .pull{margin:42px 0;padding:6px 0 6px 26px;border-left:3px solid var(--accent);}
+  .pull p{font-family:var(--serif);font-weight:500;font-style:italic;
+    font-size:clamp(23px,4vw,29px);line-height:1.34;color:var(--ink);margin:0;}
+  body.lang-ko .pull p{font-family:var(--serif-ko);font-weight:700;font-style:normal;line-height:1.5;}
+  .callout{background:var(--tint);border:1px solid var(--line);
+    border-radius:14px;padding:22px 26px;margin:34px 0;}
+  .callout .tag{display:inline-flex;align-items:center;gap:7px;
+    font-family:var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 8px;}
+  .callout .tag::before{content:"";width:7px;height:7px;border-radius:50%;
+    background:var(--accent);display:inline-block;}
+  .callout p{font-size:17.5px;line-height:1.7;margin:0;color:var(--ink);}
+  body.lang-ko .callout p{font-size:17px;line-height:1.85;}
+  .callout code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+    background:#fff;border:1px solid var(--line);border-radius:5px;padding:1px 5px;}
+  .article p code,.article li code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:.84em;background:var(--tint);border:1px solid var(--line);border-radius:5px;padding:1px 5px;}
+  .article ul,.article ol.body{margin:0 0 24px;padding-left:22px;}
+  .article li{margin:0 0 10px;}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:30px 0;}
+  .lab{border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;background:#fff;}
+  .lab .name{font-family:var(--serif);font-weight:600;font-size:20px;margin:0 0 2px;letter-spacing:-.01em;}
+  body.lang-ko .lab .name{font-family:var(--serif-ko);font-weight:700;}
+  .lab .home{font-size:12px;color:var(--faint);margin:0 0 9px;letter-spacing:.02em;}
+  .lab .desc{font-size:14.5px;line-height:1.6;color:var(--mute);margin:0;}
+  body.lang-ko .lab .desc{font-size:14px;line-height:1.75;}
+  .lab .flag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;padding:2px 7px;border-radius:999px;margin-bottom:9px;}
+  .flag.kr{background:#fdeeee;color:#b3261e;}
+  .flag.open{background:#eaf3ec;color:#2f7d46;}
+  .flag.global{background:var(--accent-soft);color:var(--accent);}
+  figure{margin:40px 0;}
+  figure svg{width:100%;height:auto;display:block;
+    border:1px solid var(--line);border-radius:16px;background:#fff;}
+  figcaption{font-size:13px;color:var(--faint);text-align:center;margin-top:12px;
+    font-style:italic;line-height:1.5;}
+  body.lang-ko figcaption{font-style:normal;}
+  .svg-box{fill:#fdfcf8;stroke:#e7e2d6;stroke-width:1.5;}
+  .svg-box-accent{fill:var(--accent-soft);stroke:#e9c6b1;stroke-width:1.5;}
+  .svg-arrow{stroke:#c2410c;stroke-width:2;fill:none;}
+  .svg-label{font-family:var(--sans);font-size:13px;font-weight:600;fill:#1b1a17;}
+  .svg-sub{font-family:var(--sans);font-size:11px;fill:#6b675e;}
+  .svg-title{font-family:var(--sans);font-size:12px;font-weight:600;fill:#c2410c;letter-spacing:.06em;text-transform:uppercase;}
+  .svg-mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;fill:#6b675e;}
+  .svg-icon{font-size:22px;}
+  .glossary{margin:30px 0;}
+  .glossary dl{margin:0;}
+  .glossary .item{padding:18px 0;border-top:1px solid var(--line);
+    display:grid;grid-template-columns:200px 1fr;gap:20px;}
+  .glossary .item:last-child{border-bottom:1px solid var(--line);}
+  .glossary dt{font-family:var(--serif);font-weight:600;font-size:19px;margin:0;color:var(--ink);letter-spacing:-.01em;}
+  body.lang-ko .glossary dt{font-family:var(--serif-ko);font-weight:700;font-size:18px;}
+  .glossary dt .orig{display:block;font-family:var(--sans);font-size:12px;font-weight:500;color:var(--faint);letter-spacing:.02em;margin-top:2px;}
+  .glossary dd{margin:0;font-size:15.5px;line-height:1.62;color:var(--mute);}
+  body.lang-ko .glossary dd{font-size:15px;line-height:1.8;}
+  footer{border-top:1px solid var(--line);margin-top:30px;padding:38px 0 60px;}
+  footer .lab-head{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 16px;}
+  footer ol{margin:0 0 26px;padding-left:20px;}
+  footer li{font-size:13.5px;line-height:1.7;color:var(--mute);margin-bottom:7px;}
+  footer li a{word-break:break-word;}
+  .foot-note{font-size:13px;color:var(--faint);line-height:1.6;margin:0 0 18px;}
+  .foot-back{font-size:14px;}
+  @media (max-width:620px){
+    body{font-size:17.5px;}
+    .cards{grid-template-columns:1fr;}
+    .glossary .item{grid-template-columns:1fr;gap:6px;}
+    .mh-meta.hide-sm{display:none;}
+    .col{padding:0 20px;}
+  }
+</style>
+</head>
+<body class="lang-ko">
+
+<header class="masthead">
+  <div class="row">
+    <span class="wordmark">The Industry Brief</span>
+    <span class="seclabel"><span class="en">Deep Dive</span><span class="ko">딥다이브</span></span>
+    <span class="mh-spacer"></span>
+    <span class="mh-meta hide-sm">2026-06-27 &middot; <span class="en">31 min read</span><span class="ko">31분 분량</span></span>
+    <button id="langbtn" type="button" aria-label="Toggle language">
+      <span class="en">한국어</span><span class="ko">EN</span>
+    </button>
+  </div>
+</header>
+
+<div class="col">
+  <p style="margin:18px 0 0;">
+    <a class="backlink" href="../index.html">
+      <span class="en">&larr; All reports</span><span class="ko">&larr; 전체 리포트</span>
+    </a>
+  </p>
+</div>
+
+<article class="article">
+<div class="col">
+
+  <p class="eyebrow"><span class="en">Foundation Models &middot; A Technical Brief</span><span class="ko">파운데이션 모델 &middot; 기술 브리프</span></p>
+
+  <h1 class="headline">
+    <span class="en">Foundation Models, From the Inside</span>
+    <span class="ko">파운데이션 모델, 내부에서 본 풍경</span>
+  </h1>
+
+  <p class="deck">
+    <span class="en">The transformer, scaling laws, post-training, RAG, agents, and the 2026 competitive map &mdash; written for someone who already knows what a softmax is.</span>
+    <span class="ko">트랜스포머부터 스케일링 법칙, 사후학습, RAG, 에이전트, 그리고 2026년 경쟁 지형까지 &mdash; 소프트맥스가 뭔지는 이미 아는 독자에게.</span>
+  </p>
+
+  <p class="byline">
+    <span class="en">By <b>The Industry Brief</b> &middot; Deep Dive desk &middot; Updated 27 June 2026</span>
+    <span class="ko"><b>The Industry Brief</b> &middot; 딥다이브 데스크 &middot; 2026년 6월 27일 업데이트</span>
+  </p>
+
+  <p class="lead">
+    <span class="en">For a few years the story of AI was simple: make the model bigger, watch it get better. That era is mostly over. The interesting question is no longer &ldquo;can a model do this?&rdquo; but &ldquo;at what cost, and how reliably?&rdquo; &mdash; and the answers now come from somewhere other than raw scale. The capability gains of 2025&ndash;2026 come from <b>teaching the model after it is trained</b> and from <b>letting it think longer at the moment you ask</b>. The best models are not just larger; they are drilled with reinforcement learning to <i>reason</i>, handed tools, and set loose as multi-step agents. This piece starts gently &mdash; what a foundation model actually is &mdash; and then goes all the way down: the architecture, the training recipe, the economics, retrieval, agents, evaluation, and finally the labs racing to build them. We assume you know what a softmax is; we assume nothing else.</span>
+    <span class="ko">한동안 AI 이야기는 단순했다. 모델을 키우면 똑똑해진다. 그런데 그 시절은 거의 끝났다. 이제 흥미로운 질문은 &ldquo;모델이 이걸 해낼 수 있는가?&rdquo;가 아니라 &ldquo;얼마의 비용으로, 얼마나 안정적으로 해내는가?&rdquo;다. 그리고 그 답은 더 이상 덩치에서 나오지 않는다. 2025~2026년의 도약은 두 군데서 왔다. 하나는 <b>다 학습시킨 모델을 다시 가르치는 일(사후학습, post-training)</b>이고, 다른 하나는 <b>질문을 받은 그 순간 모델이 더 오래 생각하게 두는 일(추론 시점 연산)</b>이다. 요즘 잘나가는 모델은 그저 큰 게 아니다. 강화학습으로 <i>추론(reasoning)</i>을 훈련받고, 도구를 손에 쥐고, 여러 단계를 스스로 밟는 에이전트로 풀려난다. 이 글은 부드럽게 시작한다. 파운데이션 모델이 대체 무엇인가에서 출발해, 아키텍처, 학습 레시피, 경제성, 검색, 에이전트, 평가, 그리고 이것을 만드는 연구소들의 경쟁까지 한 층씩 내려간다. 소프트맥스가 무엇인지는 안다고 가정한다. 그 외에는 아무것도 가정하지 않는다.</span>
+  </p>
+
+  <p>
+    <span class="en">First, the word itself. &ldquo;Foundation model&rdquo; is Stanford&rsquo;s umbrella term for a large model trained on broad data and then adapted to many downstream tasks. Strip away the abstraction and, in mid-2026, it almost always means one concrete thing: a decoder-only transformer language model, usually multimodal, somewhere in the 10<sup>11</sup>&ndash;10<sup>12</sup> parameter range &mdash; or a sparse mixture with that many parameters in total but far fewer switched on per token. Around those weights sits a serving stack and a post-training recipe that matters every bit as much as the weights themselves. Think of it this way: the base weights are the engine, but the recipe is most of the car.</span>
+    <span class="ko">먼저 용어부터 짚자. &lsquo;파운데이션 모델(foundation model)&rsquo;은 스탠퍼드가 붙인 우산 같은 이름이다. 넓은 데이터로 한 번 크게 학습시킨 뒤 여러 하위 과제에 갖다 쓰는 대형 모델을 뭉뚱그려 부른 것이다. 추상을 걷어내면 2026년 중반 현재 이 말은 거의 언제나 한 가지 구체적인 물건을 가리킨다. 디코더 전용(decoder-only) 트랜스포머 언어 모델, 대개 멀티모달, 파라미터는 10<sup>11</sup>~10<sup>12</sup> 사이. 또는 총 파라미터는 그만큼이되 토큰 하나당 켜지는 건 훨씬 적은 희소 혼합 구조다. 이 가중치 둘레에 서빙 스택과 사후학습 레시피가 둘러싸는데, 이 레시피가 가중치 못지않게 중요하다. 비유하자면 기반 가중치는 엔진이고, 레시피가 자동차의 나머지 거의 전부다.</span>
+  </p>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">01 &middot; The Architecture</span><span class="ko">01 &middot; 아키텍처</span></span>
+  <h2>
+    <span class="en">A decoder-only transformer, properly</span>
+    <span class="ko">디코더 전용 트랜스포머, 제대로 들여다보기</span>
+  </h2>
+
+  <p>
+    <span class="en">Here is the whole thing in one breath before we slow down: the model turns your text into numbers, runs those numbers through the same block of math dozens of times, and reads off a probability for each possible next word. That is it. Everything that feels like intelligence is this loop, made very wide and run very many times. Now the detail. Text first has to become numbers, so it is split into <b>tokens</b> by a learned subword vocabulary &mdash; in practice byte-pair encoding (BPE) or a byte-level variant. BPE greedily merges the most frequent byte pairs until it has a vocabulary of, say, 100k&ndash;200k entries, so common words collapse to a single token while rare strings shatter into pieces. That is why token counts and character counts never quite line up &mdash; and why a Korean or code-heavy prompt usually burns more tokens than the same idea in English. Each token id then indexes into an <b>embedding</b> matrix and comes out as a vector of dimension <code>d_model</code>, a few thousand wide in frontier models.</span>
+    <span class="ko">본격적으로 들어가기 전에, 전체 그림을 한 문장으로 그려 보자. 모델은 당신이 친 글을 숫자로 바꾸고, 그 숫자를 똑같은 수학 블록에 수십 번 통과시킨 다음, 다음에 올 단어마다 확률을 매겨 읽어 낸다. 그게 전부다. 지능처럼 느껴지는 모든 것은 이 단순한 루프를 아주 넓게 펼쳐 아주 여러 번 돌린 결과일 뿐이다. 이제 한 단계씩 보자. 먼저 글이 숫자가 되어야 하니, 텍스트를 <b>토큰(token)</b>으로 쪼갠다. 학습된 서브워드(subword) 어휘를 쓰는데, 실무에서는 바이트 페어 인코딩(byte-pair encoding, BPE)이나 그 바이트 단위 변형이 표준이다. BPE는 가장 자주 붙어 나오는 바이트 쌍을 욕심껏 묶어 가며 10만~20만 개 남짓한 어휘를 만든다. 그래서 흔한 단어는 토큰 하나로 뭉쳐지고, 드문 문자열은 조각조각 흩어진다. 토큰 수와 글자 수가 영 맞아떨어지지 않는 이유가 여기 있다. 같은 말이라도 한국어나 코드가 많은 프롬프트가 영어보다 토큰을 더 잡아먹는 이유도 마찬가지다. 이렇게 만든 토큰 id는 <b>임베딩(embedding)</b> 행렬을 찾아 들어가 차원이 <code>d_model</code>인 벡터로 튀어나온다. 프런티어 모델에서 이 폭은 수천에 이른다.</span>
+  </p>
+
+  <p>
+    <span class="en">The body of the network is a stack of identical blocks. Each block has two sub-layers: <b>self-attention</b> and a position-wise <b>MLP</b> (feed-forward). The heart is attention. For each token we compute three projections of its vector: a query <b>Q</b>, a key <b>K</b>, and a value <b>V</b>. Attention scores are the scaled dot products <code>QK&#8868;/&radic;d_k</code>, passed through a <b>softmax</b> across the sequence to form weights, which mix the <b>V</b> vectors. Intuitively a token <i>reads</i> from every other token in proportion to query&ndash;key similarity. The <code>&radic;d_k</code> scaling keeps the logits from saturating the softmax as dimension grows.</span>
+    <span class="ko">신경망 본체는 똑같은 블록을 위로 쭉 쌓아 올린 구조다. 블록 하나는 두 부분으로 나뉜다. <b>셀프 어텐션(self-attention)</b>과, 토큰마다 따로 도는 <b>MLP</b>(피드포워드)다. 진짜 핵심은 어텐션이다. 한마디로 어텐션은 각 토큰이 다른 어떤 토큰에 집중할지 스스로 정하게 해 주는 장치다. 작동은 이렇다. 토큰 벡터마다 세 가지를 뽑는다. 무엇을 찾는지 나타내는 쿼리 <b>Q</b>, 자신을 광고하는 키 <b>K</b>, 실제로 건넬 내용인 값 <b>V</b>. 쿼리와 키를 내적해 <code>QK&#8868;/&radic;d_k</code>로 점수를 매기고, 이 점수를 시퀀스 전체에 <b>소프트맥스(softmax)</b>로 통과시켜 가중치로 바꾼 뒤, 그 비율대로 <b>V</b>들을 섞는다. 즉 한 토큰은 쿼리-키가 잘 맞는 토큰일수록 더 많이 <i>읽어 온다</i>. 여기서 <code>&radic;d_k</code>로 나누는 건, 차원이 커질수록 점수가 너무 벌어져 소프트맥스가 한쪽으로 쏠려 버리는 걸 막기 위해서다.</span>
+  </p>
+
+  <p>
+    <span class="en">Two refinements matter. First, <b>causal masking</b>: in a decoder, a token at position <i>t</i> may only attend to positions &le; <i>t</i>, enforced by setting future scores to &minus;&infin; before the softmax. This is what makes next-token prediction well-posed. Second, <b>multi-head attention</b>: rather than one attention map, the model runs <i>h</i> heads in parallel on lower-dimensional slices, letting different heads specialize (syntax, coreference, position) before their outputs are concatenated and projected. The MLP that follows is usually two linear layers with a GELU/SwiGLU nonlinearity and an inner width ~4&times; <code>d_model</code>; it holds much of the model&rsquo;s stored knowledge.</span>
+    <span class="ko">여기에 두 가지 손질이 더해진다. 첫째는 <b>인과 마스킹(causal masking)</b>이다. 디코더에서는 위치 <i>t</i>의 토큰이 자기보다 뒤, 즉 아직 나오지도 않은 미래 토큰을 훔쳐보면 안 된다. 그래서 소프트맥스를 먹이기 직전에 미래 쪽 점수를 &minus;&infin;로 깔아뭉갠다. 이 한 수 덕분에 &lsquo;다음 토큰 맞히기&rsquo;라는 문제가 비로소 말이 된다. 둘째는 <b>멀티헤드 어텐션(multi-head attention)</b>이다. 어텐션을 하나만 돌리는 대신, 벡터를 저차원 조각으로 쪼개 <i>h</i>개의 헤드를 동시에 굴린다. 그러면 어떤 헤드는 문법 관계를, 어떤 헤드는 대명사가 누구를 가리키는지를, 또 어떤 헤드는 위치를 맡는 식으로 역할이 갈린다. 마지막에 이들의 출력을 이어 붙여 한 번 더 투영하면 끝이다. 그 뒤에 오는 MLP는 GELU나 SwiGLU 비선형성을 낀 선형 계층 두 장인데, 내부 폭이 <code>d_model</code>의 약 네 배로 넓다. 모델이 외워 둔 지식은 사실 상당 부분이 바로 이 MLP 안에 들어 있다.</span>
+  </p>
+
+  <p>
+    <span class="en">Around each sub-layer sit a <b>residual connection</b> and <b>layer normalization</b> (today usually pre-norm RMSNorm), so the block computes <code>x + Sublayer(Norm(x))</code>. Residuals give gradients a clean path through dozens of layers; normalization keeps activations well-scaled. Attention itself is permutation-invariant, so position must be injected. Modern models favor <b>rotary position embeddings (RoPE)</b>, which rotate Q and K by an angle proportional to position, encoding <i>relative</i> distance directly in the dot product &mdash; and, crucially, extrapolating to longer contexts better than learned absolute embeddings.</span>
+    <span class="ko">두 하위 계층을 각각 감싸는 게 <b>잔차 연결(residual connection)</b>과 <b>레이어 정규화(layer normalization)</b>(요즘은 대개 프리노름 RMSNorm)다. 그래서 블록이 실제로 계산하는 건 <code>x + Sublayer(Norm(x))</code> 꼴이다. 잔차는 수십 층을 거치는 동안 그래디언트가 끊기지 않게 곧은 길을 터 주고, 정규화는 활성값이 너무 커지거나 작아지지 않게 스케일을 잡아 준다. 그런데 어텐션에는 한 가지 맹점이 있다. 토큰 순서를 바꿔도 결과가 똑같다. 순서를 모른다는 뜻이다. 그래서 위치 정보를 따로 넣어 줘야 한다. 요즘 모델이 즐겨 쓰는 방법은 <b>회전 위치 임베딩(rotary position embeddings, RoPE)</b>이다. Q와 K를 위치에 비례하는 각도만큼 빙 돌려 놓으면, 내적 안에 두 토큰 사이의 <i>상대적</i> 거리가 자연스럽게 박힌다. 핵심은 외삽(extrapolation)이다. 학습된 절대 위치 임베딩과 달리 RoPE는 학습 때 본 적 없는 더 긴 컨텍스트에도 비교적 잘 버틴다.</span>
+  </p>
+
+  <div class="callout">
+    <span class="tag"><span class="en">Technical note</span><span class="ko">기술 노트</span></span>
+    <p>
+      <span class="en">Here is the cost that shapes everything downstream. Because every token attends to every other, attention is <code>O(n&sup2;)</code> in sequence length <i>n</i>: double the context and you roughly quadruple both the attention compute and the activation memory. That single fact is why long context is expensive, and two engineering moves exist to fight it. <b>FlashAttention</b> computes attention in tiles small enough to fit in on-chip SRAM, so it never writes the full <code>n&times;n</code> matrix out to HBM &mdash; turning a memory-bound kernel into a faster, memory-linear one. The <b>KV cache</b> attacks a different waste: it stores the K and V of already-generated tokens so each new decode step costs <code>O(n)</code> instead of recomputing the whole prefix. The catch is that the cache itself grows linearly with context and becomes a dominant memory cost at long range &mdash; which is exactly why tricks like grouped-query attention, where several heads share one set of K/V, were invented.</span>
+      <span class="ko">이 뒤의 거의 모든 비용 이야기가 한 가지 사실에서 갈린다. 모든 토큰이 다른 모든 토큰을 참조하니, 어텐션 비용은 시퀀스 길이 <i>n</i>에 대해 <code>O(n&sup2;)</code>다. 길이가 두 배면 연산도 활성 메모리도 대략 네 배로 뛴다. 긴 컨텍스트가 비싼 진짜 이유가 바로 이거다. 그래서 이 비용을 깎으려는 두 가지 수가 자리를 잡았다. <b>FlashAttention</b>은 어텐션을 온칩 SRAM에 쏙 들어가는 작은 타일로 쪼개 계산한다. 그러면 거대한 <code>n&times;n</code> 행렬을 HBM에 통째로 써 둘 일이 없어지고, 메모리에 발목 잡히던 연산이 메모리에 선형이면서 더 빠른 연산으로 바뀐다. <b>KV 캐시(KV cache)</b>는 다른 낭비를 노린다. 이미 만들어 둔 토큰의 K와 V를 저장해 두면, 새 토큰을 뽑을 때마다 앞부분을 처음부터 다시 계산하지 않아도 되니 한 단계가 <code>O(n)</code>으로 떨어진다. 함정은 이 캐시가 컨텍스트에 비례해 자꾸 불어난다는 점이다. 컨텍스트가 길어지면 캐시 자체가 메모리를 가장 많이 잡아먹는 주범이 된다. 헤드 여럿이 K/V 한 벌을 나눠 쓰는 그룹 쿼리 어텐션(GQA) 같은 기법이 나온 것도 결국 이걸 막기 위해서다.</span>
+    </p>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Transformer decoder block">
+      <defs>
+        <marker id="ah" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 Z" fill="#c2410c"></path>
+        </marker>
+      </defs>
+      <text x="30" y="34" class="svg-title"><tspan class="en">Decoder block, repeated &times; N</tspan><tspan class="ko">디코더 블록, &times; N 반복</tspan></text>
+
+      <rect x="30" y="56" width="160" height="44" rx="9" class="svg-box"></rect>
+      <text x="110" y="76" text-anchor="middle" class="svg-label"><tspan class="en">Tokens (BPE)</tspan><tspan class="ko">토큰 (BPE)</tspan></text>
+      <text x="110" y="92" text-anchor="middle" class="svg-mono">"the","cat",...</text>
+
+      <line x1="190" y1="78" x2="244" y2="78" class="svg-arrow" marker-end="url(#ah)"></line>
+
+      <rect x="244" y="56" width="180" height="44" rx="9" class="svg-box"></rect>
+      <text x="334" y="76" text-anchor="middle" class="svg-label"><tspan class="en">Embedding + RoPE</tspan><tspan class="ko">임베딩 + RoPE</tspan></text>
+      <text x="334" y="92" text-anchor="middle" class="svg-sub"><tspan class="en">vectors, d_model</tspan><tspan class="ko">벡터, d_model</tspan></text>
+
+      <line x1="424" y1="78" x2="478" y2="78" class="svg-arrow" marker-end="url(#ah)"></line>
+      <line x1="334" y1="100" x2="334" y2="132" class="svg-arrow" marker-end="url(#ah)"></line>
+
+      <rect x="60" y="132" width="600" height="196" rx="14" fill="#fff" stroke="#e9c6b1" stroke-width="1.5" stroke-dasharray="5 4"></rect>
+
+      <rect x="92" y="158" width="240" height="70" rx="10" class="svg-box-accent"></rect>
+      <text x="212" y="184" text-anchor="middle" class="svg-label"><tspan class="en">Masked multi-head attention</tspan><tspan class="ko">마스킹 멀티헤드 어텐션</tspan></text>
+      <text x="212" y="204" text-anchor="middle" class="svg-mono">softmax(QK&#8868;/&radic;d_k)&middot;V</text>
+      <text x="212" y="220" text-anchor="middle" class="svg-sub"><tspan class="en">causal mask &middot; KV cache</tspan><tspan class="ko">인과 마스크 &middot; KV 캐시</tspan></text>
+
+      <line x1="332" y1="193" x2="388" y2="193" class="svg-arrow" marker-end="url(#ah)"></line>
+
+      <rect x="388" y="158" width="240" height="70" rx="10" class="svg-box"></rect>
+      <text x="508" y="184" text-anchor="middle" class="svg-label"><tspan class="en">MLP (SwiGLU)</tspan><tspan class="ko">MLP (SwiGLU)</tspan></text>
+      <text x="508" y="204" text-anchor="middle" class="svg-sub"><tspan class="en">inner width ~4&times; d_model</tspan><tspan class="ko">내부 폭 ~4&times; d_model</tspan></text>
+      <text x="508" y="220" text-anchor="middle" class="svg-sub"><tspan class="en">stores knowledge</tspan><tspan class="ko">지식 저장</tspan></text>
+
+      <text x="360" y="270" text-anchor="middle" class="svg-sub"><tspan class="en">each sub-layer: x + Sublayer(RMSNorm(x))  &mdash;  residual + pre-norm</tspan><tspan class="ko">각 하위 계층: x + Sublayer(RMSNorm(x))  &mdash;  잔차 + 프리노름</tspan></text>
+      <text x="360" y="300" text-anchor="middle" class="svg-sub"><tspan class="en">attention cost grows O(n&sup2;) in context length n</tspan><tspan class="ko">어텐션 비용은 길이 n이 늘면 O(n&sup2;)로 커진다</tspan></text>
+
+      <line x1="360" y1="328" x2="360" y2="362" class="svg-arrow" marker-end="url(#ah)"></line>
+
+      <rect x="250" y="362" width="220" height="44" rx="9" class="svg-box"></rect>
+      <text x="360" y="382" text-anchor="middle" class="svg-label"><tspan class="en">Logits &rarr; softmax</tspan><tspan class="ko">로짓 &rarr; 소프트맥스</tspan></text>
+      <text x="360" y="398" text-anchor="middle" class="svg-sub"><tspan class="en">P(next token | context)</tspan><tspan class="ko">P(다음 토큰 | 컨텍스트)</tspan></text>
+
+      <line x1="470" y1="384" x2="524" y2="384" class="svg-arrow" marker-end="url(#ah)"></line>
+      <rect x="524" y="362" width="166" height="44" rx="9" class="svg-box-accent"></rect>
+      <text x="607" y="388" text-anchor="middle" class="svg-label"><tspan class="en">Sampled token</tspan><tspan class="ko">샘플링된 토큰</tspan></text>
+
+      <text x="360" y="442" text-anchor="middle" class="svg-sub"><tspan class="en">Generation is autoregressive: append the sampled token, repeat.</tspan><tspan class="ko">생성은 자기회귀: 뽑은 토큰을 뒤에 붙이고 다시 반복</tspan></text>
+    </svg>
+    <figcaption>
+      <span class="en">Fig. 1 &mdash; One decoder block. The full model stacks N of these between the embedding and the output head.</span>
+      <span class="ko">그림 1 &mdash; 디코더 블록 하나. 전체 모델은 임베딩과 출력 헤드 사이에 이런 블록을 N개 쌓는다.</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    <span class="en">That is the whole forward pass: tokens &rarr; embeddings with positional info &rarr; <i>N</i> blocks of (attention, MLP) with residuals and norms &rarr; a final linear projection to vocabulary <b>logits</b> &rarr; softmax &rarr; a probability distribution over the next token. Sampling from that distribution (with temperature, top-p, etc.), appending the token, and repeating is autoregressive generation. Everything else &mdash; reasoning, tool use, &ldquo;personality&rdquo; &mdash; is built on top of this loop.</span>
+    <span class="ko">정리하면 순전파는 이게 전부다. 토큰을 받아 위치 정보를 입힌 임베딩으로 바꾸고, 잔차와 정규화를 두른 (어텐션 → MLP) 블록을 <i>N</i>번 통과시킨 다음, 마지막에 어휘 크기만 한 <b>로짓(logits)</b>으로 투영하고 소프트맥스를 먹이면 다음 토큰에 대한 확률 분포가 나온다. 여기서 (온도나 top-p 같은 손잡이를 돌려) 하나를 뽑아 뒤에 붙이고, 다시 처음으로 돌아가 반복하는 것이 바로 자기회귀(autoregressive) 생성이다. 추론이든 도구 사용이든 모델의 &lsquo;성격&rsquo;이든, 나머지는 전부 이 루프 위에 얹은 것에 지나지 않는다.</span>
+  </p>
+
+  <div class="pull">
+    <p>
+      <span class="en">The model is a next-token predictor. Everything that looks like thinking is what that objective, scaled and shaped, turns out to buy you.</span>
+      <span class="ko">모델의 정체는 다음 토큰 예측기 하나다. 사고처럼 보이는 모든 것은, 그 단순한 목표를 끝까지 키우고 다듬었을 때 덤으로 따라온 것이다.</span>
+    </p>
+  </div>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">02 &middot; Training</span><span class="ko">02 &middot; 학습</span></span>
+  <h2>
+    <span class="en">Pretraining, scaling laws, and the post-training stack</span>
+    <span class="ko">사전학습, 스케일링 법칙, 그리고 사후학습 스택</span>
+  </h2>
+
+  <p>
+    <span class="en">Training a frontier model happens in two acts with very different personalities. The first act makes the model <i>knowledgeable</i> but aimless; the second makes it <i>useful</i>. Almost every confusion about how these systems behave dissolves once you keep those two acts apart, so we will take them in order. Act one is <b>pretraining</b>, and it has exactly one objective: minimize cross-entropy on next-token prediction over a web-scale corpus &mdash; filtered Common Crawl, code, books, math, and a rising share of synthetic data. The loss is nothing more exotic than <code>&minus;log P(token | preceding tokens)</code>, averaged over trillions of tokens. There are no labels and no task; the next token <i>is</i> the supervision. The surprise is what falls out of this at scale: a model that has implicitly absorbed grammar, facts, translation, and a startling amount of reasoning &mdash; because to predict the next token <i>well</i> across the open web, you eventually have to learn all of it.</span>
+    <span class="ko">프런티어 모델의 학습은 성격이 전혀 다른 두 막으로 나뉜다. 첫 막은 모델을 <i>박식하지만 목적 없는</i> 상태로 만들고, 둘째 막은 그걸 <i>쓸모 있게</i> 길들인다. 이 둘을 머릿속에서 분리해 두면, 모델이 왜 그렇게 행동하는지에 대한 혼란이 거의 다 풀린다. 그러니 순서대로 가자. 첫 막은 <b>사전학습(pretraining)</b>이고, 목표는 딱 하나다. 웹 규모 코퍼스에서 다음 토큰 예측의 교차 엔트로피(cross-entropy)를 최소화하는 것. 데이터는 걸러 낸 Common Crawl, 코드, 책, 수학, 그리고 갈수록 비중이 커지는 합성 데이터다. 손실 함수도 거창할 게 없다. 수조 개 토큰에 대해 <code>&minus;log P(토큰 | 앞선 토큰들)</code>을 평균 낸 값이 전부다. 라벨도 과제도 없다. 다음 토큰 자체가 정답지 역할을 한다. 놀라운 건 규모를 키웠을 때 여기서 따라 나오는 것이다. 문법도, 사실도, 번역도, 심지어 제법 그럴듯한 추론까지 모델이 슬그머니 익힌다. 열린 웹에서 다음 토큰을 <i>제대로</i> 맞히려면, 결국 그 모든 걸 배울 수밖에 없기 때문이다.</span>
+  </p>
+
+  <p>
+    <span class="en">How big, on how much data? DeepMind&rsquo;s 2022 <b>Chinchilla</b> result reset the field: for a fixed compute budget, model size and training tokens should scale together, roughly <b>20 tokens per parameter</b> &mdash; meaning earlier giants like GPT-3 were badly undertrained on data. But the field has moved past compute-optimal training. Inference cost matters too: if you will serve a model billions of times, it is rational to &ldquo;overtrain&rdquo; a smaller model on far more tokens so it is cheaper to run. By 2025&ndash;2026, ratios of hundreds or thousands of tokens per parameter are common, and the binding constraint has shifted from compute to <b>high-quality data</b>. Labs respond with aggressive curation, multi-epoch training, <b>distillation</b> from larger teachers, and large volumes of <b>synthetic data</b> &mdash; which raises a real question about model-on-model feedback loops.</span>
+    <span class="ko">그렇다면 모델은 얼마나 키우고, 데이터는 얼마나 먹여야 하나? 이 질문의 기준을 다시 세운 게 딥마인드의 2022년 <b>친칠라(Chinchilla)</b> 결과다. 연산 예산이 정해져 있다면 모델 크기와 학습 토큰 수를 같이 늘려야 하고, 대략 <b>파라미터 하나당 20토큰</b>이 균형점이라는 결론이었다. 뒤집어 말하면 GPT-3 같은 초기 거대 모델은 덩치에 비해 데이터를 형편없이 적게 먹었다는 얘기다. 다만 지금은 이 &lsquo;연산 최적(compute-optimal)&rsquo; 기준마저 한물갔다. 학습 비용만 따질 게 아니라 추론 비용도 봐야 하기 때문이다. 어떤 모델을 앞으로 수십억 번 굴릴 거라면, 차라리 더 작은 모델에 토큰을 훨씬 많이 퍼부어 &lsquo;과하게 학습(overtrain)&rsquo;시키는 편이 낫다. 운영 단가가 내려가니까. 그래서 2025~2026년에는 파라미터당 수백, 수천 토큰을 먹이는 일이 예사가 됐고, 진짜 병목은 연산에서 <b>고품질 데이터</b>로 넘어갔다. 연구소들의 대응은 한결같다. 데이터를 빡세게 골라내고, 같은 데이터를 여러 번 돌리고, 더 큰 교사 모델에서 <b>증류(distillation)</b>로 짜내고, <b>합성 데이터(synthetic data)</b>를 대량으로 찍어 낸다. 그런데 여기엔 찜찜한 구석이 있다. 모델이 만든 데이터로 다시 모델을 가르치는 되먹임 고리가, 과연 끝없이 좋아질 수 있느냐는 물음이다.</span>
+  </p>
+
+  <p>
+    <span class="en">A pretrained base model is fluent but not useful: it completes text, it does not follow instructions or refuse harm. <b>Post-training</b> fixes this in stages. First, <b>supervised fine-tuning (SFT)</b>: continue training on curated (instruction, ideal-response) pairs so the model learns the assistant format. Then <b>preference optimization</b>, which is where the distinct mechanisms diverge.</span>
+    <span class="ko">여기까지가 첫 막이다. 그런데 사전학습만 끝낸 기반 모델은 말은 유창해도 정작 쓸모가 없다. 글을 그럴듯하게 이어 쓸 뿐, 지시를 따르지도 않고 위험한 요청을 거절하지도 않는다. 이걸 단계별로 손보는 게 둘째 막, <b>사후학습(post-training)</b>이다. 첫 단계는 <b>지도 미세조정(supervised fine-tuning, SFT)</b>이다. 잘 고른 (지시, 모범 응답) 쌍으로 학습을 더 돌려, 모델이 &lsquo;어시스턴트답게&rsquo; 답하는 형식을 몸에 익히게 한다. 그다음이 <b>선호 최적화(preference optimization)</b>인데, 바로 여기서 연구소마다 길이 갈린다.</span>
+  </p>
+
+  <ul>
+    <li><span class="en"><b>RLHF (reward model + PPO).</b> Humans rank pairs of responses; those rankings train a separate <b>reward model</b> that scores any response. The base model is then fine-tuned with reinforcement learning &mdash; typically PPO &mdash; to maximize that reward, with a KL penalty keeping it close to the SFT model. Powerful, but an online RL loop is unstable and expensive: you sample, score, and update continuously.</span>
+    <span class="ko"><b>RLHF (보상 모델 + PPO).</b> 사람이 두 응답을 보고 어느 쪽이 나은지 고른다. 이 선호 데이터로, 아무 응답에나 점수를 매겨 주는 <b>보상 모델(reward model)</b>을 따로 학습시킨다. 그런 다음 기반 모델을 강화학습으로(보통 PPO) 미세조정해 그 점수를 최대한 끌어올리되, KL 페널티를 걸어 SFT 모델에서 너무 멀리 도망가지 못하게 묶어 둔다. 효과는 강력하다. 다만 온라인 RL 루프라 불안정하고 비싸다. 샘플 뽑고, 채점하고, 갱신하는 일을 쉴 새 없이 반복해야 하기 때문이다.</span></li>
+    <li><span class="en"><b>DPO (direct preference optimization).</b> A 2023 reformulation that skips both the reward model and the RL loop. DPO derives a closed-form loss directly on the preference pairs, training the policy with a single supervised-style objective. It is simpler, more stable, and cheaper, and matches or beats PPO-RLHF in many settings &mdash; which is why DPO and its variants are now the default for much preference work.</span>
+    <span class="ko"><b>DPO (직접 선호 최적화).</b> 2023년에 나온 깔끔한 재정식화로, 보상 모델도 RL 루프도 통째로 건너뛴다. 비결은 선호 쌍에서 닫힌 형태의 손실을 곧장 유도해 낸 것이다. 덕분에 정책을 지도학습과 다를 바 없는 단일 목표로 학습할 수 있다. 더 단순하고, 더 안정적이고, 더 싸다. 게다가 많은 경우 PPO-RLHF에 뒤지지 않거나 오히려 낫다. DPO와 그 변형들이 어느새 선호 학습의 기본기가 된 이유다.</span></li>
+    <li><span class="en"><b>Constitutional AI / RLAIF.</b> Anthropic&rsquo;s approach replaces most human preference labels with <i>AI</i> feedback. The model critiques and revises its own responses against a written set of principles (a &ldquo;constitution&rdquo;), and those AI-generated preferences train the reward signal &mdash; reinforcement learning from AI feedback (RLAIF). It scales the alignment signal beyond what human labelers can produce and makes the values explicit and auditable rather than buried in opaque label sets.</span>
+    <span class="ko"><b>헌법적 AI(Constitutional AI) / RLAIF.</b> Anthropic은 인간이 매기던 선호 라벨을 대부분 <i>AI</i> 피드백으로 갈아 끼웠다. 모델이 명문화된 원칙 묶음(이른바 &lsquo;헌법&rsquo;)에 자기 응답을 비춰 보며 스스로 비판하고 고쳐 쓴다. 그렇게 만들어진 AI의 선호가 보상 신호가 된다. 이게 바로 AI 피드백 기반 강화학습(RLAIF)이다. 장점은 둘이다. 하나는 사람이 손으로 달 수 있는 양을 한참 넘어 정렬 신호를 불릴 수 있다는 것, 다른 하나는 모델이 따를 가치 기준을 불투명한 라벨 더미에 묻어 두는 대신 글로 적어 두어 누구나 들여다보고 따질 수 있게 만든다는 것이다.</span></li>
+  </ul>
+
+  <p>
+    <span class="en">The 2025&ndash;2026 shift on top of all this is <b>reasoning via reinforcement learning on verifiable rewards</b>. On tasks with a checkable answer &mdash; math, competitive programming, unit-tested code &mdash; you do not need a human or a learned reward model; the environment <i>is</i> the reward. OpenAI&rsquo;s o-series and DeepSeek&rsquo;s R1 trained models to emit long chains of thought and rewarded correct final answers. DeepSeek-R1-Zero notably used pure RL (the GRPO algorithm, which scores responses relative to a sampled group rather than a separate critic) with no SFT warm-up, and reasoning behaviors &mdash; self-checking, backtracking, decomposition &mdash; <i>emerged</i>. This is why &ldquo;thinking&rdquo; models spend many hidden tokens before answering, and why they are both more capable on hard problems and more expensive per query.</span>
+    <span class="ko">그리고 이 모든 단계 위에 2025~2026년의 진짜 변곡점이 얹혔다. <b>검증 가능한 보상(verifiable rewards)으로 추론을 강화학습하기</b>다. 발상은 의외로 단순하다. 정답을 기계가 바로 확인할 수 있는 과제, 그러니까 수학, 프로그래밍 대회, 단위 테스트가 딸린 코드 같은 데서는 사람도 학습된 보상 모델도 필요 없다. 환경이 곧 채점관이다. OpenAI의 o 시리즈와 DeepSeek의 R1은 모델이 긴 사고 사슬(chain of thought)을 풀어 놓게 한 뒤, 최종 답이 맞으면 보상을 줬다. 특히 DeepSeek-R1-Zero는 SFT 준비 운동조차 없이 순수 강화학습만 돌렸다. 별도 비평가 없이 한 번에 여러 답을 뽑아 그들끼리 상대 점수를 매기는 GRPO 알고리즘을 쓴 것이다. 그런데 놀랍게도 시키지도 않은 행동이 저절로 <i>튀어나왔다</i>. 답을 스스로 검산하고, 막히면 되돌아가고, 문제를 잘게 쪼개는 식이다. &lsquo;사고하는&rsquo; 모델이 답을 내놓기 전에 보이지 않는 토큰을 한참 쏟아 내는 이유가 여기 있다. 어려운 문제에 부쩍 강해진 대가로 질의 한 번이 더 비싸진 이유이기도 하다.</span>
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Training pipeline">
+      <defs>
+        <marker id="ah2" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 Z" fill="#c2410c"></path>
+        </marker>
+      </defs>
+      <text x="30" y="34" class="svg-title"><tspan class="en">From raw weights to a deployable assistant</tspan><tspan class="ko">원시 가중치에서 배포 가능한 어시스턴트까지</tspan></text>
+
+      <rect x="30" y="58" width="200" height="74" rx="11" class="svg-box"></rect>
+      <text x="130" y="84" text-anchor="middle" class="svg-label"><tspan class="en">Pretraining</tspan><tspan class="ko">사전학습</tspan></text>
+      <text x="130" y="104" text-anchor="middle" class="svg-sub"><tspan class="en">objective: next-token CE</tspan><tspan class="ko">목적: 다음 토큰 교차엔트로피</tspan></text>
+      <text x="130" y="120" text-anchor="middle" class="svg-sub"><tspan class="en">web-scale corpus</tspan><tspan class="ko">웹 규모 코퍼스</tspan></text>
+
+      <line x1="230" y1="95" x2="284" y2="95" class="svg-arrow" marker-end="url(#ah2)"></line>
+
+      <rect x="284" y="58" width="160" height="74" rx="11" class="svg-box"></rect>
+      <text x="364" y="84" text-anchor="middle" class="svg-label"><tspan class="en">SFT</tspan><tspan class="ko">SFT</tspan></text>
+      <text x="364" y="104" text-anchor="middle" class="svg-sub"><tspan class="en">supervised fine-tune</tspan><tspan class="ko">지도 미세조정</tspan></text>
+      <text x="364" y="120" text-anchor="middle" class="svg-sub"><tspan class="en">(instruction, response)</tspan><tspan class="ko">(지시, 응답)</tspan></text>
+
+      <line x1="444" y1="95" x2="498" y2="95" class="svg-arrow" marker-end="url(#ah2)"></line>
+
+      <rect x="498" y="58" width="192" height="74" rx="11" class="svg-box-accent"></rect>
+      <text x="594" y="80" text-anchor="middle" class="svg-label"><tspan class="en">Preference opt.</tspan><tspan class="ko">선호 최적화</tspan></text>
+      <text x="594" y="100" text-anchor="middle" class="svg-sub"><tspan class="en">RLHF (reward+PPO) / DPO</tspan><tspan class="ko">RLHF(보상+PPO) / DPO</tspan></text>
+      <text x="594" y="116" text-anchor="middle" class="svg-sub"><tspan class="en">Constitutional AI / RLAIF</tspan><tspan class="ko">헌법적 AI / RLAIF</tspan></text>
+
+      <line x1="594" y1="132" x2="594" y2="172" class="svg-arrow" marker-end="url(#ah2)"></line>
+
+      <rect x="420" y="172" width="270" height="74" rx="11" class="svg-box-accent"></rect>
+      <text x="555" y="196" text-anchor="middle" class="svg-label"><tspan class="en">RL on verifiable rewards</tspan><tspan class="ko">검증 가능한 보상 RL</tspan></text>
+      <text x="555" y="216" text-anchor="middle" class="svg-sub"><tspan class="en">math / code / unit tests</tspan><tspan class="ko">수학 / 코드 / 단위 테스트</tspan></text>
+      <text x="555" y="232" text-anchor="middle" class="svg-sub"><tspan class="en">o-series, R1-style reasoning</tspan><tspan class="ko">o 시리즈, R1 방식 추론</tspan></text>
+
+      <line x1="420" y1="209" x2="350" y2="209" class="svg-arrow" marker-end="url(#ah2)"></line>
+
+      <rect x="120" y="172" width="230" height="74" rx="11" class="svg-box"></rect>
+      <text x="235" y="200" text-anchor="middle" class="svg-label"><tspan class="en">Deployed model</tspan><tspan class="ko">배포 모델</tspan></text>
+      <text x="235" y="220" text-anchor="middle" class="svg-sub"><tspan class="en">aligned, instructable, reasons</tspan><tspan class="ko">정렬됨, 지시 가능, 추론</tspan></text>
+
+      <text x="360" y="300" text-anchor="middle" class="svg-sub"><tspan class="en">Base capability comes from pretraining; behavior, safety and reasoning come from post-training.</tspan><tspan class="ko">기본 역량은 사전학습이, 행동·안전·추론은 사후학습이 만든다</tspan></text>
+      <text x="360" y="326" text-anchor="middle" class="svg-sub"><tspan class="en">The RL-on-verifiable-rewards stage is the 2025&ndash;2026 step-change.</tspan><tspan class="ko">검증 가능한 보상 RL이 2025~2026년의 변곡점</tspan></text>
+    </svg>
+    <figcaption>
+      <span class="en">Fig. 2 &mdash; The training pipeline and its objectives. Each lab&rsquo;s recipe differs in the preference stage.</span>
+      <span class="ko">그림 2 &mdash; 학습 파이프라인과 목적함수. 선호 단계 레시피는 연구소마다 갈린다.</span>
+    </figcaption>
+  </figure>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">03 &middot; Efficiency &amp; Economics</span><span class="ko">03 &middot; 효율과 경제성</span></span>
+  <h2>
+    <span class="en">MoE, quantization, and the cost of a token</span>
+    <span class="ko">MoE, 양자화, 그리고 토큰 하나의 비용</span>
+  </h2>
+
+  <p>
+    <span class="en">By now you can see the bind every lab is in: bigger models are smarter but cost more to run, and someone has to pay for every token. This section is about the three tricks that break that link &mdash; ways to keep most of the quality while paying a fraction of the price. The first is the cleverest. A <b>dense</b> model fires every parameter for every token, which is wasteful: most of the network has nothing to say about most tokens. A <b>mixture-of-experts (MoE)</b> model instead chops the MLP into many &ldquo;expert&rdquo; sub-networks and trains a small router to send each token to just a few of them. The payoff is dramatic: a model can hold 600B parameters in total yet light up only ~37B for any given token &mdash; near-dense quality at a sliver of the FLOPs. That is precisely why most frontier open-weight models (DeepSeek, several Qwen and Mistral models) are sparse MoEs. The bill comes due as routing complexity and memory, since every expert still has to sit resident in VRAM whether it fires or not.</span>
+    <span class="ko">여기까지 오면 모든 연구소가 처한 딜레마가 보인다. 모델이 클수록 똑똑하지만 굴리는 값도 비싸고, 토큰 하나하나에 누군가는 돈을 낸다. 이 장은 그 고리를 끊는 세 가지 수법에 관한 이야기다. 품질은 거의 그대로 두면서 비용만 확 깎는 방법들이다. 첫 번째가 가장 영리하다. <b>밀집(dense)</b> 모델은 토큰 하나를 처리할 때마다 모든 파라미터를 다 켠다. 낭비다. 사실 대부분의 토큰에 대해 신경망 대부분은 할 말이 없기 때문이다. <b>전문가 혼합(mixture-of-experts, MoE)</b>은 발상을 뒤집는다. MLP를 여러 &lsquo;전문가&rsquo; 하위 망으로 쪼개 놓고, 작은 라우터(router)를 학습시켜 토큰마다 그중 몇 개에게만 보낸다. 효과는 극적이다. 총 파라미터는 600B인데 토큰 하나당 켜지는 건 ~37B뿐이다. 밀집에 거의 맞먹는 품질을 연산의 한 줌으로 뽑아내는 셈이다. 요즘 프런티어 오픈 웨이트 모델(DeepSeek, 여러 Qwen과 Mistral 모델)이 죄다 희소 MoE인 게 우연이 아니다. 대신 청구서는 두 군데서 날아온다. 라우팅이 복잡해지고, 켜지든 말든 모든 전문가가 메모리에 늘 올라가 있어야 한다는 점이다.</span>
+  </p>
+
+  <p>
+    <span class="en">Two more levers. <b>Quantization</b> stores and computes weights (and sometimes activations) at int8 or int4 instead of bf16, cutting memory and bandwidth 2&ndash;4&times; with modest quality loss when done carefully &mdash; it is how 70B-class models run on a single GPU and how serving costs fall. <b>Distillation</b> trains a small &ldquo;student&rdquo; to match a large &ldquo;teacher&rsquo;s&rdquo; output distribution, packing much of the capability into a far cheaper model; most of the small, fast models you actually use are distilled.</span>
+    <span class="ko">레버는 둘 더 있다. <b>양자화(quantization)</b>는 숫자의 정밀도를 낮춘다. 가중치를(때로는 활성값까지) bf16 대신 int8이나 int4로 저장하고 계산하는 것이다. 잘만 하면 품질은 거의 그대로인 채 메모리와 대역폭이 2~4배 줄어든다. 70B급 모델이 GPU 한 장에 들어가고 서빙 단가가 뚝 떨어지는 게 바로 이 덕이다. <b>증류(distillation)</b>는 결이 다르다. 작은 &lsquo;학생&rsquo; 모델에게 큰 &lsquo;교사&rsquo; 모델의 출력 분포를 그대로 흉내 내도록 시켜, 큰 모델 역량의 상당 부분을 훨씬 싼 모델에 옮겨 담는다. 사실 당신이 일상에서 쓰는 작고 빠른 모델은 대부분 이렇게 증류된 것이다.</span>
+  </p>
+
+  <div class="callout">
+    <span class="tag"><span class="en">Technical note</span><span class="ko">기술 노트</span></span>
+    <p>
+      <span class="en">Inference has two distinct phases with different cost profiles. <b>Prefill</b> processes the whole prompt in parallel &mdash; compute-bound, fast per token. <b>Decode</b> generates output one token at a time, each step reading the entire KV cache &mdash; memory-bandwidth-bound, and the reason output tokens are priced higher than input. Providers batch many requests to amortize weight loads, which is why throughput and latency trade off. This is also why <b>reasoning</b> models and <b>long context</b> are expensive: hidden reasoning tokens are billed output tokens, and long context inflates both the KV cache and (quadratically) attention. When you see &ldquo;$X per million tokens,&rdquo; remember a reasoning query can silently emit 10&ndash;50&times; the visible answer.</span>
+      <span class="ko">추론은 비용 성격이 전혀 다른 두 단계로 갈린다. <b>프리필(prefill)</b>은 프롬프트 전체를 한꺼번에 병렬로 처리한다. 연산에 발목 잡히는 구간이라 토큰당으로 보면 빠르다. <b>디코드(decode)</b>는 반대다. 출력을 한 토큰씩 차례로 뽑는데, 매 단계마다 KV 캐시 전체를 다시 읽어야 한다. 메모리 대역폭이 병목인 구간이고, 출력 토큰이 입력 토큰보다 비싼 이유가 바로 이것이다. 게다가 제공자들은 가중치를 한 번 올려 여러 요청에 나눠 쓰려고 요청을 묶어서(batching) 처리한다. 그래서 처리량을 올리면 지연이 늘고, 지연을 줄이면 처리량이 깎이는 줄다리기가 생긴다. <b>추론</b> 모델과 <b>긴 컨텍스트</b>가 비싼 까닭도 결국 여기로 모인다. 모델이 속으로 굴린 추론 토큰은 보이진 않아도 전부 출력 토큰으로 과금되고, 긴 컨텍스트는 KV 캐시와 (제곱으로 불어나는) 어텐션을 동시에 부풀린다. &lsquo;100만 토큰당 $X&rsquo;라는 표를 볼 때 꼭 기억하자. 추론 질의 한 번은 화면에 보이는 답의 10~50배를 조용히 토해 낼 수 있다.</span>
+    </p>
+  </div>
+
+  <p>
+    <span class="en">The economic story of 2025&ndash;2026 is open-weight cost pressure. When DeepSeek shipped frontier-adjacent quality at a reported training cost and an API price far below the incumbents (on the order of $0.14&ndash;$0.55 per million input tokens versus several dollars for closed flagships), it compressed the price umbrella the closed labs operated under. Open weights mean anyone can host, distill, and undercut; the moat shifts from the weights themselves toward distribution, tooling, reliability, and the post-training recipe.</span>
+    <span class="ko">2025~2026년 경제 이야기의 큰 줄기는 오픈 웨이트가 가하는 가격 압박이다. DeepSeek이 프런티어에 바짝 다가선 품질을, 알려진 학습 비용도 API 가격도 기존 업체보다 한참 낮게(100만 입력 토큰당 $0.14~$0.55 수준, 폐쇄형 플래그십이 수 달러인 것과 견주면 한 자릿수 분의 일) 던지자, 폐쇄형 연구소들이 받쳐 두던 가격대가 통째로 주저앉았다. 가중치가 공개되면 누구든 직접 호스팅하고, 증류해 가져가고, 값을 후려칠 수 있다. 그러면 해자(moat)는 가중치 자체에서 빠져나와 유통, 도구, 신뢰성, 그리고 사후학습 레시피 쪽으로 옮겨 간다.</span>
+  </p>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">04 &middot; Retrieval</span><span class="ko">04 &middot; 검색</span></span>
+  <h2>
+    <span class="en">RAG, at engineering depth</span>
+    <span class="ko">RAG, 엔지니어링 깊이로</span>
+  </h2>
+
+  <p>
+    <span class="en">A model knows two things and nothing else: whatever was baked into its weights during training, and whatever you put in the prompt. Ask it about your company&rsquo;s wiki or last night&rsquo;s news and it has no choice but to guess &mdash; and a fluent guess is exactly what a hallucination is. <b>Retrieval-augmented generation (RAG)</b> closes that gap with an old idea: before answering, go look it up. Fetch the relevant documents at query time, drop them into the prompt, and let the model answer from evidence on the table instead of from memory. So bolting RAG onto a model visibly cuts down the answers it simply makes up. The original paper (Lewis et al., 2020) has since grown into a whole engineering discipline &mdash; and the unintuitive lesson of that discipline is that a RAG system&rsquo;s quality lives almost entirely in the retrieval, not the generation.</span>
+    <span class="ko">모델이 아는 것은 딱 두 가지뿐이다. 학습 때 가중치에 새겨진 것, 그리고 지금 프롬프트에 적어 준 것. 그래서 사내 위키나 어젯밤 뉴스를 물으면 모델은 별수 없이 지어낸다. 그럴듯하게 지어낸 그 답이 바로 환각(hallucination)이다. <b>검색 증강 생성(retrieval-augmented generation, RAG)</b>은 아주 오래된 처방으로 이 구멍을 메운다. 답하기 전에 일단 찾아보라는 것이다. 질의가 들어오면 관련 문서를 그 자리에서 끌어와 프롬프트에 넣어 주고, 모델이 기억이 아니라 눈앞에 펼쳐진 근거를 보고 답하게 한다. 그래서 RAG를 끼우면 모델이 멋대로 지어내는 답이 눈에 띄게 줄어든다. 2020년 원 논문(Lewis 외)에서 출발한 이 아이디어는 어느새 하나의 엔지니어링 분야로 자랐다. 그리고 그 분야가 가르쳐 준 의외의 교훈은 이렇다. RAG의 품질은 답을 쓰는 단계가 아니라 거의 전적으로 잘 찾아오는 단계에서 갈린다.</span>
+  </p>
+
+  <p>
+    <span class="en">The pipeline, concretely. (1) <b>Chunking</b>: split documents into passages &mdash; fixed-size with overlap, or semantic/structural splits &mdash; because retrieval granularity caps answer quality. (2) <b>Embedding</b>: encode each chunk with an embedding model into a dense vector; store in a <b>vector database</b>. (3) <b>Retrieval</b>: embed the query and find nearest neighbors. Exact nearest-neighbor over millions of vectors is too slow, so we use <b>approximate nearest neighbor (ANN)</b> indexes &mdash; <b>HNSW</b> (a navigable small-world graph you greedily descend) is the workhorse, trading a little recall for huge speed. (4) <b>Hybrid retrieval</b>: combine dense (semantic) search with sparse lexical <b>BM25</b>, because dense embeddings miss exact terms, codes, and rare names that keyword search nails. (5) <b>Reranking</b>: take the top ~50 candidates and rescore them with a <b>cross-encoder</b> that reads query and passage <i>together</i> &mdash; far more accurate than the bi-encoder used for first-stage retrieval, but too slow to run over the whole corpus. (6) <b>Context assembly</b>: pack the top passages into the prompt with instructions to cite, and the model produces a grounded answer with citations.</span>
+    <span class="ko">파이프라인을 한 단계씩 뜯어보자. (1) <b>청킹(chunking)</b>: 문서를 구절 단위로 자른다. 겹침을 둔 고정 길이로 자르기도 하고, 의미나 구조를 따라 자르기도 한다. 어떻게 자르느냐가 검색 단위를 정하고, 그 단위가 곧 답 품질의 천장이 되기 때문이다. (2) <b>임베딩</b>: 각 청크를 임베딩 모델에 통과시켜 밀집 벡터로 바꾼 뒤 <b>벡터 데이터베이스</b>에 쌓아 둔다. (3) <b>검색</b>: 질의도 같은 방식으로 임베딩해 가장 가까운 이웃을 찾는다. 다만 수백만 개 벡터에서 정확한 최근접 이웃을 일일이 따지면 너무 느리다. 그래서 <b>근사 최근접 이웃(approximate nearest neighbor, ANN)</b> 인덱스를 쓴다. 주력은 그래프를 욕심껏 타고 내려가는 <b>HNSW</b>로, 재현율을 살짝 양보하는 대신 속도를 크게 번다. (4) <b>하이브리드 검색</b>: 의미를 보는 밀집 검색에, 어휘를 그대로 맞추는 <b>BM25</b>를 겹친다. 밀집 임베딩은 정확한 용어나 코드, 드문 고유명사를 곧잘 놓치는데, 그런 건 오히려 키워드 검색이 정확히 집어내기 때문이다. (5) <b>리랭킹(reranking)</b>: 1차로 추린 상위 ~50개 후보를, 질의와 구절을 <i>한꺼번에</i> 읽는 <b>교차 인코더(cross-encoder)</b>로 다시 점수 매긴다. 1차 검색에 쓰는 바이 인코더보다 훨씬 정확하지만, 그만큼 느려서 코퍼스 전체에 돌릴 수는 없다. 그래서 후보를 좁힌 뒤에만 투입한다. (6) <b>컨텍스트 조립</b>: 최종으로 추린 구절들을 &lsquo;출처를 인용하라&rsquo;는 지시와 함께 프롬프트에 채워 넣는다. 그러면 모델이 인용이 달린, 근거 있는 답을 내놓는다.</span>
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RAG pipeline">
+      <defs>
+        <marker id="ah3" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 Z" fill="#c2410c"></path>
+        </marker>
+      </defs>
+      <text x="30" y="32" class="svg-title"><tspan class="en">Retrieval-augmented generation</tspan><tspan class="ko">검색 증강 생성 (RAG)</tspan></text>
+
+      <rect x="24" y="54" width="118" height="58" rx="10" class="svg-box"></rect>
+      <text x="83" y="80" text-anchor="middle" class="svg-label"><tspan class="en">Query</tspan><tspan class="ko">질의</tspan></text>
+      <text x="83" y="98" text-anchor="middle" class="svg-sub"><tspan class="en">user question</tspan><tspan class="ko">사용자 질문</tspan></text>
+
+      <line x1="142" y1="83" x2="190" y2="83" class="svg-arrow" marker-end="url(#ah3)"></line>
+
+      <rect x="190" y="54" width="120" height="58" rx="10" class="svg-box"></rect>
+      <text x="250" y="80" text-anchor="middle" class="svg-label"><tspan class="en">Embed</tspan><tspan class="ko">임베딩</tspan></text>
+      <text x="250" y="98" text-anchor="middle" class="svg-sub"><tspan class="en">query &rarr; vector</tspan><tspan class="ko">질의 &rarr; 벡터</tspan></text>
+
+      <line x1="310" y1="83" x2="358" y2="83" class="svg-arrow" marker-end="url(#ah3)"></line>
+
+      <rect x="358" y="42" width="160" height="82" rx="10" class="svg-box-accent"></rect>
+      <text x="438" y="66" text-anchor="middle" class="svg-label"><tspan class="en">Hybrid retrieval</tspan><tspan class="ko">하이브리드 검색</tspan></text>
+      <text x="438" y="86" text-anchor="middle" class="svg-sub"><tspan class="en">ANN / HNSW (dense)</tspan><tspan class="ko">ANN / HNSW (밀집)</tspan></text>
+      <text x="438" y="102" text-anchor="middle" class="svg-sub"><tspan class="en">+ BM25 (lexical)</tspan><tspan class="ko">+ BM25 (어휘)</tspan></text>
+      <text x="438" y="117" text-anchor="middle" class="svg-sub"><tspan class="en">over vector DB</tspan><tspan class="ko">벡터 DB 상에서</tspan></text>
+
+      <line x1="518" y1="83" x2="566" y2="83" class="svg-arrow" marker-end="url(#ah3)"></line>
+
+      <rect x="566" y="54" width="130" height="58" rx="10" class="svg-box"></rect>
+      <text x="631" y="80" text-anchor="middle" class="svg-label"><tspan class="en">Rerank</tspan><tspan class="ko">리랭크</tspan></text>
+      <text x="631" y="98" text-anchor="middle" class="svg-sub"><tspan class="en">cross-encoder</tspan><tspan class="ko">교차 인코더</tspan></text>
+
+      <line x1="631" y1="112" x2="631" y2="150" class="svg-arrow" marker-end="url(#ah3)"></line>
+
+      <rect x="430" y="150" width="266" height="62" rx="10" class="svg-box"></rect>
+      <text x="563" y="176" text-anchor="middle" class="svg-label"><tspan class="en">Context window assembly</tspan><tspan class="ko">컨텍스트 창 조립</tspan></text>
+      <text x="563" y="196" text-anchor="middle" class="svg-sub"><tspan class="en">top passages + instructions to cite</tspan><tspan class="ko">상위 구절 + 인용 지시</tspan></text>
+
+      <line x1="430" y1="181" x2="382" y2="181" class="svg-arrow" marker-end="url(#ah3)"></line>
+
+      <rect x="222" y="150" width="160" height="62" rx="10" class="svg-box-accent"></rect>
+      <text x="302" y="178" text-anchor="middle" class="svg-label"><tspan class="en">LLM</tspan><tspan class="ko">LLM</tspan></text>
+      <text x="302" y="196" text-anchor="middle" class="svg-sub"><tspan class="en">grounds on context</tspan><tspan class="ko">컨텍스트에 근거</tspan></text>
+
+      <line x1="302" y1="212" x2="302" y2="248" class="svg-arrow" marker-end="url(#ah3)"></line>
+
+      <rect x="180" y="248" width="244" height="52" rx="10" class="svg-box"></rect>
+      <text x="302" y="270" text-anchor="middle" class="svg-label"><tspan class="en">Grounded answer + citations</tspan><tspan class="ko">근거 있는 답 + 인용</tspan></text>
+      <text x="302" y="288" text-anchor="middle" class="svg-sub"><tspan class="en">traceable to source passages</tspan><tspan class="ko">출처 구절까지 되짚을 수 있음</tspan></text>
+    </svg>
+    <figcaption>
+      <span class="en">Fig. 3 &mdash; A production RAG pipeline. First-stage retrieval favors recall; reranking restores precision before the model sees anything.</span>
+      <span class="ko">그림 3 &mdash; 실전 RAG 파이프라인. 1차 검색은 재현율을 챙기고, 리랭킹은 모델에 넘기기 전 정밀도를 되살린다.</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    <span class="en">Failure modes are specific and worth naming: retrieval misses (the answer was there but not fetched), distractor passages that mislead the model, &ldquo;lost in the middle&rdquo; degradation where relevant context buried mid-prompt is under-attended, and confident grounding on a retrieved-but-wrong passage. Evaluation therefore needs two axes &mdash; retrieval metrics (recall@k, MRR, nDCG) <i>and</i> answer metrics (faithfulness to the retrieved context, not just correctness). A fluent answer over bad retrieval is the most dangerous outcome, because it looks right.</span>
+    <span class="ko">실패하는 방식도 제각각 이름을 붙여 둘 만큼 구체적이다. 답이 분명히 있었는데도 못 끌어오는 검색 누락, 엉뚱한 구절이 섞여 들어 모델을 헷갈리게 하는 경우, 프롬프트 한가운데 묻힌 정작 중요한 내용이 덜 주목받는 &lsquo;중간에서 길을 잃는(lost in the middle)&rsquo; 현상, 그리고 가져오긴 했으나 틀린 구절을 붙들고 모델이 당당하게 답하는 경우. 그래서 평가는 두 축으로 봐야 한다. 잘 찾아왔는지 보는 검색 지표(recall@k, MRR, nDCG)와, 찾아온 근거에 충실하게 답했는지 보는 답변 지표다. 답변 쪽은 단순히 정답이냐가 아니라 주어진 근거를 벗어나지 않았느냐를 본다. 가장 위험한 결말은 따로 있다. 엉터리로 검색해 온 위에 유창한 답이 얹히는 것이다. 겉보기엔 그럴듯해서 틀린 줄도 모르고 넘어가기 때문이다.</span>
+  </p>
+
+  <div class="callout">
+    <span class="tag"><span class="en">Technical note</span><span class="ko">기술 노트</span></span>
+    <p>
+      <span class="en">RAG, long context, and fine-tuning are different tools, not competitors. <b>RAG</b> injects fresh, attributable knowledge and scales to huge corpora &mdash; use it when facts change or must be cited. <b>Long context</b> (now 1M+ tokens on several frontier models) lets you stuff a whole codebase or book in directly &mdash; simpler, but pays the O(n&sup2;) and KV-cache cost on every call and still can&rsquo;t hold a 100M-document corpus. <b>Fine-tuning</b> changes the weights &mdash; best for teaching style, format, or a skill, but poor for facts and expensive to keep current. Most serious systems combine RAG for knowledge with light fine-tuning for behavior.</span>
+      <span class="ko">RAG와 긴 컨텍스트, 미세조정은 서로 경쟁하는 기술이 아니다. 쓰임이 다른 별개의 도구다. <b>RAG</b>는 최신이고 출처를 댈 수 있는 지식을 그때그때 밀어 넣고, 코퍼스가 아무리 커도 감당한다. 사실이 자주 바뀌거나 근거를 인용해야 할 때 제격이다. <b>긴 컨텍스트</b>(이제 여러 프런티어 모델이 100만 토큰을 넘긴다)는 코드베이스나 책 한 권을 통째로 욱여넣게 해 준다. 훨씬 간단하지만, 호출할 때마다 O(n&sup2;)와 KV 캐시 비용을 그대로 문다. 게다가 1억 건짜리 문서 더미는 여전히 담지 못한다. <b>미세조정</b>은 아예 가중치를 손본다. 말투나 형식, 특정 기술을 가르치기엔 최고지만, 사실 지식을 넣기엔 약하고 최신 상태로 유지하려면 돈이 많이 든다. 그래서 제대로 만든 시스템은 대개 지식은 RAG로, 행동은 가벼운 미세조정으로 나눠 맡긴다.</span>
+    </p>
+  </div>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">05 &middot; Agents</span><span class="ko">05 &middot; 에이전트</span></span>
+  <h2>
+    <span class="en">Tool calling, ReAct loops, and MCP</span>
+    <span class="ko">도구 호출, ReAct 루프, 그리고 MCP</span>
+  </h2>
+
+  <p>
+    <span class="en">Everything so far has been a model that reads a prompt and writes a reply &mdash; one shot, no contact with the world. An <b>agent</b> is what you get when you put that same model in a loop and let it <i>do</i> things between thoughts: act, see what happened, and decide what to do next. The plumbing underneath is <b>tool / function calling</b>. You hand the model schemas for the functions it may use &mdash; search the web, run code, query a database, hit an API &mdash; and instead of prose it emits a structured call; a runtime executes that call and feeds the result back into the context. Wire that into a loop and you get the classic <b>ReAct</b> pattern: the model interleaves <i>reasoning</i> with <i>actions</i>, so it thinks, calls a tool, reads the observation, thinks again, and only then answers. More ambitious setups layer on explicit <b>planning</b> &mdash; break the goal into steps first &mdash; and orchestrate several tools and sub-agents across many turns.</span>
+    <span class="ko">여기까지는 프롬프트를 읽고 답을 쓰는 모델이었다. 한 번 주고받으면 끝이고, 바깥세상과는 닿지 않는다. <b>에이전트(agent)</b>는 바로 그 모델을 루프에 가두고, 생각과 생각 사이에 실제로 무언가를 <i>하게</i> 풀어 줄 때 생긴다. 행동하고, 무슨 일이 벌어졌는지 보고, 다음 수를 정하는 식이다. 이걸 받치는 배관이 <b>도구/함수 호출(tool / function calling)</b>이다. 모델에게 쓸 수 있는 함수의 스키마를 쥐여 준다. 웹 검색, 코드 실행, DB 질의, API 호출 같은 것들이다. 그러면 모델은 산문 대신 구조화된 호출을 뱉고, 런타임이 그걸 실행해 결과를 다시 컨텍스트로 돌려준다. 이 과정을 루프로 엮으면 고전적인 <b>ReAct</b> 패턴이 된다. <i>추론</i>과 <i>행동</i>을 번갈아 가는 것이다. 모델이 한 번 생각하고, 도구를 부르고, 돌아온 관찰을 읽고, 다시 생각하다, 그제야 답을 내놓는다. 더 욕심을 낸 구성은 여기에 명시적 <b>계획(planning)</b>을 얹는다. 목표를 먼저 단계로 쪼개 두고, 여러 도구와 하위 에이전트를 여러 턴에 걸쳐 지휘하는 것이다.</span>
+  </p>
+
+  <p>
+    <span class="en">The interface problem &mdash; how does a model discover and call <i>your</i> tools and data? &mdash; is being standardized by the <b>Model Context Protocol (MCP)</b>, an open JSON-RPC standard Anthropic introduced in late 2024. An AI app is an MCP <i>client</i>; tools and data sources are exposed by MCP <i>servers</i>; the client opens a two-way connection to request context and invoke tools in a uniform format. Adoption moved fast: through 2025 OpenAI, Google DeepMind, and Microsoft all added support, and by 2026 it had become the de-facto integration layer, with Anthropic donating the project to a vendor-neutral foundation under the Linux Foundation. The strategic point is that the agent-to-tool connection layer is becoming a shared standard rather than any one vendor&rsquo;s API.</span>
+    <span class="ko">그런데 남는 문제가 하나 있다. 모델이 도대체 <i>당신의</i> 도구와 데이터를 어떻게 찾아내고 불러 쓰느냐다. 이 인터페이스 문제를 정리하려고 나온 게 <b>모델 컨텍스트 프로토콜(Model Context Protocol, MCP)</b>이다. Anthropic이 2024년 말 공개한 오픈 JSON-RPC 표준이다. 구조는 단순하다. AI 앱이 MCP <i>클라이언트</i>가 되고, 도구와 데이터 소스는 MCP <i>서버</i>가 바깥에 내건다. 클라이언트는 서버와 양방향으로 연결을 터, 통일된 형식으로 맥락을 요청하고 도구를 호출한다. 확산은 빨랐다. 2025년 한 해 동안 OpenAI도, 구글 딥마인드도, 마이크로소프트도 줄줄이 지원에 합류했다. 2026년에는 사실상 표준 통합 계층으로 굳었고, Anthropic은 아예 프로젝트를 리눅스 재단 산하 벤더 중립 재단에 넘겼다. 핵심은 이렇다. 에이전트와 도구를 잇는 이 연결 계층이 특정 회사의 API가 아니라 모두가 공유하는 표준으로 자리 잡아 가고 있다.</span>
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agent loop">
+      <defs>
+        <marker id="ah4" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 Z" fill="#c2410c"></path>
+        </marker>
+      </defs>
+      <text x="30" y="32" class="svg-title"><tspan class="en">Agent loop (ReAct, tools via MCP)</tspan><tspan class="ko">에이전트 루프 (ReAct, MCP 경유 도구)</tspan></text>
+
+      <rect x="60" y="64" width="170" height="64" rx="11" class="svg-box-accent"></rect>
+      <text x="145" y="92" text-anchor="middle" class="svg-label"><tspan class="en">Model</tspan><tspan class="ko">모델</tspan></text>
+      <text x="145" y="111" text-anchor="middle" class="svg-sub"><tspan class="en">reason &rarr; decide action</tspan><tspan class="ko">추론 &rarr; 행동 결정</tspan></text>
+
+      <line x1="230" y1="96" x2="318" y2="96" class="svg-arrow" marker-end="url(#ah4)"></line>
+      <text x="274" y="86" text-anchor="middle" class="svg-sub"><tspan class="en">tool call</tspan><tspan class="ko">도구 호출</tspan></text>
+
+      <rect x="318" y="64" width="180" height="64" rx="11" class="svg-box"></rect>
+      <text x="408" y="88" text-anchor="middle" class="svg-label"><tspan class="en">Tool via MCP</tspan><tspan class="ko">MCP 경유 도구</tspan></text>
+      <text x="408" y="107" text-anchor="middle" class="svg-sub"><tspan class="en">search / code / API / DB</tspan><tspan class="ko">검색 / 코드 / API / DB</tspan></text>
+
+      <line x1="408" y1="128" x2="408" y2="166" class="svg-arrow" marker-end="url(#ah4)"></line>
+
+      <rect x="318" y="166" width="180" height="58" rx="11" class="svg-box"></rect>
+      <text x="408" y="192" text-anchor="middle" class="svg-label"><tspan class="en">Observation</tspan><tspan class="ko">관찰</tspan></text>
+      <text x="408" y="210" text-anchor="middle" class="svg-sub"><tspan class="en">result into context</tspan><tspan class="ko">결과를 컨텍스트로</tspan></text>
+
+      <path d="M318,195 C220,195 220,128 232,110" class="svg-arrow" marker-end="url(#ah4)"></path>
+      <text x="250" y="170" text-anchor="middle" class="svg-sub"><tspan class="en">repeat</tspan><tspan class="ko">반복</tspan></text>
+
+      <line x1="230" y1="80" x2="600" y2="80" stroke="#e7e2d6" stroke-width="1" stroke-dasharray="3 3"></line>
+      <rect x="560" y="64" width="132" height="64" rx="11" class="svg-box-accent"></rect>
+      <text x="626" y="92" text-anchor="middle" class="svg-label"><tspan class="en">Final answer</tspan><tspan class="ko">최종 답</tspan></text>
+      <text x="626" y="111" text-anchor="middle" class="svg-sub"><tspan class="en">when goal met</tspan><tspan class="ko">목표 달성 시</tspan></text>
+      <line x1="498" y1="96" x2="556" y2="96" class="svg-arrow" marker-end="url(#ah4)"></line>
+    </svg>
+    <figcaption>
+      <span class="en">Fig. 4 &mdash; The agent loop. Each turn the model reasons, optionally acts, and folds the observation back into context until it can answer.</span>
+      <span class="ko">그림 4 &mdash; 에이전트 루프. 매 턴 모델은 생각하고, 필요하면 행동하며, 돌아온 관찰을 컨텍스트에 다시 넣어 답이 설 때까지 반복한다.</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    <span class="en">The hard part is reliability. Errors <b>compound</b>: a 95%-reliable step run ten times in sequence succeeds end-to-end barely 60% of the time. Agents hallucinate tool arguments, loop, mis-handle errors, and take destructive actions confidently. Evaluating them is harder than evaluating a single response &mdash; you must score whole trajectories, with environment state, partial credit, and cost. This is why &ldquo;agentic&rdquo; benchmarks like SWE-bench (resolve real GitHub issues) matter more than chat benchmarks for judging the 2026 frontier, and why the engineering effort has shifted toward guardrails, sandboxing, retries, and human-in-the-loop checkpoints.</span>
+    <span class="ko">진짜 어려운 대목은 신뢰성이다. 에이전트에서 오류는 <b>복리로 불어난다</b>. 한 단계가 95% 확률로 성공한다 쳐도, 그걸 열 번 연속으로 이어 붙이면 끝까지 성공할 확률은 겨우 60% 남짓으로 떨어진다. 게다가 에이전트는 도구에 넘길 인자를 멋대로 지어내고, 같은 자리를 빙빙 돌고, 오류를 엉뚱하게 처리하고, 되돌릴 수 없는 위험한 행동조차 천연덕스럽게 저지른다. 평가도 답 하나 채점하던 때와는 차원이 다르다. 환경이 어떻게 바뀌었는지, 부분 점수는 얼마인지, 비용은 얼마나 들었는지까지 따져 가며 행동의 전체 궤적을 채점해야 한다. 2026년 프런티어를 가늠할 때 SWE-bench(실제 GitHub 이슈를 풀게 한다) 같은 &lsquo;에이전트형&rsquo; 벤치마크가 채팅 벤치마크보다 중요해진 이유가 여기 있다. 엔지니어링의 무게중심이 가드레일, 샌드박스 격리, 재시도, 사람이 중간에 끼어드는 체크포인트 쪽으로 옮겨 간 것도 같은 맥락이다.</span>
+  </p>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">06 &middot; Evaluation</span><span class="ko">06 &middot; 평가</span></span>
+  <h2>
+    <span class="en">Why the leaderboards mislead</span>
+    <span class="ko">리더보드가 오도하는 이유</span>
+  </h2>
+
+  <p>
+    <span class="en">Every launch comes wrapped in a chart where the new model tops the leaderboard. It is worth knowing why those charts deserve more suspicion than they get. Benchmarks are the field&rsquo;s nervous system &mdash; the way it senses progress &mdash; but they are far noisier than the headline numbers admit. The standard suite spans knowledge (MMLU), deliberately Google-proof science Q&amp;A (GPQA), code (HumanEval, plus the much harder SWE-bench / SWE-bench Verified that demand resolving real repository issues), and raw human-preference rankings (LMArena / Chatbot Arena). Each one fails in its own characteristic way, and the failures are instructive.</span>
+    <span class="ko">새 모델이 나올 때마다 리더보드 1위를 찍은 막대그래프가 따라붙는다. 그 그래프를 왜 곧이곧대로 믿으면 안 되는지 알아 둘 만하다. 벤치마크는 이 분야의 신경계다. 진보를 감지하는 감각기관인 셈이다. 다만 헤드라인 숫자가 인정하는 것보다 훨씬 잡음이 많다. 표준으로 쓰이는 것들만 봐도 지식을 보는 MMLU, 검색으로는 못 풀게 일부러 꼬아 둔 과학 문답 GPQA, 코드 실력을 보는 HumanEval과 실제 저장소 이슈를 직접 해결해야 하는 훨씬 빡센 SWE-bench / SWE-bench Verified, 그리고 사람의 선호를 그대로 순위 매기는 LMArena / Chatbot Arena까지 영역이 넓다. 그런데 이들 모두 저마다의 방식으로 어긋나고, 그 어긋나는 양상이 오히려 많은 걸 알려 준다.</span>
+  </p>
+
+  <p>
+    <span class="en"><b>Contamination</b> is the first: when benchmark questions (or close paraphrases) leak into pretraining data, a model recalls answers instead of reasoning to them, inflating scores in ways that do not transfer. After years of web crawling, MMLU- and HumanEval-style items are very likely in many training sets, which is why labs increasingly report on held-out, freshly-authored, or contamination-audited variants. <b>Preference gaming</b> is the second: on LMArena humans reward long, confident, well-formatted answers, so a model can climb by being verbose and assertive rather than correct &mdash; and a public Arena score can reflect a tuned submission, not the shipping model (as in the April 2025 Llama 4 episode). The honest reading: treat any single benchmark as a weak signal, prefer task-specific evals on <i>your</i> data, and watch for the gap between a leaderboard rank and real-world reliability.</span>
+    <span class="ko">첫 번째 함정은 <b>오염(contamination)</b>이다. 벤치마크 문제가, 또는 살짝 바꾼 변형이 사전학습 데이터에 섞여 들어가면 일이 꼬인다. 모델이 추론으로 푸는 게 아니라 본 적 있는 답을 떠올려 맞히기 때문이다. 점수는 올라가지만 실제 능력으로는 이어지지 않는다. 웹을 수년간 긁어 댄 끝에 MMLU나 HumanEval류 문항은 이미 상당수 학습 세트에 들어가 있을 공산이 크다. 그래서 연구소들은 따로 빼 둔(held-out) 문항, 새로 출제한 문항, 오염 여부를 감사한 변형으로 점수를 보고하는 쪽으로 옮겨 가고 있다. 두 번째는 <b>선호 게이밍</b>이다. LMArena에서 사람은 길고 자신만만하고 보기 좋게 정돈된 답에 표를 준다. 그러니 모델은 굳이 더 정확해질 것 없이 장황하고 단정적으로 구는 것만으로 순위를 올릴 수 있다. 더구나 공개된 Arena 점수가 실제 출시본이 아니라 대회용으로 손본 제출본을 반영하는 경우도 있다. 2025년 4월 Llama 4 사건이 딱 그랬다. 그러니 정직하게 읽는 법은 이렇다. 벤치마크 하나는 약한 신호로만 받아들이고, 가능하면 <i>당신의</i> 데이터로 과제에 맞춘 평가를 직접 돌리며, 리더보드 순위와 현장에서의 실제 신뢰성 사이 간극을 늘 의심하라.</span>
+  </p>
+
+  <div class="pull">
+    <p>
+      <span class="en">A leaderboard rank is a hypothesis about capability, not a measurement of it. The only eval that counts is the one on your task.</span>
+      <span class="ko">리더보드 순위는 역량을 잰 수치가 아니라, 역량에 대한 하나의 가설일 뿐이다. 진짜 의미 있는 평가는 당신의 과제 위에서 돌린 평가, 그것 하나뿐이다.</span>
+    </p>
+  </div>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">07 &middot; The Landscape</span><span class="ko">07 &middot; 경쟁 지형</span></span>
+  <h2>
+    <span class="en">Who is building these, and how they differ</span>
+    <span class="ko">누가 만드는가, 그리고 어떻게 다른가</span>
+  </h2>
+
+  <p>
+    <span class="en">So who actually builds these things? At the frontier sit a handful of labs spending tens of billions on compute, and pressing up from below is a fast open-weight tier squeezing prices. The figures below are mid-2026 estimates &mdash; valuations, prices and context lengths shift monthly &mdash; so read them as orders of magnitude, not precise numbers.</span>
+    <span class="ko">그렇다면 이걸 실제로 만드는 건 누구인가. 맨 앞에는 연산에 수백억 달러를 쏟아붓는 소수의 연구소가 있고, 그 밑에서 빠르게 치고 올라오는 오픈 웨이트 진영이 가격을 짓누른다. 아래 수치는 2026년 중반의 어림값이다. 기업가치도 가격도 컨텍스트 길이도 매달 출렁이니, 정확한 숫자가 아니라 자릿수 감각으로 읽는 편이 낫다.</span>
+  </p>
+
+  <div class="cards">
+    <div class="lab">
+      <span class="flag global"><span class="en">Closed</span><span class="ko">폐쇄형</span></span>
+      <p class="name">OpenAI</p>
+      <p class="home"><span class="en">GPT-5 series, o-series &middot; ~$850B<sup>*</sup></span><span class="ko">GPT-5 계열, o 시리즈 &middot; 약 8,500억 달러<sup>*</sup></span></p>
+      <p class="desc"><span class="en">Defined the category with ChatGPT; ships frontier general and reasoning models and the widest consumer distribution. Raised a record round in 2026 at roughly $850B.</span><span class="ko">ChatGPT로 이 카테고리 자체를 만들어 냈다. 프런티어급 범용·추론 모델을 두루 내놓으면서, 일반 소비자에게 가장 넓게 닿아 있다. 2026년에는 약 8,500억 달러라는 기록적 규모로 투자를 받았다.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag global"><span class="en">Closed</span><span class="ko">폐쇄형</span></span>
+      <p class="name">Anthropic</p>
+      <p class="home"><span class="en">Claude (Opus / Sonnet / Haiku) &middot; ~$965B<sup>*</sup></span><span class="ko">Claude (Opus / Sonnet / Haiku) &middot; 약 9,650억 달러<sup>*</sup></span></p>
+      <p class="desc"><span class="en">Strong on coding, long-horizon agents and safety research; originated Constitutional AI and MCP. A 2026 round near $965B briefly made it the most valuable AI startup. Analytically: a leader, not the leader on every axis.</span><span class="ko">코딩, 오래 끌고 가는 에이전트, 안전 연구에서 강점을 보인다. 헌법적 AI와 MCP를 처음 내놓은 곳이기도 하다. 2026년 약 9,650억 달러 규모 투자로 한때 가장 비싼 AI 스타트업에 올랐다. 냉정히 보면 모든 면에서 1등은 아니고, 선두 그룹의 한 축이다.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag global"><span class="en">Closed</span><span class="ko">폐쇄형</span></span>
+      <p class="name">Google DeepMind</p>
+      <p class="home"><span class="en">Gemini series</span><span class="ko">Gemini 계열</span></p>
+      <p class="desc"><span class="en">Owns its own TPUs, native multimodality, and the longest context windows (multi-million tokens). Distribution through Search, Android, and Workspace is its structural edge.</span><span class="ko">자체 TPU를 굴리고, 멀티모달이 처음부터 몸에 배어 있으며, 컨텍스트 창이 가장 길다(수백만 토큰). 무엇보다 검색·안드로이드·워크스페이스라는 거대한 배포 경로를 쥔 것이 구조적 강점이다.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag open"><span class="en">Open weight</span><span class="ko">오픈 웨이트</span></span>
+      <p class="name">Meta</p>
+      <p class="home"><span class="en">Llama family</span><span class="ko">Llama 제품군</span></p>
+      <p class="desc"><span class="en">The biggest open-weight bet from a hyperscaler; Llama seeded much of the open ecosystem and tooling. The Llama 4 Arena episode is also a case study in benchmark spin.</span><span class="ko">대형 클라우드 사업자가 던진 오픈 웨이트 베팅 가운데 가장 크다. Llama는 오픈 생태계와 도구판의 상당 부분에 씨앗을 뿌렸다. 한편 Llama 4 Arena 사건은 벤치마크를 부풀리는 방식의 교과서적 사례로도 남았다.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag global"><span class="en">Closed</span><span class="ko">폐쇄형</span></span>
+      <p class="name">xAI</p>
+      <p class="home"><span class="en">Grok series</span><span class="ko">Grok 계열</span></p>
+      <p class="desc"><span class="en">Fast-scaling challenger with very large training clusters and tight integration into X; competitive on frontier benchmarks, with some of the largest practical context windows.</span><span class="ko">초대형 학습 클러스터와 X와의 밀착 통합을 앞세워 빠르게 덩치를 키우는 도전자다. 프런티어 벤치마크에서 충분히 겨룰 만하고, 실제로 쓸 수 있는 컨텍스트 창이 가장 긴 축에 든다.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag open"><span class="en">Open weight</span><span class="ko">오픈 웨이트</span></span>
+      <p class="name">DeepSeek &middot; Mistral</p>
+      <p class="home"><span class="en">DeepSeek V/R series, Mistral</span><span class="ko">DeepSeek V/R 계열, Mistral</span></p>
+      <p class="desc"><span class="en">The open-weight cost pressure. DeepSeek shipped frontier-adjacent MoE reasoning models at a fraction of incumbent prices and popularized GRPO-style RL; Mistral anchors European open models.</span><span class="ko">오픈 웨이트발 가격 압박의 진원지다. DeepSeek은 기존 값의 몇 분의 일로 프런티어에 근접한 MoE 추론 모델을 내놓으며 GRPO식 강화학습을 널리 퍼뜨렸다. Mistral은 유럽 오픈 모델 진영의 거점 역할을 한다.</span></p>
+    </div>
+  </div>
+
+  <h3><span class="en">Korea&rsquo;s sovereign-AI cohort</span><span class="ko">한국의 소버린 AI 진영</span></h3>
+
+  <p>
+    <span class="en">Korea is pursuing &ldquo;sovereign AI&rdquo; &mdash; nationally controlled foundation models, with a government program backing several consortia. The strategy is not to out-scale OpenAI on parameters but to reach ~95% of frontier capability with deep Korean-language and domain strength, then move quickly into agents.</span>
+    <span class="ko">한국이 미는 카드는 &lsquo;소버린(sovereign) AI&rsquo;, 곧 국가가 직접 쥐고 가는 파운데이션 모델이다. 정부 프로그램이 여러 컨소시엄을 뒤에서 받친다. 노림수는 파라미터 규모로 OpenAI를 이기겠다는 게 아니다. 한국어와 특정 도메인에서 압도적인 강점을 무기로 프런티어 역량의 95% 언저리까지 따라붙은 다음, 곧장 에이전트로 무게중심을 옮기겠다는 것이다.</span>
+  </p>
+
+  <div class="cards">
+    <div class="lab">
+      <span class="flag kr"><span class="en">Korea</span><span class="ko">한국</span></span>
+      <p class="name">Naver</p>
+      <p class="home"><span class="en">HyperCLOVA X</span><span class="ko">하이퍼클로바 X</span></p>
+      <p class="desc"><span class="en">Korea&rsquo;s flagship hyperscale model, trained on a vast Korean corpus for native fluency in language, culture and context; now extending into agentic products.</span><span class="ko">방대한 한국어 코퍼스로 학습해 언어·문화·맥락을 토박이처럼 다루는 한국 대표 하이퍼스케일 모델이다. 요즘은 에이전트 제품 쪽으로 발을 넓히고 있다.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag kr"><span class="en">Korea</span><span class="ko">한국</span></span>
+      <p class="name">LG AI Research</p>
+      <p class="home"><span class="en">EXAONE 4.0</span><span class="ko">엑사원 4.0</span></p>
+      <p class="desc"><span class="en">Built from scratch and a lead contender in the national race; LG aims for a frontier-class &ldquo;K-EXAONE,&rdquo; with strength in enterprise and scientific domains.</span><span class="ko">밑바닥부터 직접 개발했고, 국가 경쟁에서 선두를 다투는 후보다. LG는 기업·과학 분야에 특히 강한 프런티어급 &lsquo;K-엑사원&rsquo;을 정조준하고 있다.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag kr"><span class="en">Korea</span><span class="ko">한국</span></span>
+      <p class="name">Upstage</p>
+      <p class="home"><span class="en">Solar (Solar Pro / WBL)</span><span class="ko">솔라 (Solar Pro / WBL)</span></p>
+      <p class="desc"><span class="en">Efficiency-focused models with strong performance-per-parameter; a larger Solar WBL (100&ndash;300B) is targeted with multimodal and industry-specific variants.</span><span class="ko">효율을 앞세워 파라미터당 성능이 돋보이는 모델이다. 멀티모달과 산업별 특화 버전을 갖춘 더 큰 Solar WBL(100~300B)을 다음 목표로 잡았다.</span></p>
+    </div>
+    <div class="lab">
+      <span class="flag kr"><span class="en">Korea</span><span class="ko">한국</span></span>
+      <p class="name">Kakao</p>
+      <p class="home"><span class="en">Kanana</span><span class="ko">카나나</span></p>
+      <p class="desc"><span class="en">Agent-first: Kakao is deploying Kanana across KakaoTalk for proactive task execution and service coordination, betting on distribution rather than raw model scale.</span><span class="ko">철저히 에이전트 우선이다. 카카오는 알아서 일을 처리하고 여러 서비스를 엮어 주도록 카나나를 카카오톡 곳곳에 심고 있다. 모델 덩치보다 압도적인 사용자 기반에 승부를 건 것이다.</span></p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">08 &middot; The Bottleneck</span><span class="ko">08 &middot; 병목</span></span>
+  <h2>
+    <span class="en">Where the constraint really is</span>
+    <span class="ko">진짜 제약은 어디에 있는가</span>
+  </h2>
+
+  <p>
+    <span class="en">If you want to read this field correctly, watch the constraints, not the demos. <b>Compute</b> is still gating &mdash; access to leading-edge accelerators, power, and data-center capacity sets who can train at the frontier at all. <b>Data</b> is now scarce at the high-quality end, pushing everyone toward synthetic data and the open question of whether models trained on model output keep improving. <b>Distribution</b> increasingly decides who wins commercially: the model is becoming a component, and the surplus may accrue to whoever owns the user, the OS, or the enterprise relationship. <b>Reliability and evaluation</b> are the real blocker for agents &mdash; the gap between an impressive demo and a system you can trust unattended is mostly an eval and error-compounding problem. And underneath it all, <b>unit economics</b>: reasoning and long context are genuinely expensive, open weights are crushing prices, and it is not yet settled which of today&rsquo;s business models survive contact with their own cost structure.</span>
+    <span class="ko">한 장으로 정리하자. 이 분야를 제대로 읽으려면 화려한 데모가 아니라 진짜 제약을 봐야 한다. 제약은 대략 네 군데에 걸려 있다. 첫째는 <b>연산</b>이다. 최첨단 가속기, 전력, 데이터센터 용량을 누가 쥐느냐가 애초에 누가 프런티어에서 학습이라도 해 볼 수 있는지를 가른다. 둘째는 <b>데이터</b>다. 고품질 데이터가 바닥을 보이면서 모두가 합성 데이터로 떠밀려 가는데, 모델이 뱉은 걸 다시 모델에게 먹여도 계속 좋아질지는 아직 아무도 모른다. 셋째는 <b>유통</b>이다. 상업적 승패는 갈수록 여기서 갈린다. 모델은 점점 부품으로 전락하고, 진짜 이문은 사용자나 OS, 기업 고객 관계를 쥔 쪽으로 흘러간다. 넷째는 <b>신뢰성과 평가</b>인데, 에이전트의 발목을 잡는 건 결국 이것이다. 그럴싸한 데모와, 사람이 안 봐도 믿고 맡길 수 있는 시스템 사이의 거리는 대부분 평가의 문제이자 오류가 복리로 쌓이는 문제다. 그리고 이 모든 것 밑에 <b>단위 경제성</b>이 깔려 있다. 추론과 긴 컨텍스트는 정말로 비싸고, 오픈 웨이트는 가격을 계속 끌어내리며, 오늘의 사업 모델 가운데 어느 것이 제 비용 구조와 정면으로 부딪혀도 살아남을지는 아직 판가름 나지 않았다.</span>
+  </p>
+
+  <p>
+    <span class="en">For a technically literate reader, the signals worth tracking are concrete: cost-per-useful-task (not per token) trending down; agent success rates on real, contamination-resistant benchmarks like SWE-bench; whether open-weight quality keeps closing the gap to closed flagships; how far context and reasoning can scale before the economics break; and whether standards like MCP make the tool ecosystem genuinely portable. Those move slower than the hype cycle &mdash; and they are what actually determines where this goes.</span>
+    <span class="ko">기술을 아는 독자라면, 지켜볼 만한 신호는 의외로 구체적이다. 토큰당이 아니라 쓸모 있는 과제 하나당 비용이 떨어지고 있는가. SWE-bench처럼 실전적이고 오염에 강한 벤치마크에서 에이전트의 성공률은 어떤가. 오픈 웨이트 품질이 폐쇄형 플래그십과의 거리를 계속 좁히는가. 경제성이 깨지기 전에 컨텍스트와 추론은 어디까지 늘어날 수 있는가. MCP 같은 표준이 도구 생태계를 정말로 이리저리 옮겨 쓸 수 있게 만드는가. 이 신호들은 과장 섞인 화제 주기보다 한참 느리게 움직인다. 그리고 결국 이 판이 어디로 가는지를 진짜로 결정하는 것은, 바로 이 느린 신호들이다.</span>
+  </p>
+
+  <hr class="rule">
+
+  <span class="kicker"><span class="en">09 &middot; Consulting</span><span class="ko">09 &middot; 컨설팅</span></span>
+  <h2>
+    <span class="en">Why this lands squarely on consulting</span>
+    <span class="ko">이 이야기가 컨설팅에 정확히 꽂히는 이유</span>
+  </h2>
+
+  <p>
+    <span class="en">If you advise companies for a living &mdash; or pay people who do &mdash; this one is personal. Strip a consulting engagement down to its motions and you get four: gather information, make sense of it, build an argument, and package it into something a client will act on. That list is almost exactly what a foundation model plus retrieval is now good at. Which makes AI both the most direct threat to the business and its single biggest lever.</span>
+    <span class="ko">기업에 자문하는 일로 먹고살거나, 그런 사람에게 돈을 주는 쪽이라면 이건 남 얘기가 아니다. 컨설팅 프로젝트를 동작 단위로 분해하면 결국 넷으로 줄어든다. 정보를 모으고, 그걸 이해하고, 논리를 세우고, 고객이 움직이게끔 포장한다. 그런데 이 목록은 파운데이션 모델에 검색(RAG)을 붙인 물건이 지금 가장 잘하는 일과 거의 그대로 겹친다. 그래서 AI는 이 업의 가장 직접적인 위협이자, 동시에 가장 큰 지렛대다.</span>
+  </p>
+
+  <p>
+    <span class="en">Now lay the work over the pyramid. The base &mdash; desk research, market sizing, reading filings, synthesizing expert calls, cleaning data, building the first eighty slides &mdash; is the part firms historically billed armies of junior analysts for. It is also, almost line for line, what a model with the right documents in front of it now does in minutes instead of weeks. Consulting&rsquo;s surplus has always leaned on leverage: many juniors doing that base work under a few partners. AI goes straight at the base of the pyramid.</span>
+    <span class="ko">이제 그 일을 컨설팅 피라미드 위에 얹어 보자. 맨 아래층 &mdash; 데스크 리서치, 시장 규모 추정, 공시 읽기, 전문가 인터뷰 정리, 데이터 클렌징, 첫 80장짜리 슬라이드 &mdash; 은 원래 수많은 주니어를 갈아 넣어 청구하던 영역이다. 그리고 이 일은, 알맞은 문서를 앞에 둔 모델이 이제 몇 주가 아니라 몇 분 만에 거의 한 줄 한 줄 그대로 해치우는 일이기도 하다. 컨설팅의 초과이윤은 늘 레버리지에 기대 왔다. 소수의 파트너 아래 다수의 주니어가 이 바닥일을 떠받치는 구조다. AI는 그 피라미드의 밑단을 곧장 친다.</span>
+  </p>
+
+  <div class="callout">
+    <span class="tag"><span class="en">Strategy note</span><span class="ko">전략 노트</span></span>
+    <p>
+      <span class="en">This is where retrieval matters more than the chatbot. A generic model is identical for everyone; the asset a McKinsey or a BCG actually owns is proprietary &mdash; decades of engagements, benchmarks, cost curves, expert networks. Point RAG at that corpus and the model stops being commodity GPT and starts answering with the firm&rsquo;s accumulated knowledge, grounded and citable. That is the logic behind McKinsey&rsquo;s internal assistant (Lilli), BCG&rsquo;s and Bain&rsquo;s own build-outs, and the OpenAI and Anthropic enterprise alliances: the moat is no longer &ldquo;we have smart people who can Google,&rdquo; it is &ldquo;our private knowledge base, wired into an agent, answers in a way a public model cannot.&rdquo;</span>
+      <span class="ko">여기서 챗봇보다 검색(retrieval)이 더 중요하다. 범용 모델은 누구에게나 똑같다. 맥킨지나 BCG가 진짜로 소유한 자산은 따로 있다. 수십 년치 프로젝트 기록, 벤치마크, 원가 곡선, 전문가 네트워크 같은 독점 데이터다. RAG를 이 코퍼스에 겨누는 순간 모델은 흔한 GPT이기를 멈추고, 그 회사가 쌓아 온 지식으로, 근거와 출처를 달아 답하기 시작한다. 맥킨지의 내부 도구 릴리(Lilli), BCG·베인의 자체 구축, OpenAI·Anthropic과의 기업 제휴가 전부 이 논리 위에 서 있다. 이제 해자는 &lsquo;구글 잘 치는 똑똑한 사람들이 있다&rsquo;가 아니라, &lsquo;우리만의 비공개 지식 베이스를, 에이전트에 물려, 공개 모델은 못 내놓는 방식으로 답하게 한다&rsquo;다.</span>
+    </p>
+  </div>
+
+  <p>
+    <span class="en">So draw the line. What gets commoditized: first-draft research, market models, the mechanical 80% of a deck. What gets more valuable, not less: framing the actual problem, judgment under ambiguity, knowing which number matters and which is noise, the client relationship, and the trust that someone senior will own the recommendation when it reaches the board. Models are confident on demand; they carry no accountability. The last mile &mdash; turning an analysis into a decision a real organization will act on, and standing behind it &mdash; is precisely the part that does not automate.</span>
+    <span class="ko">그러니 선을 긋자. 값이 떨어지는 쪽은 분명하다. 초안 리서치, 시장 모델, 슬라이드의 기계적인 80퍼센트. 반대로 값이 오르는 쪽도 있다. 진짜 문제를 무엇으로 규정할지, 모호함 속에서 내리는 판단, 어떤 숫자가 핵심이고 어떤 게 잡음인지 가려내는 안목, 고객과의 관계, 그리고 그 권고가 이사회로 올라갈 때 누군가 윗선이 책임지고 서 줄 거라는 믿음이다. 모델은 부르면 언제든 자신만만하게 답하지만, 책임은 지지 않는다. 분석을 실제 조직이 움직일 결정으로 바꾸고 그 뒤에 이름을 거는 마지막 한 구간 &mdash; 그게 바로 자동화되지 않는 부분이다.</span>
+  </p>
+
+  <div class="pull">
+    <p>
+      <span class="en">As AI drives the price of analysis toward zero, the value moves to the one thing it cannot supply: judgment, and someone to own it.</span>
+      <span class="ko">AI가 분석의 값을 0으로 끌어내릴수록, 가치는 AI가 내줄 수 없는 단 하나로 옮겨 간다. 판단, 그리고 그것을 책임질 사람.</span>
+    </p>
+  </div>
+
+  <p>
+    <span class="en">Follow the money and the model itself bends. Billable hours assume human time equals output; flatten the pyramid and that equation breaks. Expect the shift already under way to accelerate &mdash; smaller, senior-heavy teams; value- or outcome-based pricing instead of headcount-times-rate; and &ldquo;productized&rdquo; deliverables where the engagement ends not with a deck but with an agent the client keeps running. The firm starts to look part advisory, part software vendor &mdash; a very different margin structure, and a very different thing to sell.</span>
+    <span class="ko">돈의 흐름을 따라가면 사업 모델 자체가 휜다. 시간당 청구는 &lsquo;사람의 시간 = 산출물&rsquo;이라는 가정 위에 서 있는데, 피라미드가 납작해지면 이 등식이 깨진다. 이미 시작된 변화가 더 빨라질 것이다. 팀은 작아지고 시니어 중심으로 무거워진다. 가격은 인원수×요율이 아니라 가치나 성과 기준으로 옮겨 간다. 산출물은 &lsquo;제품화&rsquo;되어, 프로젝트가 슬라이드 한 묶음이 아니라 고객이 계속 돌리는 에이전트로 끝난다. 그러면 컨설팅 회사는 자문업 반, 소프트웨어 회사 반이 된다. 마진 구조도, 파는 물건의 성격도 완전히 달라진다는 뜻이다.</span>
+  </p>
+
+  <p>
+    <span class="en">And the agent section earlier isn&rsquo;t a tangent here &mdash; it is the next step. The interesting move isn&rsquo;t a chatbot that drafts a slide; it&rsquo;s an agent that runs the workflow end to end: pull the filings, build the model, draft the memo, flag the risks, cite the sources &mdash; with a partner reviewing rather than producing. Read against everything above, a firm&rsquo;s success factors get concrete: proprietary data wired for retrieval, agent orchestration that is actually reliable (the evaluation problem again), and senior judgment at the top. The winners won&rsquo;t be the firms that &ldquo;use AI&rdquo;; they&rsquo;ll be the ones that rebuild the workflow around it and still own the part that matters.</span>
+    <span class="ko">그리고 앞에서 다룬 에이전트 이야기는 여기서 곁가지가 아니다. 바로 다음 수순이다. 흥미로운 건 슬라이드 초안을 뽑아 주는 챗봇이 아니라, 작업 전체를 처음부터 끝까지 굴리는 에이전트다. 공시를 끌어오고, 모델을 세우고, 메모 초안을 쓰고, 리스크를 짚고, 출처를 단다 &mdash; 파트너는 직접 만드는 대신 검토하는 자리로 옮겨 간다. 위에서 한 이야기에 비춰 보면, 회사의 핵심 성공 요인은 의외로 또렷해진다. 검색에 물릴 수 있게 정돈된 독점 데이터, 정말로 믿을 만한 에이전트 오케스트레이션(또 그 평가 문제다), 그리고 맨 위의 시니어 판단. 이길 회사는 &lsquo;AI를 쓰는&rsquo; 회사가 아니라, 일하는 방식을 AI 중심으로 다시 짜면서도 정작 중요한 구간은 끝까지 쥔 회사다.</span>
+  </p>
+
+  <p>
+    <span class="en">If this feels abstract, you are reading it inside an example. The publication this article sits in picks an industry every day, runs the standard strategy frameworks over it, and writes the brief &mdash; the analysis, automated. What it cannot do is decide what you should do about it. That is the whole point, and it generalizes: the skill that compounds from here isn&rsquo;t prompt tricks, it&rsquo;s problem framing, domain judgment, and orchestrating these tools well &mdash; being the person who decides which question is worth asking, and whether the answer is any good.</span>
+    <span class="ko">이 이야기가 추상적으로 들린다면, 당신은 지금 그 사례 안에서 이 글을 읽고 있는 셈이다. 이 글이 실린 매체는 매일 산업 하나를 골라 표준 전략 프레임워크를 돌리고 브리프를 써낸다. 분석은 자동화된 것이다. 다만 그 분석을 가지고 무엇을 할지는 대신 정해 주지 못한다. 핵심이 바로 거기에 있고, 이건 일반화된다. 앞으로 복리로 쌓이는 능력은 프롬프트 잔기술이 아니다. 문제를 규정하는 힘, 도메인을 아는 판단, 그리고 이 도구들을 잘 엮어 부리는 솜씨다. 어떤 질문이 던질 가치가 있는지, 돌아온 답이 쓸 만한지를 정하는 사람 &mdash; 그게 남는다.</span>
+  </p>
+
+  <div class="stars">&#10086; &nbsp; &#10086; &nbsp; &#10086;</div>
+
+  <span class="kicker"><span class="en">Glossary</span><span class="ko">용어 사전</span></span>
+  <h2>
+    <span class="en">Terms, at the right level</span>
+    <span class="ko">적정 수준의 용어들</span>
+  </h2>
+
+  <div class="glossary">
+    <dl>
+      <div class="item">
+        <dt><span class="en">Attention</span><span class="ko">어텐션<span class="orig">attention</span></span></dt>
+        <dd><span class="en">The mechanism that lets each token read a weighted mix of others via <code>softmax(QK&#8868;/&radic;d_k)&middot;V</code>; the core operation of a transformer, costing O(n&sup2;) in sequence length.</span><span class="ko">각 토큰이 어느 토큰에 집중할지 스스로 정하게 해 주는 장치. <code>softmax(QK&#8868;/&radic;d_k)&middot;V</code>로 다른 토큰들을 가중 혼합해 읽어 온다. 트랜스포머의 핵심 연산이고, 시퀀스 길이에 O(n&sup2;) 비용이 든다.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">KV cache</span><span class="ko">KV 캐시<span class="orig">KV cache</span></span></dt>
+        <dd><span class="en">Stored keys and values of already-generated tokens so each decode step is O(n) instead of recomputing the prefix; grows linearly with context and is a major memory cost.</span><span class="ko">이미 만들어 둔 토큰의 키와 값을 저장해 두는 캐시. 덕분에 토큰을 새로 뽑을 때마다 앞부분을 다시 계산하지 않아 한 단계가 O(n)으로 떨어진다. 다만 컨텍스트에 비례해 불어나 메모리를 많이 잡아먹는다.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">RoPE</span><span class="ko">RoPE<span class="orig">rotary position embedding</span></span></dt>
+        <dd><span class="en">Rotary position embedding: encodes token position by rotating Q and K, capturing relative distance and extrapolating to longer contexts better than absolute embeddings.</span><span class="ko">회전 위치 임베딩. Q와 K를 위치만큼 빙 돌려 토큰 위치를 새겨 넣는다. 두 토큰 사이 상대 거리를 자연스럽게 담고, 절대 임베딩보다 긴 컨텍스트로 외삽도 잘 버틴다.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">MoE</span><span class="ko">MoE<span class="orig">mixture of experts</span></span></dt>
+        <dd><span class="en">Mixture of experts: many MLP &ldquo;experts&rdquo; with a router that activates only a few per token, giving large total capacity at a fraction of the per-token compute.</span><span class="ko">전문가 혼합. MLP &lsquo;전문가&rsquo; 여럿을 두고, 라우터가 토큰마다 그중 일부만 켠다. 총 용량은 크게 가져가되 토큰당 연산은 한 줌만 쓰는 셈이다.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">RLHF</span><span class="ko">RLHF<span class="orig">RL from human feedback</span></span></dt>
+        <dd><span class="en">Reinforcement learning from human feedback: train a reward model from human rankings, then fine-tune the policy (usually PPO) to maximize it under a KL constraint.</span><span class="ko">인간 피드백 기반 강화학습. 사람이 매긴 우열로 보상 모델을 학습한 뒤, KL 제약을 걸어 정책을(보통 PPO로) 미세조정해 그 보상을 끌어올린다.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">DPO</span><span class="ko">DPO<span class="orig">direct preference optimization</span></span></dt>
+        <dd><span class="en">Direct preference optimization: a closed-form loss on preference pairs that achieves RLHF&rsquo;s effect with no reward model and no RL loop &mdash; simpler and more stable.</span><span class="ko">직접 선호 최적화. 선호 쌍에서 곧장 닫힌 형태 손실을 끌어내, 보상 모델도 RL 루프도 없이 RLHF의 효과를 낸다. 더 단순하고 안정적이다.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">Constitutional AI</span><span class="ko">헌법적 AI<span class="orig">Constitutional AI</span></span></dt>
+        <dd><span class="en">Anthropic&rsquo;s method of aligning via AI feedback (RLAIF): the model critiques and revises its own outputs against written principles, scaling the alignment signal beyond human labels.</span><span class="ko">AI 피드백(RLAIF)으로 모델을 정렬하는 Anthropic의 방법. 모델이 명문화된 원칙에 자기 답을 비춰 보며 스스로 비판하고 고쳐, 정렬 신호를 사람 손이 닿는 범위 너머로 불린다.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">Quantization</span><span class="ko">양자화<span class="orig">quantization</span></span></dt>
+        <dd><span class="en">Storing and computing weights/activations at lower precision (int8/int4) to cut memory and bandwidth 2&ndash;4&times; with modest quality loss; key to cheaper serving.</span><span class="ko">가중치와 활성값을 더 낮은 정밀도(int8/int4)로 저장·계산하는 기법. 품질은 거의 안 깎이면서 메모리와 대역폭이 2~4배 줄어든다. 싼 서빙의 핵심이다.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">Distillation</span><span class="ko">증류<span class="orig">distillation</span></span></dt>
+        <dd><span class="en">Training a small &ldquo;student&rdquo; to match a large &ldquo;teacher&rsquo;s&rdquo; output distribution, packing much of the capability into a far cheaper, faster model.</span><span class="ko">작은 &lsquo;학생&rsquo; 모델에게 큰 &lsquo;교사&rsquo;의 출력 분포를 그대로 흉내 내게 학습시켜, 큰 모델 역량의 상당 부분을 훨씬 싸고 빠른 모델에 옮겨 담는 기법.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">RAG</span><span class="ko">RAG<span class="orig">retrieval-augmented generation</span></span></dt>
+        <dd><span class="en">Retrieval-augmented generation: fetch relevant passages at query time and put them in the prompt so the model answers from grounded, citable evidence.</span><span class="ko">검색 증강 생성. 질의가 들어오면 관련 구절을 그 자리에서 끌어와 프롬프트에 넣어, 모델이 인용까지 댈 수 있는 근거를 보고 답하게 한다.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">HNSW</span><span class="ko">HNSW<span class="orig">hierarchical navigable small world</span></span></dt>
+        <dd><span class="en">Hierarchical Navigable Small World: the workhorse approximate-nearest-neighbor graph index for fast vector search, trading a little recall for large speedups.</span><span class="ko">계층적 내비게이블 스몰월드. 빠른 벡터 검색에 쓰는 주력 근사 최근접 이웃 그래프 인덱스. 재현율을 조금 양보하는 대신 속도를 크게 번다.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">MCP</span><span class="ko">MCP<span class="orig">Model Context Protocol</span></span></dt>
+        <dd><span class="en">Model Context Protocol: an open JSON-RPC standard (Anthropic, 2024) for connecting models to tools and data; the emerging de-facto interface for agents.</span><span class="ko">모델 컨텍스트 프로토콜. 모델을 도구·데이터와 잇는 오픈 JSON-RPC 표준(Anthropic, 2024). 에이전트의 사실상 표준 인터페이스로 자리 잡아 가고 있다.</span></dd>
+      </div>
+      <div class="item">
+        <dt><span class="en">Context window</span><span class="ko">컨텍스트 창<span class="orig">context window</span></span></dt>
+        <dd><span class="en">The maximum number of tokens a model can attend to at once (now 1M+ on several frontier models); larger windows raise attention and KV-cache cost per call.</span><span class="ko">모델이 한 번에 들여다볼 수 있는 최대 토큰 수(여러 프런티어 모델이 이제 100만을 넘긴다). 창이 넓어질수록 호출 한 번당 어텐션과 KV 캐시 비용도 함께 불어난다.</span></dd>
+      </div>
+    </dl>
+  </div>
+
+</div>
+</article>
+
+<footer>
+<div class="col">
+  <p class="lab-head"><span class="en">Sources &amp; further reading</span><span class="ko">출처 &amp; 더 읽을거리</span></p>
+  <ol>
+    <li><span class="en">Vaswani et al., &ldquo;Attention Is All You Need&rdquo; (the transformer, 2017).</span><span class="ko">Vaswani 외, &ldquo;Attention Is All You Need&rdquo; (트랜스포머, 2017).</span> <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">arxiv.org/abs/1706.03762</a></li>
+    <li><span class="en">Hoffmann et al., &ldquo;Training Compute-Optimal LLMs&rdquo; (Chinchilla scaling laws, 2022).</span><span class="ko">Hoffmann 외, &ldquo;Training Compute-Optimal LLMs&rdquo; (친칠라 스케일링 법칙, 2022).</span> <a href="https://arxiv.org/abs/2203.15556" target="_blank" rel="noopener">arxiv.org/abs/2203.15556</a></li>
+    <li><span class="en">Rafailov et al., &ldquo;Direct Preference Optimization&rdquo; (DPO, 2023).</span><span class="ko">Rafailov 외, &ldquo;Direct Preference Optimization&rdquo; (DPO, 2023).</span> <a href="https://arxiv.org/abs/2305.18290" target="_blank" rel="noopener">arxiv.org/abs/2305.18290</a></li>
+    <li><span class="en">Bai et al., &ldquo;Constitutional AI: Harmlessness from AI Feedback&rdquo; (Anthropic, 2022).</span><span class="ko">Bai 외, &ldquo;Constitutional AI: Harmlessness from AI Feedback&rdquo; (Anthropic, 2022).</span> <a href="https://arxiv.org/abs/2212.08073" target="_blank" rel="noopener">arxiv.org/abs/2212.08073</a></li>
+    <li><span class="en">DeepSeek-AI, &ldquo;DeepSeek-R1: Incentivizing Reasoning via RL&rdquo; (2025).</span><span class="ko">DeepSeek-AI, &ldquo;DeepSeek-R1: Incentivizing Reasoning via RL&rdquo; (2025).</span> <a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener">arxiv.org/abs/2501.12948</a></li>
+    <li><span class="en">Dao et al., &ldquo;FlashAttention&rdquo; (IO-aware exact attention, 2022).</span><span class="ko">Dao 외, &ldquo;FlashAttention&rdquo; (IO 인지 정확 어텐션, 2022).</span> <a href="https://arxiv.org/abs/2205.14135" target="_blank" rel="noopener">arxiv.org/abs/2205.14135</a></li>
+    <li><span class="en">Su et al., &ldquo;RoFormer: Rotary Position Embedding&rdquo; (RoPE, 2021).</span><span class="ko">Su 외, &ldquo;RoFormer: Rotary Position Embedding&rdquo; (RoPE, 2021).</span> <a href="https://arxiv.org/abs/2104.09864" target="_blank" rel="noopener">arxiv.org/abs/2104.09864</a></li>
+    <li><span class="en">Lewis et al., &ldquo;Retrieval-Augmented Generation&rdquo; (the RAG paper, 2020).</span><span class="ko">Lewis 외, &ldquo;Retrieval-Augmented Generation&rdquo; (RAG 원 논문, 2020).</span> <a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener">arxiv.org/abs/2005.11401</a></li>
+    <li><span class="en">Malkov &amp; Yashunin, &ldquo;Efficient and robust ANN search using HNSW graphs&rdquo; (2016).</span><span class="ko">Malkov &amp; Yashunin, &ldquo;HNSW 그래프 기반 효율적·강건 ANN 검색&rdquo; (2016).</span> <a href="https://arxiv.org/abs/1603.09320" target="_blank" rel="noopener">arxiv.org/abs/1603.09320</a></li>
+    <li><span class="en">Anthropic &mdash; Model Context Protocol (open standard).</span><span class="ko">Anthropic &mdash; 모델 컨텍스트 프로토콜(오픈 표준).</span> <a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">modelcontextprotocol.io</a></li>
+    <li><span class="en">SWE-bench &mdash; resolving real GitHub issues (agentic coding eval).</span><span class="ko">SWE-bench &mdash; 실제 GitHub 이슈 해결(에이전트 코딩 평가).</span> <a href="https://www.swebench.com/" target="_blank" rel="noopener">swebench.com</a></li>
+    <li><span class="en">Stanford HAI &mdash; AI Index Report (annual data on the field).</span><span class="ko">스탠퍼드 HAI &mdash; AI Index 리포트 (분야 연간 데이터).</span> <a href="https://hai.stanford.edu/ai-index" target="_blank" rel="noopener">hai.stanford.edu/ai-index</a></li>
+  </ol>
+  <p class="foot-note">
+    <span class="en"><sup>*</sup> Valuations, prices, context lengths, and model line-ups are approximate mid-2026 estimates that change quickly; read them as orders of magnitude, not exact figures. Lab line-ups reflect the landscape as of June 2026.</span>
+    <span class="ko"><sup>*</sup> 기업가치, 가격, 컨텍스트 길이, 모델 구성은 빠르게 바뀌는 2026년 중반의 어림값이다. 정확한 수치가 아니라 자릿수로 읽는 편이 좋다. 연구소 구성은 2026년 6월 시점의 지형을 반영한다.</span>
+  </p>
+  <p class="foot-back">
+    <a href="../index.html">
+      <span class="en">&larr; Back to all reports</span><span class="ko">&larr; 전체 리포트로 돌아가기</span>
+    </a>
+  </p>
+</div>
+</footer>
+
+<script>
+(function(){
+  var KEY = 'dis-lang';
+  var body = document.body;
+  function apply(lang){
+    if(lang === 'en'){
+      body.classList.remove('lang-ko');
+      body.classList.add('lang-en');
+      document.documentElement.lang = 'en';
+    } else {
+      body.classList.remove('lang-en');
+      body.classList.add('lang-ko');
+      document.documentElement.lang = 'ko';
+    }
+  }
+  var saved;
+  try { saved = localStorage.getItem(KEY); } catch(e){ saved = null; }
+  apply(saved === 'en' ? 'en' : 'ko');
+  var btn = document.getElementById('langbtn');
+  if(btn){
+    btn.addEventListener('click', function(){
+      var next = body.classList.contains('lang-ko') ? 'en' : 'ko';
+      apply(next);
+      try { localStorage.setItem(KEY, next); } catch(e){}
+    });
+  }
+})();
+</script>
+</body></html>
