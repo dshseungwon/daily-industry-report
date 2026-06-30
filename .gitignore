@@ -4,3 +4,5 @@ digest_subject.txt
 
 # macOS cruft
 .DS_Store
+ko-rewrite/
+*.rewrite.html
