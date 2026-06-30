@@ -2520,5 +2520,37 @@
   "headline_en": "Southern Company leads listed multi-utilities at a ~$109B market cap on an AI-datacenter capex super-cycle; Korea has no true multi-utility, so district-heating operator KDHC is the closest proxy.",
   "headline_ko": "서던 컴퍼니가 AI 데이터센터 투자 사이클을 타고 시가총액 약 1,090억 달러로 상장 복합 유틸리티를 이끄는 가운데, 한국에는 진정한 복합 유틸리티가 없어 지역난방 사업자 KDHC가 가장 가까운 대안으로 파악됩니다.",
   "accent": "#e8902a"
+ },
+ {
+  "date": "2026-06-30",
+  "gics": "CONSULTING",
+  "sector": "Special Report",
+  "special": true,
+  "set_index": 1,
+  "industry_en": "Management Consulting: The Business of Advice",
+  "industry_ko": "경영컨설팅: 조언을 파는 산업",
+  "global_company": "McKinsey · BCG · Bain (MBB)",
+  "korea_company": "Big Four Korea (삼일PwC·삼정KPMG)",
+  "file": "magazine/management-consulting.html",
+  "headline_en": "Inside the ~$300-billion advice business: the leverage pyramid that turns junior hours into partner profit, the brand moat that lets a top firm charge a multiple for the same analysis, the value chain from origination to implementation, and how AI is hollowing out the bottom of the pyramid.",
+  "headline_ko": "약 3,000억 달러 규모의 조언 산업을 해부한다. 주니어의 시간을 파트너의 이익으로 바꾸는 레버리지 피라미드, 같은 분석에도 몇 배의 값을 받게 해 주는 브랜드 해자, 수주에서 실행까지의 가치사슬, 그리고 AI가 피라미드의 밑단을 어떻게 비워 내는지까지 짚는다.",
+  "accent": "#1e40af",
+  "format": "magazine"
+ },
+ {
+  "date": "2026-06-30",
+  "gics": "MEMORY",
+  "sector": "Special Report",
+  "special": true,
+  "set_index": 2,
+  "industry_en": "Memory Semiconductors: DRAM, NAND, and the HBM Boom",
+  "industry_ko": "메모리 반도체: D램·낸드, 그리고 HBM 붐",
+  "global_company": "Samsung Electronics (삼성전자)",
+  "korea_company": "SK hynix (SK하이닉스)",
+  "file": "magazine/memory-semiconductors.html",
+  "headline_en": "DRAM, NAND, and the HBM boom: how two Korean firms came to make most of the world's memory, why it is the most cyclical and capital-hungry corner of tech, and what the AI build-out does to the profit pool.",
+  "headline_ko": "D램과 낸드, 그리고 HBM 붐. 어쩌다 한국의 두 회사가 세계 메모리의 대부분을 만들게 되었는지, 왜 이곳이 기술 산업에서 가장 경기를 타고 가장 많은 자본을 삼키는 영역인지, 그리고 AI 투자 붐이 이 이익 풀을 어떻게 뒤흔드는지를 들여다본다.",
+  "accent": "#b3261e",
+  "format": "magazine"
  }
 ]
