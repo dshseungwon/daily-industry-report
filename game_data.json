@@ -961,11 +961,13 @@
     "global_company": "CRH plc",
     "global_firms": [
       {
-        "name": "CNBM (China)",
+        "country": "China",
+        "name": "CNBM",
         "share": 13.0
       },
       {
-        "name": "Anhui Conch (China)",
+        "country": "China",
+        "name": "Anhui Conch",
         "share": 7.0
       },
       {
@@ -1524,8 +1526,9 @@
     "global_company": "Fresnillo",
     "global_firms": [
       {
+        "country": "Mexico",
         "ko": "프레스니요 (멕시코)",
-        "name": "Fresnillo plc (Mexico)",
+        "name": "Fresnillo plc",
         "share": 7.0
       },
       {
@@ -1584,8 +1587,9 @@
     "global_company": "Fresnillo",
     "global_firms": [
       {
+        "country": "Mexico",
         "ko": "프레스니요(멕시코)",
-        "name": "Fresnillo (Mexico)",
+        "name": "Fresnillo",
         "share": 6.0
       },
       {
@@ -1594,8 +1598,9 @@
         "share": 5.0
       },
       {
+        "country": "Mexico",
         "ko": "인두스트리아스 페뇰레스(멕시코)",
-        "name": "Industrias Peñoles (Mexico)",
+        "name": "Industrias Peñoles",
         "share": 4.0
       },
       {
@@ -1762,6 +1767,77 @@
     "market": {
       "label": "$345B",
       "trillion_usd": 0.345,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
+  "15105010": {
+    "cagr": "~4.7%",
+    "gics": "15105010",
+    "global_company": "West Fraser Timber",
+    "global_firms": [
+      {
+        "country": "Canada",
+        "ko": "웨스트프레이저(캐나다)",
+        "name": "West Fraser",
+        "share": 10.0
+      },
+      {
+        "country": "Austria",
+        "ko": "크로노스판(오스트리아)",
+        "name": "Kronospan",
+        "share": 9.0
+      },
+      {
+        "country": "US",
+        "ko": "웨어하우저(미국)",
+        "name": "Weyerhaeuser",
+        "share": 8.0
+      },
+      {
+        "ko": "조지아퍼시픽·아라우코·에거(미국/칠레/오스트리아)",
+        "name": "Georgia-Pacific, Arauco, Egger (US/Chile/Austria)",
+        "share": 7.0
+      }
+    ],
+    "headline_ko": "세계 최대 종합 임산물 제조사는 웨스트프레이저(매출 약 54억 6,000만 달러, 시가총액 약 49억 달러)이고, 한국에서는 동화기업이 목질 패널 시장을 이끌고 있습니다. 약 9,900억 달러 규모의 시장은 목재 관세와 EU 산림파괴 규정으로 다시 짜이는 중입니다.",
+    "industry_en": "Forest Products",
+    "industry_ko": "임산물",
+    "korea_company": "Dongwha Enterprise",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "동화기업(한국)",
+        "name": "Dongwha Enterprise",
+        "share": 34.0
+      },
+      {
+        "country": "Korea",
+        "ko": "성창기업(한국)",
+        "name": "Sungchang Enterprise",
+        "share": 19.0
+      },
+      {
+        "country": "Korea",
+        "ko": "이건산업(한국)",
+        "name": "Eagon Industrial",
+        "share": 15.0
+      },
+      {
+        "ko": "수입품 및 기타 업체",
+        "name": "Imports & other makers",
+        "share": 32.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.625,
+      "scale": 0.375,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$0.99T",
+      "trillion_usd": 0.99,
       "year": "2024"
     },
     "sector": "Materials"
@@ -3046,23 +3122,27 @@
     "global_company": "Cintas",
     "global_firms": [
       {
+        "country": "UK",
         "ko": "컴퍼스 그룹(영국)",
-        "name": "Compass Group (UK)",
+        "name": "Compass Group",
         "share": 4.2
       },
       {
+        "country": "France",
         "ko": "소덱소(프랑스)",
-        "name": "Sodexo (France)",
+        "name": "Sodexo",
         "share": 2.7
       },
       {
+        "country": "US",
         "ko": "아라마크(미국)",
-        "name": "Aramark (US)",
+        "name": "Aramark",
         "share": 1.7
       },
       {
+        "country": "UK",
         "ko": "번즐(영국)",
-        "name": "Bunzl (UK)",
+        "name": "Bunzl",
         "share": 1.6
       },
       {
@@ -3224,6 +3304,73 @@
     "market": {
       "label": "$6.00T",
       "trillion_usd": 6.0,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20202010": {
+    "cagr": "~6.0%",
+    "gics": "20202010",
+    "global_company": "Recruit Holdings",
+    "global_firms": [
+      {
+        "ko": "란스타드(네덜란드, 약 254억 달러)",
+        "name": "Randstad (Netherlands, ~$25.4B)",
+        "share": 27.0
+      },
+      {
+        "ko": "아데코 그룹(스위스, 약 250억 달러)",
+        "name": "Adecco Group (Switzerland, ~$25.0B)",
+        "share": 25.0
+      },
+      {
+        "ko": "맨파워그룹(미국, 약 189억 달러)",
+        "name": "ManpowerGroup (US, ~$18.9B)",
+        "share": 21.0
+      },
+      {
+        "ko": "앨리지스 그룹(미국, 약 122억 달러)",
+        "name": "Allegis Group (US, ~$12.2B)",
+        "share": 14.0
+      },
+      {
+        "ko": "리크루트 파견 부문(일본, 약 116억 달러)",
+        "name": "Recruit staffing arm (Japan, ~$11.6B)",
+        "share": 13.0
+      }
+    ],
+    "headline_ko": "인디드를 보유한 리크루트 홀딩스가 시가총액 약 950억 달러로 약 6,500억 달러 규모의 인적자원·채용 시장을 이끌고 있고, AI가 채용 방식을 바꾸는 중입니다. 한국에서는 비상장 잡코리아와 맞서는 사람인이 상장사 1위입니다.",
+    "industry_en": "Human Resource & Employment Services",
+    "industry_ko": "인적자원·고용 서비스",
+    "korea_company": "Saramin",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "사람인(한국)",
+        "name": "Saramin",
+        "share": 38.0
+      },
+      {
+        "ko": "잡코리아 + 알바몬(한국, 비상장)",
+        "name": "JobKorea + Albamon (Korea, private)",
+        "share": 32.0
+      },
+      {
+        "country": "Korea",
+        "ko": "리멤버 · 원티드 · 잡플래닛 등(한국)",
+        "name": "Remember, Wanted, JobPlanet & others",
+        "share": 30.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0556,
+      "scale": 0.4444,
+      "tech": 0.5
+    },
+    "market": {
+      "label": "$614B",
+      "trillion_usd": 0.614,
       "year": "2024"
     },
     "sector": "Industrials"
@@ -4889,6 +5036,72 @@
     "market": {
       "label": "$1.96T",
       "trillion_usd": 1.96,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25301030": {
+    "cagr": "~9.7%",
+    "gics": "25301030",
+    "global_company": "Planet Fitness",
+    "global_firms": [
+      {
+        "ko": "라이프타임 그룹(미국, 약 75억 달러)",
+        "name": "Life Time Group (United States, ~$7.5B)",
+        "share": 36.0
+      },
+      {
+        "ko": "베일 리조트(미국, 약 49억 달러)",
+        "name": "Vail Resorts (United States, ~$4.9B)",
+        "share": 24.0
+      },
+      {
+        "ko": "플래닛 피트니스(미국, 약 42억 달러)",
+        "name": "Planet Fitness (United States, ~$4.2B)",
+        "share": 20.0
+      },
+      {
+        "ko": "베이직핏(네덜란드, 약 25억 달러)",
+        "name": "Basic-Fit (Netherlands, ~$2.5B)",
+        "share": 12.0
+      },
+      {
+        "ko": "기타(아난티 포함)",
+        "name": "Others (incl. Ananti)",
+        "share": 8.0
+      }
+    ],
+    "headline_ko": "플래닛 피트니스가 약 2,896개 클럽, 회원 약 2,080만 명으로 글로벌 레저 시설을 이끌고 있습니다. 피트니스 클럽 시장은 약 1,310억 달러 규모로 연 9.7%가량 성장 중이고, 한국 상장 대안은 프리미엄 리조트 운영사 아난티입니다.",
+    "industry_en": "Leisure Facilities",
+    "industry_ko": "레저 시설",
+    "korea_company": "Ananti",
+    "korea_firms": [
+      {
+        "country": "South Korea",
+        "ko": "아난티(한국)",
+        "name": "Ananti",
+        "share": 55.0
+      },
+      {
+        "ko": "골프·리조트 사업자(아로프트, 베어스타운 등)",
+        "name": "Golf/resort operators (Aloft, Bears Town, etc.)",
+        "share": 27.0
+      },
+      {
+        "ko": "피트니스 체인 및 기타 사업자",
+        "name": "Fitness chains & other operators",
+        "share": 18.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2222,
+      "global": 0.0,
+      "scale": 0.4444,
+      "tech": 0.3333
+    },
+    "market": {
+      "label": "$120B",
+      "trillion_usd": 0.12,
       "year": "2024"
     },
     "sector": "Consumer Discretionary"
@@ -8491,6 +8704,71 @@
     },
     "sector": "Financials"
   },
+  "40301030": {
+    "cagr": "~2.3%",
+    "gics": "40301030",
+    "global_company": "Allianz",
+    "global_firms": [
+      {
+        "ko": "알리안츠(독일, 약 1,580억 달러)",
+        "name": "Allianz (Germany, ~$158B)",
+        "share": 28.0
+      },
+      {
+        "ko": "핑안(중국, 약 1,440억 달러)",
+        "name": "Ping An (China, ~$144B)",
+        "share": 25.0
+      },
+      {
+        "ko": "악사(프랑스, 약 1,000억 달러)",
+        "name": "AXA (France, ~$100B)",
+        "share": 18.0
+      },
+      {
+        "ko": "차이나라이프 + 취리히(약 900억 달러)",
+        "name": "China Life + Zurich (~$90B)",
+        "share": 16.0
+      },
+      {
+        "ko": "제너랄리 외",
+        "name": "Generali & others",
+        "share": 13.0
+      }
+    ],
+    "headline_ko": "알리안츠가 시가총액 약 1,580억 달러로 세계 최대 종합보험사이며, FY2025 영업이익은 174억 유로로 사상 최대입니다. 한국에는 전통적 종합보험 그룹이 없었지만, 삼성생명이 삼성화재를 자회사로 편입하며 그 모습을 갖춰가고 있습니다.",
+    "industry_en": "Multi-line Insurance",
+    "industry_ko": "종합보험",
+    "korea_company": "Samsung Life",
+    "korea_firms": [
+      {
+        "ko": "삼성그룹(생명+화재)",
+        "name": "Samsung group (Life + Fire)",
+        "share": 27.0
+      },
+      {
+        "ko": "한화·교보·신한(생명)",
+        "name": "Hanwha, Kyobo, Shinhan (life)",
+        "share": 20.0
+      },
+      {
+        "ko": "메리츠·현대(손해)",
+        "name": "DB, Meritz, Hyundai (non-life)DB·",
+        "share": 17.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.7143,
+      "scale": 0.2857,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$6.5T",
+      "trillion_usd": 6.5,
+      "year": "2023"
+    },
+    "sector": "Financials"
+  },
   "451020": {
     "cagr": "≈8%",
     "gics": "451020",
@@ -9084,8 +9362,9 @@
     "korea_company": "Samsung Electronics",
     "korea_firms": [
       {
+        "country": "Korea",
         "ko": "삼성 (한국)",
-        "name": "Samsung (Korea)",
+        "name": "Samsung",
         "share": 28.0
       },
       {
@@ -9094,18 +9373,21 @@
         "share": 22.0
       },
       {
+        "country": "Japan",
         "ko": "키오시아 (일본)",
-        "name": "Kioxia (Japan)",
+        "name": "Kioxia",
         "share": 16.0
       },
       {
+        "country": "US",
         "ko": "마이크론 (미국)",
-        "name": "Micron (US)",
+        "name": "Micron",
         "share": 14.0
       },
       {
+        "country": "US",
         "ko": "샌디스크 (미국)",
-        "name": "SanDisk (US)",
+        "name": "SanDisk",
         "share": 14.0
       }
     ],
@@ -9187,8 +9469,9 @@
     "global_company": "Keysight",
     "global_firms": [
       {
+        "country": "US",
         "ko": "키사이트(US)",
-        "name": "Keysight Technologies (US)",
+        "name": "Keysight Technologies",
         "share": 14.0
       },
       {
@@ -9217,8 +9500,9 @@
     "korea_company": "Koh Young (고영테크놀러지)",
     "korea_firms": [
       {
+        "country": "Korea",
         "ko": "고영테크놀러지(한국)",
-        "name": "Koh Young Technology (Korea)",
+        "name": "Koh Young Technology",
         "share": 32.0
       },
       {
@@ -9254,13 +9538,15 @@
     "global_company": "Murata Manufacturing",
     "global_firms": [
       {
+        "country": "Japan",
         "ko": "무라타(일본)",
-        "name": "Murata (Japan)",
+        "name": "Murata",
         "share": 29.0
       },
       {
+        "country": "Korea",
         "ko": "삼성전기(한국)",
-        "name": "Samsung Electro-Mechanics (Korea)",
+        "name": "Samsung Electro-Mechanics",
         "share": 23.0
       },
       {
@@ -9269,13 +9555,15 @@
         "share": 12.0
       },
       {
+        "country": "Japan",
         "ko": "타이요유덴(일본)",
-        "name": "Taiyo Yuden (Japan)",
+        "name": "Taiyo Yuden",
         "share": 9.0
       },
       {
+        "country": "Taiwan",
         "ko": "야게오 / KEMET(대만)",
-        "name": "Yageo / KEMET (Taiwan)",
+        "name": "Yageo / KEMET",
         "share": 8.0
       }
     ],
@@ -9309,6 +9597,76 @@
     "market": {
       "label": "$13.9B",
       "trillion_usd": 0.0139,
+      "year": "2024"
+    },
+    "sector": "Information Technology"
+  },
+  "45203020": {
+    "cagr": "~7.4%",
+    "gics": "45203020",
+    "global_company": "Hon Hai / Foxconn",
+    "global_firms": [
+      {
+        "country": "Taiwan",
+        "ko": "훙하이/폭스콘(대만)",
+        "name": "Hon Hai / Foxconn",
+        "share": 42.0
+      },
+      {
+        "ko": "콴타+컴팔(대만, ODM)",
+        "name": "Quanta + Compal (Taiwan, ODM)",
+        "share": 11.0
+      },
+      {
+        "country": "Taiwan",
+        "ko": "페가트론+위스트론(대만)",
+        "name": "Pegatron + Wistron",
+        "share": 9.0
+      },
+      {
+        "country": "China",
+        "ko": "럭스셰어+BYD전자(중국)",
+        "name": "Luxshare + BYD Electronics",
+        "share": 13.0
+      },
+      {
+        "ko": "자빌·플렉스·셀레스티카 등",
+        "name": "Jabil, Flex, Celestica & others",
+        "share": 25.0
+      }
+    ],
+    "headline_ko": "훙하이·폭스콘이 매출 약 2,525억 달러와 AI 서버 조립 주도력으로 약 9,000억 달러 규모의 EMS·ODM 시장을 지배합니다. 삼성과 LG가 자체 생산을 하다 보니, 한국 최대 위탁생산 전문기업은 인탑스입니다.",
+    "industry_en": "Electronic Manufacturing Services",
+    "industry_ko": "전자제품 위탁생산(EMS)",
+    "korea_company": "Intops",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "인탑스(049070, 한국)",
+        "name": "Intops (049070)",
+        "share": 38.0
+      },
+      {
+        "country": "Korea",
+        "ko": "자화전자·파트론(한국)",
+        "name": "Jahwa Electronics, Partron",
+        "share": 32.0
+      },
+      {
+        "ko": "바텍·켐트로닉스 등(한국)",
+        "name": "KH Vatec, Chemtronics & others (Korea)KH",
+        "share": 30.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.3333,
+      "scale": 0.4286,
+      "tech": 0.2381
+    },
+    "market": {
+      "label": "$838B",
+      "trillion_usd": 0.838,
       "year": "2024"
     },
     "sector": "Information Technology"
@@ -9361,6 +9719,69 @@
       "year": "2024"
     },
     "sector": "Information Technology"
+  },
+  "45301020": {
+    "cagr": "~15%",
+    "gics": "45301020",
+    "global_company": "Samsung Electronics (삼성전자)",
+    "global_firms": [
+      {
+        "country": "South Korea",
+        "ko": "삼성전자",
+        "name": "Samsung Electronics",
+        "share": 41.0
+      },
+      {
+        "ko": "하이닉스",
+        "name": "SK hynix (South Korea)SK",
+        "share": 35.0
+      },
+      {
+        "country": "United States",
+        "ko": "마이크론",
+        "name": "Micron",
+        "share": 19.0
+      },
+      {
+        "ko": "중국) 외",
+        "name": "CXMT (China) & othersCXMT(",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "메모리 산업을 표준 애널리스트 템플릿으로 정리했습니다. D램·낸드·HBM 밸류체인과 이익 풀, 경기를 타는 시장 규모와 CAGR, 글로벌·한국 점유율 파이, 기술 대 규모 2×2, 파이브 포스, 반도체 수출통제 규제, 핵심 성공 요인, 그리고 삼성전자와 SK하이닉스의 SCQA 진단까지 담았습니다.",
+    "industry_en": "Memory Semiconductors — Analyst Brief",
+    "industry_ko": "메모리 반도체 — 애널리스트 브리프",
+    "korea_company": "SK hynix (SK하이닉스)",
+    "korea_firms": [
+      {
+        "country": "South Korea",
+        "ko": "삼성전자",
+        "name": "Samsung Electronics",
+        "share": 54.0
+      },
+      {
+        "ko": "하이닉스",
+        "name": "SK hynix (South Korea)SK",
+        "share": 44.0
+      },
+      {
+        "ko": "기타(테스트 / 틈새)",
+        "name": "Others (test / niche)",
+        "share": 2.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1,
+      "scale": 0.5,
+      "tech": 0.4
+    },
+    "market": {
+      "label": "$90B",
+      "trillion_usd": 0.09,
+      "year": "2023"
+    },
+    "sector": "Special Report"
   },
   "501010": {
     "cagr": "≈6.5%",
@@ -9848,6 +10269,76 @@
     },
     "sector": "Communication Services"
   },
+  "50201030": {
+    "cagr": "~2.2%",
+    "gics": "50201030",
+    "global_company": "Comcast",
+    "global_firms": [
+      {
+        "country": "United States",
+        "ko": "컴캐스트(미국)",
+        "name": "Comcast",
+        "share": 38.0
+      },
+      {
+        "country": "United States",
+        "ko": "차터(미국)",
+        "name": "Charter",
+        "share": 29.0
+      },
+      {
+        "country": "United States",
+        "ko": "콕스(미국)",
+        "name": "Cox",
+        "share": 14.0
+      },
+      {
+        "country": "United States",
+        "ko": "알티스 USA(미국)",
+        "name": "Altice USA",
+        "share": 12.0
+      }
+    ],
+    "headline_ko": "컴캐스트가 분기 매출 약 315억 달러, 시가총액 약 880억 달러로 세계 최대 케이블·위성 사업자이며, 줄어드는 유료방송에서 초고속인터넷으로 무게를 옮기고 있습니다. 약 2,160억 달러 규모의 유료방송 시장이 정체된 가운데, 한국 1위 케이블 사업자는 LG헬로비전입니다.",
+    "industry_en": "Cable & Satellite",
+    "industry_ko": "케이블·위성",
+    "korea_company": "LG HelloVision",
+    "korea_firms": [
+      {
+        "ko": "헬로비전(한국)",
+        "name": "LG HelloVision (South Korea)LG",
+        "share": 28.0
+      },
+      {
+        "ko": "브로드밴드 케이블(한국)",
+        "name": "SK Broadband cable (South Korea)SK",
+        "share": 21.0
+      },
+      {
+        "country": "South Korea",
+        "ko": "딜라이브(한국)",
+        "name": "D'Live",
+        "share": 17.0
+      },
+      {
+        "ko": "및 기타(한국)",
+        "name": "CMB, HCN & others (South Korea)CMB·HCN",
+        "share": 34.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.25,
+      "global": 0.5833,
+      "scale": 0.1667,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$211B",
+      "trillion_usd": 0.211,
+      "year": "2024"
+    },
+    "sector": "Communication Services"
+  },
   "502020": {
     "cagr": "≈3.7%",
     "gics": "502020",
@@ -10048,8 +10539,9 @@
         "share": 4.0
       },
       {
+        "country": "Italy",
         "ko": "에넬 (이탈리아)",
-        "name": "Enel (Italy)",
+        "name": "Enel",
         "share": 3.0
       },
       {
@@ -10403,6 +10895,71 @@
     "market": {
       "label": "$348B",
       "trillion_usd": 0.348,
+      "year": "2024"
+    },
+    "sector": "Utilities"
+  },
+  "55104010": {
+    "cagr": "~7.5%",
+    "gics": "55104010",
+    "global_company": "American Water Works",
+    "global_firms": [
+      {
+        "ko": "아메리칸 워터(미국, 약 260억 달러)",
+        "name": "American Water Works (United States, ~$26B)",
+        "share": 30.0
+      },
+      {
+        "ko": "베올리아 수도 부문(프랑스, 약 200억 달러*)",
+        "name": "Veolia water unit (France, ~$20B*)",
+        "share": 24.0
+      },
+      {
+        "ko": "유나이티드 유틸리티스(영국, 약 130억 달러)",
+        "name": "United Utilities (United Kingdom, ~$13B)",
+        "share": 18.0
+      },
+      {
+        "ko": "세번 트렌트(영국, 약 120억 달러)",
+        "name": "Severn Trent (United Kingdom, ~$12B)",
+        "share": 17.0
+      },
+      {
+        "ko": "에센셜 유틸리티스 외",
+        "name": "Essential Utilities & others",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "아메리칸 워터가 시가총액 약 257억 달러로 상장 순수 수도 유틸리티 1위이며, 약 630억 달러 규모로 에센셜 유틸리티스를 인수하는 중입니다. 한국의 수도는 비상장 국영기업 한국수자원공사가 맡고 있고, PFAS와 노후관 교체 규정이 자본지출을 끌어올리고 있습니다.",
+    "industry_en": "Water Utilities",
+    "industry_ko": "수도 유틸리티",
+    "korea_company": "K-water (state-owned)",
+    "korea_firms": [
+      {
+        "ko": "공기업, 대량 용수 + 지방 위탁 공급)",
+        "name": "K-water (state-owned, bulk + consigned local supply)K-water(",
+        "share": 49.0
+      },
+      {
+        "ko": "지방·광역 상수도(서울, 부산 등)",
+        "name": "Municipal & metropolitan waterworks (Seoul, Busan, etc.)",
+        "share": 39.0
+      },
+      {
+        "ko": "산업용·민간 처리 사업자",
+        "name": "Industrial / private treatment operators",
+        "share": 12.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.4,
+      "scale": 0.3333,
+      "tech": 0.2667
+    },
+    "market": {
+      "label": "$346B",
+      "trillion_usd": 0.346,
       "year": "2024"
     },
     "sector": "Utilities"
