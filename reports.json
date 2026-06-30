@@ -2552,5 +2552,37 @@
   "headline_ko": "D램과 낸드, 그리고 HBM 붐. 어쩌다 한국의 두 회사가 세계 메모리의 대부분을 만들게 되었는지, 왜 이곳이 기술 산업에서 가장 경기를 타고 가장 많은 자본을 삼키는 영역인지, 그리고 AI 투자 붐이 이 이익 풀을 어떻게 뒤흔드는지를 들여다본다.",
   "accent": "#b3261e",
   "format": "magazine"
+ },
+ {
+  "date": "2026-06-30",
+  "gics": "20202010",
+  "sector": "Special Report",
+  "special": true,
+  "set_index": 3,
+  "industry_en": "Management Consulting — Analyst Brief",
+  "industry_ko": "경영컨설팅 — 애널리스트 브리프",
+  "global_company": "McKinsey & Company",
+  "korea_company": "삼일PwC (Samil PwC)",
+  "file": "reports/2026-06-30/industry-report_2026-06-30_20202010_management-consulting.html",
+  "headline_en": "The same topic as the magazine long-read, run through the standard analyst template: value chain & profit pool, market size & CAGR, global/Korea share pies, competitive 2×2, Porter's five forces, dated regulation, KSF, and SCQA player diagnoses for McKinsey and 삼일PwC.",
+  "headline_ko": "매거진 롱리드와 같은 주제를 표준 애널리스트 템플릿으로 다시 풀어냈습니다. 밸류체인·이익 풀, 시장 규모와 CAGR, 글로벌·한국 점유율 파이, 경쟁 2×2, 파이브 포스, 날짜가 박힌 규제, 핵심 성공 요인, 그리고 McKinsey와 삼일PwC의 SCQA 진단까지 담았습니다.",
+  "accent": "#0e7490",
+  "format": "standard"
+ },
+ {
+  "date": "2026-06-30",
+  "gics": "45301020",
+  "sector": "Special Report",
+  "special": true,
+  "set_index": 4,
+  "industry_en": "Memory Semiconductors — Analyst Brief",
+  "industry_ko": "메모리 반도체 — 애널리스트 브리프",
+  "global_company": "Samsung Electronics (삼성전자)",
+  "korea_company": "SK hynix (SK하이닉스)",
+  "file": "reports/2026-06-30/industry-report_2026-06-30_45301020_memory-semiconductors.html",
+  "headline_en": "The memory industry through the standard analyst template: DRAM/NAND/HBM value chain & profit pool, the cyclical TAM and CAGR, global/Korea share pies, a tech-vs-scale 2×2, five forces, chip-export-control regulation, KSF, and SCQA diagnoses for Samsung Electronics and SK hynix.",
+  "headline_ko": "메모리 산업을 표준 애널리스트 템플릿으로 정리했습니다. D램·낸드·HBM 밸류체인과 이익 풀, 경기를 타는 시장 규모와 CAGR, 글로벌·한국 점유율 파이, 기술 대 규모 2×2, 파이브 포스, 반도체 수출통제 규제, 핵심 성공 요인, 그리고 삼성전자와 SK하이닉스의 SCQA 진단까지 담았습니다.",
+  "accent": "#9a3412",
+  "format": "standard"
  }
 ]
