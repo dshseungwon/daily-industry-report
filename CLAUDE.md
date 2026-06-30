@@ -43,7 +43,7 @@ Live site: https://dshseungwon.github.io/daily-industry-report/
 - Profit-pool bar: each value-chain stage shows its INDICATIVE % share of the profit pool (`.pv` reads `~NN%`, shares ~100%, bar width proportional, hi/med/lo only tints color). IMPORTANT: `.pool-row .pfill` MUST include `display:block` — it is a `<span>`, and without it the colored fill is invisible (only the grey track shows). This was a real bug; keep the rule.
 
 ## Conventions & decisions (please preserve)
-- Korean register: analyst REPORTS use polite "~습니다체" (a competent secretary briefing an executive). The MAGAZINE uses native written "~다" 문어체 — NOT translationese, block-level bilingual spans so Korean isn't clamped to English word order.
+- Korean register (BOTH reports and magazines): natural, readable honorific 존댓말 — base "~습니다/~ㅂ니다" with "~죠/~거든요/~요/~ㄹ까요?" mixed in for rhythm, like a sharp native Korean magazine writer explaining to the reader. NOT stiff report-speak ("~로 파악됩니다"), NOT plain "~다" 문어체, and above all NOT translationese: drop the English skeleton, split/merge sentences, kill 불필요한 피동 and "~에 대해/~에 의해" and 무생물 주어 직역. (Earlier reports used 합쇼체 보고체 and magazines used "~다" 문어체; both were migrated to this natural 존댓말 — see prompts/daily-industry-report.md STEP 3 and the ko-rewrite/ tooling.)
 - Section titles are plain and standard (no flowery headlines).
 - Every company/lab (incl. Anthropic/Claude) is described evenhandedly and factually — no promotional tilt.
 - Special reports are NOT GICS rotation items: their `reports.json` entry has `special:true` (and `format:"magazine"`); `build_index.js` renders them in a dedicated top "Special Reports" section, never under a daily date. Files live under `magazine/`.

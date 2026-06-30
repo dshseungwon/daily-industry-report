@@ -97,12 +97,21 @@ holds the IDENTICAL English text as its <span class="en"> twin (equal span count
 guaranteed by construction).
 PASS 2 (runs AFTER the STEP 6a/6b fact-check corrections, so corrected English is the
 source): for each report, a dedicated subagent extracts the unique EN strings and
-REWRITES each one in Korean as a top-tier executive secretary briefing the chairman.
+REWRITES each one in Korean as a sharp NATIVE Korean magazine writer would — natural,
+readable, honorific 존댓말 that sounds written-from-scratch in Korean, NOT translated.
 Korean rewrite rules (give these to the rewrite subagents verbatim):
-- 합쇼체 보고체: "~로 파악됩니다", "~한 바 있습니다", "~할 것으로 보입니다",
-  "시사점을 말씀드리면 ~라는 점입니다". 문장 구조는 영어를 버리고 한국어 호흡으로
-  재구성(문장 분할, 연결어 "실제로/다만/앞서/이에 따라" 추가 자유).
-- 번역체 금지: "~에 의해", "~되어지다", "면세 입국", "재경로화" 같은 직역 명사구 금지.
+- 문체: 자연스럽고 읽기 쉬운 존댓말. 기본은 "~습니다/~ㅂ니다"이고, 글의 호흡을 위해
+  "~죠/~거든요/~요/~ㄹ까요?" 같은 부드러운 종결을 자연스럽게 섞는다. 독자에게 곁에서
+  설명하듯 친근하되 품위 있게. 딱딱한 공문서·보고서체("~로 파악됩니다", "~한 바 있습니다")도,
+  반말체도 쓰지 않는다. "이 내용을 한국어로 처음부터 설명한다면 어떻게 말할까"로 접근한다.
+- 영어 문장 골격을 버리고 한국어 호흡으로 새로 쓴다: 문장 분할·합치기, 어순 변경, 연결어
+  교체("실제로/다만/그래서/거든요"), 군더더기 주어·지시어("그것은/이것은/이는") 제거 자유.
+- 번역투 강력 금지: 불필요한 피동("~되어진다", "~로 보여진다"), 조사·구문 남발("~에 대해",
+  "~에 의해", "~를 통해", "~에 있어서", "~의 경우"), have 직역("~을 가진다"), 무생물·추상 주어
+  직역("이것은 ~을 의미한다" → "그래서 ~인 거죠"로 풀기), em dash(—) 의존(한국어 문장으로 풀기),
+  "면세 입국"·"재경로화" 같은 직역 명사구.
+- 예시(번역투 → 자연스러운 존댓말): "이 사실은 비용 증가를 의미한다." → "그만큼 비용이
+  늘어난다는 뜻입니다." / "먼저 용어부터 짚자." → "먼저 용어부터 짚어볼까요?"
 - 짧은 라벨/제목/차트 라벨/KPI 제목은 간결한 명사형(예: "Executive summary"→"핵심 보고",
   "Bull · upside"→"낙관 시나리오", "KPIs to watch"→"주시할 지표"). "Why it matters:"→"시사점:".
 - 용어집: market share→시장점유율, value chain→가치사슬, moat→해자, KSF→핵심성공요인,
@@ -263,8 +272,8 @@ After the 7 reports and reports.json/index.html are done, write TWO files at the
 ROOT:
 
 1) `digest.html` — a self-contained, INLINE-STYLED (email-safe) HTML body, KOREAN-
-   primary in polite 합쇼체 (this is a personal morning brief the owner actually reads).
-   Write the Korean natively in the same secretary-briefing register as the reports (번역체 금지). Mobile-friendly, max-width ~600px, INLINE css only (no <style> blocks, no external
+   primary in natural, readable 존댓말 (this is a personal morning brief the owner actually reads).
+   Write the Korean natively in the SAME register as the reports (자연스러운 존댓말, 번역체 금지; see STEP 3). Mobile-friendly, max-width ~600px, INLINE css only (no <style> blocks, no external
    assets, no <script>; mail clients strip them). Structure, in this order:
    - Header line: "The Industry Brief · 오늘의 다이제스트 · <YYYY-MM-DD>" with a link to
      the landing page https://dshseungwon.github.io/daily-industry-report/ .
