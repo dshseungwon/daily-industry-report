@@ -1842,6 +1842,72 @@
     },
     "sector": "Materials"
   },
+  "15105020": {
+    "cagr": "~0.7%",
+    "gics": "15105020",
+    "global_company": "Kimberly-Clark",
+    "global_firms": [
+      {
+        "country": "United States",
+        "ko": "킴벌리클라크(미국)",
+        "name": "Kimberly-Clark",
+        "share": 8.0
+      },
+      {
+        "country": "Sweden",
+        "ko": "에시티(스웨덴)",
+        "name": "Essity",
+        "share": 7.0
+      },
+      {
+        "country": "United States",
+        "ko": "프록터앤드갬블(미국)",
+        "name": "Procter & Gamble",
+        "share": 6.0
+      },
+      {
+        "ko": "조지아퍼시픽·소피델·헝안(미국/이탈리아/중국)",
+        "name": "Georgia-Pacific, Sofidel, Hengan (US/Italy/China)",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "킴벌리클라크가 클리넥스·스콧 브랜드를 앞세워 약 2,700억 달러 규모의 잘게 쪼개진 글로벌 종이 제품 시장을 이끕니다(시가총액 약 365억 달러). 한국은 유한킴벌리가 소매 화장지의 약 29%를 쥐고 있고, 인쇄용지는 줄고 화장지만 성장하고 있습니다.",
+    "industry_en": "Paper Products",
+    "industry_ko": "종이 제품",
+    "korea_company": "Yuhan-Kimberly (unlisted JV)",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "유한킴벌리(한국)",
+        "name": "Yuhan-Kimberly",
+        "share": 29.0
+      },
+      {
+        "country": "Korea",
+        "ko": "깨끗한나라(한국)",
+        "name": "Kleannara",
+        "share": 15.0
+      },
+      {
+        "country": "Korea",
+        "ko": "유통사 자체 브랜드(한국)",
+        "name": "Retailer private label",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.2857,
+      "global": 0.1429,
+      "scale": 0.4286,
+      "tech": 0.1429
+    },
+    "market": {
+      "label": "$270B",
+      "trillion_usd": 0.27,
+      "year": "2024"
+    },
+    "sector": "Materials"
+  },
   "201010": {
     "cagr": "≈6%",
     "gics": "201010",
@@ -3372,6 +3438,70 @@
       "label": "$614B",
       "trillion_usd": 0.614,
       "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20202020": {
+    "cagr": "~6.5%",
+    "gics": "20202020",
+    "global_company": "RELX",
+    "global_firms": [
+      {
+        "country": "United Kingdom",
+        "ko": "렐엑스(영국)",
+        "name": "RELX",
+        "share": 22.0
+      },
+      {
+        "country": "Canada",
+        "ko": "톰슨로이터(캐나다)",
+        "name": "Thomson Reuters",
+        "share": 18.0
+      },
+      {
+        "ko": "익스페리안(아일랜드/영국)",
+        "name": "Experian (Ireland/UK)",
+        "share": 15.0
+      },
+      {
+        "country": "United States",
+        "ko": "베리스크·가트너·닐슨(미국)",
+        "name": "Verisk, Gartner, Nielsen",
+        "share": 15.0
+      }
+    ],
+    "headline_ko": "RELX가 시가총액 약 550억 달러로 정보서비스 최대 상장사이며 마진이 약 35%에 이릅니다. 한국은 NICE평가정보가 신용데이터를 이끌고, EU AI법 연기로 신용평가 규제 시행이 2027년 12월로 미뤄졌습니다.",
+    "industry_en": "Research & Consulting Services",
+    "industry_ko": "리서치·컨설팅 서비스",
+    "korea_company": "NICE Information Service",
+    "korea_firms": [
+      {
+        "ko": "평가정보(한국)",
+        "name": "NICE Information Service (Korea)NICE",
+        "share": 42.0
+      },
+      {
+        "country": "Korea",
+        "ko": "코리아크레딧뷰로/KCB(한국)",
+        "name": "Korea Credit Bureau / KCB",
+        "share": 28.0
+      },
+      {
+        "ko": "평가정보(한국)",
+        "name": "SCI Information Service (Korea)SCI",
+        "share": 15.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1875,
+      "global": 0.1875,
+      "scale": 0.0,
+      "tech": 0.625
+    },
+    "market": {
+      "label": "$105B",
+      "trillion_usd": 0.105,
+      "year": "2025"
     },
     "sector": "Industrials"
   },
@@ -5102,6 +5232,74 @@
     "market": {
       "label": "$120B",
       "trillion_usd": 0.12,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25301040": {
+    "cagr": "~6%",
+    "gics": "25301040",
+    "global_company": "McDonald's",
+    "global_firms": [
+      {
+        "country": "United States",
+        "ko": "맥도날드(미국)",
+        "name": "McDonald's",
+        "share": 8.0
+      },
+      {
+        "country": "United States",
+        "ko": "얌!브랜즈(미국)",
+        "name": "Yum! Brands",
+        "share": 7.0
+      },
+      {
+        "country": "United States",
+        "ko": "스타벅스(미국)",
+        "name": "Starbucks",
+        "share": 6.0
+      },
+      {
+        "ko": "레스토랑브랜즈·인스파이어(캐나다/미국)",
+        "name": "Restaurant Brands Intl, Inspire (Canada/US)",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "맥도날드가 규모와 로열티를 앞세워 약 4조 달러 규모의 잘게 쪼개진 글로벌 외식 시장을 이끕니다(매장 4만 5,000개 이상, 시스템 매출 약 1,400억 달러). 한국 상장 1위 교촌에프앤비는 배달 수수료와 최저임금 인상과 씨름하고, 스타벅스코리아와 BHC는 비상장입니다.",
+    "industry_en": "Restaurants",
+    "industry_ko": "레스토랑·외식",
+    "korea_company": "Kyochon F&B (listed leader)",
+    "korea_firms": [
+      {
+        "ko": "스타벅스코리아·SCK(한국, 비상장)",
+        "name": "Starbucks Korea / SCK (Korea, unlisted)",
+        "share": 8.0
+      },
+      {
+        "ko": "롯데GRS — 롯데리아 등(한국, 비상장)",
+        "name": "Lotte GRS — Lotteria etc. (Korea, unlisted)",
+        "share": 5.0
+      },
+      {
+        "ko": "한국, 비상장)",
+        "name": "BHC (Korea, unlisted)BHC(",
+        "share": 4.0
+      },
+      {
+        "ko": "교촌에프앤비(한국, 상장)",
+        "name": "Kyochon F&B (Korea, listed)",
+        "share": 4.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.8235,
+      "global": 0.0,
+      "scale": 0.0588,
+      "tech": 0.1176
+    },
+    "market": {
+      "label": "$3.8T",
+      "trillion_usd": 3.8,
       "year": "2024"
     },
     "sector": "Consumer Discretionary"
@@ -8769,6 +8967,77 @@
     },
     "sector": "Financials"
   },
+  "40301040": {
+    "cagr": "~4.5%",
+    "gics": "40301040",
+    "global_company": "Progressive",
+    "global_firms": [
+      {
+        "country": "United States",
+        "ko": "스테이트팜(미국)",
+        "name": "State Farm",
+        "share": 6.0
+      },
+      {
+        "country": "United States",
+        "ko": "프로그레시브(미국)",
+        "name": "Progressive",
+        "share": 5.0
+      },
+      {
+        "country": "United States",
+        "ko": "버크셔 해서웨이(미국)",
+        "name": "Berkshire Hathaway",
+        "share": 4.0
+      },
+      {
+        "ko": "알리안츠·처브·올스테이트(독일/스위스/미국)",
+        "name": "Allianz, Chubb, Allstate (Germany/Switzerland/US)",
+        "share": 9.0
+      }
+    ],
+    "headline_ko": "프로그레시브가 시가총액 약 1,320억 달러, 합산비율 87.4%로 상장 순수 손해보험 1위입니다. 삼성화재는 점유율 약 22%(시가총액 약 30조 원)로 한국을 이끌고, 6년 연속 1,000억 달러를 넘긴 재해가 리스크 셈법을 다시 짜게 만들고 있습니다.",
+    "industry_en": "Property & Casualty Insurance",
+    "industry_ko": "손해보험",
+    "korea_company": "Samsung Fire & Marine",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "삼성화재(한국)",
+        "name": "Samsung Fire & Marine",
+        "share": 22.0
+      },
+      {
+        "ko": "손해보험(한국)",
+        "name": "DB Insurance (Korea)DB",
+        "share": 19.0
+      },
+      {
+        "country": "Korea",
+        "ko": "메리츠화재(한국)",
+        "name": "Meritz Fire & Marine",
+        "share": 15.0
+      },
+      {
+        "country": "Korea",
+        "ko": "현대해상·KB손해보험(한국)",
+        "name": "Hyundai Marine & Fire, KB Insurance",
+        "share": 11.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$1.83T",
+      "trillion_usd": 1.83,
+      "year": "2024"
+    },
+    "sector": "Financials"
+  },
   "451020": {
     "cagr": "≈8%",
     "gics": "451020",
@@ -9671,6 +9940,80 @@
     },
     "sector": "Information Technology"
   },
+  "45203030": {
+    "cagr": "~5%",
+    "gics": "45203030",
+    "global_company": "TD Synnex",
+    "global_firms": [
+      {
+        "ko": "시넥스(미국)",
+        "name": "TD Synnex (United States)TD",
+        "share": 34.0
+      },
+      {
+        "country": "United States",
+        "ko": "잉그램마이크로(미국)",
+        "name": "Ingram Micro",
+        "share": 28.0
+      },
+      {
+        "ko": "홀딩스(대만)",
+        "name": "WPG Holdings (Taiwan)WPG",
+        "share": 17.0
+      },
+      {
+        "ko": "미국)",
+        "name": "CDW (United States)CDW(",
+        "share": 12.0
+      },
+      {
+        "ko": "애브넷 및 기타(미국·글로벌)",
+        "name": "Avnet & others (US/global)",
+        "share": 9.0
+      }
+    ],
+    "headline_ko": "TD시넥스가 매출 약 625억 달러로 세계 최대 기술 유통사이고(시가총액 약 122억 달러), 에스에이엠티가 한국 채널을 받칩니다. AI 서버 수요가 얇은 마진·대량 물량 사업을 밀어 올리고 있습니다.",
+    "industry_en": "Technology Distributors",
+    "industry_ko": "기술 유통",
+    "korea_company": "SAMT (에스에이엠티)",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "에스에이엠티(한국)",
+        "name": "SAMT",
+        "share": 30.0
+      },
+      {
+        "country": "Korea",
+        "ko": "엠씨넥스·부품 유통사(한국)",
+        "name": "MEIL / component distributors",
+        "share": 20.0
+      },
+      {
+        "country": "Korea",
+        "ko": "아이티센씨티에스·다우데이타(한국)",
+        "name": "ITCEN CTS, Daou Data",
+        "share": 17.0
+      },
+      {
+        "ko": "글로벌 유통사 및 기타",
+        "name": "Global distributors & others",
+        "share": 33.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.3125,
+      "scale": 0.5,
+      "tech": 0.1875
+    },
+    "market": {
+      "label": "$219B",
+      "trillion_usd": 0.219,
+      "year": "2024"
+    },
+    "sector": "Information Technology"
+  },
   "453010": {
     "cagr": "≈16–18%",
     "gics": "453010",
@@ -10335,6 +10678,71 @@
     "market": {
       "label": "$211B",
       "trillion_usd": 0.211,
+      "year": "2024"
+    },
+    "sector": "Communication Services"
+  },
+  "50201040": {
+    "cagr": "~3%",
+    "gics": "50201040",
+    "global_company": "RELX",
+    "global_firms": [
+      {
+        "country": "United Kingdom",
+        "ko": "렐엑스·엘스비어(영국)",
+        "name": "RELX / Elsevier",
+        "share": 28.0
+      },
+      {
+        "country": "Canada",
+        "ko": "톰슨로이터(캐나다)",
+        "name": "Thomson Reuters",
+        "share": 21.0
+      },
+      {
+        "country": "Netherlands",
+        "ko": "볼터스클루버(네덜란드)",
+        "name": "Wolters Kluwer",
+        "share": 17.0
+      },
+      {
+        "ko": "피어슨·스프링어네이처·와일리(영국/독일/미국)",
+        "name": "Pearson, Springer Nature, Wiley (UK/Germany/US)",
+        "share": 12.0
+      }
+    ],
+    "headline_ko": "RELX가 시가총액 약 560억 달러로 엘스비어의 STM 사업을 앞세워 글로벌 출판을 이끌며 콘텐츠를 AI 도구로 바꾸고 있습니다. 한국 상장 1위 웅진씽크빅은 영업손실로 돌아섰고, 단행본은 눌리고 전문 출판은 고마진을 지킵니다.",
+    "industry_en": "Publishing",
+    "industry_ko": "출판",
+    "korea_company": "Woongjin Thinkbig (listed leader)",
+    "korea_firms": [
+      {
+        "ko": "교보문고(한국, 비상장)",
+        "name": "Kyobo Book Centre (Korea, unlisted)",
+        "share": 24.0
+      },
+      {
+        "country": "Korea",
+        "ko": "미래엔·웅진씽크빅(한국)",
+        "name": "Mirae-N / Woongjin Thinkbig",
+        "share": 19.0
+      },
+      {
+        "country": "Korea",
+        "ko": "예스24·대교·알라딘(한국)",
+        "name": "Yes24, Daekyo, Aladin",
+        "share": 16.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.4286,
+      "global": 0.2143,
+      "scale": 0.0714,
+      "tech": 0.2857
+    },
+    "market": {
+      "label": "$117B",
+      "trillion_usd": 0.117,
       "year": "2024"
     },
     "sector": "Communication Services"
@@ -11010,6 +11418,69 @@
       "global": 0.3,
       "scale": 0.6,
       "tech": 0.1
+    },
+    "sector": "Utilities"
+  },
+  "55105010": {
+    "cagr": "~6.6%",
+    "gics": "55105010",
+    "global_company": "Constellation Energy",
+    "global_firms": [
+      {
+        "country": "United States",
+        "ko": "컨스텔레이션 에너지(미국)",
+        "name": "Constellation Energy",
+        "share": 25.0
+      },
+      {
+        "country": "United States",
+        "ko": "비스트라(미국)",
+        "name": "Vistra",
+        "share": 19.0
+      },
+      {
+        "ko": "에너지(미국)",
+        "name": "NRG Energy (United States)NRG",
+        "share": 14.0
+      },
+      {
+        "country": "United States",
+        "ko": "탈렌 에너지(미국)",
+        "name": "Talen Energy",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "컨스텔레이션 에너지가 캘파인 인수로 미국 최대 무탄소 발전사가 됐습니다(약 60GW, 시가총액 약 890억 달러). 한국의 실질적 발전 1위는 비상장이라 상장사 포스코인터내셔널(인천 LNG)이 대용치이며, AI 데이터센터 수요가 전력 구매계약을 끌어올리고 있습니다.",
+    "industry_en": "Independent Power Producers & Energy Traders",
+    "industry_ko": "독립 발전·전력 거래",
+    "korea_company": "POSCO International (listed proxy)",
+    "korea_firms": [
+      {
+        "ko": "한국, 비상장)",
+        "name": "SK E&S (Korea, unlisted)SK E&S(",
+        "share": 30.0
+      },
+      {
+        "ko": "포스코인터내셔널(한국, 상장)",
+        "name": "POSCO International (Korea, listed)",
+        "share": 25.0
+      },
+      {
+        "ko": "파워(한국, 비상장)",
+        "name": "GS EPS / GS Power (Korea, unlisted)GS EPS·GS",
+        "share": 20.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$493B",
+      "trillion_usd": 0.493,
+      "year": "2025"
     },
     "sector": "Utilities"
   },
