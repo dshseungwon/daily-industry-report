@@ -3505,6 +3505,78 @@
     },
     "sector": "Industrials"
   },
+  "20202030": {
+    "cagr": "~14%",
+    "gics": "20202030",
+    "global_company": "Visa",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "Visa (United States)Visa (",
+        "share": 52.0
+      },
+      {
+        "country": "United States",
+        "ko": "마스터카드 (미국)",
+        "name": "Mastercard",
+        "share": 24.0
+      },
+      {
+        "country": "China",
+        "ko": "유니온페이 (중국)",
+        "name": "UnionPay",
+        "share": 8.0
+      },
+      {
+        "country": "United States",
+        "ko": "아메리칸 익스프레스, Discover (미국)",
+        "name": "American Express, Discover",
+        "share": 8.0
+      }
+    ],
+    "headline_ko": "비자가 시가총액 약 6,390억 달러로 잘게 쪼개진 글로벌 결제·데이터 처리 시장을 이끕니다. 카드망과 처리사가 가치사슬에서 가장 두툼한 마진을 가져가죠. 한국에서는 삼성카드가 카드업계 순이익 1위, 신한카드가 카드 이용액 1위입니다.",
+    "industry_en": "Data Processing & Outsourced Services",
+    "industry_ko": "데이터 처리·아웃소싱 서비스",
+    "korea_company": "Samsung Card",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "신한카드 (한국)",
+        "name": "Shinhan Card",
+        "share": 20.0
+      },
+      {
+        "country": "Korea",
+        "ko": "삼성카드 (한국)",
+        "name": "Samsung Card",
+        "share": 20.0
+      },
+      {
+        "country": "Korea",
+        "ko": "현대카드, KB국민카드 (한국)",
+        "name": "Hyundai Card, KB Kookmin Card",
+        "share": 16.0
+      },
+      {
+        "country": "Korea",
+        "ko": "우리·롯데·하나카드 (한국)",
+        "name": "Woori, Lotte, Hana Card",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0625,
+      "scale": 0.6875,
+      "tech": 0.25
+    },
+    "market": {
+      "label": "$65B",
+      "trillion_usd": 0.065,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
   "203010": {
     "cagr": "≈5%",
     "gics": "203010",
@@ -5349,6 +5421,75 @@
     "market": {
       "label": "$3.49T",
       "trillion_usd": 3.49,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25302010": {
+    "cagr": "~13%",
+    "gics": "25302010",
+    "global_company": "New Oriental",
+    "global_firms": [
+      {
+        "ko": "중국)",
+        "name": "New Oriental (China)New Oriental(",
+        "share": 2.0
+      },
+      {
+        "ko": "중국)",
+        "name": "TAL Education (China)TAL Education(",
+        "share": 1.5
+      },
+      {
+        "ko": "미국)",
+        "name": "Bright Horizons (United States)Bright Horizons(",
+        "share": 1.5
+      },
+      {
+        "ko": "듀오링고(미국)",
+        "name": "Stride, Grand Canyon, Duolingo (US)Stride·Grand Canyon·",
+        "share": 4.0
+      }
+    ],
+    "headline_ko": "신둥팡(New Oriental)이 시가총액(약 75억 달러)과 매출(2025 회계연도 49억 달러) 모두에서 최대 상장 교육기업입니다. 글로벌 에듀테크 시장은 약 1,850억 달러 규모로 매년 약 13%씩 자라죠. 한국에서는 메가스터디교육이 규제가 조여드는 사교육 시장을 이끕니다.",
+    "industry_en": "Education Services",
+    "industry_ko": "교육 서비스",
+    "korea_company": "Megastudyedu",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "메가스터디교육(한국)",
+        "name": "Megastudyedu",
+        "share": 37.0
+      },
+      {
+        "country": "Korea",
+        "ko": "웅진씽크빅(한국)",
+        "name": "Woongjin Thinkbig",
+        "share": 15.0
+      },
+      {
+        "country": "Korea",
+        "ko": "디지털대성(한국)",
+        "name": "Digital Daesung",
+        "share": 12.0
+      },
+      {
+        "country": "Korea",
+        "ko": "크레버스·메가스터디(한국)",
+        "name": "Creverse, Megastudy",
+        "share": 18.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.4762,
+      "global": 0.0952,
+      "scale": 0.1429,
+      "tech": 0.2857
+    },
+    "market": {
+      "label": "$164B",
+      "trillion_usd": 0.164,
       "year": "2024"
     },
     "sector": "Consumer Discretionary"
@@ -9038,6 +9179,72 @@
     },
     "sector": "Financials"
   },
+  "40301050": {
+    "cagr": "~6.0%",
+    "gics": "40301050",
+    "global_company": "Munich Re",
+    "global_firms": [
+      {
+        "ko": "스위스)",
+        "name": "Swiss Re (Switzerland)Swiss Re (",
+        "share": 16.0
+      },
+      {
+        "ko": "독일)",
+        "name": "Munich Re (Germany)Munich Re (",
+        "share": 18.0
+      },
+      {
+        "ko": "독일)",
+        "name": "Hannover Re (Germany)Hannover Re (",
+        "share": 13.0
+      },
+      {
+        "ko": "미국/프랑스/미국)",
+        "name": "Berkshire, SCOR, RGA (US/France/US)Berkshire, SCOR, RGA (",
+        "share": 13.0
+      }
+    ],
+    "headline_ko": "뮌헨리(Munich Re)가 원수보험료 기준 세계 최대 재보험사입니다(시가총액 약 610억 유로). 사상 최대인 약 7,850억 달러의 재보험 자본이 6년 연속 1,000억 달러를 넘긴 재해 손실과 맞붙고 있죠. 한국 유일의 재보험사 코리안리는 2025년 순이익 3,155억 원으로 사상 최대를 기록했습니다.",
+    "industry_en": "Reinsurance",
+    "industry_ko": "재보험",
+    "korea_company": "Korean Re",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "코리안리(Korean Re, 한국)",
+        "name": "Korean Re",
+        "share": 56.0
+      },
+      {
+        "ko": "한국지점(독일)",
+        "name": "Munich Re Korea branch (Germany)Munich Re",
+        "share": 16.0
+      },
+      {
+        "ko": "한국지점(스위스)",
+        "name": "Swiss Re Korea branch (Switzerland)Swiss Re",
+        "share": 12.0
+      },
+      {
+        "ko": "및 기타 외국계 지점(미국/기타)",
+        "name": "RGA & other foreign branches (US/other)RGA",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.5455,
+      "scale": 0.4545,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$451B",
+      "trillion_usd": 0.451,
+      "year": "2024"
+    },
+    "sector": "Financials"
+  },
   "451020": {
     "cagr": "≈8%",
     "gics": "451020",
@@ -10063,6 +10270,87 @@
     },
     "sector": "Information Technology"
   },
+  "45301010": {
+    "cagr": "~7–8%",
+    "gics": "45301010",
+    "global_company": "ASML",
+    "global_firms": [
+      {
+        "ko": "네덜란드)",
+        "name": "ASML (Netherlands)ASML(",
+        "share": 27.0
+      },
+      {
+        "country": "United States",
+        "ko": "어플라이드 머티어리얼즈(미국)",
+        "name": "Applied Materials",
+        "share": 20.0
+      },
+      {
+        "country": "United States",
+        "ko": "램리서치(미국)",
+        "name": "Lam Research",
+        "share": 13.0
+      },
+      {
+        "country": "Japan",
+        "ko": "도쿄일렉트론(일본)",
+        "name": "Tokyo Electron",
+        "share": 9.0
+      },
+      {
+        "ko": "미국)",
+        "name": "KLA (United States)KLA(",
+        "share": 7.0
+      }
+    ],
+    "headline_ko": "ASML이 약 100%의 EUV 노광 독점을 발판으로 약 1,350억 달러 규모의 반도체 장비 시장을 떠받칩니다(시가총액 약 6,740억 달러). AI와 HBM이 설비투자 슈퍼사이클을 이끌죠. 한국에서는 한미반도체가 HBM TC 본더 시장 약 71% 점유율로 앞섭니다.",
+    "industry_en": "Semiconductor Materials & Equipment",
+    "industry_ko": "반도체 소재·장비",
+    "korea_company": "Hanmi Semiconductor",
+    "korea_firms": [
+      {
+        "country": "Japan",
+        "ko": "신에쓰화학(일본)",
+        "name": "Shin-Etsu Chemical",
+        "share": 30.0
+      },
+      {
+        "ko": "일본)",
+        "name": "SUMCO (Japan)SUMCO(",
+        "share": 24.0
+      },
+      {
+        "country": "Taiwan",
+        "ko": "글로벌웨이퍼스(대만)",
+        "name": "GlobalWafers",
+        "share": 12.0
+      },
+      {
+        "country": "Germany",
+        "ko": "실트로닉(독일)",
+        "name": "Siltronic",
+        "share": 12.0
+      },
+      {
+        "ko": "실트론 외(한국/기타)",
+        "name": "SK Siltron & others (Korea/other)SK",
+        "share": 22.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1538,
+      "scale": 0.3077,
+      "tech": 0.5385
+    },
+    "market": {
+      "label": "$117B",
+      "trillion_usd": 0.117,
+      "year": "2024"
+    },
+    "sector": "Information Technology"
+  },
   "45301020": {
     "cagr": "~15%",
     "gics": "45301020",
@@ -10804,6 +11092,83 @@
     },
     "sector": "Communication Services"
   },
+  "50202010": {
+    "cagr": "~6%",
+    "gics": "50202010",
+    "global_company": "Netflix",
+    "global_firms": [
+      {
+        "country": "United States",
+        "ko": "넷플릭스 (미국)",
+        "name": "Netflix",
+        "share": 22.0
+      },
+      {
+        "country": "United States",
+        "ko": "프라임비디오 (미국)",
+        "name": "Prime Video",
+        "share": 18.0
+      },
+      {
+        "country": "United States",
+        "ko": "디즈니+ (미국)",
+        "name": "Disney+",
+        "share": 13.0
+      },
+      {
+        "ko": "파라마운트+ (미국)",
+        "name": "Max, Paramount+ (United States)Max,",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "넷플릭스가 시가총액 약 3,100억 달러, 가입자 3억 2,500만 명으로 가장 값비싼 상장 영화·엔터테인먼트 기업입니다. 디즈니를 크게 앞서죠. 스트리밍이 약 8,110억 달러 규모의 글로벌 시장을 규정합니다. 한국에서는 하이브가 K팝으로 앞서고, 2026년 방탄소년단 완전체 복귀가 촉매입니다.",
+    "industry_en": "Movies & Entertainment",
+    "industry_ko": "영화·엔터테인먼트",
+    "korea_company": "HYBE",
+    "korea_firms": [
+      {
+        "country": "United States",
+        "ko": "넷플릭스 (미국)",
+        "name": "Netflix",
+        "share": 40.0
+      },
+      {
+        "country": "Korea",
+        "ko": "쿠팡플레이 (한국)",
+        "name": "Coupang Play",
+        "share": 21.0
+      },
+      {
+        "country": "Korea",
+        "ko": "티빙 (한국)",
+        "name": "Tving",
+        "share": 17.0
+      },
+      {
+        "country": "Korea",
+        "ko": "웨이브 (한국)",
+        "name": "Wavve",
+        "share": 8.0
+      },
+      {
+        "ko": "디즈니+ 외 (미국/한국)",
+        "name": "Disney+, others (US/Korea)",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.5263,
+      "global": 0.0,
+      "scale": 0.2632,
+      "tech": 0.2105
+    },
+    "market": {
+      "label": "$760B",
+      "trillion_usd": 0.76,
+      "year": "2024"
+    },
+    "sector": "Communication Services"
+  },
   "502030": {
     "cagr": "≈6–8%",
     "gics": "502030",
@@ -11484,6 +11849,82 @@
     },
     "sector": "Utilities"
   },
+  "55105020": {
+    "cagr": "~9.5%",
+    "gics": "55105020",
+    "global_company": "Iberdrola",
+    "global_firms": [
+      {
+        "ko": "중국)",
+        "name": "China Three Gorges Renewables (China)China Three Gorges Renewables (",
+        "share": 6.0
+      },
+      {
+        "country": "Spain",
+        "ko": "이베르드롤라(Iberdrola, 스페인)",
+        "name": "Iberdrola",
+        "share": 5.0
+      },
+      {
+        "country": "United States",
+        "ko": "넥스트에라 에너지 리소시스(미국)",
+        "name": "NextEra Energy Resources",
+        "share": 4.0
+      },
+      {
+        "ko": "오스테드(Ørsted), RWE (이탈리아/포르투갈/덴마크/독일)",
+        "name": "Enel Green Power, EDP, Ørsted, RWE (Italy/Portugal/Denmark/Germany)Enel Green Power, EDP,",
+        "share": 9.0
+      }
+    ],
+    "headline_ko": "이베르드롤라(Iberdrola)가 시가총액 기준 최대 상장 재생에너지 중심 유틸리티입니다(약 1,350억 유로, 약 58GW). 글로벌 시장은 약 1.2조 달러 규모로 사상 최대 발전 용량을 더하고 있죠. 한국은 순수 재생에너지 민자발전사가 드물어, 대부분의 발전이 비상장 발전 자회사에 몰린 가운데 SK이터닉스가 가장 깨끗한 상장 대용주로 꼽힙니다.",
+    "industry_en": "Renewable Electricity",
+    "industry_ko": "재생에너지 발전",
+    "korea_company": "SK eternix (proxy)",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "한국전력(KEPCO) 발전 자회사, 비상장",
+        "name": "KEPCO state gencos, unlisted",
+        "share": 40.0
+      },
+      {
+        "country": "Korea",
+        "ko": "한국수력원자력, 비상장",
+        "name": "Korea Hydro & Nuclear Power, unlisted",
+        "share": 18.0
+      },
+      {
+        "country": "Korea",
+        "ko": "민간·주민 태양광/풍력",
+        "name": "Private & community solar/wind",
+        "share": 12.0
+      },
+      {
+        "country": "Korea",
+        "ko": "한화·GS·SK에코플랜트 등",
+        "name": "Hanwha, GS, SK ecoplant & others",
+        "share": 6.0
+      },
+      {
+        "ko": "이터닉스(상장 대용주) 등",
+        "name": "SK eternix, listed proxy & others (Korea)SK",
+        "share": 24.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.5714,
+      "scale": 0.4286,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$1.10T",
+      "trillion_usd": 1.1,
+      "year": "2024"
+    },
+    "sector": "Utilities"
+  },
   "601010": {
     "cagr": "≈3%",
     "gics": "601010",
@@ -11533,6 +11974,76 @@
     "market": {
       "label": "$2.2T",
       "trillion_usd": 2.2,
+      "year": "2024"
+    },
+    "sector": "Real Estate"
+  },
+  "60101010": {
+    "cagr": "~3.7%",
+    "gics": "60101010",
+    "global_company": "W. P. Carey",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "W. P. Carey (United States)W. P. Carey(",
+        "share": 18.0
+      },
+      {
+        "country": "United Kingdom",
+        "ko": "랜드 시큐리티스·브리티시 랜드(영국)",
+        "name": "Land Securities / British Land",
+        "share": 12.0
+      },
+      {
+        "country": "United States",
+        "ko": "보나도(미국)",
+        "name": "Vornado",
+        "share": 10.0
+      },
+      {
+        "country": "Australia",
+        "ko": "스톡랜드·미르박·GPT(호주)",
+        "name": "Stockland, Mirvac, GPT",
+        "share": 15.0
+      }
+    ],
+    "headline_ko": "W. P. Carey가 다각화 순임대 리츠 부문을 이끕니다(시가총액 약 160억 달러, 입주율 98.1%). 금리 하락이 약 2조 2,600억 달러 규모의 글로벌 상장 리츠 시장을 다시 끌어올리고 있죠. 한국에서는 SK리츠가 오피스·주유소·인프라 포트폴리오를 바탕으로 시가총액 기준 최대 상장 리츠입니다.",
+    "industry_en": "Diversified REITs",
+    "industry_ko": "다각화 리츠",
+    "korea_company": "SK REIT",
+    "korea_firms": [
+      {
+        "ko": "리츠(한국)",
+        "name": "SK REIT (Korea)SK",
+        "share": 16.0
+      },
+      {
+        "country": "Korea",
+        "ko": "롯데리츠(한국)",
+        "name": "Lotte REIT",
+        "share": 11.0
+      },
+      {
+        "ko": "켄달스퀘어리츠(한국)",
+        "name": "ESR Kendall Square REIT (Korea)ESR",
+        "share": 10.0
+      },
+      {
+        "country": "Korea",
+        "ko": "한화·신한알파리츠(한국)",
+        "name": "Hanwha, Shinhan Alpha REIT",
+        "share": 10.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0625,
+      "global": 0.25,
+      "scale": 0.375,
+      "tech": 0.3125
+    },
+    "market": {
+      "label": "$2.18T",
+      "trillion_usd": 2.18,
       "year": "2024"
     },
     "sector": "Real Estate"
