@@ -4117,6 +4117,145 @@
     },
     "sector": "Industrials"
   },
+  "20304030": {
+    "cagr": "~5.7%",
+    "gics": "20304030",
+    "global_company": "Old Dominion Freight Line",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "FedEx Freight (United States)FedEx Freight (",
+        "share": 22.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Old Dominion (United States)Old Dominion (",
+        "share": 20.0
+      },
+      {
+        "ko": "미국)",
+        "name": "XPO (United States)XPO (",
+        "share": 16.0
+      },
+      {
+        "ko": "미국, 비상장)",
+        "name": "Estes (United States, private)Estes (",
+        "share": 13.0
+      },
+      {
+        "ko": "외 (미국)",
+        "name": "Saia & others (United States)Saia",
+        "share": 29.0
+      }
+    ],
+    "headline_ko": "Old Dominion Freight Line(약 430억 달러)은 영업비율 약 76%로 미국 상장 트럭운송사 중 가장 효율적입니다. 한국 CJ대한통운(매출 약 12조 3,000억 원)은 개방 택배 시장 1위를 지키지만, 전체 물량에서는 쿠팡에 1위를 내줬습니다.",
+    "industry_en": "Cargo Ground Transportation",
+    "industry_ko": "화물 육상 운송",
+    "korea_company": "CJ Logistics",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "쿠팡로지스틱스 / 로켓배송 (한국)",
+        "name": "Coupang Logistics / Rocket Delivery",
+        "share": 40.0
+      },
+      {
+        "ko": "대한통운 (한국)",
+        "name": "CJ Logistics (Korea)CJ",
+        "share": 29.0
+      },
+      {
+        "country": "Korea",
+        "ko": "한진 (한국)",
+        "name": "Hanjin",
+        "share": 10.0
+      },
+      {
+        "country": "Korea",
+        "ko": "롯데글로벌로지스 외 (한국)",
+        "name": "Lotte Global Logistics & others",
+        "share": 21.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.8421,
+      "tech": 0.1579
+    },
+    "market": {
+      "label": "$3.83T",
+      "trillion_usd": 3.83,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20304040": {
+    "cagr": "~18.6%",
+    "gics": "20304040",
+    "global_company": "Uber",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "Uber (United States)Uber(",
+        "share": 30.0
+      },
+      {
+        "ko": "중국)",
+        "name": "DiDi (China)DiDi(",
+        "share": 25.0
+      },
+      {
+        "ko": "싱가포르)",
+        "name": "Grab (Singapore)Grab(",
+        "share": 13.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Lyft (United States)Lyft(",
+        "share": 10.0
+      },
+      {
+        "ko": "에스토니아)",
+        "name": "Bolt (Estonia)Bolt(",
+        "share": 8.0
+      }
+    ],
+    "headline_ko": "Uber(약 1,520억 달러)가 2025년 예약액 약 1,935억 달러와 30곳 넘는 자율주행 제휴로 세계 여객 육상 운송을 이끕니다. 한국은 카카오모빌리티가 차량 호출의 90% 이상을 쥐고 있지만 비상장이라, 카카오(약 15조 원) 아래 묶여 있죠.",
+    "industry_en": "Passenger Ground Transportation",
+    "industry_ko": "여객 육상 운송",
+    "korea_company": "Kakao Mobility",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "카카오모빌리티 / 카카오 T(한국)",
+        "name": "Kakao Mobility / Kakao T",
+        "share": 90.0
+      },
+      {
+        "ko": "와 티맵(한국/미국 합작)",
+        "name": "UT — Uber & Tmap (Korea/US JV)UT — Uber",
+        "share": 7.0
+      },
+      {
+        "ko": "타다 및 기타(한국)",
+        "name": "i.M / Tada & others (Korea)i.M /",
+        "share": 3.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1875,
+      "global": 0.5,
+      "scale": 0.3125,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$48B",
+      "trillion_usd": 0.048,
+      "year": "2025"
+    },
+    "sector": "Industrials"
+  },
   "203050": {
     "cagr": "~5%",
     "gics": "203050",
@@ -4179,6 +4318,68 @@
       "label": "$3.48T",
       "trillion_usd": 3.48,
       "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20305010": {
+    "cagr": "~16.9%",
+    "gics": "20305010",
+    "global_company": "AENA",
+    "global_firms": [
+      {
+        "ko": "스페인)",
+        "name": "AENA (Spain)AENA (",
+        "share": 45.0
+      },
+      {
+        "ko": "태국)",
+        "name": "Airports of Thailand (Thailand)Airports of Thailand (",
+        "share": 22.0
+      },
+      {
+        "ko": "프랑스)",
+        "name": "Aéroports de Paris (France)Aéroports de Paris (",
+        "share": 12.0
+      },
+      {
+        "ko": "독일)",
+        "name": "Fraport (Germany)Fraport (",
+        "share": 11.0
+      },
+      {
+        "ko": "멕시코)",
+        "name": "Grupo Aeroportuario del Pacífico (Mexico)Grupo Aeroportuario del Pacífico (",
+        "share": 10.0
+      }
+    ],
+    "headline_ko": "AENA(약 468억 달러)는 2025년 승객 3억 8,480만 명을 처리한 세계 최대 상장 공항 운영사입니다. 한국 인천국제공항(국영·비상장)은 약 7,400만 명을 실어 날랐고, 면세점 입찰과 여객 기록이 공항 경제를 다시 짜고 있죠.",
+    "industry_en": "Airport Services",
+    "industry_ko": "공항 서비스",
+    "korea_company": "Incheon Int'l Airport",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "인천공항 (한국)",
+        "name": "Incheon Airport",
+        "share": 79.0
+      },
+      {
+        "country": "Korea",
+        "ko": "한국공항공사 네트워크 — 김포·제주·김해 + 지방공항 (한국)",
+        "name": "Korea Airports Corporation network — Gimpo, Jeju, Gimhae + regionals",
+        "share": 21.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.2667,
+      "scale": 0.5333,
+      "tech": 0.2
+    },
+    "market": {
+      "label": "$159B",
+      "trillion_usd": 0.159,
+      "year": "2025"
     },
     "sector": "Industrials"
   },
@@ -6238,6 +6439,158 @@
       "label": "$1.55T",
       "trillion_usd": 1.55,
       "year": "2022"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25504020": {
+    "cagr": "~5.0%",
+    "gics": "25504020",
+    "global_company": "JD.com",
+    "global_firms": [
+      {
+        "ko": "중국)",
+        "name": "JD.com (China)JD.com(",
+        "share": 63.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Best Buy (United States)Best Buy(",
+        "share": 14.0
+      },
+      {
+        "ko": "독일)",
+        "name": "CECONOMY / MediaMarktSaturn (Germany)CECONOMY / MediaMarktSaturn(",
+        "share": 8.0
+      },
+      {
+        "ko": "쿠팡(한국, 전자제품)",
+        "name": "Coupang (Korea, electronics)",
+        "share": 8.0
+      },
+      {
+        "ko": "기타(상장 순수 전문업체)",
+        "name": "Others (listed pure-plays)",
+        "share": 7.0
+      }
+    ],
+    "headline_ko": "JD.com(매출 약 1,870억 달러)이 컴퓨터·전자제품을 가장 많이 파는 기업입니다. 순수 전문점으로는 Best Buy가 최대죠. 한국 롯데하이마트(매출 약 2조 8,500억 원)는 온라인과 제조사 매장에 눌리면서도 흑자 전환에 나서고 있습니다.",
+    "industry_en": "Computer & Electronics Retail",
+    "industry_ko": "컴퓨터·전자제품 소매",
+    "korea_company": "Lotte Himart",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "온라인(쿠팡, 네이버 등)(한국)",
+        "name": "Online (Coupang, Naver, others)",
+        "share": 42.0
+      },
+      {
+        "country": "Korea",
+        "ko": "롯데하이마트(한국)",
+        "name": "Lotte Himart",
+        "share": 20.0
+      },
+      {
+        "country": "Korea",
+        "ko": "삼성 디지털프라자 / LG 베스트샵(한국)",
+        "name": "Samsung Digital Plaza / LG Best Shop",
+        "share": 18.0
+      },
+      {
+        "country": "Korea",
+        "ko": "기타(백화점, 할인점, 이랜드)(한국)",
+        "name": "Others (department, discount, E-Land)",
+        "share": 20.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.6667,
+      "scale": 0.0,
+      "tech": 0.3333
+    },
+    "market": {
+      "label": "$1.12T",
+      "trillion_usd": 1.12,
+      "year": "2025"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25504030": {
+    "cagr": "~4.1%",
+    "gics": "25504030",
+    "global_company": "The Home Depot",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "The Home Depot (United States)The Home Depot(",
+        "share": 51.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Lowe's (United States)Lowe's(",
+        "share": 29.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Menards (United States)Menards(",
+        "share": 5.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Ace Hardware (United States)Ace Hardware(",
+        "share": 4.0
+      },
+      {
+        "ko": "기타/독립 매장",
+        "name": "Others / independents",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "The Home Depot(약 3,500억 달러)가 FY2025 매출 1,647억 달러로 주택 개보수 소매를 이끕니다. 주택 경기 부진이 고가 품목 수요를 누르고 있죠. 한국에는 대형 매장 격이 없어, 한샘(약 5,500억 원)이 가장 가까운 홈인테리어 대용치입니다.",
+    "industry_en": "Home Improvement Retail",
+    "industry_ko": "주택 개보수 소매",
+    "korea_company": "Hanssem (proxy)",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "한샘(한국)",
+        "name": "Hanssem",
+        "share": 22.0
+      },
+      {
+        "ko": "하우시스(한국)",
+        "name": "LX Hausys (Korea)LX",
+        "share": 15.0
+      },
+      {
+        "ko": "글라스(한국)",
+        "name": "KCC / KCC Glass (Korea)KCC/KCC",
+        "share": 13.0
+      },
+      {
+        "country": "Korea",
+        "ko": "현대L&C/현대리바트(한국)",
+        "name": "Hyundai L&C / Hyundai Livart",
+        "share": 11.0
+      },
+      {
+        "country": "Korea",
+        "ko": "기타/독립 사업자(한국)",
+        "name": "Others / independents",
+        "share": 39.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.2143,
+      "scale": 0.7857,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$946B",
+      "trillion_usd": 0.946,
+      "year": "2025"
     },
     "sector": "Consumer Discretionary"
   },
@@ -13226,6 +13579,86 @@
     },
     "sector": "Real Estate"
   },
+  "60105010": {
+    "cagr": "~8.4%",
+    "gics": "60105010",
+    "global_company": "Welltower",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "Welltower (United States)Welltower(",
+        "share": 65.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Ventas (United States)Ventas(",
+        "share": 19.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Healthpeak Properties (United States)Healthpeak Properties(",
+        "share": 6.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Omega Healthcare (United States)Omega Healthcare(",
+        "share": 6.0
+      },
+      {
+        "ko": "미국)",
+        "name": "CareTrust (United States)CareTrust(",
+        "share": 4.0
+      }
+    ],
+    "headline_ko": "Welltower(약 1,650억 달러)는 이제 유형을 불문한 미국 최대 리츠로, 시니어 주택 회복을 등에 업고 있습니다. 한국에는 아직 상장 헬스케어 리츠가 없어, 대기업 시니어 레지던스가 이끄는 정책 주도 확장이 관전 포인트고요.",
+    "industry_en": "Health Care REITs",
+    "industry_ko": "헬스케어 리츠",
+    "korea_company": "None listed (proxy)",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "주거(한국)",
+        "name": "Residential / housing",
+        "share": 44.0
+      },
+      {
+        "country": "Korea",
+        "ko": "오피스(한국)",
+        "name": "Office",
+        "share": 35.0
+      },
+      {
+        "country": "Korea",
+        "ko": "리테일·물류(한국)",
+        "name": "Retail / logistics",
+        "share": 13.0
+      },
+      {
+        "country": "Korea",
+        "ko": "헬스케어(한국)",
+        "name": "Health care",
+        "share": 0.0
+      },
+      {
+        "country": "Korea",
+        "ko": "호텔·기타(한국)",
+        "name": "Hotel / other",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.4615,
+      "tech": 0.5385
+    },
+    "market": {
+      "label": "$188B",
+      "trillion_usd": 0.188,
+      "year": "2023"
+    },
+    "sector": "Real Estate"
+  },
   "601060": {
     "cagr": "~2.3–3.1%",
     "gics": "601060",
@@ -13286,6 +13719,62 @@
       "label": "US$193B",
       "trillion_usd": 0.193,
       "year": ""
+    },
+    "sector": "Real Estate"
+  },
+  "60106010": {
+    "cagr": "~2–3%",
+    "gics": "60106010",
+    "global_company": "AvalonBay",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "AvalonBay (United States)AvalonBay(",
+        "share": 22.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Equity Residential (United States)Equity Residential(",
+        "share": 21.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Mid-America Apartment Communities (United States)Mid-America Apartment Communities(",
+        "share": 21.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Essex Property Trust (United States)Essex Property Trust(",
+        "share": 17.0
+      },
+      {
+        "ko": "미국)",
+        "name": "UDR (United States)UDR(",
+        "share": 16.0
+      }
+    ],
+    "headline_ko": "AvalonBay(약 270억 달러)는 최대 아파트 리츠로, 최근 Equity Residential과 약 520억 달러 규모 대등 합병에 합의했습니다. 한국에는 상장 아파트 리츠가 없어, 임대 시장이 공공 지원 민간 임대 기구를 통해 돌아갑니다.",
+    "industry_en": "Multi-Family Residential REITs",
+    "industry_ko": "다세대 주거 리츠",
+    "korea_company": "None listed (proxy)",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "공공지원 민간임대 리츠(한국)",
+        "name": "Public-supported private rental REITs",
+        "share": 53.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1429,
+      "scale": 0.5714,
+      "tech": 0.2857
+    },
+    "market": {
+      "label": "$107B",
+      "trillion_usd": 0.107,
+      "year": "2023"
     },
     "sector": "Real Estate"
   },
