@@ -39,10 +39,32 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Rotation gate (finalize + stop when the 163 sub-industry lap completes)
+        id: gate
+        run: |
+          if [ -f .rotation-complete ]; then
+            echo "Rotation already complete and stopped. Nothing to do."
+            echo "run=skip" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          COMPLETE=$(node -e 'const r=require("./reports.json");const sub=require("./subindustries.json");const c=new Set(r.filter(x=>String(x.gics).length===8).map(x=>String(x.gics)));process.stdout.write(c.size>=sub.length?"yes":"no")')
+          if [ "$COMPLETE" = "yes" ]; then
+            echo "All 163 sub-industries covered -> one-time cleanup, then stop."
+            node build/finalize.js
+            git config user.name "Daily Industry Report Bot"
+            git config user.email "daily-industry-report@users.noreply.github.com"
+            git add -A
+            if git diff --cached --quiet; then echo "nothing to clean"; else git commit -m "Rotation complete: cleanup + stop auto-publishing"; git push; fi
+            echo "run=skip" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=generate" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Install Claude Code
+        if: steps.gate.outputs.run == 'generate'
         run: npm install -g @anthropic-ai/claude-code
 
       - name: Generate + fact-check today's reports
+        if: steps.gate.outputs.run == 'generate'
         env:
           # Max/Pro subscription auth. Run `claude setup-token` locally and store the
           # resulting sk-ant-oat01-... value as the CLAUDE_CODE_OAUTH_TOKEN secret.
@@ -56,12 +78,14 @@ jobs:
             --verbose
 
       - name: Build game_data.json (Industry Hegemon game data)
+        if: steps.gate.outputs.run == 'generate'
         run: |
           # 발행된 HTML에서 게임용 실데이터(KSF·글로벌/한국 점유율)를 추출 → game_data.json.
           # stdlib만 사용(의존성 없음). 다음 'Commit & push'의 git add -A 가 함께 게시(Pages 루트).
           python3 build/game_data.py || echo "game_data update skipped (non-fatal)"
 
       - name: Commit & push
+        if: steps.gate.outputs.run == 'generate'
         run: |
           git config user.name "Daily Industry Report Bot"
           git config user.email "daily-industry-report@users.noreply.github.com"
@@ -74,6 +98,7 @@ jobs:
           fi
 
       - name: Prepare digest
+        if: steps.gate.outputs.run == 'generate'
         run: |
           # Fallback if Claude did not produce the digest, so the email step never hard-fails.
           if [ ! -s digest.html ]; then
@@ -84,7 +109,7 @@ jobs:
           echo "DIGEST_SUBJECT=$SUBJ" >> "$GITHUB_ENV"
 
       - name: Email the morning digest
-        if: success()
+        if: success() && steps.gate.outputs.run == 'generate'
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com

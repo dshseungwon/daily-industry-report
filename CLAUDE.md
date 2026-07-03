@@ -63,3 +63,10 @@ Live site: https://dshseungwon.github.io/daily-industry-report/
 ## Nice-to-do (backlog)
 - Turn the magazine into its own index that collects multiple special articles.
 - Optionally re-flow older reports if any date labels drift.
+
+## Auto-stop on completion (added)
+When the 163 sub-industry lap is fully covered, the workflow does NOT start a new lap.
+A "Rotation gate" step runs `build/finalize.js` once (keep one latest report per GICS
+code, delete superseded report HTML, rebuild the landing), commits it, and writes a
+`.rotation-complete` marker. After that the daily job is a cheap no-op (skips generate /
+commit / email). To resume, delete `.rotation-complete`.
