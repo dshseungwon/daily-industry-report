@@ -3920,6 +3920,75 @@
     },
     "sector": "Industrials"
   },
+  "20303010": {
+    "cagr": "~3.6%",
+    "gics": "20303010",
+    "global_company": "MSC (Mediterranean Shipping Company)",
+    "global_firms": [
+      {
+        "ko": "스위스)",
+        "name": "MSC (Switzerland)MSC(",
+        "share": 20.0
+      },
+      {
+        "country": "Denmark",
+        "ko": "머스크(덴마크)",
+        "name": "Maersk",
+        "share": 15.0
+      },
+      {
+        "ko": "프랑스)",
+        "name": "CMA CGM (France)CMA CGM(",
+        "share": 13.0
+      },
+      {
+        "country": "China",
+        "ko": "코스코(중국)",
+        "name": "COSCO",
+        "share": 11.0
+      },
+      {
+        "country": "Germany",
+        "ko": "하파크로이트(독일)",
+        "name": "Hapag-Lloyd",
+        "share": 7.0
+      }
+    ],
+    "headline_ko": "MSC가 약 720만 TEU 선대(컨테이너 용량의 약 21%, 2026년)로 세계 해상 운송을 이끌며 최초로 1,000척을 운항하는 선사가 됐습니다. 한국 HMM(시가총액 약 18조 원)은 세계 8위권이고요. 새 연료 규제와 2025년 얼라이언스 재편이 산업 지형을 바꾸고 있습니다.",
+    "industry_en": "Marine Transportation",
+    "industry_ko": "해상 운송",
+    "korea_company": "HMM",
+    "korea_firms": [
+      {
+        "ko": "한국)",
+        "name": "HMM (Korea)HMM(",
+        "share": 72.0
+      },
+      {
+        "ko": "상선(한국)",
+        "name": "SM Line (Korea)SM",
+        "share": 12.0
+      },
+      {
+        "country": "Korea",
+        "ko": "장금상선·흥아라인(한국)",
+        "name": "Sinokor / Heung-A",
+        "share": 9.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.3333,
+      "scale": 0.6667,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$1.95T",
+      "trillion_usd": 1.95,
+      "year": "2025"
+    },
+    "sector": "Industrials"
+  },
   "203040": {
     "cagr": "~5.0%",
     "gics": "203040",
@@ -3983,6 +4052,68 @@
       "label": "$4.25T",
       "trillion_usd": 4.25,
       "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20304010": {
+    "cagr": "~6.8%",
+    "gics": "20304010",
+    "global_company": "Union Pacific",
+    "global_firms": [
+      {
+        "country": "United States",
+        "ko": "유니언 퍼시픽(미국)",
+        "name": "Union Pacific",
+        "share": 29.0
+      },
+      {
+        "ko": "미국, 비상장)",
+        "name": "BNSF (United States, private)BNSF(",
+        "share": 27.0
+      },
+      {
+        "ko": "미국)",
+        "name": "CSX (United States)CSX(",
+        "share": 17.0
+      },
+      {
+        "country": "United States",
+        "ko": "노퍽 서던(미국)",
+        "name": "Norfolk Southern",
+        "share": 14.0
+      },
+      {
+        "ko": "캐나다)",
+        "name": "Canadian Pacific Kansas City (Canada)CPKC(",
+        "share": 13.0
+      }
+    ],
+    "headline_ko": "Union Pacific(약 1,600억 달러)가 업계 최고 수준의 영업비용률 약 60%로 화물 철도를 이끕니다. 노퍽서던과의 약 850억 달러 합병안이 심사 중이고요. 한국의 철도 운영사 코레일은 국영·비상장이며, 상장 대용주는 차량 제조사 현대로템입니다.",
+    "industry_en": "Rail Transportation",
+    "industry_ko": "철도 운송",
+    "korea_company": "KORAIL (unlisted)",
+    "korea_firms": [
+      {
+        "ko": "한국)",
+        "name": "KORAIL / KTX (Korea)KORAIL·KTX(",
+        "share": 78.0
+      },
+      {
+        "ko": "한국)",
+        "name": "SR / SRT (Korea)SR·SRT(",
+        "share": 22.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.4615,
+      "global": 0.1538,
+      "scale": 0.0769,
+      "tech": 0.3077
+    },
+    "market": {
+      "label": "$573B",
+      "trillion_usd": 0.573,
+      "year": "2025"
     },
     "sector": "Industrials"
   },
@@ -5893,6 +6024,85 @@
     },
     "sector": "Consumer Discretionary"
   },
+  "25503030": {
+    "cagr": "~7%",
+    "gics": "25503030",
+    "global_company": "Amazon",
+    "global_firms": [
+      {
+        "country": "United States",
+        "ko": "아마존(미국)",
+        "name": "Amazon",
+        "share": 24.0
+      },
+      {
+        "country": "China",
+        "ko": "알리바바 — 타오바오·티몰(중국)",
+        "name": "Alibaba — Taobao/Tmall",
+        "share": 24.0
+      },
+      {
+        "ko": "홀딩스 — 핀둬둬·테무(중국)",
+        "name": "PDD Holdings — Pinduoduo/Temu (China)PDD",
+        "share": 15.0
+      },
+      {
+        "ko": "닷컴(중국)",
+        "name": "JD.com (China)JD",
+        "share": 10.0
+      },
+      {
+        "ko": "기타(월마트·쿠팡·쇼피파이 등)",
+        "name": "Others (Walmart, Coupang, Shopify, etc.)",
+        "share": 27.0
+      }
+    ],
+    "headline_ko": "Amazon(시가총액 약 2조 6,000억 달러)이 약 8,300억 달러의 거래액으로 세계 종합 소매를 이끕니다. 한국 쿠팡(약 320억 달러)은 국내 온라인 소매의 약 40%를 쥐고 있고요. 리테일 미디어와 소액 면세 소포의 종료가 이익 풀을 다시 그리고 있습니다.",
+    "industry_en": "Broadline Retail",
+    "industry_ko": "종합 소매",
+    "korea_company": "Coupang",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "쿠팡(한국)",
+        "name": "Coupang",
+        "share": 40.0
+      },
+      {
+        "country": "Korea",
+        "ko": "네이버 커머스(한국)",
+        "name": "Naver Commerce",
+        "share": 21.0
+      },
+      {
+        "ko": "마켓·SSG닷컴 — 신세계(한국)",
+        "name": "Gmarket / SSG.com — Shinsegae (Korea)G",
+        "share": 10.0
+      },
+      {
+        "ko": "번가·카카오·롯데온(한국)",
+        "name": "11st, Kakao, Lotte On (Korea)11",
+        "share": 8.0
+      },
+      {
+        "ko": "기타, 국경 간(알리익스프레스·테무) 포함(혼합)",
+        "name": "Others incl. cross-border (AliExpress/Temu) (mixed)",
+        "share": 21.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1905,
+      "global": 0.2381,
+      "scale": 0.381,
+      "tech": 0.1905
+    },
+    "market": {
+      "label": "$6.4T",
+      "trillion_usd": 6.4,
+      "year": "2025"
+    },
+    "sector": "Consumer Discretionary"
+  },
   "255040": {
     "cagr": "≈6%",
     "gics": "255040",
@@ -5947,6 +6157,87 @@
       "label": "$2.05T",
       "trillion_usd": 2.05,
       "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25504010": {
+    "cagr": "~4%",
+    "gics": "25504010",
+    "global_company": "Inditex (Zara)",
+    "global_firms": [
+      {
+        "country": "Spain",
+        "ko": "인디텍스·자라(스페인)",
+        "name": "Inditex / Zara",
+        "share": 30.0
+      },
+      {
+        "ko": "쉬인(싱가포르·중국)",
+        "name": "Shein (Singapore/China)",
+        "share": 27.0
+      },
+      {
+        "ko": "스웨덴)",
+        "name": "H&M (Sweden)H&M(",
+        "share": 16.0
+      },
+      {
+        "country": "Japan",
+        "ko": "패스트리테일링·유니클로(일본)",
+        "name": "Fast Retailing / Uniqlo",
+        "share": 16.0
+      },
+      {
+        "country": "United States",
+        "ko": "갭(미국)",
+        "name": "Gap Inc.",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "Inditex(자라)가 빠른 수직계열화 모델로 매출 약 400억 유로, 시가총액 약 1,740억 유로를 앞세워 세계 의류 소매를 이끕니다. 한국에서는 무신사가 최대 온라인 패션 플랫폼이고요(거래액 약 4.5조 원, 비상장). 저가 소포 관세가 판을 다시 짜고 있습니다.",
+    "industry_en": "Apparel Retail",
+    "industry_ko": "의류 소매",
+    "korea_company": "Musinsa",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "무신사(한국)",
+        "name": "Musinsa",
+        "share": 46.0
+      },
+      {
+        "country": "Korea",
+        "ko": "에이블리(한국)",
+        "name": "Ably",
+        "share": 20.0
+      },
+      {
+        "country": "Korea",
+        "ko": "지그재그·카카오스타일(한국)",
+        "name": "Zigzag / Kakaostyle",
+        "share": 14.0
+      },
+      {
+        "ko": "컨셉 외 기타 플랫폼(한국)",
+        "name": "W Concept & other platforms (Korea)W",
+        "share": 10.0
+      },
+      {
+        "ko": "해외 플랫폼 — 쉬인·알리익스프레스(수입)",
+        "name": "Foreign platforms — Shein, AliExpress (imported)",
+        "share": 10.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.25,
+      "global": 0.5,
+      "scale": 0.25,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$1.55T",
+      "trillion_usd": 1.55,
+      "year": "2022"
     },
     "sector": "Consumer Discretionary"
   },
@@ -11602,6 +11893,89 @@
     },
     "sector": "Communication Services"
   },
+  "50203010": {
+    "cagr": "~10%",
+    "gics": "50203010",
+    "global_company": "Alphabet (Google)",
+    "global_firms": [
+      {
+        "country": "United States",
+        "ko": "알파벳·구글(미국)",
+        "name": "Alphabet / Google",
+        "share": 30.0
+      },
+      {
+        "country": "United States",
+        "ko": "메타(미국)",
+        "name": "Meta",
+        "share": 23.0
+      },
+      {
+        "country": "United States",
+        "ko": "아마존(미국)",
+        "name": "Amazon",
+        "share": 9.0
+      },
+      {
+        "country": "China",
+        "ko": "바이트댄스·틱톡(중국)",
+        "name": "ByteDance / TikTok",
+        "share": 8.0
+      },
+      {
+        "ko": "기타(알리바바·텐센트·바이두·MS 등)",
+        "name": "Others (Alibaba, Tencent, Baidu, Microsoft, etc.)",
+        "share": 30.0
+      }
+    ],
+    "headline_ko": "Alphabet(약 4조 3,000억 달러)이 분기 광고 매출 약 770억 달러로 디지털 광고 플랫폼 산업을 이끕니다. 한국 NAVER(약 35조 원)는 안방 검색을 지키고 있고요. 반독점 시정조치와 EU DMA, AI 검색이 판을 가르는 변수입니다.",
+    "industry_en": "Interactive Media & Services",
+    "industry_ko": "양방향 미디어·서비스",
+    "korea_company": "NAVER",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "네이버(한국)",
+        "name": "NAVER",
+        "share": 33.0
+      },
+      {
+        "country": "United States",
+        "ko": "구글·유튜브(미국)",
+        "name": "Google / YouTube",
+        "share": 22.0
+      },
+      {
+        "country": "United States",
+        "ko": "메타·인스타그램(미국)",
+        "name": "Meta / Instagram",
+        "share": 16.0
+      },
+      {
+        "country": "Korea",
+        "ko": "카카오(한국)",
+        "name": "Kakao",
+        "share": 13.0
+      },
+      {
+        "ko": "기타(쿠팡·당근·통신사 등)",
+        "name": "Others (Coupang, Danggeun, telcos, etc.)",
+        "share": 16.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1429,
+      "global": 0.0952,
+      "scale": 0.4762,
+      "tech": 0.2857
+    },
+    "market": {
+      "label": "$660B",
+      "trillion_usd": 0.66,
+      "year": "2025"
+    },
+    "sector": "Communication Services"
+  },
   "551010": {
     "cagr": "~3.0%",
     "gics": "551010",
@@ -12587,6 +12961,78 @@
     },
     "sector": "Real Estate"
   },
+  "60103010": {
+    "cagr": "~4.2%",
+    "gics": "60103010",
+    "global_company": "Host Hotels & Resorts",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "Host Hotels & Resorts (United States)Host Hotels & Resorts(",
+        "share": 42.0
+      },
+      {
+        "country": "United States",
+        "ko": "라이먼 호스피탈리티(미국)",
+        "name": "Ryman Hospitality",
+        "share": 20.0
+      },
+      {
+        "country": "United States",
+        "ko": "파크호텔 앤 리조트(미국)",
+        "name": "Park Hotels & Resorts",
+        "share": 8.0
+      },
+      {
+        "country": "United States",
+        "ko": "페블브룩 호텔 트러스트(미국)",
+        "name": "Pebblebrook Hotel Trust",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "Host Hotels & Resorts(약 160억 달러)가 최대 숙박 리츠입니다. RevPAR가 완만히 오르고 금리가 내리는 국면이죠. 한국에는 순수 호텔 리츠가 없어, 신한서부티엔디리츠(약 2,170억 원)가 가장 가까운 상장 대용주입니다. 인바운드 관광은 사상 최대고요.",
+    "industry_en": "Hotel & Resort REITs",
+    "industry_ko": "호텔·리조트 리츠",
+    "korea_company": "Shinhan Seobu T&D REIT (proxy)",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "신한서부티엔디리츠 — 호텔 부분(한국)",
+        "name": "Shinhan Seobu T&D REIT — hotel sleeve",
+        "share": 38.0
+      },
+      {
+        "country": "Korea",
+        "ko": "롯데리츠 — L7 호텔 부분(한국)",
+        "name": "Lotte REIT — L7 hotel sleeve",
+        "share": 22.0
+      },
+      {
+        "country": "Korea",
+        "ko": "코람코·이지스 다각화 리츠 — 호텔 부분(한국)",
+        "name": "Koramco / IGIS diversified REITs — hotel sleeve",
+        "share": 14.0
+      },
+      {
+        "country": "Korea",
+        "ko": "사모·비상장 호텔 비히클(한국)",
+        "name": "Private / non-listed hotel vehicles",
+        "share": 15.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.4167,
+      "global": 0.0833,
+      "scale": 0.0,
+      "tech": 0.5
+    },
+    "market": {
+      "label": "$4.91T",
+      "trillion_usd": 4.91,
+      "year": "2025"
+    },
+    "sector": "Real Estate"
+  },
   "601040": {
     "cagr": "≈9%",
     "gics": "601040",
@@ -12644,6 +13090,83 @@
       "label": "$42B",
       "trillion_usd": 0.042,
       "year": "2023"
+    },
+    "sector": "Real Estate"
+  },
+  "60104010": {
+    "cagr": "~ −11%",
+    "gics": "60104010",
+    "global_company": "BXP (Boston Properties)",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "BXP (United States)BXP(",
+        "share": 23.0
+      },
+      {
+        "country": "United States",
+        "ko": "알렉산드리아 — 생명과학(미국)",
+        "name": "Alexandria — life-science",
+        "share": 14.0
+      },
+      {
+        "country": "United States",
+        "ko": "보나도(미국)",
+        "name": "Vornado",
+        "share": 9.0
+      },
+      {
+        "country": "United States",
+        "ko": "커즌스 프로퍼티스(미국)",
+        "name": "Cousins Properties",
+        "share": 7.0
+      },
+      {
+        "country": "United States",
+        "ko": "킬로이 리얼티(미국)",
+        "name": "Kilroy Realty",
+        "share": 6.0
+      }
+    ],
+    "headline_ko": "BXP(약 120억 달러)가 최대 순수 오피스 리츠입니다. 미국 오피스는 트로피 타워와 부실 범용 공간으로 양극화되고 있죠. 한국 신한알파리츠(약 5,540억 원)는 전혀 다른 시장을 누립니다. 서울 프라임 공실률이 약 3%에 그치거든요.",
+    "industry_en": "Office REITs",
+    "industry_ko": "오피스 리츠",
+    "korea_company": "Shinhan Alpha REIT",
+    "korea_firms": [
+      {
+        "ko": "리츠 — 오피스+기타(한국)",
+        "name": "SK REIT — office + other (Korea)SK",
+        "share": 55.0
+      },
+      {
+        "country": "Korea",
+        "ko": "신한알파리츠 — 순수 오피스(한국)",
+        "name": "Shinhan Alpha REIT — pure office",
+        "share": 21.0
+      },
+      {
+        "country": "Korea",
+        "ko": "코람코·기타 오피스 리츠(한국)",
+        "name": "KORAMCO / other office REITs",
+        "share": 12.0
+      },
+      {
+        "country": "Korea",
+        "ko": "다각화 리츠의 오피스 부분(한국)",
+        "name": "Diversified REITs' office sleeve",
+        "share": 12.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1818,
+      "scale": 0.2727,
+      "tech": 0.5455
+    },
+    "market": {
+      "label": "$120B",
+      "trillion_usd": 0.12,
+      "year": "2019"
     },
     "sector": "Real Estate"
   },
