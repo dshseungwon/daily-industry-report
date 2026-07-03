@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Passenger Airlines — The Industry Brief</title>
+<style>
+  :root{--navy:#0e2a47;--blue:#117aca;--sky:#5aa9e6;--gold:#ffb81c;--ink:#13314f;
+    --mute:#5b6b8c;--line:#e6ebf4;--bg:#eef2f7;--card:#fff;--krblue:#0047a0;--krred:#c8102e;
+    --hi:#e23e57;--med:#e8902a;--lo:#1f9d6b;--radius:16px;--shadow:0 8px 24px rgba(14,42,71,.10);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}
+  a{color:var(--blue);text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  body.lang-ko .en{display:none;}
+  body.lang-en .ko{display:none;}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.97);backdrop-filter:blur(8px);border-bottom:1px solid #21426b;}
+  .topbar .row{display:flex;align-items:center;gap:10px;max-width:960px;margin:0 auto;padding:9px 12px;}
+  .brand{color:#fff;font-weight:800;font-size:15px;white-space:nowrap;}
+  .brand span.g{color:var(--gold);}
+  #lang{flex:none;margin-left:auto;background:var(--gold);color:var(--navy);border:none;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none;color:#cfe2f5;background:#1c3e63;border:none;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;}
+  .chip:active{background:var(--blue);color:#fff;}
+  .hero{background:linear-gradient(160deg,#123a61,#0e2a47 65%);color:#fff;border-radius:0 0 26px 26px;padding:28px 0 30px;border-left:8px solid var(--gold);}
+  .eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;margin:0 0 10px;}
+  .hero h1{font-size:clamp(28px,7.4vw,46px);margin:0 0 4px;font-weight:800;letter-spacing:-.6px;line-height:1.05;}
+  .hero .sub{font-size:clamp(15px,4.4vw,21px);color:#cfe2f5;margin:0 0 16px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(207,226,245,.25);border-radius:999px;padding:6px 12px;font-size:13px;color:#eaf3fb;}
+  .pill b{color:var(--gold);}
+  section{padding:24px 0 4px;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:1.2px;font-size:11.5px;text-transform:uppercase;margin:0 0 6px;}
+  h2{font-size:clamp(20px,5.4vw,26px);margin:0 0 13px;font-weight:800;letter-spacing:-.3px;}
+  p{margin:0 0 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
+  .summary{border-left:5px solid var(--blue);}
+  .summary p{margin:0;font-size:clamp(14.5px,3.8vw,16.5px);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  .lead{font-size:clamp(15px,3.9vw,17px);}
+  .mute{color:var(--mute);}
+  .subh{font-size:15px;font-weight:800;margin:15px 0 8px;}
+  /* value chain */
+  .chain{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .vc{flex:1 1 140px;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;}
+  .vc b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc span.d{font-size:12.5px;color:var(--mute);}
+  /* VERTICAL column chart */
+  .colchart{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;height:220px;padding:8px 4px 0;border-bottom:2px solid var(--line);}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .col-val{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .col-bar{width:60%;max-width:54px;background:var(--blue);border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.7,.2,1);}
+  .col:last-child .col-bar{background:var(--navy);}
+  .col-lab{font-size:12px;color:var(--mute);margin-top:7px;text-align:center;}
+  .cap{font-size:12.5px;color:var(--mute);font-style:italic;margin-top:10px;}
+  /* PIE charts (conic-gradient, no library) */
+  .pies{display:grid;grid-template-columns:1fr;gap:18px;}
+  .pieblock{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .pie{flex:none;width:130px;height:130px;border-radius:50%;box-shadow:var(--shadow);position:relative;}
+  .pie::after{content:"";position:absolute;inset:30%;background:#fff;border-radius:50%;}
+  .legend{flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;}
+  .lg-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .lg-dot{flex:none;width:12px;height:12px;border-radius:3px;}
+  .lg-item b{margin-left:auto;font-variant-numeric:tabular-nums;}
+  .pie-title{font-size:13.5px;font-weight:800;margin-bottom:8px;width:100%;}
+  /* five forces */
+  .forces{display:grid;grid-template-columns:1fr;gap:11px;}
+  .force{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;}
+  .force-top{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+  .force-top b{font-size:14.5px;flex:1;}
+  .rate{flex:none;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;border-radius:999px;padding:3px 10px;}
+  .rate.hi{background:var(--hi);}.rate.med{background:var(--med);}.rate.lo{background:var(--lo);}
+  .force p{margin:0;font-size:13px;color:var(--mute);}
+  /* KSF */
+  .ksf{display:grid;grid-template-columns:1fr;gap:10px;}
+  .kc{background:#f3f7fc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;}
+  .kc .kn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .kc b{font-size:14px;}.kc p{margin:2px 0 0;font-size:12.8px;color:var(--mute);}
+  /* accordion */
+  .acc{display:grid;gap:11px;}
+  .ac{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+  .ac-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+  .ac-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
+  .ac-badge{flex:none;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+  .ac-title{font-weight:700;font-size:14.5px;flex:1;}
+  .chev{flex:none;width:22px;height:22px;color:var(--mute);transition:transform .3s;}
+  .ac.open .chev{transform:rotate(180deg);}
+  .ac-body{max-height:0;opacity:0;transition:max-height .35s,opacity .3s,padding .35s;padding:0 16px;}
+  .ac.open .ac-body{max-height:560px;opacity:1;padding:0 16px 15px;}
+  .ac-body p{margin:0;color:var(--mute);font-size:13.3px;}
+  .ac-body .why b{color:var(--ink);}
+  .hint{font-size:12px;color:var(--mute);margin:-2px 0 12px;}
+  /* divider */
+  .divider{display:flex;align-items:center;gap:12px;margin:14px 0 4px;}
+  .divider .ln{flex:1;height:1px;background:var(--line);}
+  .divider .tx{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mute);}
+  /* leaders */
+  .leader-band{border-radius:var(--radius) var(--radius) 0 0;padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .leader-band .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;}
+  .leader-band h3{margin:0;color:#fff;font-size:clamp(18px,5vw,23px);}
+  .leader-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:6px;}
+  .gl .leader-band{background:linear-gradient(120deg,#123a61,#117aca);}
+  .kr .leader-band{background:linear-gradient(120deg,#0047a0,#c8102e);}
+  .flagdot{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:4px 0 2px;}
+  .stat{color:#fff;border-radius:12px;padding:12px;border-top:4px solid var(--gold);}
+  .gl .stat{background:var(--navy);}.kr .stat{background:#0047a0;border-top-color:#fff;}
+  .stat .n{font-size:clamp(19px,5.4vw,24px);font-weight:800;line-height:1.05;}
+  .stat .l{font-size:11.5px;opacity:.85;margin-top:4px;}
+  /* LG-style company strategy block */
+  .diag{background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .diag .dh{font-size:14px;font-weight:800;margin-bottom:6px;}
+  .diag .formula{font-size:12.5px;color:var(--blue);font-weight:700;background:#eaf2fb;border-radius:8px;padding:6px 10px;display:inline-block;margin-bottom:8px;}
+  .diag ul{margin:0;padding-left:18px;}.diag li{font-size:12.8px;color:var(--mute);margin:3px 0;}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:11px;margin:8px 0;}
+  .track{border-radius:12px;padding:13px 15px;color:#fff;}
+  .track.t1{background:#16406a;}.track.t2{background:#0e2a47;border:1px solid var(--gold);}
+  .track .tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .track .tn{font-size:15px;font-weight:800;margin:3px 0 6px;}
+  .track p{margin:0;font-size:12.8px;color:#e7effb;}
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px;}
+  .ap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);}
+  .ap .apt{font-size:13.5px;font-weight:800;margin-bottom:7px;}
+  .ap-flow{display:flex;align-items:stretch;gap:8px;}
+  .ap-from,.ap-to{flex:1;border-radius:9px;padding:8px 10px;font-size:12.3px;}
+  .ap-from{background:#f1f3f7;color:var(--mute);}
+  .ap-to{background:#eaf2fb;color:var(--ink);border:1px solid #cfe2f5;font-weight:600;}
+  .ap-arrow{flex:none;display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:16px;}
+  .ap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+  ul.tight{margin:6px 0 0;padding-left:20px;}
+  ul.tight li{margin:6px 0;font-size:13.3px;color:var(--mute);}
+  footer{background:var(--navy);color:#9fb6d2;margin-top:28px;padding:22px 0 32px;font-size:13px;border-radius:26px 26px 0 0;}
+  footer h4{color:#fff;margin:0 0 10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+  footer a{color:#cfe2f5;word-break:break-word;}footer li{margin:5px 0;}
+  .disclaim{color:#7188a8;margin-top:14px;font-size:12px;}
+  @media(min-width:680px){
+    .stats{grid-template-columns:repeat(4,1fr);}.forces{grid-template-columns:1fr 1fr;}
+    .ksf{grid-template-columns:1fr 1fr;}.pies{grid-template-columns:1fr 1fr;}
+    .track-grid{grid-template-columns:1fr 1fr;}.ap-grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.col-bar{transition:none;}}
+</style>
+
+<style>
+  .cagr-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+  .cagr-badge{display:inline-flex;align-items:baseline;gap:5px;background:#eaf2fb;color:var(--blue);
+    border:1px solid #cfe2f5;border-radius:999px;padding:6px 13px;font-weight:800;font-size:13px;}
+  .cagr-badge .n{font-size:16px;}
+  .cagr-badge.alt{background:#fff6e6;color:#b07400;border-color:#ffe2a6;}
+  /* SCQA diagnosis (Situation · Complication · Question · Answer) */
+  .scqa{margin:12px 0 2px;}
+  .scqa-row{display:flex;gap:12px;position:relative;padding-bottom:14px;}
+  .scqa-row:last-child{padding-bottom:0;}
+  .scqa-row::before{content:"";position:absolute;left:14px;top:30px;bottom:-2px;width:2px;background:var(--line);}
+  .scqa-row:last-child::before{display:none;}
+  .scqa-k{flex:none;width:30px;height:30px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 2px 6px rgba(14,42,71,.18);}
+  .scqa-row.s .scqa-k{background:#5b6b8c;}
+  .scqa-row.c .scqa-k{background:var(--hi);}
+  .scqa-row.q .scqa-k{background:var(--blue);}
+  .scqa-row.a .scqa-k{background:var(--lo);}
+  .scqa-bd{flex:1;padding-top:1px;}
+  .scqa-lab{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;}
+  .scqa-row.a .scqa-lab{color:var(--lo);}
+  .scqa-bd p{margin:0;font-size:13.3px;color:var(--ink);line-height:1.55;}
+  .scqa-row.q .scqa-bd p{font-style:italic;color:#16406a;}
+  .scqa-row.a .scqa-bd p{font-weight:600;}
+  .scqa .formula{margin-top:8px;}
+  .scqa-cap{font-size:11.5px;color:var(--mute);font-style:italic;margin:10px 0 0;}
+  /* MECE issue tree (rendered together with SCQA) */
+  .tree{margin:9px 0 2px;}
+  .tree .root{background:linear-gradient(120deg,#16406a,#0e2a47);color:#fff;border-radius:11px;
+    padding:11px 14px;font-size:13.4px;font-weight:700;border-left:4px solid var(--gold);}
+  .tree .branches{display:grid;gap:9px;margin-top:10px;}
+  .tree .branch{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;padding:10px 13px;background:#f7fafd;}
+  .tree .branch>b{font-size:13.1px;display:block;margin-bottom:5px;color:var(--ink);}
+  .tree .leaf{font-size:12.6px;color:var(--mute);padding-left:15px;position:relative;margin:4px 0;line-height:1.5;}
+  .tree .leaf::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .tree .leaf.lever{color:var(--ink);font-weight:600;}
+  .tree .leaf.lever::before{background:var(--gold);width:8px;height:8px;left:1px;top:7px;}
+  .tree .lever-tag{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#b07400;background:#fff6e6;border-radius:5px;padding:1px 5px;margin-right:5px;}
+  .tree-cap{display:none;}
+  @media(min-width:680px){.tree .branches{grid-template-columns:1fr 1fr 1fr;}}
+  /* value chain — connected flow diagram */
+  .vchain{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:6px 0 4px;}
+  .vc-step{position:relative;background:#f3f7fc;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:11px;padding:11px 13px 11px 40px;flex:1;}
+  .vc-step .vc-n{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;
+    background:var(--blue);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .vc-step:last-of-type{border-left-color:var(--gold);}
+  .vc-step:last-of-type .vc-n{background:var(--gold);color:var(--navy);}
+  .vc-step b{font-size:13.5px;display:block;margin-bottom:2px;}
+  .vc-step .d{font-size:12.3px;color:var(--mute);}
+  .vc-arrow{align-self:center;color:var(--gold);font-weight:900;font-size:16px;line-height:1;
+    transform:rotate(90deg);padding:5px 0;}
+  @media(min-width:720px){
+    .vchain{flex-direction:row;align-items:stretch;flex-wrap:nowrap;}
+    .vc-step{padding:11px 11px 11px 12px;min-width:0;}
+    .vc-step .vc-n{position:static;margin-bottom:6px;}
+    .vc-arrow{transform:none;padding:0 3px;display:flex;align-items:center;}
+  }
+  /* variable 1-3 strategy tracks */
+  .track.t3{background:#10355a;border:1px solid rgba(255,184,28,.45);}
+  .track-grid.n1{grid-template-columns:1fr;}
+  @media(min-width:680px){
+    .track-grid.n2{grid-template-columns:1fr 1fr;}
+    .track-grid.n3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  /* profit pool */
+  .pool{display:flex;flex-direction:column;gap:8px;margin:6px 0 2px;}
+  .pool-row{display:flex;align-items:center;gap:10px;}
+  .pool-row .pn{flex:1.1;font-size:12.6px;color:var(--ink);min-width:0;}
+  .pool-row .ptrack{flex:1.5;height:9px;border-radius:5px;background:#eef2f7;overflow:hidden;}
+  .pool-row .pfill{display:block;height:100%;border-radius:5px;}
+  .pool-row .pfill.hi{width:92%;background:var(--gold);}
+  .pool-row .pfill.med{width:55%;background:var(--blue);}
+  .pool-row .pfill.lo{width:22%;background:#c9d4e3;}
+  .pool-row .pv{flex:none;width:58px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .pool-row .pv.hi{color:#b07400;}.pool-row .pv.med{color:var(--blue);}.pool-row .pv.lo{color:var(--mute);}
+  /* KPI watchlist */
+  .kpis{display:grid;grid-template-columns:1fr;gap:11px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);padding:13px 15px;border-left:4px solid var(--blue);}
+  .kpi .kt{font-size:12.5px;font-weight:800;color:var(--ink);}
+  .kpi .kv{font-size:clamp(17px,4.6vw,21px);font-weight:800;color:var(--blue);margin:3px 0 4px;line-height:1.1;}
+  .kpi .kw{font-size:12.3px;color:var(--mute);}
+  /* scenarios */
+  .scen{display:grid;grid-template-columns:1fr;gap:11px;}
+  .sc{border-radius:13px;padding:14px 16px;color:#fff;box-shadow:var(--shadow);}
+  .sc.bull{background:linear-gradient(125deg,#1f9d6b,#14633f);}
+  .sc.base{background:linear-gradient(125deg,#16406a,#0e2a47);}
+  .sc.bear{background:linear-gradient(125deg,#b1402f,#7d2418);}
+  .sc .sh{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .sc .sd{font-size:13.6px;font-weight:800;margin:4px 0 6px;}
+  .sc p{margin:0;font-size:12.8px;color:#eef4fb;}
+  /* positioning 2x2 */
+  .posmap{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;}
+  .posmap svg{width:100%;height:auto;display:block;overflow:visible;}
+  .pos-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 2px;font-size:12px;color:var(--ink);}
+  .pos-legend .pl-i{display:flex;align-items:center;gap:6px;}
+  .pos-legend .pl-d{width:11px;height:11px;border-radius:50%;}
+  @media(min-width:680px){.kpis{grid-template-columns:1fr 1fr;}.scen{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+
+<style id="gics-tax-css">
+.gics-tax{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:2px 0 14px;}
+.gics-tax .gt-h{display:flex;align-items:center;font-size:10.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--gold);padding-right:2px;}
+.gics-tax .gt-i{display:flex;flex-direction:column;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(207,226,245,.22);border-radius:10px;padding:5px 11px;}
+.gics-tax .gt-i.cur{background:rgba(255,184,28,.16);border-color:var(--gold);}
+.gics-tax .gt-c{font-size:10px;font-weight:700;color:#9fc3e8;font-variant-numeric:tabular-nums;letter-spacing:.5px;}
+.gics-tax .gt-i.cur .gt-c{color:var(--gold);}
+.gics-tax .gt-n{font-size:13px;font-weight:700;color:#fff;line-height:1.2;}
+.gics-tax .gt-l{font-size:9.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#8fb0d4;margin-top:1px;}
+.gics-tax .gt-a{display:flex;align-items:center;color:#6f93bb;font-weight:900;font-size:13px;}
+@media(max-width:520px){.gics-tax .gt-l{display:none;}.gics-tax .gt-n{font-size:12px;}.gics-tax .gt-i{padding:4px 9px;}}
+</style>
+
+<style id="nav-home-css">.nav-home{flex:none;display:inline-flex;align-items:center;gap:5px;color:var(--navy);background:var(--gold);border-radius:999px;padding:6px 11px;font-size:12.5px;font-weight:800;text-decoration:none;white-space:nowrap;}.nav-home svg{width:15px;height:15px;}.nav-home:hover{filter:brightness(.95);}</style>
+</head>
+<body class="lang-en">
+
+<div class="topbar">
+  <div class="row">
+      <a class="nav-home" href="../../index.html" aria-label="All reports"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.7 12 4l9 6.7"></path><path d="M5 9.6V20h14V9.6"></path></svg><span class="en">All</span><span class="ko">전체</span></a>
+    <div class="brand">The Industry Brief<span class="g"> ·</span> <span class="en">Passenger Airlines</span><span class="ko">여객 항공</span></div>
+    <div class="chips"><button class="chip" data-go="overview"><span class="en">Overview</span><span class="ko">개요</span></button><button class="chip" data-go="chain"><span class="en">Value chain</span><span class="ko">가치사슬</span></button><button class="chip" data-go="share"><span class="en">Market share</span><span class="ko">시장점유율</span></button><button class="chip" data-go="positioning"><span class="en">Positioning</span><span class="ko">포지셔닝</span></button><button class="chip" data-go="forces"><span class="en">5 Forces</span><span class="ko">5가지 경쟁요인</span></button><button class="chip" data-go="reg"><span class="en">Regulation</span><span class="ko">규제</span></button><button class="chip" data-go="ksf"><span class="en">KSF</span><span class="ko">핵심성공요인</span></button><button class="chip" data-go="players"><span class="en">Players</span><span class="ko">주요 기업</span></button><button class="chip" data-go="scenarios"><span class="en">Scenarios</span><span class="ko">시나리오</span></button></div>
+    <button id="lang" aria-label="Toggle language"><span class="en">한국어</span><span class="ko">English</span></button>
+  </div>
+</div>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The Industry Brief · GICS day-set 6 of 7</span><span class="ko">The Industry Brief · GICS 7개 산업 중 6번째</span></p>
+    <h1><span class="en">Passenger Airlines</span><span class="ko">여객 항공</span></h1>
+    <p class="sub"><span class="en">Industry analysis &amp; competitive structure</span><span class="ko">산업 분석과 경쟁 구조</span></p>
+    <div class="gics-tax" aria-label="GICS classification"><span class="gt-h"><span class="en">GICS</span><span class="ko">GICS 분류</span></span><span class="gt-i"><span class="gt-c">20</span><span class="gt-n"><span class="en">Industrials</span><span class="ko">산업재</span></span><span class="gt-l"><span class="en">Sector</span><span class="ko">섹터</span></span></span><span class="gt-a" aria-hidden="true">&#8250;</span><span class="gt-i"><span class="gt-c">2030</span><span class="gt-n"><span class="en">Transportation</span><span class="ko">운송</span></span><span class="gt-l"><span class="en">Industry Group</span><span class="ko">산업군</span></span></span><span class="gt-a" aria-hidden="true">&#8250;</span><span class="gt-i"><span class="gt-c">203020</span><span class="gt-n"><span class="en">Passenger Airlines</span><span class="ko">여객 항공</span></span><span class="gt-l"><span class="en">Industry</span><span class="ko">산업</span></span></span><span class="gt-a" aria-hidden="true">&#8250;</span><span class="gt-i cur"><span class="gt-c">20302010</span><span class="gt-n"><span class="en">Passenger Airlines</span><span class="ko">여객 항공</span></span><span class="gt-l"><span class="en">Sub-Industry</span><span class="ko">세부산업</span></span></span></div>
+      <div class="pill-row">
+      <span class="pill">2026-07-04</span>
+      <span class="pill"><span class="en">Players</span><span class="ko">주요 기업</span>: <span class="en">Delta Air Lines · Korean Air / American, United, Ryanair (peers)</span><span class="ko">델타항공 · 대한항공 / 아메리칸, 유나이티드, 라이언에어(경쟁사)</span></span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <section id="overview">
+    <div class="card summary reveal">
+      <p class="kicker"><span class="en">Executive summary</span><span class="ko">핵심 요약</span></p>
+      <p><span class="en">Passenger airlines sell seats and the ancillary services around them, sitting atop a global airline industry whose total revenue crossed US$1 trillion for the first time in 2025 (about US$1.008 trillion) and is forecast at US$1.053 trillion in 2026, with passenger ticket revenue reaching roughly US$716 billion in 2025 and ~US$751 billion in 2026 on a still-thin 3.9% net margin (IATA, Dec 2025). It is a scale-and-cost game layered over fuel, labor, airport slots and increasingly carbon rules: Delta Air Lines is the world's largest airline by revenue (US$63.4 billion in FY2025) with a market cap near US$60 billion (Jun 2026), while in Korea the market consolidated sharply after Korean Air (003490) completed its acquisition of Asiana Airlines in December 2024 (market cap ~₩10.7 trillion, Jun 2026). The defining tension is turning record traffic into durable margin when fuel, wages and safety-and-carbon compliance costs all move against you.</span><span class="ko">여객 항공사는 좌석과 그 주변의 부가 서비스를 팝니다. 이들이 올라타 있는 전 세계 항공 산업의 총매출은 2025년 처음으로 1조 달러를 넘어섰고(약 1조 80억 달러), 2026년에는 1조 530억 달러에 이를 전망입니다. 여객 운임 매출만 보면 2025년 약 7,160억 달러, 2026년 약 7,510억 달러로 늘어나는데, 순이익률은 여전히 얇은 3.9%에 그칩니다(IATA, 2025년 12월). 연료·인건비·공항 슬롯, 그리고 갈수록 무거워지는 탄소 규제 위에서 규모와 원가로 승부하는 게임이죠. 델타항공은 매출 기준 세계 최대 항공사로(2025 회계연도 634억 달러), 시가총액은 약 600억 달러입니다(2026년 6월). 한국에서는 대한항공(003490)이 2024년 12월 아시아나항공 인수를 마무리하며 시장이 크게 재편됐습니다(시가총액 약 10조 7,000억 원, 2026년 6월). 핵심 관전 포인트는 분명합니다. 사상 최대 여객 수요를, 연료·임금·안전·탄소 규제 비용이 모두 불리하게 움직이는 상황에서 꾸준한 이익률로 바꿔낼 수 있느냐입니다.</span></p>
+    </div>
+  </section>
+
+  <section id="chain" class="reveal">
+    <p class="kicker"><span class="en">Definition &amp; value chain</span><span class="ko">정의와 가치사슬</span></p>
+    <h2><span class="en">How a seat becomes profit</span><span class="ko">좌석 하나가 이익이 되기까지</span></h2>
+    <p class="lead"><span class="en">An airline buys or leases aircraft, burns fuel, pays for airports and air-navigation services, sells seats through direct and GDS channels, runs the operation, and monetizes bags, seats and loyalty. Value pools at the ends — aircraft/lessors and loyalty/ancillary — while flying itself runs on wafer-thin margins.</span><span class="ko">항공사는 항공기를 사거나 리스하고, 연료를 태우며, 공항과 항공교통관제(ANSP) 비용을 내고, 직판과 GDS 채널로 좌석을 판 뒤 운항을 돌리고, 수하물·좌석·로열티로 부가 수익을 냅니다. 가치는 양 끝단 — 항공기·리스사와 로열티·부가 서비스 — 에 몰리고, 정작 운항 자체는 종잇장처럼 얇은 이익률로 굴러가죠.</span></p>
+    <div class="vchain">
+      <div class="vc-step"><span class="vc-n">1</span><b><span class="en">Aircraft &amp; leasing</span><span class="ko">항공기 · 리스</span></b><span class="d"><span class="en">Boeing/Airbus orders; lessors (AerCap) own ~half the global fleet.</span><span class="ko">보잉·에어버스 발주, 리스사(AerCap 등)가 전 세계 기단의 약 절반 보유.</span></span></div>
+      <div class="vc-arrow">&#8250;</div>
+      <div class="vc-step"><span class="vc-n">2</span><b><span class="en">Fuel &amp; carbon</span><span class="ko">연료 · 탄소</span></b><span class="d"><span class="en">Jet fuel is ~25-30% of costs; SAF mandates and ETS/CORSIA add a rising carbon bill.</span><span class="ko">항공유가 비용의 약 25~30%, SAF 의무와 ETS·CORSIA로 탄소 비용이 오름세.</span></span></div>
+      <div class="vc-arrow">&#8250;</div>
+      <div class="vc-step"><span class="vc-n">3</span><b><span class="en">Airport &amp; ANSP</span><span class="ko">공항 · 관제</span></b><span class="d"><span class="en">Slots, landing/handling fees, air-navigation charges — largely fixed, hub-gated.</span><span class="ko">슬롯, 착륙·조업료, 관제료 — 대체로 고정비이고 허브가 관문 역할.</span></span></div>
+      <div class="vc-arrow">&#8250;</div>
+      <div class="vc-step"><span class="vc-n">4</span><b><span class="en">Distribution &amp; ops</span><span class="ko">유통 · 운항</span></b><span class="d"><span class="en">Direct + GDS (Amadeus/Sabre); crew, maintenance, network and revenue management.</span><span class="ko">직판+GDS(아마데우스·세이버), 승무원·정비·노선·수익 관리.</span></span></div>
+      <div class="vc-arrow">&#8250;</div>
+      <div class="vc-step"><span class="vc-n">5</span><b><span class="en">Ancillary &amp; loyalty</span><span class="ko">부가 서비스 · 로열티</span></b><span class="d"><span class="en">Bags, seats, cabins and co-brand miles — the highest-margin, most durable profit.</span><span class="ko">수하물·좌석·상위 클래스와 제휴 마일리지 — 마진이 가장 높고 오래가는 이익원.</span></span></div>
+    </div>
+    <div class="pool">
+      <div class="pool-row"><span class="pn"><span class="en">Aircraft &amp; leasing</span><span class="ko">항공기 · 리스</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med">~20%</span></div>
+      <div class="pool-row"><span class="pn"><span class="en">Fuel &amp; carbon</span><span class="ko">연료 · 탄소</span></span><span class="ptrack"><span class="pfill lo"></span></span><span class="pv lo">~10%</span></div>
+      <div class="pool-row"><span class="pn"><span class="en">Airport &amp; ANSP</span><span class="ko">공항 · 관제</span></span><span class="ptrack"><span class="pfill lo"></span></span><span class="pv lo">~10%</span></div>
+      <div class="pool-row"><span class="pn"><span class="en">Distribution &amp; ops (flying)</span><span class="ko">유통 · 운항</span></span><span class="ptrack"><span class="pfill med"></span></span><span class="pv med">~25%</span></div>
+      <div class="pool-row"><span class="pn"><span class="en">Ancillary &amp; loyalty</span><span class="ko">부가 서비스 · 로열티</span></span><span class="ptrack"><span class="pfill hi"></span></span><span class="pv hi">~35%</span></div>
+    </div>
+    <p class="cap"><span class="en">Indicative share of the industry profit pool, not revenue; ancillary and loyalty capture disproportionate profit versus base flying. Author estimate from IATA cost structure, 2025.</span><span class="ko">매출이 아니라 산업 이익 풀에서 차지하는 대략적 비중입니다. 부가 서비스와 로열티가 기본 운항 대비 이익을 과도하게 가져갑니다. IATA 비용 구조를 바탕으로 필자가 추정, 2025년.</span></p>
+  </section>
+
+  <section id="size" class="reveal">
+    <p class="kicker"><span class="en">Market size &amp; growth</span><span class="ko">시장 규모와 성장</span></p>
+    <h2><span class="en">Past US$1 trillion, on thin margins</span><span class="ko">1조 달러를 넘어선 매출, 얇은 이익률</span></h2>
+    <div class="cagr-wrap">
+      <span class="cagr-badge"><span class="en">Total industry revenue</span><span class="ko">산업 총매출</span> <span class="n">US$1.05T</span> <span class="en">2026E</span><span class="ko">2026년 전망</span></span>
+      <span class="cagr-badge alt"><span class="en">Net margin</span><span class="ko">순이익률</span> <span class="n">~3.9%</span> <span class="en">2026E</span><span class="ko">2026년 전망</span></span>
+    </div>
+    <div class="colchart" aria-label="Global airline industry total revenue, US$ trillion">
+      <div class="col"><span class="col-val">0.83</span><span class="col-bar" data-h="42" style="height:0"></span><span class="col-lab">2022</span></div>
+      <div class="col"><span class="col-val">0.90</span><span class="col-bar" data-h="55" style="height:0"></span><span class="col-lab">2023</span></div>
+      <div class="col"><span class="col-val">0.97</span><span class="col-bar" data-h="68" style="height:0"></span><span class="col-lab">2024</span></div>
+      <div class="col"><span class="col-val">1.01</span><span class="col-bar" data-h="82" style="height:0"></span><span class="col-lab">2025E</span></div>
+      <div class="col"><span class="col-val">1.05</span><span class="col-bar" data-h="100" style="height:0"></span><span class="col-lab">2026E</span></div>
+    </div>
+    <p class="cap"><span class="en">Global airline industry total revenue, US$ trillion; baseline zoomed to show the trend. Passenger ticket revenue is ~US$751bn of the 2026 total; cargo ~US$158bn (IATA, Dec 2025).</span><span class="ko">전 세계 항공 산업 총매출(조 달러 단위), 추세가 보이도록 기준선을 확대했습니다. 2026년 총액 중 여객 운임 매출은 약 7,510억 달러, 화물은 약 1,580억 달러입니다(IATA, 2025년 12월).</span></p>
+  </section>
+
+  <section id="share" class="reveal">
+    <p class="kicker"><span class="en">Market share</span><span class="ko">시장점유율</span></p>
+    <h2><span class="en">Fragmented globally, concentrated in Korea</span><span class="ko">세계는 분산, 한국은 집중</span></h2>
+    <div class="pies">
+      <div class="pieblock">
+        <div class="pie-title"><span class="en">Global — top carriers by 2025 revenue (share of top-6 group)</span><span class="ko">글로벌 — 2025년 매출 기준 상위 항공사(상위 6개 그룹 내 비중)</span></div>
+        <div class="pie" style="background:conic-gradient(var(--navy) 0 24%,var(--blue) 24% 46%,var(--sky) 46% 66%,#8fb0d4 66% 82%,#b9cbe0 82% 93%,#d7e1ee 93% 100%);"></div>
+        <div class="legend">
+          <div class="lg-item"><span class="lg-dot" style="background:var(--navy)"></span><span class="en">Delta Air Lines (United States)</span><span class="ko">델타항공(미국)</span><b>24%</b></div>
+          <div class="lg-item"><span class="lg-dot" style="background:var(--blue)"></span><span class="en">United Airlines (United States)</span><span class="ko">유나이티드항공(미국)</span><b>22%</b></div>
+          <div class="lg-item"><span class="lg-dot" style="background:var(--sky)"></span><span class="en">American Airlines (United States)</span><span class="ko">아메리칸항공(미국)</span><b>20%</b></div>
+          <div class="lg-item"><span class="lg-dot" style="background:#8fb0d4"></span><span class="en">Lufthansa Group (Germany)</span><span class="ko">루프트한자 그룹(독일)</span><b>16%</b></div>
+          <div class="lg-item"><span class="lg-dot" style="background:#b9cbe0"></span><span class="en">IAG (United Kingdom / Spain)</span><span class="ko">IAG(영국·스페인)</span><b>11%</b></div>
+          <div class="lg-item"><span class="lg-dot" style="background:#d7e1ee"></span><span class="en">Ryanair (Ireland)</span><span class="ko">라이언에어(아일랜드)</span><b>7%</b></div>
+        </div>
+      </div>
+      <div class="pieblock">
+        <div class="pie-title"><span class="en">Korea — domestic carriers by passengers carried (2025, share of listed group)</span><span class="ko">한국 — 여객 수송 기준 국내 항공사(2025년, 상장 그룹 내 비중)</span></div>
+        <div class="pie" style="background:conic-gradient(var(--krblue) 0 48%,var(--krred) 48% 66%,#5aa9e6 66% 79%,#e8902a 79% 90%,#8fb0d4 90% 100%);"></div>
+        <div class="legend">
+          <div class="lg-item"><span class="lg-dot" style="background:var(--krblue)"></span><span class="en">Korean Air incl. Asiana (Korea)</span><span class="ko">대한항공(아시아나 포함, 한국)</span><b>48%</b></div>
+          <div class="lg-item"><span class="lg-dot" style="background:var(--krred)"></span><span class="en">Jeju Air (Korea)</span><span class="ko">제주항공(한국)</span><b>18%</b></div>
+          <div class="lg-item"><span class="lg-dot" style="background:#5aa9e6"></span><span class="en">Jin Air (Korea)</span><span class="ko">진에어(한국)</span><b>13%</b></div>
+          <div class="lg-item"><span class="lg-dot" style="background:#e8902a"></span><span class="en">T'way Air (Korea)</span><span class="ko">티웨이항공(한국)</span><b>11%</b></div>
+          <div class="lg-item"><span class="lg-dot" style="background:#8fb0d4"></span><span class="en">Air Busan &amp; others (Korea)</span><span class="ko">에어부산 외(한국)</span><b>10%</b></div>
+        </div>
+      </div>
+    </div>
+    <p class="cap"><span class="en">Shares are within the illustrated peer group, not the entire market; global by 2025 revenue, Korea by passengers carried. Author estimate from company filings, OAG and press, 2025.</span><span class="ko">비중은 예시로 든 경쟁 그룹 내부 기준이며 전체 시장이 아닙니다. 글로벌은 2025년 매출, 한국은 여객 수송 기준입니다. 기업 공시·OAG·언론 보도를 바탕으로 필자가 추정, 2025년.</span></p>
+  </section>
+
+  <section id="positioning" class="reveal">
+    <p class="kicker"><span class="en">Competitive positioning</span><span class="ko">경쟁 포지셔닝</span></p>
+    <h2><span class="en">Network scale vs. unit cost</span><span class="ko">노선 규모 대 단위 원가</span></h2>
+    <div class="posmap">
+      <svg viewBox="0 0 320 260" role="img" aria-label="Positioning: network scale versus unit-cost advantage">
+        <line x1="40" y1="20" x2="40" y2="230" stroke="#cfd8e6" stroke-width="1.5"></line>
+        <line x1="40" y1="230" x2="300" y2="230" stroke="#cfd8e6" stroke-width="1.5"></line>
+        <text x="46" y="32" font-size="10" fill="#5b6b8c">High network scale</text>
+        <text x="205" y="245" font-size="10" fill="#5b6b8c">Lower unit cost &#8250;</text>
+        <text x="46" y="224" font-size="10" fill="#5b6b8c">Point-to-point</text>
+        <circle cx="95" cy="55" r="8" fill="#0e2a47"></circle>
+        <text x="108" y="52" font-size="10.5" fill="#13314f" font-weight="700">Delta</text>
+        <text x="108" y="64" font-size="8.5" fill="#5b6b8c">premium global hub</text>
+        <circle cx="120" cy="90" r="8" fill="#c8102e"></circle>
+        <text x="133" y="87" font-size="10.5" fill="#13314f" font-weight="700">Korean Air</text>
+        <text x="133" y="99" font-size="8.5" fill="#5b6b8c">enlarged flag carrier</text>
+        <circle cx="150" cy="130" r="7" fill="#8a97ad"></circle>
+        <text x="162" y="127" font-size="10" fill="#5b6b8c">American</text>
+        <circle cx="255" cy="190" r="7" fill="#8a97ad"></circle>
+        <text x="196" y="205" font-size="10" fill="#5b6b8c">Ryanair (LCC)</text>
+      </svg>
+      <div class="pos-legend">
+        <span class="pl-i"><span class="pl-d" style="background:#0e2a47"></span><span class="en">Global #1 (Delta)</span><span class="ko">글로벌 1위(델타)</span></span>
+        <span class="pl-i"><span class="pl-d" style="background:#c8102e"></span><span class="en">Korea #1 (Korean Air)</span><span class="ko">한국 1위(대한항공)</span></span>
+        <span class="pl-i"><span class="pl-d" style="background:#8a97ad"></span><span class="en">Peers</span><span class="ko">경쟁사</span></span>
+      </div>
+    </div>
+    <p class="cap"><span class="en">Takeaway: full-service hubs (Delta, Korean Air, American) win on premium demand and connectivity but carry higher unit costs; ultra-low-cost carriers like Ryanair win on cost per seat but lack global reach. Neither corner is free.</span><span class="ko">시사점: 풀서비스 허브(델타·대한항공·아메리칸)는 프리미엄 수요와 연결성으로 이기지만 단위 원가가 높습니다. 라이언에어 같은 초저가 항공사는 좌석당 원가로 이기지만 글로벌 커버리지가 약하죠. 어느 쪽 구석도 공짜는 아닙니다.</span></p>
+  </section>
+
+  <section id="forces" class="reveal">
+    <p class="kicker"><span class="en">Porter's five forces</span><span class="ko">포터의 5가지 경쟁요인</span></p>
+    <h2><span class="en">Why margins stay thin</span><span class="ko">이익률이 얇게 유지되는 이유</span></h2>
+    <div class="forces">
+      <div class="force"><div class="force-top"><b><span class="en">Rivalry</span><span class="ko">기존 기업 간 경쟁</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">Near-commodity seats, transparent online pricing and high fixed costs drive fare wars; only slot-constrained hubs and loyalty soften it.</span><span class="ko">사실상 표준화된 좌석, 투명한 온라인 가격, 높은 고정비가 운임 전쟁을 부릅니다. 슬롯이 제한된 허브와 로열티만이 이를 조금 눅여줄 뿐이죠.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Supplier power</span><span class="ko">공급자 교섭력</span></b><span class="rate hi"><span class="en">High</span><span class="ko">높음</span></span></div><p><span class="en">A Boeing-Airbus duopoly, engine OEMs, unionized labor and volatile jet fuel all price with leverage over carriers.</span><span class="ko">보잉·에어버스 복점, 엔진 제조사, 노조화된 인력, 널뛰는 항공유까지 — 모두 항공사에 대해 우위를 갖고 값을 매깁니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Buyer power</span><span class="ko">구매자 교섭력</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">Leisure flyers compare fares in seconds via OTAs, but hub captivity, loyalty lock-in and corporate contracts limit true switching.</span><span class="ko">레저 승객은 OTA로 몇 초 만에 운임을 비교하지만, 허브 종속·로열티 묶임·법인 계약이 실제 전환을 제약합니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">New entrants</span><span class="ko">신규 진입</span></b><span class="rate lo"><span class="en">Low</span><span class="ko">낮음</span></span></div><p><span class="en">Fleets, slots, certification, safety regimes and bilateral traffic rights are massive barriers; most new capacity comes from incumbents and LCCs, not startups.</span><span class="ko">기단·슬롯·인증·안전 체계·양자 운수권이 거대한 진입 장벽입니다. 신규 공급은 대부분 기존 기업과 LCC에서 나오지, 스타트업에서 나오지 않습니다.</span></p></div>
+      <div class="force"><div class="force-top"><b><span class="en">Substitutes</span><span class="ko">대체재</span></b><span class="rate med"><span class="en">Medium</span><span class="ko">중간</span></span></div><p><span class="en">High-speed rail and video calls dent short-haul and business travel, but long-haul and intercontinental flying has no real substitute.</span><span class="ko">고속철도와 화상회의가 단거리·출장 수요를 갉아먹지만, 장거리·대륙간 비행에는 마땅한 대체재가 없습니다.</span></p></div>
+    </div>
+  </section>
+
+  <section id="reg" class="reveal">
+    <p class="kicker"><span class="en">Regulation &amp; policy</span><span class="ko">규제 · 정책</span></p>
+    <h2><span class="en">Consumer rights meet the carbon bill</span><span class="ko">소비자 권리와 탄소 청구서가 만나다</span></h2>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" role="button" tabindex="0" aria-expanded="false"><span class="ac-badge"><span class="en">Oct 2024</span><span class="ko">2024년 10월</span></span><span class="ac-title"><span class="en">US DOT automatic-refund rule</span><span class="ko">미국 DOT 자동 환불 규정</span></span></div><div class="ac-body"><p class="why"><span class="en"><b>What:</b> The DOT final rule (14 CFR 259.5) took effect 28 Oct 2024, requiring airlines to issue prompt, automatic cash refunds for cancellations and significant delays or changes, without a passenger having to ask. Why it matters: it raises the cost of operational unreliability and pushes carriers to buy schedule integrity.</span><span class="ko"><b>내용:</b> DOT 최종 규정(14 CFR 259.5)이 2024년 10월 28일 발효돼, 항공사는 결항·중대 지연·중대 변경 시 승객이 요청하지 않아도 신속한 자동 현금 환불을 해야 합니다. 시사점: 운항 신뢰도 저하의 비용이 커지고, 항공사는 스케줄 안정성에 돈을 쓰게 됩니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" role="button" tabindex="0" aria-expanded="false"><span class="ac-badge"><span class="en">In force</span><span class="ko">시행 중</span></span><span class="ac-title"><span class="en">EU261 passenger compensation</span><span class="ko">EU261 여객 보상 규정</span></span></div><div class="ac-body"><p class="why"><span class="en"><b>What:</b> EU Regulation 261/2004 mandates fixed cash compensation (€250-600) for long delays, cancellations and denied boarding on EU-touching flights; a 2025 EU Council push to reform delay thresholds is under negotiation. Why it matters: it is a hard, predictable cost line that rewards on-time performance.</span><span class="ko"><b>내용:</b> EU 규정 261/2004는 EU 관련 노선의 장시간 지연·결항·탑승 거부에 대해 정액 현금 보상(250~600유로)을 의무화합니다. 2025년 EU 이사회가 지연 기준 개편을 추진 중이라 협상이 진행되고 있죠. 시사점: 예측 가능한 확정 비용이라, 정시 운항을 잘하는 항공사에 유리합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" role="button" tabindex="0" aria-expanded="false"><span class="ac-badge"><span class="en">2025 phase-in</span><span class="ko">2025년 단계 시행</span></span><span class="ac-title"><span class="en">EU ETS aviation + ReFuelEU SAF mandate</span><span class="ko">EU ETS 항공 + ReFuelEU SAF 의무</span></span></div><div class="ac-body"><p class="why"><span class="en"><b>What:</b> Free EU-ETS allowances for intra-EU flights are phasing out through 2026, and ReFuelEU Aviation requires a 2% SAF blend at EU airports from 2025, rising to 6% by 2030 and 70% by 2050. Why it matters: it puts a rising, structural carbon and fuel-cost premium on European flying.</span><span class="ko"><b>내용:</b> 역내 노선에 대한 EU-ETS 무상 할당은 2026년까지 단계적으로 폐지되고, ReFuelEU 항공은 2025년부터 EU 공항에서 SAF 2% 혼합을 의무화해 2030년 6%, 2050년 70%까지 끌어올립니다. 시사점: 유럽 운항에 구조적으로 커지는 탄소·연료 비용 프리미엄이 붙습니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" role="button" tabindex="0" aria-expanded="false"><span class="ac-badge"><span class="en">2024- offsetting</span><span class="ko">2024- 상쇄</span></span><span class="ac-title"><span class="en">ICAO CORSIA global offset scheme</span><span class="ko">ICAO CORSIA 글로벌 상쇄 제도</span></span></div><div class="ac-body"><p class="why"><span class="en"><b>What:</b> CORSIA's first mandatory phase (2024-2026) requires airlines to offset international-flight emissions growth above a 2019 baseline using eligible carbon credits, before broader participation from 2027. Why it matters: it is the global carbon backstop; credit scarcity could make compliance costly.</span><span class="ko"><b>내용:</b> CORSIA의 첫 의무 단계(2024~2026년)는 2027년 확대 참여에 앞서, 국제선 배출량이 2019년 기준을 넘어 늘어난 만큼을 적격 탄소 크레딧으로 상쇄하도록 요구합니다. 시사점: 글로벌 탄소 안전장치인데, 크레딧이 부족하면 준수 비용이 비싸질 수 있습니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" role="button" tabindex="0" aria-expanded="false"><span class="ac-badge"><span class="en">Dec 2024</span><span class="ko">2024년 12월</span></span><span class="ac-title"><span class="en">Korea: Korean Air-Asiana merger conditions</span><span class="ko">한국: 대한항공-아시아나 합병 조건</span></span></div><div class="ac-body"><p class="why"><span class="en"><b>What:</b> Global antitrust clearance (EU, US, others) let Korean Air complete the Asiana acquisition on 12 Dec 2024, conditioned on slot and route remedies handing capacity to competitors on overlapping long-haul routes. Why it matters: it created a dominant flag carrier while forcing give-backs to LCCs and foreign rivals.</span><span class="ko"><b>내용:</b> EU·미국 등 경쟁 당국의 승인으로 대한항공은 2024년 12월 12일 아시아나 인수를 마무리했습니다. 다만 중복 장거리 노선의 슬롯·운수권을 경쟁사에 넘기는 시정 조치가 조건으로 붙었죠. 시사점: 지배적 국적 항공사가 탄생했지만, 그 대가로 LCC·외국 경쟁사에 노선을 내줘야 합니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" role="button" tabindex="0" aria-expanded="false"><span class="ac-badge"><span class="en">Jan 2025</span><span class="ko">2025년 1월</span></span><span class="ac-title"><span class="en">Korea: post-crash airport safety directive</span><span class="ko">한국: 사고 후 공항 안전 지침</span></span></div><div class="ac-body"><p class="why"><span class="en"><b>What:</b> After the Jeju Air Muan crash (29 Dec 2024, 179 dead), MOLIT on 22 Jan 2025 ordered removal of the rigid concrete localizer mound and directed runway-end safety upgrades at nine airports. Why it matters: it tightens airport and operational safety standards and adds capex under the 항공사업법 framework.</span><span class="ko"><b>내용:</b> 제주항공 무안 참사(2024년 12월 29일, 179명 사망) 이후 국토교통부는 2025년 1월 22일 콘크리트 로컬라이저 둔덕 철거와 9개 공항의 활주로 종단안전구역 개선을 지시했습니다. 시사점: 항공사업법 틀 안에서 공항·운항 안전 기준이 강화되고 투자 부담이 늘어납니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="ksf" class="reveal">
+    <p class="kicker"><span class="en">Key success factors</span><span class="ko">핵심 성공 요인</span></p>
+    <h2><span class="en">What separates winners</span><span class="ko">승자를 가르는 것</span></h2>
+    <div class="ksf">
+      <div class="kc"><span class="kn">1</span><div><b><span class="en">Unit cost (CASM)</span><span class="ko">단위 원가(CASM)</span></b><p><span class="en">Fuel efficiency, fleet simplicity and labor productivity set the floor on fares you can profitably fly.</span><span class="ko">연료 효율·기단 단순화·노동 생산성이 수익을 내며 팔 수 있는 운임의 바닥을 결정합니다.</span></p></div></div>
+      <div class="kc"><span class="kn">2</span><div><b><span class="en">Network &amp; slots</span><span class="ko">노선 · 슬롯</span></b><p><span class="en">Hub connectivity, prized slots and partner alliances create pricing power rivals cannot copy overnight.</span><span class="ko">허브 연결성, 값진 슬롯, 동맹 파트너십이 경쟁사가 하루아침에 복제할 수 없는 가격 결정력을 만듭니다.</span></p></div></div>
+      <div class="kc"><span class="kn">3</span><div><b><span class="en">Loyalty &amp; ancillary</span><span class="ko">로열티 · 부가 수익</span></b><p><span class="en">Co-brand miles and bag/seat fees are the highest-margin, most stable revenue, often worth more than flying itself.</span><span class="ko">제휴 마일리지와 수하물·좌석 요금은 마진이 가장 높고 안정적인 매출로, 종종 운항 자체보다 값어치가 큽니다.</span></p></div></div>
+      <div class="kc"><span class="kn">4</span><div><b><span class="en">Revenue management</span><span class="ko">수익 관리</span></b><p><span class="en">Dynamic pricing and load-factor optimization squeeze the most revenue from every departing seat.</span><span class="ko">동적 가격 책정과 탑승률 최적화로 출발하는 좌석 하나하나에서 최대 매출을 짜냅니다.</span></p></div></div>
+      <div class="kc"><span class="kn">5</span><div><b><span class="en">Safety &amp; reliability</span><span class="ko">안전 · 정시성</span></b><p><span class="en">Safety record and on-time performance protect the brand, cut compensation costs and win corporate contracts.</span><span class="ko">안전 실적과 정시 운항이 브랜드를 지키고 보상 비용을 줄이며 법인 계약을 따냅니다.</span></p></div></div>
+      <div class="kc"><span class="kn">6</span><div><b><span class="en">Fuel &amp; carbon hedging</span><span class="ko">연료 · 탄소 헤지</span></b><p><span class="en">Fuel hedges and SAF/ETS strategy blunt the volatility and rising cost of the biggest external swing factor.</span><span class="ko">연료 헤지와 SAF·ETS 전략이 가장 큰 외생 변수의 변동성과 상승 비용을 완충합니다.</span></p></div></div>
+    </div>
+  </section>
+
+  <section id="news" class="reveal">
+    <p class="kicker"><span class="en">Recent market developments</span><span class="ko">최근 시장 동향</span></p>
+    <h2><span class="en">Consolidation, records and safety</span><span class="ko">통합, 기록, 그리고 안전</span></h2>
+    <div class="acc" data-accordion>
+      <div class="ac"><div class="ac-head" role="button" tabindex="0" aria-expanded="false"><span class="ac-badge"><span class="en">Dec 2024</span><span class="ko">2024년 12월</span></span><span class="ac-title"><span class="en">Korean Air completes Asiana acquisition</span><span class="ko">대한항공, 아시아나 인수 완료</span></span></div><div class="ac-body"><p><span class="en">Korean Air invested ~₩1.5 trillion for a 63.88% stake, closing on 12 Dec 2024; Asiana runs as a subsidiary until full absorption slated for 17 Dec 2026, creating one of the world's larger carriers.</span><span class="ko">대한항공은 약 1조 5,000억 원을 투입해 지분 63.88%를 확보하며 2024년 12월 12일 인수를 종결했습니다. 아시아나는 2026년 12월 17일 완전 흡수 전까지 자회사로 운영되며, 이로써 세계 굵직한 항공사 하나가 탄생했죠.</span></p></div></div>
+      <div class="ac"><div class="ac-head" role="button" tabindex="0" aria-expanded="false"><span class="ac-badge"><span class="en">Dec 2024</span><span class="ko">2024년 12월</span></span><span class="ac-title"><span class="en">Jeju Air Flight 2216 disaster</span><span class="ko">제주항공 2216편 참사</span></span></div><div class="ac-body"><p><span class="en">On 29 Dec 2024 a Jeju Air Boeing 737-800 belly-landed at Muan after a bird strike and overran into a concrete mound, killing 179 of 181 — Korea's deadliest crash in decades, reshaping domestic safety scrutiny and LCC confidence.</span><span class="ko">2024년 12월 29일 제주항공 보잉 737-800이 조류 충돌 뒤 무안공항에 동체 착륙하다 콘크리트 둔덕에 부딪혀 181명 중 179명이 숨졌습니다. 수십 년 만의 최악 참사로, 국내 안전 점검과 LCC 신뢰를 크게 흔들었죠.</span></p></div></div>
+      <div class="ac"><div class="ac-head" role="button" tabindex="0" aria-expanded="false"><span class="ac-badge"><span class="en">Dec 2025</span><span class="ko">2025년 12월</span></span><span class="ac-title"><span class="en">Industry revenue tops US$1 trillion</span><span class="ko">산업 매출 1조 달러 돌파</span></span></div><div class="ac-body"><p><span class="en">IATA confirmed 2025 total airline revenue at ~US$1.008 trillion, a first, and forecast US$1.053 trillion for 2026 with a record ~5.2 billion passengers, though net margin stays a thin 3.9%.</span><span class="ko">IATA는 2025년 항공 산업 총매출이 처음으로 약 1조 80억 달러에 이르렀다고 확인하고, 2026년에는 1조 530억 달러와 사상 최대 약 52억 명의 여객을 전망했습니다. 다만 순이익률은 여전히 얇은 3.9%에 머뭅니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" role="button" tabindex="0" aria-expanded="false"><span class="ac-badge"><span class="en">FY2025</span><span class="ko">2025 회계연도</span></span><span class="ac-title"><span class="en">US majors post record revenue</span><span class="ko">미국 대형사, 사상 최대 매출</span></span></div><div class="ac-body"><p><span class="en">Delta reported US$63.4bn and United a record US$59.1bn in FY2025 operating revenue on strong premium and international demand; American reached ~US$54.7bn, cementing a US big-three lead.</span><span class="ko">델타는 2025 회계연도 매출 634억 달러, 유나이티드는 사상 최대 591억 달러를 기록했습니다. 프리미엄·국제선 수요가 강했던 덕분이죠. 아메리칸도 약 547억 달러에 이르며 미국 빅3 구도를 굳혔습니다.</span></p></div></div>
+      <div class="ac"><div class="ac-head" role="button" tabindex="0" aria-expanded="false"><span class="ac-badge"><span class="en">2025</span><span class="ko">2025년</span></span><span class="ac-title"><span class="en">Fuel eases, lifting margins</span><span class="ko">연료비 완화, 이익률 개선</span></span></div><div class="ac-body"><p><span class="en">Softer jet-fuel prices through 2025 relieved the industry's single biggest cost line (~25-30% of expenses), a key reason IATA held its 2026 net margin outlook steady despite wage and capacity pressure.</span><span class="ko">2025년 내내 항공유 가격이 눅어지며 산업 최대 비용 항목(비용의 약 25~30%)의 부담이 덜어졌습니다. IATA가 임금·공급 압력에도 2026년 순이익률 전망을 유지한 핵심 이유죠.</span></p></div></div>
+      <div class="ac"><div class="ac-head" role="button" tabindex="0" aria-expanded="false"><span class="ac-badge"><span class="en">2025</span><span class="ko">2025년</span></span><span class="ac-title"><span class="en">Korean LCC consolidation accelerates</span><span class="ko">한국 LCC 통합 가속</span></span></div><div class="ac-body"><p><span class="en">As part of the merger, Korean Air is combining LCC units Jin Air, Air Busan and Air Seoul into a single integrated low-cost carrier, reshaping Korea's LCC map against Jeju Air and T'way Air.</span><span class="ko">합병의 일환으로 대한항공은 진에어·에어부산·에어서울을 하나의 통합 LCC로 합치고 있습니다. 제주항공·티웨이항공에 맞서 한국 LCC 지형을 다시 그리는 셈이죠.</span></p></div></div>
+    </div>
+  </section>
+
+  <div class="divider"><span class="ln"></span><span class="tx"><span class="en">Players &amp; strategy</span><span class="ko">주요 기업 · 전략</span></span><span class="ln"></span></div>
+  <section id="players" class="reveal">
+
+    <div class="gl">
+      <div class="leader-band"><span class="flagdot">&#127482;&#127480;</span><div><div class="tag"><span class="en">Global leader</span><span class="ko">글로벌 리더</span></div><h3>Delta Air Lines</h3></div></div>
+      <div class="leader-wrap">
+        <p class="lead"><span class="en">Delta is the world's largest airline by revenue (US$63.4bn, FY2025), an Atlanta-hubbed full-service carrier that has out-earned peers by leaning into premium cabins, a lucrative American Express co-brand loyalty program, and a maintenance/technology arm — turning a commodity business into a durable-margin one.</span><span class="ko">델타는 매출 기준 세계 최대 항공사입니다(2025 회계연도 634억 달러). 애틀랜타를 허브로 한 풀서비스 항공사로, 프리미엄 클래스·아메리칸 익스프레스 제휴 로열티·정비/기술 사업에 무게를 실어 경쟁사보다 더 벌어들였죠. 표준화된 사업을 이익률이 오래가는 사업으로 바꿔낸 겁니다.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">US$63.4B</div><div class="l"><span class="en">FY2025 revenue</span><span class="ko">2025 회계연도 매출</span></div></div>
+          <div class="stat"><div class="n">~US$60B</div><div class="l"><span class="en">Market cap (Jun 2026)</span><span class="ko">시가총액(2026년 6월)</span></div></div>
+          <div class="stat"><div class="n">~24%</div><div class="l"><span class="en">Peer-group revenue share</span><span class="ko">경쟁 그룹 매출 비중</span></div></div>
+          <div class="stat"><div class="n">#2</div><div class="l"><span class="en">World by passengers (RPK)</span><span class="ko">세계 여객(RPK) 순위</span></div></div>
+        </div>
+        <div class="diag">
+          <div class="dh"><span class="en">SCQA diagnosis</span><span class="ko">SCQA 진단</span></div>
+          <div class="scqa">
+            <div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation</span><span class="ko">상황</span></span><p><span class="en">Global travel demand hit record highs in 2025 and Delta leads the industry on revenue and premium mix.</span><span class="ko">2025년 전 세계 여행 수요가 사상 최고를 찍었고, 델타는 매출과 프리미엄 비중에서 업계를 이끕니다.</span></p></div></div>
+            <div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication</span><span class="ko">문제</span></span><p><span class="en">Industry net margin is only ~3.9%; labor costs, carbon rules and fuel volatility can erase premium gains fast.</span><span class="ko">업계 순이익률은 약 3.9%에 불과하고, 인건비·탄소 규제·연료 변동성이 프리미엄으로 번 이익을 순식간에 지울 수 있습니다.</span></p><div class="formula"><span class="en">Profit = (premium RASM &minus; CASM) &times; ASM + loyalty income</span><span class="ko">이익 = (프리미엄 좌석당 매출 &minus; 좌석당 원가) &times; 공급 좌석마일 + 로열티 수익</span></div></div></div>
+            <div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question</span><span class="ko">질문</span></span><p><span class="en">How does Delta defend an above-peer margin when the core business is commoditized?</span><span class="ko">본업이 표준화된 상황에서 델타는 어떻게 경쟁사보다 높은 이익률을 지킬까요?</span></p></div></div>
+            <div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer</span><span class="ko">답</span></span><p><span class="en">Shift the profit mix toward premium seats, loyalty and services, while holding disciplined capacity and fuel strategy.</span><span class="ko">프리미엄 좌석·로열티·서비스로 이익 구성을 옮기고, 공급과 연료 전략을 규율 있게 관리합니다.</span></p></div></div>
+          </div>
+        </div>
+        <div class="track-grid n2">
+          <div class="track t1"><div class="tt"><span class="en">Track 1</span><span class="ko">전략 1</span></div><div class="tn"><span class="en">Premiumize the cabin</span><span class="ko">캐빈 프리미엄화</span></div><p><span class="en">Grow premium and international revenue faster than main cabin, so fare mix, not seat count, drives margin.</span><span class="ko">프리미엄·국제선 매출을 이코노미보다 빠르게 키워, 좌석 수가 아니라 운임 구성이 이익률을 이끌게 합니다.</span></p></div>
+          <div class="track t2"><div class="tt"><span class="en">Track 2</span><span class="ko">전략 2</span></div><div class="tn"><span class="en">Monetize loyalty</span><span class="ko">로열티 수익화</span></div><p><span class="en">Expand the Amex co-brand and SkyMiles economics into a high-margin, recession-resilient earnings stream.</span><span class="ko">아멕스 제휴와 스카이마일스 경제성을 넓혀, 마진이 높고 경기 방어적인 수익원으로 만듭니다.</span></p></div>
+        </div>
+        <div class="ap-grid">
+          <div class="ap"><div class="apt"><span class="en">Fleet renewal</span><span class="ko">기단 교체</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">Now</span><span class="ko">현재</span></small><span class="en">Mixed-age fleet, fuel exposure</span><span class="ko">노후 혼재 기단, 연료 노출</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">Aim</span><span class="ko">지향</span></small><span class="en">Efficient new jets, lower CASM</span><span class="ko">효율 신기재, 낮은 CASM</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Revenue mix</span><span class="ko">매출 구성</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">Now</span><span class="ko">현재</span></small><span class="en">Ticket-heavy revenue</span><span class="ko">운임 중심 매출</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">Aim</span><span class="ko">지향</span></small><span class="en">Premium + loyalty majority</span><span class="ko">프리미엄+로열티 과반</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Carbon strategy</span><span class="ko">탄소 전략</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">Now</span><span class="ko">현재</span></small><span class="en">Offsets, limited SAF</span><span class="ko">상쇄, 제한적 SAF</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">Aim</span><span class="ko">지향</span></small><span class="en">SAF supply deals at scale</span><span class="ko">대규모 SAF 공급 계약</span></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kr">
+      <div class="leader-band"><span class="flagdot">&#127472;&#127479;</span><div><div class="tag"><span class="en">Korea leader</span><span class="ko">국내 리더</span></div><h3><span class="en">Korean Air</span><span class="ko">대한항공</span></h3></div></div>
+      <div class="leader-wrap">
+        <p class="lead"><span class="en">Korean Air (003490) is Korea's flag carrier, enlarged after completing the acquisition of Asiana Airlines in December 2024. The combined group now dominates Korean international traffic and Incheon hub connectivity, while folding Jin Air, Air Busan and Air Seoul into one integrated LCC.</span><span class="ko">대한항공(003490)은 한국의 국적 항공사로, 2024년 12월 아시아나항공 인수를 마무리하며 몸집을 키웠습니다. 통합 그룹은 이제 한국 국제선 수송과 인천 허브 연결성을 지배하고, 진에어·에어부산·에어서울을 하나의 통합 LCC로 묶고 있죠.</span></p>
+        <div class="stats">
+          <div class="stat"><div class="n">~₩10.7T</div><div class="l"><span class="en">Market cap (Jun 2026)</span><span class="ko">시가총액(2026년 6월)</span></div></div>
+          <div class="stat"><div class="n">~48%</div><div class="l"><span class="en">Korea peer passenger share</span><span class="ko">국내 경쟁 여객 비중</span></div></div>
+          <div class="stat"><div class="n">Dec 2024</div><div class="l"><span class="en">Asiana deal closed</span><span class="ko">아시아나 인수 종결</span></div></div>
+          <div class="stat"><div class="n">Dec 2026</div><div class="l"><span class="en">Full integration target</span><span class="ko">완전 통합 목표</span></div></div>
+        </div>
+        <div class="diag">
+          <div class="dh"><span class="en">SCQA diagnosis</span><span class="ko">SCQA 진단</span></div>
+          <div class="scqa">
+            <div class="scqa-row s"><span class="scqa-k">S</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Situation</span><span class="ko">상황</span></span><p><span class="en">The Asiana deal made Korean Air a dominant flag carrier with a strong Incheon hub and expanded long-haul network.</span><span class="ko">아시아나 인수로 대한항공은 강력한 인천 허브와 확장된 장거리 노선을 가진 지배적 국적 항공사가 됐습니다.</span></p></div></div>
+            <div class="scqa-row c"><span class="scqa-k">C</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Complication</span><span class="ko">문제</span></span><p><span class="en">Antitrust remedies handed slots and routes to rivals, and integrating two fleets, unions and IT systems is costly and slow.</span><span class="ko">경쟁 시정 조치로 슬롯·노선을 경쟁사에 내줬고, 두 기단·노조·IT를 통합하는 일은 비싸고 더딥니다.</span></p><div class="formula"><span class="en">Value = network synergy &minus; remedy give-backs &minus; integration cost</span><span class="ko">가치 = 네트워크 시너지 &minus; 시정 조치 반납 &minus; 통합 비용</span></div></div></div>
+            <div class="scqa-row q"><span class="scqa-k">Q</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Question</span><span class="ko">질문</span></span><p><span class="en">How does Korean Air realize merger synergies without eroding safety, service and trust?</span><span class="ko">대한항공은 안전·서비스·신뢰를 훼손하지 않고 어떻게 합병 시너지를 실현할까요?</span></p></div></div>
+            <div class="scqa-row a"><span class="scqa-k">A</span><div class="scqa-bd"><span class="scqa-lab"><span class="en">Answer</span><span class="ko">답</span></span><p><span class="en">Sequence integration carefully — network first, then fleet and IT — while over-investing in safety and premium long-haul.</span><span class="ko">통합을 신중히 순서 지어 — 노선 먼저, 이어 기단·IT — 진행하면서 안전과 프리미엄 장거리에 과감히 투자합니다.</span></p></div></div>
+          </div>
+        </div>
+        <div class="track-grid n2">
+          <div class="track t1"><div class="tt"><span class="en">Track 1</span><span class="ko">전략 1</span></div><div class="tn"><span class="en">Integrate the hub</span><span class="ko">허브 통합</span></div><p><span class="en">Merge Korean Air and Asiana schedules at Incheon to maximize long-haul connectivity and cabin utilization.</span><span class="ko">인천에서 대한항공과 아시아나 스케줄을 합쳐 장거리 연결성과 캐빈 활용도를 극대화합니다.</span></p></div>
+          <div class="track t2"><div class="tt"><span class="en">Track 2</span><span class="ko">전략 2</span></div><div class="tn"><span class="en">One integrated LCC</span><span class="ko">통합 LCC 출범</span></div><p><span class="en">Combine Jin Air, Air Busan and Air Seoul into a single low-cost brand to compete with Jeju Air and T'way Air.</span><span class="ko">진에어·에어부산·에어서울을 하나의 저가 브랜드로 합쳐 제주항공·티웨이항공과 경쟁합니다.</span></p></div>
+        </div>
+        <div class="ap-grid">
+          <div class="ap"><div class="apt"><span class="en">Network</span><span class="ko">노선</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">Now</span><span class="ko">현재</span></small><span class="en">Two overlapping networks</span><span class="ko">중복된 두 네트워크</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">Aim</span><span class="ko">지향</span></small><span class="en">One optimized global map</span><span class="ko">최적화된 단일 글로벌 노선</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Safety</span><span class="ko">안전</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">Now</span><span class="ko">현재</span></small><span class="en">Heightened post-crash scrutiny</span><span class="ko">사고 후 강화된 점검</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">Aim</span><span class="ko">지향</span></small><span class="en">Best-in-class safety system</span><span class="ko">최고 수준 안전 체계</span></div></div></div>
+          <div class="ap"><div class="apt"><span class="en">Loyalty</span><span class="ko">로열티</span></div><div class="ap-flow"><div class="ap-from"><small><span class="en">Now</span><span class="ko">현재</span></small><span class="en">Two mileage programs</span><span class="ko">두 개 마일리지 제도</span></div><div class="ap-arrow">&#8594;</div><div class="ap-to"><small><span class="en">Aim</span><span class="ko">지향</span></small><span class="en">Unified, richer loyalty base</span><span class="ko">통합된 더 풍부한 로열티 기반</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kpi" class="reveal">
+    <p class="kicker"><span class="en">Metrics to watch</span><span class="ko">주시할 지표</span></p>
+    <h2><span class="en">The dials that move earnings</span><span class="ko">실적을 움직이는 계기판</span></h2>
+    <div class="kpis">
+      <div class="kpi"><div class="kt"><span class="en">Load factor</span><span class="ko">탑승률(load factor)</span></div><div class="kv">~84%</div><div class="kw"><span class="en">Industry passenger load factor near record highs in 2025 (IATA); higher fills spread fixed costs.</span><span class="ko">2025년 업계 여객 탑승률이 사상 최고 부근(IATA). 채울수록 고정비가 분산됩니다.</span></div></div>
+      <div class="kpi"><div class="kt"><span class="en">Net margin</span><span class="ko">순이익률</span></div><div class="kv">~3.9%</div><div class="kw"><span class="en">IATA's 2026 industry net margin outlook — thin, so small cost swings decide profit or loss.</span><span class="ko">IATA의 2026년 업계 순이익률 전망 — 얇아서 작은 비용 변동이 흑자·적자를 가릅니다.</span></div></div>
+      <div class="kpi"><div class="kt"><span class="en">Jet-fuel price</span><span class="ko">항공유 가격</span></div><div class="kv">25-30%</div><div class="kw"><span class="en">Fuel's share of operating cost; the single largest external swing factor for margins.</span><span class="ko">운영비 중 연료 비중, 이익률을 좌우하는 최대 외생 변수입니다.</span></div></div>
+      <div class="kpi"><div class="kt"><span class="en">RPK growth</span><span class="ko">RPK 성장률</span></div><div class="kv">~5.8%</div><div class="kw"><span class="en">Revenue-passenger-km growth into 2026 (IATA), the top-line demand gauge for the industry.</span><span class="ko">2026년 여객킬로미터(RPK) 성장률(IATA), 산업 수요를 재는 매출 지표입니다.</span></div></div>
+    </div>
+  </section>
+
+  <section id="scenarios" class="reveal">
+    <p class="kicker"><span class="en">Scenarios: bull · base · bear</span><span class="ko">시나리오: 낙관 · 기본 · 비관</span></p>
+    <h2><span class="en">Three ways 2026-2027 could run</span><span class="ko">2026~2027년의 세 갈래</span></h2>
+    <div class="scen">
+      <div class="sc bull"><div class="sh"><span class="en">Bull</span><span class="ko">낙관</span></div><div class="sd"><span class="en">Demand up, fuel down</span><span class="ko">수요 상승, 연료 하락</span></div><p><span class="en">Record travel demand holds, jet fuel stays soft and premium/loyalty income compounds, pushing industry net margin above 4.5% and lifting the strongest carriers' earnings.</span><span class="ko">사상 최대 여행 수요가 유지되고 항공유가 눅은 채로, 프리미엄·로열티 수익이 복리로 쌓이면 업계 순이익률이 4.5%를 넘고 강한 항공사들의 실적이 올라섭니다.</span></p></div>
+      <div class="sc base"><div class="sh"><span class="en">Base</span><span class="ko">기본</span></div><div class="sd"><span class="en">Steady growth, thin margin</span><span class="ko">완만한 성장, 얇은 이익률</span></div><p><span class="en">Revenue rises toward US$1.05 trillion in 2026 with ~5.8% RPK growth, but wages, carbon rules and capacity keep net margin near 3.9% — profitable, but no cushion.</span><span class="ko">2026년 매출이 1조 530억 달러로 오르고 RPK가 약 5.8% 늘지만, 임금·탄소 규제·공급이 순이익률을 3.9% 부근에 묶어둡니다. 흑자는 흑자인데 여유가 없죠.</span></p></div>
+      <div class="sc bear"><div class="sh"><span class="en">Bear</span><span class="ko">비관</span></div><div class="sd"><span class="en">Shock hits thin margins</span><span class="ko">충격이 얇은 이익률을 강타</span></div><p><span class="en">A fuel spike, recession or a fresh safety/geopolitical shock cuts demand and lifts costs at once; with margins at ~3.9%, weaker carriers slip into losses and consolidation resumes.</span><span class="ko">연료 급등이나 경기 침체, 새로운 안전·지정학 충격이 수요를 꺾고 비용을 동시에 올리면, 이익률이 약 3.9%인 상황에서 약한 항공사는 적자로 미끄러지고 통합이 다시 시작됩니다.</span></p></div>
+    </div>
+  </section>
+
+  <section id="risks" class="reveal">
+    <p class="kicker"><span class="en">Risks &amp; outlook</span><span class="ko">리스크와 전망</span></p>
+    <h2><span class="en">What could break the thesis</span><span class="ko">전망을 흔들 수 있는 것</span></h2>
+    <div class="card">
+      <ul class="tight">
+        <li><span class="en">Fuel and carbon: a jet-fuel spike or accelerating SAF/ETS/CORSIA costs can wipe out a 3.9% margin quickly.</span><span class="ko">연료와 탄소: 항공유 급등이나 SAF·ETS·CORSIA 비용의 가속은 3.9% 이익률을 순식간에 지울 수 있습니다.</span></li>
+        <li><span class="en">Safety and trust: after the Muan disaster, any further incident could depress LCC demand and raise compliance capex across Korea.</span><span class="ko">안전과 신뢰: 무안 참사 이후, 추가 사고가 한 건이라도 나면 LCC 수요가 위축되고 한국 전반의 준수 투자 부담이 커집니다.</span></li>
+        <li><span class="en">Labor and supply chain: unionized wages and Boeing/Airbus delivery delays constrain capacity and lift unit costs.</span><span class="ko">인력과 공급망: 노조 임금과 보잉·에어버스 인도 지연이 공급을 제약하고 단위 원가를 끌어올립니다.</span></li>
+        <li><span class="en">Integration and macro: Korean Air's Asiana integration slippage, or a demand-denting recession or geopolitical shock, would pressure earnings.</span><span class="ko">통합과 거시: 대한항공의 아시아나 통합 지연, 혹은 수요를 꺾는 경기 침체나 지정학 충격이 실적을 압박합니다.</span></li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <h4><span class="en">Sources</span><span class="ko">출처</span></h4>
+    <ul>
+      <li><a href="https://www.iata.org/en/pressroom/2025-releases/2025-12-09-01/">IATA — Airline Profitability Stabilizes with 3.9% Net Margin Expected in 2026 (Dec 2025)</a></li>
+      <li><a href="https://www.iata.org/en/publications/economics/reports/global-outlook-for-air-transport-december-2025/">IATA — Global Outlook for Air Transport, December 2025</a></li>
+      <li><a href="https://www.businesstravelnews.com/Transportation/Air/IATA-Projects-2025-Airline-Revenue-to-Top-1-Trillion">Business Travel News — IATA Projects 2025 Airline Revenue to Top US$1 Trillion</a></li>
+      <li><a href="https://aerospaceglobalnews.com/news/top-10-the-airlines-with-the-biggest-revenues-in-2025/">Aerospace Global News — Top 10 airlines by revenue, 2025</a></li>
+      <li><a href="https://stockanalysis.com/stocks/dal/market-cap/">StockAnalysis — Delta Air Lines (DAL) Market Cap</a></li>
+      <li><a href="https://companiesmarketcap.com/delta-air-lines/revenue/">CompaniesMarketCap — Delta Air Lines revenue</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Largest_airlines_in_the_world">Wikipedia — Largest airlines in the world</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Merger_of_Korean_Air_and_Asiana_Airlines">Wikipedia — Merger of Korean Air and Asiana Airlines</a></li>
+      <li><a href="https://skift.com/2024/12/12/korean-air-completes-asiana-acquisition/">Skift — Korean Air Finalizes Asiana Merger (Dec 2024)</a></li>
+      <li><a href="https://companiesmarketcap.com/korean-air-lines/marketcap/">CompaniesMarketCap — Korean Air Lines market cap</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Jeju_Air_Flight_2216">Wikipedia — Jeju Air Flight 2216</a></li>
+      <li><a href="https://www.koreaherald.com/article/10652452">Korea Herald — Land Ministry admits safety lapse in Jeju Air crash</a></li>
+      <li><a href="https://www.federalregister.gov/documents/2024/04/26/2024-07177/refunds-and-other-consumer-protections">US Federal Register — DOT Refunds and Other Consumer Protections (2024)</a></li>
+      <li><a href="https://www.iata.org/contentassets/d13875e9ed784f75bac90f000760e998/refuel-eu-aviation-handbook.pdf">IATA — ReFuelEU Aviation Handbook</a></li>
+      <li><a href="https://www.wfw.com/articles/saf-flight-plans-untangling-corsia-ets-and-saf-mandates-for-flights-going-through-the-uk-and-eu-states/">Watson Farley &amp; Williams — CORSIA, ETS and SAF mandates</a></li>
+      <li><a href="https://www.oag.com/blog/from-k-pop-to-k-airlines-three-charts-on-south-koreas-aviation-success">OAG — South Korea aviation market analysis</a></li>
+    </ul>
+    <p class="disclaim"><span class="en">The Industry Brief · Passenger Airlines (GICS 20302010) · This report is an educational synthesis of public sources for industry analysis. Figures are approximate, as of the dates shown, and may be revised; nothing here is investment advice. Market caps and financials fluctuate. Generated July 4, 2026.</span><span class="ko">The Industry Brief · 여객 항공(GICS 20302010) · 이 리포트는 산업 분석을 위해 공개 자료를 교육 목적으로 정리한 것입니다. 수치는 표시된 시점 기준의 근사치이며 수정될 수 있고, 어떤 내용도 투자 조언이 아닙니다. 시가총액과 재무 수치는 변동합니다. 2026년 7월 4일 작성.</span></p>
+  </div>
+</footer>
+<script>
+(function(){
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+  document.querySelectorAll('.ac-head').forEach(function(h){h.insertAdjacentHTML('beforeend',CHEV);});
+  var KEY='dis-lang';
+  function setLang(l){document.body.classList.toggle('lang-ko',l==='ko');document.body.classList.toggle('lang-en',l==='en');document.documentElement.lang=l;try{localStorage.setItem(KEY,l);}catch(e){}}
+  var saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}setLang(saved==='ko'?'ko':'en'); // default English; remembers selection
+  var btn=document.getElementById('lang');
+  if(btn)btn.addEventListener('click',function(){setLang(document.body.classList.contains('lang-ko')?'en':'ko');});
+  function toggle(card){var o=card.classList.toggle('open');var h=card.querySelector('.ac-head');if(h)h.setAttribute('aria-expanded',o?'true':'false');}
+  document.querySelectorAll('[data-accordion] .ac').forEach(function(card){
+    var h=card.querySelector('.ac-head');
+    h.addEventListener('click',function(){toggle(card);});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(card);}});
+  });
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    var el=document.getElementById(c.getAttribute('data-go'));
+    if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});}
+  });});
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fill(s){s.querySelectorAll('.col-bar').forEach(function(b){b.style.height=(b.getAttribute('data-h')||0)+'%';});}
+  if(reduce||!('IntersectionObserver'in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});fill(document);}
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+    var bo=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fill(x.target);bo.unobserve(x.target);}});},{threshold:.2});
+    document.querySelectorAll('.colchart').forEach(function(e){bo.observe(e);});
+  }
+})();
+</script>
+</body></html>

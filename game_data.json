@@ -3642,6 +3642,80 @@
     },
     "sector": "Industrials"
   },
+  "20301010": {
+    "cagr": "~5.3%",
+    "gics": "20301010",
+    "global_company": "DHL Group",
+    "global_firms": [
+      {
+        "ko": "스위스)",
+        "name": "Kuehne+Nagel (Switzerland)Kuehne+Nagel(",
+        "share": 14.0
+      },
+      {
+        "ko": "독일)",
+        "name": "DHL Group (Germany)DHL Group(",
+        "share": 12.0
+      },
+      {
+        "ko": "셴커 포함)(덴마크)",
+        "name": "DSV incl. Schenker (Denmark)DSV(",
+        "share": 11.0
+      },
+      {
+        "ko": "등 상위 10위권(미국)",
+        "name": "FedEx / UPS / others top-10 (United States)FedEx·UPS",
+        "share": 10.0
+      }
+    ],
+    "headline_ko": "DHL Group이 매출 기준(2025년 829억 유로) 항공 화물·물류를 이끕니다. 사상 최대 해를 지난 지금, 미국 소액면세 폐지와 EU의 새 소포 관세가 수요를 식히는데요. 한국에서는 CJ대한통운이 택배 약 44%로 시장을 떠받칩니다.",
+    "industry_en": "Air Freight & Logistics",
+    "industry_ko": "항공 화물·물류",
+    "korea_company": "CJ Logistics",
+    "korea_firms": [
+      {
+        "ko": "대한통운(한국)",
+        "name": "CJ Logistics (Korea)CJ",
+        "share": 44.0
+      },
+      {
+        "country": "Korea",
+        "ko": "쿠팡로지스틱스(한국)",
+        "name": "Coupang Logistics Services",
+        "share": 24.0
+      },
+      {
+        "country": "Korea",
+        "ko": "한진(한국)",
+        "name": "Hanjin",
+        "share": 10.0
+      },
+      {
+        "country": "Korea",
+        "ko": "롯데글로벌로지스(한국)",
+        "name": "Lotte Global Logistics",
+        "share": 8.0
+      },
+      {
+        "country": "Korea",
+        "ko": "우체국 택배 외(한국)",
+        "name": "Korea Post & others",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1905,
+      "scale": 0.619,
+      "tech": 0.1905
+    },
+    "market": {
+      "label": "$238B",
+      "trillion_usd": 0.238,
+      "year": "2024"
+    },
+    "sector": "Industrials"
+  },
   "203020": {
     "cagr": "≈4.5%",
     "gics": "203020",
@@ -3698,6 +3772,85 @@
       "label": "$0.83T",
       "trillion_usd": 0.83,
       "year": "2024"
+    },
+    "sector": "Industrials"
+  },
+  "20302010": {
+    "cagr": "US$1.05T",
+    "gics": "20302010",
+    "global_company": "Delta Air Lines",
+    "global_firms": [
+      {
+        "country": "United States",
+        "ko": "델타항공(미국)",
+        "name": "Delta Air Lines",
+        "share": 24.0
+      },
+      {
+        "country": "United States",
+        "ko": "유나이티드항공(미국)",
+        "name": "United Airlines",
+        "share": 22.0
+      },
+      {
+        "country": "United States",
+        "ko": "아메리칸항공(미국)",
+        "name": "American Airlines",
+        "share": 20.0
+      },
+      {
+        "country": "Germany",
+        "ko": "루프트한자 그룹(독일)",
+        "name": "Lufthansa Group",
+        "share": 16.0
+      },
+      {
+        "ko": "영국·스페인)",
+        "name": "IAG (United Kingdom / Spain)IAG(",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "델타항공이 매출 기준(2025년 634억 달러) 여객 항공을 이끄는 가운데, 산업 전체 매출이 얇은 약 3.9% 이익률 위에서 1조 달러를 넘어섰습니다. 한국에서는 아시아나를 흡수한 대한항공이 시장을 다시 짜고 있습니다.",
+    "industry_en": "Passenger Airlines",
+    "industry_ko": "여객 항공",
+    "korea_company": "Korean Air",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "대한항공(아시아나 포함, 한국)",
+        "name": "Korean Air incl. Asiana",
+        "share": 48.0
+      },
+      {
+        "country": "Korea",
+        "ko": "제주항공(한국)",
+        "name": "Jeju Air",
+        "share": 18.0
+      },
+      {
+        "country": "Korea",
+        "ko": "진에어(한국)",
+        "name": "Jin Air",
+        "share": 13.0
+      },
+      {
+        "country": "Korea",
+        "ko": "티웨이항공(한국)",
+        "name": "T'way Air",
+        "share": 11.0
+      },
+      {
+        "country": "Korea",
+        "ko": "에어부산 외(한국)",
+        "name": "Air Busan & others",
+        "share": 10.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.25,
+      "global": 0.3125,
+      "scale": 0.375,
+      "tech": 0.0625
     },
     "sector": "Industrials"
   },
@@ -5494,6 +5647,79 @@
     },
     "sector": "Consumer Discretionary"
   },
+  "25302020": {
+    "cagr": "~8.3%",
+    "gics": "25302020",
+    "global_company": "Rollins",
+    "global_firms": [
+      {
+        "country": "United States",
+        "ko": "롤린스(미국)",
+        "name": "Rollins",
+        "share": 30.0
+      },
+      {
+        "country": "United Kingdom",
+        "ko": "렌토킬 이니셜(영국)",
+        "name": "Rentokil Initial",
+        "share": 14.0
+      },
+      {
+        "country": "United States",
+        "ko": "서비스 코퍼레이션 인터내셔널(미국)",
+        "name": "Service Corporation International",
+        "share": 14.0
+      },
+      {
+        "country": "United States",
+        "ko": "듀오링고·H&R 블록(미국)",
+        "name": "Duolingo, H&R Block",
+        "share": 12.0
+      }
+    ],
+    "headline_ko": "롤린스가 시가총액 약 250억 달러와 약 80% 반복 매출로 특화 소비자 서비스를 세계에서 이끕니다. 한국에서는 11조 3,500억 원 규모 상조 산업이 비상장 웅진프리드라이프를 중심으로 뭉치고 있습니다.",
+    "industry_en": "Specialized Consumer Services",
+    "industry_ko": "특화 소비자 서비스",
+    "korea_company": "Woongjin Preed Life (proxy)",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "웅진프리드라이프(한국)",
+        "name": "Woongjin Preed Life",
+        "share": 27.0
+      },
+      {
+        "country": "Korea",
+        "ko": "교원라이프(한국)",
+        "name": "Kyowon Life",
+        "share": 16.0
+      },
+      {
+        "country": "Korea",
+        "ko": "대명스테이션·아임레디(한국)",
+        "name": "Daemyung Stay In / I'm Ready",
+        "share": 12.0
+      },
+      {
+        "country": "Korea",
+        "ko": "보람상조 외 상위권(한국)",
+        "name": "Boram Sangjo, others top-tier",
+        "share": 9.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.3333,
+      "global": 0.0,
+      "scale": 0.6667,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$1.27T",
+      "trillion_usd": 1.27,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
   "255010": {
     "cagr": "≈4.7%",
     "gics": "255010",
@@ -5539,6 +5765,73 @@
     "market": {
       "label": "$257B",
       "trillion_usd": 0.257,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25501010": {
+    "cagr": "~3.5%",
+    "gics": "25501010",
+    "global_company": "Genuine Parts Company",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "Genuine Parts / GPC (United States)Genuine Parts·GPC(",
+        "share": 20.0
+      },
+      {
+        "ko": "미국)",
+        "name": "LKQ Corporation (United States)LKQ(",
+        "share": 10.0
+      },
+      {
+        "ko": "벨기에)",
+        "name": "D'Ieteren (Belgium)D'Ieteren(",
+        "share": 7.0
+      },
+      {
+        "ko": "영국·미국)",
+        "name": "Inchcape, Pool Corp (UK / US)Inchcape·Pool Corp(",
+        "share": 8.0
+      }
+    ],
+    "headline_ko": "Genuine Parts Company가 매출 기준(2025년 243억 달러) 경기소비재 유통을 이끕니다. 관세와 온라인 판매자가 얇은 마진을 조이는 가운데 2027년 자동차·산업재 분할을 계획하고요. 한국은 깔끔한 상장 1위가 없어 비상장 불스원이 가장 가까운 대용주입니다.",
+    "industry_en": "Distributors",
+    "industry_ko": "유통(디스트리뷰터)",
+    "korea_company": "Bullsone (proxy)",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "불스원(한국)",
+        "name": "Bullsone",
+        "share": 30.0
+      },
+      {
+        "country": "Korea",
+        "ko": "수입 브랜드·OEM 부품 유통사(한국)",
+        "name": "Import-brand / OEM parts distributors",
+        "share": 14.0
+      },
+      {
+        "ko": "유닉스(세차 용품)·3M코리아 채널",
+        "name": "Unix (car care), 3M Korea channel",
+        "share": 10.0
+      },
+      {
+        "ko": "온라인 플랫폼(쿠팡 등)",
+        "name": "Online platforms (Coupang, etc.)",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0769,
+      "scale": 0.7692,
+      "tech": 0.1538
+    },
+    "market": {
+      "label": "$465B",
+      "trillion_usd": 0.465,
       "year": "2024"
     },
     "sector": "Consumer Discretionary"
@@ -10352,67 +10645,78 @@
     "sector": "Information Technology"
   },
   "45301020": {
-    "cagr": "~15%",
+    "cagr": "~+90%",
     "gics": "45301020",
-    "global_company": "Samsung Electronics (삼성전자)",
+    "global_company": "NVIDIA",
     "global_firms": [
       {
+        "ko": "미국)",
+        "name": "NVIDIA (United States)NVIDIA(",
+        "share": 14.0
+      },
+      {
         "country": "South Korea",
-        "ko": "삼성전자",
+        "ko": "삼성전자(한국)",
         "name": "Samsung Electronics",
-        "share": 41.0
+        "share": 10.0
       },
       {
-        "ko": "하이닉스",
-        "name": "SK hynix (South Korea)SK",
-        "share": 35.0
+        "ko": "하이닉스·마이크론 — 메모리(한국·미국)",
+        "name": "SK hynix / Micron — memory (South Korea / United States)SK",
+        "share": 8.0
       },
       {
-        "country": "United States",
-        "ko": "마이크론",
-        "name": "Micron",
-        "share": 19.0
+        "ko": "미국)",
+        "name": "Broadcom / Qualcomm (United States)Broadcom·Qualcomm(",
+        "share": 7.0
       },
       {
-        "ko": "중국) 외",
-        "name": "CXMT (China) & othersCXMT(",
-        "share": 5.0
+        "ko": "미국)",
+        "name": "Intel / AMD (United States)Intel·AMD(",
+        "share": 6.0
       }
     ],
-    "headline_ko": "메모리 산업을 표준 애널리스트 템플릿으로 정리했습니다. D램·낸드·HBM 밸류체인과 이익 풀, 경기를 타는 시장 규모와 CAGR, 글로벌·한국 점유율 파이, 기술 대 규모 2×2, 파이브 포스, 반도체 수출통제 규제, 핵심 성공 요인, 그리고 삼성전자와 SK하이닉스의 SCQA 진단까지 담았습니다.",
-    "industry_en": "Memory Semiconductors — Analyst Brief",
-    "industry_ko": "메모리 반도체 — 애널리스트 브리프",
-    "korea_company": "SK hynix (SK하이닉스)",
+    "headline_ko": "NVIDIA가 세계 최고 가치 기업(시가총액 약 4조 7,000억 달러)으로 반도체 산업을 이끕니다. WSTS가 약 1조 5,000억 달러로 전망한 2026년 시장이 AI와 HBM 붐을 타고요. 한국에서는 삼성전자와 SK하이닉스가 메모리 복점을 지탱합니다.",
+    "industry_en": "Semiconductors",
+    "industry_ko": "반도체",
+    "korea_company": "Samsung Electronics",
     "korea_firms": [
       {
         "country": "South Korea",
-        "ko": "삼성전자",
+        "ko": "삼성전자(한국)",
         "name": "Samsung Electronics",
-        "share": 54.0
+        "share": 36.0
       },
       {
-        "ko": "하이닉스",
+        "ko": "하이닉스(한국)",
         "name": "SK hynix (South Korea)SK",
-        "share": 44.0
+        "share": 29.0
       },
       {
-        "ko": "기타(테스트 / 틈새)",
-        "name": "Others (test / niche)",
-        "share": 2.0
+        "country": "United States",
+        "ko": "마이크론(미국)",
+        "name": "Micron",
+        "share": 23.0
+      },
+      {
+        "country": "China",
+        "ko": "기타, CXMT 포함(중국)",
+        "name": "Others incl. CXMT",
+        "share": 12.0
       }
     ],
     "ksf_weights": {
       "brand": 0.0,
-      "global": 0.1,
-      "scale": 0.5,
-      "tech": 0.4
+      "global": 0.0667,
+      "scale": 0.4,
+      "tech": 0.5333
     },
     "market": {
-      "label": "$90B",
-      "trillion_usd": 0.09,
-      "year": "2023"
+      "label": "$627B",
+      "trillion_usd": 0.627,
+      "year": "2024"
     },
-    "sector": "Special Report"
+    "sector": "Information Technology"
   },
   "501010": {
     "cagr": "≈6.5%",
@@ -11165,6 +11469,78 @@
     "market": {
       "label": "$760B",
       "trillion_usd": 0.76,
+      "year": "2024"
+    },
+    "sector": "Communication Services"
+  },
+  "50202020": {
+    "cagr": "~3.0%",
+    "gics": "50202020",
+    "global_company": "Sony",
+    "global_firms": [
+      {
+        "country": "Japan",
+        "ko": "소니(일본)",
+        "name": "Sony",
+        "share": 16.0
+      },
+      {
+        "country": "China",
+        "ko": "텐센트(중국)",
+        "name": "Tencent",
+        "share": 14.0
+      },
+      {
+        "country": "United States",
+        "ko": "마이크로소프트·액티비전(미국)",
+        "name": "Microsoft / Activision",
+        "share": 9.0
+      },
+      {
+        "country": "Japan",
+        "ko": "닌텐도(일본)",
+        "name": "Nintendo",
+        "share": 8.0
+      }
+    ],
+    "headline_ko": "소니가 플레이스테이션 플랫폼을 앞세워(2025 회계연도 게임·네트워크 매출 약 298억 달러) 약 1,890억 달러 규모의 성숙기 게임 시장을 이끕니다. 최대 순수 퍼블리셔는 텐센트인데요. 한국에서는 크래프톤이 PUBG 너머에 베팅하며 상장 게임사를 이끕니다.",
+    "industry_en": "Interactive Home Entertainment",
+    "industry_ko": "인터랙티브 홈 엔터테인먼트",
+    "korea_company": "Krafton",
+    "korea_firms": [
+      {
+        "ko": "넥슨(한국; 도쿄 상장)",
+        "name": "Nexon (Korea; Tokyo-listed)",
+        "share": 24.0
+      },
+      {
+        "country": "Korea",
+        "ko": "크래프톤(한국)",
+        "name": "Krafton",
+        "share": 17.0
+      },
+      {
+        "country": "Korea",
+        "ko": "넷마블(한국)",
+        "name": "Netmarble",
+        "share": 12.0
+      },
+      {
+        "country": "Korea",
+        "ko": "엔씨소프트(한국)",
+        "name": "NCsoft",
+        "share": 9.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1,
+      "global": 0.6,
+      "scale": 0.3,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$184B",
+      "trillion_usd": 0.184,
       "year": "2024"
     },
     "sector": "Communication Services"
@@ -12089,6 +12465,75 @@
       "global": 0.0,
       "scale": 0.7778,
       "tech": 0.2222
+    },
+    "market": {
+      "label": "$1.20T",
+      "trillion_usd": 1.2,
+      "year": "2024"
+    },
+    "sector": "Real Estate"
+  },
+  "60102510": {
+    "cagr": "~5.5%",
+    "gics": "60102510",
+    "global_company": "Prologis",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "Prologis (United States)Prologis(",
+        "share": 44.0
+      },
+      {
+        "country": "Australia",
+        "ko": "굿맨 그룹(호주)",
+        "name": "Goodman Group",
+        "share": 21.0
+      },
+      {
+        "ko": "싱가포르·일본)",
+        "name": "GLP / GLP J-REIT (Singapore/Japan)GLP·GLP J-REIT(",
+        "share": 11.0
+      },
+      {
+        "country": "United Kingdom",
+        "ko": "세그로(영국)",
+        "name": "Segro",
+        "share": 9.0
+      }
+    ],
+    "headline_ko": "Prologis가 약 1조 2,000억 달러 규모 물류 부동산 시장을 압도합니다(시가총액 약 1,300억 달러). 데이터센터가 새 성장 엔진으로 떠오르고 있죠. 한국에서는 ESR켄달스퀘어리츠가 최대 상장 물류 리츠입니다.",
+    "industry_en": "Industrial REITs",
+    "industry_ko": "산업 리츠",
+    "korea_company": "ESR Kendall Square REIT",
+    "korea_firms": [
+      {
+        "ko": "켄달스퀘어리츠(한국)",
+        "name": "ESR Kendall Square REIT (Korea)ESR",
+        "share": 42.0
+      },
+      {
+        "ko": "스타·미래에셋 물류 리츠(한국)",
+        "name": "KB Star / Mirae Asset logistics REITs (Korea)KB",
+        "share": 19.0
+      },
+      {
+        "country": "Korea",
+        "ko": "다각화 리츠의 물류 부분(한국)",
+        "name": "Diversified REITs' logistics sleeve",
+        "share": 13.0
+      },
+      {
+        "country": "Korea",
+        "ko": "사모·비상장 물류 비히클(한국)",
+        "name": "Private / non-listed logistics vehicles",
+        "share": 16.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.5,
+      "tech": 0.5
     },
     "market": {
       "label": "$1.20T",
