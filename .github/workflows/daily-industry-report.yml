@@ -79,10 +79,18 @@ jobs:
         run: |
           set +e
           OVR="${{ github.event.inputs.override_date }}"
+          if [ -z "$OVR" ]; then
+            # No manual override -> publish the NEXT sequential date = latest reports/<date>/ + 1 day.
+            # (Decoupled from the real calendar so pre-pulled dates don't collide and publishing keeps marching forward.)
+            LAST=$(ls -1d reports/2*-*-* 2>/dev/null | sed 's#.*/##' | sort | tail -1)
+            [ -n "$LAST" ] && OVR=$(date -d "$LAST +1 day" +%Y-%m-%d)
+            echo "AUTO SEQUENTIAL DATE (latest ${LAST:-none} + 1): ${OVR:-fallback-real-date}"
+          fi
           if [ -n "$OVR" ]; then
-            printf 'OVERRIDE (manual run): Treat today'"'"'s date as %s. Do NOT run the date command; use %s for the reports/<date>/ folder and every date field and reports.json entry. Generate the next 7 uncovered sub-industries per the rotation for %s, even if other dates already have batches. All instructions below still apply.\n\n' "$OVR" "$OVR" "$OVR" > run_prompt.txt
+            printf 'OVERRIDE: Treat today'"'"'s date as %s. Do NOT run the date command; use %s for the reports/<date>/ folder and every date field and reports.json entry. Generate the next 7 uncovered sub-industries per the rotation for %s, even if other dates already have batches. All instructions below still apply.\n\n' "$OVR" "$OVR" "$OVR" > run_prompt.txt
             cat prompts/daily-industry-report.md >> run_prompt.txt
-            echo "OVERRIDE DATE: $OVR"
+            echo "PUB DATE: $OVR"
+            echo "PUB_DATE=$OVR" >> "$GITHUB_ENV"
           else
             cp prompts/daily-industry-report.md run_prompt.txt
           fi
@@ -120,7 +128,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to publish today."
           else
-            git commit -m "Publish reports $(TZ=Asia/Seoul date +%Y-%m-%d)"
+            git commit -m "Publish reports ${PUB_DATE:-$(TZ=Asia/Seoul date +%Y-%m-%d)}"
             git push
           fi
 
