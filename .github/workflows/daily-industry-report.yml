@@ -10,7 +10,12 @@ on:
   # Daily schedule is ON. GitHub cron is ALWAYS UTC. 21:00 UTC == 06:00 KST next morning.
   schedule:
     - cron: "0 21 * * *"   # 21:00 UTC == 06:00 KST (다음날 아침)
-  workflow_dispatch: {}    # 수동 실행 버튼도 그대로 유지
+  workflow_dispatch:       # 수동 실행. override_date 지정 시 그 날짜로 강제 생성(기존 배치 무시)
+    inputs:
+      override_date:
+        description: "Force-generate for this date (YYYY-MM-DD), ignoring existing batches"
+        required: false
+        default: ""
 
 concurrency:
   group: daily-industry-report
@@ -73,8 +78,16 @@ jobs:
           CLAUDE_MODEL: opus   # set to "sonnet" to cut cost; "opus" for best quality
         run: |
           set +e
+          OVR="${{ github.event.inputs.override_date }}"
+          if [ -n "$OVR" ]; then
+            printf 'OVERRIDE (manual run): Treat today'"'"'s date as %s. Do NOT run the date command; use %s for the reports/<date>/ folder and every date field and reports.json entry. Generate the next 7 uncovered sub-industries per the rotation for %s, even if other dates already have batches. All instructions below still apply.\n\n' "$OVR" "$OVR" "$OVR" > run_prompt.txt
+            cat prompts/daily-industry-report.md >> run_prompt.txt
+            echo "OVERRIDE DATE: $OVR"
+          else
+            cp prompts/daily-industry-report.md run_prompt.txt
+          fi
           # --output-format json returns a final JSON with usage + cost after the agent finishes its work
-          claude -p "$(cat prompts/daily-industry-report.md)" \
+          claude -p "$(cat run_prompt.txt)" \
             --model "$CLAUDE_MODEL" \
             --dangerously-skip-permissions \
             --output-format json > claude_result.json
@@ -89,7 +102,7 @@ jobs:
             fs.appendFileSync(f, cols.join(",")+"\n");
             console.log("USAGE ROW:", cols.join(","));
           '
-          rm -f claude_result.json
+          rm -f claude_result.json run_prompt.txt
 
       - name: Build game_data.json (Industry Hegemon game data)
         if: steps.gate.outputs.run == 'generate'
