@@ -4383,6 +4383,134 @@
     },
     "sector": "Industrials"
   },
+  "20305020": {
+    "cagr": "~5.8%",
+    "gics": "20305020",
+    "global_company": "Transurban",
+    "global_firms": [
+      {
+        "country": "Australia",
+        "ko": "트랜스어반(호주)",
+        "name": "Transurban",
+        "share": 15.0
+      },
+      {
+        "country": "France",
+        "ko": "뱅시/코피루트(프랑스)",
+        "name": "Vinci / Cofiroute",
+        "share": 14.0
+      },
+      {
+        "ko": "아베르티스/문디스(스페인/이탈리아)",
+        "name": "Abertis / Mundys (Spain / Italy)",
+        "share": 13.0
+      },
+      {
+        "country": "Spain",
+        "ko": "페로비알/신트라(스페인)",
+        "name": "Ferrovial / Cintra",
+        "share": 10.0
+      },
+      {
+        "country": "China",
+        "ko": "중국 고속도로 운영사(중국)",
+        "name": "Chinese expressway operators",
+        "share": 12.0
+      }
+    ],
+    "headline_ko": "트랜스어반(약 450억 호주달러)이 세계 유료도로를 이끕니다. 한국 고속도로는 도로공사가 약 83%를 쥔 국가 운영이라, 매매 가능한 익스포저는 상장 대용치인 맥쿼리한국인프라투융자회사뿐입니다.",
+    "industry_en": "Highways & Railtracks",
+    "industry_ko": "유료도로·철도",
+    "korea_company": "Macquarie Korea Infrastructure Fund (proxy)",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "한국도로공사 — 국유·비상장(한국)",
+        "name": "Korea Expressway Corp — state, unlisted",
+        "share": 83.0
+      },
+      {
+        "country": "Korea",
+        "ko": "민자 PPP 사업권, MKIF 보유 포함(한국)",
+        "name": "Private PPP concessions incl. MKIF-held",
+        "share": 15.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.2222,
+      "scale": 0.7778,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$52B",
+      "trillion_usd": 0.052,
+      "year": "2022"
+    },
+    "sector": "Industrials"
+  },
+  "20305030": {
+    "cagr": "~4.6%",
+    "gics": "20305030",
+    "global_company": "Adani Ports & SEZ",
+    "global_firms": [
+      {
+        "ko": "싱가포르)",
+        "name": "PSA International (Singapore)PSA International (",
+        "share": 24.0
+      },
+      {
+        "ko": "중국)",
+        "name": "COSCO Shipping Ports (China)COSCO Shipping Ports (",
+        "share": 21.0
+      },
+      {
+        "ko": "중국)",
+        "name": "China Merchants Port (China)China Merchants Port (",
+        "share": 20.0
+      },
+      {
+        "country": "UAE",
+        "name": "DP World (UAE)DP World",
+        "share": 18.0
+      },
+      {
+        "ko": "홍콩)",
+        "name": "Hutchison Ports (Hong Kong)Hutchison Ports (",
+        "share": 17.0
+      }
+    ],
+    "headline_ko": "아다니 포츠(약 460억 달러)가 시가총액 기준 상장 항만 운영사를 이끌고, 물동량으로는 PSA와 중국 대형사가 앞섭니다. 한국에서 매매 가능한 익스포저는 국가가 운영하는 항만이 아니라 터미널 운영사 한진입니다.",
+    "industry_en": "Marine Ports & Services",
+    "industry_ko": "항만·항만 서비스",
+    "korea_company": "Hanjin Transportation (proxy)",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "부산항 (한국)",
+        "name": "Busan Port",
+        "share": 76.0
+      },
+      {
+        "country": "Korea",
+        "ko": "인천·광양 및 기타 항만 (한국)",
+        "name": "Incheon, Gwangyang & other ports",
+        "share": 24.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.5,
+      "tech": 0.5
+    },
+    "market": {
+      "label": "$96B",
+      "trillion_usd": 0.096,
+      "year": "2025"
+    },
+    "sector": "Industrials"
+  },
   "251010": {
     "cagr": "≈6.6%",
     "gics": "251010",
@@ -6591,6 +6719,248 @@
       "label": "$946B",
       "trillion_usd": 0.946,
       "year": "2025"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25504040": {
+    "cagr": "~5.1%",
+    "gics": "25504040",
+    "global_company": "Ulta Beauty",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "Ulta Beauty (United States)Ulta Beauty(",
+        "share": 26.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Tractor Supply (United States)Tractor Supply(",
+        "share": 20.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Chewy (United States)Chewy(",
+        "share": 16.0
+      },
+      {
+        "ko": "프랑스)",
+        "name": "Sephora / LVMH (France)Sephora/LVMH(",
+        "share": 12.0
+      },
+      {
+        "ko": "기타/긴 꼬리",
+        "name": "Others / long tail",
+        "share": 26.0
+      }
+    ],
+    "headline_ko": "얼타 뷰티(약 200억 달러)가 로열티 데이터와 체험형 매장을 앞세워 상장 전문 소매를 이끕니다. 한국에서는 비상장 올리브영이 오프라인 헬스·뷰티 매장 채널의 약 85% 이상을 쥐고 있습니다.",
+    "industry_en": "Other Specialty Retail",
+    "industry_ko": "기타 전문 소매",
+    "korea_company": "CJ Olive Young (unlisted)",
+    "korea_firms": [
+      {
+        "ko": "올리브영(한국)",
+        "name": "CJ Olive Young (Korea)CJ",
+        "share": 70.0
+      },
+      {
+        "country": "Korea",
+        "ko": "다이소 뷰티(한국)",
+        "name": "Daiso beauty",
+        "share": 10.0
+      },
+      {
+        "country": "Korea",
+        "ko": "시코르/신세계(한국)",
+        "name": "Chicor / Shinsegae",
+        "share": 7.0
+      },
+      {
+        "country": "Korea",
+        "ko": "아리따움/아모레퍼시픽(한국)",
+        "name": "Aritaum / Amorepacific",
+        "share": 5.0
+      },
+      {
+        "country": "Korea",
+        "ko": "기타/독립 사업자(한국)",
+        "name": "Others / independents",
+        "share": 8.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.6667,
+      "global": 0.3333,
+      "scale": 0.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$605B",
+      "trillion_usd": 0.605,
+      "year": "2025"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25504050": {
+    "cagr": "~2.7%",
+    "gics": "25504050",
+    "global_company": "Lithia Motors",
+    "global_firms": [
+      {
+        "country": "United States",
+        "ko": "리시아 모터스(미국)",
+        "name": "Lithia Motors",
+        "share": 27.0
+      },
+      {
+        "country": "United States",
+        "ko": "펜스케 오토모티브(미국)",
+        "name": "Penske Automotive",
+        "share": 23.0
+      },
+      {
+        "country": "United States",
+        "ko": "오토네이션(미국)",
+        "name": "AutoNation",
+        "share": 20.0
+      },
+      {
+        "country": "United States",
+        "ko": "그룹1 오토모티브(미국)",
+        "name": "Group 1 Automotive",
+        "share": 15.0
+      },
+      {
+        "country": "United States",
+        "ko": "소닉 오토모티브(미국)",
+        "name": "Sonic Automotive",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "자동차 소매의 이익은 새 차가 아니라 금융과 정비에 있습니다. 미국은 리시아 모터스(시가총액 약 70억 달러, 매출 약 360억 달러)가, 한국 중고차 시장은 케이카가 이끕니다.",
+    "industry_en": "Automotive Retail",
+    "industry_ko": "자동차 소매",
+    "korea_company": "K Car",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "케이카(한국)",
+        "name": "K Car",
+        "share": 13.0
+      },
+      {
+        "country": "Korea",
+        "ko": "현대/기아 인증중고차(한국)",
+        "name": "Hyundai / Kia certified used",
+        "share": 9.0
+      },
+      {
+        "country": "Korea",
+        "ko": "엔카 플랫폼·대형 딜러(한국)",
+        "name": "Encar platform & large dealers",
+        "share": 7.0
+      },
+      {
+        "country": "Korea",
+        "ko": "수입 브랜드 중고(한국)",
+        "name": "Import-brand used",
+        "share": 6.0
+      },
+      {
+        "country": "Korea",
+        "ko": "기타/독립 딜러(한국)",
+        "name": "Others / independent dealers",
+        "share": 65.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.5333,
+      "scale": 0.4,
+      "tech": 0.0667
+    },
+    "market": {
+      "label": "$1.20T",
+      "trillion_usd": 1.2,
+      "year": "2024"
+    },
+    "sector": "Consumer Discretionary"
+  },
+  "25504060": {
+    "cagr": "~9.2%",
+    "gics": "25504060",
+    "global_company": "IKEA (Ingka Group)",
+    "global_firms": [
+      {
+        "ko": "스웨덴)",
+        "name": "IKEA / Ingka (Sweden)IKEA/Ingka(",
+        "share": 5.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Ashley (United States)Ashley(",
+        "share": 2.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Wayfair (United States)Wayfair(",
+        "share": 2.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Williams-Sonoma (United States)Williams-Sonoma(",
+        "share": 1.5
+      },
+      {
+        "ko": "미국)",
+        "name": "RH (United States)RH(",
+        "share": 1.0
+      }
+    ],
+    "headline_ko": "이케아가 2025 회계연도 매출 446억 유로로 전 세계 홈퍼니싱 소매를 이끌지만 비상장입니다. 한국에서는 한샘(매출 약 1조 9,000억 원)이 현대리바트와 접전을 벌이고 있습니다.",
+    "industry_en": "Homefurnishing Retail",
+    "industry_ko": "홈퍼니싱 소매",
+    "korea_company": "Hanssem",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "한샘(한국)",
+        "name": "Hanssem",
+        "share": 24.0
+      },
+      {
+        "country": "Korea",
+        "ko": "현대리바트(한국)",
+        "name": "Hyundai Livart",
+        "share": 24.0
+      },
+      {
+        "ko": "코리아(스웨덴)",
+        "name": "IKEA Korea (Sweden)IKEA",
+        "share": 8.0
+      },
+      {
+        "ko": "오늘의집 (Korea)오늘의집(한국)",
+        "name": "Ohouse /",
+        "share": 4.0
+      },
+      {
+        "country": "Korea",
+        "ko": "기타/독립 사업자(한국)",
+        "name": "Others / independents",
+        "share": 40.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.6667,
+      "global": 0.0,
+      "scale": 0.3333,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$1.02T",
+      "trillion_usd": 1.02,
+      "year": "2024"
     },
     "sector": "Consumer Discretionary"
   },
@@ -13778,6 +14148,66 @@
     },
     "sector": "Real Estate"
   },
+  "60106020": {
+    "cagr": "~1–3%",
+    "gics": "60106020",
+    "global_company": "Invitation Homes",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "Progress Residential / Pretium (United States)Progress Residential / Pretium(",
+        "share": 23.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Invitation Homes (United States)Invitation Homes(",
+        "share": 21.0
+      },
+      {
+        "ko": "포함, 미국)",
+        "name": "Blackstone incl. Tricon (United States)Blackstone(Tricon",
+        "share": 14.0
+      },
+      {
+        "ko": "미국)",
+        "name": "American Homes 4 Rent (United States)American Homes 4 Rent(",
+        "share": 14.0
+      },
+      {
+        "ko": "미국)",
+        "name": "The Amherst Group (United States)The Amherst Group(",
+        "share": 14.0
+      }
+    ],
+    "headline_ko": "인비테이션 홈스(약 180억 달러)는 미국 최대 단독주택 임대 리츠이지만 마진 압박과 정책 역풍을 맞았습니다. 한국에는 단독주택 임대 리츠 자체가 없습니다.",
+    "industry_en": "Single-Family Residential REITs",
+    "industry_ko": "단독주택 임대 리츠",
+    "korea_company": "이지스레지던스리츠 (distant proxy)",
+    "korea_firms": [
+      {
+        "ko": "미국)",
+        "name": "Invitation Homes (United States)Invitation Homes(",
+        "share": 59.0
+      },
+      {
+        "ko": "미국)",
+        "name": "American Homes 4 Rent (United States)American Homes 4 Rent(",
+        "share": 41.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0667,
+      "global": 0.0,
+      "scale": 0.7333,
+      "tech": 0.2
+    },
+    "market": {
+      "label": "$26B",
+      "trillion_usd": 0.026,
+      "year": "2023"
+    },
+    "sector": "Real Estate"
+  },
   "601070": {
     "cagr": "~4.0–5.1%",
     "gics": "601070",
@@ -13838,6 +14268,66 @@
       "label": "US$213B",
       "trillion_usd": 0.213,
       "year": ""
+    },
+    "sector": "Real Estate"
+  },
+  "60107010": {
+    "cagr": "~3.5%",
+    "gics": "60107010",
+    "global_company": "Simon Property Group",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "Simon Property Group (United States)Simon Property Group(",
+        "share": 46.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Realty Income (United States)Realty Income(",
+        "share": 32.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Kimco Realty (United States)Kimco Realty(",
+        "share": 9.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Regency Centers (United States)Regency Centers(",
+        "share": 8.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Federal Realty (United States)Federal Realty(",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "리테일 부동산은 조용히 가장 건강한 부동산 섹터 중 하나로 올라섰습니다. 글로벌은 사이먼 프로퍼티 그룹(약 860억 달러)이, 한국은 롯데리츠(약 1조 300억 원)가 이끕니다.",
+    "industry_en": "Retail REITs",
+    "industry_ko": "리테일 리츠",
+    "korea_company": "Lotte REIT",
+    "korea_firms": [
+      {
+        "ko": "롯데리츠 (Korea)롯데리츠(한국)",
+        "name": "Lotte REIT /",
+        "share": 80.0
+      },
+      {
+        "ko": "이리츠코크렙 (Korea)이리츠코크렙(한국)",
+        "name": "E-REIT Kocref /",
+        "share": 20.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.4,
+      "scale": 0.6,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$205B",
+      "trillion_usd": 0.205,
+      "year": "2021"
     },
     "sector": "Real Estate"
   },
