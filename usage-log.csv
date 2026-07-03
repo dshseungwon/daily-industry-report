@@ -1,0 +1,2 @@
+utc,num_turns,duration_ms,input_tokens,output_tokens,cache_creation_tokens,cache_read_tokens,total_cost_usd
+2026-07-03T04:52:27.536Z,10,155737,2623,11129,34497,368615,0.8293875
