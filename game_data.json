@@ -14398,6 +14398,306 @@
     },
     "sector": "Real Estate"
   },
+  "60108010": {
+    "cagr": "~2.9%",
+    "gics": "60108010",
+    "global_company": "Iron Mountain",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "Iron Mountain (United States)Iron Mountain(",
+        "share": 41.0
+      },
+      {
+        "ko": "미국)",
+        "name": "VICI Properties (United States)VICI Properties(",
+        "share": 32.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Lamar Advertising (United States)Lamar Advertising(",
+        "share": 16.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Gaming and Leisure Properties (United States)Gaming and Leisure Properties(",
+        "share": 11.0
+      }
+    ],
+    "headline_ko": "Iron Mountain(약 380억 달러)이 게이밍·문서보관·광고판 리츠가 뒤섞인 파편화된 범주를 이끕니다. 한국에는 직접 대응하는 리츠가 없습니다.",
+    "industry_en": "Other Specialized REITs",
+    "industry_ko": "기타 전문 리츠",
+    "korea_company": "Shinhan Seobu T&D REIT (proxy)",
+    "korea_firms": [
+      {
+        "ko": "신한서부티엔디리츠 (Korea)신한서부티엔디리츠(한국)",
+        "name": "Shinhan Seobu T&D REIT /",
+        "share": 63.0
+      },
+      {
+        "ko": "제이알글로벌리츠 (Korea)제이알글로벌리츠(한국)",
+        "name": "JR Global REIT /",
+        "share": 37.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 1.0,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$72B",
+      "trillion_usd": 0.072,
+      "year": "2022"
+    },
+    "sector": "Real Estate"
+  },
+  "60108020": {
+    "cagr": "~4–5%",
+    "gics": "60108020",
+    "global_company": "Public Storage",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "Public Storage (United States)Public Storage(",
+        "share": 11.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Extra Space Storage (United States)Extra Space Storage(",
+        "share": 9.0
+      },
+      {
+        "ko": "미국)",
+        "name": "U-Haul / Amerco (United States)U-Haul / Amerco(",
+        "share": 5.0
+      },
+      {
+        "ko": "미국)",
+        "name": "NSA + CubeSmart (United States)NSA + CubeSmart(",
+        "share": 6.0
+      },
+      {
+        "country": "US",
+        "ko": "독립 \"엄마·아빠 가게\"(미국)",
+        "name": "Independent \"mom-and-pop\"",
+        "share": 64.0
+      }
+    ],
+    "headline_ko": "Public Storage(약 580억 달러)가 끈끈하고 분산된 섹터를 이끕니다. 2026년을 가르는 건 수요가 아니라 약한 신규 임대료죠. 한국에는 상장 셀프스토리지 리츠가 없습니다.",
+    "industry_en": "Self-Storage REITs",
+    "industry_ko": "셀프스토리지 리츠",
+    "korea_company": "Second Syndrome / Darak (proxy)",
+    "korea_firms": [
+      {
+        "ko": "아이엠박스 (Korea)아이엠박스(한국)",
+        "name": "IAMBOX /",
+        "share": 38.0
+      },
+      {
+        "country": "Korea",
+        "ko": "세컨신드롬 미니창고 다락(한국)",
+        "name": "Second Syndrome / Darak",
+        "share": 32.0
+      },
+      {
+        "country": "Korea",
+        "ko": "기타 — 또타스토리지, 알파박스 등(한국)",
+        "name": "Others — Ttota, Alphabox etc.",
+        "share": 30.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1818,
+      "global": 0.0,
+      "scale": 0.8182,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$140B",
+      "trillion_usd": 0.14,
+      "year": "2021"
+    },
+    "sector": "Real Estate"
+  },
+  "60108030": {
+    "cagr": "~4–10%",
+    "gics": "60108030",
+    "global_company": "American Tower",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "American Tower (United States)American Tower(",
+        "share": 51.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Crown Castle (United States)Crown Castle(",
+        "share": 23.0
+      },
+      {
+        "ko": "미국)",
+        "name": "SBA Communications (United States)SBA Communications(",
+        "share": 13.0
+      },
+      {
+        "ko": "스페인)",
+        "name": "Cellnex Telecom (Spain)Cellnex Telecom(",
+        "share": 13.0
+      }
+    ],
+    "headline_ko": "American Tower(약 770억 달러)가 글로벌 통신탑 리츠를 이끌고, 이익 엔진은 코로케이션입니다. 한국에는 상장 통신탑 리츠가 없어 통신탑은 통신사 소유로 남아 있습니다.",
+    "industry_en": "Telecom Tower REITs",
+    "industry_ko": "통신탑 리츠",
+    "korea_company": "SK Telecom towers (proxy)",
+    "korea_firms": [
+      {
+        "ko": "텔레콤 통신탑(한국)",
+        "name": "SK Telecom / SKT towers (Korea)SK",
+        "share": 50.0
+      },
+      {
+        "ko": "통신탑(한국)",
+        "name": "KT towers (Korea)KT",
+        "share": 28.0
+      },
+      {
+        "ko": "유플러스 통신탑(한국)",
+        "name": "LG U+ towers (Korea)LG",
+        "share": 22.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1818,
+      "scale": 0.8182,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$205B",
+      "trillion_usd": 0.205,
+      "year": "2021"
+    },
+    "sector": "Real Estate"
+  },
+  "60108040": {
+    "cagr": "~2–4%",
+    "gics": "60108040",
+    "global_company": "Weyerhaeuser",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "Weyerhaeuser (United States)Weyerhaeuser(",
+        "share": 72.0
+      },
+      {
+        "ko": "포함(미국)",
+        "name": "Rayonier — incl. PotlatchDeltic (United States)Rayonier — PotlatchDeltic",
+        "share": 28.0
+      }
+    ],
+    "headline_ko": "Weyerhaeuser(약 180억 달러)가 Rayonier·PotlatchDeltic 합병으로 두 곳만 남은 미국 시장을 이끌며, 벌채에서 땅값으로 무게를 옮기고 있습니다. 한국에는 상장 임야 리츠가 없습니다.",
+    "industry_en": "Timber REITs",
+    "industry_ko": "임야 리츠",
+    "korea_company": "Moorim P&P (proxy)",
+    "korea_firms": [
+      {
+        "ko": "무림P&P (Korea)무림P&P(한국)",
+        "name": "Moorim P&P /",
+        "share": 55.0
+      },
+      {
+        "ko": "한솔홈데코 (Korea)한솔홈데코(한국)",
+        "name": "Hansol Homedeco /",
+        "share": 45.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.2222,
+      "tech": 0.7778
+    },
+    "market": {
+      "label": "$34B",
+      "trillion_usd": 0.034,
+      "year": "2021"
+    },
+    "sector": "Real Estate"
+  },
+  "60108050": {
+    "cagr": "~11%",
+    "gics": "60108050",
+    "global_company": "Equinix",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "Equinix (United States)Equinix(",
+        "share": 50.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Digital Realty (United States)Digital Realty(",
+        "share": 35.0
+      },
+      {
+        "ko": "데이터센터 부문(미국)",
+        "name": "Iron Mountain — DC segment (United States)Iron Mountain —",
+        "share": 8.0
+      },
+      {
+        "ko": "데이터센터 부문(미국)",
+        "name": "American Tower — data-center arm (United States)American Tower —",
+        "share": 5.0
+      },
+      {
+        "ko": "싱가포르)",
+        "name": "Digital Core REIT (Singapore)Digital Core REIT(",
+        "share": 2.0
+      }
+    ],
+    "headline_ko": "AI 수요로 데이터센터 리츠가 가장 뜨거운 부동산 섹터가 됐고, Equinix(약 1,000억 달러)가 이끕니다. 이제 제약은 자본이 아니라 전력입니다. 한국에는 아직 상장 데이터센터 리츠가 없습니다.",
+    "industry_en": "Data Center REITs",
+    "industry_ko": "데이터센터 리츠",
+    "korea_company": "Koramco DC platform (proxy)",
+    "korea_firms": [
+      {
+        "ko": "텔레콤·SK브로드밴드)(한국)",
+        "name": "SK (SK Telecom / SK Broadband) (Korea)SK(SK",
+        "share": 40.0
+      },
+      {
+        "ko": "한국)",
+        "name": "KT Cloud (Korea)KT Cloud(",
+        "share": 28.0
+      },
+      {
+        "country": "Korea",
+        "ko": "삼성SDS·LG(한국)",
+        "name": "Samsung SDS / LG",
+        "share": 18.0
+      },
+      {
+        "country": "Korea",
+        "ko": "코람코·사모펀드(한국)",
+        "name": "Koramco & private funds",
+        "share": 14.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.375,
+      "scale": 0.625,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$95B",
+      "trillion_usd": 0.095,
+      "year": "2021"
+    },
+    "sector": "Real Estate"
+  },
   "602010": {
     "cagr": "~7.1%",
     "gics": "602010",
@@ -14462,6 +14762,130 @@
       "label": "$4.05T",
       "trillion_usd": 4.05,
       "year": "2024"
+    },
+    "sector": "Real Estate"
+  },
+  "60201010": {
+    "cagr": "~7.1%",
+    "gics": "60201010",
+    "global_company": "Sun Hung Kai Properties",
+    "global_firms": [
+      {
+        "ko": "홍콩)",
+        "name": "Sun Hung Kai Properties (Hong Kong)Sun Hung Kai Properties(",
+        "share": 32.0
+      },
+      {
+        "ko": "일본)",
+        "name": "Mitsubishi Estate (Japan)Mitsubishi Estate(",
+        "share": 24.0
+      },
+      {
+        "ko": "일본)",
+        "name": "Mitsui Fudosan (Japan)Mitsui Fudosan(",
+        "share": 19.0
+      },
+      {
+        "ko": "홍콩)",
+        "name": "CK Asset (Hong Kong)CK Asset(",
+        "share": 15.0
+      },
+      {
+        "ko": "홍콩)",
+        "name": "Swire Properties (Hong Kong)Swire Properties(",
+        "share": 10.0
+      }
+    ],
+    "headline_ko": "Sun Hung Kai(약 420억 달러)가 낮은 부채비율로 경기를 타는 아시아 중심 종합 부동산 시장을 이끕니다. 한국 최대 사업자 LH는 비상장이라 HDC현대산업개발이 대용치입니다.",
+    "industry_en": "Diversified Real Estate Activities",
+    "industry_ko": "종합 부동산 사업",
+    "korea_company": "HDC Hyundai Development (proxy)",
+    "korea_firms": [
+      {
+        "ko": "현대산업개발(IPARK, 한국)",
+        "name": "HDC / IPARK (Korea)HDC",
+        "share": 78.0
+      },
+      {
+        "ko": "디앤디 (Korea)SK디앤디(한국)",
+        "name": "SK D&D / SK",
+        "share": 22.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.1538,
+      "scale": 0.3846,
+      "tech": 0.4615
+    },
+    "market": {
+      "label": "$3.7T",
+      "trillion_usd": 3.7,
+      "year": "2021"
+    },
+    "sector": "Real Estate"
+  },
+  "60201020": {
+    "cagr": "~5.9%",
+    "gics": "60201020",
+    "global_company": "Vonovia SE",
+    "global_firms": [
+      {
+        "ko": "독일)",
+        "name": "Vonovia (Germany)Vonovia(",
+        "share": 41.0
+      },
+      {
+        "ko": "홍콩)",
+        "name": "Swire Properties (Hong Kong)Swire Properties(",
+        "share": 29.0
+      },
+      {
+        "ko": "홍콩)",
+        "name": "Wharf REIC (Hong Kong)Wharf REIC(",
+        "share": 16.0
+      },
+      {
+        "ko": "독일)",
+        "name": "LEG Immobilien (Germany)LEG Immobilien(",
+        "share": 9.0
+      },
+      {
+        "ko": "룩셈부르크)",
+        "name": "Aroundtown (Luxembourg)Aroundtown(",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "Vonovia(약 190억 유로)가 글로벌 부동산 운영회사를 이끌지만 주가는 순자산가치 절반 근처에 머뭅니다. 한국에는 순수 상장 REOC가 없어 SK디앤디가 대용치입니다.",
+    "industry_en": "Real Estate Operating Companies",
+    "industry_ko": "부동산 운영회사",
+    "korea_company": "SK D&D (proxy)",
+    "korea_firms": [
+      {
+        "ko": "현대산업개발 (Korea)HDC현대산업개발(한국)",
+        "name": "HDC",
+        "share": 46.0
+      },
+      {
+        "name": "한국자산신탁 (Korea)한국자산신탁(한국)",
+        "share": 32.0
+      },
+      {
+        "ko": "디앤디 (Korea)SK디앤디(한국)",
+        "name": "SK D&D / SK",
+        "share": 22.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.3333,
+      "scale": 0.6111,
+      "tech": 0.0556
+    },
+    "market": {
+      "label": "US$2.9 trillion",
+      "trillion_usd": 2.9,
+      "year": ""
     },
     "sector": "Real Estate"
   }
