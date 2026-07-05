@@ -64,67 +64,70 @@
     "sector": "Energy"
   },
   "10101010": {
-    "cagr": "~6.5%",
+    "cagr": "~4.9%",
     "gics": "10101010",
     "global_company": "ADNOC Drilling",
     "global_firms": [
       {
+        "country": "United Arab Emirates",
+        "ko": "아드녹 드릴링(아랍에미리트)",
         "name": "ADNOC Drilling",
-        "share": 52.0
+        "share": 55.0
       },
       {
-        "name": "Transocean+Valaris",
-        "share": 23.0
+        "ko": "미국/영국)",
+        "name": "Valaris (United States / UK)Valaris(",
+        "share": 14.0
       },
       {
-        "name": "Helmerich & Payne",
-        "share": 13.0
+        "ko": "스위스/미국)",
+        "name": "Transocean (Switzerland / US)Transocean(",
+        "share": 11.0
       },
       {
-        "name": "Patterson-UTI",
+        "ko": "미국)",
+        "name": "Helmerich & Payne (United States)Helmerich & Payne(",
+        "share": 12.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Nabors Industries (United States)Nabors Industries(",
         "share": 8.0
-      },
-      {
-        "name": "Nabors / Precision",
-        "share": 4.0
       }
     ],
-    "headline_ko": "OPEC+ 증산 전환이 해양 일일 용선료를 누르는 가운데 ADNOC Drilling이 시추 시장을 주도합니다.",
+    "headline_ko": "ADNOC Drilling(약 270억 달러)이 시가총액 기준 최대 시추 계약업체입니다. 한국에는 해양 시추사가 없어 드릴십 건조사인 삼성중공업(약 22조 4,000억 원)이 대용입니다.",
     "industry_en": "Oil & Gas Drilling",
     "industry_ko": "석유·가스 시추",
     "korea_company": "Samsung Heavy Industries (proxy)",
     "korea_firms": [
       {
-        "ko": "삼성중공업(드릴십)",
-        "name": "Samsung Heavy (drillships)",
-        "share": 46.0
+        "country": "Korea",
+        "ko": "삼성중공업(한국)",
+        "name": "Samsung Heavy Industries",
+        "share": 42.0
       },
       {
-        "ko": "현대중공업(설비/해양)",
-        "name": "HD Hyundai Heavy (rigs/offshore)HD",
-        "share": 32.0
+        "country": "Korea",
+        "ko": "한화오션·HD현대(한국)",
+        "name": "Hanwha Ocean & HD Hyundai",
+        "share": 28.0
       },
       {
-        "ko": "한화오션(해양)",
-        "name": "Hanwha Ocean (offshore)",
-        "share": 15.0
-      },
-      {
-        "ko": "포스코인터내셔널(E&P 프록시)",
-        "name": "POSCO Int'l (E&P proxy)",
-        "share": 7.0
+        "ko": "중국·싱가포르 조선소(나머지)",
+        "name": "China / Singapore yards (rest)",
+        "share": 30.0
       }
     ],
     "ksf_weights": {
-      "brand": 0.5,
+      "brand": 0.4286,
       "global": 0.0,
-      "scale": 0.5,
+      "scale": 0.5714,
       "tech": 0.0
     },
     "market": {
-      "label": "$85B",
-      "trillion_usd": 0.085,
-      "year": "2024"
+      "label": "$29.8B",
+      "trillion_usd": 0.0298,
+      "year": "2023"
     },
     "sector": "Energy"
   },
@@ -581,58 +584,70 @@
     "global_company": "BASF",
     "global_firms": [
       {
-        "name": "Sinopec",
-        "share": 53.0
+        "ko": "독일)",
+        "name": "BASF (Germany)BASF(",
+        "share": 27.0
       },
       {
-        "name": "BASF",
-        "share": 15.0
+        "ko": "중국)",
+        "name": "Sinopec (China)Sinopec(",
+        "share": 22.0
       },
       {
-        "name": "Dow",
-        "share": 12.0
+        "ko": "미국)",
+        "name": "Dow (United States)Dow(",
+        "share": 16.0
       },
       {
-        "name": "SABIC",
-        "share": 11.0
-      },
-      {
-        "name": "LyondellBasell",
-        "share": 9.0
-      }
-    ],
-    "headline_ko": "중국발 공급 과잉이 구조조정을 부르면서 범용 화학은 깊은 다운사이클에 놓여 있습니다.",
-    "industry_en": "Commodity Chemicals",
-    "industry_ko": "범용 화학",
-    "korea_company": "Lotte Chemical",
-    "korea_firms": [
-      {
-        "name": "롯데케미칼",
-        "share": 36.0
-      },
-      {
-        "name": "한화솔루션",
-        "share": 26.0
-      },
-      {
-        "name": "금호석유화학",
+        "ko": "사우디)",
+        "name": "SABIC (Saudi Arabia)SABIC(",
         "share": 18.0
       },
       {
-        "name": "대한유화(KPIC)",
-        "share": 12.0
+        "ko": "미국·네덜란드)",
+        "name": "LyondellBasell (US / NL)LyondellBasell(",
+        "share": 17.0
+      }
+    ],
+    "headline_ko": "BASF(약 480억 달러)가 화학 매출 기준 세계 1위로 중국발 마진 침체를 버티고 있습니다. 한국 최대는 LG화학(FY2025 매출 45조 9,300억 원)입니다.",
+    "industry_en": "Commodity Chemicals",
+    "industry_ko": "범용 화학",
+    "korea_company": "LG Chem",
+    "korea_firms": [
+      {
+        "ko": "화학(한국)",
+        "name": "LG Chem (Korea)LG",
+        "share": 40.0
+      },
+      {
+        "country": "Korea",
+        "ko": "롯데케미칼(한국)",
+        "name": "Lotte Chemical",
+        "share": 28.0
+      },
+      {
+        "country": "Korea",
+        "ko": "한화토탈에너지스(한국)",
+        "name": "Hanwha TotalEnergies",
+        "share": 18.0
+      },
+      {
+        "country": "Korea",
+        "ko": "기타: KPIC, SK지오센트릭(한국)",
+        "name": "Others: KPIC, SK Geo Centric",
+        "share": 14.0
       }
     ],
     "ksf_weights": {
       "brand": 0.0,
-      "global": 0.0476,
-      "scale": 0.7619,
-      "tech": 0.1905
+      "global": 0.25,
+      "scale": 0.75,
+      "tech": 0.0
     },
     "market": {
-      "label": "$814B",
-      "trillion_usd": 0.814,
-      "year": "2024"
+      "label": "$547B",
+      "trillion_usd": 0.547,
+      "year": "2021"
     },
     "sector": "Materials"
   },
@@ -1970,67 +1985,70 @@
     "sector": "Industrials"
   },
   "20101010": {
-    "cagr": "~7.1%",
+    "cagr": "~6%",
     "gics": "20101010",
     "global_company": "GE Aerospace",
     "global_firms": [
       {
-        "name": "GE Aerospace",
-        "share": 32.0
+        "ko": "미국)",
+        "name": "GE Aerospace (United States)GE Aerospace(",
+        "share": 42.0
       },
       {
-        "name": "RTX",
-        "share": 24.0
+        "ko": "미국)",
+        "name": "RTX (United States)RTX(",
+        "share": 27.0
       },
       {
-        "name": "Boeing",
-        "share": 17.0
+        "ko": "네덜란드/EU)",
+        "name": "Airbus (Netherlands / EU)Airbus(",
+        "share": 18.0
       },
       {
-        "name": "Lockheed Martin",
-        "share": 16.0
-      },
-      {
-        "name": "Northrop Grumman",
-        "share": 11.0
+        "ko": "미국)",
+        "name": "Lockheed Martin (United States)Lockheed Martin(",
+        "share": 13.0
       }
     ],
-    "headline_ko": "재무장 슈퍼사이클이 항공우주·방위 수주잔고와 기업가치를 사상 최고로 끌어올렸습니다.",
+    "headline_ko": "GE Aerospace(약 3,900억 달러)가 시가총액 기준 최대 항공우주·방위 기업입니다. 한국 한화에어로스페이스(약 460억 달러)는 사상 최대 국방예산을 탑니다(FY2025 매출 26조 7,000억 원).",
     "industry_en": "Aerospace & Defense",
     "industry_ko": "항공우주·방위",
     "korea_company": "Hanwha Aerospace",
     "korea_firms": [
       {
-        "name": "한화에어로스페이스",
-        "share": 55.0
+        "country": "Korea",
+        "ko": "한화에어로스페이스(한국)",
+        "name": "Hanwha Aerospace",
+        "share": 57.0
       },
       {
-        "name": "LIG Nex1",
+        "country": "Korea",
+        "ko": "현대로템(한국)",
+        "name": "Hyundai Rotem",
+        "share": 17.0
+      },
+      {
+        "ko": "넥스원(한국)",
+        "name": "LIG Nex1 (Korea)LIG",
         "share": 16.0
       },
       {
-        "name": "한국항공우주산업(KAI)",
-        "share": 11.0
-      },
-      {
-        "name": "현대로템",
+        "country": "Korea",
+        "ko": "한국항공우주산업(KAI, 한국)",
+        "name": "Korea Aerospace Industries / KAI",
         "share": 10.0
-      },
-      {
-        "name": "한화시스템",
-        "share": 8.0
       }
     ],
     "ksf_weights": {
       "brand": 0.0,
-      "global": 0.1875,
-      "scale": 0.4375,
-      "tech": 0.375
+      "global": 0.2727,
+      "scale": 0.5455,
+      "tech": 0.1818
     },
     "market": {
-      "label": "$847B",
-      "trillion_usd": 0.847,
-      "year": "2025"
+      "label": "$710B",
+      "trillion_usd": 0.71,
+      "year": "2021"
     },
     "sector": "Industrials"
   },
@@ -4577,68 +4595,76 @@
     "sector": "Consumer Discretionary"
   },
   "25101010": {
-    "cagr": "~2.8%",
+    "cagr": "~5.85%",
     "gics": "25101010",
     "global_company": "Bosch",
     "global_firms": [
       {
-        "name": "Bosch",
-        "share": 27.0
+        "ko": "독일)",
+        "name": "Bosch (Germany)Bosch(",
+        "share": 21.0
       },
       {
-        "name": "Denso",
-        "share": 22.0
-      },
-      {
-        "name": "Magna",
+        "ko": "일본)",
+        "name": "Denso (Japan)Denso(",
         "share": 18.0
       },
       {
-        "name": "Hyundai Mobis",
-        "share": 17.0
+        "ko": "캐나다)",
+        "name": "Magna (Canada)Magna(",
+        "share": 16.0
       },
       {
-        "name": "ZF",
+        "country": "Korea",
+        "ko": "현대모비스(한국)",
+        "name": "Hyundai Mobis",
         "share": 16.0
+      },
+      {
+        "ko": "독일)",
+        "name": "ZF (Germany)ZF(",
+        "share": 15.0
       }
     ],
-    "headline_ko": "강한 완성차 구매력과 멈춰선 전기차 전환이 자동차 부품 협력사를 구조조정으로 내몰고 있습니다.",
+    "headline_ko": "Bosch(비상장)가 매출 기준 세계 1위 자동차 부품사입니다(모빌리티 FY2024 558억 유로). 한국 현대모비스(약 44조 원)는 FY2025 매출 61조 1,000억 원으로 사상 최대를 기록했습니다.",
     "industry_en": "Automotive Parts & Equipment",
     "industry_ko": "자동차 부품·장비",
     "korea_company": "Hyundai Mobis",
     "korea_firms": [
       {
-        "name": "현대모비스",
-        "share": 62.0
+        "country": "Korea",
+        "ko": "현대모비스(한국)",
+        "name": "Hyundai Mobis",
+        "share": 68.0
       },
       {
-        "name": "한온시스템",
-        "share": 14.0
+        "country": "Korea",
+        "ko": "한온시스템(한국)",
+        "name": "Hanon Systems",
+        "share": 13.0
       },
       {
-        "name": "현대위아",
-        "share": 12.0
+        "ko": "만도(한국)",
+        "name": "HL Mando (Korea)HL",
+        "share": 10.0
       },
       {
-        "ko": "만도",
-        "name": "HL",
-        "share": 8.0
-      },
-      {
-        "name": "에스엘",
-        "share": 4.0
+        "country": "Korea",
+        "ko": "현대위아(한국)",
+        "name": "Hyundai Wia",
+        "share": 9.0
       }
     ],
     "ksf_weights": {
-      "brand": 0.3,
-      "global": 0.1,
-      "scale": 0.25,
-      "tech": 0.35
+      "brand": 0.25,
+      "global": 0.25,
+      "scale": 0.3,
+      "tech": 0.2
     },
     "market": {
-      "label": "$2.02T",
-      "trillion_usd": 2.02,
-      "year": "2024"
+      "label": "$470B",
+      "trillion_usd": 0.47,
+      "year": "2021"
     },
     "sector": "Consumer Discretionary"
   },
@@ -7028,55 +7054,58 @@
     "sector": "Consumer Staples"
   },
   "30101010": {
-    "cagr": "~10.1%",
+    "cagr": "~9.2%",
     "gics": "30101010",
     "global_company": "CVS Health",
     "global_firms": [
       {
-        "name": "CVS Health",
-        "share": 36.0
+        "ko": "미국)",
+        "name": "CVS Health (United States)CVS Health(",
+        "share": 34.0
       },
       {
-        "name": "Walgreens",
-        "share": 27.0
+        "ko": "미국)",
+        "name": "Cigna / Express Scripts (United States)Cigna/Express Scripts(",
+        "share": 21.0
       },
       {
-        "name": "Cigna/Express Scripts",
-        "share": 15.0
+        "ko": "미국)",
+        "name": "Walgreens Boots Alliance (United States)Walgreens Boots Alliance(",
+        "share": 16.0
       },
       {
-        "name": "Walmart",
-        "share": 11.0
+        "ko": "미국)",
+        "name": "UnitedHealth / OptumRx (United States)UnitedHealth/OptumRx(",
+        "share": 13.0
+      },
+      {
+        "ko": "등 기타(미국)",
+        "name": "Others incl. Walmart (United States)Walmart",
+        "share": 16.0
       }
     ],
-    "headline_ko": "CVS가 저마진 미국 약국 구조조정을 주도하는 한편, 한국은 기업형 약국 체인을 전면 금지하고 있습니다.",
+    "headline_ko": "CVS Health(시가총액 약 1,340억 달러)가 매출 기준 최대 의약품 소매업체입니다(FY2025 약 4,020억 달러). 한국은 체인 약국을 금지해 유통사 지오영이 가장 가까운 대용입니다.",
     "industry_en": "Drug Retail",
     "industry_ko": "의약품 소매",
     "korea_company": "GeoYoung (proxy)",
     "korea_firms": [
       {
-        "name": "지오영",
-        "share": 50.0
-      },
-      {
-        "name": "백제약품 외",
-        "share": 22.0
-      },
-      {
-        "name": "지역 도매",
-        "share": 14.0
+        "country": "Korea",
+        "ko": "상위 2사 — 지오영+백제약품(한국)",
+        "name": "Top 2 — GeoYoung + Baekje",
+        "share": 30.0
       }
     ],
     "ksf_weights": {
       "brand": 0.0,
-      "global": 0.1176,
-      "scale": 0.7059,
+      "global": 0.2941,
+      "scale": 0.5294,
       "tech": 0.1765
     },
     "market": {
-      "label": "$0.76T",
-      "trillion_usd": 0.76,
-      "year": "2024"
+      "label": "$0.83T",
+      "trillion_usd": 0.83,
+      "year": "2025"
     },
     "sector": "Consumer Staples"
   },
@@ -14886,6 +14915,140 @@
       "label": "US$2.9 trillion",
       "trillion_usd": 2.9,
       "year": ""
+    },
+    "sector": "Real Estate"
+  },
+  "60201030": {
+    "cagr": "~7.1%",
+    "gics": "60201030",
+    "global_company": "D.R. Horton",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "D.R. Horton (USA)D.R. Horton(",
+        "share": 42.0
+      },
+      {
+        "ko": "미국)",
+        "name": "PulteGroup (USA)PulteGroup(",
+        "share": 24.0
+      },
+      {
+        "ko": "중국)",
+        "name": "China Overseas Land (China)China Overseas Land(",
+        "share": 17.0
+      },
+      {
+        "ko": "일본)",
+        "name": "Sekisui House (Japan)Sekisui House(",
+        "share": 12.0
+      },
+      {
+        "ko": "일본)",
+        "name": "Daito Trust (Japan)Daito Trust(",
+        "share": 5.0
+      }
+    ],
+    "headline_ko": "D.R. Horton(약 450억 달러)이 상장 부동산 디벨로퍼·주택건설사를 이끕니다. 한국 최대 사업자 LH는 비상장이라 현대건설(약 18조 원)이 가장 가까운 상장 대용입니다.",
+    "industry_en": "Real Estate Development",
+    "industry_ko": "부동산 개발",
+    "korea_company": "Hyundai E&C (proxy)",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "현대건설(한국)",
+        "name": "Hyundai E&C",
+        "share": 51.0
+      },
+      {
+        "country": "Korea",
+        "ko": "대우건설(한국)",
+        "name": "Daewoo E&C",
+        "share": 30.0
+      },
+      {
+        "ko": "건설(자이, 한국)",
+        "name": "GS E&C / Xi (Korea)GS",
+        "share": 10.0
+      },
+      {
+        "ko": "이앤씨(한국)",
+        "name": "DL E&C (Korea)DL",
+        "share": 9.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.1111,
+      "global": 0.5556,
+      "scale": 0.3333,
+      "tech": 0.0
+    },
+    "market": {
+      "label": "$3.7T",
+      "trillion_usd": 3.7,
+      "year": "2021"
+    },
+    "sector": "Real Estate"
+  },
+  "60201040": {
+    "cagr": "~8.3%",
+    "gics": "60201040",
+    "global_company": "CBRE Group",
+    "global_firms": [
+      {
+        "ko": "미국)",
+        "name": "CBRE Group (United States)CBRE Group(",
+        "share": 55.0
+      },
+      {
+        "ko": "미국)",
+        "name": "JLL (United States)JLL(",
+        "share": 20.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Cushman & Wakefield (United States)Cushman & Wakefield(",
+        "share": 9.0
+      },
+      {
+        "ko": "캐나다)",
+        "name": "Colliers (Canada)Colliers(",
+        "share": 5.0
+      },
+      {
+        "ko": "미국)",
+        "name": "Newmark (United States)Newmark(",
+        "share": 3.0
+      }
+    ],
+    "headline_ko": "CBRE(약 410억 달러)가 매출 기준 세계 최대 상업용 부동산 서비스 회사입니다(FY2025 약 405억 5,000만 달러). 한국 1위 이지스자산운용은 비상장입니다.",
+    "industry_en": "Real Estate Services",
+    "industry_ko": "부동산 서비스",
+    "korea_company": "IGIS Asset Management (proxy)",
+    "korea_firms": [
+      {
+        "country": "Korea",
+        "ko": "이지스자산운용(한국)",
+        "name": "IGIS Asset Management",
+        "share": 15.8
+      },
+      {
+        "country": "Korea",
+        "ko": "그 외 모든 부동산 펀드 운용사(한국)",
+        "name": "All other RE fund managers",
+        "share": 84.0
+      }
+    ],
+    "ksf_weights": {
+      "brand": 0.0,
+      "global": 0.0,
+      "scale": 0.5455,
+      "tech": 0.4545
+    },
+    "market": {
+      "label": "$26.5B",
+      "trillion_usd": 0.0265,
+      "year": "2024"
     },
     "sector": "Real Estate"
   }
